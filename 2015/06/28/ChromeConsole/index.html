@@ -4,47 +4,44 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Git Study | A1exlism</title>
+    <title>Chrome调试合集 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="记录遇到的Git : )常见标记A: 增加的文件.
-C: 文件的一个新拷贝.
-D: 删除的一个文件.
-M:文件的内容或者mode被修改了.
-R: 文件名被修改了.
-T: 文件的类型被修改了.
-U: 文件没有被合并(你需要完成合并才能进行提交)
-X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
-在git diff-files的手册man git diff-fil">
+    <meta name="description" content="Chrome调试
+shift+enter可多行输入
+
+
+样式 console.info() console.debug() console.warn() console.error()
+占位符: console.log()和 c的printf()一样 只能用%d/%i %f %s %o(objective)
+分组显示:
+12345678console.group(&apos;第一组信息&apos;);	console">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git Study">
-<meta property="og:url" content="http://a1ex.net/2015/06/07/git-study/index.html">
+<meta property="og:title" content="Chrome调试合集">
+<meta property="og:url" content="http://a1ex.net/2015/06/28/ChromeConsole/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="记录遇到的Git : )常见标记A: 增加的文件.
-C: 文件的一个新拷贝.
-D: 删除的一个文件.
-M:文件的内容或者mode被修改了.
-R: 文件名被修改了.
-T: 文件的类型被修改了.
-U: 文件没有被合并(你需要完成合并才能进行提交)
-X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
-在git diff-files的手册man git diff-fil">
-<meta property="og:updated_time" content="2015-06-07T08:20:22.550Z">
+<meta property="og:description" content="Chrome调试
+shift+enter可多行输入
+
+
+样式 console.info() console.debug() console.warn() console.error()
+占位符: console.log()和 c的printf()一样 只能用%d/%i %f %s %o(objective)
+分组显示:
+12345678console.group(&apos;第一组信息&apos;);	console">
+<meta property="og:updated_time" content="2015-06-27T16:46:28.765Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git Study">
-<meta name="twitter:description" content="记录遇到的Git : )常见标记A: 增加的文件.
-C: 文件的一个新拷贝.
-D: 删除的一个文件.
-M:文件的内容或者mode被修改了.
-R: 文件名被修改了.
-T: 文件的类型被修改了.
-U: 文件没有被合并(你需要完成合并才能进行提交)
-X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
-在git diff-files的手册man git diff-fil">
+<meta name="twitter:title" content="Chrome调试合集">
+<meta name="twitter:description" content="Chrome调试
+shift+enter可多行输入
+
+
+样式 console.info() console.debug() console.warn() console.error()
+占位符: console.log()和 c的printf()一样 只能用%d/%i %f %s %o(objective)
+分组显示:
+12345678console.group(&apos;第一组信息&apos;);	console">
 <link rel="publisher" href="106896526077043230000">
 
     
@@ -102,14 +99,14 @@ X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/06/07/git-study/" title="Git Study" itemprop="url">Git Study</a>
+      <a href="/2015/06/28/ChromeConsole/" title="Chrome调试合集" itemprop="url">Chrome调试合集</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-07T08:20:22.550Z" itemprop="datePublished"> 发表于 06-07-2015</time>
+    <time datetime="2015-06-27T16:46:28.765Z" itemprop="datePublished"> 发表于 06-28-2015</time>
     
   </p>
 </header>
@@ -118,32 +115,57 @@ X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#记录遇到的Git_:_)"><span class="toc-number">1.</span> <span class="toc-text">记录遇到的Git : )</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见标记"><span class="toc-number">1.1.</span> <span class="toc-text">常见标记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令"><span class="toc-number">1.2.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遇见的问题"><span class="toc-number">1.3.</span> <span class="toc-text">遇见的问题</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chrome调试"><span class="toc-number">1.</span> <span class="toc-text">Chrome调试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Other"><span class="toc-number">1.1.</span> <span class="toc-text">Other</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="记录遇到的Git_:_)">记录遇到的Git : )</h2><h3 id="常见标记">常见标记</h3><pre><code><span class="label">A:</span> 增加的文件.
-<span class="label">C:</span> 文件的一个新拷贝.
-<span class="label">D:</span> 删除的一个文件.
-<span class="label">M:</span>文件的内容或者mode被修改了.
-<span class="label">R:</span> 文件名被修改了.
-<span class="label">T:</span> 文件的类型被修改了.
-<span class="label">U:</span> 文件没有被合并(你需要完成合并才能进行提交)
-<span class="label">X:</span> 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
-</code></pre><p>在git diff-files的手册man git diff-files中可以查到这些标志的说明</p>
-<h3 id="常用命令">常用命令</h3><p>添加远程主机:<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> remote add [shortname] [url]</span><br></pre></td></tr></table></figure></p>
-<p>创建分支<br>            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> branch experiment</span><br></pre></td></tr></table></figure></p>
-<p>切换分支    <strong>这条命令会重写工作区</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> checkout -b gitcafe-pages</span><br></pre></td></tr></table></figure></p>
-<h3 id="遇见的问题">遇见的问题</h3><ul>
-<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> push origin gitcafe-pages error: src refspec gitcafe-pages does not match an</span><br></pre></td></tr></table></figure>
-</li>
+		<h2 id="Chrome调试">Chrome调试</h2><ul>
+<li>shift+enter可多行输入</li>
 </ul>
-<p>错误原因:本地没有gitcafe-pages分支</p>
-<ul>
-<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Updates were rejected because the tip of your current branch is behind</span><br></pre></td></tr></table></figure>
+<ol>
+<li>样式<br> console.info()<br> console.debug()<br> console.warn()<br> console.error()</li>
+<li>占位符:<br> console.log()和 c的printf()一样<br> 只能用%d/%i %f %s %o(objective)</li>
+<li><p>分组显示:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">console.group(<span class="string">'第一组信息'</span>);</span><br><span class="line">	console.log(<span class="string">'第一组信息'</span>);</span><br><span class="line">	console.log(<span class="string">'第一组信息'</span>);</span><br><span class="line">console.groupEnd();</span><br><span class="line">console.group(<span class="string">'second'</span>);</span><br><span class="line">	console.log(<span class="string">'2.1'</span>);</span><br><span class="line">	console.log(<span class="string">'2.2'</span>);</span><br><span class="line">console.groupEnd();</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>console.dir()    //显示一个对象所有value和func()</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.dir(dog);	//Object:dog</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.dirxml()    //显示node中的html/xml代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var node=document.getElementById(<span class="string">'tab1'</span>);</span><br><span class="line">console.dirxml(node);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.assert()    //断言 判断是否为真<br> 测试:<code>console.assert(1==1,&#39;如果为0则出现这句话&#39;);</code><br> chrome下返回undefined<br> ff下不返回值<br> 1==0时chrome和ff均报错</p>
+</li>
+<li><p>console.trace()    //函数轨迹调用    </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> add (a,b) &#123;</span><br><span class="line">	console.trace();</span><br><span class="line">	<span class="built_in">return</span> a+b;</span><br><span class="line">&#125;	//js中函数同步执行,可以利用trace追踪有关该函数的相关执行顺序</span><br><span class="line">var x = add3(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">function</span> add3(a,b)&#123;<span class="built_in">return</span> add2(a,b);&#125;</span><br><span class="line"><span class="keyword">function</span> add2(a,b)&#123;<span class="built_in">return</span> add1(a,b);&#125;</span><br><span class="line"><span class="keyword">function</span> add1(a,b)&#123;<span class="built_in">return</span> add(a,b);&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>计时功能//计算代码运行时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.time(<span class="string">'timer1'</span>);</span><br><span class="line">// Your <span class="keyword">function</span></span><br><span class="line">console.timeEnd(<span class="string">'timer1'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>性能分析Profiler</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.profile(<span class="string">'性能分析器一'</span>);</span><br><span class="line">Foo();</span><br><span class="line">console.profileEnd();</span><br><span class="line">暂时无法实现这个功能</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.count()    //统计次数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">foo</span></span>()&#123;</span><br><span class="line">	var i=<span class="number">0</span>;</span><br><span class="line">	i++;</span><br><span class="line">	console.count(<span class="string">'执行次数'</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo();foo();foo();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Other">Other</h3><ol>
+<li>$(Chrome 控制台中原生支持类jQuery的选择器)<ul>
+<li><code>$_</code></li>
+<li><code>$(selector)</code>    选择首元素<br> <code>$$(selector)</code>    选择元素合集</li>
 </ul>
-<p>错误原因:远程仓库的分支比本地的代码要新所以有冲突<br>解决:开新分支提交或者直接git push —force<strong>慎用!</strong></p>
+</li>
+<li><p>keys&amp;values</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var tboy=&#123;</span><br><span class="line">	name:<span class="string">'123'</span>,height:<span class="string">'222'</span></span><br><span class="line">&#125;;</span><br><span class="line">keys(tboy);</span><br><span class="line">values(tboy);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>debug&amp;undebug<br> 打断点和取消断点</p>
+</li>
+<li>copy(document.body)<br> 可以复制内容到剪贴板</li>
+</ol>
+<h2 id="参考">参考</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/03/firebug_console_tutorial.html" target="_blank" rel="external">阮一峰</a></li>
+<li><a href="http://www.cnblogs.com/Wayou/p/chrome-console-tips-and-tricks.html" target="_blank" rel="external">刘哇勇</a></li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -151,7 +173,7 @@ X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/2015/06/07/git-study/" data-title="Git Study | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/2015/06/28/ChromeConsole/" data-title="Chrome调试合集 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -164,20 +186,20 @@ X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/06/28/Router/" title="360弃子C301刷机">
-  <strong>上一篇：</strong><br/>
-  <span>
-  360弃子C301刷机</span>
+
+<div class="next">
+<a href="/2015/06/28/hello-hexo/"  title="Hello Hexo">
+ <strong>下一篇：</strong><br/> 
+ <span>Hello Hexo
+</span>
 </a>
 </div>
-
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/06/07/git-study/" data-title="Git Study" data-url="http://a1ex.net/2015/06/07/git-study/"></div>
+	<div class="ds-thread" data-thread-key="2015/06/28/ChromeConsole/" data-title="Chrome调试合集" data-url="http://a1ex.net/2015/06/28/ChromeConsole/"></div>
 </section>
 
 
@@ -187,7 +209,7 @@ X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#记录遇到的Git_:_)"><span class="toc-number">1.</span> <span class="toc-text">记录遇到的Git : )</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见标记"><span class="toc-number">1.1.</span> <span class="toc-text">常见标记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令"><span class="toc-number">1.2.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遇见的问题"><span class="toc-number">1.3.</span> <span class="toc-text">遇见的问题</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chrome调试"><span class="toc-number">1.</span> <span class="toc-text">Chrome调试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Other"><span class="toc-number">1.1.</span> <span class="toc-text">Other</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
  
   </div>
 

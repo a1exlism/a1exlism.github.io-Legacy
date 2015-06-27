@@ -79,20 +79,66 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/06/07/greatsites/" title="Great Templates" itemprop="url">Great Templates</a>
+      <a href="/2015/06/28/ChromeConsole/" title="Chrome调试合集" itemprop="url">Chrome调试合集</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-07T08:54:48.973Z" itemprop="datePublished"> 发表于 06-07-2015</time>
+    <time datetime="2015-06-27T16:46:28.765Z" itemprop="datePublished"> 发表于 06-28-2015</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <p><a href="https://pages.github.com/" target="_blank" rel="external">1</a><br><a href="https://www.heroku.com/" target="_blank" rel="external">2</a><br><a href="http://lmgtfy.com/?q=let+me+google+that+for+you&amp;l=1" target="_blank" rel="external">3</a><br><a href="https://www.qingcloud.com/" target="_blank" rel="external">4</a><br><a href="https://divshot.com/features" target="_blank" rel="external">5</a><br><a href="http://www.andrewmcwatters.com/" target="_blank" rel="external">6</a><br><a href="http://blocsapp.com/" target="_blank" rel="external">7</a><br><a href="http://bootswatch.com/" target="_blank" rel="external">8</a><br><a href="http://sweet.2ch.sc/uptime.svg" target="_blank" rel="external">9</a><br><a href="https://twentyoverten.com" target="_blank" rel="external">10</a></p>
+        <h2 id="Chrome调试">Chrome调试</h2><ul>
+<li>shift+enter可多行输入</li>
+</ul>
+<ol>
+<li>样式<br> console.info()<br> console.debug()<br> console.warn()<br> console.error()</li>
+<li>占位符:<br> console.log()和 c的printf()一样<br> 只能用%d/%i %f %s %o(objective)</li>
+<li><p>分组显示:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">console.group(<span class="string">'第一组信息'</span>);</span><br><span class="line">	console.log(<span class="string">'第一组信息'</span>);</span><br><span class="line">	console.log(<span class="string">'第一组信息'</span>);</span><br><span class="line">console.groupEnd();</span><br><span class="line">console.group(<span class="string">'second'</span>);</span><br><span class="line">	console.log(<span class="string">'2.1'</span>);</span><br><span class="line">	console.log(<span class="string">'2.2'</span>);</span><br><span class="line">console.groupEnd();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.dir()    //显示一个对象所有value和func()</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.dir(dog);	//Object:dog</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.dirxml()    //显示node中的html/xml代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var node=document.getElementById(<span class="string">'tab1'</span>);</span><br><span class="line">console.dirxml(node);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.assert()    //断言 判断是否为真<br> 测试:<code>console.assert(1==1,&#39;如果为0则出现这句话&#39;);</code><br> chrome下返回undefined<br> ff下不返回值<br> 1==0时chrome和ff均报错</p>
+</li>
+<li><p>console.trace()    //函数轨迹调用    </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> add (a,b) &#123;</span><br><span class="line">	console.trace();</span><br><span class="line">	<span class="built_in">return</span> a+b;</span><br><span class="line">&#125;	//js中函数同步执行,可以利用trace追踪有关该函数的相关执行顺序</span><br><span class="line">var x = add3(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">function</span> add3(a,b)&#123;<span class="built_in">return</span> add2(a,b);&#125;</span><br><span class="line"><span class="keyword">function</span> add2(a,b)&#123;<span class="built_in">return</span> add1(a,b);&#125;</span><br><span class="line"><span class="keyword">function</span> add1(a,b)&#123;<span class="built_in">return</span> add(a,b);&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>计时功能//计算代码运行时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.time(<span class="string">'timer1'</span>);</span><br><span class="line">// Your <span class="keyword">function</span></span><br><span class="line">console.timeEnd(<span class="string">'timer1'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>性能分析Profiler</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.profile(<span class="string">'性能分析器一'</span>);</span><br><span class="line">Foo();</span><br><span class="line">console.profileEnd();</span><br><span class="line">暂时无法实现这个功能</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.count()    //统计次数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">foo</span></span>()&#123;</span><br><span class="line">	var i=<span class="number">0</span>;</span><br><span class="line">	i++;</span><br><span class="line">	console.count(<span class="string">'执行次数'</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo();foo();foo();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Other">Other</h3><ol>
+<li>$(Chrome 控制台中原生支持类jQuery的选择器)<ul>
+<li><code>$_</code></li>
+<li><code>$(selector)</code>    选择首元素<br> <code>$$(selector)</code>    选择元素合集</li>
+</ul>
+</li>
+<li><p>keys&amp;values</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var tboy=&#123;</span><br><span class="line">	name:<span class="string">'123'</span>,height:<span class="string">'222'</span></span><br><span class="line">&#125;;</span><br><span class="line">keys(tboy);</span><br><span class="line">values(tboy);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>debug&amp;undebug<br> 打断点和取消断点</p>
+</li>
+<li>copy(document.body)<br> 可以复制内容到剪贴板</li>
+</ol>
+<h2 id="参考">参考</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/03/firebug_console_tutorial.html" target="_blank" rel="external">阮一峰</a></li>
+<li><a href="http://www.cnblogs.com/Wayou/p/chrome-console-tips-and-tricks.html" target="_blank" rel="external">刘哇勇</a></li>
+</ul>
 
         
         
@@ -101,23 +147,13 @@
        </p>
     </div>
     <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/templates/">templates</a>
-  </div>
-
-</div>
-
 
 
 
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/2015/06/07/greatsites/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/07/greatsites/" data-count-type="comments">&nbsp;</a>
+		<a href="/2015/06/28/ChromeConsole/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/28/ChromeConsole/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -137,20 +173,31 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/06/07/goagent/" title="Goagant bookmarks" itemprop="url">Goagant bookmarks</a>
+      <a href="/2015/06/28/hello-hexo/" title="Hello Hexo" itemprop="url">Hello Hexo</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-07T08:51:18.323Z" itemprop="datePublished"> 发表于 06-07-2015</time>
+    <time datetime="2015-06-27T16:45:16.586Z" itemprop="datePublished"> 发表于 06-28-2015</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="备不时之需~">备不时之需~</h2><p><a href="https://github.com/mhohai/m2conf" target="_blank" rel="external">批量选择GCC IP</a><br><a href="http://blog.netsh.org/posts/youtube-google-facebook-twitter-wikipedia-hosts_1199.netsh.html#hosts" target="_blank" rel="external">hosts</a><br><a href="https://github.com/goagent/goagent" target="_blank" rel="external">goagent</a><br><a href="http://public-dns.tk/" target="_blank" rel="external">DNS Server List</a><br><a href="https://toolbox.googleapps.com/apps/dig/" target="_blank" rel="external">Dig</a><br><a href="http://www.i7086.com/gaejiashegoagentshezhichangjianwentizongjiejijiejuefangfa" target="_blank" rel="external">goagent设置常见问题</a><br><a href="https://github.com/azzvx/gogotester" target="_blank" rel="external">gogotester</a><br><a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a></p>
+        <p>感谢作者:</p>
+<ul>
+<li><a href="http://hexo.io/" target="_blank" rel="external">Hexo</a></li>
+<li><a href="http://wuchong.me/" title="Jacman" target="_blank" rel="external">Jacman</a></li>
+</ul>
+<p>这篇文章也顺便作为自己md的参考文本吧 : )</p>
+<h2 id="Start">Start</h2><h3 id="New_post">New post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``` bash</span><br><span class="line">          代码区_md语法</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/zh-cn/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Hexo的简单操作">Hexo的简单操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="碰到的Hexo问题">碰到的Hexo问题</h3><ol>
+<li>hexo deploy失败的解决方案<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_config.yml--&gt;<span class="built_in">type</span> git(hexo <span class="number">3.0</span>)</span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+</ol>
 
         
         
@@ -159,23 +206,239 @@
        </p>
     </div>
     <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/categories/">categories</a>
-</div>
-
-
-</div>
-
 
 
 
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/2015/06/07/goagent/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/07/goagent/" data-count-type="comments">&nbsp;</a>
+		<a href="/2015/06/28/hello-hexo/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/28/hello-hexo/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/06/28/pending/" title="近期想实现的内容" itemprop="url">近期想实现的内容</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-06-27T16:45:07.462Z" itemprop="datePublished"> 发表于 06-28-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <ol>
+<li>简繁转换<br><code>&lt;a href=&quot;javascript:zh_tran(&#39;s&#39;);&quot; class=&quot;zh_click&quot; id=&quot;zh_click_s&quot; style=&quot;font-weight: bold; color: green;&quot;&gt;简体&lt;/a&gt;</code></li>
+<li>天气插件</li>
+<li>多说评论css</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/06/28/pending/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/28/pending/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/06/28/goagent/" title="Goagant" itemprop="url">Goagant</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-06-27T16:38:15.134Z" itemprop="datePublished"> 发表于 06-28-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Issues">Issues</h2><pre><code><span class="number">5</span>/<span class="number">35</span>GitHub的大神们更新了g<span class="title">vsIp的使用(版本c35</span>fb<span class="number">8</span>e),简要提一下<span class="comment">(Win下)</span>:
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将checkip.py和checkip.bat放在<span class="built_in">local</span>目录下</span><br><span class="line">运行.bat文件,等待<span class="number">30</span>-<span class="number">50</span>分钟(可以提前关闭)</span><br><span class="line">ip文档文件会在该目录生成,打开tmp_ok文档,提取其中的ip</span><br><span class="line">[PingInfoView](http://www.nirsoft.net/utils/multiple_ping_tool.html)可以帮助你选择最佳的IP=. =</span><br></pre></td></tr></table></figure>
+<h2 id="Bookmarks">Bookmarks</h2><p><a href="https://github.com/mhohai/m2conf" target="_blank" rel="external">批量选择GCC IP</a><br><a href="http://blog.netsh.org/posts/youtube-google-facebook-twitter-wikipedia-hosts_1199.netsh.html#hosts" target="_blank" rel="external">hosts</a><br><a href="https://github.com/goagent/goagent" target="_blank" rel="external">goagent</a><br><a href="http://public-dns.tk/" target="_blank" rel="external">DNS Server List</a><br><a href="https://toolbox.googleapps.com/apps/dig/" target="_blank" rel="external">Dig</a><br><a href="http://www.i7086.com/gaejiashegoagentshezhichangjianwentizongjiejijiejuefangfa" target="_blank" rel="external">goagent设置常见问题</a><br><a href="https://github.com/azzvx/gogotester" target="_blank" rel="external">gogotester</a><br><a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/06/28/goagent/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/28/goagent/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/06/28/greatsites/" title="Great Pages" itemprop="url">Great Pages</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-06-27T16:18:06.062Z" itemprop="datePublished"> 发表于 06-28-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Template">Template</h2><p><a href="https://pages.github.com/" target="_blank" rel="external">Github</a>    <a href="https://www.heroku.com/" target="_blank" rel="external">heroku</a>    <a href="http://lmgtfy.com/?q=let+me+google+that+for+you&amp;l=1" target="_blank" rel="external">lmgtfy</a>    <a href="https://www.qingcloud.com/" target="_blank" rel="external">青云</a>    <a href="https://divshot.com/features" target="_blank" rel="external">divshot</a>    <a href="http://www.andrewmcwatters.com/" target="_blank" rel="external">ACPM</a>    <a href="http://blocsapp.com/" target="_blank" rel="external">Blocs</a>    <a href="http://bootswatch.com/" target="_blank" rel="external">Bootswatch</a>    <a href="http://sweet.2ch.sc/uptime.svg" target="_blank" rel="external">サーバ稼働状況</a>    <a href="https://twentyoverten.com" target="_blank" rel="external">Twenty Over Ten</a>    <a href="http://www.apple.com/" target="_blank" rel="external">Apple</a>    <a href="http://www.lucacasati.net/" target="_blank" rel="external">lucacasati</a>    <a href="http://www.squarespace.com/" target="_blank" rel="external">Build awebsite</a>    <a href="http://union.co/" target="_blank" rel="external">Union</a>    <a href="http://liulanqi.baidu.com/" target="_blank" rel="external">Baidu Browser</a>    </p>
+<h2 id="Funny">Funny</h2><p><a href="http://weavesilk.com/" target="_blank" rel="external">Silk</a>    <a href="http://codepen.io/jakealbaugh/full/PwLXXP/" target="_blank" rel="external">代码自实现</a>    <a href="http://chirag64.github.io/t-rex-runner-bot/" target="_blank" rel="external">ChromeGameByAuto</a>    <a href="http://tholman.com/dom-animator/" target="_blank" rel="external">The F12’s Note</a>    </p>
+<h2 id="Function">Function</h2><p><a href="http://www.hotcleaner.com/clickclean-app.html" target="_blank" rel="external">Probe实现</a>    <a href="http://www.mortenclaussen.com/" target="_blank" rel="external">Mortenclaussen</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/06/28/greatsites/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/28/greatsites/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/06/28/Router/" title="360弃子C301刷机" itemprop="url">360弃子C301刷机</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-06-27T16:15:42.553Z" itemprop="datePublished"> 发表于 06-28-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="基础知识">基础知识</h2><ul>
+<li><a href="http://www.right.com.cn/forum/thread-147319-1-2.html" target="_blank" rel="external">981213</a></li>
+<li><a href="http://www.right.com.cn/forum/thread-148810-1-1.html" target="_blank" rel="external">hackpascal</a></li>
+<li><a href="http://www.right.com.cn/forum/thread-147651-1-1.html" target="_blank" rel="external">hackpascal</a></li>
+<li><a href="http://bbs.xda.cn/thread-11183333-1-1.html" target="_blank" rel="external">固件和Rom区别</a><br>op的web管理界面叫luci</li>
+<li><a href="https://wiki.wireshark.org/WinPcap" target="_blank" rel="external">WinSCP</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/PuTTY" target="_blank" rel="external">PuTTY</a></li>
+<li><a href="http://baike.baidu.com/link?url=Uerpdfz1ewoFE_NYNVIkflLEos2adrvzZUReu4FP_9c09KaT9jcdQn4wlT6V7FLTCErkhGIRi1LsmecyR6c84K#1" target="_blank" rel="external">MTD</a></li>
+</ul>
+<h2 id="other">other</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/Wireless_distribution_system" target="_blank" rel="external">WDS</a></li>
+<li><a href="http://bbs.kafan.cn/thread-1697011-1-1.html" target="_blank" rel="external">路由多拨</a></li>
+</ul>
+<h2 id="正文">正文</h2><h3 id="安装OpenWrt">安装OpenWrt</h3><pre><code>IP地址:<span class="number">192.168.1.3</span>(2-255)
+子网掩码:<span class="number">255.255.255.0</span>
+上传地址:http://<span class="number">192.168.1.1</span>/upgrade.html
+按着360官方人员讲的:
+</code></pre><p><a href="http://www.right.com.cn/forum/thread-147329-1-1.html" target="_blank" rel="external">恩山/兼容官方固件</a>直接在luyou360.cn直接刷了这个固件,但是等了大概20分钟,耐心不足..直接强退,发现变砖..晚上回来继续看,尝试直接进入192.168.1.1刷官方固件,然并卵.官方固件认证失败,醉.然后试了半天恩山论坛大神的固件包固然给刷进去了233.<br>    所刷固件:<br><a href="http://www.right.com.cn/forum/thread-147319-1-2.html" target="_blank" rel="external">OpenWrt固件</a><br>    PS:第一次刷机需要刷入ART(和OpenWrt的web刷入方法一致)</p>
+<h3 id="一睹真容">一睹真容</h3><pre><code>尼玛,恩山大神要不要这么<span class="number">6</span>啊,<span class="function_or_atom">webshell</span>,<span class="function_or_atom">ssh</span>,迅雷,<span class="variable">USB</span>支持什么都加进去了<span class="exclamation_mark">!</span><span class="exclamation_mark">!</span>献上我的膝盖<span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span>
+</code></pre><h3 id="配置有线和无线">配置有线和无线</h3><ul>
+<li>网络&gt;接口&gt;wan—&gt;设置pppoe协议,输入宽带账号,密码<br>lan端口需要设置网关为192.168.1.1</li>
+<li>无线想刷ART—&gt;刷Uboot</li>
+</ul>
+<h3 id="刷不死U-boot">刷不死U-boot</h3><p>参照大神贴:<a href="http://www.right.com.cn/forum/thread-154561-1-1.html" target="_blank" rel="external">hackpascal</a></p>
+<ul>
+<li>插曲:刚把Uboot刷完之后,一不小心按了reset,然后wanlan三灯全亮,wifi灯变绿,随后电脑无法识别lan口,变砖无误…正在寻找方案6/26-&gt;发现同地区大神一枚,滚去面基,求罩0. 0-&gt;?(未待完续)</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/06/28/Router/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/28/Router/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -238,21 +501,6 @@
        </p>
     </div>
     <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/技能树/">技能树</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/git/">git</a>
-  </div>
-
-</div>
-
 
 
 
@@ -260,142 +508,6 @@
 	
 	  	<span></span>
 		<a href="/2015/06/07/git-study/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/07/git-study/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/06/07/hello-hexo/" title="Hello Hexo" itemprop="url">Hello Hexo</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-07T06:14:00.781Z" itemprop="datePublished"> 发表于 06-07-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>感谢作者:</p>
-<ul>
-<li><a href="http://hexo.io/" target="_blank" rel="external">Hexo</a></li>
-<li><a href="http://wuchong.me/" title="Jacman" target="_blank" rel="external">Jacman</a></li>
-</ul>
-<p>这篇文章也顺便作为自己md的参考文本吧 : )</p>
-<h2 id="Start">Start</h2><h3 id="New_post">New post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``` bash</span><br><span class="line">          代码区_md语法</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/zh-cn/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Hexo的简单操作">Hexo的简单操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<h3 id="碰到的Hexo问题">碰到的Hexo问题</h3><ol>
-<li>hexo deploy失败的解决方案<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_config.yml--&gt;<span class="built_in">type</span> git(hexo <span class="number">3.0</span>)</span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/blog/">blog</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/06/07/hello-hexo/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/07/hello-hexo/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/06/07/pending/" title="近期想实现的内容" itemprop="url">近期想实现的内容</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-07T06:08:25.147Z" itemprop="datePublished"> 发表于 06-07-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <ol>
-<li>简繁转换<br><code>&lt;a href=&quot;javascript:zh_tran(&#39;s&#39;);&quot; class=&quot;zh_click&quot; id=&quot;zh_click_s&quot; style=&quot;font-weight: bold; color: green;&quot;&gt;简体&lt;/a&gt;</code></li>
-<li>天气插件</li>
-<li>多说评论css</li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/memo/">memo</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/blog/">blog</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/06/07/pending/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/07/pending/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -421,7 +533,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/templates/" style="font-size: 10px;">templates</a>
+       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
     </div>
   </div>
 
@@ -429,7 +541,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">7</span></li></ul>
   </div>
 
 
@@ -439,15 +551,27 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/categories/" title="categories">categories<sup>1</sup></a></li>
+			<li><a href="/categories/Collection/" title="Collection">Collection<sup>1</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/memo/" title="memo">memo<sup>1</sup></a></li>
+			<li><a href="/categories/Wall/" title="Wall">Wall<sup>1</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/技能树/" title="技能树">技能树<sup>1</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/blog/" title="blog">blog<sup>2</sup></a></li>
+		  
+		
+		  
+		
+		  
+		
+		  
+			<li><a href="/categories/技能树/" title="技能树">技能树<sup>2</sup></a></li>
 		  
 		
 		</ul>
