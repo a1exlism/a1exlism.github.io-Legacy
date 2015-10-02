@@ -4,53 +4,35 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello Hexo | A1exlism</title>
+    <title>Js学习笔记(3) | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="感谢作者:
-
-Hexo
-Jacman
-
-这篇文章也顺便作为自己md的参考文本吧 : )
-StartNew post123``` bash          代码区_md语法```
-More info: Writing
-Hexo的简单操作123$ hexo server$ hexo generate$ hexo deploy
-碰到的Hexo问题
-hexo deploy失败的解决方案12_config">
+    <meta name="description" content="Window对象计时器
+掌握argument对象
+setTimeout(code,millisec) 单次调用
+setInterval(code,millisec)  循环调用
+示例代码 1234567891011121314151617181920function invoke(f, start, interval, end)&amp;#123;   //Target Function:f()    i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello Hexo">
-<meta property="og:url" content="http://a1ex.net/2015/09/28/hello-hexo/index.html">
+<meta property="og:title" content="Js学习笔记(3)">
+<meta property="og:url" content="http://a1ex.net/2015/10/02/ClientJS-3/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="感谢作者:
-
-Hexo
-Jacman
-
-这篇文章也顺便作为自己md的参考文本吧 : )
-StartNew post123``` bash          代码区_md语法```
-More info: Writing
-Hexo的简单操作123$ hexo server$ hexo generate$ hexo deploy
-碰到的Hexo问题
-hexo deploy失败的解决方案12_config">
-<meta property="og:updated_time" content="2015-06-27T16:45:16.586Z">
+<meta property="og:description" content="Window对象计时器
+掌握argument对象
+setTimeout(code,millisec) 单次调用
+setInterval(code,millisec)  循环调用
+示例代码 1234567891011121314151617181920function invoke(f, start, interval, end)&amp;#123;   //Target Function:f()    i">
+<meta property="og:updated_time" content="2015-10-02T13:23:02.796Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello Hexo">
-<meta name="twitter:description" content="感谢作者:
-
-Hexo
-Jacman
-
-这篇文章也顺便作为自己md的参考文本吧 : )
-StartNew post123``` bash          代码区_md语法```
-More info: Writing
-Hexo的简单操作123$ hexo server$ hexo generate$ hexo deploy
-碰到的Hexo问题
-hexo deploy失败的解决方案12_config">
+<meta name="twitter:title" content="Js学习笔记(3)">
+<meta name="twitter:description" content="Window对象计时器
+掌握argument对象
+setTimeout(code,millisec) 单次调用
+setInterval(code,millisec)  循环调用
+示例代码 1234567891011121314151617181920function invoke(f, start, interval, end)&amp;#123;   //Target Function:f()    i">
 <link rel="publisher" href="106896526077043230000">
 
     
@@ -108,14 +90,14 @@ hexo deploy失败的解决方案12_config">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/09/28/hello-hexo/" title="Hello Hexo" itemprop="url">Hello Hexo</a>
+      <a href="/2015/10/02/ClientJS-3/" title="Js学习笔记(3)" itemprop="url">Js学习笔记(3)</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-09-28T04:27:03.825Z" itemprop="datePublished"> 发表于 09-28-2015</time>
+    <time datetime="2015-10-02T13:23:02.796Z" itemprop="datePublished"> 发表于 10-02-2015</time>
     
   </p>
 </header>
@@ -124,30 +106,31 @@ hexo deploy失败的解决方案12_config">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Start"><span class="toc-number">1.</span> <span class="toc-text">Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#New_post"><span class="toc-number">1.1.</span> <span class="toc-text">New post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo的简单操作"><span class="toc-number">1.2.</span> <span class="toc-text">Hexo的简单操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#碰到的Hexo问题"><span class="toc-number">1.3.</span> <span class="toc-text">碰到的Hexo问题</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Window对象"><span class="toc-number">1.</span> <span class="toc-text">Window对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#计时器"><span class="toc-number">1.1.</span> <span class="toc-text">计时器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#掌握"><span class="toc-number">1.1.1.</span> <span class="toc-text">掌握</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例代码"><span class="toc-number">1.1.2.</span> <span class="toc-text">示例代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于URL"><span class="toc-number">1.2.</span> <span class="toc-text">关于URL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#掌握-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">掌握</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#例子"><span class="toc-number">1.2.2.</span> <span class="toc-text">例子</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
-		<p>感谢作者:</p>
-<ul>
-<li><a href="http://hexo.io/" target="_blank" rel="external">Hexo</a></li>
-<li><a href="http://wuchong.me/" title="Jacman" target="_blank" rel="external">Jacman</a></li>
-</ul>
-<p>这篇文章也顺便作为自己md的参考文本吧 : )</p>
-<h2 id="Start">Start</h2><h3 id="New_post">New post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``` bash</span><br><span class="line">          代码区_md语法</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/zh-cn/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Hexo的简单操作">Hexo的简单操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<h3 id="碰到的Hexo问题">碰到的Hexo问题</h3><ol>
-<li>hexo deploy失败的解决方案<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_config.yml--&gt;<span class="built_in">type</span> git(hexo <span class="number">3.0</span>)</span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
-</ol>
-  
+		<h2 id="Window对象">Window对象</h2><h3 id="计时器">计时器</h3><hr>
+<h4 id="掌握">掌握</h4><pre><code>argument对象
+<span class="function"><span class="title">setTimeout</span><span class="params">(code,millisec)</span></span> 单次调用
+<span class="function"><span class="title">setInterval</span><span class="params">(code,millisec)</span></span>  循环调用
+</code></pre><h4 id="示例代码">示例代码</h4> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">invoke</span>(<span class="params">f, start, interval, end</span>)</span>&#123;   <span class="comment">//Target Function:f()</span></span><br><span class="line">    <span class="keyword">if</span> (!start)</span><br><span class="line">        start=<span class="number">0</span>;    <span class="comment">//默认设置为立即开始</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>.length &lt;= <span class="number">2</span>)</span><br><span class="line">        setTimeout(f,start);    <span class="comment">//单次调用</span></span><br><span class="line">    <span class="keyword">else</span>&#123;               <span class="comment">//多次调用</span></span><br><span class="line">        setTimeout(repeat,start);   <span class="comment">//start MS之后调用</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">repeat</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> h = setInterval(f,interval);</span><br><span class="line">            <span class="keyword">if</span>(end)</span><br><span class="line">                setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  <span class="comment">//end MS之后停止调用Interval()</span></span><br><span class="line">                    clearInterval(h);</span><br><span class="line">                &#125;,end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="number">666</span>);</span><br><span class="line">&#125;</span><br><span class="line">invoke(f,<span class="number">0</span>,<span class="number">50</span>,<span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+<p>Results : </p>
+<pre><code><span class="number">4</span>*<span class="comment">(666)</span>
+</code></pre><hr>
+<h3 id="关于URL">关于URL</h3><p>window对象的location属性引用了Location对象,表示该窗口中当前显示的文档URL<br> document.location 文档 首次 载入后保存的URL静态字符串<br> location可以赋值相对字符串,例如<code>location=&#39;404.html&#39;</code></p>
+<h4 id="掌握-1">掌握</h4><pre><code>search 属性是一个可读可写的字符串，可设置或返回当前 <span class="built_in">URL</span> 的查询部分（问号 ? 之后的部分）
+stringObject.substring(<span class="built_in">start</span>,<span class="built_in">stop</span>)    取一段字符
+stringObject.<span class="built_in">split</span>(separator,howmany) 字符串分割
+stringObject.indexOf(searchvalue,fromindex)   字符检索
+</code></pre><h4 id="例子">例子</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">urlAges</span>(<span class="params"></span>)</span>&#123;     <span class="comment">//URL参数解析函数</span></span><br><span class="line">    <span class="keyword">var</span> args = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> query = location.search.substring(<span class="number">1</span>);   <span class="comment">//获取url查询字符串</span></span><br><span class="line">    <span class="keyword">var</span> pairs = query.split(<span class="string">"&amp;"</span>);   <span class="comment">//此时的pairs为字符串数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;pairs.length ; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> pos = pairs[i].indexOf(<span class="string">'='</span>);    <span class="comment">//检测第一个'='</span></span><br><span class="line">        <span class="keyword">if</span>(pos == -<span class="number">1</span>)   <span class="comment">//indexOf()由-1开始进行(第一个检测的是0)</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">var</span> name = pairs[i].substring(<span class="number">0</span>,pos);</span><br><span class="line">        <span class="keyword">var</span> value = pairs[i].substring(pos+<span class="number">1</span>);</span><br><span class="line">        value = <span class="built_in">decodeURIComponent</span>(value);  <span class="comment">//value解码</span></span><br><span class="line">        args[name] = value; <span class="comment">//将value存储为args对象的name属性值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/2015/09/28/hello-hexo/" data-title="Hello Hexo | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/2015/10/02/ClientJS-3/" data-title="Js学习笔记(3) | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -161,18 +144,18 @@ hexo deploy失败的解决方案12_config">
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/09/28/pending/" title="近期想实现的内容">
+ <a href="/2015/10/02/ClientJS-4/" title="Js学习笔记(4)">
   <strong>上一篇：</strong><br/>
   <span>
-  近期想实现的内容</span>
+  Js学习笔记(4)</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/09/28/goagent/"  title="Goagant">
+<a href="/2015/10/02/ClientJS-2/"  title="Js学习笔记(2)">
  <strong>下一篇：</strong><br/> 
- <span>Goagant
+ <span>Js学习笔记(2)
 </span>
 </a>
 </div>
@@ -181,7 +164,7 @@ hexo deploy失败的解决方案12_config">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/09/28/hello-hexo/" data-title="Hello Hexo" data-url="http://a1ex.net/2015/09/28/hello-hexo/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/02/ClientJS-3/" data-title="Js学习笔记(3)" data-url="http://a1ex.net/2015/10/02/ClientJS-3/"></div>
 </section>
 
 
@@ -191,7 +174,7 @@ hexo deploy失败的解决方案12_config">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Start"><span class="toc-number">1.</span> <span class="toc-text">Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#New_post"><span class="toc-number">1.1.</span> <span class="toc-text">New post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo的简单操作"><span class="toc-number">1.2.</span> <span class="toc-text">Hexo的简单操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#碰到的Hexo问题"><span class="toc-number">1.3.</span> <span class="toc-text">碰到的Hexo问题</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Window对象"><span class="toc-number">1.</span> <span class="toc-text">Window对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#计时器"><span class="toc-number">1.1.</span> <span class="toc-text">计时器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#掌握"><span class="toc-number">1.1.1.</span> <span class="toc-text">掌握</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例代码"><span class="toc-number">1.1.2.</span> <span class="toc-text">示例代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于URL"><span class="toc-number">1.2.</span> <span class="toc-text">关于URL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#掌握-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">掌握</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#例子"><span class="toc-number">1.2.2.</span> <span class="toc-text">例子</span></a></li></ol></li></ol></li></ol>
  
   </div>
 

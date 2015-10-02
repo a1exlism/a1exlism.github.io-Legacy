@@ -79,6 +79,115 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/10/02/ClientJS-4/" title="Js学习笔记(4)" itemprop="url">Js学习笔记(4)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-02T14:03:28.609Z" itemprop="datePublished"> 发表于 10-02-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="jQuery的$查询">jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="window">window</h3><p>var w = window.open();  //定义一个窗口<br>w.alert(‘xxx’);<br>w.location = ‘about:blank’;<br>w.close();    //只能关闭通过window.open()方法打开的窗口=, =</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/10/02/ClientJS-4/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/02/ClientJS-4/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/02/ClientJS-3/" title="Js学习笔记(3)" itemprop="url">Js学习笔记(3)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-02T13:23:02.796Z" itemprop="datePublished"> 发表于 10-02-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Window对象">Window对象</h2><h3 id="计时器">计时器</h3><hr>
+<h4 id="掌握">掌握</h4><pre><code>argument对象
+<span class="function"><span class="title">setTimeout</span><span class="params">(code,millisec)</span></span> 单次调用
+<span class="function"><span class="title">setInterval</span><span class="params">(code,millisec)</span></span>  循环调用
+</code></pre><h4 id="示例代码">示例代码</h4> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">invoke</span>(<span class="params">f, start, interval, end</span>)</span>&#123;   <span class="comment">//Target Function:f()</span></span><br><span class="line">    <span class="keyword">if</span> (!start)</span><br><span class="line">        start=<span class="number">0</span>;    <span class="comment">//默认设置为立即开始</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>.length &lt;= <span class="number">2</span>)</span><br><span class="line">        setTimeout(f,start);    <span class="comment">//单次调用</span></span><br><span class="line">    <span class="keyword">else</span>&#123;               <span class="comment">//多次调用</span></span><br><span class="line">        setTimeout(repeat,start);   <span class="comment">//start MS之后调用</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">repeat</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> h = setInterval(f,interval);</span><br><span class="line">            <span class="keyword">if</span>(end)</span><br><span class="line">                setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  <span class="comment">//end MS之后停止调用Interval()</span></span><br><span class="line">                    clearInterval(h);</span><br><span class="line">                &#125;,end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="number">666</span>);</span><br><span class="line">&#125;</span><br><span class="line">invoke(f,<span class="number">0</span>,<span class="number">50</span>,<span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+<p>Results : </p>
+<pre><code><span class="number">4</span>*<span class="comment">(666)</span>
+</code></pre><hr>
+<h3 id="关于URL">关于URL</h3><p>window对象的location属性引用了Location对象,表示该窗口中当前显示的文档URL<br> document.location 文档 首次 载入后保存的URL静态字符串<br> location可以赋值相对字符串,例如<code>location=&#39;404.html&#39;</code></p>
+<h4 id="掌握-1">掌握</h4><pre><code>search 属性是一个可读可写的字符串，可设置或返回当前 <span class="built_in">URL</span> 的查询部分（问号 ? 之后的部分）
+stringObject.substring(<span class="built_in">start</span>,<span class="built_in">stop</span>)    取一段字符
+stringObject.<span class="built_in">split</span>(separator,howmany) 字符串分割
+stringObject.indexOf(searchvalue,fromindex)   字符检索
+</code></pre><h4 id="例子">例子</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">urlAges</span>(<span class="params"></span>)</span>&#123;     <span class="comment">//URL参数解析函数</span></span><br><span class="line">    <span class="keyword">var</span> args = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> query = location.search.substring(<span class="number">1</span>);   <span class="comment">//获取url查询字符串</span></span><br><span class="line">    <span class="keyword">var</span> pairs = query.split(<span class="string">"&amp;"</span>);   <span class="comment">//此时的pairs为字符串数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;pairs.length ; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> pos = pairs[i].indexOf(<span class="string">'='</span>);    <span class="comment">//检测第一个'='</span></span><br><span class="line">        <span class="keyword">if</span>(pos == -<span class="number">1</span>)   <span class="comment">//indexOf()由-1开始进行(第一个检测的是0)</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">var</span> name = pairs[i].substring(<span class="number">0</span>,pos);</span><br><span class="line">        <span class="keyword">var</span> value = pairs[i].substring(pos+<span class="number">1</span>);</span><br><span class="line">        value = <span class="built_in">decodeURIComponent</span>(value);  <span class="comment">//value解码</span></span><br><span class="line">        args[name] = value; <span class="comment">//将value存储为args对象的name属性值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/10/02/ClientJS-3/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/02/ClientJS-3/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/10/02/ClientJS-2/" title="Js学习笔记(2)" itemprop="url">Js学习笔记(2)</a>
   </h1>
   <p class="article-author">By
@@ -86,7 +195,7 @@
 		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-02T06:46:55.271Z" itemprop="datePublished"> 发表于 10-02-2015</time>
+    <time datetime="2015-10-02T08:40:32.006Z" itemprop="datePublished"> 发表于 10-02-2015</time>
     
   </p>
 </header>
@@ -99,6 +208,12 @@
 <h3 id="1-网站存在多个子域">1.网站存在多个子域</h3><p>例如a.exp.com需要读取来自b.exp.com的a.html里与b.html均加入<br><code>document.domain = &quot;xxx.com&quot;;</code>   但是必须是共有的根域名,上则为exp.com,这样两个页面就可以互相操作了,也就实现了所谓的”跨域”.</p>
 <h3 id="2-跨资源共享(Corss-Origin_Resource_Sharing)">2.跨资源共享(Corss-Origin Resource Sharing)</h3><p>利用这个标准提供的”Origin”和对应的Access-Control-Allow-Origin: xxx.com来扩展http,可实现任意的http请求</p>
 <h3 id="3-跨文档消息(cross-document_messaging)">3.跨文档消息(cross-document messaging)</h3><p>这个功能可以使一个文档的脚本直接一步传输给目标文档并允许执行.利用<code>postMessage()</code>方法</p>
+<h2 id="跨站脚本(XSS)">跨站脚本(XSS)</h2><p>如果目标网页有存在html标签插入功能,而且后台并没有相应的过滤原则,则存在该风险.攻击者只需要加入XSS的Js脚本,通过<code>src=hack.js</code>插入或者直接执行js脚本</p>
+<h4 id="简单的防御">简单的防御</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name = name.replace(<span class="regexp">/&lt;/g</span>, <span class="string">"&amp;lt;"</span>).replace(<span class="regexp">/&gt;/g</span>, <span class="string">"&amp;gt;"</span>);</span><br></pre></td></tr></table></figure>
+<p>针对于IE存在一个<a href="https://msdn.microsoft.com/en-us/en_US/library/windows/apps/hh466094.aspx" target="_blank" rel="external">toStaticHTML()</a>的API,可以过滤相当一部分的标签</p>
+<h4 id="HTML5的安全策略">HTML5的安全策略</h4><p>HTML5中<code>&lt;iframe&gt;</code>定义了一个sandbox属性,实现之后允许显示不可信内容,但自动禁用脚本</p>
+<h2 id="DDoS">DDoS</h2><p>例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">  <span class="built_in">window</span>.open(<span class="string">'about:blank'</span>, <span class="string">''</span>, <span class="string">'width=645,height=550'</span>); <span class="comment">//窗体大小不填则创建新标签,否则创建新窗体</span></span><br><span class="line">&#125;<span class="comment">//请勿随便尝试= ,=</span></span><br></pre></td></tr></table></figure></p>
+<p>为了防止被聪明的浏览器检测到,使用<a href="http://www.w3school.com.cn/jsref/met_win_setinterval.asp" target="_blank" rel="external">window.setInterval()</a>来保证自己的生存</p>
 
         
         
@@ -444,56 +559,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/09/28/greatsites/" title="Great Pages" itemprop="url">Great Pages</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-09-28T04:27:03.825Z" itemprop="datePublished"> 发表于 09-28-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Template">Template</h2><p><a href="https://pages.github.com/" target="_blank" rel="external">Github</a>    <a href="https://www.heroku.com/" target="_blank" rel="external">heroku</a>    <a href="http://lmgtfy.com/?q=let+me+google+that+for+you&amp;l=1" target="_blank" rel="external">lmgtfy</a>    <a href="https://www.qingcloud.com/" target="_blank" rel="external">青云</a>    <a href="https://divshot.com/features" target="_blank" rel="external">divshot</a>    <a href="http://www.andrewmcwatters.com/" target="_blank" rel="external">ACPM</a>    <a href="http://blocsapp.com/" target="_blank" rel="external">Blocs</a>    <a href="http://bootswatch.com/" target="_blank" rel="external">Bootswatch</a>    <a href="http://sweet.2ch.sc/uptime.svg" target="_blank" rel="external">サーバ稼働状況</a>    <a href="https://twentyoverten.com" target="_blank" rel="external">Twenty Over Ten</a>    <a href="http://www.apple.com/" target="_blank" rel="external">Apple</a>    <a href="http://www.lucacasati.net/" target="_blank" rel="external">lucacasati</a>    <a href="http://www.squarespace.com/" target="_blank" rel="external">Build awebsite</a>    <a href="http://union.co/" target="_blank" rel="external">Union</a>    <a href="http://liulanqi.baidu.com/" target="_blank" rel="external">Baidu Browser</a>    </p>
-<h2 id="Funny">Funny</h2><p><a href="http://weavesilk.com/" target="_blank" rel="external">Silk</a>    <a href="http://codepen.io/jakealbaugh/full/PwLXXP/" target="_blank" rel="external">代码自实现</a>    <a href="http://chirag64.github.io/t-rex-runner-bot/" target="_blank" rel="external">ChromeGameByAuto</a>    <a href="http://tholman.com/dom-animator/" target="_blank" rel="external">The F12’s Note</a>    </p>
-<h2 id="Function">Function</h2><p><a href="http://www.hotcleaner.com/clickclean-app.html" target="_blank" rel="external">Probe实现</a>    <a href="http://www.mortenclaussen.com/" target="_blank" rel="external">Mortenclaussen</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/09/28/greatsites/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/28/greatsites/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/2015/09/28/goagent/" title="Goagant" itemprop="url">Goagant</a>
   </h1>
   <p class="article-author">By
@@ -633,6 +698,10 @@
 
 
 
+  <nav id="page-nav" class="clearfix">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+  </nav>
+
 </div>
       <div class="openaside"><a class="navbutton" href="#" title="Show"></a></div>
 
@@ -644,7 +713,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
+       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
     </div>
   </div>
 
@@ -652,7 +721,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">7</span></li></ul>
   </div>
 
 
@@ -670,7 +739,7 @@
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>3</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
 		  
 		
 		  
