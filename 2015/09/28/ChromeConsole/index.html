@@ -4,26 +4,44 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Goagant | A1exlism</title>
+    <title>Chrome调试合集 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="Issues5/35GitHub的大神们更新了gvsIp的使用(版本c35fb8e),简要提一下(Win下):
-1234将checkip.py和checkip.bat放在local目录下运行.bat文件,等待30-50分钟(可以提前关闭)ip文档文件会在该目录生成,打开tmp_ok文档,提取其中的ip[PingInfoView](http://www.nirsoft.net/utils/multi">
+    <meta name="description" content="Chrome调试
+shift+enter可多行输入
+
+
+样式 console.info() console.debug() console.warn() console.error()
+占位符: console.log()和 c的printf()一样 只能用%d/%i %f %s %o(objective)
+分组显示:
+12345678console.group(&apos;第一组信息&apos;);	console">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Goagant">
-<meta property="og:url" content="http://a1ex.net/2015/06/28/goagent/index.html">
+<meta property="og:title" content="Chrome调试合集">
+<meta property="og:url" content="http://a1ex.net/2015/09/28/ChromeConsole/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="Issues5/35GitHub的大神们更新了gvsIp的使用(版本c35fb8e),简要提一下(Win下):
-1234将checkip.py和checkip.bat放在local目录下运行.bat文件,等待30-50分钟(可以提前关闭)ip文档文件会在该目录生成,打开tmp_ok文档,提取其中的ip[PingInfoView](http://www.nirsoft.net/utils/multi">
-<meta property="og:updated_time" content="2015-06-27T16:38:15.134Z">
+<meta property="og:description" content="Chrome调试
+shift+enter可多行输入
+
+
+样式 console.info() console.debug() console.warn() console.error()
+占位符: console.log()和 c的printf()一样 只能用%d/%i %f %s %o(objective)
+分组显示:
+12345678console.group(&apos;第一组信息&apos;);	console">
+<meta property="og:updated_time" content="2015-06-27T16:46:28.765Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Goagant">
-<meta name="twitter:description" content="Issues5/35GitHub的大神们更新了gvsIp的使用(版本c35fb8e),简要提一下(Win下):
-1234将checkip.py和checkip.bat放在local目录下运行.bat文件,等待30-50分钟(可以提前关闭)ip文档文件会在该目录生成,打开tmp_ok文档,提取其中的ip[PingInfoView](http://www.nirsoft.net/utils/multi">
+<meta name="twitter:title" content="Chrome调试合集">
+<meta name="twitter:description" content="Chrome调试
+shift+enter可多行输入
+
+
+样式 console.info() console.debug() console.warn() console.error()
+占位符: console.log()和 c的printf()一样 只能用%d/%i %f %s %o(objective)
+分组显示:
+12345678console.group(&apos;第一组信息&apos;);	console">
 <link rel="publisher" href="106896526077043230000">
 
     
@@ -81,14 +99,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/06/28/goagent/" title="Goagant" itemprop="url">Goagant</a>
+      <a href="/2015/09/28/ChromeConsole/" title="Chrome调试合集" itemprop="url">Chrome调试合集</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-27T16:38:15.134Z" itemprop="datePublished"> 发表于 06-28-2015</time>
+    <time datetime="2015-09-28T04:27:03.825Z" itemprop="datePublished"> 发表于 09-28-2015</time>
     
   </p>
 </header>
@@ -97,13 +115,57 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Issues"><span class="toc-number">1.</span> <span class="toc-text">Issues</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bookmarks"><span class="toc-number">2.</span> <span class="toc-text">Bookmarks</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chrome调试"><span class="toc-number">1.</span> <span class="toc-text">Chrome调试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Other"><span class="toc-number">1.1.</span> <span class="toc-text">Other</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="Issues">Issues</h2><pre><code><span class="number">5</span>/<span class="number">35</span>GitHub的大神们更新了g<span class="title">vsIp的使用(版本c35</span>fb<span class="number">8</span>e),简要提一下<span class="comment">(Win下)</span>:
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将checkip.py和checkip.bat放在<span class="built_in">local</span>目录下</span><br><span class="line">运行.bat文件,等待<span class="number">30</span>-<span class="number">50</span>分钟(可以提前关闭)</span><br><span class="line">ip文档文件会在该目录生成,打开tmp_ok文档,提取其中的ip</span><br><span class="line">[PingInfoView](http://www.nirsoft.net/utils/multiple_ping_tool.html)可以帮助你选择最佳的IP=. =</span><br></pre></td></tr></table></figure>
-<h2 id="Bookmarks">Bookmarks</h2><p><a href="https://github.com/mhohai/m2conf" target="_blank" rel="external">批量选择GCC IP</a><br><a href="http://blog.netsh.org/posts/youtube-google-facebook-twitter-wikipedia-hosts_1199.netsh.html#hosts" target="_blank" rel="external">hosts</a><br><a href="https://github.com/goagent/goagent" target="_blank" rel="external">goagent</a><br><a href="http://public-dns.tk/" target="_blank" rel="external">DNS Server List</a><br><a href="https://toolbox.googleapps.com/apps/dig/" target="_blank" rel="external">Dig</a><br><a href="http://www.i7086.com/gaejiashegoagentshezhichangjianwentizongjiejijiejuefangfa" target="_blank" rel="external">goagent设置常见问题</a><br><a href="https://github.com/azzvx/gogotester" target="_blank" rel="external">gogotester</a><br><a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a></p>
+		<h2 id="Chrome调试">Chrome调试</h2><ul>
+<li>shift+enter可多行输入</li>
+</ul>
+<ol>
+<li>样式<br> console.info()<br> console.debug()<br> console.warn()<br> console.error()</li>
+<li>占位符:<br> console.log()和 c的printf()一样<br> 只能用%d/%i %f %s %o(objective)</li>
+<li><p>分组显示:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">console.group(<span class="string">'第一组信息'</span>);</span><br><span class="line">	console.log(<span class="string">'第一组信息'</span>);</span><br><span class="line">	console.log(<span class="string">'第一组信息'</span>);</span><br><span class="line">console.groupEnd();</span><br><span class="line">console.group(<span class="string">'second'</span>);</span><br><span class="line">	console.log(<span class="string">'2.1'</span>);</span><br><span class="line">	console.log(<span class="string">'2.2'</span>);</span><br><span class="line">console.groupEnd();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.dir()    //显示一个对象所有value和func()</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.dir(dog);	//Object:dog</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.dirxml()    //显示node中的html/xml代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var node=document.getElementById(<span class="string">'tab1'</span>);</span><br><span class="line">console.dirxml(node);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.assert()    //断言 判断是否为真<br> 测试:<code>console.assert(1==1,&#39;如果为0则出现这句话&#39;);</code><br> chrome下返回undefined<br> ff下不返回值<br> 1==0时chrome和ff均报错</p>
+</li>
+<li><p>console.trace()    //函数轨迹调用    </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> add (a,b) &#123;</span><br><span class="line">	console.trace();</span><br><span class="line">	<span class="built_in">return</span> a+b;</span><br><span class="line">&#125;	//js中函数同步执行,可以利用trace追踪有关该函数的相关执行顺序</span><br><span class="line">var x = add3(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">function</span> add3(a,b)&#123;<span class="built_in">return</span> add2(a,b);&#125;</span><br><span class="line"><span class="keyword">function</span> add2(a,b)&#123;<span class="built_in">return</span> add1(a,b);&#125;</span><br><span class="line"><span class="keyword">function</span> add1(a,b)&#123;<span class="built_in">return</span> add(a,b);&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>计时功能//计算代码运行时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.time(<span class="string">'timer1'</span>);</span><br><span class="line">// Your <span class="keyword">function</span></span><br><span class="line">console.timeEnd(<span class="string">'timer1'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>性能分析Profiler</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.profile(<span class="string">'性能分析器一'</span>);</span><br><span class="line">Foo();</span><br><span class="line">console.profileEnd();</span><br><span class="line">暂时无法实现这个功能</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.count()    //统计次数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">foo</span></span>()&#123;</span><br><span class="line">	var i=<span class="number">0</span>;</span><br><span class="line">	i++;</span><br><span class="line">	console.count(<span class="string">'执行次数'</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo();foo();foo();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Other">Other</h3><ol>
+<li>$(Chrome 控制台中原生支持类jQuery的选择器)<ul>
+<li><code>$_</code></li>
+<li><code>$(selector)</code>    选择首元素<br> <code>$$(selector)</code>    选择元素合集</li>
+</ul>
+</li>
+<li><p>keys&amp;values</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var tboy=&#123;</span><br><span class="line">	name:<span class="string">'123'</span>,height:<span class="string">'222'</span></span><br><span class="line">&#125;;</span><br><span class="line">keys(tboy);</span><br><span class="line">values(tboy);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>debug&amp;undebug<br> 打断点和取消断点</p>
+</li>
+<li>copy(document.body)<br> 可以复制内容到剪贴板</li>
+</ol>
+<h2 id="参考">参考</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/03/firebug_console_tutorial.html" target="_blank" rel="external">阮一峰</a></li>
+<li><a href="http://www.cnblogs.com/Wayou/p/chrome-console-tips-and-tricks.html" target="_blank" rel="external">刘哇勇</a></li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -111,7 +173,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/2015/06/28/goagent/" data-title="Goagant | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/2015/09/28/ChromeConsole/" data-title="Chrome调试合集 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -125,27 +187,19 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/06/28/pending/" title="近期想实现的内容">
+ <a href="/2015/09/28/goagent/" title="Goagant">
   <strong>上一篇：</strong><br/>
   <span>
-  近期想实现的内容</span>
+  Goagant</span>
 </a>
 </div>
 
-
-<div class="next">
-<a href="/2015/06/28/greatsites/"  title="Great Pages">
- <strong>下一篇：</strong><br/> 
- <span>Great Pages
-</span>
-</a>
-</div>
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/06/28/goagent/" data-title="Goagant" data-url="http://a1ex.net/2015/06/28/goagent/"></div>
+	<div class="ds-thread" data-thread-key="2015/09/28/ChromeConsole/" data-title="Chrome调试合集" data-url="http://a1ex.net/2015/09/28/ChromeConsole/"></div>
 </section>
 
 
@@ -155,7 +209,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Issues"><span class="toc-number">1.</span> <span class="toc-text">Issues</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bookmarks"><span class="toc-number">2.</span> <span class="toc-text">Bookmarks</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chrome调试"><span class="toc-number">1.</span> <span class="toc-text">Chrome调试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Other"><span class="toc-number">1.1.</span> <span class="toc-text">Other</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
  
   </div>
 
@@ -167,7 +221,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
+       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
     </div>
   </div>
 
@@ -175,7 +229,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li></ul>
   </div>
 
 
@@ -193,15 +247,11 @@
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>1</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>4</sup></a></li>
 		  
 		
 		  
 			<li><a href="/categories/blog/" title="blog">blog<sup>2</sup></a></li>
-		  
-		
-		  
-		
 		  
 		
 		  

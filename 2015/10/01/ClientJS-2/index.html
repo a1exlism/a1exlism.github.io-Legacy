@@ -4,26 +4,38 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Great Pages | A1exlism</title>
+    <title>Js学习笔记(2) | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="TemplateGithub    heroku    lmgtfy    青云    divshot    ACPM    Blocs    Bootswatch    サーバ稼働状況    Twenty Over Ten    Apple    lucacasati    Build awebsite    Union    Baidu Browser    
-FunnySilk    代码自">
+    <meta name="description" content="同源策略同源策略的存在限制了JS的释放范围
+何时生效当多个&amp;lt;iframe&amp;gt;标签或者打开其他浏览器窗口的时候策略生效
+脚本只能读取和所属文档来源相同的窗口和文档的属性
+文档来源判定协议,主机,载入文档的URL端口
+严格的同源策略?在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:
+1.网站存在多个子域例如a.exp.com需要读取来自b.exp.com的a.html里">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Great Pages">
-<meta property="og:url" content="http://a1ex.net/2015/06/28/greatsites/index.html">
+<meta property="og:title" content="Js学习笔记(2)">
+<meta property="og:url" content="http://a1ex.net/2015/10/01/ClientJS-2/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="TemplateGithub    heroku    lmgtfy    青云    divshot    ACPM    Blocs    Bootswatch    サーバ稼働状況    Twenty Over Ten    Apple    lucacasati    Build awebsite    Union    Baidu Browser    
-FunnySilk    代码自">
-<meta property="og:updated_time" content="2015-06-27T16:18:06.062Z">
+<meta property="og:description" content="同源策略同源策略的存在限制了JS的释放范围
+何时生效当多个&amp;lt;iframe&amp;gt;标签或者打开其他浏览器窗口的时候策略生效
+脚本只能读取和所属文档来源相同的窗口和文档的属性
+文档来源判定协议,主机,载入文档的URL端口
+严格的同源策略?在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:
+1.网站存在多个子域例如a.exp.com需要读取来自b.exp.com的a.html里">
+<meta property="og:updated_time" content="2015-10-01T08:17:14.987Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Great Pages">
-<meta name="twitter:description" content="TemplateGithub    heroku    lmgtfy    青云    divshot    ACPM    Blocs    Bootswatch    サーバ稼働状況    Twenty Over Ten    Apple    lucacasati    Build awebsite    Union    Baidu Browser    
-FunnySilk    代码自">
+<meta name="twitter:title" content="Js学习笔记(2)">
+<meta name="twitter:description" content="同源策略同源策略的存在限制了JS的释放范围
+何时生效当多个&amp;lt;iframe&amp;gt;标签或者打开其他浏览器窗口的时候策略生效
+脚本只能读取和所属文档来源相同的窗口和文档的属性
+文档来源判定协议,主机,载入文档的URL端口
+严格的同源策略?在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:
+1.网站存在多个子域例如a.exp.com需要读取来自b.exp.com的a.html里">
 <link rel="publisher" href="106896526077043230000">
 
     
@@ -81,14 +93,14 @@ FunnySilk    代码自">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/06/28/greatsites/" title="Great Pages" itemprop="url">Great Pages</a>
+      <a href="/2015/10/01/ClientJS-2/" title="Js学习笔记(2)" itemprop="url">Js学习笔记(2)</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-27T16:18:06.062Z" itemprop="datePublished"> 发表于 06-28-2015</time>
+    <time datetime="2015-10-01T08:17:14.987Z" itemprop="datePublished"> 发表于 10-01-2015</time>
     
   </p>
 </header>
@@ -97,21 +109,26 @@ FunnySilk    代码自">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Template"><span class="toc-number">1.</span> <span class="toc-text">Template</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Funny"><span class="toc-number">2.</span> <span class="toc-text">Funny</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-number">3.</span> <span class="toc-text">Function</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#同源策略"><span class="toc-number">1.</span> <span class="toc-text">同源策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#何时生效"><span class="toc-number">1.1.</span> <span class="toc-text">何时生效</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文档来源判定"><span class="toc-number">1.1.1.</span> <span class="toc-text">文档来源判定</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#严格的同源策略?"><span class="toc-number">2.</span> <span class="toc-text">严格的同源策略?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-网站存在多个子域"><span class="toc-number">2.1.</span> <span class="toc-text">1.网站存在多个子域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-跨资源共享(Corss-Origin_Resource_Sharing)"><span class="toc-number">2.2.</span> <span class="toc-text">2.跨资源共享(Corss-Origin Resource Sharing)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-跨文档消息(cross-document_messaging)"><span class="toc-number">2.3.</span> <span class="toc-text">3.跨文档消息(cross-document messaging)</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="Template">Template</h2><p><a href="https://pages.github.com/" target="_blank" rel="external">Github</a>    <a href="https://www.heroku.com/" target="_blank" rel="external">heroku</a>    <a href="http://lmgtfy.com/?q=let+me+google+that+for+you&amp;l=1" target="_blank" rel="external">lmgtfy</a>    <a href="https://www.qingcloud.com/" target="_blank" rel="external">青云</a>    <a href="https://divshot.com/features" target="_blank" rel="external">divshot</a>    <a href="http://www.andrewmcwatters.com/" target="_blank" rel="external">ACPM</a>    <a href="http://blocsapp.com/" target="_blank" rel="external">Blocs</a>    <a href="http://bootswatch.com/" target="_blank" rel="external">Bootswatch</a>    <a href="http://sweet.2ch.sc/uptime.svg" target="_blank" rel="external">サーバ稼働状況</a>    <a href="https://twentyoverten.com" target="_blank" rel="external">Twenty Over Ten</a>    <a href="http://www.apple.com/" target="_blank" rel="external">Apple</a>    <a href="http://www.lucacasati.net/" target="_blank" rel="external">lucacasati</a>    <a href="http://www.squarespace.com/" target="_blank" rel="external">Build awebsite</a>    <a href="http://union.co/" target="_blank" rel="external">Union</a>    <a href="http://liulanqi.baidu.com/" target="_blank" rel="external">Baidu Browser</a>    </p>
-<h2 id="Funny">Funny</h2><p><a href="http://weavesilk.com/" target="_blank" rel="external">Silk</a>    <a href="http://codepen.io/jakealbaugh/full/PwLXXP/" target="_blank" rel="external">代码自实现</a>    <a href="http://chirag64.github.io/t-rex-runner-bot/" target="_blank" rel="external">ChromeGameByAuto</a>    <a href="http://tholman.com/dom-animator/" target="_blank" rel="external">The F12’s Note</a>    </p>
-<h2 id="Function">Function</h2><p><a href="http://www.hotcleaner.com/clickclean-app.html" target="_blank" rel="external">Probe实现</a>    <a href="http://www.mortenclaussen.com/" target="_blank" rel="external">Mortenclaussen</a></p>
-  
+		<h2 id="同源策略">同源策略</h2><p>同源策略的存在限制了JS的释放范围</p>
+<h3 id="何时生效">何时生效</h3><pre><code>当多个<span class="tag">&lt;<span class="title">iframe</span>&gt;</span>标签或者打开其他浏览器窗口的时候策略生效
+脚本只能读取和所属文档来源相同的窗口和文档的属性
+</code></pre><h4 id="文档来源判定">文档来源判定</h4><p>协议,主机,载入文档的URL端口</p>
+<h2 id="严格的同源策略?">严格的同源策略?</h2><p>在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:</p>
+<h3 id="1-网站存在多个子域">1.网站存在多个子域</h3><p>例如a.exp.com需要读取来自b.exp.com的a.html里与b.html均加入<br><code>document.domain = &quot;xxx.com&quot;;</code>   但是必须是共有的根域名,上则为exp.com,这样两个页面就可以互相操作了,也就实现了所谓的”跨域”.</p>
+<h3 id="2-跨资源共享(Corss-Origin_Resource_Sharing)">2.跨资源共享(Corss-Origin Resource Sharing)</h3><p>利用这个标准提供的”Origin”和对应的Access-Control-Allow-Origin: xxx.com来扩展http,可实现任意的http请求</p>
+<h3 id="3-跨文档消息(cross-document_messaging)">3.跨文档消息(cross-document messaging)</h3><pre><code>这个功能可以使一个文档的脚本直接一步传输给目标文档并允许执行.利用<span class="function"><span class="title">postMessage</span><span class="params">()</span></span>方法``
+</code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/2015/06/28/greatsites/" data-title="Great Pages | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/2015/10/01/ClientJS-2/" data-title="Js学习笔记(2) | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -124,19 +141,11 @@ FunnySilk    代码自">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/06/28/goagent/" title="Goagant">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Goagant</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/06/28/Router/"  title="360弃子C301刷机">
+<a href="/2015/10/01/ClientJS-1/"  title="Js学习笔记(1)">
  <strong>下一篇：</strong><br/> 
- <span>360弃子C301刷机
+ <span>Js学习笔记(1)
 </span>
 </a>
 </div>
@@ -145,7 +154,7 @@ FunnySilk    代码自">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/06/28/greatsites/" data-title="Great Pages" data-url="http://a1ex.net/2015/06/28/greatsites/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/01/ClientJS-2/" data-title="Js学习笔记(2)" data-url="http://a1ex.net/2015/10/01/ClientJS-2/"></div>
 </section>
 
 
@@ -155,7 +164,7 @@ FunnySilk    代码自">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Template"><span class="toc-number">1.</span> <span class="toc-text">Template</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Funny"><span class="toc-number">2.</span> <span class="toc-text">Funny</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-number">3.</span> <span class="toc-text">Function</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#同源策略"><span class="toc-number">1.</span> <span class="toc-text">同源策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#何时生效"><span class="toc-number">1.1.</span> <span class="toc-text">何时生效</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文档来源判定"><span class="toc-number">1.1.1.</span> <span class="toc-text">文档来源判定</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#严格的同源策略?"><span class="toc-number">2.</span> <span class="toc-text">严格的同源策略?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-网站存在多个子域"><span class="toc-number">2.1.</span> <span class="toc-text">1.网站存在多个子域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-跨资源共享(Corss-Origin_Resource_Sharing)"><span class="toc-number">2.2.</span> <span class="toc-text">2.跨资源共享(Corss-Origin Resource Sharing)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-跨文档消息(cross-document_messaging)"><span class="toc-number">2.3.</span> <span class="toc-text">3.跨文档消息(cross-document messaging)</span></a></li></ol></li></ol>
  
   </div>
 
@@ -167,7 +176,7 @@ FunnySilk    代码自">
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
+       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
     </div>
   </div>
 
@@ -175,7 +184,7 @@ FunnySilk    代码自">
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li></ul>
   </div>
 
 
@@ -193,15 +202,11 @@ FunnySilk    代码自">
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>1</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>4</sup></a></li>
 		  
 		
 		  
 			<li><a href="/categories/blog/" title="blog">blog<sup>2</sup></a></li>
-		  
-		
-		  
-		
 		  
 		
 		  

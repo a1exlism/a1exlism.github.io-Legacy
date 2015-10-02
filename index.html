@@ -79,14 +79,529 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/06/28/ChromeConsole/" title="Chrome调试合集" itemprop="url">Chrome调试合集</a>
+      <a href="/2015/10/01/ClientJS-2/" title="Js学习笔记(2)" itemprop="url">Js学习笔记(2)</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-27T16:46:28.765Z" itemprop="datePublished"> 发表于 06-28-2015</time>
+    <time datetime="2015-10-01T08:17:14.987Z" itemprop="datePublished"> 发表于 10-01-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="同源策略">同源策略</h2><p>同源策略的存在限制了JS的释放范围</p>
+<h3 id="何时生效">何时生效</h3><pre><code>当多个<span class="tag">&lt;<span class="title">iframe</span>&gt;</span>标签或者打开其他浏览器窗口的时候策略生效
+脚本只能读取和所属文档来源相同的窗口和文档的属性
+</code></pre><h4 id="文档来源判定">文档来源判定</h4><p>协议,主机,载入文档的URL端口</p>
+<h2 id="严格的同源策略?">严格的同源策略?</h2><p>在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:</p>
+<h3 id="1-网站存在多个子域">1.网站存在多个子域</h3><p>例如a.exp.com需要读取来自b.exp.com的a.html里与b.html均加入<br><code>document.domain = &quot;xxx.com&quot;;</code>   但是必须是共有的根域名,上则为exp.com,这样两个页面就可以互相操作了,也就实现了所谓的”跨域”.</p>
+<h3 id="2-跨资源共享(Corss-Origin_Resource_Sharing)">2.跨资源共享(Corss-Origin Resource Sharing)</h3><p>利用这个标准提供的”Origin”和对应的Access-Control-Allow-Origin: xxx.com来扩展http,可实现任意的http请求</p>
+<h3 id="3-跨文档消息(cross-document_messaging)">3.跨文档消息(cross-document messaging)</h3><pre><code>这个功能可以使一个文档的脚本直接一步传输给目标文档并允许执行.利用<span class="function"><span class="title">postMessage</span><span class="params">()</span></span>方法``
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/10/01/ClientJS-2/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/01/ClientJS-2/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/01/ClientJS-1/" title="Js学习笔记(1)" itemprop="url">Js学习笔记(1)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-30T16:44:18.127Z" itemprop="datePublished"> 发表于 10-01-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="一步步走Js">一步步走Js</h2><p>一个小概念:<br>    文档(document):呈现静态信息的页面.<br>    document是window的其中一个对象<br>跳转新的界面:<br>    window.location = “<a href="http://www.google.com" target="_blank" rel="external">http://www.google.com</a>“;<br>设置延迟:<br>    setTimeout(function(){alert(123);},1000)    //1s后启动函数<br>查询元素,插入内容<br>    var timestamp=document.getElementById(“timestamp”)<br>        if(timestamp.firstChild == null)<br>            timestamp.appendChild(document.createTextNode(new Date().toString()));<br>        //timestamp具有style和className属性<br>添加点击事件:<br>    timestamp.onclick = function () {<br>            this.innerHTML = new Date().toString();<br>    }<br>内容显示隐藏的简单实现:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">        <span class="class">.reveal</span> * <span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">none</span></span>;&#125;</span></span><br><span class="line">        <span class="class">.reveal</span> *<span class="class">.handle</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">block</span></span>;&#125;</span></span><br><span class="line">        <span class="comment">/*只有"handle"的元素显示*/</span></span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> elements = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"reveal"</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; elements.length;i++)&#123;</span><br><span class="line">                <span class="keyword">var</span> elt = elements[i];   <span class="comment">//elt为reveal元素节点</span></span><br><span class="line">                <span class="keyword">var</span> title = elt.getElementsByClassName(<span class="string">"handle"</span>)[<span class="number">0</span>];<span class="comment">//第一个handle类的元素</span></span><br><span class="line">                addRevealHandler(title,elt);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">addRevealHandler</span>(<span class="params">title,elt</span>) </span>&#123;</span><br><span class="line">                title.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (elt.className == <span class="string">"reveal"</span>)</span><br><span class="line">                        elt.className = <span class="string">"revealed"</span>;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (elt.className == <span class="string">"revealed"</span>)</span><br><span class="line">                        elt.className = <span class="string">"reveal"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"reveal"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span> <span class="attribute">class</span>=<span class="value">"handle"</span>&gt;</span>CLick here to Reveal Hidden Text<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span>This paragraph is hidden.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Js可以放在Url中实现,使用javascript:协议<br>for example:(所有浏览器均支持)<br>  <a href="javascript:alert('123');" target="_blank" rel="external">WTF?</a></li>
+</ul>
+<h3 id="针对IE的条件注释">针对IE的条件注释</h3><!--[if IE6]>
+...
+...
+<![endif]-->
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/10/01/ClientJS-1/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/10/01/ClientJS-1/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/29/git-study/" title="Git Study" itemprop="url">Git Study</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-29T15:04:14.917Z" itemprop="datePublished"> 发表于 09-29-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="记录遇到的Git_:_)">记录遇到的Git : )</h2><h3 id="常见标记">常见标记</h3><pre><code><span class="label">A:</span> 增加的文件.
+<span class="label">C:</span> 文件的一个新拷贝.
+<span class="label">D:</span> 删除的一个文件.
+<span class="label">M:</span>文件的内容或者mode被修改了.
+<span class="label">R:</span> 文件名被修改了.
+<span class="label">T:</span> 文件的类型被修改了.
+<span class="label">U:</span> 文件没有被合并(你需要完成合并才能进行提交)
+<span class="label">X:</span> 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
+</code></pre><p>在git diff-files的手册man git diff-files中可以查到这些标志的说明</p>
+<h3 id="常用命令">常用命令</h3><p>添加远程主机:<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> remote add [shortname] [url]</span><br></pre></td></tr></table></figure></p>
+<p>创建分支<br>            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> branch experiment</span><br></pre></td></tr></table></figure></p>
+<p>切换分支    <strong>这条命令会重写工作区</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> checkout -b gitcafe-pages</span><br></pre></td></tr></table></figure></p>
+<h3 id="陆续增加">陆续增加</h3><p>checkout step    //重置工作目录,step为步骤<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="operator">-f</span> step-<span class="number">3</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="遇见的问题">遇见的问题</h3><ul>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> push origin gitcafe-pages error: src refspec gitcafe-pages does not match an</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>错误原因:本地没有gitcafe-pages分支</p>
+<ul>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Updates were rejected because the tip of your current branch is behind</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>错误原因:远程仓库的分支比本地的代码要新所以有冲突<br>解决:开新分支提交或者直接git push —force<strong>慎用!</strong></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/09/29/git-study/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/29/git-study/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/28/webstorm/" title="Webstrom配置&amp;快捷键" itemprop="url">Webstrom配置&amp;快捷键</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-28T04:27:03.872Z" itemprop="datePublished"> 发表于 09-28-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>+<a href="http://www.jb51.net/article/58310.htm" target="_blank" rel="external">jb51</a><br>+<a href="http://my.oschina.net/lee2013/blog/314051" target="_blank" rel="external">webstrom主题设置</a></p>
+<h2 id="设置技巧:">设置技巧:</h2><p>如何更改主题（字体&amp;配色）:<br>File -&gt; settings -&gt; Editor -&gt; colors&amp;fonts -&gt; scheme name.主题下载地址<br>如何让webstorm启动的时候不打开工程文件：<br>File -&gt; Settings-&gt;General去掉Reopen last project on startup.<br>如何完美显示中文：<br>File -&gt; Settings-&gt;Appearance中勾选Override default fonts by (not recommended)，设置Name:NSimSun，Size:12<br>如何显示行号：<br>File -&gt; Settings-&gt;Editor，”Show line numbers”打上勾，就显示行号了<br>如何代码自动换行：<br>File -&gt; settings -&gt; Editor “Use Soft Wraps in editor” 打上钩，代码就自动换行了<br>如何点击光标，显示在本行末尾：<br>File -&gt; Settings-&gt;Editor “Allow placement of caret after end of line”去掉勾就行了。<br>如何修改快键键：<br>File -&gt; Settings-&gt;Keymap，然后双击要修改快捷的功能会有提示框出来，按提示操作<br>换成自己熟悉编辑器的快键键：<br>File -&gt;Settings-&gt;Keymap，支持像Visual Studio、Eclipse、NetBeans这样的主流IDE。<br>javascript类库提示。<br>File -&gt; settings -&gt; Javascript -&gt; Libraries -&gt; 然后在列表里选择自己经常用到的javascript类库，最后Download and Install就ok了.<br>在开发js时发现，需要ctrl + return 才能选候选项：<br>File -&gt; Setting -&gt; Editor -&gt; Code Completion -&gt; Preselect the first suggestion: “Smart” 改为 “Always”<br>js提示比较迟缓<br>File -&gt; Code Completion -&gt; Autopopup in 下 1000改为0<br>git配置：<br>File -&gt; settings -&gt; Editor -&gt; github，进去改github的账户，如果没有git则不需要.<br>插件安装：<br>File -&gt;plugins，然后就选择给力的插件们再安装.(“css-X-fire”插件,用于当使用firebug修改css属性时，编辑器内的css代码也会发生变化。）<br>以后更新<br>webstorm使用心得<br>收藏夹功能:<br>当工程目录很庞大时，有些子目录很经常打开，但层级又很深，这时候可以把目录添加到收藏夹里面，添加成功后，左侧有个“Favorites”菜单<br>面包屑导航：<br>除了左侧的工程页面，可以选择目录之外，在顶部菜单下有一个类似网站面包屑导航一样的目录也可以实现相同功。点击每个目录就会有下拉菜单显示其下的子目录，很实用.<br>构造器界面:<br>注释符合格式的话就会出现。如果是js文件则是js类的函数和对象；css文件的话则是这个css文件的概括；html文件的话则是节点的结构图。话说这几个就是为了方便查看代码的结构性.<br>todo界面：<br>给代码加todo注释就会出现这个界面<br>双栏代码界面：<br>右击代码选项卡上的文件，然后右键 -&gt; spilt vertically(左右两屏)或者spilt horizontally(上下两屏)<br>本地历史功能:<br>找回代码的好办法<br>git使用<br>webstorm中只集成了git的常用操作，并不能完全替代命令行工具。在界面的右下角可以查看处于哪个git分支。也可以在上面点击切换或者新建分支。<br>查看当前代码与版本库代码的差异:<br>右击代码界面任意区域，选择git -&gt; compare with然后选择要比较的版本库。<br>webstorm的快捷键说明：<br>Editing编辑相关快捷键<br>Ctrl + Space：<br>Basic code completion (the name of any class, method or variable) 基本代码完成（任何类、函数或者变量名称），改为Alt+S<br>Ctrl + Shift + Enter：<br>Complete statement 补全当前语句<br>Ctrl + P：<br>Parameter info (within method call arguments) 参数信息 包括方法调用参数<br>Ctrl + mouse over code<br>Brief Info 简单信息<br>Ctrl + F1<br>Show description of error or warning at caret 显示光标所在位置的错误信息或者警告信息<br>Alt + Insert<br>Generate code…（Getters, Setters, Constructors）新建一个文件或者生成代码，…构造函数，可以创建类里面任何字段的getter与setter方法<br>Ctrl + O<br>Override methods 重载方法<br>Ctrl + I<br>Implement methods 实现方法<br>Ctrl + Alt + T<br>Surround with…（if, else, try, catch, for, etc）用 <em> 来围绕选中的代码行，（ </em> 包括 if 、 while 、 try catch 等）<br>Ctrl + /<br>Comment/uncomment with line comment 行注释/取消行注释<br>Ctrl + Shift + /<br>Comment/uncomment with block comment 块注释/取消块注释<br>Ctrl + W<br>Select successively increasing code blocks 选择代码块，一般是增量选择<br>Ctrl + Shift + W<br>Decrease current selection to previous state 上个快捷键的回退，减量选择代码<br>Alt + Q<br>Context info 上下文信息<br>Alt + Enter<br>Show intention actions and quick-fixes 意图行动，快速见效<br>Ctrl + Alt + L<br>Reformat code 根据模板格式对代码格式化<br>Tab/ Shift + Tab<br>Indent/unindent selected lines 对所选行进行缩排处理/撤销缩排处理<br>Ctrl + X or Shift + Delete<br>Cut current line or selected block to clipboard 剪切当前行或所选代码块到剪切板<br>Ctrl + C or Ctrl + Insert<br>Copy current line or selected block to chipboard 拷贝当前行或者所选代码块到剪切板<br>Ctrl + V or Shift + Insert<br>Paste from clipboard 粘贴剪切板上的内容<br>Ctrl + Shift + V<br>Paste from recent buffers 粘贴缓冲器中最新的内容<br>Ctrl + D<br>Duplicate current line or selected block 复制当前行或者所选代码块<br>Ctrl + Y<br>Delete line at caret 删除光标所在位置行<br>Ctrl + Shift + J<br>Smart line join（HTML and JavaScript only）加入智能行 （HTML 和JavaScript）<br>Ctrl + Enter<br>Smart line split（HTML and JavaScript only）分离智能行 （HTML 和JavaScript）<br>Shift + Enter<br>Start new line 另起一行<br>Ctrl + Shift + U<br>Toggle case for word at caret or selected block 光标所在位置大小写转换<br>Ctrl + Shift + ]/[<br>Select till code block end/start 选择直到代码块结束/开始<br>Ctrl + Delete<br>Delete to word end 删除文字结束<br>Ctrl + Backspace<br>Delete to word start 删除文字开始<br>Ctrl + NumPad+/-<br>Expand/collapse code block 扩展/缩减代码块<br>Ctrl + Shift+ NumPad+<br>Expand all 扩张所有<br>Ctrl + Shift+ NumPad-<br>Collapse 缩减所有<br>Ctrl + F4<br>Close active editor tab 关闭活跃编辑标签<br>Search/replace搜索/替代相关快捷键<br>Ctrl + F<br>Find 当前文件内快速查找代码<br>Ctrl + Shift + F<br>Find in path 指定文件内寻找路径<br>F3<br>Find next 查找下一个<br>Shift + F3<br>Find previous 查找上一个<br>Ctrl + R<br>Replace 当前文件内代码替代<br>Ctrl + Shift + R<br>Replace in path 指定文件内代码批量替代<br>Usage Search搜索相关快捷键<br>Alt + F7/Ctrl + F7<br>Find usages/Find usages in file 找到使用/在文件找到使用<br>Ctrl + Shift + F7<br>Highlight usages in file文件中精彩使用<br>Ctrl + Alt + F7<br>Show usages 显示使用<br>Running运行<br>Alt + Shift + F10<br>Select configuration and run 选择构架，运行<br>Alt + Shift + F9<br>Select configuration and debug 选择构架，修补漏洞<br>Shift + F10<br>Run 运行<br>Shift + F9<br>Debug 修补漏洞<br>Ctrl + Shift + F10<br>Run context configuration from editor 从编辑运行内容构架<br>Ctrl + Shift + X<br>Run command line 运行命令行<br>Debugging Debugging相关快捷键<br>F8<br>Step over 不进入函数<br>F7<br>Step into 单步执行<br>Shift + F7<br>Smart step into 智能单步执行<br>Shift + F8<br>Step out 跳出<br>Alt + F9<br>Run to cursor 运行到光标处<br>Alt+ F8<br>Evaluate expression 评估表达<br>F9<br>Resume program 重新开始程序<br>Ctrl + F8<br>Toggle breakpoint 切换断点<br>Ctrl + Shift + F8<br>View breakpoints 查看断点<br>Navigation 定位相关快捷键<br>Ctrl + N<br>Go to class跳转到指定类<br>Ctrl + Shift + N<br>Go to file 通过文件名快速查找工程内的文件<br>Ctrl + Alt +Shift + N<br>Go to symbol 通过一个字符查找函数位置<br>Alt + Right/ left<br>Go to next/ previous editor tab 进入下一个/ 上一个编辑器选项<br>F12<br>Go back to previous tool window 进入上一个工具窗口<br>Esc<br>Go to editor（from tool window） 从工具窗口进入编辑器<br>Shift + Esc<br>Hide active or last active window 隐藏活动窗口<br>Ctrl + Shift + F4<br>Close active run/message/find/…tab 关闭活动….标签<br>Ctrl + G<br>Go to line 跳转到第几行<br>Ctrl + E<br>Recent files popup 弹出最近打开的文件<br>Ctrl + Alt + Left/Right<br>Navigate back/forward 导航前进/后退<br>Ctrl + Shift + Backspace<br>Navigate to last edit location 向最近编辑定位导航<br>Alt + F1<br>Select current file or symbol in any view 查找当前选中的代码或文件在其他界面模块的位置<br>Ctrl + B or Ctrl + Click<br>Go to declaration跳转到定义处<br>Ctrl + Alt + B<br>Go to implementation(s) 跳转方法实现处<br>Ctrl + Shift + B<br>Go to type declaration 跳转方法定义处<br>Ctrl + Shift + I<br>Open quick definition lookup 打开定义快速查找<br>Ctrl + U<br>Go to super-method/super-class 跳转方法/超阶级<br>Alt + Up/Down<br>Go to previous/next method 在方法间快速移动定位<br>Ctrl + ]/[<br>Move to code block end/start 跳转到编码块结束/开始<br>Ctrl + F12<br>File structure popup 文件结构弹出<br>Ctrl + H<br>Type hierarchy 类型层次<br>Ctrl + Alt + H<br>Call hierarchy 调用层次结构<br>F2/ Shift + F2<br>Next/previous highlighted error 跳转到后一个/前一个错误，高亮错误或警告快速定位，使用这个快捷键可以快捷在出错的语句之间进行跳转。<br>F4/Ctrl + Enter<br>Edit source/ View source 编辑源代码/查看源代码<br>Alt + Home<br>Show navigation bar 显示导航栏<br>F11<br>Toggle bookmark 切换标记<br>Ctrl + F11<br>Toggle bookmark with mnemonic 采用记忆切换标记<br>Ctrl + #[0-9]<br>Go to numbered bookmark 跳转到带编号的标记<br>Shift + F11<br>Show bookmark 显示标记<br>Refactoring 重构相关快捷键<br>F5<br>Copy 拷贝<br>F6<br>Move 移动<br>Alt + Delete<br>Safe Delete 安全删除<br>Shift + F6<br>Rename 重新命名<br>Ctrl + Alt + N<br>Inline Variable 嵌入变量<br>Ctrl + Alt + M<br>Extract Method( Javascript only) 提取函数<br>Ctrl + Alt + V<br>Introduce Variable 引入变量<br>Ctrl + Alt + F<br>Introduce Field 引入域<br>Ctrl + Alt + C<br>Introduce Constant 引入常量<br>VCS/Local History 版本控制系统/ 本地历史相关快捷键<br>Alt +　BackQuote( )<br>‘VCS’quick popup 快速弹出 VCS<br>Ctrl + K<br>Commit project to VCS 提交项目至VCS<br>Ctrl + T<br>Update project from VCS 从VCS 更新项目<br>Alt + Shift + C<br>View recent changes 查看最新改变<br>General 常用的相关快捷键<br>Ctrl + Shift +A<br>Find action 查找并调用编辑器的功能<br>Alt + #[0-9]<br>Open corresponding tool window 快速切换打开界面模块<br>Ctrl + Alt + F11<br>Toggle full screen mode 切换全屏模式<br>Ctrl + Shift + F12<br>Toggle maximizing editor 切换最大化编辑器<br>Alt + Shift + F<br>Add to Favorites 将当前文件添至收藏夹<br>Alt + Shift + I<br>Inspect current file with current profile 使用当前属性检查当前文件<br>Ctrl + BackQuote( )<br>Quick switch current scheme 快速转换现有组合<br>Ctrl + Alt + S<br>Open setting dialog 打开设置对话框<br>Ctrl + Tab<br>Switch between tabs and tool window 标签和工具窗的转换（与windows快捷键冲突）</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/09/28/webstorm/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/28/webstorm/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/28/Router/" title="360弃子C301刷机" itemprop="url">360弃子C301刷机</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-28T04:27:03.856Z" itemprop="datePublished"> 发表于 09-28-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="基础知识">基础知识</h2><ul>
+<li><a href="http://www.right.com.cn/forum/thread-147319-1-2.html" target="_blank" rel="external">981213</a></li>
+<li><a href="http://www.right.com.cn/forum/thread-148810-1-1.html" target="_blank" rel="external">hackpascal</a></li>
+<li><a href="http://www.right.com.cn/forum/thread-147651-1-1.html" target="_blank" rel="external">hackpascal</a></li>
+<li><a href="http://bbs.xda.cn/thread-11183333-1-1.html" target="_blank" rel="external">固件和Rom区别</a><br>op的web管理界面叫luci</li>
+<li><a href="https://wiki.wireshark.org/WinPcap" target="_blank" rel="external">WinSCP</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/PuTTY" target="_blank" rel="external">PuTTY</a></li>
+<li><a href="http://baike.baidu.com/link?url=Uerpdfz1ewoFE_NYNVIkflLEos2adrvzZUReu4FP_9c09KaT9jcdQn4wlT6V7FLTCErkhGIRi1LsmecyR6c84K#1" target="_blank" rel="external">MTD</a></li>
+</ul>
+<h2 id="other">other</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/Wireless_distribution_system" target="_blank" rel="external">WDS</a></li>
+<li><a href="http://bbs.kafan.cn/thread-1697011-1-1.html" target="_blank" rel="external">路由多拨</a></li>
+</ul>
+<h2 id="正文">正文</h2><h3 id="安装OpenWrt">安装OpenWrt</h3><pre><code>IP地址:<span class="number">192.168.1.3</span>(2-255)
+子网掩码:<span class="number">255.255.255.0</span>
+上传地址:http://<span class="number">192.168.1.1</span>/upgrade.html
+按着360官方人员讲的:
+</code></pre><p><a href="http://www.right.com.cn/forum/thread-147329-1-1.html" target="_blank" rel="external">恩山/兼容官方固件</a>直接在luyou360.cn直接刷了这个固件,但是等了大概20分钟,耐心不足..直接强退,发现变砖..晚上回来继续看,尝试直接进入192.168.1.1刷官方固件,然并卵.官方固件认证失败,醉.然后试了半天恩山论坛大神的固件包固然给刷进去了233.<br>    所刷固件:<br><a href="http://www.right.com.cn/forum/thread-147319-1-2.html" target="_blank" rel="external">OpenWrt固件</a><br>    PS:第一次刷机需要刷入ART(和OpenWrt的web刷入方法一致)</p>
+<h3 id="一睹真容">一睹真容</h3><pre><code>尼玛,恩山大神要不要这么<span class="number">6</span>啊,<span class="function_or_atom">webshell</span>,<span class="function_or_atom">ssh</span>,迅雷,<span class="variable">USB</span>支持什么都加进去了<span class="exclamation_mark">!</span><span class="exclamation_mark">!</span>献上我的膝盖<span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span>
+</code></pre><h3 id="配置有线和无线">配置有线和无线</h3><ul>
+<li>网络&gt;接口&gt;wan—&gt;设置pppoe协议,输入宽带账号,密码<br>lan端口需要设置网关为192.168.1.1</li>
+<li>无线想刷ART—&gt;刷Uboot</li>
+</ul>
+<h3 id="刷不死U-boot">刷不死U-boot</h3><p>参照大神贴:<a href="http://www.right.com.cn/forum/thread-154561-1-1.html" target="_blank" rel="external">hackpascal</a></p>
+<ul>
+<li>插曲:刚把Uboot刷完之后,一不小心按了reset,然后wanlan三灯全亮,wifi灯变绿,随后电脑无法识别lan口,变砖无误…正在寻找方案6/26-&gt;发现同地区大神一枚,滚去面基,求罩0. 0-&gt;?(未待完续)</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/09/28/Router/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/28/Router/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/28/pending/" title="近期想实现的内容" itemprop="url">近期想实现的内容</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-28T04:27:03.840Z" itemprop="datePublished"> 发表于 09-28-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <ol>
+<li>简繁转换<br><code>&lt;a href=&quot;javascript:zh_tran(&#39;s&#39;);&quot; class=&quot;zh_click&quot; id=&quot;zh_click_s&quot; style=&quot;font-weight: bold; color: green;&quot;&gt;简体&lt;/a&gt;</code></li>
+<li>天气插件</li>
+<li>多说评论css</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/09/28/pending/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/28/pending/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/28/hello-hexo/" title="Hello Hexo" itemprop="url">Hello Hexo</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-28T04:27:03.825Z" itemprop="datePublished"> 发表于 09-28-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>感谢作者:</p>
+<ul>
+<li><a href="http://hexo.io/" target="_blank" rel="external">Hexo</a></li>
+<li><a href="http://wuchong.me/" title="Jacman" target="_blank" rel="external">Jacman</a></li>
+</ul>
+<p>这篇文章也顺便作为自己md的参考文本吧 : )</p>
+<h2 id="Start">Start</h2><h3 id="New_post">New post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``` bash</span><br><span class="line">          代码区_md语法</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/zh-cn/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Hexo的简单操作">Hexo的简单操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="碰到的Hexo问题">碰到的Hexo问题</h3><ol>
+<li>hexo deploy失败的解决方案<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_config.yml--&gt;<span class="built_in">type</span> git(hexo <span class="number">3.0</span>)</span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/09/28/hello-hexo/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/28/hello-hexo/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/28/greatsites/" title="Great Pages" itemprop="url">Great Pages</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-28T04:27:03.825Z" itemprop="datePublished"> 发表于 09-28-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Template">Template</h2><p><a href="https://pages.github.com/" target="_blank" rel="external">Github</a>    <a href="https://www.heroku.com/" target="_blank" rel="external">heroku</a>    <a href="http://lmgtfy.com/?q=let+me+google+that+for+you&amp;l=1" target="_blank" rel="external">lmgtfy</a>    <a href="https://www.qingcloud.com/" target="_blank" rel="external">青云</a>    <a href="https://divshot.com/features" target="_blank" rel="external">divshot</a>    <a href="http://www.andrewmcwatters.com/" target="_blank" rel="external">ACPM</a>    <a href="http://blocsapp.com/" target="_blank" rel="external">Blocs</a>    <a href="http://bootswatch.com/" target="_blank" rel="external">Bootswatch</a>    <a href="http://sweet.2ch.sc/uptime.svg" target="_blank" rel="external">サーバ稼働状況</a>    <a href="https://twentyoverten.com" target="_blank" rel="external">Twenty Over Ten</a>    <a href="http://www.apple.com/" target="_blank" rel="external">Apple</a>    <a href="http://www.lucacasati.net/" target="_blank" rel="external">lucacasati</a>    <a href="http://www.squarespace.com/" target="_blank" rel="external">Build awebsite</a>    <a href="http://union.co/" target="_blank" rel="external">Union</a>    <a href="http://liulanqi.baidu.com/" target="_blank" rel="external">Baidu Browser</a>    </p>
+<h2 id="Funny">Funny</h2><p><a href="http://weavesilk.com/" target="_blank" rel="external">Silk</a>    <a href="http://codepen.io/jakealbaugh/full/PwLXXP/" target="_blank" rel="external">代码自实现</a>    <a href="http://chirag64.github.io/t-rex-runner-bot/" target="_blank" rel="external">ChromeGameByAuto</a>    <a href="http://tholman.com/dom-animator/" target="_blank" rel="external">The F12’s Note</a>    </p>
+<h2 id="Function">Function</h2><p><a href="http://www.hotcleaner.com/clickclean-app.html" target="_blank" rel="external">Probe实现</a>    <a href="http://www.mortenclaussen.com/" target="_blank" rel="external">Mortenclaussen</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/09/28/greatsites/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/28/greatsites/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/28/goagent/" title="Goagant" itemprop="url">Goagant</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-28T04:27:03.825Z" itemprop="datePublished"> 发表于 09-28-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Issues">Issues</h2><pre><code><span class="number">5</span>/<span class="number">35</span>GitHub的大神们更新了g<span class="title">vsIp的使用(版本c35</span>fb<span class="number">8</span>e),简要提一下<span class="comment">(Win下)</span>:
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将checkip.py和checkip.bat放在<span class="built_in">local</span>目录下</span><br><span class="line">运行.bat文件,等待<span class="number">30</span>-<span class="number">50</span>分钟(可以提前关闭)</span><br><span class="line">ip文档文件会在该目录生成,打开tmp_ok文档,提取其中的ip</span><br><span class="line">[PingInfoView](http://www.nirsoft.net/utils/multiple_ping_tool.html)可以帮助你选择最佳的IP=. =</span><br></pre></td></tr></table></figure>
+<h2 id="Bookmarks">Bookmarks</h2><p><a href="https://github.com/mhohai/m2conf" target="_blank" rel="external">批量选择GCC IP</a><br><a href="http://blog.netsh.org/posts/youtube-google-facebook-twitter-wikipedia-hosts_1199.netsh.html#hosts" target="_blank" rel="external">hosts</a><br><a href="https://github.com/goagent/goagent" target="_blank" rel="external">goagent</a><br><a href="http://public-dns.tk/" target="_blank" rel="external">DNS Server List</a><br><a href="https://toolbox.googleapps.com/apps/dig/" target="_blank" rel="external">Dig</a><br><a href="http://www.i7086.com/gaejiashegoagentshezhichangjianwentizongjiejijiejuefangfa" target="_blank" rel="external">goagent设置常见问题</a><br><a href="https://github.com/azzvx/gogotester" target="_blank" rel="external">gogotester</a><br><a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/09/28/goagent/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/28/goagent/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/28/ChromeConsole/" title="Chrome调试合集" itemprop="url">Chrome调试合集</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-28T04:27:03.825Z" itemprop="datePublished"> 发表于 09-28-2015</time>
     
   </p>
 </header>
@@ -153,361 +668,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/2015/06/28/ChromeConsole/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/28/ChromeConsole/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/06/28/hello-hexo/" title="Hello Hexo" itemprop="url">Hello Hexo</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-27T16:45:16.586Z" itemprop="datePublished"> 发表于 06-28-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>感谢作者:</p>
-<ul>
-<li><a href="http://hexo.io/" target="_blank" rel="external">Hexo</a></li>
-<li><a href="http://wuchong.me/" title="Jacman" target="_blank" rel="external">Jacman</a></li>
-</ul>
-<p>这篇文章也顺便作为自己md的参考文本吧 : )</p>
-<h2 id="Start">Start</h2><h3 id="New_post">New post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``` bash</span><br><span class="line">          代码区_md语法</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/zh-cn/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Hexo的简单操作">Hexo的简单操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<h3 id="碰到的Hexo问题">碰到的Hexo问题</h3><ol>
-<li>hexo deploy失败的解决方案<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_config.yml--&gt;<span class="built_in">type</span> git(hexo <span class="number">3.0</span>)</span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/06/28/hello-hexo/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/28/hello-hexo/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/06/28/pending/" title="近期想实现的内容" itemprop="url">近期想实现的内容</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-27T16:45:07.462Z" itemprop="datePublished"> 发表于 06-28-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <ol>
-<li>简繁转换<br><code>&lt;a href=&quot;javascript:zh_tran(&#39;s&#39;);&quot; class=&quot;zh_click&quot; id=&quot;zh_click_s&quot; style=&quot;font-weight: bold; color: green;&quot;&gt;简体&lt;/a&gt;</code></li>
-<li>天气插件</li>
-<li>多说评论css</li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/06/28/pending/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/28/pending/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/06/28/goagent/" title="Goagant" itemprop="url">Goagant</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-27T16:38:15.134Z" itemprop="datePublished"> 发表于 06-28-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Issues">Issues</h2><pre><code><span class="number">5</span>/<span class="number">35</span>GitHub的大神们更新了g<span class="title">vsIp的使用(版本c35</span>fb<span class="number">8</span>e),简要提一下<span class="comment">(Win下)</span>:
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将checkip.py和checkip.bat放在<span class="built_in">local</span>目录下</span><br><span class="line">运行.bat文件,等待<span class="number">30</span>-<span class="number">50</span>分钟(可以提前关闭)</span><br><span class="line">ip文档文件会在该目录生成,打开tmp_ok文档,提取其中的ip</span><br><span class="line">[PingInfoView](http://www.nirsoft.net/utils/multiple_ping_tool.html)可以帮助你选择最佳的IP=. =</span><br></pre></td></tr></table></figure>
-<h2 id="Bookmarks">Bookmarks</h2><p><a href="https://github.com/mhohai/m2conf" target="_blank" rel="external">批量选择GCC IP</a><br><a href="http://blog.netsh.org/posts/youtube-google-facebook-twitter-wikipedia-hosts_1199.netsh.html#hosts" target="_blank" rel="external">hosts</a><br><a href="https://github.com/goagent/goagent" target="_blank" rel="external">goagent</a><br><a href="http://public-dns.tk/" target="_blank" rel="external">DNS Server List</a><br><a href="https://toolbox.googleapps.com/apps/dig/" target="_blank" rel="external">Dig</a><br><a href="http://www.i7086.com/gaejiashegoagentshezhichangjianwentizongjiejijiejuefangfa" target="_blank" rel="external">goagent设置常见问题</a><br><a href="https://github.com/azzvx/gogotester" target="_blank" rel="external">gogotester</a><br><a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/06/28/goagent/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/28/goagent/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/06/28/greatsites/" title="Great Pages" itemprop="url">Great Pages</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-27T16:18:06.062Z" itemprop="datePublished"> 发表于 06-28-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Template">Template</h2><p><a href="https://pages.github.com/" target="_blank" rel="external">Github</a>    <a href="https://www.heroku.com/" target="_blank" rel="external">heroku</a>    <a href="http://lmgtfy.com/?q=let+me+google+that+for+you&amp;l=1" target="_blank" rel="external">lmgtfy</a>    <a href="https://www.qingcloud.com/" target="_blank" rel="external">青云</a>    <a href="https://divshot.com/features" target="_blank" rel="external">divshot</a>    <a href="http://www.andrewmcwatters.com/" target="_blank" rel="external">ACPM</a>    <a href="http://blocsapp.com/" target="_blank" rel="external">Blocs</a>    <a href="http://bootswatch.com/" target="_blank" rel="external">Bootswatch</a>    <a href="http://sweet.2ch.sc/uptime.svg" target="_blank" rel="external">サーバ稼働状況</a>    <a href="https://twentyoverten.com" target="_blank" rel="external">Twenty Over Ten</a>    <a href="http://www.apple.com/" target="_blank" rel="external">Apple</a>    <a href="http://www.lucacasati.net/" target="_blank" rel="external">lucacasati</a>    <a href="http://www.squarespace.com/" target="_blank" rel="external">Build awebsite</a>    <a href="http://union.co/" target="_blank" rel="external">Union</a>    <a href="http://liulanqi.baidu.com/" target="_blank" rel="external">Baidu Browser</a>    </p>
-<h2 id="Funny">Funny</h2><p><a href="http://weavesilk.com/" target="_blank" rel="external">Silk</a>    <a href="http://codepen.io/jakealbaugh/full/PwLXXP/" target="_blank" rel="external">代码自实现</a>    <a href="http://chirag64.github.io/t-rex-runner-bot/" target="_blank" rel="external">ChromeGameByAuto</a>    <a href="http://tholman.com/dom-animator/" target="_blank" rel="external">The F12’s Note</a>    </p>
-<h2 id="Function">Function</h2><p><a href="http://www.hotcleaner.com/clickclean-app.html" target="_blank" rel="external">Probe实现</a>    <a href="http://www.mortenclaussen.com/" target="_blank" rel="external">Mortenclaussen</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/06/28/greatsites/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/28/greatsites/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/06/28/Router/" title="360弃子C301刷机" itemprop="url">360弃子C301刷机</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-27T16:15:42.553Z" itemprop="datePublished"> 发表于 06-28-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="基础知识">基础知识</h2><ul>
-<li><a href="http://www.right.com.cn/forum/thread-147319-1-2.html" target="_blank" rel="external">981213</a></li>
-<li><a href="http://www.right.com.cn/forum/thread-148810-1-1.html" target="_blank" rel="external">hackpascal</a></li>
-<li><a href="http://www.right.com.cn/forum/thread-147651-1-1.html" target="_blank" rel="external">hackpascal</a></li>
-<li><a href="http://bbs.xda.cn/thread-11183333-1-1.html" target="_blank" rel="external">固件和Rom区别</a><br>op的web管理界面叫luci</li>
-<li><a href="https://wiki.wireshark.org/WinPcap" target="_blank" rel="external">WinSCP</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/PuTTY" target="_blank" rel="external">PuTTY</a></li>
-<li><a href="http://baike.baidu.com/link?url=Uerpdfz1ewoFE_NYNVIkflLEos2adrvzZUReu4FP_9c09KaT9jcdQn4wlT6V7FLTCErkhGIRi1LsmecyR6c84K#1" target="_blank" rel="external">MTD</a></li>
-</ul>
-<h2 id="other">other</h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/Wireless_distribution_system" target="_blank" rel="external">WDS</a></li>
-<li><a href="http://bbs.kafan.cn/thread-1697011-1-1.html" target="_blank" rel="external">路由多拨</a></li>
-</ul>
-<h2 id="正文">正文</h2><h3 id="安装OpenWrt">安装OpenWrt</h3><pre><code>IP地址:<span class="number">192.168.1.3</span>(2-255)
-子网掩码:<span class="number">255.255.255.0</span>
-上传地址:http://<span class="number">192.168.1.1</span>/upgrade.html
-按着360官方人员讲的:
-</code></pre><p><a href="http://www.right.com.cn/forum/thread-147329-1-1.html" target="_blank" rel="external">恩山/兼容官方固件</a>直接在luyou360.cn直接刷了这个固件,但是等了大概20分钟,耐心不足..直接强退,发现变砖..晚上回来继续看,尝试直接进入192.168.1.1刷官方固件,然并卵.官方固件认证失败,醉.然后试了半天恩山论坛大神的固件包固然给刷进去了233.<br>    所刷固件:<br><a href="http://www.right.com.cn/forum/thread-147319-1-2.html" target="_blank" rel="external">OpenWrt固件</a><br>    PS:第一次刷机需要刷入ART(和OpenWrt的web刷入方法一致)</p>
-<h3 id="一睹真容">一睹真容</h3><pre><code>尼玛,恩山大神要不要这么<span class="number">6</span>啊,<span class="function_or_atom">webshell</span>,<span class="function_or_atom">ssh</span>,迅雷,<span class="variable">USB</span>支持什么都加进去了<span class="exclamation_mark">!</span><span class="exclamation_mark">!</span>献上我的膝盖<span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span>
-</code></pre><h3 id="配置有线和无线">配置有线和无线</h3><ul>
-<li>网络&gt;接口&gt;wan—&gt;设置pppoe协议,输入宽带账号,密码<br>lan端口需要设置网关为192.168.1.1</li>
-<li>无线想刷ART—&gt;刷Uboot</li>
-</ul>
-<h3 id="刷不死U-boot">刷不死U-boot</h3><p>参照大神贴:<a href="http://www.right.com.cn/forum/thread-154561-1-1.html" target="_blank" rel="external">hackpascal</a></p>
-<ul>
-<li>插曲:刚把Uboot刷完之后,一不小心按了reset,然后wanlan三灯全亮,wifi灯变绿,随后电脑无法识别lan口,变砖无误…正在寻找方案6/26-&gt;发现同地区大神一枚,滚去面基,求罩0. 0-&gt;?(未待完续)</li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/06/28/Router/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/28/Router/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/06/07/git-study/" title="Git Study" itemprop="url">Git Study</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-07T08:20:22.550Z" itemprop="datePublished"> 发表于 06-07-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="记录遇到的Git_:_)">记录遇到的Git : )</h2><h3 id="常见标记">常见标记</h3><pre><code><span class="label">A:</span> 增加的文件.
-<span class="label">C:</span> 文件的一个新拷贝.
-<span class="label">D:</span> 删除的一个文件.
-<span class="label">M:</span>文件的内容或者mode被修改了.
-<span class="label">R:</span> 文件名被修改了.
-<span class="label">T:</span> 文件的类型被修改了.
-<span class="label">U:</span> 文件没有被合并(你需要完成合并才能进行提交)
-<span class="label">X:</span> 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
-</code></pre><p>在git diff-files的手册man git diff-files中可以查到这些标志的说明</p>
-<h3 id="常用命令">常用命令</h3><p>添加远程主机:<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> remote add [shortname] [url]</span><br></pre></td></tr></table></figure></p>
-<p>创建分支<br>            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> branch experiment</span><br></pre></td></tr></table></figure></p>
-<p>切换分支    <strong>这条命令会重写工作区</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> checkout -b gitcafe-pages</span><br></pre></td></tr></table></figure></p>
-<h3 id="遇见的问题">遇见的问题</h3><ul>
-<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> push origin gitcafe-pages error: src refspec gitcafe-pages does not match an</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>错误原因:本地没有gitcafe-pages分支</p>
-<ul>
-<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Updates were rejected because the tip of your current branch is behind</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>错误原因:远程仓库的分支比本地的代码要新所以有冲突<br>解决:开新分支提交或者直接git push —force<strong>慎用!</strong></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/06/07/git-study/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/06/07/git-study/" data-count-type="comments">&nbsp;</a>
+		<a href="/2015/09/28/ChromeConsole/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/28/ChromeConsole/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -533,7 +694,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
+       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
     </div>
   </div>
 
@@ -541,7 +702,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li></ul>
   </div>
 
 
@@ -559,15 +720,11 @@
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>1</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>4</sup></a></li>
 		  
 		
 		  
 			<li><a href="/categories/blog/" title="blog">blog<sup>2</sup></a></li>
-		  
-		
-		  
-		
 		  
 		
 		  
