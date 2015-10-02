@@ -12,30 +12,27 @@
 
     
     <meta name="description" content="同源策略同源策略的存在限制了JS的释放范围
-何时生效当多个&amp;lt;iframe&amp;gt;标签或者打开其他浏览器窗口的时候策略生效
-脚本只能读取和所属文档来源相同的窗口和文档的属性
+何时生效当多个&amp;lt;iframe&amp;gt;标签或者打开其他浏览器窗口的时候策略生效脚本只能读取和所属文档来源相同的窗口和文档的属性
 文档来源判定协议,主机,载入文档的URL端口
 严格的同源策略?在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:
-1.网站存在多个子域例如a.exp.com需要读取来自b.exp.com的a.html里">
+1.网站存在多个子域例如a.exp.com需要读取来自b.exp.com的a.html里与">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Js学习笔记(2)">
-<meta property="og:url" content="http://a1ex.net/2015/10/01/ClientJS-2/index.html">
+<meta property="og:url" content="http://a1ex.net/2015/10/02/ClientJS-2/index.html">
 <meta property="og:site_name" content="A1exlism">
 <meta property="og:description" content="同源策略同源策略的存在限制了JS的释放范围
-何时生效当多个&amp;lt;iframe&amp;gt;标签或者打开其他浏览器窗口的时候策略生效
-脚本只能读取和所属文档来源相同的窗口和文档的属性
+何时生效当多个&amp;lt;iframe&amp;gt;标签或者打开其他浏览器窗口的时候策略生效脚本只能读取和所属文档来源相同的窗口和文档的属性
 文档来源判定协议,主机,载入文档的URL端口
 严格的同源策略?在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:
-1.网站存在多个子域例如a.exp.com需要读取来自b.exp.com的a.html里">
-<meta property="og:updated_time" content="2015-10-01T08:17:14.987Z">
+1.网站存在多个子域例如a.exp.com需要读取来自b.exp.com的a.html里与">
+<meta property="og:updated_time" content="2015-10-02T06:46:55.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Js学习笔记(2)">
 <meta name="twitter:description" content="同源策略同源策略的存在限制了JS的释放范围
-何时生效当多个&amp;lt;iframe&amp;gt;标签或者打开其他浏览器窗口的时候策略生效
-脚本只能读取和所属文档来源相同的窗口和文档的属性
+何时生效当多个&amp;lt;iframe&amp;gt;标签或者打开其他浏览器窗口的时候策略生效脚本只能读取和所属文档来源相同的窗口和文档的属性
 文档来源判定协议,主机,载入文档的URL端口
 严格的同源策略?在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:
-1.网站存在多个子域例如a.exp.com需要读取来自b.exp.com的a.html里">
+1.网站存在多个子域例如a.exp.com需要读取来自b.exp.com的a.html里与">
 <link rel="publisher" href="106896526077043230000">
 
     
@@ -93,14 +90,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/01/ClientJS-2/" title="Js学习笔记(2)" itemprop="url">Js学习笔记(2)</a>
+      <a href="/2015/10/02/ClientJS-2/" title="Js学习笔记(2)" itemprop="url">Js学习笔记(2)</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043230000?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-01T08:17:14.987Z" itemprop="datePublished"> 发表于 10-01-2015</time>
+    <time datetime="2015-10-02T06:46:55.271Z" itemprop="datePublished"> 发表于 10-02-2015</time>
     
   </p>
 </header>
@@ -114,21 +111,20 @@
 		</div>
 		
 		<h2 id="同源策略">同源策略</h2><p>同源策略的存在限制了JS的释放范围</p>
-<h3 id="何时生效">何时生效</h3><pre><code>当多个<span class="tag">&lt;<span class="title">iframe</span>&gt;</span>标签或者打开其他浏览器窗口的时候策略生效
-脚本只能读取和所属文档来源相同的窗口和文档的属性
-</code></pre><h4 id="文档来源判定">文档来源判定</h4><p>协议,主机,载入文档的URL端口</p>
+<h3 id="何时生效">何时生效</h3><p>当多个<code>&lt;iframe&gt;</code>标签或者打开其他浏览器窗口的时候策略生效<br>脚本只能读取和所属文档来源相同的窗口和文档的属性</p>
+<h4 id="文档来源判定">文档来源判定</h4><p>协议,主机,载入文档的URL端口</p>
 <h2 id="严格的同源策略?">严格的同源策略?</h2><p>在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:</p>
 <h3 id="1-网站存在多个子域">1.网站存在多个子域</h3><p>例如a.exp.com需要读取来自b.exp.com的a.html里与b.html均加入<br><code>document.domain = &quot;xxx.com&quot;;</code>   但是必须是共有的根域名,上则为exp.com,这样两个页面就可以互相操作了,也就实现了所谓的”跨域”.</p>
 <h3 id="2-跨资源共享(Corss-Origin_Resource_Sharing)">2.跨资源共享(Corss-Origin Resource Sharing)</h3><p>利用这个标准提供的”Origin”和对应的Access-Control-Allow-Origin: xxx.com来扩展http,可实现任意的http请求</p>
-<h3 id="3-跨文档消息(cross-document_messaging)">3.跨文档消息(cross-document messaging)</h3><pre><code>这个功能可以使一个文档的脚本直接一步传输给目标文档并允许执行.利用<span class="function"><span class="title">postMessage</span><span class="params">()</span></span>方法``
-</code></pre>  
+<h3 id="3-跨文档消息(cross-document_messaging)">3.跨文档消息(cross-document messaging)</h3><p>这个功能可以使一个文档的脚本直接一步传输给目标文档并允许执行.利用<code>postMessage()</code>方法</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/2015/10/01/ClientJS-2/" data-title="Js学习笔记(2) | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/2015/10/02/ClientJS-2/" data-title="Js学习笔记(2) | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -143,7 +139,7 @@
  
 
 <div class="next">
-<a href="/2015/10/01/ClientJS-1/"  title="Js学习笔记(1)">
+<a href="/2015/10/02/ClientJS-1/"  title="Js学习笔记(1)">
  <strong>下一篇：</strong><br/> 
  <span>Js学习笔记(1)
 </span>
@@ -154,7 +150,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/01/ClientJS-2/" data-title="Js学习笔记(2)" data-url="http://a1ex.net/2015/10/01/ClientJS-2/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/02/ClientJS-2/" data-title="Js学习笔记(2)" data-url="http://a1ex.net/2015/10/02/ClientJS-2/"></div>
 </section>
 
 
@@ -176,7 +172,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
+       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
     </div>
   </div>
 
@@ -184,7 +180,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">7</span></li></ul>
   </div>
 
 
@@ -202,7 +198,7 @@
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>4</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>3</sup></a></li>
 		  
 		
 		  
