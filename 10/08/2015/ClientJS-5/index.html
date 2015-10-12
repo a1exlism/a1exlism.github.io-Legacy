@@ -4,26 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>又是一年 | A1exlism</title>
+    <title>Js学习笔记(5) | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="小感慨反省一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)
-决心既来之,则安之入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,">
+    <meta name="description" content="节点Js的css选择器12345 document.querySelector(selectors);  //和css选择完全一样 document.querySelectorAll();   //返回Nodelist console.log(document.querySelector(&apos;[ &quot;]&apos;));//栗子&amp;lt;!-- 要加东西!!!! --&amp;gt;
+一些概念和代码nodeType">
 <meta property="og:type" content="article">
-<meta property="og:title" content="又是一年">
-<meta property="og:url" content="http://a1ex.net/10/08/2015/talk1/index.html">
+<meta property="og:title" content="Js学习笔记(5)">
+<meta property="og:url" content="http://a1ex.net/10/08/2015/ClientJS-5/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="小感慨反省一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)
-决心既来之,则安之入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,">
-<meta property="og:updated_time" content="2015-10-08T10:33:45.004Z">
+<meta property="og:description" content="节点Js的css选择器12345 document.querySelector(selectors);  //和css选择完全一样 document.querySelectorAll();   //返回Nodelist console.log(document.querySelector(&apos;[ &quot;]&apos;));//栗子&amp;lt;!-- 要加东西!!!! --&amp;gt;
+一些概念和代码nodeType">
+<meta property="og:updated_time" content="2015-10-12T14:48:09.366Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="又是一年">
-<meta name="twitter:description" content="小感慨反省一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)
-决心既来之,则安之入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,">
+<meta name="twitter:title" content="Js学习笔记(5)">
+<meta name="twitter:description" content="节点Js的css选择器12345 document.querySelector(selectors);  //和css选择完全一样 document.querySelectorAll();   //返回Nodelist console.log(document.querySelector(&apos;[ &quot;]&apos;));//栗子&amp;lt;!-- 要加东西!!!! --&amp;gt;
+一些概念和代码nodeType">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -81,7 +81,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/08/2015/talk1/" title="又是一年" itemprop="url">又是一年</a>
+      <a href="/10/08/2015/ClientJS-5/" title="Js学习笔记(5)" itemprop="url">Js学习笔记(5)</a>
   </h1>
   <p class="article-author">By
        
@@ -97,21 +97,29 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#小感慨"><span class="toc-number">1.</span> <span class="toc-text">小感慨</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#反省"><span class="toc-number">1.1.</span> <span class="toc-text">反省</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#决心"><span class="toc-number">1.2.</span> <span class="toc-text">决心</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小目标"><span class="toc-number">2.</span> <span class="toc-text">小目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#今后每个月来更新一次!"><span class="toc-number">3.</span> <span class="toc-text">今后每个月来更新一次!</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#节点"><span class="toc-number">1.</span> <span class="toc-text">节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Js的css选择器"><span class="toc-number">1.1.</span> <span class="toc-text">Js的css选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些概念和代码"><span class="toc-number">1.2.</span> <span class="toc-text">一些概念和代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#节点的增删改查"><span class="toc-number">2.</span> <span class="toc-text">节点的增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建"><span class="toc-number">2.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入"><span class="toc-number">2.2.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除和替换"><span class="toc-number">2.3.</span> <span class="toc-text">删除和替换</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h3 id="小感慨">小感慨</h3><h4 id="反省">反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
-<h4 id="决心">决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
-<h3 id="小目标">小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
-<h3 id="今后每个月来更新一次!">今后每个月来更新一次!</h3>  
+		<h2 id="节点">节点</h2><h3 id="Js的css选择器">Js的css选择器</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> document.querySelector(selectors);  //和css选择完全一样</span><br><span class="line"> document.querySelectorAll();   //返回Nodelist</span><br><span class="line"> console.log(document.querySelector('[</span><br><span class="line"> "]'));//栗子</span><br><span class="line">&lt;!-- 要加东西!!!! --&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="一些概念和代码">一些概念和代码</h3><p><a href="http://www.w3school.com.cn/jsref/prop_node_nodetype.asp" target="_blank" rel="external">nodeType</a>    :可用于遍历网页</p>
+<p>获取节点属性:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.attributes[<span class="string">"onload"</span>]; <span class="comment">//&lt;body&gt;的onload属性值</span></span><br></pre></td></tr></table></figure></p>
+<p>获取特定节点的html代码:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">''</span>).innerHTML;  <span class="comment">//以字符串形式展示  </span></span><br><span class="line">                                               .outerHTML;  <span class="comment">//outerHTML包含选中节点的html内容</span></span><br></pre></td></tr></table></figure></p>
+<p><a href="http://zhidao.baidu.com/link?url=cBshl-3vyhx2BKqVmQ1fnmB94xtfrQ6oBLxZHbZjs5jyltwQIVi3cH9GKOF9Zx4hxuJ7GO9R3UIXICsDEtjGwa" target="_blank" rel="external">CDATASection</a></p>
+<p>demo:查找某个节点的所有text节点<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> textContent = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> child,type,s = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span>(child = e.firstChild; child != <span class="literal">null</span>; child = child.nextSibling)&#123;</span><br><span class="line">        type = child.nodeType;</span><br><span class="line">        <span class="keyword">if</span>(type === <span class="number">3</span> || type === <span class="number">4</span>)    <span class="comment">//Text和CDATASection</span></span><br><span class="line">            s += child.nodeValue;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (type === <span class="number">1</span>)</span><br><span class="line">            s += textContent(child);    <span class="comment">//如果该节点是子节点(元素),节点递归</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="节点的增删改查">节点的增删改查</h2><h3 id="创建">创建</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> loadaync = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;   <span class="comment">//head头中插入一条外链js</span></span><br><span class="line">    <span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> s = <span class="built_in">document</span>.creatElement(<span class="string">"script"</span>);</span><br><span class="line">    s.src = url;</span><br><span class="line">    head.appendChild(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Text节点可以用如下方式创建:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newnode = <span class="built_in">document</span>.createTextNode(<span class="string">"New words"</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="插入">插入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> insertAt = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">parent, child, n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span> || n &gt;parent.childNodes.length)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Invalid index!"</span>);  <span class="comment">//对n的位置进行报错处理</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == parent.childNodes.length)</span><br><span class="line">        parent.appendChild(child);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        parent.insertBefore(child, parent.childNodes[n]);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="删除和替换">删除和替换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除</span></span><br><span class="line">n.parentNode.removeChild( n );  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//替换n节点</span></span><br><span class="line">n.parentNode.replaceChild( <span class="built_in">document</span>.creatTextNode(<span class="string">"[ Redacted ]"</span>),n);  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/10/08/2015/talk1/" data-title="又是一年 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/10/08/2015/ClientJS-5/" data-title="Js学习笔记(5) | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -125,18 +133,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/10/12/2015/leave101215/" title="离开社团">
+ <a href="/10/08/2015/talk1/" title="又是一年">
   <strong>上一篇：</strong><br/>
   <span>
-  离开社团</span>
+  又是一年</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/10/08/2015/ClientJS-5/"  title="Js学习笔记(5)">
+<a href="/10/06/2015/kali2Virtual/"  title="Kali2.0的虚拟机安装">
  <strong>下一篇：</strong><br/> 
- <span>Js学习笔记(5)
+ <span>Kali2.0的虚拟机安装
 </span>
 </a>
 </div>
@@ -145,7 +153,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="10/08/2015/talk1/" data-title="又是一年" data-url="http://a1ex.net/10/08/2015/talk1/"></div>
+	<div class="ds-thread" data-thread-key="10/08/2015/ClientJS-5/" data-title="Js学习笔记(5)" data-url="http://a1ex.net/10/08/2015/ClientJS-5/"></div>
 </section>
 
 
@@ -155,7 +163,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#小感慨"><span class="toc-number">1.</span> <span class="toc-text">小感慨</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#反省"><span class="toc-number">1.1.</span> <span class="toc-text">反省</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#决心"><span class="toc-number">1.2.</span> <span class="toc-text">决心</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小目标"><span class="toc-number">2.</span> <span class="toc-text">小目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#今后每个月来更新一次!"><span class="toc-number">3.</span> <span class="toc-text">今后每个月来更新一次!</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#节点"><span class="toc-number">1.</span> <span class="toc-text">节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Js的css选择器"><span class="toc-number">1.1.</span> <span class="toc-text">Js的css选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些概念和代码"><span class="toc-number">1.2.</span> <span class="toc-text">一些概念和代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#节点的增删改查"><span class="toc-number">2.</span> <span class="toc-text">节点的增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建"><span class="toc-number">2.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入"><span class="toc-number">2.2.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除和替换"><span class="toc-number">2.3.</span> <span class="toc-text">删除和替换</span></a></li></ol></li></ol>
  
   </div>
 
