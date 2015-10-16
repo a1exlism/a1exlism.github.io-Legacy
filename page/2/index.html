@@ -79,6 +79,182 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/10/02/2015/ClientJS-2/" title="Js学习笔记(2)" itemprop="url">Js学习笔记(2)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-01T16:00:00.000Z" itemprop="datePublished"> 发表于 10-02-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="同源策略">同源策略</h2><p>同源策略的存在限制了JS的释放范围</p>
+<h3 id="何时生效">何时生效</h3><p>当多个<code>&lt;iframe&gt;</code>标签或者打开其他浏览器窗口的时候策略生效<br>脚本只能读取和所属文档来源相同的窗口和文档的属性</p>
+<h4 id="文档来源判定">文档来源判定</h4><p>协议,主机,载入文档的URL端口</p>
+<h2 id="严格的同源策略?">严格的同源策略?</h2><p>在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:</p>
+<h3 id="1-网站存在多个子域">1.网站存在多个子域</h3><p>例如a.exp.com需要读取来自b.exp.com的a.html里与b.html均加入<br><code>document.domain = &quot;xxx.com&quot;;</code>   但是必须是共有的根域名,上则为exp.com,这样两个页面就可以互相操作了,也就实现了所谓的”跨域”.</p>
+<h3 id="2-跨资源共享(Corss-Origin_Resource_Sharing)">2.跨资源共享(Corss-Origin Resource Sharing)</h3><p>利用这个标准提供的”Origin”和对应的Access-Control-Allow-Origin: xxx.com来扩展http,可实现任意的http请求</p>
+<h3 id="3-跨文档消息(cross-document_messaging)">3.跨文档消息(cross-document messaging)</h3><p>这个功能可以使一个文档的脚本直接一步传输给目标文档并允许执行.利用<code>postMessage()</code>方法</p>
+<h2 id="跨站脚本(XSS)">跨站脚本(XSS)</h2><p>如果目标网页有存在html标签插入功能,而且后台并没有相应的过滤原则,则存在该风险.攻击者只需要加入XSS的Js脚本,通过<code>src=hack.js</code>插入或者直接执行js脚本</p>
+<h4 id="简单的防御">简单的防御</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name = name.replace(<span class="regexp">/&lt;/g</span>, <span class="string">"&amp;lt;"</span>).replace(<span class="regexp">/&gt;/g</span>, <span class="string">"&amp;gt;"</span>);</span><br></pre></td></tr></table></figure>
+<p>针对于IE存在一个<a href="https://msdn.microsoft.com/en-us/en_US/library/windows/apps/hh466094.aspx" target="_blank" rel="external">toStaticHTML()</a>的API,可以过滤相当一部分的标签</p>
+<h4 id="HTML5的安全策略">HTML5的安全策略</h4><p>HTML5中<code>&lt;iframe&gt;</code>定义了一个sandbox属性,实现之后允许显示不可信内容,但自动禁用脚本</p>
+<h2 id="DDoS">DDoS</h2><p>例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">  <span class="built_in">window</span>.open(<span class="string">'about:blank'</span>, <span class="string">''</span>, <span class="string">'width=645,height=550'</span>); <span class="comment">//窗体大小不填则创建新标签,否则创建新窗体</span></span><br><span class="line">&#125;<span class="comment">//请勿随便尝试= ,=</span></span><br></pre></td></tr></table></figure></p>
+<p>为了防止被聪明的浏览器检测到,使用<a href="http://www.w3school.com.cn/jsref/met_win_setinterval.asp" target="_blank" rel="external">window.setInterval()</a>来保证自己的生存</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/02/2015/ClientJS-2/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/02/2015/ClientJS-2/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/10/01/2015/ClientJS-1/" title="Js学习笔记(1)" itemprop="url">Js学习笔记(1)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-30T16:00:00.000Z" itemprop="datePublished"> 发表于 10-01-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="一步步走Js">一步步走Js</h2><p>一个小概念:<br>    文档(document):呈现静态信息的页面.<br>    document是window的其中一个对象<br>跳转新的界面:<br><code>window.location = &quot;http://www.google.com&quot;;</code><br>设置延迟:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">123</span>);&#125;,<span class="number">1000</span>)    <span class="comment">//1s后启动函数</span></span><br></pre></td></tr></table></figure></p>
+<p>查询元素,插入内容<br>        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(timestamp.firstChild == <span class="literal">null</span>)    </span><br><span class="line">            timestamp.appendChild(<span class="built_in">document</span>.createTextNode(<span class="keyword">new</span> <span class="built_in">Date</span>().toString()));</span><br><span class="line">    <span class="keyword">var</span> timestamp=<span class="built_in">document</span>.getElementById(<span class="string">"timestamp"</span>)</span><br><span class="line">        <span class="comment">//timestamp具有style和className属性</span></span><br></pre></td></tr></table></figure></p>
+<p>添加点击事件:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timestamp.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.innerHTML = <span class="keyword">new</span> <span class="built_in">Date</span>().toString();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>内容显示隐藏的简单实现:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">        <span class="class">.reveal</span> * <span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">none</span></span>;&#125;</span></span><br><span class="line">        <span class="class">.reveal</span> *<span class="class">.handle</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">block</span></span>;&#125;</span></span><br><span class="line">        <span class="comment">/*只有"handle"的元素显示*/</span></span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> elements = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"reveal"</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; elements.length;i++)&#123;</span><br><span class="line">                <span class="keyword">var</span> elt = elements[i];   <span class="comment">//elt为reveal元素节点</span></span><br><span class="line">                <span class="keyword">var</span> title = elt.getElementsByClassName(<span class="string">"handle"</span>)[<span class="number">0</span>];<span class="comment">//第一个handle类的元素</span></span><br><span class="line">                addRevealHandler(title,elt);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">addRevealHandler</span>(<span class="params">title,elt</span>) </span>&#123;</span><br><span class="line">                title.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (elt.className == <span class="string">"reveal"</span>)</span><br><span class="line">                        elt.className = <span class="string">"revealed"</span>;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (elt.className == <span class="string">"revealed"</span>)</span><br><span class="line">                        elt.className = <span class="string">"reveal"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"reveal"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span> <span class="attribute">class</span>=<span class="value">"handle"</span>&gt;</span>CLick here to Reveal Hidden Text<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span>This paragraph is hidden.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Js可以放在Url中实现,使用javascript:协议<br>for example:(所有浏览器均支持)<br>  <code>&lt;a href=&quot;javascript:alert(&#39;123&#39;);&quot;&gt;WTF?&lt;/a&gt;</code></li>
+</ul>
+<h3 id="针对IE的条件注释">针对IE的条件注释</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if IE6]&gt;</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/01/2015/ClientJS-1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/01/2015/ClientJS-1/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/09/28/2015/kali-install2/" title="将Kali安装到U盘" itemprop="url">将Kali安装到U盘</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-27T16:00:00.000Z" itemprop="datePublished"> 发表于 09-28-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="声明">声明</h2><p>此方法只在MBR引导情况下实现</p>
+<h3 id="准备">准备</h3><p>虚拟机(VM/VirtualBox)<br>download<a href="https://www.kali.org/downloads/" target="_blank" rel="external">Kali Linux</a></p>
+<h3 id="虚拟机操作">虚拟机操作</h3><ol>
+<li>正常创建一个新的虚拟机,选择稍后安装系统</li>
+<li>创建完之后,设置该虚拟机属性,cd/dvd中加载所要安装的ISO文件.</li>
+<li>将刚才创建的硬盘<code>移除</code>!,顺便检查一下USB驱动是否添加,是否为3.0</li>
+<li>运行虚拟机,进入开始画面之后插入U盘.出现如下画面显示我们的U盘正常识别,点击OK进行加载<img src="/imgs//kali install2/1.jpg" alt="1"></li>
+<li>之后按照下图指示进行连接(和宿主机切断连接),<br><img src="/imgs//kali install2/2.jpg" alt="2"></li>
+<li>之后就可以进行一般的GUI安装了.</li>
+</ol>
+<h3 id="x64位的Vt-x问题">x64位的Vt-x问题</h3><p>自己在安装的时候出现一个非常恶心的一个问题:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VMware提示VT-x未开启</span><br></pre></td></tr></table></figure></p>
+<p>搜索之后都说Bios中进行设置,然而我的bios是精简版的,支持但是没法开启.<br>搜了半天,发现电脑是<code>一直开着Vt-x的!</code>,360的主动防御干的好事:( ,虽然开启不启动,但是依然存在一个服务项,所以开虚拟机前先开启360,等到360提示关闭<code>晶核引擎</code>之后可以正常执行流程..</p>
+<h3 id="参考">参考</h3><p><a href="http://zdzhu.blog.51cto.com/6180070/1574543" target="_blank" rel="external">张舵主’Blog</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/09/28/2015/kali-install2/#comments" class="ds-thread-count comments-count-link" data-thread-key="09/28/2015/kali-install2/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/09/20/2015/kali-Install1/" title="Kali UEFI安装" itemprop="url">Kali UEFI安装</a>
   </h1>
   <p class="article-author">By
@@ -545,7 +721,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
+       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a>
     </div>
   </div>
 
@@ -553,7 +729,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
@@ -575,11 +751,15 @@
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>7</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>8</sup></a></li>
 		  
 		
 		  
 			<li><a href="/categories/blog/" title="blog">blog<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linux/" title="linux">linux<sup>3</sup></a></li>
 		  
 		
 		  
@@ -588,10 +768,6 @@
 		
 		  
 			<li><a href="/categories/技能树/" title="技能树">技能树<sup>2</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/杂谈/" title="杂谈">杂谈<sup>1</sup></a></li>
 		  
 		
 		</ul>

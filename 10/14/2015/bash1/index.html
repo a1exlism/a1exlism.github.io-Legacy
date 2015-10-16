@@ -4,35 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Js学习笔记(2) | A1exlism</title>
+    <title>bash基本命令1---命令/文件查询 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="同源策略同源策略的存在限制了JS的释放范围
-何时生效当多个&amp;lt;iframe&amp;gt;标签或者打开其他浏览器窗口的时候策略生效脚本只能读取和所属文档来源相同的窗口和文档的属性
-文档来源判定协议,主机,载入文档的URL端口
-严格的同源策略?在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:
-1.网站存在多个子域例如a.exp.com需要读取来自b.exp.com的a.html里与">
+    <meta name="description" content="文件查看file [-bLvz] 文件
+命令搜寻which [-a] 命令-a all
+文件搜寻1.whereis [-bmsu] file/folder//基于数据库-b binary only-m manual only-s source only-u except above three//不过似乎home文件不能查找..没卵用 drop it
+2.locate [-ir] keyword-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Js学习笔记(2)">
-<meta property="og:url" content="http://a1ex.net/10/02/2015/ClientJS-2/index.html">
+<meta property="og:title" content="bash基本命令1---命令/文件查询">
+<meta property="og:url" content="http://a1ex.net/10/14/2015/bash1/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="同源策略同源策略的存在限制了JS的释放范围
-何时生效当多个&amp;lt;iframe&amp;gt;标签或者打开其他浏览器窗口的时候策略生效脚本只能读取和所属文档来源相同的窗口和文档的属性
-文档来源判定协议,主机,载入文档的URL端口
-严格的同源策略?在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:
-1.网站存在多个子域例如a.exp.com需要读取来自b.exp.com的a.html里与">
-<meta property="og:updated_time" content="2015-10-06T13:28:24.888Z">
+<meta property="og:description" content="文件查看file [-bLvz] 文件
+命令搜寻which [-a] 命令-a all
+文件搜寻1.whereis [-bmsu] file/folder//基于数据库-b binary only-m manual only-s source only-u except above three//不过似乎home文件不能查找..没卵用 drop it
+2.locate [-ir] keyword-">
+<meta property="og:updated_time" content="2015-10-15T12:10:47.616Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Js学习笔记(2)">
-<meta name="twitter:description" content="同源策略同源策略的存在限制了JS的释放范围
-何时生效当多个&amp;lt;iframe&amp;gt;标签或者打开其他浏览器窗口的时候策略生效脚本只能读取和所属文档来源相同的窗口和文档的属性
-文档来源判定协议,主机,载入文档的URL端口
-严格的同源策略?在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:
-1.网站存在多个子域例如a.exp.com需要读取来自b.exp.com的a.html里与">
+<meta name="twitter:title" content="bash基本命令1---命令/文件查询">
+<meta name="twitter:description" content="文件查看file [-bLvz] 文件
+命令搜寻which [-a] 命令-a all
+文件搜寻1.whereis [-bmsu] file/folder//基于数据库-b binary only-m manual only-s source only-u except above three//不过似乎home文件不能查找..没卵用 drop it
+2.locate [-ir] keyword-">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -90,14 +87,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/02/2015/ClientJS-2/" title="Js学习笔记(2)" itemprop="url">Js学习笔记(2)</a>
+      <a href="/10/14/2015/bash1/" title="bash基本命令1---命令/文件查询" itemprop="url">bash基本命令1---命令/文件查询</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-01T16:00:00.000Z" itemprop="datePublished"> 发表于 10-02-2015</time>
+    <time datetime="2015-10-13T16:00:00.000Z" itemprop="datePublished"> 发表于 10-14-2015</time>
     
   </p>
 </header>
@@ -106,31 +103,26 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#同源策略"><span class="toc-number">1.</span> <span class="toc-text">同源策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#何时生效"><span class="toc-number">1.1.</span> <span class="toc-text">何时生效</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文档来源判定"><span class="toc-number">1.1.1.</span> <span class="toc-text">文档来源判定</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#严格的同源策略?"><span class="toc-number">2.</span> <span class="toc-text">严格的同源策略?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-网站存在多个子域"><span class="toc-number">2.1.</span> <span class="toc-text">1.网站存在多个子域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-跨资源共享(Corss-Origin_Resource_Sharing)"><span class="toc-number">2.2.</span> <span class="toc-text">2.跨资源共享(Corss-Origin Resource Sharing)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-跨文档消息(cross-document_messaging)"><span class="toc-number">2.3.</span> <span class="toc-text">3.跨文档消息(cross-document messaging)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跨站脚本(XSS)"><span class="toc-number">3.</span> <span class="toc-text">跨站脚本(XSS)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简单的防御"><span class="toc-number">3.0.1.</span> <span class="toc-text">简单的防御</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTML5的安全策略"><span class="toc-number">3.0.2.</span> <span class="toc-text">HTML5的安全策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DDoS"><span class="toc-number">4.</span> <span class="toc-text">DDoS</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件查看"><span class="toc-number">1.</span> <span class="toc-text">文件查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令搜寻"><span class="toc-number">2.</span> <span class="toc-text">命令搜寻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件搜寻"><span class="toc-number">3.</span> <span class="toc-text">文件搜寻</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-whereis_[-bmsu]_file/folder//基于数据库"><span class="toc-number">3.1.</span> <span class="toc-text">1.whereis [-bmsu] file/folder//基于数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-locate_[-ir]_keyword"><span class="toc-number">3.2.</span> <span class="toc-text">2.locate [-ir] keyword</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-_find"><span class="toc-number">3.3.</span> <span class="toc-text">3. find</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小提示&&结论"><span class="toc-number">4.</span> <span class="toc-text">小提示&&结论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="同源策略">同源策略</h2><p>同源策略的存在限制了JS的释放范围</p>
-<h3 id="何时生效">何时生效</h3><p>当多个<code>&lt;iframe&gt;</code>标签或者打开其他浏览器窗口的时候策略生效<br>脚本只能读取和所属文档来源相同的窗口和文档的属性</p>
-<h4 id="文档来源判定">文档来源判定</h4><p>协议,主机,载入文档的URL端口</p>
-<h2 id="严格的同源策略?">严格的同源策略?</h2><p>在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:</p>
-<h3 id="1-网站存在多个子域">1.网站存在多个子域</h3><p>例如a.exp.com需要读取来自b.exp.com的a.html里与b.html均加入<br><code>document.domain = &quot;xxx.com&quot;;</code>   但是必须是共有的根域名,上则为exp.com,这样两个页面就可以互相操作了,也就实现了所谓的”跨域”.</p>
-<h3 id="2-跨资源共享(Corss-Origin_Resource_Sharing)">2.跨资源共享(Corss-Origin Resource Sharing)</h3><p>利用这个标准提供的”Origin”和对应的Access-Control-Allow-Origin: xxx.com来扩展http,可实现任意的http请求</p>
-<h3 id="3-跨文档消息(cross-document_messaging)">3.跨文档消息(cross-document messaging)</h3><p>这个功能可以使一个文档的脚本直接一步传输给目标文档并允许执行.利用<code>postMessage()</code>方法</p>
-<h2 id="跨站脚本(XSS)">跨站脚本(XSS)</h2><p>如果目标网页有存在html标签插入功能,而且后台并没有相应的过滤原则,则存在该风险.攻击者只需要加入XSS的Js脚本,通过<code>src=hack.js</code>插入或者直接执行js脚本</p>
-<h4 id="简单的防御">简单的防御</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name = name.replace(<span class="regexp">/&lt;/g</span>, <span class="string">"&amp;lt;"</span>).replace(<span class="regexp">/&gt;/g</span>, <span class="string">"&amp;gt;"</span>);</span><br></pre></td></tr></table></figure>
-<p>针对于IE存在一个<a href="https://msdn.microsoft.com/en-us/en_US/library/windows/apps/hh466094.aspx" target="_blank" rel="external">toStaticHTML()</a>的API,可以过滤相当一部分的标签</p>
-<h4 id="HTML5的安全策略">HTML5的安全策略</h4><p>HTML5中<code>&lt;iframe&gt;</code>定义了一个sandbox属性,实现之后允许显示不可信内容,但自动禁用脚本</p>
-<h2 id="DDoS">DDoS</h2><p>例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">  <span class="built_in">window</span>.open(<span class="string">'about:blank'</span>, <span class="string">''</span>, <span class="string">'width=645,height=550'</span>); <span class="comment">//窗体大小不填则创建新标签,否则创建新窗体</span></span><br><span class="line">&#125;<span class="comment">//请勿随便尝试= ,=</span></span><br></pre></td></tr></table></figure></p>
-<p>为了防止被聪明的浏览器检测到,使用<a href="http://www.w3school.com.cn/jsref/met_win_setinterval.asp" target="_blank" rel="external">window.setInterval()</a>来保证自己的生存</p>
-  
+		<h3 id="文件查看">文件查看</h3><p>file [-bLvz] 文件</p>
+<h3 id="命令搜寻">命令搜寻</h3><p>which [-a] 命令<br>-a all</p>
+<h3 id="文件搜寻">文件搜寻</h3><h4 id="1-whereis_[-bmsu]_file/folder//基于数据库">1.whereis [-bmsu] file/folder//基于数据库</h4><p>-b binary only<br>-m manual only<br>-s source only<br>-u except above three<br>//不过似乎home文件不能查找..没卵用 drop it</p>
+<h4 id="2-locate_[-ir]_keyword">2.locate [-ir] keyword</h4><p>-i ignore uppercase/lowercase<br>-r using regexp<br>//可以进行日常查找,支持home等路径</p>
+<h4 id="3-_find">3. find</h4><p>find [Router] [option] [action]<br>time-&gt;<br>    -mtime n/+n/-n (n 为 number)<br>-newer file : 列出一个比file更新的文件<br>example:<br>    find tools -mtime 0 //24小时之内tools文件夹更改的地方<br>高级功能,按路径查找:<br>    find /etc/ password -mtime 0</p>
+<h3 id="小提示&amp;&amp;结论">小提示&amp;&amp;结论</h3><p><code>updatedb</code>可以更新搜索的datebase</p>
+<p>locate优点可以使用正则<br>find可以基于时间/路径查找</p>
+<p>三者选择:<br>    <code>find&gt;locate&gt;whereis</code></p>
+<h3 id="参考">参考</h3>  
 	</div>
 		<footer class="article-footer clearfix">
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/10/02/2015/ClientJS-2/" data-title="Js学习笔记(2) | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/10/14/2015/bash1/" data-title="bash基本命令1---命令/文件查询 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -144,18 +136,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/10/03/2015/ClientJS-4/" title="Js学习笔记(4)">
+ <a href="/10/15/2015/bash2/" title="bash基本命令2">
   <strong>上一篇：</strong><br/>
   <span>
-  Js学习笔记(4)</span>
+  bash基本命令2</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/10/01/2015/ClientJS-1/"  title="Js学习笔记(1)">
+<a href="/10/13/2015/ClientJS-6/"  title="Js学习笔记(6)">
  <strong>下一篇：</strong><br/> 
- <span>Js学习笔记(1)
+ <span>Js学习笔记(6)
 </span>
 </a>
 </div>
@@ -164,7 +156,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="10/02/2015/ClientJS-2/" data-title="Js学习笔记(2)" data-url="http://a1ex.net/10/02/2015/ClientJS-2/"></div>
+	<div class="ds-thread" data-thread-key="10/14/2015/bash1/" data-title="bash基本命令1---命令/文件查询" data-url="http://a1ex.net/10/14/2015/bash1/"></div>
 </section>
 
 
@@ -174,7 +166,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#同源策略"><span class="toc-number">1.</span> <span class="toc-text">同源策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#何时生效"><span class="toc-number">1.1.</span> <span class="toc-text">何时生效</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文档来源判定"><span class="toc-number">1.1.1.</span> <span class="toc-text">文档来源判定</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#严格的同源策略?"><span class="toc-number">2.</span> <span class="toc-text">严格的同源策略?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-网站存在多个子域"><span class="toc-number">2.1.</span> <span class="toc-text">1.网站存在多个子域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-跨资源共享(Corss-Origin_Resource_Sharing)"><span class="toc-number">2.2.</span> <span class="toc-text">2.跨资源共享(Corss-Origin Resource Sharing)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-跨文档消息(cross-document_messaging)"><span class="toc-number">2.3.</span> <span class="toc-text">3.跨文档消息(cross-document messaging)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跨站脚本(XSS)"><span class="toc-number">3.</span> <span class="toc-text">跨站脚本(XSS)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简单的防御"><span class="toc-number">3.0.1.</span> <span class="toc-text">简单的防御</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTML5的安全策略"><span class="toc-number">3.0.2.</span> <span class="toc-text">HTML5的安全策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DDoS"><span class="toc-number">4.</span> <span class="toc-text">DDoS</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件查看"><span class="toc-number">1.</span> <span class="toc-text">文件查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令搜寻"><span class="toc-number">2.</span> <span class="toc-text">命令搜寻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件搜寻"><span class="toc-number">3.</span> <span class="toc-text">文件搜寻</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-whereis_[-bmsu]_file/folder//基于数据库"><span class="toc-number">3.1.</span> <span class="toc-text">1.whereis [-bmsu] file/folder//基于数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-locate_[-ir]_keyword"><span class="toc-number">3.2.</span> <span class="toc-text">2.locate [-ir] keyword</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-_find"><span class="toc-number">3.3.</span> <span class="toc-text">3. find</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小提示&&结论"><span class="toc-number">4.</span> <span class="toc-text">小提示&&结论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
  
   </div>
 

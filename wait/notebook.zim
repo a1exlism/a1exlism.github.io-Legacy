@@ -1,0 +1,12 @@
+[Notebook]
+version=0.4
+name=wait
+interwiki=
+home=Home
+icon=~/Pictures/chrome.png
+document_root=~/Links/wait
+shared=True
+endofline=unix
+disable_trash=False
+profile=
+

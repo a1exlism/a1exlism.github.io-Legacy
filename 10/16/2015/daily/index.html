@@ -1,0 +1,528 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>linux日常更新 | A1exlism</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="A1ex">
+    
+
+    
+    <meta name="description" content="环境:debian8Commond压缩包
+*.tar 用 tar –xvf 解压 
+*.gz 用 gzip -d或者gunzip 解压 
+.tar.gz和.tgz 用 tar –xzf 解压 
+*.bz2 用 bzip2 -d或者用bunzip2 解压 
+*.tar.bz2用tar –xjf 解压 
+*.Z 用 uncompress 解压 
+*.tar.Z 用tar –xZf 解压 
+*.rar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux日常更新">
+<meta property="og:url" content="http://a1ex.net/10/16/2015/daily/index.html">
+<meta property="og:site_name" content="A1exlism">
+<meta property="og:description" content="环境:debian8Commond压缩包
+*.tar 用 tar –xvf 解压 
+*.gz 用 gzip -d或者gunzip 解压 
+.tar.gz和.tgz 用 tar –xzf 解压 
+*.bz2 用 bzip2 -d或者用bunzip2 解压 
+*.tar.bz2用tar –xjf 解压 
+*.Z 用 uncompress 解压 
+*.tar.Z 用tar –xZf 解压 
+*.rar">
+<meta property="og:updated_time" content="2015-10-16T15:47:17.605Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux日常更新">
+<meta name="twitter:description" content="环境:debian8Commond压缩包
+*.tar 用 tar –xvf 解压 
+*.gz 用 gzip -d或者gunzip 解压 
+.tar.gz和.tgz 用 tar –xzf 解压 
+*.bz2 用 bzip2 -d或者用bunzip2 解压 
+*.tar.bz2用tar –xjf 解压 
+*.Z 用 uncompress 解压 
+*.tar.Z 用tar –xZf 解压 
+*.rar">
+<link rel="publisher" href="106896526077043222500">
+
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="A1exlism" title="A1exlism"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="A1exlism">A1exlism</a></h1>
+				<h2 class="blog-motto">Coding and bloging~</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search">
+							<label>Search</label>
+						<input type="text" id="ts-search-input" name="q" size="30" placeholder="Find"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/10/16/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-16T15:47:17.605Z" itemprop="datePublished"> 发表于 10-16-2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境:debian8"><span class="toc-number">1.</span> <span class="toc-text">环境:debian8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Commond"><span class="toc-number">2.</span> <span class="toc-text">Commond</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩包"><span class="toc-number">2.1.</span> <span class="toc-text">压缩包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改默认编辑器"><span class="toc-number">2.2.</span> <span class="toc-text">修改默认编辑器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System"><span class="toc-number">3.</span> <span class="toc-text">System</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#桌面_文档等几个文件改成英文,便于terminal"><span class="toc-number">3.1.</span> <span class="toc-text">桌面 文档等几个文件改成英文,便于terminal</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference"><span class="toc-number">3.1.1.</span> <span class="toc-text">Reference</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置全局/apt-get代理"><span class="toc-number">3.2.</span> <span class="toc-text">设置全局/apt-get代理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#全局"><span class="toc-number">3.2.1.</span> <span class="toc-text">全局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Apt-get"><span class="toc-number">3.2.2.</span> <span class="toc-text">Apt-get</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference-1"><span class="toc-number">3.2.3.</span> <span class="toc-text">Reference</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备份"><span class="toc-number">3.3.</span> <span class="toc-text">备份</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sudo_su"><span class="toc-number">3.3.1.</span> <span class="toc-text">sudo su</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tar"><span class="toc-number">3.3.2.</span> <span class="toc-text">tar</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#增量备份"><span class="toc-number">3.3.3.</span> <span class="toc-text">增量备份</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#差别"><span class="toc-number">3.3.4.</span> <span class="toc-text">差别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference:"><span class="toc-number">3.3.5.</span> <span class="toc-text">Reference:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SoftWare"><span class="toc-number">4.</span> <span class="toc-text">SoftWare</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消"><span class="toc-number">4.1.</span> <span class="toc-text">Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference:-1"><span class="toc-number">4.1.1.</span> <span class="toc-text">Reference:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root帐号无法启动chrome"><span class="toc-number">4.2.</span> <span class="toc-text">root帐号无法启动chrome</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference-2"><span class="toc-number">4.2.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-number">5.</span> <span class="toc-text">Installation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sublime"><span class="toc-number">5.1.</span> <span class="toc-text">Sublime</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Device/Driver"><span class="toc-number">6.</span> <span class="toc-text">Device/Driver</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#网卡驱动"><span class="toc-number">6.1.</span> <span class="toc-text">网卡驱动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题"><span class="toc-number">6.1.1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#办法"><span class="toc-number">6.1.2.</span> <span class="toc-text">办法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference-3"><span class="toc-number">6.1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="环境:debian8">环境:debian8</h2><h2 id="Commond">Commond</h2><h3 id="压缩包">压缩包</h3><ol>
+<li>*.tar 用 tar –xvf 解压 </li>
+<li>*.gz 用 gzip -d或者gunzip 解压 </li>
+<li><em>.tar.gz和</em>.tgz 用 tar –xzf 解压 </li>
+<li>*.bz2 用 bzip2 -d或者用bunzip2 解压 </li>
+<li>*.tar.bz2用tar –xjf 解压 </li>
+<li>*.Z 用 uncompress 解压 </li>
+<li>*.tar.Z 用tar –xZf 解压 </li>
+<li>*.rar 用 unrar e解压 </li>
+<li>*.zip 用 unzip 解压</li>
+</ol>
+<h3 id="修改默认编辑器">修改默认编辑器</h3><pre><code>sudo update-alternatives --config <span class="keyword">editor</span>    <span class="comment">//内置可用,不适用sublime</span>
+</code></pre><h2 id="System">System</h2><h3 id="桌面_文档等几个文件改成英文,便于terminal">桌面 文档等几个文件改成英文,便于terminal</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.UTF-<span class="number">8</span> xdg-user-dirs-update</span><br><span class="line"><span class="comment">#如果注销重进失效,建议把 en_US 写到 ~/.config/user-dirs.locale 文件里再 xdg-user-dirs-update</span></span><br></pre></td></tr></table></figure>
+<h4 id="Reference">Reference</h4><p><a href="https://bbs.archlinuxcn.org/viewtopic.php?id=2488" target="_blank" rel="external">Archlinux-百合仙子</a><a href="http://blog.csdn.net/topgun_chenlingyun/article/details/8159550" target="_blank" rel="external">TOPFUN</a></p>
+<h3 id="设置全局/apt-get代理">设置全局/apt-get代理</h3><h4 id="全局">全局</h4><p><code>export http_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;
+export https_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;</code></p>
+<h4 id="Apt-get">Apt-get</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apt/apt.conf</span><br><span class="line"><span class="comment">#添加下列内容</span></span><br><span class="line">Acquire &#123;</span><br><span class="line">　　      http::proxy <span class="string">"http://user:pass@yourProxyAddress:port"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Reference-1">Reference</h4><p><a href="https://sites.google.com/site/debianpackageshare/Home/linux-tips/page-47" target="_blank" rel="external">@carlosloveleo</a></p>
+<h3 id="备份">备份</h3><h4 id="sudo_su">sudo su</h4><h4 id="tar">tar</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Data/Kali_bak/backup.tgz –exclude=/proc –exclude=/lost+found –exclude=/backup.tgz –exclude=/mnt –exclude=/sys</span><br></pre></td></tr></table></figure>
+<h4 id="增量备份">增量备份</h4><pre><code>tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span> /<span class="tag">var</span>
+tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span>.<span class="number">1</span> /var
+</code></pre><p>tar -cvpzf /media/gust/Data/Kali_bak/<code>backup.tgz.1</code> –exclude=/proc –exclude=/lost+found –exclude=/backup.tgz –exclude=/mnt –exclude=/sys</p>
+<h4 id="差别">差别</h4><p>差量备份:只备份上次完全备份以后有变化的数据(他针对的上次的完全备份,他备份过程中不清除存档属性)<br>增量备份:只备份上次备份以后有变化的数据.(他才不管是那种类型的备份,有变化的数据就备份,他会清除存档属性)</p>
+<h4 id="Reference:">Reference:</h4><p><a href="http://blog.chinaunix.net/uid-23225855-id-3182334.html" target="_blank" rel="external">一片浮云而已</a><br><a href="http://www.blogjava.net/MEYE/archive/2011/08/25/357250.html" target="_blank" rel="external">MEYE</a></p>
+<h2 id="SoftWare">SoftWare</h2><h3 id="Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消">Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消</h3><p>系统字体设置为<code>Droid Sans Fallback</code>,或者自己体验不错的,原生最好= =</p>
+<h4 id="Reference:-1">Reference:</h4><p><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=468448" target="_blank" rel="external">牛牛博客</a><br><a href="http://suselinks.us/how-to-fix-slow-typing-in-chrome-addressbar-in-linux/" target="_blank" rel="external">Ubuntu forum</a></p>
+<h3 id="root帐号无法启动chrome">root帐号无法启动chrome</h3><p><code>#vi /opt/google/chrome/google-chrome</code><br>在最后一行尾加入 —user-data-dir</p>
+<h4 id="Reference-2">Reference</h4><p><a href="http://blog.sina.com.cn/s/blog_40983e5e0101dhz0.html" target="_blank" rel="external">午后等风来</a></p>
+<h2 id="Installation">Installation</h2><h3 id="Sublime">Sublime</h3><p><a href="http://www.simonewebdesign.it/how-to-install-sublime-text-3-on-debian/" target="_blank" rel="external">how-to-install-sublime-text-3-on-debian</a></p>
+<h2 id="Device/Driver">Device/Driver</h2><h3 id="网卡驱动">网卡驱动</h3><h4 id="问题">问题</h4><p><code>网卡连接一段时间之后自动断开,只能重启</code></p>
+<h4 id="办法">办法</h4><ol>
+<li>前往github看看有没有自己的型号<a href="https://github.com/lwfinger/rtlwifi_new" target="_blank" rel="external">rtl-github</a>,如果有就clone下来<code>clone https://github.com/phuslu/goagent.git</code> </li>
+<li><p>或者下载zip之后解压<br>3.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> rtlwifi_new/</span><br><span class="line">sudo make </span><br><span class="line">sudo make install </span><br><span class="line">modprobe -v rtl8723be<span class="comment">#换成你自己的网卡型号</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭网卡的自动休眠<br><code>sudo echo &quot;options rtl8723be fwlps=0 swlps=0&quot; &gt; /etc/modprobe.d/rtl8723be.conf</code></p>
+</li>
+</ol>
+<h4 id="Reference-3">Reference</h4><p><a href="https://linux.cn/blog-10161-5871.html" target="_blank" rel="external">7th</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://a1ex.net/10/16/2015/daily/" data-title="linux日常更新 | A1exlism" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/10/16/2015/jsThis/"  title="Js--头疼的this">
+ <strong>下一篇：</strong><br/> 
+ <span>Js--头疼的this
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="10/16/2015/daily/" data-title="linux日常更新" data-url="http://a1ex.net/10/16/2015/daily/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境:debian8"><span class="toc-number">1.</span> <span class="toc-text">环境:debian8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Commond"><span class="toc-number">2.</span> <span class="toc-text">Commond</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩包"><span class="toc-number">2.1.</span> <span class="toc-text">压缩包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改默认编辑器"><span class="toc-number">2.2.</span> <span class="toc-text">修改默认编辑器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System"><span class="toc-number">3.</span> <span class="toc-text">System</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#桌面_文档等几个文件改成英文,便于terminal"><span class="toc-number">3.1.</span> <span class="toc-text">桌面 文档等几个文件改成英文,便于terminal</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference"><span class="toc-number">3.1.1.</span> <span class="toc-text">Reference</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置全局/apt-get代理"><span class="toc-number">3.2.</span> <span class="toc-text">设置全局/apt-get代理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#全局"><span class="toc-number">3.2.1.</span> <span class="toc-text">全局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Apt-get"><span class="toc-number">3.2.2.</span> <span class="toc-text">Apt-get</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference-1"><span class="toc-number">3.2.3.</span> <span class="toc-text">Reference</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备份"><span class="toc-number">3.3.</span> <span class="toc-text">备份</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sudo_su"><span class="toc-number">3.3.1.</span> <span class="toc-text">sudo su</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tar"><span class="toc-number">3.3.2.</span> <span class="toc-text">tar</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#增量备份"><span class="toc-number">3.3.3.</span> <span class="toc-text">增量备份</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#差别"><span class="toc-number">3.3.4.</span> <span class="toc-text">差别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference:"><span class="toc-number">3.3.5.</span> <span class="toc-text">Reference:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SoftWare"><span class="toc-number">4.</span> <span class="toc-text">SoftWare</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消"><span class="toc-number">4.1.</span> <span class="toc-text">Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference:-1"><span class="toc-number">4.1.1.</span> <span class="toc-text">Reference:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root帐号无法启动chrome"><span class="toc-number">4.2.</span> <span class="toc-text">root帐号无法启动chrome</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference-2"><span class="toc-number">4.2.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-number">5.</span> <span class="toc-text">Installation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sublime"><span class="toc-number">5.1.</span> <span class="toc-text">Sublime</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Device/Driver"><span class="toc-number">6.</span> <span class="toc-text">Device/Driver</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#网卡驱动"><span class="toc-number">6.1.</span> <span class="toc-text">网卡驱动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题"><span class="toc-number">6.1.1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#办法"><span class="toc-number">6.1.2.</span> <span class="toc-text">办法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference-3"><span class="toc-number">6.1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide"></a></div>
+<aside class="clearfix">
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+  </div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Collection/" title="Collection">Collection<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Wall/" title="Wall">Wall<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Web/" title="Web">Web<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/blog/" title="blog">blog<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linux/" title="linux">linux<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/心路/" title="心路">心路<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/技能树/" title="技能树">技能树<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://zh.wikipedia.org" target="_blank" title="Wiki">Wiki</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.w3cfuns.com/feres.php" target="_blank" title="W3cfuns">W3cfuns</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://hexo.io/" target="_blank" title="Hexo">Hexo</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Blog site <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/a1exlism" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/a1exlism" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		<a href="https://www.facebook.com/a1exlism" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		<a href="https://plus.google.com/106896526077043222500?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"a1exnet"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-63657599-1', 'a1ex.net');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<script>
+var option = {
+  engineKey: '0ebf6d79de6f09a2386e'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+</script>
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
