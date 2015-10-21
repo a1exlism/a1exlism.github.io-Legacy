@@ -5,23 +5,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>A1exlism</title>
+    <title>Js-URL/base64 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="12A1exlism   HDU-&amp;gt;立志在世界中获得各种成就勋章!">
+    <meta name="description" content="URLURL编码格式URL只能以ASCII码格式发送到服务器,由于很多字符超出ASCII码范围,所以需要进行url编码replaces with a &amp;quot;%&amp;quot; followed by two hexadecimal digits.URL传输过程中不能有空格(space).通常使用+或%20代替
+JS函数介绍一般情况下，最好选择encodeURIComponent（）。以下就简单说">
 <meta property="og:type" content="website">
-<meta property="og:title" content="A1exlism">
-<meta property="og:url" content="http://a1ex.net/about/index.html">
+<meta property="og:title" content="Js-URL/base64">
+<meta property="og:url" content="http://a1ex.net/wait/[废]jsEncode.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="12A1exlism   HDU-&amp;gt;立志在世界中获得各种成就勋章!">
-<meta property="og:updated_time" content="2015-10-02T14:15:11.429Z">
+<meta property="og:description" content="URLURL编码格式URL只能以ASCII码格式发送到服务器,由于很多字符超出ASCII码范围,所以需要进行url编码replaces with a &amp;quot;%&amp;quot; followed by two hexadecimal digits.URL传输过程中不能有空格(space).通常使用+或%20代替
+JS函数介绍一般情况下，最好选择encodeURIComponent（）。以下就简单说">
+<meta property="og:updated_time" content="2015-10-18T07:43:03.277Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A1exlism">
-<meta name="twitter:description" content="12A1exlism   HDU-&amp;gt;立志在世界中获得各种成就勋章!">
+<meta name="twitter:title" content="Js-URL/base64">
+<meta name="twitter:description" content="URLURL编码格式URL只能以ASCII码格式发送到服务器,由于很多字符超出ASCII码范围,所以需要进行url编码replaces with a &amp;quot;%&amp;quot; followed by two hexadecimal digits.URL传输过程中不能有空格(space).通常使用+或%20代替
+JS函数介绍一般情况下，最好选择encodeURIComponent（）。以下就简单说">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -79,27 +82,32 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/about/index.html" title="" itemprop="url"></a>
+      <a href="/wait/[废]jsEncode.html" title="Js-URL/base64" itemprop="url">Js-URL/base64</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-02T14:15:11.429Z" itemprop="datePublished"> 发表于 10-02-2015</time>
+    <time datetime="2015-10-16T16:00:00.000Z" itemprop="datePublished"> 发表于 10-17-2015</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">A1exlism</span></span><br><span class="line">   <span class="variable">HDU</span><span class="arrow">-&gt;</span>立志在世界中获得各种成就勋章<span class="exclamation_mark">!</span></span><br></pre></td></tr></table></figure>  
+		<h2 id="URL">URL</h2><h3 id="URL编码格式">URL编码格式</h3><p>URL只能以ASCII码格式发送到服务器,由于很多字符超出ASCII码范围,所以需要进行url编码<code>replaces with a &quot;%&quot; followed by two hexadecimal digits.</code><br>URL传输过程中不能有空格(space).通常使用<code>+</code>或<code>%20</code>代替</p>
+<h3 id="JS函数介绍">JS函数介绍</h3><blockquote><p>一般情况下，最好选择encodeURIComponent（）。<br>以下就简单说一下差异点：<br>escape（）<br>不编码的符号包括：@<em>/+<br>escape不编码+（加号），将使表单字段数据中有空白的处理（用+连接字串）造成问题。且escape在处理非ASCII语系的字元会有问题。所以，除非特例，应尽量避免使用escape（）。<br>encodeURI（）<br>不编码符号包括：~！@#$&amp;</em>（）=：/，；？+’<br>用encodeURI（）会比使用escape（）转换URI正确。比较要注意的是这个方法不处理’（单引号）。<br>encodeURIComponent（）<br>不编码符号包括：~！*（）’<br>encodeURIComponent（）是适合大部分单一URI的编码方法。这个方法通常可以正确的编出正确的编码，例如要编码一段有flash的html（参数有&amp;符号），如果用其他的方法，大概译码后flash也不能看了。比较要注意的是这个方法也不处理’（单引号）</p>
+<footer><strong>[. 小 . 提 . 示 .](http://diary.tw/march/tag/encodeURIComponent)</strong></footer></blockquote>
+<h3 id="JS代码实现">JS代码实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Reference">Reference</h3><p><a href="http://www.w3schools.com/tags/ref_urlencode.asp" target="_blank" rel="external">@W3school</a></p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/about/index.html" data-title="A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/wait/[废]jsEncode.html" data-title="Js-URL/base64 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -112,7 +120,7 @@
 	
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="about/index.html" data-title="" data-url="http://a1ex.net/about/index.html"></div>
+	<div class="ds-thread" data-thread-key="wait/[废]jsEncode.html" data-title="Js-URL/base64" data-url="http://a1ex.net/wait/[废]jsEncode.html"></div>
 </section>
 
 

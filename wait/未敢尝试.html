@@ -12,16 +12,16 @@
     
 
     
-    <meta name="description" content="12A1exlism   HDU-&amp;gt;立志在世界中获得各种成就勋章!">
+    <meta name="description" content="Nvidia显卡,双显123456789101112131415apt-get updateapt-get upgrade#apt-get install linux-headers-$(uname -r)apt-get install bumblebee bumblebee-nvidiavi  /etc/bumblebee/bumblebee.conf                 #22行改">
 <meta property="og:type" content="website">
 <meta property="og:title" content="A1exlism">
-<meta property="og:url" content="http://a1ex.net/about/index.html">
+<meta property="og:url" content="http://a1ex.net/wait/未敢尝试.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="12A1exlism   HDU-&amp;gt;立志在世界中获得各种成就勋章!">
-<meta property="og:updated_time" content="2015-10-02T14:15:11.429Z">
+<meta property="og:description" content="Nvidia显卡,双显123456789101112131415apt-get updateapt-get upgrade#apt-get install linux-headers-$(uname -r)apt-get install bumblebee bumblebee-nvidiavi  /etc/bumblebee/bumblebee.conf                 #22行改">
+<meta property="og:updated_time" content="2015-10-17T15:32:43.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A1exlism">
-<meta name="twitter:description" content="12A1exlism   HDU-&amp;gt;立志在世界中获得各种成就勋章!">
+<meta name="twitter:description" content="Nvidia显卡,双显123456789101112131415apt-get updateapt-get upgrade#apt-get install linux-headers-$(uname -r)apt-get install bumblebee bumblebee-nvidiavi  /etc/bumblebee/bumblebee.conf                 #22行改">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -79,27 +79,29 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/about/index.html" title="" itemprop="url"></a>
+      <a href="/wait/未敢尝试.html" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-02T14:15:11.429Z" itemprop="datePublished"> 发表于 10-02-2015</time>
+    <time datetime="2015-10-17T15:32:43.846Z" itemprop="datePublished"> 发表于 10-17-2015</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">A1exlism</span></span><br><span class="line">   <span class="variable">HDU</span><span class="arrow">-&gt;</span>立志在世界中获得各种成就勋章<span class="exclamation_mark">!</span></span><br></pre></td></tr></table></figure>  
+		<h1 id="Nvidia显卡,双显">Nvidia显卡,双显</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get upgrade</span><br><span class="line"><span class="comment">#apt-get install linux-headers-$(uname -r)</span></span><br><span class="line">apt-get install bumblebee bumblebee-nvidia</span><br><span class="line">vi  /etc/bumblebee/bumblebee.conf                 <span class="comment">#22行改成 Driver=nvidia</span></span><br><span class="line">lspci | egrep <span class="string">'VGA|3D'</span>|grep NVIDIA|cut <span class="operator">-d</span><span class="string">" "</span> <span class="operator">-f</span>1|sed <span class="string">'s/./:/'</span>    <span class="comment">#记住这行命令的结果</span></span><br><span class="line">vi /etc/bumblebee/xorg.conf.nvidia    <span class="comment">#  修改 #    BusID "PCI:01:00:0"  成上面获得的结果</span></span><br><span class="line">reboot   <span class="comment">#重启</span></span><br><span class="line">optirun glxgears -info           </span><br><span class="line"><span class="comment">#执行提示错误[ERROR]Cannot access secondary GPU - error: [XORG] (EE) No devices detected#vi  /etc/bumblebee/xorg.conf.nvidia   BusID的PCI地址写错了</span></span><br><span class="line"> <span class="comment">#执行提示错误[ERROR]Cannot access secondary GPU - error: Could not load GPU driver#vi /etc/bumblebee/bumblebee.conf   #KernelDriver=nvidia 改成 KernelDriver=nvidia-current#执行提示错误[ERROR]Cannot access secondary GPU - error: [XORG] (EE) /dev/dri/card0: failed to set DRM interface version 1.4: Permission denied#cat &gt;&gt;/etc/bumblebee/xorg.conf.nvidia &lt;&lt; EOF#Section "Screen" #Identifier "Default Screen"    #Device "DiscreteNvidia"EndSection#EOF#service bumblebeed restart正确安装后运行以下命令应该结果是</span></span><br><span class="line">root@H:/tmp<span class="comment"># glxinfo | grep -i "direct rendering"</span></span><br><span class="line">direct rendering: Yes</span><br><span class="line">root@H:/tmp<span class="comment"># optirun glxinfo | grep -i "direct rendering"</span></span><br><span class="line">direct rendering: Yes</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.hx99.net/Article/Tech/201502/36462.html" target="_blank" rel="external">华西网</a></p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/about/index.html" data-title="A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/wait/未敢尝试.html" data-title="A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -112,7 +114,7 @@
 	
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="about/index.html" data-title="" data-url="http://a1ex.net/about/index.html"></div>
+	<div class="ds-thread" data-thread-key="wait/未敢尝试.html" data-title="" data-url="http://a1ex.net/wait/未敢尝试.html"></div>
 </section>
 
 

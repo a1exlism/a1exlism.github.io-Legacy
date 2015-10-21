@@ -44,7 +44,7 @@
 			
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/" title="A1exlism">A1exlism</a></h1>
-				<h2 class="blog-motto">Coding and bloging~</h2>
+				<h2 class="blog-motto">Learning and bloging</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
@@ -79,14 +79,83 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/16/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
+      <a href="/10/21/2015/linuxMount/" title="分区挂载/自动加载" itemprop="url">分区挂载/自动加载</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-16T15:47:17.605Z" itemprop="datePublished"> 发表于 10-16-2015</time>
+    <time datetime="2015-10-20T16:00:00.000Z" itemprop="datePublished"> 发表于 10-21-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="分区挂载">分区挂载</h3><h4 id="mount命令">mount命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount [-t vfstype] [-o options] device dir</span><br></pre></td></tr></table></figure>
+<ol>
+<li>-t<br> vfstype类型选择 ——<code>可以不指定,系统自动选择</code><br>  iso9660            光盘/光盘映像<br>  vfat               fat32文件系统<br>  ntfs               ntfs文件系统</li>
+<li>-o<br> option 挂载设置<br>  ro:                read only(只读)<br>  rw:                read write(读写)<br>  loop:              把文件作为硬盘分区进行挂载<br>  iocharset:         指定该文件系统所用的字符集</li>
+<li>devie<br> 所要挂载的设备,可以通过<code>sudo fdisk -l</code>进行查询</li>
+<li>dir<br> 所需要挂载的目录,e.g: /media/data #data为目标挂载目录 </li>
+</ol>
+<h4 id="注意">注意</h4><p>在一般的user用户之下mount可能会出现权限问题,<code>chmod 777 挂载目录</code>可以使一般user也可以正常使用</p>
+<h3 id="开机自动挂载">开机自动挂载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/fstab</span><br></pre></td></tr></table></figure>
+<p>输入格式:<br>    <code>&lt;file system&gt;&lt;mount point&gt;&lt;type&gt;&lt;options&gt;&lt;dump&gt;&lt;pass&gt;</code><br>    挂载分区—挂载点(目录)—分区类型—挂载设置—dump备份设置—fsck磁盘检查设置</p>
+<h4 id="option参数">option参数</h4><pre><code>defaults: rw, suid, dev, <span class="keyword">exec</span>, auto, nouser, <span class="keyword">and</span> async.
+auto:           系统自动挂载,fstab默认就是这个选项
+nouser          只有root用户可以挂载
+ro <span class="keyword">read</span>         only只读权限
+rw <span class="keyword">read</span>         <span class="keyword">write</span>读写权限
+user            任何用户都可以挂载
+noauto          开机不自动挂载
+请注意<span class="string">`光驱和软驱只有在装有介质时才可以进行挂载,因此它是noauto`</span>
+</code></pre><h4 id="dump">dump</h4><p>当其值设置为1时,将允许dump备份程序备份；设置为0时,忽略备份操作；</p>
+<h4 id="fsck磁盘检查设置">fsck磁盘检查设置</h4><p>其值是一个顺序.当其值为0时,永远不检查；而 / 根目录分区永远都为1.其它分区从2开始,数字越小越先检查,如果两个分区的数字相同,则同时检查</p>
+<h3 id="Reference">Reference</h3><p>分区自动挂载—-<a href="http://www.bootf.com/582.html" target="_blank" rel="external">VPS管理百科</a><br>分区挂载—-<a href="http://qspy.is-programmer.com/posts/40900.html" target="_blank" rel="external">Qspy随手记</a></p>
+<h3 id="自己是这么挂载的">自己是这么挂载的</h3><p>mount -t ntfs -o rw /dev/sdb5 /media/gust       #挂载<br>/dev/sdb5 /media/gust ntfs-3g rw,user,auto 0 0  #自动挂载</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/21/2015/linuxMount/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/21/2015/linuxMount/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/10/20/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-20T11:51:02.401Z" itemprop="datePublished"> 发表于 10-20-2015</time>
     
   </p>
 </header>
@@ -106,7 +175,9 @@
 <h3 id="修改默认编辑器">修改默认编辑器</h3><pre><code>sudo update-alternatives --config <span class="keyword">editor</span>    <span class="comment">//内置可用,不适用sublime</span>
 </code></pre><h2 id="System">System</h2><h3 id="桌面_文档等几个文件改成英文,便于terminal">桌面 文档等几个文件改成英文,便于terminal</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.UTF-<span class="number">8</span> xdg-user-dirs-update</span><br><span class="line"><span class="comment">#如果注销重进失效,建议把 en_US 写到 ~/.config/user-dirs.locale 文件里再 xdg-user-dirs-update</span></span><br></pre></td></tr></table></figure>
 <h4 id="Reference">Reference</h4><p><a href="https://bbs.archlinuxcn.org/viewtopic.php?id=2488" target="_blank" rel="external">Archlinux-百合仙子</a><a href="http://blog.csdn.net/topgun_chenlingyun/article/details/8159550" target="_blank" rel="external">TOPFUN</a></p>
-<h3 id="设置全局/apt-get代理">设置全局/apt-get代理</h3><h4 id="全局">全局</h4><p><code>export http_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;
+<h3 id="删除">删除</h3><p>-i info 删除前逐一确认<br>-f force 直接删除<br>-r recursion 递归删除,即把该文件所有的内容都删除</p>
+<h4 id="————注意——————-">————注意——————-</h4><p>在linux没有回收站，所以在使用 rm 命令的时候，切记<code>文件或目录被删除之后就无法再恢复</code></p>
+<h4 id="————————————">————————————</h4><h3 id="设置全局/apt-get代理">设置全局/apt-get代理</h3><h4 id="全局">全局</h4><p><code>export http_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;
 export https_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;</code></p>
 <h4 id="Apt-get">Apt-get</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apt/apt.conf</span><br><span class="line"><span class="comment">#添加下列内容</span></span><br><span class="line">Acquire &#123;</span><br><span class="line">　　      http::proxy <span class="string">"http://user:pass@yourProxyAddress:port"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="Reference-1">Reference</h4><p><a href="https://sites.google.com/site/debianpackageshare/Home/linux-tips/page-47" target="_blank" rel="external">@carlosloveleo</a></p>
@@ -116,11 +187,26 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 </code></pre><p>tar -cvpzf /media/gust/Data/Kali_bak/<code>backup.tgz.1</code> –exclude=/proc –exclude=/lost+found –exclude=/backup.tgz –exclude=/mnt –exclude=/sys</p>
 <h4 id="差别">差别</h4><p>差量备份:只备份上次完全备份以后有变化的数据(他针对的上次的完全备份,他备份过程中不清除存档属性)<br>增量备份:只备份上次备份以后有变化的数据.(他才不管是那种类型的备份,有变化的数据就备份,他会清除存档属性)</p>
 <h4 id="Reference:">Reference:</h4><p><a href="http://blog.chinaunix.net/uid-23225855-id-3182334.html" target="_blank" rel="external">一片浮云而已</a><br><a href="http://www.blogjava.net/MEYE/archive/2011/08/25/357250.html" target="_blank" rel="external">MEYE</a></p>
+<h3 id="添加环境变量">添加环境变量</h3><h4 id="临时">临时</h4><p>参考:<a href="http://www.a1ex.net/10/15/2015/bash2/" target="_blank" rel="external">bash基本命令2</a></p>
+<h4 id="永久(lifetime)">永久(lifetime)</h4><p>所有用户:/etc/profile<br>独立用户:/root/.bashrc or /home/你的用户/.bashrc<br>添加:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PATH</span>:需要添加的路径"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="脚本自启动">脚本自启动</h3><h4 id="添加脚本头(可能也不需要吧-)">添加脚本头(可能也不需要吧..)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line"><span class="comment">### BEGIN INIT INFO</span></span><br><span class="line"><span class="comment">#file name : test 假设你自启动脚本名为test(没有.sh后缀）</span></span><br><span class="line"><span class="comment">### INIT INFO</span></span><br><span class="line">    Your Codes</span><br></pre></td></tr></table></figure>
+<h4 id="移动,更改权限">移动,更改权限</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mv <span class="built_in">test</span> /etc/init.d/</span><br><span class="line">sudo chmod <span class="number">775</span> /etc/init.d/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<h4 id="两种添加/删除方式">两种添加/删除方式</h4><ol>
+<li><p>insserv方式 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo insserv /etc/init.d/test   #&#21551;&#21160;&#26381;&#21153;&#10;sudo insserv -r /etc/init.d/test #&#21024;&#38500;&#26381;&#21153;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>update-rc.d </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo update-rc.d <span class="built_in">test</span> defaults <span class="number">95</span> <span class="comment">#启动服务 95为脚本启动顺序</span></span><br><span class="line">sudo update-rc.d <span class="operator">-f</span> /etc/init.d/<span class="built_in">test</span> remove <span class="comment">#删除服务</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="查看服务状态">查看服务状态</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/<span class="built_in">test</span> status <span class="comment">#查看服务状态/日志</span></span><br></pre></td></tr></table></figure>
+<h4 id="执行之后存在warning,测试好像没有影响">执行之后存在warning,测试好像没有影响</h4><h4 id="Reference-2">Reference</h4><p><a href="http://wenzhixin.net.cn/2013/10/30/debian_script_init" target="_blank" rel="external">文翼’s blog</a><br><a href="http://www.linuxidc.com/Linux/2011-12/48922.htm" target="_blank" rel="external">Linux 公社</a></p>
 <h2 id="SoftWare">SoftWare</h2><h3 id="Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消">Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消</h3><p>系统字体设置为<code>Droid Sans Fallback</code>,或者自己体验不错的,原生最好= =</p>
 <h4 id="Reference:-1">Reference:</h4><p><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=468448" target="_blank" rel="external">牛牛博客</a><br><a href="http://suselinks.us/how-to-fix-slow-typing-in-chrome-addressbar-in-linux/" target="_blank" rel="external">Ubuntu forum</a></p>
 <h3 id="root帐号无法启动chrome">root帐号无法启动chrome</h3><p><code>#vi /opt/google/chrome/google-chrome</code><br>在最后一行尾加入 —user-data-dir</p>
-<h4 id="Reference-2">Reference</h4><p><a href="http://blog.sina.com.cn/s/blog_40983e5e0101dhz0.html" target="_blank" rel="external">午后等风来</a></p>
-<h2 id="Installation">Installation</h2><h3 id="Sublime">Sublime</h3><p><a href="http://www.simonewebdesign.it/how-to-install-sublime-text-3-on-debian/" target="_blank" rel="external">how-to-install-sublime-text-3-on-debian</a></p>
+<h4 id="Reference-3">Reference</h4><p><a href="http://blog.sina.com.cn/s/blog_40983e5e0101dhz0.html" target="_blank" rel="external">午后等风来</a></p>
+<h3 id="Sublime">Sublime</h3><h4 id="Installation">Installation</h4><p><a href="http://www.simonewebdesign.it/how-to-install-sublime-text-3-on-debian/" target="_blank" rel="external">how-to-install-sublime-text-3-on-debian</a></p>
+<h4 id="浏览器打开当前文件">浏览器打开当前文件</h4><p>(= ,=发现只要尝试一下就能出代码..)<br><code>Tools -&gt; Build System -&gt; New Build System</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"shell_cmd"</span>: <span class="string">"google-chrome '<span class="variable">$file</span>'"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="Device/Driver">Device/Driver</h2><h3 id="网卡驱动">网卡驱动</h3><h4 id="问题">问题</h4><p><code>网卡连接一段时间之后自动断开,只能重启</code></p>
 <h4 id="办法">办法</h4><ol>
 <li>前往github看看有没有自己的型号<a href="https://github.com/lwfinger/rtlwifi_new" target="_blank" rel="external">rtl-github</a>,如果有就clone下来<code>clone https://github.com/phuslu/goagent.git</code> </li>
@@ -130,7 +216,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <li><p>关闭网卡的自动休眠<br><code>sudo echo &quot;options rtl8723be fwlps=0 swlps=0&quot; &gt; /etc/modprobe.d/rtl8723be.conf</code></p>
 </li>
 </ol>
-<h4 id="Reference-3">Reference</h4><p><a href="https://linux.cn/blog-10161-5871.html" target="_blank" rel="external">7th</a></p>
+<h4 id="Reference-4">Reference</h4><p><a href="https://linux.cn/blog-10161-5871.html" target="_blank" rel="external">7th</a></p>
 
         
         
@@ -145,7 +231,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/10/16/2015/daily/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/16/2015/daily/" data-count-type="comments">&nbsp;</a>
+		<a href="/10/20/2015/daily/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/20/2015/daily/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -178,23 +264,22 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 </header>
     <div class="article-content">
         
-        <h2 id="优先参考">优先参考</h2><p><a href="http://www.ibm.com/developerworks/cn/web/1207_wangqf_jsthis/" target="_blank" rel="external">IBM</a><br>推荐先看IBM的链接</p>
-<h3 id="正文">正文</h3><blockquote><p>在Java等面向对象的语言中，this关键字的含义是明确且具体的，即指代当前对象。一般在编译期确定下来，或称为编译期绑定.JavaScript中，this 是动态绑定，或称为运行期绑定.</p>
-<footer><strong>developerWorks中国</strong><cite>IBM</cite></footer></blockquote>
+        <h2 id="优先参考">优先参考</h2><p><a href="http://www.ibm.com/developerworks/cn/web/1207_wangqf_jsthis/" target="_blank" rel="external">IBM</a><br>推荐先看IBM的链接<br><blockquote><p>在Java等面向对象的语言中，this关键字的含义是明确且具体的，即指代当前对象。一般在编译期确定下来，或称为编译期绑定.JavaScript中，this 是动态绑定，或称为运行期绑定.</p>
+<footer><strong>developerWorks中国</strong><cite>IBM</cite></footer></blockquote></p>
 <p>然而javascript使用运行期绑定的this简直丧心病狂,啥对象都能变2333</p>
-<h4 id="this的四种调用">this的四种调用</h4><h5 id="1-作为对象方法调用">1.作为对象方法调用</h5><p>Note1.js:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> point = &#123; </span><br><span class="line">    x : <span class="number">0</span>, </span><br><span class="line">    y : <span class="number">0</span>, </span><br><span class="line">    moveTo : <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; </span><br><span class="line">       <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">       <span class="keyword">this</span>.x = <span class="keyword">this</span>.x + x; </span><br><span class="line">       <span class="keyword">this</span>.y = <span class="keyword">this</span>.y + y; </span><br><span class="line">       <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">       &#125; </span><br><span class="line">    &#125;; </span><br><span class="line">    point.moveTo(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="comment">//输出结果: 0   1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//moveTo()函数隶属于point对象,this即归为point对象</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="2-作为函数调用">2.作为函数调用</h5><p>Note2.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">noSense</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">    &#125;</span><br><span class="line">    noSense(<span class="number">5</span>);</span><br><span class="line">    alert(<span class="built_in">window</span>.x);    <span class="comment">//5</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//this跟着原型链向上递归查找,之后找到window对象,并进行绑定</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="this的四种调用">this的四种调用</h3><h4 id="1-作为对象方法调用">1.作为对象方法调用</h4><p>Note1.js:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> point = &#123; </span><br><span class="line">    x : <span class="number">0</span>, </span><br><span class="line">    y : <span class="number">0</span>, </span><br><span class="line">    moveTo : <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; </span><br><span class="line">       <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">       <span class="keyword">this</span>.x = <span class="keyword">this</span>.x + x; </span><br><span class="line">       <span class="keyword">this</span>.y = <span class="keyword">this</span>.y + y; </span><br><span class="line">       <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">       &#125; </span><br><span class="line">    &#125;; </span><br><span class="line">    point.moveTo(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="comment">//输出结果: 0   1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//moveTo()函数隶属于point对象,this即归为point对象</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="2-作为函数调用">2.作为函数调用</h4><p>Note2.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">noSense</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">    &#125;</span><br><span class="line">    noSense(<span class="number">5</span>);</span><br><span class="line">    alert(<span class="built_in">window</span>.x);    <span class="comment">//5</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//this跟着原型链向上递归查找,之后找到window对象,并进行绑定</span></span><br></pre></td></tr></table></figure></p>
 <p>Note3.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> point = &#123; </span><br><span class="line"> x : <span class="number">0</span>, </span><br><span class="line"> moveTo : <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">     <span class="comment">// 内部函数</span></span><br><span class="line">     <span class="keyword">var</span> moveX = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">     <span class="keyword">this</span>.x = x;<span class="comment">//this 绑定到了哪里？</span></span><br><span class="line">    &#125;; </span><br><span class="line">    moveX(x); </span><br><span class="line">    &#125; </span><br><span class="line"> &#125;; </span><br><span class="line"> point.moveTo(<span class="number">1</span>); </span><br><span class="line"> alert(point.x); <span class="comment">// 0 </span></span><br><span class="line"> <span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">//   1 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//虽然Note3.js在内部函数使用了this,但是this依然绑定了window对象</span></span><br></pre></td></tr></table></figure></p>
 <p>这属于<code>JavaSctipt的设计缺陷</code>,导致this无法绑定外层函数对象</p>
 <p>然而机智的JS玩家利用变量替换解决了这个问题,而替换this的变量一般命名为<code>that</code>,下面是修复的程序</p>
 <p>Note3Fix.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = &#123;</span><br><span class="line">x : <span class="number">0</span>, </span><br><span class="line">moveTo : <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">   alert(<span class="keyword">this</span>);    <span class="comment">//执行过程中,this还未绑定,alert-&gt;[object Object]</span></span><br><span class="line">   <span class="keyword">var</span> that = <span class="keyword">this</span>;    <span class="comment">//[个人理解为是一个继承,请无视!]</span></span><br><span class="line">   <span class="comment">// 内部函数</span></span><br><span class="line">   <span class="keyword">var</span> moveX = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">   that.x = x;</span><br><span class="line">   &#125;; </span><br><span class="line">   moveX(x); </span><br><span class="line">   &#125; </span><br><span class="line">&#125;; </span><br><span class="line">point.moveTo(<span class="number">1</span>); </span><br><span class="line">alert(point.x); <span class="comment">//   1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">//  一个无关的value</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="3-作为构造函数调用">3.作为构造函数调用</h5><p>Note4.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> Point = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x;</span><br><span class="line"> &#125;(<span class="number">1</span>);</span><br><span class="line"> alert(Point.x);    <span class="comment">//1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//JavaScript使用基于原型（prototype）的继承方式.相应的,JavaScript 中的构造函数也很特殊,如果不使用 new 调用,则和普通函数一样.作为又一项约定俗成的准则，构造函数以大写字母开头，提醒调用者使用正确的方式调用.如果调用正确，this 绑定到新创建的对象上--By IBM</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="4-apply/call调用">4.apply/call调用</h5><p>JS中万物皆对象,对象有方法,而apply和call即为<code>函数对象的方法</code>,他们允许切换函数执行的上下文环境(context)[即更换this绑定对象]</p>
+<h4 id="3-作为构造函数调用">3.作为构造函数调用</h4><p>Note4.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> Point = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x;</span><br><span class="line"> &#125;(<span class="number">1</span>);</span><br><span class="line"> alert(Point.x);    <span class="comment">//1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//JavaScript使用基于原型（prototype）的继承方式.相应的,JavaScript 中的构造函数也很特殊,如果不使用 new 调用,则和普通函数一样.作为又一项约定俗成的准则，构造函数以大写字母开头，提醒调用者使用正确的方式调用.如果调用正确，this 绑定到新创建的对象上--By IBM</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="4-apply/call调用">4.apply/call调用</h4><p>JS中万物皆对象,对象有方法,而apply和call即为<code>函数对象的方法</code>,他们允许切换函数执行的上下文环境(context)[即更换this绑定对象]</p>
 <p>Note5.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">    <span class="keyword">this</span>.x = x; </span><br><span class="line">    <span class="keyword">this</span>.y = y; </span><br><span class="line">    <span class="keyword">this</span>.moveTo = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">        <span class="keyword">this</span>.x = x; </span><br><span class="line">        <span class="keyword">this</span>.y = y; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">0</span>, <span class="number">0</span>); <span class="comment">//构造函数生成p1对象</span></span><br><span class="line"><span class="keyword">var</span> p2 = &#123;x: <span class="number">0</span>, y: <span class="number">0</span>&#125;; </span><br><span class="line">p1.moveTo(<span class="number">1</span>, <span class="number">1</span>); </span><br><span class="line">p1.moveTo.apply(p2, [<span class="number">10</span>, <span class="number">10</span>]);  <span class="comment">//apply()使p2可以完整的使用p1的方法,call同理</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="理解this,这个很重要">理解this,这个很重要</h4><p><a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/" target="_blank" rel="external">Understanding JavaScript Function Invocation and “this”</a>——Yehuda Katz表示:<br><code>作为函数调用时，this 绑定到全局对象；作为方法调用时，this 绑定到该方法所属的对象</code></p>
-<h4 id="执行环境因素(ExecutionContext)">执行环境因素(ExecutionContext)</h4><h5 id="Function-bind">Function.bind</h5><p>Note_1.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//code</span></span><br><span class="line">&#125;</span><br><span class="line">button.onclick = myObject.handler;  <span class="comment">//wrong</span></span><br><span class="line">button.onclick = lang.hitch(myObject, myObject.handler); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//这个handler自己不是很清楚.原文[IBM]..不过理解什么意思,函数return之前,this已经被绑定.so...</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="eval方法">eval方法</h5><p>eval()在执行中,()之内的this被eval完整继承</p>
-<h4 id="后记">后记</h4><p><a href="http://www.zhihu.com/question/19878052" target="_blank" rel="external">var foo = function(){}和function foo()的区别-知乎</a> 可以配合前面讲到的看看</p>
+<h3 id="理解this,这个很重要">理解this,这个很重要</h3><p><a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/" target="_blank" rel="external">Understanding JavaScript Function Invocation and “this”</a>——Yehuda Katz表示:<br><code>作为函数调用时，this 绑定到全局对象；作为方法调用时，this 绑定到该方法所属的对象</code></p>
+<h3 id="执行环境因素(ExecutionContext)">执行环境因素(ExecutionContext)</h3><h4 id="Function-bind">Function.bind</h4><p>Note_1.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//code</span></span><br><span class="line">&#125;</span><br><span class="line">button.onclick = myObject.handler;  <span class="comment">//wrong</span></span><br><span class="line">button.onclick = lang.hitch(myObject, myObject.handler); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//这个handler自己不是很清楚.原文[IBM]..不过理解什么意思,函数return之前,this已经被绑定.so...</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="eval方法">eval方法</h4><p>eval()在执行中,()之内的this被eval完整继承</p>
+<h3 id="后记">后记</h3><p><a href="http://www.zhihu.com/question/19878052" target="_blank" rel="external">var foo = function(){}和function foo()的区别-知乎</a> 可以配合前面讲到的看看</p>
 <p>[js在运行期进行绑定,又由于本身是解释性语言,所以使得this绑定很奇怪(个人见解,未论证,无视!)]</p>
 
         
@@ -244,7 +329,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
     <div class="article-content">
         
         <h3 id="创建简单的bash脚本">创建简单的bash脚本</h3><p>example.sh: //脚本放置于/home/tools/路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">"Input Sth:"</span> sth</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$sth</span> <span class="string">"is your inputs"</span></span><br><span class="line"><span class="built_in">exit</span> <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="创建环境变量,使-sh在任何路径下使用">创建环境变量,使.sh在任何路径下使用</h3><p>: 隔开路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mypath = /home/tools/</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$mypath</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="创建环境变量,使-sh在任何路径下使用">创建环境变量,使.sh在任何路径下使用</h3><p>: 隔开路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mypath=/home/tools/</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$mypath</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="给脚本添加执行权限">给脚本添加执行权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意路径</span></span><br><span class="line">chmod +x ./example.sh</span><br><span class="line"><span class="comment">#or</span></span><br><span class="line">chmod <span class="number">1</span> ./example.sh</span><br><span class="line"><span class="comment">#chmod </span></span><br><span class="line"><span class="comment"># 4  read | 2  write |  1 executive</span></span><br></pre></td></tr></table></figure>
 <h3 id="参考">参考</h3>
         
@@ -386,56 +471,6 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/08/2015/talk1/" title="又是一年" itemprop="url">又是一年</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-07T16:00:00.000Z" itemprop="datePublished"> 发表于 10-08-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="小感慨">小感慨</h3><h4 id="反省">反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
-<h4 id="决心">决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
-<h3 id="小目标">小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
-<h3 id="今后每个月来更新一次!">今后每个月来更新一次!</h3>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/08/2015/talk1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/08/2015/talk1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/10/08/2015/ClientJS-5/" title="Js学习笔记(5)" itemprop="url">Js学习笔记(5)</a>
   </h1>
   <p class="article-author">By
@@ -475,6 +510,56 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 	
 	  	<span></span>
 		<a href="/10/08/2015/ClientJS-5/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/08/2015/ClientJS-5/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/10/08/2015/talk1/" title="又是一年" itemprop="url">又是一年</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-07T16:00:00.000Z" itemprop="datePublished"> 发表于 10-08-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="小感慨">小感慨</h3><h4 id="反省">反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
+<h4 id="决心">决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
+<h3 id="小目标">小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
+<h3 id="今后每个月来更新一次!">今后每个月来更新一次!</h3>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/08/2015/talk1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/08/2015/talk1/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -611,61 +696,9 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/03/2015/ClientJS-4/" title="Js学习笔记(4)" itemprop="url">Js学习笔记(4)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-02T16:00:00.000Z" itemprop="datePublished"> 发表于 10-03-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="jQuery的$查询">jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="window">window</h2><h3 id="窗口">窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
-<h3 id="窗体">窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
-<h3 id="窗体/口之间的交互">窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">id</span>=<span class="value">'A'</span> <span class="attribute">src</span>=<span class="value">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="title">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">id</span>=<span class="value">'B'</span> <span class="attribute">src</span>=<span class="value">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="title">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/03/2015/ClientJS-4/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/03/2015/ClientJS-4/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
   </nav>
 
 </div>
@@ -679,7 +712,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Console/" style="font-size: 10px;">Console</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a>
+       <a href="/tags/Console-JS/" style="font-size: 10px;">Console JS</a> <a href="/tags/GoAgent/" style="font-size: 10px;">GoAgent</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a>
     </div>
   </div>
 
@@ -687,7 +720,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
@@ -717,7 +750,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 		  
 		
 		  
-			<li><a href="/categories/linux/" title="linux">linux<sup>3</sup></a></li>
+			<li><a href="/categories/linux/" title="linux">linux<sup>4</sup></a></li>
 		  
 		
 		  
