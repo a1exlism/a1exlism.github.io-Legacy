@@ -79,6 +79,66 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/10/03/2015/ClientJS-3/" title="Js学习笔记(3)" itemprop="url">Js学习笔记(3)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-02T16:00:00.000Z" itemprop="datePublished"> 发表于 10-03-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Window对象">Window对象</h2><h3 id="计时器">计时器</h3><hr>
+<h4 id="掌握">掌握</h4><pre><code>argument对象
+<span class="function"><span class="title">setTimeout</span><span class="params">(code,millisec)</span></span> 单次调用
+<span class="function"><span class="title">setInterval</span><span class="params">(code,millisec)</span></span>  循环调用
+</code></pre><h4 id="示例代码">示例代码</h4> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">invoke</span>(<span class="params">f, start, interval, end</span>)</span>&#123;   <span class="comment">//Target Function:f()</span></span><br><span class="line">    <span class="keyword">if</span> (!start)</span><br><span class="line">        start=<span class="number">0</span>;    <span class="comment">//默认设置为立即开始</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>.length &lt;= <span class="number">2</span>)</span><br><span class="line">        setTimeout(f,start);    <span class="comment">//单次调用</span></span><br><span class="line">    <span class="keyword">else</span>&#123;               <span class="comment">//多次调用</span></span><br><span class="line">        setTimeout(repeat,start);   <span class="comment">//start MS之后调用</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">repeat</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> h = setInterval(f,interval);</span><br><span class="line">            <span class="keyword">if</span>(end)</span><br><span class="line">                setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  <span class="comment">//end MS之后停止调用Interval()</span></span><br><span class="line">                    clearInterval(h);</span><br><span class="line">                &#125;,end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="number">666</span>);</span><br><span class="line">&#125;</span><br><span class="line">invoke(f,<span class="number">0</span>,<span class="number">50</span>,<span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+<p>Results : </p>
+<pre><code><span class="number">4</span>*<span class="comment">(666)</span>
+</code></pre><hr>
+<h3 id="关于URL">关于URL</h3><p>window对象的location属性引用了Location对象,表示该窗口中当前显示的文档URL<br> document.location 文档 首次 载入后保存的URL静态字符串<br> location可以赋值相对字符串,例如<code>location=&#39;404.html&#39;</code></p>
+<h4 id="掌握-1">掌握</h4><pre><code>search 属性是一个可读可写的字符串，可设置或返回当前 <span class="built_in">URL</span> 的查询部分（问号 ? 之后的部分）
+stringObject.substring(<span class="built_in">start</span>,<span class="built_in">stop</span>)    取一段字符
+stringObject.<span class="built_in">split</span>(separator,howmany) 字符串分割
+stringObject.indexOf(searchvalue,fromindex)   字符检索
+</code></pre><h4 id="例子">例子</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">urlAges</span>(<span class="params"></span>)</span>&#123;     <span class="comment">//URL参数解析函数</span></span><br><span class="line">    <span class="keyword">var</span> args = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> query = location.search.substring(<span class="number">1</span>);   <span class="comment">//获取url查询字符串</span></span><br><span class="line">    <span class="keyword">var</span> pairs = query.split(<span class="string">"&amp;"</span>);   <span class="comment">//此时的pairs为字符串数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;pairs.length ; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> pos = pairs[i].indexOf(<span class="string">'='</span>);    <span class="comment">//检测第一个'='</span></span><br><span class="line">        <span class="keyword">if</span>(pos == -<span class="number">1</span>)   <span class="comment">//indexOf()由-1开始进行(第一个检测的是0)</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">var</span> name = pairs[i].substring(<span class="number">0</span>,pos);</span><br><span class="line">        <span class="keyword">var</span> value = pairs[i].substring(pos+<span class="number">1</span>);</span><br><span class="line">        value = <span class="built_in">decodeURIComponent</span>(value);  <span class="comment">//value解码</span></span><br><span class="line">        args[name] = value; <span class="comment">//将value存储为args对象的name属性值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/03/2015/ClientJS-3/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/03/2015/ClientJS-3/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/10/03/2015/ClientJS-4/" title="Js学习笔记(4)" itemprop="url">Js学习笔记(4)</a>
   </h1>
   <p class="article-author">By
@@ -648,65 +708,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/03/30/2015/hello-hexo/" title="Hello Hexo" itemprop="url">Hello Hexo</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-03-29T16:00:00.000Z" itemprop="datePublished"> 发表于 03-30-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>感谢作者:</p>
-<ul>
-<li><a href="http://hexo.io/" target="_blank" rel="external">Hexo</a></li>
-<li><a href="http://wuchong.me/" title="Jacman" target="_blank" rel="external">Jacman</a></li>
-</ul>
-<p>这篇文章也顺便作为自己md的参考文本吧 : )</p>
-<h2 id="Start">Start</h2><h3 id="New_post">New post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``` bash</span><br><span class="line">          代码区_md语法</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/zh-cn/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Hexo的简单操作">Hexo的简单操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<h3 id="碰到的Hexo问题">碰到的Hexo问题</h3><ol>
-<li>hexo deploy失败的解决方案<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_config.yml--&gt;<span class="built_in">type</span> git(hexo <span class="number">3.0</span>)</span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/03/30/2015/hello-hexo/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/30/2015/hello-hexo/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
@@ -731,7 +732,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
@@ -753,19 +754,11 @@
 		  
 		
 		  
-		
-		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>8</sup></a></li>
-		  
-		
+			<li><a href="/categories/Web/" title="Web">Web<sup>9</sup></a></li>
 		  
 		
 		  
 			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
-		  
-		
-		  
-		
 		  
 		
 		</ul>
