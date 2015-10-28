@@ -5,26 +5,33 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>linux java安装 | A1exlism</title>
+    <title>Js--window VS Document | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="请以root账户进行下列操作下载通过JDK地址找到适合自己的jdk(不需要允许java许可协议,具体请移步TsingPost)下载的文件以tar.gz结尾,为了方便可以改名例如:java8.tar.gz
-解压移动cd /usr/libmkdir jvm #一些发行版可能提示已存在,可以升级java版本..进入java8.tar.gz所在目录tar -xzvf java8.tar解压之后,将文件移至">
+    <meta name="description" content="Document VS Window这张图基本能说明问题了
+the window contains everything, so you can call window.screen and window.document to get those elements
+Stackoverflow@JKirchartz
+123console.dir(window);console.dir(docume">
 <meta property="og:type" content="website">
-<meta property="og:title" content="linux java安装">
-<meta property="og:url" content="http://a1ex.net/wait/linuxJava.html">
+<meta property="og:title" content="Js--window VS Document">
+<meta property="og:url" content="http://a1ex.net/wait/jsD&W.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="请以root账户进行下列操作下载通过JDK地址找到适合自己的jdk(不需要允许java许可协议,具体请移步TsingPost)下载的文件以tar.gz结尾,为了方便可以改名例如:java8.tar.gz
-解压移动cd /usr/libmkdir jvm #一些发行版可能提示已存在,可以升级java版本..进入java8.tar.gz所在目录tar -xzvf java8.tar解压之后,将文件移至">
-<meta property="og:updated_time" content="2015-10-16T15:48:26.381Z">
+<meta property="og:description" content="Document VS Window这张图基本能说明问题了
+the window contains everything, so you can call window.screen and window.document to get those elements
+Stackoverflow@JKirchartz
+123console.dir(window);console.dir(docume">
+<meta property="og:image" content="http://a1ex.net/imgs/jsStudy/windowVSdocument.jpg">
+<meta property="og:updated_time" content="2015-10-26T16:24:13.613Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux java安装">
-<meta name="twitter:description" content="请以root账户进行下列操作下载通过JDK地址找到适合自己的jdk(不需要允许java许可协议,具体请移步TsingPost)下载的文件以tar.gz结尾,为了方便可以改名例如:java8.tar.gz
-解压移动cd /usr/libmkdir jvm #一些发行版可能提示已存在,可以升级java版本..进入java8.tar.gz所在目录tar -xzvf java8.tar解压之后,将文件移至">
+<meta name="twitter:title" content="Js--window VS Document">
+<meta name="twitter:description" content="Document VS Window这张图基本能说明问题了
+the window contains everything, so you can call window.screen and window.document to get those elements
+Stackoverflow@JKirchartz
+123console.dir(window);console.dir(docume">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -82,24 +89,25 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/wait/linuxJava.html" title="linux java安装" itemprop="url">linux java安装</a>
+      <a href="/wait/jsD&W.html" title="Js--window VS Document" itemprop="url">Js--window VS Document</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-13T16:00:00.000Z" itemprop="datePublished"> 发表于 10-14-2015</time>
+    <time datetime="2015-10-26T16:00:00.000Z" itemprop="datePublished"> 发表于 10-27-2015</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h2 id="请以root账户进行下列操作">请以root账户进行下列操作</h2><h3 id="下载">下载</h3><p>通过<a href="http://www.java.com/en/download/manual.jsp" target="_blank" rel="external">JDK地址</a>找到适合自己的jdk(不需要允许java许可协议,具体请移步<a href="http://www.tsingpost.com/index.php/archives/463/" target="_blank" rel="external">TsingPost</a>)<br>下载的文件以tar.gz结尾,为了方便可以改名例如:<code>java8.tar.gz</code></p>
-<h3 id="解压移动">解压移动</h3><p>cd /usr/lib<br>mkdir jvm #一些发行版可能提示已存在,可以升级java版本..<br>进入java8.tar.gz所在目录<code>tar -xzvf java8.tar</code><br>解压之后,将文件移至jvm文件夹 <code>mv jre1.8.0_60 /usr/lib/jvm</code></p>
-<h3 id="环境变量">环境变量</h3><p><code>sudo gedit .bashrc</code><br>在文件的结尾添加以下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jre1.<span class="number">8.0</span>_60	<span class="comment">#换成你改的名字	</span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
-<p><code>source ~/.bashrc</code> #重新读取一下让新加的代码生效</p>
-<h3 id="参考">参考</h3><p><a href="http://www.tsingpost.com/index.php/archives/463/" target="_blank" rel="external">TsingPost</a><br><a href="http://blog.bilicloud.com/?p=20" target="_blank" rel="external">BlackFox</a></p>
+		<h3 id="Document_VS_Window">Document VS Window</h3><p><img src="/imgs/jsStudy/windowVSdocument.jpg" alt="1"><br>这张图基本能说明问题了</p>
+<blockquote><p>the window contains everything, so you can call window.screen and window.document to get those elements</p>
+<footer><strong>Stackoverflow</strong><cite>@JKirchartz</cite></footer></blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.dir(<span class="built_in">window</span>);</span><br><span class="line"><span class="built_in">console</span>.dir(<span class="built_in">document</span>);</span><br><span class="line"><span class="built_in">console</span>.dir(screen);</span><br></pre></td></tr></table></figure>
+<p>可以看一下三者的输出结构(不过有点繁琐),顺便学习了console的新用法,直接输出dom结构</p>
+<h3 id="Reference">Reference</h3><p><a href="www.dreamdu.com">梦之都</a><br><a href="http://stackoverflow.com/questions/9895202/what-is-the-difference-between-window-screen-and-document-in-javascript" target="_blank" rel="external">stackoverflow</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -107,7 +115,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/wait/linuxJava.html" data-title="linux java安装 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/wait/jsD&W.html" data-title="Js--window VS Document | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -120,7 +128,7 @@
 	
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="wait/linuxJava.html" data-title="linux java安装" data-url="http://a1ex.net/wait/linuxJava.html"></div>
+	<div class="ds-thread" data-thread-key="wait/jsD&W.html" data-title="Js--window VS Document" data-url="http://a1ex.net/wait/jsD&W.html"></div>
 </section>
 
 
