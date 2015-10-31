@@ -79,20 +79,20 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/28/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
+      <a href="/10/31/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-28T01:07:18.219Z" itemprop="datePublished"> 发表于 10-28-2015</time>
+    <time datetime="2015-10-31T13:24:13.321Z" itemprop="datePublished"> 发表于 10-31-2015</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="环境:debian8">环境:debian8</h2><h2 id="Commond">Commond</h2><h3 id="压缩包">压缩包</h3><ol>
+        <h1 id="环境:debian8">环境:debian8</h1><h2 id="Commond">Commond</h2><h3 id="压缩包">压缩包</h3><ol>
 <li>*.tar 用 tar –xvf 解压 </li>
 <li>*.gz 用 gzip -d或者gunzip 解压 </li>
 <li><em>.tar.gz和</em>.tgz 用 tar –xzf 解压 </li>
@@ -105,25 +105,36 @@
 </ol>
 <h3 id="cmd打开图片">cmd打开图片</h3><p><code>display a.jpg</code>or <code>eog a.jpg</code></p>
 <h3 id="更改文件所属用户/组">更改文件所属用户/组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Code</span></span><br><span class="line">chown/chgrp userName fileName/floderName</span><br><span class="line"><span class="comment">#Example</span></span><br><span class="line">chown gust ~/home/genymotion</span><br><span class="line"><span class="comment">#将home目录的genymotion文件所属改为gust</span></span><br></pre></td></tr></table></figure>
+<h3 id="创建文件">创建文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ./test.txt</span><br></pre></td></tr></table></figure>
+<h3 id="删除">删除</h3><p>-i info 删除前逐一确认<br>-f force 直接删除<br>-r recursion 递归删除,即把该文件所有的内容都删除<br>————注意——————-</p>
+<h2 id="在linux没有回收站，所以在使用_rm_命令的时候，切记文件或目录被删除之后就无法再恢复">在linux没有回收站，所以在使用 rm 命令的时候，切记<code>文件或目录被删除之后就无法再恢复</code></h2><h3 id="快捷方式打开GUI文件夹">快捷方式打开GUI文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nautilus [option] /home/gust</span><br><span class="line"><span class="comment">#option --d&gt; manpage</span></span><br></pre></td></tr></table></figure>
 <h2 id="System">System</h2><h3 id="桌面_文档等几个文件改成英文,便于terminal">桌面 文档等几个文件改成英文,便于terminal</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.UTF-<span class="number">8</span> xdg-user-dirs-update</span><br><span class="line"><span class="comment">#如果注销重进失效,建议把 en_US 写到 ~/.config/user-dirs.locale 文件里再 xdg-user-dirs-update</span></span><br></pre></td></tr></table></figure>
-<h4 id="Reference">Reference</h4><p><a href="https://bbs.archlinuxcn.org/viewtopic.php?id=2488" target="_blank" rel="external">Archlinux-百合仙子</a><a href="http://blog.csdn.net/topgun_chenlingyun/article/details/8159550" target="_blank" rel="external">TOPFUN</a></p>
-<h3 id="删除">删除</h3><p>-i info 删除前逐一确认<br>-f force 直接删除<br>-r recursion 递归删除,即把该文件所有的内容都删除</p>
-<h4 id="————注意——————-">————注意——————-</h4><p>在linux没有回收站，所以在使用 rm 命令的时候，切记<code>文件或目录被删除之后就无法再恢复</code></p>
-<h4 id="————————————">————————————</h4><h3 id="设置全局/apt-get代理">设置全局/apt-get代理</h3><h4 id="全局">全局</h4><p><code>export http_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;
+<p>Reference:<br><a href="https://bbs.archlinuxcn.org/viewtopic.php?id=2488" target="_blank" rel="external">Archlinux-百合仙子</a><a href="http://blog.csdn.net/topgun_chenlingyun/article/details/8159550" target="_blank" rel="external">TOPFUN</a></p>
+<h3 id="手动添加快捷键">手动添加快捷键</h3><p><a href="http://blog.csdn.net/longerzone/article/details/8932751" target="_blank" rel="external">longerzone</a></p>
+<h3 id="设置全局/apt-get代理">设置全局/apt-get代理</h3><h4 id="全局">全局</h4><p><code>export http_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;
 export https_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;</code></p>
 <h4 id="Apt-get">Apt-get</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apt/apt.conf</span><br><span class="line"><span class="comment">#添加下列内容</span></span><br><span class="line">Acquire &#123;</span><br><span class="line">　　      http::proxy <span class="string">"http://user:pass@yourProxyAddress:port"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Reference-1">Reference</h4><p><a href="https://sites.google.com/site/debianpackageshare/Home/linux-tips/page-47" target="_blank" rel="external">@carlosloveleo</a></p>
+<p>Reference<br><a href="https://sites.google.com/site/debianpackageshare/Home/linux-tips/page-47" target="_blank" rel="external">@carlosloveleo</a></p>
 <h3 id="修改默认编辑器">修改默认编辑器</h3><pre><code>sudo update-alternatives --config <span class="keyword">editor</span>    <span class="comment">//内置可用,不适用sublime</span>
-</code></pre><h3 id="备份">备份</h3><h4 id="sudo_su">sudo su</h4><h4 id="tar">tar</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Data/Kali_bak/backup.tgz –exclude=/proc –exclude=/lost+found –exclude=/backup.tgz –exclude=/mnt –exclude=/sys</span><br></pre></td></tr></table></figure>
-<h4 id="增量备份">增量备份</h4><pre><code>tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span> /<span class="tag">var</span>
+</code></pre><h3 id="备份">备份</h3><ol>
+<li>sudo su</li>
+<li>tar<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Data/Kali_bak/backup.tgz –exclude=/proc –exclude=/lost+found –exclude=/backup.tgz –exclude=/mnt –exclude=/sys</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="增量备份及差别">增量备份及差别</h4><pre><code>tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span> /<span class="tag">var</span>
 tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span>.<span class="number">1</span> /var
-</code></pre><p>tar -cvpzf /media/gust/Data/Kali_bak/<code>backup.tgz.1</code> –exclude=/proc –exclude=/lost+found –exclude=/backup.tgz –exclude=/mnt –exclude=/sys</p>
-<h4 id="差别">差别</h4><p>差量备份:只备份上次完全备份以后有变化的数据(他针对的上次的完全备份,他备份过程中不清除存档属性)<br>增量备份:只备份上次备份以后有变化的数据.(他才不管是那种类型的备份,有变化的数据就备份,他会清除存档属性)</p>
-<h4 id="Reference:">Reference:</h4><p><a href="http://blog.chinaunix.net/uid-23225855-id-3182334.html" target="_blank" rel="external">一片浮云而已</a><br><a href="http://www.blogjava.net/MEYE/archive/2011/08/25/357250.html" target="_blank" rel="external">MEYE</a></p>
+</code></pre><p>tar -cvpzf /media/gust/Data/Kali_bak/<code>backup.tgz.1</code> –exclude=/proc –exclude=/lost+found –exclude=/backup.tgz –exclude=/mnt –exclude=/sys<br>差量备份:只备份上次完全备份以后有变化的数据(他针对的上次的完全备份,他备份过程中不清除存档属性)<br>增量备份:只备份上次备份以后有变化的数据.(他才不管是那种类型的备份,有变化的数据就备份,他会清除存档属性)</p>
+<p>Reference:<br><a href="http://blog.chinaunix.net/uid-23225855-id-3182334.html" target="_blank" rel="external">一片浮云而已</a><br><a href="http://www.blogjava.net/MEYE/archive/2011/08/25/357250.html" target="_blank" rel="external">MEYE</a></p>
 <h3 id="添加环境变量">添加环境变量</h3><h4 id="临时">临时</h4><p>参考:<a href="http://www.a1ex.net/10/15/2015/bash2/" target="_blank" rel="external">bash基本命令2</a></p>
 <h4 id="永久(lifetime)">永久(lifetime)</h4><p>所有用户:/etc/profile<br>独立用户:/root/.bashrc or /home/你的用户/.bashrc<br>添加:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PATH</span>:需要添加的路径"</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="脚本自启动">脚本自启动</h3><h4 id="添加脚本头(可能也不需要吧-)">添加脚本头(可能也不需要吧..)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line"><span class="comment">### BEGIN INIT INFO</span></span><br><span class="line"><span class="comment">#file name : test 假设你自启动脚本名为test(没有.sh后缀）</span></span><br><span class="line"><span class="comment">### INIT INFO</span></span><br><span class="line">    Your Codes</span><br></pre></td></tr></table></figure>
-<h4 id="移动,更改权限">移动,更改权限</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mv <span class="built_in">test</span> /etc/init.d/</span><br><span class="line">sudo chmod <span class="number">775</span> /etc/init.d/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<h3 id="脚本自启动">脚本自启动</h3><ol>
+<li><p>添加脚本头(可能也不需要吧..)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line"><span class="comment">### BEGIN INIT INFO</span></span><br><span class="line"><span class="comment">#file name : test 假设你自启动脚本名为test(没有.sh后缀）</span></span><br><span class="line"><span class="comment">### INIT INFO</span></span><br><span class="line">    Your Codes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移动,更改权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mv <span class="built_in">test</span> /etc/init.d/</span><br><span class="line">sudo chmod <span class="number">775</span> /etc/init.d/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <h4 id="两种添加/删除方式">两种添加/删除方式</h4><ol>
 <li><p>insserv方式 </p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo insserv /etc/init.d/test   #&#21551;&#21160;&#26381;&#21153;&#10;sudo insserv -r /etc/init.d/test #&#21024;&#38500;&#26381;&#21153;</span><br></pre></td></tr></table></figure>
@@ -133,30 +144,41 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 </li>
 </ol>
 <h4 id="查看服务状态">查看服务状态</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/<span class="built_in">test</span> status <span class="comment">#查看服务状态/日志</span></span><br></pre></td></tr></table></figure>
-<h4 id="执行之后存在warning,测试好像没有影响">执行之后存在warning,测试好像没有影响</h4><h4 id="Reference-2">Reference</h4><p><a href="http://wenzhixin.net.cn/2013/10/30/debian_script_init" target="_blank" rel="external">文翼’s blog</a><br><a href="http://www.linuxidc.com/Linux/2011-12/48922.htm" target="_blank" rel="external">Linux 公社</a></p>
-<h2 id="SoftWare">SoftWare</h2><h3 id="Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消">Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消</h3><p>系统字体设置为<code>Droid Sans Fallback</code>,或者自己体验不错的,原生最好= =</p>
-<h4 id="Reference:-1">Reference:</h4><p><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=468448" target="_blank" rel="external">牛牛博客</a><br><a href="http://suselinks.us/how-to-fix-slow-typing-in-chrome-addressbar-in-linux/" target="_blank" rel="external">Ubuntu forum</a></p>
-<h3 id="root帐号无法启动chrome">root帐号无法启动chrome</h3><p><code>#vi /opt/google/chrome/google-chrome</code><br>在最后一行尾加入 —user-data-dir</p>
-<h4 id="Reference-3">Reference</h4><p><a href="http://blog.sina.com.cn/s/blog_40983e5e0101dhz0.html" target="_blank" rel="external">午后等风来</a></p>
-<h3 id="手动添加快捷键">手动添加快捷键</h3><p><a href="http://blog.csdn.net/longerzone/article/details/8932751" target="_blank" rel="external">longerzone</a></p>
+<p>执行之后存在warning,测试好像没有影响</p>
+<p>Reference:<br><a href="http://wenzhixin.net.cn/2013/10/30/debian_script_init" target="_blank" rel="external">文翼’s blog</a><br><a href="http://www.linuxidc.com/Linux/2011-12/48922.htm" target="_blank" rel="external">Linux 公社</a></p>
+<h2 id="SoftWare">SoftWare</h2><h3 id="Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消">Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消</h3><p>系统字体设置为<code>Droid Sans Fallback</code>,或者自己体验不错的,原生最好= =<br>Reference:<br><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=468448" target="_blank" rel="external">牛牛博客</a><br><a href="http://suselinks.us/how-to-fix-slow-typing-in-chrome-addressbar-in-linux/" target="_blank" rel="external">Ubuntu forum</a></p>
+<h3 id="root帐号无法启动chrome">root帐号无法启动chrome</h3><p><code>#vi /opt/google/chrome/google-chrome</code><br>在最后一行尾加入 —user-data-dir<br>Reference:<br><a href="http://blog.sina.com.cn/s/blog_40983e5e0101dhz0.html" target="_blank" rel="external">午后等风来</a></p>
 <h3 id="Sublime">Sublime</h3><h4 id="Installation">Installation</h4><p><a href="http://www.simonewebdesign.it/how-to-install-sublime-text-3-on-debian/" target="_blank" rel="external">how-to-install-sublime-text-3-on-debian</a></p>
 <h4 id="浏览器打开当前文件">浏览器打开当前文件</h4><p>(= ,=发现只要尝试一下就能出代码..)<br><code>Tools -&gt; Build System -&gt; New Build System</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"shell_cmd"</span>: <span class="string">"google-chrome '<span class="variable">$file</span>'"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="linux_-java8">linux -java8</h3><p>请以root账户进行下列操作</p>
-<h4 id="下载">下载</h4><p>通过<a href="http://www.java.com/en/download/manual.jsp" target="_blank" rel="external">JDK地址</a>找到适合自己的jdk(不需要允许java许可协议,具体请移步<a href="http://www.tsingpost.com/index.php/archives/463/" target="_blank" rel="external">TsingPost</a>)<br>下载的文件以tar.gz结尾,为了方便可以改名例如:<code>java8.tar.gz</code></p>
-<h4 id="解压移动">解压移动</h4><p>cd /usr/lib<br>mkdir jvm #一些发行版可能提示已存在,可以升级java版本..<br>进入java8.tar.gz所在目录<code>tar -xzvf java8.tar</code><br>解压之后,将文件移至jvm文件夹 <code>mv jre1.8.0_60 /usr/lib/jvm</code></p>
-<h4 id="环境变量">环境变量</h4><p><code>sudo gedit .bashrc</code><br>在文件的结尾添加以下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jre1.<span class="number">8.0</span>_60   <span class="comment">#换成你改的名字    </span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>下载<br>通过<a href="http://www.java.com/en/download/manual.jsp" target="_blank" rel="external">JDK地址</a>找到适合自己的jdk(不需要允许java许可协议,具体请移步<a href="http://www.tsingpost.com/index.php/archives/463/" target="_blank" rel="external">TsingPost</a>)<br>下载的文件以tar.gz结尾,为了方便可以改名例如:<code>java8.tar.gz</code></li>
+<li>解压移动<br>cd /usr/lib<br>mkdir jvm #一些发行版可能提示已存在,可以升级java版本..<br>进入java8.tar.gz所在目录<code>tar -xzvf java8.tar</code><br>解压之后,将文件移至jvm文件夹 <code>mv jre1.8.0_60 /usr/lib/jvm</code></li>
+<li>环境变量<br><code>sudo gedit .bashrc</code><br>在文件的结尾添加以下内容<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jre1.<span class="number">8.0</span>_60   <span class="comment">#换成你改的名字    </span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <p><code>source ~/.bashrc</code> #重新读取一下让新加的代码生效</p>
-<h4 id="参考">参考</h4><p><a href="http://www.tsingpost.com/index.php/archives/463/" target="_blank" rel="external">TsingPost</a><br><a href="http://blog.bilicloud.com/?p=20" target="_blank" rel="external">BlackFox</a></p>
+<ol>
+<li>Reference:<br><a href="http://www.tsingpost.com/index.php/archives/463/" target="_blank" rel="external">TsingPost</a><br><a href="http://blog.bilicloud.com/?p=20" target="_blank" rel="external">BlackFox</a></li>
+</ol>
 <h2 id="Device/Driver">Device/Driver</h2><h3 id="网卡驱动">网卡驱动</h3><h4 id="问题">问题</h4><p><code>网卡连接一段时间之后自动断开,只能重启</code></p>
 <h4 id="办法">办法</h4><ol>
 <li>前往github看看有没有自己的型号<a href="https://github.com/lwfinger/rtlwifi_new" target="_blank" rel="external">rtl-github</a>,如果有就clone下来<code>clone https://github.com/phuslu/goagent.git</code> </li>
 <li><p>或者下载zip之后解压<br>3.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> rtlwifi_new/</span><br><span class="line">sudo make </span><br><span class="line">sudo make install </span><br><span class="line">modprobe -v rtl8723be<span class="comment">#换成你自己的网卡型号</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>关闭网卡的自动休眠<br><code>sudo echo &quot;options rtl8723be fwlps=0 swlps=0&quot; &gt; /etc/modprobe.d/rtl8723be.conf</code></p>
+<li><p>关闭网卡的自动休眠<br><code>sudo echo &quot;options rtl8723be fwlps=0 swlps=0&quot; &gt; /etc/modprobe.d/rtl8723be.conf</code><br>Reference:<br><a href="https://linux.cn/blog-10161-5871.html" target="_blank" rel="external">7th</a></p>
 </li>
 </ol>
-<h4 id="Reference-4">Reference</h4><p><a href="https://linux.cn/blog-10161-5871.html" target="_blank" rel="external">7th</a></p>
+<h3 id="连接路由LAN端口上网">连接路由LAN端口上网</h3><ol>
+<li><p>设置路由器的IP:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/resolv.conf</span><br><span class="line">nameserver <span class="number">192.168</span>.<span class="number">1.1</span></span><br><span class="line"><span class="comment">#192.168.1.1为网关地址,即路由器管理地址</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给本机添加IP(DHCP)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/network/interfaces</span><br><span class="line"><span class="comment">#--添加--</span></span><br><span class="line">auto eth0</span><br><span class="line">iface eth0 inet dhcp</span><br><span class="line"><span class="comment">#---</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>好像有点小BUG:<br>如果开机过程没有插网线,会一直搜索大概1分钟<br>Reference:<br><a href="http://tieba.baidu.com/p/3247330238" target="_blank" rel="external">贴吧</a></p>
 
         
         
@@ -171,7 +193,77 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/10/28/2015/daily/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/28/2015/daily/" data-count-type="comments">&nbsp;</a>
+		<a href="/10/31/2015/daily/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/31/2015/daily/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/10/30/2015/mySql1/" title="MySQL基础" itemprop="url">MySQL基础</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-29T16:00:00.000Z" itemprop="datePublished"> 发表于 10-30-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="基本数据查询">基本数据查询</h2><p>1.创建CREATE<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tablename (<span class="keyword">field</span> type [(<span class="keyword">size</span>)] [<span class="keyword">NOT</span> <span class="literal">NULL</span>]&#123;, <span class="keyword">field</span> type [(<span class="keyword">size</span>)] [<span class="keyword">NOT</span> <span class="literal">NULL</span>]...&#125;[,<span class="keyword">PRIMARY</span> <span class="keyword">KEY</span>(<span class="keyword">field</span>&#123;,<span class="keyword">field</span>...&#125;)]);</span></span><br></pre></td></tr></table></figure></p>
+<p>2.选择SELECT<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> id &lt; <span class="number">20</span> <span class="keyword">AND</span> age &gt; <span class="number">25</span>;</span></span><br></pre></td></tr></table></figure></p>
+<p>3.范围BETWEEN..AND<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> id <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">10</span>;</span></span><br></pre></td></tr></table></figure></p>
+<p>4.模糊查询LIKE<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">'%son'</span>;</span>  #比如找一个名字后缀为'son'的人</span><br></pre></td></tr></table></figure></p>
+<p>LIKE通配符:<br>  %   0或者更多字符<br>  _   任意一个字符<br>  []  指定范围内的任意单个字符<br>  [^] 不再指定范围内的任意单个字符<br>Example:<br>  Like”[CK]%” 返回以 C 或者 K 开始的任意字符串<br>  Like”[S-V]ing” 返回长为 4 个字符的字符串,结尾是”ing”,开始是从 S 到 V<br>  Like”M[^c]%” 返回以”M”开始且第二个字符不是”c”的任意字符串<br>5.创建昵称AS<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> name <span class="keyword">AS</span> 姓名 <span class="keyword">FROM</span> students ;</span></span><br></pre></td></tr></table></figure></p>
+<p>6.查询结果排序ORDER BY ASC升序DESC降序<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">'%son'</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> age <span class="keyword">ASC</span>,id <span class="keyword">DESC</span>;</span>#age优先排列</span><br></pre></td></tr></table></figure></p>
+<p>7.统计COUNT<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(id) <span class="keyword">FROM</span> students;</span> #查询id字段的行数</span><br></pre></td></tr></table></figure></p>
+<p>8.分组GROUP BY<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">GROUP</span> <span class="keyword">BY</span> age (<span class="keyword">HAVING</span> id &gt; <span class="number">5</span>);</span>  #括号可略,添加附加条件</span><br></pre></td></tr></table></figure></p>
+<p>9.联合查询UNION<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 前提是两个表字段一样--</span></span><br><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">UNION</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students_bak;</span>  #合并两个表的查询记录,Veen图的合并</span><br><span class="line"><span class="comment">-- 默认记录不重复,不过可以使用UNION ALL显示所有记录</span></span><br><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">UNION</span> <span class="keyword">ALL</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students_bak;</span></span><br></pre></td></tr></table></figure></p>
+<p>10.子查询/嵌套查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 该查询ORDER BY无效--</span></span><br><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> name = (<span class="keyword">SELECT</span> age <span class="keyword">FROM</span> <span class="keyword">WHERE</span> age = <span class="number">20</span>);</span></span><br></pre></td></tr></table></figure></p>
+<p><a href="http://www.jellythink.com/archives/932" target="_blank" rel="external">例1</a><br><a href="http://www.5idev.com/p-mysql_subquery.shtml" target="_blank" rel="external">例2</a></p>
+<h2 id="数据更新语句">数据更新语句</h2><ol>
+<li>INSERT</li>
+<li>UPDATE</li>
+<li>DELETE<!-- 过几天更新 -->
+</li>
+</ol>
+<h2 id="MySQL注释">MySQL注释</h2><ol>
+<li><h1 id="…">…</h1></li>
+<li>— ..  有个空格</li>
+<li>/<em>…</em>/</li>
+</ol>
+<h2 id="others">others</h2><p>不等于 &lt;&gt;</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/30/2015/mySql1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/30/2015/mySql1/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -223,6 +315,59 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 	
 	  	<span></span>
 		<a href="/10/27/2015/linuxPipe/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/27/2015/linuxPipe/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/10/27/2015/jsD-W/" title="Js--window VS Document" itemprop="url">Js--window VS Document</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-26T16:00:00.000Z" itemprop="datePublished"> 发表于 10-27-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="Document_VS_Window">Document VS Window</h3><p><img src="/imgs/jsStudy/windowVSdocument.jpg" alt="1"><br>这张图基本能说明问题了</p>
+<blockquote><p>the window contains everything, so you can call window.screen and window.document to get those elements</p>
+<footer><strong>Stackoverflow</strong><cite>@JKirchartz</cite></footer></blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.dir(<span class="built_in">window</span>);</span><br><span class="line"><span class="built_in">console</span>.dir(<span class="built_in">document</span>);</span><br><span class="line"><span class="built_in">console</span>.dir(screen);</span><br></pre></td></tr></table></figure>
+<p>可以看一下三者的输出结构(不过有点繁琐),顺便学习了console的新用法,直接输出dom结构</p>
+<h3 id="Reference">Reference</h3><p><a href="www.dreamdu.com">梦之都</a><br><a href="http://stackoverflow.com/questions/9895202/what-is-the-difference-between-window-screen-and-document-in-javascript" target="_blank" rel="external">stackoverflow</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/27/2015/jsD-W/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/27/2015/jsD-W/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -583,114 +728,6 @@ noauto          开机不自动挂载
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/08/2015/talk1/" title="又是一年" itemprop="url">又是一年</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-07T16:00:00.000Z" itemprop="datePublished"> 发表于 10-08-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="小感慨">小感慨</h3><h4 id="反省">反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
-<h4 id="决心">决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
-<h3 id="小目标">小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
-<h3 id="今后每个月来更新一次!">今后每个月来更新一次!</h3>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/08/2015/talk1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/08/2015/talk1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/08/2015/ClientJS-5/" title="Js学习笔记(5)" itemprop="url">Js学习笔记(5)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-07T16:00:00.000Z" itemprop="datePublished"> 发表于 10-08-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="节点">节点</h2><h3 id="Js的css选择器">Js的css选择器</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> document.querySelector(selectors);  //和css选择完全一样</span><br><span class="line"> document.querySelectorAll();   //返回Nodelist</span><br><span class="line"> console.log(document.querySelector('[</span><br><span class="line"> "]'));//栗子</span><br><span class="line">&lt;!-- 要加东西!!!! --&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="一些概念和代码">一些概念和代码</h3><p><a href="http://www.w3school.com.cn/jsref/prop_node_nodetype.asp" target="_blank" rel="external">nodeType</a>    :可用于遍历网页</p>
-<p>获取节点属性:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.attributes[<span class="string">"onload"</span>]; <span class="comment">//&lt;body&gt;的onload属性值</span></span><br></pre></td></tr></table></figure></p>
-<p>获取特定节点的html代码:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">''</span>).innerHTML;  <span class="comment">//以字符串形式展示  </span></span><br><span class="line">                                               .outerHTML;  <span class="comment">//outerHTML包含选中节点的html内容</span></span><br></pre></td></tr></table></figure></p>
-<p><a href="http://zhidao.baidu.com/link?url=cBshl-3vyhx2BKqVmQ1fnmB94xtfrQ6oBLxZHbZjs5jyltwQIVi3cH9GKOF9Zx4hxuJ7GO9R3UIXICsDEtjGwa" target="_blank" rel="external">CDATASection</a></p>
-<p>demo:查找某个节点的所有text节点<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> textContent = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> child,type,s = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span>(child = e.firstChild; child != <span class="literal">null</span>; child = child.nextSibling)&#123;</span><br><span class="line">        type = child.nodeType;</span><br><span class="line">        <span class="keyword">if</span>(type === <span class="number">3</span> || type === <span class="number">4</span>)    <span class="comment">//Text和CDATASection</span></span><br><span class="line">            s += child.nodeValue;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (type === <span class="number">1</span>)</span><br><span class="line">            s += textContent(child);    <span class="comment">//如果该节点是子节点(元素),节点递归</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="节点的增删改查">节点的增删改查</h2><h3 id="创建">创建</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> loadaync = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;   <span class="comment">//head头中插入一条外链js</span></span><br><span class="line">    <span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> s = <span class="built_in">document</span>.creatElement(<span class="string">"script"</span>);</span><br><span class="line">    s.src = url;</span><br><span class="line">    head.appendChild(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Text节点可以用如下方式创建:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newnode = <span class="built_in">document</span>.createTextNode(<span class="string">"New words"</span>);</span><br></pre></td></tr></table></figure></p>
-<h3 id="插入">插入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> insertAt = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">parent, child, n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span> || n &gt;parent.childNodes.length)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Invalid index!"</span>);  <span class="comment">//对n的位置进行报错处理</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == parent.childNodes.length)</span><br><span class="line">        parent.appendChild(child);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        parent.insertBefore(child, parent.childNodes[n]);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="删除和替换">删除和替换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除</span></span><br><span class="line">n.parentNode.removeChild( n );  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//替换n节点</span></span><br><span class="line">n.parentNode.replaceChild( <span class="built_in">document</span>.creatTextNode(<span class="string">"[ Redacted ]"</span>),n);  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/08/2015/ClientJS-5/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/08/2015/ClientJS-5/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -707,7 +744,7 @@ noauto          开机不自动挂载
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a>
+       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a>
     </div>
   </div>
 
@@ -715,7 +752,7 @@ noauto          开机不自动挂载
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
@@ -737,7 +774,7 @@ noauto          开机不自动挂载
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>9</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>10</sup></a></li>
 		  
 		
 		  
@@ -746,6 +783,10 @@ noauto          开机不自动挂载
 		
 		  
 			<li><a href="/categories/linux/" title="linux">linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/sql/" title="sql">sql<sup>1</sup></a></li>
 		  
 		
 		</ul>
