@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="A1exlism">
 <meta property="og:description" content="基本数据查询1.创建CREATE1CREATE TABLE tablename (field type [(size)] [NOT NULL]&amp;#123;, field type [(size)] [NOT NULL]...&amp;#125;[,PRIMARY KEY(field&amp;#123;,field...&amp;#125;)]);
 2.选择SELECT1SELECT * FROM students WHE">
-<meta property="og:updated_time" content="2015-10-30T13:09:08.027Z">
+<meta property="og:updated_time" content="2015-10-31T13:51:17.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL基础">
 <meta name="twitter:description" content="基本数据查询1.创建CREATE1CREATE TABLE tablename (field type [(size)] [NOT NULL]&amp;#123;, field type [(size)] [NOT NULL]...&amp;#125;[,PRIMARY KEY(field&amp;#123;,field...&amp;#125;)]);
@@ -97,7 +97,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本数据查询"><span class="toc-number">1.</span> <span class="toc-text">基本数据查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据更新语句"><span class="toc-number">2.</span> <span class="toc-text">数据更新语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL注释"><span class="toc-number">3.</span> <span class="toc-text">MySQL注释</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#…"><span class="toc-number"></span> <span class="toc-text">…</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#others"><span class="toc-number">1.</span> <span class="toc-text">others</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本数据查询"><span class="toc-number">1.</span> <span class="toc-text">基本数据查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据更新语句"><span class="toc-number">2.</span> <span class="toc-text">数据更新语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL注释"><span class="toc-number">3.</span> <span class="toc-text">MySQL注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#others"><span class="toc-number">4.</span> <span class="toc-text">others</span></a></li></ol>
 		
 		</div>
 		
@@ -105,7 +105,16 @@
 <p>2.选择SELECT<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> id &lt; <span class="number">20</span> <span class="keyword">AND</span> age &gt; <span class="number">25</span>;</span></span><br></pre></td></tr></table></figure></p>
 <p>3.范围BETWEEN..AND<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> id <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">10</span>;</span></span><br></pre></td></tr></table></figure></p>
 <p>4.模糊查询LIKE<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">'%son'</span>;</span>  #比如找一个名字后缀为'son'的人</span><br></pre></td></tr></table></figure></p>
-<p>LIKE通配符:<br>  %   0或者更多字符<br>  _   任意一个字符<br>  []  指定范围内的任意单个字符<br>  [^] 不再指定范围内的任意单个字符<br>Example:<br>  Like”[CK]%” 返回以 C 或者 K 开始的任意字符串<br>  Like”[S-V]ing” 返回长为 4 个字符的字符串,结尾是”ing”,开始是从 S 到 V<br>  Like”M[^c]%” 返回以”M”开始且第二个字符不是”c”的任意字符串<br>5.创建昵称AS<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> name <span class="keyword">AS</span> 姓名 <span class="keyword">FROM</span> students ;</span></span><br></pre></td></tr></table></figure></p>
+<p>LIKE通配符:</p>
+<pre><code><span class="comment">%   0或者更多字符</span>
+<span class="name">_</span>   任意一个字符
+[]  指定范围内的任意单个字符
+[^] 不再指定范围内的任意单个字符
+</code></pre><p>Example:</p>
+<pre><code><span class="keyword">Like</span><span class="string">"[CK]%"</span> 返回以 C 或者 K 开始的任意字符串
+<span class="keyword">Like</span><span class="string">"[S-V]ing"</span> 返回长为 <span class="number">4</span> 个字符的字符串,结尾是<span class="string">"ing"</span>,开始是从 S 到 V
+<span class="keyword">Like</span><span class="string">"M[^c]%"</span> 返回以<span class="string">"M"</span>开始且第二个字符不是<span class="string">"c"</span>的任意字符串
+</code></pre><p>5.创建昵称AS<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> name <span class="keyword">AS</span> 姓名 <span class="keyword">FROM</span> students ;</span></span><br></pre></td></tr></table></figure></p>
 <p>6.查询结果排序ORDER BY ASC升序DESC降序<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">'%son'</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> age <span class="keyword">ASC</span>,id <span class="keyword">DESC</span>;</span>#age优先排列</span><br></pre></td></tr></table></figure></p>
 <p>7.统计COUNT<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(id) <span class="keyword">FROM</span> students;</span> #查询id字段的行数</span><br></pre></td></tr></table></figure></p>
 <p>8.分组GROUP BY<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">GROUP</span> <span class="keyword">BY</span> age (<span class="keyword">HAVING</span> id &gt; <span class="number">5</span>);</span>  #括号可略,添加附加条件</span><br></pre></td></tr></table></figure></p>
@@ -119,11 +128,11 @@
 </li>
 </ol>
 <h2 id="MySQL注释">MySQL注释</h2><ol>
-<li><h1 id="…">…</h1></li>
-<li>— ..  有个空格</li>
-<li>/<em>…</em>/</li>
+<li><code>#...</code></li>
+<li><code>-- ..</code>  有个空格</li>
+<li><code>/*...*/</code></li>
 </ol>
-<h2 id="others">others</h2><p>不等于 &lt;&gt;</p>
+<h2 id="others">others</h2><p>不等于 <code>&lt;&gt;</code></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -175,7 +184,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本数据查询"><span class="toc-number">1.</span> <span class="toc-text">基本数据查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据更新语句"><span class="toc-number">2.</span> <span class="toc-text">数据更新语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL注释"><span class="toc-number">3.</span> <span class="toc-text">MySQL注释</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#…"><span class="toc-number"></span> <span class="toc-text">…</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#others"><span class="toc-number">1.</span> <span class="toc-text">others</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本数据查询"><span class="toc-number">1.</span> <span class="toc-text">基本数据查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据更新语句"><span class="toc-number">2.</span> <span class="toc-text">数据更新语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL注释"><span class="toc-number">3.</span> <span class="toc-text">MySQL注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#others"><span class="toc-number">4.</span> <span class="toc-text">others</span></a></li></ol>
  
   </div>
 
@@ -222,8 +231,6 @@
 		
 		  
 			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
-		  
-		
 		  
 		
 		  
