@@ -1,0 +1,494 @@
+
+  
+    <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>A1exlism</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="A1ex">
+    
+
+    
+    <meta name="description" content="cudaHashcat, advanced password recovery
+Usage: cudaHashcat [options]… hash|hashfile|hccapfile [dictionary|mask|directory]…
+=======
+Options
+General:
+-m,  —hash-type=NUM               Hash-type, see ref">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A1exlism">
+<meta property="og:url" content="http://a1ex.net/Others/wifi/cudaHashcat.html">
+<meta property="og:site_name" content="A1exlism">
+<meta property="og:description" content="cudaHashcat, advanced password recovery
+Usage: cudaHashcat [options]… hash|hashfile|hccapfile [dictionary|mask|directory]…
+=======
+Options
+General:
+-m,  —hash-type=NUM               Hash-type, see ref">
+<meta property="og:updated_time" content="2015-11-03T05:11:56.874Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A1exlism">
+<meta name="twitter:description" content="cudaHashcat, advanced password recovery
+Usage: cudaHashcat [options]… hash|hashfile|hccapfile [dictionary|mask|directory]…
+=======
+Options
+General:
+-m,  —hash-type=NUM               Hash-type, see ref">
+<link rel="publisher" href="106896526077043222500">
+
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+      <body>
+        <header>
+          
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="A1exlism" title="A1exlism"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="A1exlism">A1exlism</a></h1>
+				<h2 class="blog-motto">Learning and bloging</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search">
+							<label>Search</label>
+						<input type="text" id="ts-search-input" name="q" size="30" placeholder="Find"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+        </header>
+        <div id="container">
+          <div id="main" class="page" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Others/wifi/cudaHashcat.html" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-03T05:11:56.874Z" itemprop="datePublished"> 发表于 11-03-2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p>cudaHashcat, advanced password recovery</p>
+<p>Usage: cudaHashcat [options]… hash|hashfile|hccapfile [dictionary|mask|directory]…</p>
+<p>=======</p>
+<h1 id="Options">Options</h1><ul>
+<li><p>General:</p>
+<p>-m,  —hash-type=NUM               Hash-type, see references below<br>-a,  —attack-mode=NUM             Attack-mode, see references below<br>-V,  —version                     Print version<br>-h,  —help                        Print help</p>
+<pre><code>-<span class="ruby">-eula                        <span class="constant">Print</span> <span class="constant">EULA</span>
+</span>-<span class="ruby">-quiet                       <span class="constant">Suppress</span> output</span>
+</code></pre></li>
+<li><p>Benchmark:</p>
+<p>-b,  —benchmark                   Run benchmark</p>
+<pre><code>--<span class="keyword">benchmark-mode=NUM </span>         <span class="keyword">Benchmark-mode, </span>see references <span class="keyword">below</span>
+</code></pre></li>
+<li><p>Misc:</p>
+<pre><code>-<span class="ruby">-hex-charset                 <span class="constant">Assume</span> charset is given <span class="keyword">in</span> hex
+</span>-<span class="ruby">-hex-salt                    <span class="constant">Assume</span> salt is given <span class="keyword">in</span> hex
+</span>-<span class="ruby">-hex-wordlist                <span class="constant">Assume</span> words <span class="keyword">in</span> wordlist is given <span class="keyword">in</span> hex
+</span>-<span class="ruby">-force                       <span class="constant">Ignore</span> warnings
+</span>-<span class="ruby">-status                      <span class="constant">Enable</span> automatic update of the status-screen
+</span>-<span class="ruby">-status-timer=<span class="constant">NUM</span>            <span class="constant">Seconds</span> between status-screen update
+</span>-<span class="ruby">-status-automat              <span class="constant">Display</span> the status view <span class="keyword">in</span> a machine readable format
+</span>-<span class="ruby">-loopback                    <span class="constant">Add</span> new plains to induct directory
+</span>-<span class="ruby">-weak-hash-threshold=<span class="constant">NUM</span>     <span class="constant">Threshold</span> <span class="keyword">when</span> to stop checking <span class="keyword">for</span> weak hashes, default is <span class="number">100</span> salts</span>
+</code></pre></li>
+<li><p>Markov:</p>
+<pre><code>--<span class="keyword">markov-hcstat=FILE </span>         Specify hcstat file to use, default is hashcat.hcstat
+--<span class="keyword">markov-disable </span>             Disables <span class="keyword">markov-chains, </span>emulates classic <span class="keyword">brute-force
+</span>--<span class="keyword">markov-classic </span>             Enables classic <span class="keyword">markov-chains, </span>no per-position enhancement
+</code></pre><p>-t,  —markov-threshold=NUM        Threshold when to stop accepting new markov-chains</p>
+</li>
+<li><p>Session:</p>
+<pre><code>-<span class="ruby">-runtime=<span class="constant">NUM</span>                 <span class="constant">Abort</span> session after <span class="constant">NUM</span> seconds of runtime
+</span>-<span class="ruby">-session=<span class="constant">STR</span>                 <span class="constant">Define</span> specific session name
+</span>-<span class="ruby">-restore                     <span class="constant">Restore</span> session from --session
+</span>-<span class="ruby">-restore-disable             <span class="constant">Do</span> <span class="keyword">not</span> write restore file</span>
+</code></pre></li>
+<li><p>Files:</p>
+<p>-o,  —outfile=FILE                Define outfile for recovered hash</p>
+<pre><code>--<span class="keyword">outfile</span>-<span class="keyword">format</span>=NUM          Define <span class="keyword">outfile</span>-<span class="keyword">format</span> <span class="keyword">for</span> recovered hash, see references below
+--<span class="keyword">outfile</span>-autohex-disable     Disable the <span class="keyword">use</span> of <span class="label">$HEX</span>[] <span class="keyword">in</span> output plains
+--<span class="keyword">outfile</span>-check-<span class="keyword">timer</span>=NUM     Seconds between <span class="keyword">outfile</span> checks
+</code></pre><p>-p,  —separator=CHAR              Separator char for hashlists and outfile</p>
+<pre><code>-<span class="ruby">-show                        <span class="constant">Show</span> cracked passwords only
+</span>-<span class="ruby">-left                        <span class="constant">Show</span> un-cracked passwords only
+</span>-<span class="ruby">-username                    <span class="constant">Enable</span> ignoring of usernames <span class="keyword">in</span> hashfile (<span class="symbol">recommended:</span> also use --show)
+</span>-<span class="ruby">-remove                      <span class="constant">Enable</span> remove of hash once it is cracked
+</span>-<span class="ruby">-remove-timer=<span class="constant">NUM</span>            <span class="constant">Update</span> input hash file each <span class="constant">NUM</span> seconds
+</span>-<span class="ruby">-potfile-disable             <span class="constant">Do</span> <span class="keyword">not</span> write potfile
+</span>-<span class="ruby">-debug-mode=<span class="constant">NUM</span>              <span class="constant">Defines</span> the debug mode (hybrid only by using rules), see references below
+</span>-<span class="ruby">-debug-file=<span class="constant">FILE</span>             <span class="constant">Output</span> file <span class="keyword">for</span> debugging rules (see also --debug-mode)
+</span>-<span class="ruby">-induction-dir=<span class="constant">FOLDER</span>        <span class="constant">Specify</span> induction directory to use, default is <span class="variable">$session</span>.induct
+</span>-<span class="ruby">-outfile-check-dir=<span class="constant">FOLDER</span>    <span class="constant">Specify</span> the outfile directory which should be monitored, default is <span class="variable">$session</span>.outfiles
+</span>-<span class="ruby">-logfile-disable             <span class="constant">Disable</span> the logfile</span>
+</code></pre></li>
+<li><p>Resources:</p>
+<p>-c,  —segment-size=NUM            Size in MB to cache from the wordfile</p>
+<pre><code>-<span class="ruby">-bitmap-min=<span class="constant">NUM</span>              <span class="constant">Minimum</span> number of bits allowed <span class="keyword">for</span> bitmaps
+</span>-<span class="ruby">-bitmap-max=<span class="constant">NUM</span>              <span class="constant">Maximum</span> number of bits allowed <span class="keyword">for</span> bitmaps
+</span>-<span class="ruby">-cpu-affinity=<span class="constant">STR</span>            <span class="constant">Locks</span> to <span class="constant">CPU</span> devices, seperate with comma
+</span>-<span class="ruby">-gpu-async                   <span class="constant">Use</span> non-blocking async calls (<span class="constant">NV</span> only)</span>
+</code></pre><p>-d,  —gpu-devices=STR             Devices to use, separate with comma<br>-w,  —workload-profile=NUM        Enable a specific workload profile, see references below<br>-n,  —gpu-accel=NUM               Workload tuning: 1, 8, 40, 80, 160<br>-u,  —gpu-loops=NUM               Workload fine-tuning: 8 - 1024</p>
+<pre><code>-<span class="ruby">-gpu-temp-disable            <span class="constant">Disable</span> temperature <span class="keyword">and</span> fanspeed readings <span class="keyword">and</span> triggers
+</span>-<span class="ruby">-gpu-temp-abort=<span class="constant">NUM</span>          <span class="constant">Abort</span> session <span class="keyword">if</span> <span class="constant">GPU</span> temperature reaches <span class="constant">NUM</span> degrees celsius
+</span>-<span class="ruby">-gpu-temp-retain=<span class="constant">NUM</span>         <span class="constant">Try</span> to retain <span class="constant">GPU</span> temperature at <span class="constant">NUM</span> degrees celsius (<span class="constant">AMD</span> only)
+</span>-<span class="ruby">-powertune-enable            <span class="constant">Enable</span> automatic power tuning option (<span class="constant">AMD</span> <span class="constant">OverDrive</span> <span class="number">6</span> only)
+</span>-<span class="ruby">-scrypt-tmto=<span class="constant">NUM</span>             <span class="constant">Manually</span> override automatically calculated <span class="constant">TMTO</span> value <span class="keyword">for</span> scrypt</span>
+</code></pre></li>
+<li><p>Distributed:</p>
+<p>-s,  —skip=NUM                    Skip number of words<br>-l,  —limit=NUM                   Limit number of words</p>
+<pre><code>--keyspace                    Show keyspace <span class="keyword">base:mod </span>values <span class="keyword">and </span>quit
+</code></pre></li>
+<li><p>Rules:</p>
+<p>-j,  —rule-left=RULE              Single rule applied to each word from left dict<br>-k,  —rule-right=RULE             Single rule applied to each word from right dict<br>-r,  —rules-file=FILE             Rules-file, multi use: -r 1.rule -r 2.rule<br>-g,  —generate-rules=NUM          Generate NUM random rules</p>
+<pre><code>--generate-rules-func-min=NUM Force NUM functions per random <span class="keyword">rule</span> min
+--generate-rules-func-max=NUM Force NUM functions per random <span class="keyword">rule</span> max
+--generate-rules-seed=NUM     Force RNG seed to NUM
+</code></pre></li>
+<li><p>Custom charsets:</p>
+<p>-1,  —custom-charset1=CS          User-defined charsets<br>-2,  —custom-charset2=CS          Example:<br>-3,  —custom-charset3=CS          —custom-charset1=?dabcdef : sets charset ?1 to 0123456789abcdef<br>-4,  —custom-charset4=CS          -2 mycharset.hcchr : sets charset ?2 to chars contained in file</p>
+</li>
+<li><p>Increment:</p>
+<p>-i,  —increment                   Enable increment mode</p>
+<pre><code>--increment-min=NUM           <span class="built_in">Start</span> incrementing <span class="built_in">at</span> NUM
+--increment-max=NUM           Stop incrementing <span class="built_in">at</span> NUM
+</code></pre></li>
+</ul>
+<p>==========</p>
+<h1 id="References">References</h1><ul>
+<li><p>Workload Profile:</p>
+<p>  1 = Reduced performance profile (low latency desktop)<br>  2 = Default performance profile<br>  3 = Tuned   performance profile (high latency desktop)</p>
+</li>
+<li><p>Benchmark Settings:</p>
+<p>  0 = Manual Tuning<br>  1 = Performance Tuning, default</p>
+</li>
+<li><p>Outfile Formats:</p>
+<p>  1 = hash[:salt]<br>  2 = plain<br>  3 = hash[:salt]:plain<br>  4 = hex_plain<br>  5 = hash[:salt]:hex_plain<br>  6 = plain:hex_plain<br>  7 = hash[:salt]:plain:hex_plain<br>  8 = crackpos<br>  9 = hash[:salt]:crackpos<br> 10 = plain:crackpos<br> 11 = hash[:salt]:plain:crackpos<br> 12 = hex_plain:crackpos<br> 13 = hash[:salt]:hex_plain:crackpos<br> 14 = plain:hex_plain:crackpos<br> 15 = hash[:salt]:plain:hex_plain:crackpos</p>
+</li>
+<li><p>Debug mode output formats (for hybrid mode only, by using rules):</p>
+<p>  1 = save finding rule<br>  2 = save original word<br>  3 = save original word and finding rule<br>  4 = save original word, finding rule and modified plain</p>
+</li>
+<li><p>Built-in charsets:</p>
+<p> ?l = abcdefghijklmnopqrstuvwxyz<br> ?u = ABCDEFGHIJKLMNOPQRSTUVWXYZ<br> ?d = 0123456789<br> ?s =  !”#$%&amp;’()*+,-./:;&lt;=&gt;?@[]^_`{|}~<br> ?a = ?l?u?d?s<br> ?b = 0x00 - 0xff</p>
+</li>
+<li><p>Attack modes:</p>
+<p>  0 = Straight<br>  1 = Combination<br>  3 = Brute-force<br>  6 = Hybrid dict + mask<br>  7 = Hybrid mask + dict</p>
+</li>
+<li><p>Hash types:</p>
+</li>
+</ul>
+<p>[[ Roll-your-own: Raw Hashes ]]</p>
+<pre><code><span class="attribute">900 </span>=<span class="string"> MD4
+  0 = MD5</span>
+</code></pre><p>   5100 = Half MD5<br>    100 = SHA1<br>  10800 = SHA-384<br>   1400 = SHA-256<br>   1700 = SHA-512<br>   5000 = SHA-3(Keccak)<br>  10100 = SipHash<br>   6000 = RipeMD160<br>   6100 = Whirlpool<br>   6900 = GOST R 34.11-94<br>  11700 = GOST R 34.11-2012 (Streebog) 256-bit<br>  11800 = GOST R 34.11-2012 (Streebog) 512-bit</p>
+<p>[[ Roll-your-own: Iterated and / or Salted Hashes ]]</p>
+<pre><code><span class="number">10</span> = <span class="function"><span class="title">md5</span><span class="params">(<span class="variable">$pass</span>.<span class="variable">$salt</span>)</span></span>
+<span class="number">20</span> = <span class="function"><span class="title">md5</span><span class="params">(<span class="variable">$salt</span>.<span class="variable">$pass</span>)</span></span>
+<span class="number">30</span> = <span class="function"><span class="title">md5</span><span class="params">(unicode(<span class="variable">$pass</span>)</span></span>.<span class="variable">$salt</span>)
+<span class="number">40</span> = <span class="function"><span class="title">md5</span><span class="params">(<span class="variable">$salt</span>.unicode(<span class="variable">$pass</span>)</span></span>)
+</code></pre><p>   3800 = md5($salt.$pass.$salt)<br>   3710 = md5($salt.md5($pass))<br>   2600 = md5(md5($pass)<br>   4300 = md5(strtoupper(md5($pass)))<br>   4400 = md5(sha1($pass))<br>    110 = sha1($pass.$salt)<br>    120 = sha1($salt.$pass)<br>    130 = sha1(unicode($pass).$salt)<br>    140 = sha1($salt.unicode($pass))<br>   4500 = sha1(sha1($pass)<br>   4700 = sha1(md5($pass))<br>   4900 = sha1($salt.$pass.$salt)<br>   1410 = sha256($pass.$salt)<br>   1420 = sha256($salt.$pass)<br>   1430 = sha256(unicode($pass).$salt)<br>   1440 = sha256($salt.unicode($pass))<br>   1710 = sha512($pass.$salt)<br>   1720 = sha512($salt.$pass)<br>   1730 = sha512(unicode($pass).$salt)<br>   1740 = sha512($salt.unicode($pass))</p>
+<p>[[ Roll-your-own: Authenticated Hashes ]]</p>
+<pre><code> <span class="number">50</span> = HMAC-MD5 <span class="list">(<span class="keyword">key</span> = $pass)</span>
+ <span class="number">60</span> = HMAC-MD5 <span class="list">(<span class="keyword">key</span> = $salt)</span>
+<span class="number">150</span> = HMAC-SHA1 <span class="list">(<span class="keyword">key</span> = $pass)</span>
+<span class="number">160</span> = HMAC-SHA1 <span class="list">(<span class="keyword">key</span> = $salt)</span>
+</code></pre><p>   1450 = HMAC-SHA256 (key = $pass)<br>   1460 = HMAC-SHA256 (key = $salt)<br>   1750 = HMAC-SHA512 (key = $pass)<br>   1760 = HMAC-SHA512 (key = $salt)</p>
+<p>[[ Generic KDF ]]</p>
+<pre><code><span class="attribute">400 </span>=<span class="string"> phpass</span>
+</code></pre><p>   8900 = scrypt<br>  11900 = PBKDF2-HMAC-MD5<br>  12000 = PBKDF2-HMAC-SHA1<br>  10900 = PBKDF2-HMAC-SHA256<br>  12100 = PBKDF2-HMAC-SHA512</p>
+<p>[[ Network protocols, Challenge-Response ]]</p>
+<pre><code><span class="attribute">23 </span>=<span class="string"> Skype</span>
+</code></pre><p>   2500 = WPA/WPA2<br>   4800 = iSCSI CHAP authentication, MD5(Chap)<br>   5300 = IKE-PSK MD5<br>   5400 = IKE-PSK SHA1<br>   5500 = NetNTLMv1<br>   5500 = NetNTLMv1 + ESS<br>   5600 = NetNTLMv2<br>   7300 = IPMI2 RAKP HMAC-SHA1<br>   7500 = Kerberos 5 AS-REQ Pre-Auth etype 23<br>   8300 = DNSSEC (NSEC3)<br>  10200 = Cram MD5<br>  11100 = PostgreSQL Challenge-Response Authentication (MD5)<br>  11200 = MySQL Challenge-Response Authentication (SHA1)<br>  11400 = SIP digest authentication (MD5)</p>
+<p>[[ Forums, CMS, E-Commerce, Frameworks, Middleware, Wiki, Management ]]</p>
+<pre><code><span class="setting">121 = <span class="value">SMF (Simple Machines Forum)</span></span>
+<span class="setting">400 = <span class="value">phpBB3</span></span>
+</code></pre><p>   2611 = vBulletin &lt; v3.8.5<br>   2711 = vBulletin &gt; v3.8.5<br>   2811 = MyBB<br>   2811 = IPB (Invison Power Board)<br>   8400 = WBB3 (Woltlab Burning Board)<br>     11 = Joomla &lt; 2.5.18<br>    400 = Joomla &gt; 2.5.18<br>    400 = Wordpress<br>   2612 = PHPS<br>   7900 = Drupal7<br>     21 = osCommerce<br>     21 = xt:Commerce<br>  11000 = PrestaShop<br>    124 = Django (SHA-1)<br>  10000 = Django (PBKDF2-SHA256)<br>   3711 = Mediawiki B type<br>   7600 = Redmine</p>
+<p>[[ Database Server ]]</p>
+<pre><code> <span class="number">12</span> = PostgreSQL
+<span class="number">131</span> = <span class="function"><span class="title">MSSQL</span><span class="params">(<span class="number">2000</span>)</span></span>
+<span class="number">132</span> = <span class="function"><span class="title">MSSQL</span><span class="params">(<span class="number">2005</span>)</span></span>
+</code></pre><p>   1731 = MSSQL(2012)<br>   1731 = MSSQL(2014)<br>    200 = MySQL323<br>    300 = MySQL4.1/MySQL5<br>   3100 = Oracle H: Type (Oracle 7+)<br>    112 = Oracle S: Type (Oracle 11+)<br>  12300 = Oracle T: Type (Oracle 12+)<br>   8000 = Sybase ASE</p>
+<p>[[ HTTP, SMTP, LDAP Server]]</p>
+<pre><code><span class="number">141</span> = EPiServer <span class="number">6</span><span class="class">.x</span> &lt; v4
+</code></pre><p>   1441 = EPiServer 6.x &gt; v4<br>   1600 = Apache $apr1$<br>  12600 = ColdFusion 10+<br>   1421 = hMailServer<br>    101 = nsldap, SHA-1(Base64), Netscape LDAP SHA<br>    111 = nsldaps, SSHA-1(Base64), Netscape LDAP SSHA<br>   1711 = SSHA-512(Base64), LDAP {SSHA512}</p>
+<p>[[ Checksums ]]</p>
+<p>  11500 = CRC32</p>
+<p>[[ Operating-Systems ]]</p>
+<p>   3000 = LM<br>   1000 = NTLM<br>   1100 = Domain Cached Credentials (DCC), MS Cache<br>   2100 = Domain Cached Credentials 2 (DCC2), MS Cache 2<br>   1500 = descrypt, DES(Unix), Traditional DES<br>  12400 = BSDiCrypt, Extended DES<br>    500 = md5crypt $1$, MD5(Unix)<br>   3200 = bcrypt $2*$, Blowfish(Unix)<br>   7400 = sha256crypt $5$, SHA256(Unix)<br>   1800 = sha512crypt $6$, SHA512(Unix)<br>    122 = OSX v10.4<br>    122 = OSX v10.5<br>    122 = OSX v10.6<br>   1722 = OSX v10.7<br>   7100 = OSX v10.8<br>   7100 = OSX v10.9<br>   7100 = OSX v10.10<br>   6300 = AIX {smd5}<br>   6700 = AIX {ssha1}<br>   6400 = AIX {ssha256}<br>   6500 = AIX {ssha512}<br>   2400 = Cisco-PIX<br>   2410 = Cisco-ASA<br>    500 = Cisco-IOS $1$<br>   5700 = Cisco-IOS $4$<br>   9200 = Cisco-IOS $8$<br>   9300 = Cisco-IOS $9$<br>     22 = Juniper Netscreen/SSG (ScreenOS)<br>    501 = Juniper IVE<br>   5800 = Android PIN<br>   8100 = Citrix Netscaler<br>   8500 = RACF<br>   7200 = GRUB 2<br>   9900 = Radmin2</p>
+<p>[[ Enterprise Application Software (EAS) ]]</p>
+<p>   7700 = SAP CODVN B (BCODE)<br>   7800 = SAP CODVN F/G (PASSCODE)<br>  10300 = SAP CODVN H (PWDSALTEDHASH) iSSHA-1<br>   8600 = Lotus Notes/Domino 5<br>   8700 = Lotus Notes/Domino 6<br>   9100 = Lotus Notes/Domino 8<br>    133 = PeopleSoft</p>
+<p>[[ Archives ]]</p>
+<p>  11600 = 7-Zip<br>  12500 = RAR3-hp</p>
+<p>[[ Full-Disc encryptions (FDE) ]]</p>
+<p>   62XY = TrueCrypt 5.0+<br>     X  = 1 = PBKDF2-HMAC-RipeMD160<br>     X  = 2 = PBKDF2-HMAC-SHA512<br>     X  = 3 = PBKDF2-HMAC-Whirlpool<br>     X  = 4 = PBKDF2-HMAC-RipeMD160 + boot-mode<br>     X  = 5 = PBKDF2-HMAC-RipeMD160 + hidden-volume<br>     X  = 6 = PBKDF2-HMAC-SHA512    + hidden-volume<br>     X  = 7 = PBKDF2-HMAC-Whirlpool + hidden-volume<br>     X  = 8 = PBKDF2-HMAC-RipeMD160 + hidden-volume + boot-mode<br>      Y = 1 = XTS AES<br>      Y = 2 = XTS Serpent              —- unfinished<br>      Y = 3 = XTS Twofish              —- unfinished<br>      Y = 4 = XTS AES-Twofish          —- unfinished<br>      Y = 5 = XTS AES-Twofish-Serpent  —- unfinished<br>      Y = 6 = XTS Serpent-AES          —- unfinished<br>      Y = 7 = XTS Serpent-Twofish-AES  —- unfinished<br>      Y = 8 = XTS Twofish-Serpent      —- unfinished<br>   8800 = Android FDE &lt; v4.3<br>  12200 = eCryptfs</p>
+<p>[[ Documents ]]</p>
+<p>   9700 = MS Office &lt;= 2003 MD5 + RC4, oldoffice$0, oldoffice$1<br>   9710 = MS Office &lt;= 2003 MD5 + RC4, collider-mode #1<br>   9720 = MS Office &lt;= 2003 MD5 + RC4, collider-mode #2<br>   9800 = MS Office &lt;= 2003 SHA1 + RC4, oldoffice$3, oldoffice$4<br>   9810 = MS Office &lt;= 2003 SHA1 + RC4, collider-mode #1<br>   9820 = MS Office &lt;= 2003 SHA1 + RC4, collider-mode #2<br>   9400 = MS Office 2007<br>   9500 = MS Office 2010<br>   9600 = MS Office 2013<br>  10400 = PDF 1.1 - 1.3 (Acrobat 2 - 4)<br>  10410 = PDF 1.1 - 1.3 (Acrobat 2 - 4) + collider-mode #1<br>  10420 = PDF 1.1 - 1.3 (Acrobat 2 - 4) + collider-mode #2<br>  10500 = PDF 1.4 - 1.6 (Acrobat 5 - 8)<br>  10600 = PDF 1.7 Level 3 (Acrobat 9)<br>  10700 = PDF 1.7 Level 8 (Acrobat 10 - 11)</p>
+<p>[[ Password Managers ]]</p>
+<p>   9000 = Password Safe v2<br>   5200 = Password Safe v3<br>   6800 = Lastpass<br>   6600 = 1Password, agilekeychain<br>   8200 = 1Password, cloudkeychain<br>  11300 = Bitcoin/Litecoin wallet.dat</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://a1ex.net/Others/wifi/cudaHashcat.html" data-title="A1exlism" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="Others/wifi/cudaHashcat.html" data-title="" data-url="http://a1ex.net/Others/wifi/cudaHashcat.html"></div>
+</section>
+
+
+</div>  
+        </div>
+        <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Blog site <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/a1exlism" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/a1exlism" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		<a href="https://www.facebook.com/a1exlism" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		<a href="https://plus.google.com/106896526077043222500?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
+		
+		
+		</p>
+</div>
+</footer>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"a1exnet"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-63657599-1', 'a1ex.net');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<script>
+var option = {
+  engineKey: '0ebf6d79de6f09a2386e'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+</script>
+
+<!-- Tiny_search End -->
+
+      </body>
+     </html>
+     
