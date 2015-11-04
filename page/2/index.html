@@ -79,6 +79,57 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/10/13/2015/ClientJS-6/" title="Js学习笔记(6)" itemprop="url">Js学习笔记(6)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-12T16:00:00.000Z" itemprop="datePublished"> 发表于 10-13-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="HTML表单">HTML表单</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//筛选特定id,特定属性的表单input元素</span></span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">'#id input[type="putin]'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="文件上传">文件上传</h4><p><input type="file">该元素的value属性为只读</p>
+<h3 id="Document属性">Document属性</h3><p>cookie domain location(window共用) referrer(引导) URL tutle lastModified</p>
+<h4 id="判断referrer并响应">判断referrer并响应</h4><h5 id="所用函数">所用函数</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stringObject.split(separator,howmany)  <span class="comment">//分隔符,返回string数组类型(无分隔符)</span></span><br><span class="line">indexOf(searchvalue,fromindex)  <span class="comment">//返回第一次见到searchvalue时候的位置</span></span><br><span class="line">stringObject.substring(start,stop)  <span class="comment">//字符串提取</span></span><br><span class="line"><span class="built_in">unescape</span>(string) <span class="comment">//stringURL解码</span></span><br></pre></td></tr></table></figure>
+<h5 id="栗子:">栗子:</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ref = <span class="built_in">document</span>.referrer;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.referrer.indexOf(<span class="string">"https://www.google.com/search?"</span>) == <span class="number">0</span>)&#123;</span><br><span class="line">   <span class="keyword">var</span> args = <span class="built_in">document</span>.referrer.substring(ref.indexOf(<span class="string">"?"</span>)+<span class="number">1</span>).split(<span class="string">"&amp;"</span>) ; <span class="comment">//args为以&amp;为分解符的string数组</span></span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; args.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (args[i].substring(<span class="number">0</span>,<span class="number">2</span>) == <span class="string">"q="</span>)</span><br><span class="line">            <span class="built_in">document</span>.write(<span class="string">"You are searching for: "</span> + <span class="built_in">unescape</span>(args[i].substring(<span class="number">2</span>)).replace(<span class="string">'+'</span>, <span class="string">' '</span>));</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/13/2015/ClientJS-6/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/13/2015/ClientJS-6/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/10/08/2015/talk1/" title="又是一年" itemprop="url">又是一年</a>
   </h1>
   <p class="article-author">By
@@ -250,6 +301,58 @@ apt-cache <span class="keyword">search</span> linux-header
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/10/03/2015/ClientJS-4/" title="Js学习笔记(4)" itemprop="url">Js学习笔记(4)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-02T16:00:00.000Z" itemprop="datePublished"> 发表于 10-03-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="jQuery的$查询">jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="window">window</h2><h3 id="窗口">窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
+<h3 id="窗体">窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
+<h3 id="窗体/口之间的交互">窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">id</span>=<span class="value">'A'</span> <span class="attribute">src</span>=<span class="value">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="title">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">id</span>=<span class="value">'B'</span> <span class="attribute">src</span>=<span class="value">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="title">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/03/2015/ClientJS-4/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/03/2015/ClientJS-4/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/10/03/2015/ClientJS-3/" title="Js学习笔记(3)" itemprop="url">Js学习笔记(3)</a>
   </h1>
   <p class="article-author">By
@@ -291,58 +394,6 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 	
 	  	<span></span>
 		<a href="/10/03/2015/ClientJS-3/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/03/2015/ClientJS-3/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/03/2015/ClientJS-4/" title="Js学习笔记(4)" itemprop="url">Js学习笔记(4)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-02T16:00:00.000Z" itemprop="datePublished"> 发表于 10-03-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="jQuery的$查询">jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="window">window</h2><h3 id="窗口">窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
-<h3 id="窗体">窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
-<h3 id="窗体/口之间的交互">窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">id</span>=<span class="value">'A'</span> <span class="attribute">src</span>=<span class="value">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="title">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">id</span>=<span class="value">'B'</span> <span class="attribute">src</span>=<span class="value">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="title">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/03/2015/ClientJS-4/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/03/2015/ClientJS-4/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -591,100 +642,6 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/07/15/2015/ChromeConsole/" title="Chrome调试合集" itemprop="url">Chrome调试合集</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-07-14T16:00:00.000Z" itemprop="datePublished"> 发表于 07-15-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Chrome调试">Chrome调试</h2><ul>
-<li>shift+enter可多行输入</li>
-</ul>
-<ol>
-<li>样式<br> console.info()<br> console.debug()<br> console.warn()<br> console.error()</li>
-<li>占位符:<br> console.log()和 c的printf()一样<br> 只能用%d/%i %f %s %o(objective)</li>
-<li><p>分组显示:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">console.group(<span class="string">'第一组信息'</span>);</span><br><span class="line">	console.log(<span class="string">'第一组信息'</span>);</span><br><span class="line">	console.log(<span class="string">'第一组信息'</span>);</span><br><span class="line">console.groupEnd();</span><br><span class="line">console.group(<span class="string">'second'</span>);</span><br><span class="line">	console.log(<span class="string">'2.1'</span>);</span><br><span class="line">	console.log(<span class="string">'2.2'</span>);</span><br><span class="line">console.groupEnd();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>console.dir()    //显示一个对象所有value和func()</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.dir(dog);	//Object:dog</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>console.dirxml()    //显示node中的html/xml代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var node=document.getElementById(<span class="string">'tab1'</span>);</span><br><span class="line">console.dirxml(node);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>console.assert()    //断言 判断是否为真<br> 测试:<code>console.assert(1==1,&#39;如果为0则出现这句话&#39;);</code><br> chrome下返回undefined<br> ff下不返回值<br> 1==0时chrome和ff均报错</p>
-</li>
-<li><p>console.trace()    //函数轨迹调用    </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> add (a,b) &#123;</span><br><span class="line">	console.trace();</span><br><span class="line">	<span class="built_in">return</span> a+b;</span><br><span class="line">&#125;	//js中函数同步执行,可以利用trace追踪有关该函数的相关执行顺序</span><br><span class="line">var x = add3(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">function</span> add3(a,b)&#123;<span class="built_in">return</span> add2(a,b);&#125;</span><br><span class="line"><span class="keyword">function</span> add2(a,b)&#123;<span class="built_in">return</span> add1(a,b);&#125;</span><br><span class="line"><span class="keyword">function</span> add1(a,b)&#123;<span class="built_in">return</span> add(a,b);&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>计时功能//计算代码运行时间</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.time(<span class="string">'timer1'</span>);</span><br><span class="line">// Your <span class="keyword">function</span></span><br><span class="line">console.timeEnd(<span class="string">'timer1'</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>性能分析Profiler</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.profile(<span class="string">'性能分析器一'</span>);</span><br><span class="line">Foo();</span><br><span class="line">console.profileEnd();</span><br><span class="line">暂时无法实现这个功能</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>console.count()    //统计次数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">foo</span></span>()&#123;</span><br><span class="line">	var i=<span class="number">0</span>;</span><br><span class="line">	i++;</span><br><span class="line">	console.count(<span class="string">'执行次数'</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo();foo();foo();</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="Other">Other</h3><ol>
-<li>$(Chrome 控制台中原生支持类jQuery的选择器)<ul>
-<li><code>$_</code></li>
-<li><code>$(selector)</code>    选择首元素<br> <code>$$(selector)</code>    选择元素合集</li>
-</ul>
-</li>
-<li><p>keys&amp;values</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var tboy=&#123;</span><br><span class="line">	name:<span class="string">'123'</span>,height:<span class="string">'222'</span></span><br><span class="line">&#125;;</span><br><span class="line">keys(tboy);</span><br><span class="line">values(tboy);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>debug&amp;undebug<br> 打断点和取消断点</p>
-</li>
-<li>copy(document.body)<br> 可以复制内容到剪贴板</li>
-</ol>
-<h2 id="参考">参考</h2><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2011/03/firebug_console_tutorial.html" target="_blank" rel="external">阮一峰</a></li>
-<li><a href="http://www.cnblogs.com/Wayou/p/chrome-console-tips-and-tricks.html" target="_blank" rel="external">刘哇勇</a></li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/07/15/2015/ChromeConsole/#comments" class="ds-thread-count comments-count-link" data-thread-key="07/15/2015/ChromeConsole/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
@@ -709,7 +666,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
@@ -735,7 +692,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>10</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>11</sup></a></li>
 		  
 		
 		  
