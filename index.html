@@ -86,7 +86,7 @@
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-06T07:44:30.603Z" itemprop="datePublished"> 发表于 11-06-2015</time>
+    <time datetime="2015-11-06T14:01:01.738Z" itemprop="datePublished"> 发表于 11-06-2015</time>
     
   </p>
 </header>
@@ -121,12 +121,14 @@ export https_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;</code></p>
 <h3 id="修改默认编辑器">修改默认编辑器</h3><pre><code>sudo update-alternatives --config <span class="keyword">editor</span>    <span class="comment">//内置可用,不适用sublime</span>
 </code></pre><h3 id="备份">备份</h3><ol>
 <li>sudo su</li>
-<li>tar<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Data/Kali_bak/backup.tgz –exclude=/proc –exclude=/lost+found –exclude=/backup.tgz –exclude=/mnt –exclude=/sys</span><br></pre></td></tr></table></figure>
+<li>tar<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Bak/Kali_bak/backup.tgz --exclude=/media --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /</span><br><span class="line"><span class="comment"># 最后的/为需要备份的目录</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h4 id="增量备份及差别">增量备份及差别</h4><pre><code>tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span> /<span class="tag">var</span>
 tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span>.<span class="number">1</span> /var
-</code></pre><p>tar -cvpzf /media/gust/Data/Kali_bak/<code>backup.tgz.1</code> –exclude=/proc –exclude=/lost+found –exclude=/backup.tgz –exclude=/mnt –exclude=/sys<br>差量备份:只备份上次完全备份以后有变化的数据(他针对的上次的完全备份,他备份过程中不清除存档属性)<br>增量备份:只备份上次备份以后有变化的数据.(他才不管是那种类型的备份,有变化的数据就备份,他会清除存档属性)</p>
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Bak/Kali_bak/backup.tgz.<span class="number">1</span> --exclude=/media --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys  /</span><br></pre></td></tr></table></figure>
+<p>backup.tgz.1 后面的’.1’为标志</p>
+<p>差量备份:只备份上次完全备份以后有变化的数据(他针对的上次的完全备份,他备份过程中不清除存档属性)<br>增量备份:只备份上次备份以后有变化的数据.(他才不管是那种类型的备份,有变化的数据就备份,他会清除存档属性)</p>
 <p>Reference:<br><a href="http://blog.chinaunix.net/uid-23225855-id-3182334.html" target="_blank" rel="external">一片浮云而已</a><br><a href="http://www.blogjava.net/MEYE/archive/2011/08/25/357250.html" target="_blank" rel="external">MEYE</a></p>
 <h3 id="添加环境变量">添加环境变量</h3><h4 id="临时">临时</h4><p>参考:<a href="http://www.a1ex.net/10/15/2015/bash2/" target="_blank" rel="external">bash基本命令2</a></p>
 <h4 id="永久(lifetime)">永久(lifetime)</h4><p>所有用户:/etc/profile<br>独立用户:/root/.bashrc or /home/你的用户/.bashrc<br>添加:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PATH</span>:需要添加的路径"</span></span><br></pre></td></tr></table></figure></p>
@@ -164,6 +166,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <ol>
 <li>Reference:<br><a href="http://www.tsingpost.com/index.php/archives/463/" target="_blank" rel="external">TsingPost</a><br><a href="http://blog.bilicloud.com/?p=20" target="_blank" rel="external">BlackFox</a></li>
 </ol>
+<h3 id="github">github</h3><p>github-SSH链接-&gt;<a href="http://jianganglu.github.io/2015/08/28/git-ssh/" target="_blank" rel="external">jianganglu Blog</a><br>千万别用sudo..T T</p>
 <h2 id="Device/Driver">Device/Driver</h2><h3 id="网卡驱动">网卡驱动</h3><h4 id="问题">问题</h4><p><code>网卡连接一段时间之后自动断开,只能重启</code></p>
 <h4 id="办法">办法</h4><ol>
 <li>前往github看看有没有自己的型号<a href="https://github.com/lwfinger/rtlwifi_new" target="_blank" rel="external">rtl-github</a>,如果有就clone下来<code>clone https://github.com/phuslu/goagent.git</code> </li>
