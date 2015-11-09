@@ -79,20 +79,21 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/11/06/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
+      <a href="/11/08/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-06T14:01:01.738Z" itemprop="datePublished"> 发表于 11-06-2015</time>
+    <time datetime="2015-11-08T12:08:11.288Z" itemprop="datePublished"> 发表于 11-08-2015</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h1 id="环境:debian8">环境:debian8</h1><h2 id="Commond">Commond</h2><h3 id="压缩包">压缩包</h3><ol>
+        <h1 id="环境:debian8">环境:debian8</h1><h2 id="Commond">Commond</h2><h3 id="查找可执行命令所在目录">查找可执行命令所在目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br></pre></td></tr></table></figure>
+<h3 id="压缩包">压缩包</h3><ol>
 <li>*.tar 用 tar –xvf 解压 </li>
 <li>*.gz 用 gzip -d或者gunzip 解压 </li>
 <li><em>.tar.gz和</em>.tgz 用 tar –xzf 解压 </li>
@@ -159,12 +160,17 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <ol>
 <li>下载<br>通过<a href="http://www.java.com/en/download/manual.jsp" target="_blank" rel="external">JDK地址</a>找到适合自己的jdk(不需要允许java许可协议,具体请移步<a href="http://www.tsingpost.com/index.php/archives/463/" target="_blank" rel="external">TsingPost</a>)<br>下载的文件以tar.gz结尾,为了方便可以改名例如:<code>java8.tar.gz</code></li>
 <li>解压移动<br>cd /usr/lib<br>mkdir jvm #一些发行版可能提示已存在,可以升级java版本..<br>进入java8.tar.gz所在目录<code>tar -xzvf java8.tar</code><br>解压之后,将文件移至jvm文件夹 <code>mv jre1.8.0_60 /usr/lib/jvm</code></li>
-<li>环境变量<br><code>sudo gedit .bashrc</code><br>在文件的结尾添加以下内容<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jre1.<span class="number">8.0</span>_60   <span class="comment">#换成你改的名字    </span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<li>环境变量<br>当前用户: <code>sudo gedit ~/.bashrc</code><br>全局: <code>sudo gedit /etc/profile</code><br>在文件的结尾添加以下内容<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jre1.<span class="number">8.0</span>_60   <span class="comment">#换成你改的名字    </span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><code>source ~/.bashrc</code> #重新读取一下让新加的代码生效</p>
+<p><code>source ~/.bashrc</code> #重新读取一下让新加的代码生效 全局的话换一下地址</p>
 <ol>
 <li>Reference:<br><a href="http://www.tsingpost.com/index.php/archives/463/" target="_blank" rel="external">TsingPost</a><br><a href="http://blog.bilicloud.com/?p=20" target="_blank" rel="external">BlackFox</a></li>
+</ol>
+<h3 id="jython安装">jython安装</h3><ol>
+<li>安装<br><code>java -jar jython-installer-2.7.0.jar</code></li>
+<li>添加环境变量<br>此步骤参考java环境变量,现在只需要在原来java环境变量的<br><code>CLASSPATH</code>添加     <code>你的位置/jython2.7.0/jython.jar</code><br><code>PATH</code>              添加     <code>你的位置/jython2.7.0</code></li>
+<li>注销使之生效</li>
 </ol>
 <h3 id="github">github</h3><p>github-SSH链接-&gt;<a href="http://jianganglu.github.io/2015/08/28/git-ssh/" target="_blank" rel="external">jianganglu Blog</a><br>千万别用sudo..T T</p>
 <h2 id="Device/Driver">Device/Driver</h2><h3 id="网卡驱动">网卡驱动</h3><h4 id="问题">问题</h4><p><code>网卡连接一段时间之后自动断开,只能重启</code></p>
@@ -199,7 +205,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/11/06/2015/daily/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/06/2015/daily/" data-count-type="comments">&nbsp;</a>
+		<a href="/11/08/2015/daily/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/08/2015/daily/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
