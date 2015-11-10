@@ -1,3 +1,4 @@
+//添加:'abc'.charAt(2) --->return b;
 //-------myAnswser--------
 function SimpleSymbols(str) { 
 	var flag = true;

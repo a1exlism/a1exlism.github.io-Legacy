@@ -4,74 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>360弃子C301刷机 | A1exlism</title>
+    <title>Javascript 元编程 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="基础知识
-981213
-hackpascal
-hackpascal
-固件和Rom区别op的web管理界面叫luci
-WinSCP
-PuTTY
-MTD
-
-other
-WDS
-路由多拨
-
-正文安装OpenWrtIP地址:192.168.1.3(2-255)
-子网掩码:255.255.255.0
-上传地址:http://192.168.1.1/upgrade.html
-按着360官方人员讲的:
-恩山/兼">
+    <meta name="description" content="always hash创建动态属性名的对象  //这是元编程非常强大的军火库—原文1&amp;#10;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="360弃子C301刷机">
-<meta property="og:url" content="http://a1ex.net/07/08/2015/Router/index.html">
+<meta property="og:title" content="Javascript 元编程">
+<meta property="og:url" content="http://a1ex.net/11/10/2015/Js元编程/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="基础知识
-981213
-hackpascal
-hackpascal
-固件和Rom区别op的web管理界面叫luci
-WinSCP
-PuTTY
-MTD
-
-other
-WDS
-路由多拨
-
-正文安装OpenWrtIP地址:192.168.1.3(2-255)
-子网掩码:255.255.255.0
-上传地址:http://192.168.1.1/upgrade.html
-按着360官方人员讲的:
-恩山/兼">
-<meta property="og:updated_time" content="2015-10-24T08:57:01.255Z">
+<meta property="og:description" content="always hash创建动态属性名的对象  //这是元编程非常强大的军火库—原文1&amp;#10;">
+<meta property="og:updated_time" content="2015-11-10T07:55:41.995Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="360弃子C301刷机">
-<meta name="twitter:description" content="基础知识
-981213
-hackpascal
-hackpascal
-固件和Rom区别op的web管理界面叫luci
-WinSCP
-PuTTY
-MTD
-
-other
-WDS
-路由多拨
-
-正文安装OpenWrtIP地址:192.168.1.3(2-255)
-子网掩码:255.255.255.0
-上传地址:http://192.168.1.1/upgrade.html
-按着360官方人员讲的:
-恩山/兼">
+<meta name="twitter:title" content="Javascript 元编程">
+<meta name="twitter:description" content="always hash创建动态属性名的对象  //这是元编程非常强大的军火库—原文1&amp;#10;">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -129,14 +78,14 @@ WDS
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/07/08/2015/Router/" title="360弃子C301刷机" itemprop="url">360弃子C301刷机</a>
+      <a href="/11/10/2015/Js元编程/" title="Javascript 元编程" itemprop="url">Javascript 元编程</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-07-07T16:00:00.000Z" itemprop="datePublished"> 发表于 07-08-2015</time>
+    <time datetime="2015-11-09T16:00:00.000Z" itemprop="datePublished"> 发表于 11-10-2015</time>
     
   </p>
 </header>
@@ -145,37 +94,11 @@ WDS
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础知识"><span class="toc-number">1.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#other"><span class="toc-number">2.</span> <span class="toc-text">other</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">3.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装OpenWrt"><span class="toc-number">3.1.</span> <span class="toc-text">安装OpenWrt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一睹真容"><span class="toc-number">3.2.</span> <span class="toc-text">一睹真容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置有线和无线"><span class="toc-number">3.3.</span> <span class="toc-text">配置有线和无线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#刷不死U-boot"><span class="toc-number">3.4.</span> <span class="toc-text">刷不死U-boot</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#always_hash"><span class="toc-number">1.</span> <span class="toc-text">always hash</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="基础知识">基础知识</h2><ul>
-<li><a href="http://www.right.com.cn/forum/thread-147319-1-2.html" target="_blank" rel="external">981213</a></li>
-<li><a href="http://www.right.com.cn/forum/thread-148810-1-1.html" target="_blank" rel="external">hackpascal</a></li>
-<li><a href="http://www.right.com.cn/forum/thread-147651-1-1.html" target="_blank" rel="external">hackpascal</a></li>
-<li><a href="http://bbs.xda.cn/thread-11183333-1-1.html" target="_blank" rel="external">固件和Rom区别</a><br>op的web管理界面叫luci</li>
-<li><a href="https://wiki.wireshark.org/WinPcap" target="_blank" rel="external">WinSCP</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/PuTTY" target="_blank" rel="external">PuTTY</a></li>
-<li><a href="http://baike.baidu.com/link?url=Uerpdfz1ewoFE_NYNVIkflLEos2adrvzZUReu4FP_9c09KaT9jcdQn4wlT6V7FLTCErkhGIRi1LsmecyR6c84K#1" target="_blank" rel="external">MTD</a></li>
-</ul>
-<h2 id="other">other</h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/Wireless_distribution_system" target="_blank" rel="external">WDS</a></li>
-<li><a href="http://bbs.kafan.cn/thread-1697011-1-1.html" target="_blank" rel="external">路由多拨</a></li>
-</ul>
-<h2 id="正文">正文</h2><h3 id="安装OpenWrt">安装OpenWrt</h3><pre><code>IP地址:<span class="number">192.168.1.3</span>(2-255)
-子网掩码:<span class="number">255.255.255.0</span>
-上传地址:http://<span class="number">192.168.1.1</span>/upgrade.html
-按着360官方人员讲的:
-</code></pre><p><a href="http://www.right.com.cn/forum/thread-147329-1-1.html" target="_blank" rel="external">恩山/兼容官方固件</a>直接在luyou360.cn直接刷了这个固件,但是等了大概20分钟,耐心不足..直接强退,发现变砖..晚上回来继续看,尝试直接进入192.168.1.1刷官方固件,然并卵.官方固件认证失败,醉.然后试了半天恩山论坛大神的固件包固然给刷进去了233.<br>    所刷固件:<br><a href="http://www.right.com.cn/forum/thread-147319-1-2.html" target="_blank" rel="external">OpenWrt固件</a><br>    PS:第一次刷机需要刷入ART(和OpenWrt的web刷入方法一致)</p>
-<h3 id="一睹真容">一睹真容</h3><pre><code>尼玛,恩山大神要不要这么<span class="number">6</span>啊,<span class="function_or_atom">webshell</span>,<span class="function_or_atom">ssh</span>,迅雷,<span class="variable">USB</span>支持什么都加进去了<span class="exclamation_mark">!</span><span class="exclamation_mark">!</span>献上我的膝盖<span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span>
-</code></pre><h3 id="配置有线和无线">配置有线和无线</h3><ul>
-<li>网络&gt;接口&gt;wan—&gt;设置pppoe协议,输入宽带账号,密码<br>lan端口需要设置网关为192.168.1.1</li>
-<li>无线想刷ART—&gt;刷Uboot</li>
-</ul>
-<h3 id="刷不死U-boot">刷不死U-boot</h3><p>参照大神贴:<a href="http://www.right.com.cn/forum/thread-154561-1-1.html" target="_blank" rel="external">hackpascal</a></p>
-<ul>
-<li>插曲:刚把Uboot刷完之后,一不小心按了reset,然后wanlan三灯全亮,wifi灯变绿,随后电脑无法识别lan口,变砖无误…正在寻找方案6/26-&gt;发现同地区大神一枚,滚去面基,求罩0. 0-&gt;?(未待完续)</li>
-</ul>
+		<h3 id="always_hash">always hash</h3><p>创建动态属性名的对象  //这是元编程非常强大的军火库—原文<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -183,7 +106,7 @@ WDS
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/07/08/2015/Router/" data-title="360弃子C301刷机 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/11/10/2015/Js元编程/" data-title="Javascript 元编程 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -196,19 +119,11 @@ WDS
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/07/15/2015/ChromeConsole/" title="Chrome调试合集">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Chrome调试合集</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/06/30/2015/git-study/"  title="Git Study">
+<a href="/11/08/2015/daily/"  title="linux日常更新">
  <strong>下一篇：</strong><br/> 
- <span>Git Study
+ <span>linux日常更新
 </span>
 </a>
 </div>
@@ -217,7 +132,7 @@ WDS
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="07/08/2015/Router/" data-title="360弃子C301刷机" data-url="http://a1ex.net/07/08/2015/Router/"></div>
+	<div class="ds-thread" data-thread-key="11/10/2015/Js元编程/" data-title="Javascript 元编程" data-url="http://a1ex.net/11/10/2015/Js元编程/"></div>
 </section>
 
 
@@ -227,7 +142,7 @@ WDS
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础知识"><span class="toc-number">1.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#other"><span class="toc-number">2.</span> <span class="toc-text">other</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">3.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装OpenWrt"><span class="toc-number">3.1.</span> <span class="toc-text">安装OpenWrt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一睹真容"><span class="toc-number">3.2.</span> <span class="toc-text">一睹真容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置有线和无线"><span class="toc-number">3.3.</span> <span class="toc-text">配置有线和无线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#刷不死U-boot"><span class="toc-number">3.4.</span> <span class="toc-text">刷不死U-boot</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#always_hash"><span class="toc-number">1.</span> <span class="toc-text">always hash</span></a></li></ol>
  
   </div>
 
