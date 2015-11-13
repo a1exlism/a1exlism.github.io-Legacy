@@ -1,0 +1,6 @@
+Reference:
+    https://hexo.io/zh-cn/docs/commands.html
+
+
+hexo g /generate 生成静态文件
+hexo s  /server 启动服务器

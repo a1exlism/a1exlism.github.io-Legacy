@@ -1,0 +1,20 @@
+------------link---http://docs.emmet.io/actions/wrap-with-abbreviation/----------------------
+a:link	//http协议为头的url
+
+h$[title=item$]{Header $}*3
+
+a{Click me}          /文本
+
+src	//script标签
+
+cc:ie6	兼容性
+
+选定若干行:	nav>ul.nav>li.nav-item$*>a
+
+
+-----------Done-----------
+
+ul>li.item$*5
+
+a:link[title]
+

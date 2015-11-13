@@ -1,0 +1,49 @@
+--------------Git Operation--------------
+将sublime作为默认编辑器:
+	git config --global core.editor "'C:/Program Files (x86)
+	Sublime Text 2.0.2 x64/sublime_text.exe' -w"
+
+每个项目都有一个 Git 目录(git clone-->.git目录)
+
+git config --list
+
+for help`
+	$ git help <v>
+	$ git <v> --help
+	$ man git-<v>
+
+git config user.name/更改特定设置
+
+git status	check the files
+
+git remote add [shortname] [url]	//添加远程仓库
+
+example:
+	git remote add origin git@github.com:a1exlism/a1exlism
+	github.io
+
+git commit -m "say sth"//需要添加一些话 不然没法提交
+
+Git--->goagent代理:
+	http://blog.csdn.net/blueslime/article/details/11541833
+
+git push <远程主机名> <本地分支名>:<远程分支名>
+
+git-bash->touch .gitignore	生成该文件
+
+.gitignore文件过滤模式
+	文件夹过滤:
+		/mtk/       表示过滤这个文件夹
+	文件过滤:
+	指定文件类型:
+		*.zip
+		*.rar
+		*.via
+		*.tmp
+		*.err	
+	指定具体文件:
+		/mtk/do.c
+		/mtk/if.h
+
+git depth命令:深度
+	git clone git@github.com:xxx/xxx --depth=2 最近三个版本
