@@ -79,62 +79,14 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/11/10/2015/Js元编程/" title="Javascript 元编程" itemprop="url">Javascript 元编程</a>
+      <a href="/11/12/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-09T16:00:00.000Z" itemprop="datePublished"> 发表于 11-10-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="always_hash">always hash</h3><p>创建动态属性名的对象  //这是元编程非常强大的军火库—原文<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/11/10/2015/Js元编程/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/10/2015/Js元编程/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/11/08/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-11-08T12:08:11.288Z" itemprop="datePublished"> 发表于 11-08-2015</time>
+    <time datetime="2015-11-12T15:34:46.118Z" itemprop="datePublished"> 发表于 11-12-2015</time>
     
   </p>
 </header>
@@ -160,7 +112,8 @@
 <h3 id="删除">删除</h3><p>-i info 删除前逐一确认<br>-f force 直接删除<br>-r recursion 递归删除,即把该文件所有的内容都删除<br>————注意——————-</p>
 <h2 id="在linux没有回收站，所以在使用_rm_命令的时候，切记文件或目录被删除之后就无法再恢复">在linux没有回收站，所以在使用 rm 命令的时候，切记<code>文件或目录被删除之后就无法再恢复</code></h2><h3 id="快捷方式打开GUI文件夹">快捷方式打开GUI文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nautilus [option] /home/gust</span><br><span class="line"><span class="comment">#option --d&gt; manpage</span></span><br></pre></td></tr></table></figure>
 <h3 id="wget临时代理">wget临时代理</h3><p><code>wget -e &quot;http_proxy=http://&lt;ip&gt;:&lt;port&gt;/&quot; http://www.google.com</code></p>
-<h2 id="System">System</h2><h3 id="桌面_文档等几个文件改成英文,便于terminal">桌面 文档等几个文件改成英文,便于terminal</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.UTF-<span class="number">8</span> xdg-user-dirs-update</span><br><span class="line"><span class="comment">#如果注销重进失效,建议把 en_US 写到 ~/.config/user-dirs.locale 文件里再 xdg-user-dirs-update</span></span><br></pre></td></tr></table></figure>
+<h2 id="System">System</h2><h3 id="更改账户权限">更改账户权限</h3><p>vi /etc/sudoers<br>找到 root ALL=(ALL) ALL<br>再后边增加 用户名 ALL=(ALL) ALL</p>
+<h3 id="桌面_文档等几个文件改成英文,便于terminal">桌面 文档等几个文件改成英文,便于terminal</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.UTF-<span class="number">8</span> xdg-user-dirs-update</span><br><span class="line"><span class="comment">#如果注销重进失效,建议把 en_US 写到 ~/.config/user-dirs.locale 文件里再 xdg-user-dirs-update</span></span><br></pre></td></tr></table></figure>
 <p>Reference:<br><a href="https://bbs.archlinuxcn.org/viewtopic.php?id=2488" target="_blank" rel="external">Archlinux-百合仙子</a><a href="http://blog.csdn.net/topgun_chenlingyun/article/details/8159550" target="_blank" rel="external">TOPFUN</a></p>
 <h3 id="手动添加快捷键">手动添加快捷键</h3><p><a href="http://blog.csdn.net/longerzone/article/details/8932751" target="_blank" rel="external">longerzone</a></p>
 <h3 id="设置全局/apt-get代理">设置全局/apt-get代理</h3><h4 id="全局">全局</h4><p><code>export http_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;
@@ -200,6 +153,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <h4 id="查看服务状态">查看服务状态</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/<span class="built_in">test</span> status <span class="comment">#查看服务状态/日志</span></span><br></pre></td></tr></table></figure>
 <p>执行之后存在warning,测试好像没有影响</p>
 <p>Reference:<br><a href="http://wenzhixin.net.cn/2013/10/30/debian_script_init" target="_blank" rel="external">文翼’s blog</a><br><a href="http://www.linuxidc.com/Linux/2011-12/48922.htm" target="_blank" rel="external">Linux 公社</a></p>
+<h3 id="协会大神推荐的DSL神器">协会大神推荐的DSL神器</h3><p><a href="http://manpages.ubuntu.com/manpages/saucy/man1/nm-connection-editor.1.html" target="_blank" rel="external">nm-connection-editor</a></p>
 <h2 id="SoftWare">SoftWare</h2><h3 id="Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消">Chrome切换各种卡,地址栏卡死现象,文本选中一直没法取消</h3><p>系统字体设置为<code>Droid Sans Fallback</code>,或者自己体验不错的,原生最好= =<br>Reference:<br><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=468448" target="_blank" rel="external">牛牛博客</a><br><a href="http://suselinks.us/how-to-fix-slow-typing-in-chrome-addressbar-in-linux/" target="_blank" rel="external">Ubuntu forum</a></p>
 <h3 id="root帐号无法启动chrome">root帐号无法启动chrome</h3><p><code>#vi /opt/google/chrome/google-chrome</code><br>在最后一行尾加入 —user-data-dir<br>Reference:<br><a href="http://blog.sina.com.cn/s/blog_40983e5e0101dhz0.html" target="_blank" rel="external">午后等风来</a></p>
 <h3 id="Sublime">Sublime</h3><h4 id="Installation">Installation</h4><p><a href="http://www.simonewebdesign.it/how-to-install-sublime-text-3-on-debian/" target="_blank" rel="external">how-to-install-sublime-text-3-on-debian</a></p>
@@ -221,6 +175,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <li>注销使之生效</li>
 </ol>
 <h3 id="github">github</h3><p>github-SSH链接-&gt;<a href="http://jianganglu.github.io/2015/08/28/git-ssh/" target="_blank" rel="external">jianganglu Blog</a><br>千万别用sudo..T T</p>
+<h3 id="远程桌面">远程桌面</h3><p>rdesktop -u 帐号 -p 密码 [-f] ip地址<br>-f 默认全屏   Ctrl+ Alt +Enter 退出全屏<br>Reference: <a href="http://blog.csdn.net/zjjyliuweijie/article/details/7048984" target="_blank" rel="external">zjjyliuweijie</a></p>
 <h2 id="Device/Driver">Device/Driver</h2><h3 id="网卡驱动">网卡驱动</h3><h4 id="问题">问题</h4><p><code>网卡连接一段时间之后自动断开,只能重启</code></p>
 <h4 id="办法">办法</h4><ol>
 <li>前往github看看有没有自己的型号<a href="https://github.com/lwfinger/rtlwifi_new" target="_blank" rel="external">rtl-github</a>,如果有就clone下来<code>clone https://github.com/phuslu/goagent.git</code> </li>
@@ -253,7 +208,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/11/08/2015/daily/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/08/2015/daily/" data-count-type="comments">&nbsp;</a>
+		<a href="/11/12/2015/daily/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/12/2015/daily/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -749,6 +704,61 @@ noauto          开机不自动挂载
 
 
 
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/10/14/2015/bash1/" title="bash基本命令1---命令/文件查询" itemprop="url">bash基本命令1---命令/文件查询</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-13T16:00:00.000Z" itemprop="datePublished"> 发表于 10-14-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="文件查看">文件查看</h3><p>file [-bLvz] 文件</p>
+<h3 id="命令搜寻">命令搜寻</h3><p>which [-a] 命令<br>-a all</p>
+<h3 id="文件搜寻">文件搜寻</h3><h4 id="1-whereis_[-bmsu]_file/folder//基于数据库">1.whereis [-bmsu] file/folder//基于数据库</h4><p>-b binary only<br>-m manual only<br>-s source only<br>-u except above three<br>//不过似乎home文件不能查找..没卵用 drop it</p>
+<h4 id="2-locate_[-ir]_keyword">2.locate [-ir] keyword</h4><p>-i ignore uppercase/lowercase<br>-r using regexp<br>//可以进行日常查找,支持home等路径</p>
+<h4 id="3-_find">3. find</h4><p>find [Router] [option] [action]<br>time-&gt;<br>    -mtime n/+n/-n (n 为 number)<br>-newer file : 列出一个比file更新的文件<br>example:<br>    find tools -mtime 0 //24小时之内tools文件夹更改的地方<br>高级功能,按路径查找:<br>    find /etc/ password -mtime 0</p>
+<h3 id="小提示&amp;&amp;结论">小提示&amp;&amp;结论</h3><p><code>updatedb</code>可以更新搜索的datebase</p>
+<p>locate优点可以使用正则<br>find可以基于时间/路径查找</p>
+<p>三者选择:<br>    <code>find&gt;locate&gt;whereis</code></p>
+<h3 id="参考">参考</h3>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/14/2015/bash1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/14/2015/bash1/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -773,7 +783,7 @@ noauto          开机不自动挂载
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
@@ -799,7 +809,7 @@ noauto          开机不自动挂载
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>12</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>11</sup></a></li>
 		  
 		
 		  

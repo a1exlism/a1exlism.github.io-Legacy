@@ -1,5 +1,6 @@
 
- <!DOCTYPE HTML>
+  
+    <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -11,16 +12,16 @@
     
 
     
-    <meta name="description" content="always hash创建动态属性名的对象  //这是元编程非常强大的军火库—原文1&amp;#10;">
-<meta property="og:type" content="article">
+    <meta name="description" content="基础always hashjavscirpt 所有对向(除了string,number,boolean)都继承于ObjectObeject 是一个哈希(hash)————-一组含键(key)的任意类型属性创建动态属性名的对象  //这是元编程非常强大的军火库—原文1var myObj = &amp;#123;&amp;#125;;&amp;#10;for( var i = 0; i &amp;#60; 5; i++)&amp;#123;">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Javascript 元编程">
-<meta property="og:url" content="http://a1ex.net/11/10/2015/Js元编程/index.html">
+<meta property="og:url" content="http://a1ex.net/wait/Js元编程.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="always hash创建动态属性名的对象  //这是元编程非常强大的军火库—原文1&amp;#10;">
-<meta property="og:updated_time" content="2015-11-10T07:55:41.995Z">
+<meta property="og:description" content="基础always hashjavscirpt 所有对向(除了string,number,boolean)都继承于ObjectObeject 是一个哈希(hash)————-一组含键(key)的任意类型属性创建动态属性名的对象  //这是元编程非常强大的军火库—原文1var myObj = &amp;#123;&amp;#125;;&amp;#10;for( var i = 0; i &amp;#60; 5; i++)&amp;#123;">
+<meta property="og:updated_time" content="2015-11-11T07:06:36.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript 元编程">
-<meta name="twitter:description" content="always hash创建动态属性名的对象  //这是元编程非常强大的军火库—原文1&amp;#10;">
+<meta name="twitter:description" content="基础always hashjavscirpt 所有对向(除了string,number,boolean)都继承于ObjectObeject 是一个哈希(hash)————-一组含键(key)的任意类型属性创建动态属性名的对象  //这是元编程非常强大的军火库—原文1var myObj = &amp;#123;&amp;#125;;&amp;#10;for( var i = 0; i &amp;#60; 5; i++)&amp;#123;">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -34,9 +35,9 @@
     <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 
-  <body>
-    <header>
-      
+      <body>
+        <header>
+          
 <div>
 		
 			<div id="imglogo">
@@ -70,15 +71,15 @@
 				</ul>
 			</nav>			
 </div>
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
+        </header>
+        <div id="container">
+          <div id="main" class="page" itemscope itemprop="blogPost">
   
 	<article itemprop="articleBody"> 
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/11/10/2015/Js元编程/" title="Javascript 元编程" itemprop="url">Javascript 元编程</a>
+      <a href="/wait/Js元编程.html" title="Javascript 元编程" itemprop="url">Javascript 元编程</a>
   </h1>
   <p class="article-author">By
        
@@ -91,14 +92,13 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#always_hash"><span class="toc-number">1.</span> <span class="toc-text">always hash</span></a></li></ol>
-		
-		</div>
-		
-		<h3 id="always_hash">always hash</h3><p>创建动态属性名的对象  //这是元编程非常强大的军火库—原文<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure></p>
+		<h2 id="基础">基础</h2><h3 id="always_hash">always hash</h3><p>javscirpt 所有对向(除了string,number,boolean)都继承于Object<br>Obeject 是一个哈希(hash)————-一组含键(key)的任意类型属性<br>创建动态属性名的对象  //这是元编程非常强大的军火库—原文<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var myObj = &#123;&#125;;&#10;for( var i = 0; i &#60; 5; i++)&#123;&#10;  myObj[&#39;prop_&#39; + i] = i;&#10;&#125; &#10;alert(myObj.prop_2);</span><br></pre></td></tr></table></figure></p>
+<h3 id="对象查找遍历">对象查找遍历</h3><p><code>for in</code><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;&#10;  name : &#39;Bob&#39;,&#10;  email : &#39;bob@mail.com&#39;,&#10;  tel : &#39;1888888&#39;&#10;&#125;&#10;for( var key in person)&#123;&#10;  console.log(key);&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="类型检测">类型检测</h3><p>var a = [1,2,3,4,5];<br>console.log( typeof a); //‘object’<br>console.log(a instanceof Array);  //询问</p>
+<h3 id="JavaScript_里面没有类">JavaScript 里面没有类</h3><p>javscript是一个无类语言<br><code>new</code> 会生成一个空对象,this会指向刚刚创建的新对象<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function Coord(x, y)&#123;&#10;  this.x = x;&#10;  this.y = y;&#10;&#125;&#10;var home = new Coord(132,223);    //&#21019;&#24314;&#19968;&#20010;&#31354;&#23545;&#35937;home,this&#25351;&#21521;home&#10;console.log( home.x );&#10;console.log( home.y );&#10;alert( home.constructor );  //Coord</span><br></pre></td></tr></table></figure></p>
+<p>javascript的prototype原型链查+继承<br>对象通过原型继承,而不是通过对象来继承</p>
+<h3 id="函数即对象">函数即对象</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;&#10;  counter : 5&#10;&#125;;&#10;var b = &#123;&#10;  counter : 6&#10;&#125;;&#10;a.increment = function( amount )&#123;&#10;  this.counter += amount;&#10;&#125;&#10;a.increment( 3 );&#10;console.log( a.counter );&#10;b.increment = a.increment;    //&#23558;a&#30340;&#26041;&#27861;&#36171;&#20540;&#32473;b&#10;b.increment( 10 );&#10;console.log( b.counter );</span><br></pre></td></tr></table></figure>
+<h3 id="Reference">Reference</h3><p>javascript艺术与科学   2010/10月  电子工业出版社</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -106,7 +106,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/11/10/2015/Js元编程/" data-title="Javascript 元编程 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/wait/Js元编程.html" data-title="Javascript 元编程 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -117,111 +117,15 @@
    	       
 	</article>
 	
-<nav class="article-nav clearfix">
- 
-
-<div class="next">
-<a href="/11/08/2015/daily/"  title="linux日常更新">
- <strong>下一篇：</strong><br/> 
- <span>linux日常更新
-</span>
-</a>
-</div>
-
-</nav>
-
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="11/10/2015/Js元编程/" data-title="Javascript 元编程" data-url="http://a1ex.net/11/10/2015/Js元编程/"></div>
+	<div class="ds-thread" data-thread-key="wait/Js元编程.html" data-title="Javascript 元编程" data-url="http://a1ex.net/wait/Js元编程.html"></div>
 </section>
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#always_hash"><span class="toc-number">1.</span> <span class="toc-text">always hash</span></a></li></ol>
- 
-  </div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide"></a></div>
-<aside class="clearfix">
-
-  
-  <div class="tagcloudlist">
-    <p class="asidetitle">标签云</p>
-    <div class="tagcloudlist clearfix">
-       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a>
-    </div>
-  </div>
-
-
-  
-  <div class="archiveslist">
-    <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
-  </div>
-
-
-  
-<div class="categorieslist">
-	<p class="asidetitle">分类</p>
-		<ul>
-		
-		  
-			<li><a href="/categories/Collection/" title="Collection">Collection<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>8</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Others/" title="Others">Others<sup>4</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/SQL/" title="SQL">SQL<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>12</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
-		  
-		
-		</ul>
-</div>
-
-
-  <div class="linkslist">
-  <p class="asidetitle">Links</p>
-    <ul>
-        
-          <li>
-            
-            	<a href="http://zh.wikipedia.org" target="_blank" title="Wiki">Wiki</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://hexo.io/" target="_blank" title="Hexo">Hexo</a>
-            
-          </li>
-        
-    </ul>
-</div>
-
-</aside>
-</div>
-    </div>
-    <footer><div id="footer" >
+        </div>
+        <footer><div id="footer" >
 	
 	<div class="line">
 		<span></span>
@@ -266,7 +170,7 @@
 		</p>
 </div>
 </footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
+        <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
@@ -309,36 +213,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
         
     }
-  });
-});
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  c.click(function(){
-    ta.css('display', 'block').addClass('fadeIn');
-  });
-  o.click(function(){
-    ta.css('display', 'none');
-  });
-  $(window).scroll(function(){
-    ta.css("top",Math.max(140,320-$(this).scrollTop()));
   });
 });
 </script>
@@ -448,5 +324,6 @@ _ts(option);
 
 <!-- Tiny_search End -->
 
-  </body>
-</html>
+      </body>
+     </html>
+     
