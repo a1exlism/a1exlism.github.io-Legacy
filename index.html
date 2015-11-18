@@ -79,149 +79,14 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/11/13/2015/sql函数/" title="sql日常记录" itemprop="url">sql日常记录</a>
+      <a href="/11/15/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-13T13:36:59.779Z" itemprop="datePublished"> 发表于 11-13-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <ol>
-<li>字符串截取<br> left(str, len);    /    right(str, len);        //len&gt;= 0<br> i.e.    :    select left(‘abcde’, 4);            //截取前面四个</li>
-<li>char(60,112,62)<br> <p>            //可以用来字符截取,字太多了</p></li>
-<li>version()            -&gt;5.6.11</li>
-<li>limit m,n           m-start      n—length<br>limit n             n—length</li>
-<li>cast(value as type)       获取一个类型的值,并转换类型<br>convert(type ,value)      转换类型      type -&gt;signed unsigned<br>cast(‘a’ as signed)             返回0        cast(‘123’ as int)    返回123<br>convert( int ,’123’)        返回123</li>
-<li>concat( a, b)  连接函数,对ab进行连接</li>
-<li>mit(a,1,50)       1-50 截取字符串</li>
-<li>select * from (xxx)a    a为别名</li>
-<li>group by xx   以字段分类</li>
-<li>select count(*)   返回统计的行数</li>
-<li>0x7171    类似于高亮,更加明显</li>
-<li>IFNULL(a,0x22)        判断是否为NULL,是的话就返回0x22,否则返回a</li>
-<li>0x7423 的写法可以规避单引号过滤 </li>
-<li>distinct 过滤重复</li>
-<li>group_concat( user ,0x3a, password)<br>group_concat()会计算哪些行属于同一组,将属于同一组的列显示出来.要返回哪些列,由函<br>数参数(就是字段名)决定.分组必须有个标准,就是根据group by指定的列进行分组    <a href="http://www.cnblogs.com/wangtao_20/archive/2011/02/23/1961860.html" target="_blank" rel="external">王滔’s blog</a></li>
-<li>char(115)  unicode-&gt;string</li>
-<li>version()  @@version         版本号</li>
-<li>@@datadir         mysql物理路径</li>
-<li>user()     当前的mysql用户        example: root@localhost</li>
-<li>load_file()     加载物理路径,需要file_priv权限<br>windows: load_file(‘c:\boot.ini’)<br>linux:     load_file(‘/etc/passwd’)<br>可以利用hex编码避免php的正则匹配 load_file(0x编码后字符)</li>
-<li></li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/11/13/2015/sql函数/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/13/2015/sql函数/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/11/13/2015/web安全测试/" title="web安全测试读书笔记" itemprop="url">web安全测试读书笔记</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-11-12T16:00:00.000Z" itemprop="datePublished"> 发表于 11-13-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="wget_作镜像">wget 作镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://a.com -r -R <span class="string">'*.gif,*.jpg,*.png,*.css,*.js'</span></span><br><span class="line">wget http://b.com -r -A <span class="string">'*.html,*.htm,*.php,*.asp,*.aspx,*.jsp,*do'</span></span><br></pre></td></tr></table></figure>
-<p>-r 递归扫描 —depth 1 只扫到一级目录<br>-A  accept 接受的文件类型<br>-R  reject  拒绝的文件类型<br>—http-user —http-password   身份认证<br>—save-cookies  —load-cookies    存储/加载cookies<br>—log   存储日志</p>
-<h3 id="openSSL_的base64">openSSL 的base64</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#decode</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'b3BlbnNzbA=='</span> | openssl base64 <span class="operator">-d</span>   <span class="comment">#-d decode</span></span><br><span class="line"><span class="comment">#encode</span></span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">'openssl'</span> | openssl base64 <span class="operator">-e</span>   <span class="comment">#-e encode</span></span><br><span class="line"><span class="comment">#注意 -n必需        -n就表示不输入回车符</span></span><br><span class="line"><span class="comment">#code with file</span></span><br><span class="line">openssl base64 <span class="operator">-e</span>/<span class="operator">-d</span> -in   input.txt  -out output.txt</span><br></pre></td></tr></table></figure>
-<p>cookie 一般使用base64编码</p>
-<p>openssl还<code>支持rsa md2 md5 sha sha1 sha224 sha256 sha384 sha512 des3</code>编码,棒!</p>
-<h4 id="openssl_md5">openssl_md5</h4><p>a.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#a</span></span><br><span class="line"><span class="number">1</span>. openssl </span><br><span class="line"><span class="number">2</span>. 输入md5后回车</span><br><span class="line"><span class="number">3</span>. 接着输入<span class="number">123456</span>,不要输入回车.然后按<span class="number">3</span>次ctrl+d.</span><br><span class="line"><span class="number">4</span>. 输出密文</span><br><span class="line"><span class="comment">#b</span></span><br><span class="line"> <span class="built_in">echo</span> -n <span class="number">123456</span> | openssl md5</span><br></pre></td></tr></table></figure></p>
-<p>其他同理~</p>
-<h3 id="JSON_attack_xss">JSON attack xss</h3><p>应该算是个存储型吧<br>AJAX组件通过JavaScript对象符号JSON来接受输入,即<code>JSON内的数据接受javascript的解析</code></p>
-<h4 id="JSON解析原理:">JSON解析原理:</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.parse()</span><br><span class="line"><span class="comment">//解析JSON字符串, 可以选择改变前面解析后的值及其属性,然后返回解析的值.</span></span><br><span class="line"><span class="built_in">JSON</span>.stringify()</span><br><span class="line"><span class="comment">//返回指定值的 JSON 字符串,可以自定义只包含某些特定的属性或替换属性值.</span></span><br><span class="line"><span class="keyword">var</span> code = <span class="string">'"nihao"'</span>;</span><br><span class="line"><span class="built_in">JSON</span>.parse(code);</span><br><span class="line"><span class="built_in">eval</span>(code);</span><br></pre></td></tr></table></figure>
-<h4 id="example:">example:</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">menu</span>":</span><br><span class="line">  <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">address</span>":</span><br><span class="line">    <span class="value">&#123;</span><br><span class="line">      "<span class="attribute">line1</span>":<span class="value"><span class="string">"User Inputs"</span></span>,</span><br><span class="line">      "<span class="attribute">line2</span>":<span class="value"><span class="string">"Beijing"</span></span>,</span><br><span class="line">      "<span class="attribute">line3</span>":<span class="value"><span class="string">"Shanghai"</span></span><br><span class="line">    </span>&#125;</span><br><span class="line">  </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="POC:">POC:</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- User Inputs: --&gt;</span><br><span class="line">",                        //闭合</span><br><span class="line">xxx1:alert(/xss/),    //xxx1,xxx2则为语法需要,任意即可</span><br><span class="line">xxx2:"        //闭合</span><br></pre></td></tr></table></figure>
-<h4 id="解析之后">解析之后</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(&#123;</span><br><span class="line">  <span class="string">"menu"</span>:</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"address"</span>:</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"line1"</span>:<span class="string">""</span>,xxx1:alert(<span class="regexp">/xss/</span>),xxx2:<span class="string">" "</span>,</span><br><span class="line">      <span class="string">"line2"</span>:<span class="string">"Beijing"</span>,</span><br><span class="line">      <span class="string">"line3"</span>:<span class="string">"Shanghai"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>Other :<br>查找网站平台/框架<br>  <meta>  注释 页头信息(header)</p>
-<h3 id="Pending">Pending</h3><ol>
-<li>curl 自动化xss检测 &amp;&amp; 目录遍历    P137 单独blog</li>
-<li>Command Injection</li>
-<li>Xpath Injection</li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/11/13/2015/web安全测试/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/13/2015/web安全测试/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/11/12/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-11-12T15:34:46.118Z" itemprop="datePublished"> 发表于 11-12-2015</time>
+    <time datetime="2015-11-15T07:46:39.335Z" itemprop="datePublished"> 发表于 11-15-2015</time>
     
   </p>
 </header>
@@ -329,6 +194,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 </li>
 </ol>
 <p>好像有点小BUG:<br>如果开机过程没有插网线,会一直搜索大概1分钟<br>Reference:<br><a href="http://tieba.baidu.com/p/3247330238" target="_blank" rel="external">贴吧</a></p>
+<h3 id="gnome">gnome</h3><p>打开了一张奇怪的图片,然后就崩了,直接被注销<br>搞了半天也看了gnome的错误日志,然后找到论坛<a href="http://forum.ubuntu.org.cn/viewtopic.php?f=94&amp;t=378902" target="_blank" rel="external">ubuntu12.04安装gnome shell主题，给新手们</a><br>最后发现这个网站<a href="https://extensions.gnome.org/" target="_blank" rel="external">extensions.gnome</a><br><code>firefox</code>打开     然后选择一下插件,不用管warning…<br>备用:<br><a href="http://itsfoss.com/install-switch-themes-gnome-shell/" target="_blank" rel="external">How To Install And Switch Themes In GNOME Shell In Ubuntu</a></p>
 
         
         
@@ -343,7 +209,146 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/11/12/2015/daily/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/12/2015/daily/" data-count-type="comments">&nbsp;</a>
+		<a href="/11/15/2015/daily/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/15/2015/daily/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/11/15/2015/sql函数/" title="sql日常记录" itemprop="url">sql日常记录</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-15T03:43:51.707Z" itemprop="datePublished"> 发表于 11-15-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <ol>
+<li>字符串截取<br> left(str, len);    /    right(str, len);        //len&gt;= 0<br> i.e.    :    select left(‘abcde’, 4);            //截取前面四个</li>
+<li>char(60,112,62)<br> <p>            //可以用来字符截取,字太多了</p></li>
+<li>version()            -&gt;5.6.11</li>
+<li>limit m,n           m-start      n—length<br>limit n             n—length</li>
+<li>cast(value as type)       获取一个类型的值,并转换类型<br>convert(type ,value)      转换类型      type -&gt;signed unsigned<br>cast(‘a’ as signed)             返回0        cast(‘123’ as int)    返回123<br>convert( int ,’123’)        返回123</li>
+<li>concat( a, b)  连接函数,对ab进行连接</li>
+<li>mit(a,1,50)       1-50 截取字符串</li>
+<li>select * from (xxx)a    a为别名</li>
+<li>group by xx   以字段分类</li>
+<li>select count(*)   返回统计的行数</li>
+<li>0x7171    类似于高亮,更加明显</li>
+<li>IFNULL(a,0x22)        判断是否为NULL,是的话就返回0x22,否则返回a</li>
+<li>0x7423 的写法可以规避单引号过滤 </li>
+<li>distinct 过滤重复</li>
+<li>group_concat( user ,0x3a, password)<br>group_concat()会计算哪些行属于同一组,将属于同一组的列显示出来.要返回哪些列,由函<br>数参数(就是字段名)决定.分组必须有个标准,就是根据group by指定的列进行分组    <a href="http://www.cnblogs.com/wangtao_20/archive/2011/02/23/1961860.html" target="_blank" rel="external">王滔’s blog</a>‘</li>
+<li>char(115)  unicode-&gt;string</li>
+<li>version()  @@version         版本号</li>
+<li>@@datadir         mysql物理路径</li>
+<li>user()     当前的mysql用户        example: root@localhost</li>
+<li>load_file()     加载物理路径,需要file_priv权限<br>windows: load_file(‘c:\boot.ini’)<br>linux:     load_file(‘/etc/passwd’)<br>可以利用hex编码避免php的正则匹配 load_file(0x编码后字符)</li>
+<li>ORD()     ord(‘i’)    返回第一个字符的ASCII</li>
+<li>MID(字段名, Start [, Length])     返回一部分字符串</li>
+<li>EXISTS()     指定一个子查询，检测行的存在返回Blooean结果</li>
+<li>WHERE itemid (REGEXP 0x5b5e302d395d)     <code>REGEXP</code>正则对象的使用</li>
+<li></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/11/15/2015/sql函数/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/15/2015/sql函数/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/11/13/2015/web安全测试/" title="web安全测试读书笔记" itemprop="url">web安全测试读书笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-12T16:00:00.000Z" itemprop="datePublished"> 发表于 11-13-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="wget_作镜像">wget 作镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://a.com -r -R <span class="string">'*.gif,*.jpg,*.png,*.css,*.js'</span></span><br><span class="line">wget http://b.com -r -A <span class="string">'*.html,*.htm,*.php,*.asp,*.aspx,*.jsp,*do'</span></span><br></pre></td></tr></table></figure>
+<p>-r 递归扫描 —depth 1 只扫到一级目录<br>-A  accept 接受的文件类型<br>-R  reject  拒绝的文件类型<br>—http-user —http-password   身份认证<br>—save-cookies  —load-cookies    存储/加载cookies<br>—log   存储日志</p>
+<h3 id="openSSL_的base64">openSSL 的base64</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#decode</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'b3BlbnNzbA=='</span> | openssl base64 <span class="operator">-d</span>   <span class="comment">#-d decode</span></span><br><span class="line"><span class="comment">#encode</span></span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">'openssl'</span> | openssl base64 <span class="operator">-e</span>   <span class="comment">#-e encode</span></span><br><span class="line"><span class="comment">#注意 -n必需        -n就表示不输入回车符</span></span><br><span class="line"><span class="comment">#code with file</span></span><br><span class="line">openssl base64 <span class="operator">-e</span>/<span class="operator">-d</span> -in   input.txt  -out output.txt</span><br></pre></td></tr></table></figure>
+<p>cookie 一般使用base64编码</p>
+<p>openssl还<code>支持rsa md2 md5 sha sha1 sha224 sha256 sha384 sha512 des3</code>编码,棒!</p>
+<h4 id="openssl_md5">openssl_md5</h4><p>a.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#a</span></span><br><span class="line"><span class="number">1</span>. openssl </span><br><span class="line"><span class="number">2</span>. 输入md5后回车</span><br><span class="line"><span class="number">3</span>. 接着输入<span class="number">123456</span>,不要输入回车.然后按<span class="number">3</span>次ctrl+d.</span><br><span class="line"><span class="number">4</span>. 输出密文</span><br><span class="line"><span class="comment">#b</span></span><br><span class="line"> <span class="built_in">echo</span> -n <span class="number">123456</span> | openssl md5</span><br></pre></td></tr></table></figure></p>
+<p>其他同理~</p>
+<h3 id="JSON_attack_xss">JSON attack xss</h3><p>应该算是个存储型吧<br>AJAX组件通过JavaScript对象符号JSON来接受输入,即<code>JSON内的数据接受javascript的解析</code></p>
+<h4 id="JSON解析原理:">JSON解析原理:</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.parse()</span><br><span class="line"><span class="comment">//解析JSON字符串, 可以选择改变前面解析后的值及其属性,然后返回解析的值.</span></span><br><span class="line"><span class="built_in">JSON</span>.stringify()</span><br><span class="line"><span class="comment">//返回指定值的 JSON 字符串,可以自定义只包含某些特定的属性或替换属性值.</span></span><br><span class="line"><span class="keyword">var</span> code = <span class="string">'"nihao"'</span>;</span><br><span class="line"><span class="built_in">JSON</span>.parse(code);</span><br><span class="line"><span class="built_in">eval</span>(code);</span><br></pre></td></tr></table></figure>
+<h4 id="example:">example:</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">menu</span>":</span><br><span class="line">  <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">address</span>":</span><br><span class="line">    <span class="value">&#123;</span><br><span class="line">      "<span class="attribute">line1</span>":<span class="value"><span class="string">"User Inputs"</span></span>,</span><br><span class="line">      "<span class="attribute">line2</span>":<span class="value"><span class="string">"Beijing"</span></span>,</span><br><span class="line">      "<span class="attribute">line3</span>":<span class="value"><span class="string">"Shanghai"</span></span><br><span class="line">    </span>&#125;</span><br><span class="line">  </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="POC:">POC:</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- User Inputs: --&gt;</span><br><span class="line">",                        //闭合</span><br><span class="line">xxx1:alert(/xss/),    //xxx1,xxx2则为语法需要,任意即可</span><br><span class="line">xxx2:"        //闭合</span><br></pre></td></tr></table></figure>
+<h4 id="解析之后">解析之后</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(&#123;</span><br><span class="line">  <span class="string">"menu"</span>:</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"address"</span>:</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"line1"</span>:<span class="string">""</span>,xxx1:alert(<span class="regexp">/xss/</span>),xxx2:<span class="string">" "</span>,</span><br><span class="line">      <span class="string">"line2"</span>:<span class="string">"Beijing"</span>,</span><br><span class="line">      <span class="string">"line3"</span>:<span class="string">"Shanghai"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Other :<br>查找网站平台/框架<br>  <meta>  注释 页头信息(header)</p>
+<h3 id="Pending">Pending</h3><ol>
+<li>curl 自动化xss检测 &amp;&amp; 目录遍历    P137 单独blog</li>
+<li>Command Injection</li>
+<li>Xpath Injection</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/11/13/2015/web安全测试/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/13/2015/web安全测试/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
