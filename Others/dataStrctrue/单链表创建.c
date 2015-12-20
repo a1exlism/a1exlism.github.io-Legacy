@@ -1,51 +1,57 @@
 #include "stdio.h"
 #include "stdlib.h"
-typedef struct node 	//结构名为node
-{
-	char name[20];
+typedef char elemType;
+
+typedef struct node{
 	struct node *next;
-}node,*Lnode;	//结构体变量
-Lnode create(int num){		//返回指针
-	Lnode newNode,head,tmpNode;
-	int i;
-	head = (Lnode)malloc(sizeof(node));
-	if(!head)
-		exit(0);
-//-----定义头指针------
-	head->name[0] = '\0';	//第一个head不输出
-	head->next = NULL;
-//-----地址1---------
-	newNode = head;
-	for( i = 0;i < num;i++){
-//-----初始化---------
-		if(!(tmpNode = (Lnode)malloc(sizeof(node))))
-			exit(0);
-		scanf("%s",tmpNode->name);
-		tmpNode->next = NULL;
+	elemType data[20];
+}node,*Lnode;
 
-//-----tmpNode为地址2--------
-		newNode->next = tmpNode ;
+//-----单链表创建---------
+Lnode createNode( int num ){		//num个节点	返回根节点
+	int i = 1;
+	Lnode root;
+	root = (Lnode)malloc(sizeof(node));
+	root -> next = NULL;
+	printf("请输入第1个String:\n" );
+	scanf("%s",root -> data);
+	if( num == 1)
+		return root;
+	else{
+		Lnode tmpNode,newNode;
+		newNode = (Lnode)malloc(sizeof(node));
 
-//-----地址复制使head指向newNode-------
-		newNode = tmpNode;
+		newNode = root;	//复制root节点
 
-//----不能忘了释放指针内存---------
-		tmpNode = NULL;
-		free(tmpNode);
-//-------------------
+		for( ;i < num ; i++){
+			tmpNode = (Lnode)malloc(sizeof(node));
+			printf("请输入第%d个String:\n",i+1);
+			scanf("%s", tmpNode -> data );
+			tmpNode -> next = NULL;
+			//----------
+		 	newNode -> next = tmpNode ;
+		 	newNode = tmpNode;
+			//----------newNode一直进入next
+			tmpNode = NULL;
+		}
+		return root;
 	}
-	return head;
+}
+void putNode( Lnode root ){
+	while( root ){
+		printf("%s\n",root -> data );
+		root = root -> next;
+	}
 }
 int main(){
-	int num;
-	Lnode head;
-	scanf("%d",&num);
-	head = create(num);
+	Lnode root;
+	int number;
+	printf("请输入创建节点数:\n");
+	scanf("%d",&number);
+	root = createNode( number );	//创建两个节点
 	int i = 0;
+
 	printf("OutPut:\n");
-	for(i = 0;i < num+1;i++){
-		printf("%s\n",head->name);
-		head = head->next;
-	}
+	putNode( root );
 	return 0;
 }

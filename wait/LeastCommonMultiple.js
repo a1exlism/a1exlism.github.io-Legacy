@@ -1,12 +1,4 @@
-//-----错误----------
-function divisor(a, b){	//最大公约数
-	q = Math.floor( a / b );
-	r = a % b;
-	if( r == 0)
-		return a;
-	else
-		return divisor( q, r );
-}
+
 //--------Version2-----------
 function divisor(a, b){	//最大公约数
 	if ( a < b ){

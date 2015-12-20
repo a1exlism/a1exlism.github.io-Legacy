@@ -2,8 +2,7 @@
 sql123
 
 
-
-
+稳定的驱动版本号:  353.62
 -----------------------Hot Port-----------------------
 netsh wlan set hostednetwork mode=allow ssid=jingyan key=jingyan147258
 netsh wlan start hostednetwork

@@ -16,11 +16,34 @@ function LetterCountI(str) {
 	return -1;
 }
 //----------Version2--------------
-function LetterCountl(str){
-	var arr = str.match(/[\S]{1,}/g);
+	str = str.toLowerCase();
+	var arr = str.split(/[\s]/);
 	//匹配大于等于一个的非space字符串
-	flag = true;
-	for( var i = 0; i < arr.length; i++){
-		if( arr[i] )
+	//or var arr = str.match(/[\S]{1,}/g);
+	var longest =new Array(arr.length);
+	var alphabet = new Array(26);
+	for( var i = 0; i < arr.length; i++){	//每一层遍历一次字符串
+		for( var j = 0; j < arr[i].length; j++){
+			alphabet[arr[i][j].charCodeAt() - 97] ++;
+		}	//Letter Count
+		for( var k = 0; k < 26; k++){
+			longest[i] = longest[i] - alphabet[k] ? longest[i] : alphabet[k]; 
+function LetterCountI(str){
+		}	//Compare to longest
 	}
+	var flag = 0;
+	for( var count = 0; count < longest.length; count++){
+		if( longest[count] != 1)
+			break;
+		flag ++;
+	}
+	alert( flag );
+	if( flag == longest.length )
+		return -1;
+	var tmp = 0;
+	for( var x = 1 ; x < longest.length; x++){
+		if( longest[tmp] < longest[x])
+			tmp = x;
+	}
+	return arr[tmp];
 }

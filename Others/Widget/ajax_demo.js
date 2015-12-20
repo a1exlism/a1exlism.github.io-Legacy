@@ -1,5 +1,6 @@
-
 1. creat Httprequest
+
+
 if( window.XMLHttpRequest){
 	httpRequest = new XMLHttpRequest();
 }else if( window.ActiveXObject){
@@ -15,6 +16,8 @@ httpRequest.send( null );
 //if POST-ing the request.
 //include JSON,SOAP,etc 
 2. Handling the server response
+
+
 httpRequest.onreadystatechange = nameOfTheFunction;
 /*
 check for the state of the request
@@ -37,7 +40,10 @@ if( httpRequest.status === 200 ){
 }else{
 	//occur some problems
 }
+
 3. Example
+
+
 <span id="ajaxButton" style="cursor: pointer;text-decoration: underline">
  Make a request
 </span>

