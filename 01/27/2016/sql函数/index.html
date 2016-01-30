@@ -4,53 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello Hexo | A1exlism</title>
+    <title>sql日常记录 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="感谢作者:
-
-Hexo
-Jacman
-
-这篇文章也顺便作为自己md的参考文本吧 : )
-StartNew post123``` bash          代码区_md语法```
-More info: Writing
-Hexo的简单操作123$ hexo server$ hexo generate$ hexo deploy
-碰到的Hexo问题
-hexo deploy失败的解决方案12_config">
+    <meta name="description" content="字符串截取 left(str, len);    /    right(str, len);        //len&amp;gt;= 0 i.e.    :    select left(‘abcde’, 4);            //截取前面四个
+char(60,112,62)             //可以用来字符截取,字太多了
+version()            -&amp;gt;5.6.1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello Hexo">
-<meta property="og:url" content="http://a1ex.net/03/30/2015/hello-hexo/index.html">
+<meta property="og:title" content="sql日常记录">
+<meta property="og:url" content="http://a1ex.net/01/27/2016/sql函数/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="感谢作者:
-
-Hexo
-Jacman
-
-这篇文章也顺便作为自己md的参考文本吧 : )
-StartNew post123``` bash          代码区_md语法```
-More info: Writing
-Hexo的简单操作123$ hexo server$ hexo generate$ hexo deploy
-碰到的Hexo问题
-hexo deploy失败的解决方案12_config">
-<meta property="og:updated_time" content="2015-10-24T08:56:42.000Z">
+<meta property="og:description" content="字符串截取 left(str, len);    /    right(str, len);        //len&amp;gt;= 0 i.e.    :    select left(‘abcde’, 4);            //截取前面四个
+char(60,112,62)             //可以用来字符截取,字太多了
+version()            -&amp;gt;5.6.1">
+<meta property="og:updated_time" content="2015-11-19T02:44:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello Hexo">
-<meta name="twitter:description" content="感谢作者:
-
-Hexo
-Jacman
-
-这篇文章也顺便作为自己md的参考文本吧 : )
-StartNew post123``` bash          代码区_md语法```
-More info: Writing
-Hexo的简单操作123$ hexo server$ hexo generate$ hexo deploy
-碰到的Hexo问题
-hexo deploy失败的解决方案12_config">
+<meta name="twitter:title" content="sql日常记录">
+<meta name="twitter:description" content="字符串截取 left(str, len);    /    right(str, len);        //len&amp;gt;= 0 i.e.    :    select left(‘abcde’, 4);            //截取前面四个
+char(60,112,62)             //可以用来字符截取,字太多了
+version()            -&amp;gt;5.6.1">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -108,14 +84,14 @@ hexo deploy失败的解决方案12_config">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/30/2015/hello-hexo/" title="Hello Hexo" itemprop="url">Hello Hexo</a>
+      <a href="/01/27/2016/sql函数/" title="sql日常记录" itemprop="url">sql日常记录</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-03-29T16:00:00.000Z" itemprop="datePublished"> 发表于 03-30-2015</time>
+    <time datetime="2016-01-27T11:05:59.649Z" itemprop="datePublished"> 发表于 01-27-2016</time>
     
   </p>
 </header>
@@ -124,21 +100,39 @@ hexo deploy失败的解决方案12_config">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Start"><span class="toc-number">1.</span> <span class="toc-text">Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#New_post"><span class="toc-number">1.1.</span> <span class="toc-text">New post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo的简单操作"><span class="toc-number">1.2.</span> <span class="toc-text">Hexo的简单操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#碰到的Hexo问题"><span class="toc-number">1.3.</span> <span class="toc-text">碰到的Hexo问题</span></a></li></ol></li></ol>
+			
 		
 		</div>
 		
-		<p>感谢作者:</p>
-<ul>
-<li><a href="http://hexo.io/" target="_blank" rel="external">Hexo</a></li>
-<li><a href="http://wuchong.me/" title="Jacman" target="_blank" rel="external">Jacman</a></li>
-</ul>
-<p>这篇文章也顺便作为自己md的参考文本吧 : )</p>
-<h2 id="Start">Start</h2><h3 id="New_post">New post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``` bash</span><br><span class="line">          代码区_md语法</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/zh-cn/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Hexo的简单操作">Hexo的简单操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<h3 id="碰到的Hexo问题">碰到的Hexo问题</h3><ol>
-<li>hexo deploy失败的解决方案<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_config.yml--&gt;<span class="built_in">type</span> git(hexo <span class="number">3.0</span>)</span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+		<ol>
+<li>字符串截取<br> left(str, len);    /    right(str, len);        //len&gt;= 0<br> i.e.    :    select left(‘abcde’, 4);            //截取前面四个</li>
+<li>char(60,112,62)<br> <p>            //可以用来字符截取,字太多了</p></li>
+<li>version()            -&gt;5.6.11</li>
+<li>limit m,n           m-start      n—length    <code>开始为0</code><br>limit n             n—length</li>
+<li>cast(value as type)       获取一个类型的值,并转换类型<br>convert(type ,value)      转换类型      type -&gt;signed unsigned<br>cast(‘a’ as signed)             返回0        cast(‘123’ as int)    返回123<br>convert( int ,’123’)        返回123</li>
+<li>concat( a, b)  连接函数,对ab进行连接</li>
+<li>mit(a,1,50)       1-50 截取字符串</li>
+<li>select * from (xxx)a    a为别名</li>
+<li>group by xx   以字段分类</li>
+<li>select count(*)   返回统计的行数</li>
+<li>0x7171    类似于高亮,更加明显</li>
+<li>IFNULL(a,0x22)        判断是否为NULL,是的话就返回0x22,否则返回a</li>
+<li>0x7423 的写法可以规避单引号过滤 </li>
+<li>distinct 过滤重复</li>
+<li>group_concat( user ,0x3a, password)<br>group_concat()会计算哪些行属于同一组,将属于同一组的列显示出来.要返回哪些列,由函<br>数参数(就是字段名)决定.分组必须有个标准,就是根据group by指定的列进行分组    <a href="http://www.cnblogs.com/wangtao_20/archive/2011/02/23/1961860.html" target="_blank" rel="external">王滔’s blog</a>‘</li>
+<li>char(115)  unicode-&gt;string</li>
+<li>version()  @@version         版本号</li>
+<li>@@datadir         mysql物理路径</li>
+<li>user()     当前的mysql用户        example: root@localhost</li>
+<li>load_file()     加载物理路径,需要file_priv权限<br>windows: load_file(‘c:\boot.ini’)<br>linux:     load_file(‘/etc/passwd’)<br>可以利用hex编码避免php的正则匹配 load_file(0x编码后字符)</li>
+<li>ORD()     ord(‘i’)    返回第一个字符的ASCII</li>
+<li>EXISTS()     指定一个子查询，检测行的存在返回Blooean结果</li>
+<li>MID(String, Start [, Length])          取子串        MySQL<br>[substring/]substr(String,Start[,Length])        取子串        支持SQL Server,Oracle[MySQL]<br>注意:<code>开始位置为1</code> 但是0为起始点不会报错,不过不回显示任何东西</li>
+<li>WHERE itemid (REGEXP 0x5b5e302d395d)     <code>REGEXP</code>正则对象的使用</li>
+<li><code>----手动高亮----</code><br>concat( select database() ) 会导致mysql语法错误,想了一会儿知道原因了…<br><code>concat( (select database()) , &#39;xxx&#39; );</code>   看完这句话然后默默的删掉’xxx’,然后自然就懂啦</li>
+<li>length( )    显示长度,返回int</li>
+<li>ascii()    字符转ascii<br>  char()    ascii转字符</li>
+<li></li>
 </ol>
   
 	</div>
@@ -147,7 +141,7 @@ hexo deploy失败的解决方案12_config">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/03/30/2015/hello-hexo/" data-title="Hello Hexo | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/01/27/2016/sql函数/" data-title="sql日常记录 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -161,18 +155,18 @@ hexo deploy失败的解决方案12_config">
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/06/10/2015/greatsites/" title="Great Pages">
+ <a href="/01/30/2016/daily1/" title="linux日常更新-01">
   <strong>上一篇：</strong><br/>
   <span>
-  Great Pages</span>
+  linux日常更新-01</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/03/20/2015/goagent/"  title="Goagant">
+<a href="/11/13/2015/web安全测试/"  title="web安全测试读书笔记">
  <strong>下一篇：</strong><br/> 
- <span>Goagant
+ <span>web安全测试读书笔记
 </span>
 </a>
 </div>
@@ -181,7 +175,7 @@ hexo deploy失败的解决方案12_config">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="03/30/2015/hello-hexo/" data-title="Hello Hexo" data-url="http://a1ex.net/03/30/2015/hello-hexo/"></div>
+	<div class="ds-thread" data-thread-key="01/27/2016/sql函数/" data-title="sql日常记录" data-url="http://a1ex.net/01/27/2016/sql函数/"></div>
 </section>
 
 
@@ -191,7 +185,7 @@ hexo deploy失败的解决方案12_config">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Start"><span class="toc-number">1.</span> <span class="toc-text">Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#New_post"><span class="toc-number">1.1.</span> <span class="toc-text">New post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo的简单操作"><span class="toc-number">1.2.</span> <span class="toc-text">Hexo的简单操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#碰到的Hexo问题"><span class="toc-number">1.3.</span> <span class="toc-text">碰到的Hexo问题</span></a></li></ol></li></ol>
+ 
  
   </div>
 
@@ -203,7 +197,7 @@ hexo deploy失败的解决方案12_config">
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 12.5px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a>
+       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16.67px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -211,7 +205,7 @@ hexo deploy失败的解决方案12_config">
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -225,7 +219,7 @@ hexo deploy失败的解决方案12_config">
 		  
 		
 		  
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>8</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>7</sup></a></li>
 		  
 		
 		  

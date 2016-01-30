@@ -4,29 +4,35 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>sql日常记录 | A1exlism</title>
+    <title>手表指南方法 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="字符串截取 left(str, len);    /    right(str, len);        //len&amp;gt;= 0 i.e.    :    select left(‘abcde’, 4);            //截取前面四个
-char(60,112,62)             //可以用来字符截取,字太多了
-version()            -&amp;gt;5.6.1">
+    <meta name="description" content="看小学生杀手的时候发现几个指南方法，记一下
+借助太阳指向当地时间/2，表盘中将得到的数字指向太阳，则12点钟方向就是北
+原理一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了同步自转和表盘指针
+不过太阳在头上和没太阳的情况这种方法就没什么卵用了。
+立杆测影-指东针直杆垂直插在地面上，在影子顶点作下标记A，15分钟之后，影子变化，将变化后的影子顶点记为标记B，ab即为西-&amp;gt;东方向（北">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sql日常记录">
-<meta property="og:url" content="http://a1ex.net/11/13/2015/sql函数/index.html">
+<meta property="og:title" content="手表指南方法">
+<meta property="og:url" content="http://a1ex.net/01/31/2016/指南/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="字符串截取 left(str, len);    /    right(str, len);        //len&amp;gt;= 0 i.e.    :    select left(‘abcde’, 4);            //截取前面四个
-char(60,112,62)             //可以用来字符截取,字太多了
-version()            -&amp;gt;5.6.1">
-<meta property="og:updated_time" content="2015-11-19T02:44:00.000Z">
+<meta property="og:description" content="看小学生杀手的时候发现几个指南方法，记一下
+借助太阳指向当地时间/2，表盘中将得到的数字指向太阳，则12点钟方向就是北
+原理一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了同步自转和表盘指针
+不过太阳在头上和没太阳的情况这种方法就没什么卵用了。
+立杆测影-指东针直杆垂直插在地面上，在影子顶点作下标记A，15分钟之后，影子变化，将变化后的影子顶点记为标记B，ab即为西-&amp;gt;东方向（北">
+<meta property="og:updated_time" content="2016-01-30T17:59:56.176Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sql日常记录">
-<meta name="twitter:description" content="字符串截取 left(str, len);    /    right(str, len);        //len&amp;gt;= 0 i.e.    :    select left(‘abcde’, 4);            //截取前面四个
-char(60,112,62)             //可以用来字符截取,字太多了
-version()            -&amp;gt;5.6.1">
+<meta name="twitter:title" content="手表指南方法">
+<meta name="twitter:description" content="看小学生杀手的时候发现几个指南方法，记一下
+借助太阳指向当地时间/2，表盘中将得到的数字指向太阳，则12点钟方向就是北
+原理一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了同步自转和表盘指针
+不过太阳在头上和没太阳的情况这种方法就没什么卵用了。
+立杆测影-指东针直杆垂直插在地面上，在影子顶点作下标记A，15分钟之后，影子变化，将变化后的影子顶点记为标记B，ab即为西-&amp;gt;东方向（北">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -84,14 +90,14 @@ version()            -&amp;gt;5.6.1">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/11/13/2015/sql函数/" title="sql日常记录" itemprop="url">sql日常记录</a>
+      <a href="/01/31/2016/指南/" title="手表指南方法" itemprop="url">手表指南方法</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-13T13:36:59.000Z" itemprop="datePublished"> 发表于 11-13-2015</time>
+    <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
     
   </p>
 </header>
@@ -100,40 +106,17 @@ version()            -&amp;gt;5.6.1">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#借助太阳指向"><span class="toc-number">1.</span> <span class="toc-text">借助太阳指向</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原理"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#立杆测影-指东针"><span class="toc-number">2.</span> <span class="toc-text">立杆测影-指东针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#日晷原理"><span class="toc-number">2.1.</span> <span class="toc-text">日晷原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<ol>
-<li>字符串截取<br> left(str, len);    /    right(str, len);        //len&gt;= 0<br> i.e.    :    select left(‘abcde’, 4);            //截取前面四个</li>
-<li>char(60,112,62)<br> <p>            //可以用来字符截取,字太多了</p></li>
-<li>version()            -&gt;5.6.11</li>
-<li>limit m,n           m-start      n—length    <code>开始为0</code><br>limit n             n—length</li>
-<li>cast(value as type)       获取一个类型的值,并转换类型<br>convert(type ,value)      转换类型      type -&gt;signed unsigned<br>cast(‘a’ as signed)             返回0        cast(‘123’ as int)    返回123<br>convert( int ,’123’)        返回123</li>
-<li>concat( a, b)  连接函数,对ab进行连接</li>
-<li>mit(a,1,50)       1-50 截取字符串</li>
-<li>select * from (xxx)a    a为别名</li>
-<li>group by xx   以字段分类</li>
-<li>select count(*)   返回统计的行数</li>
-<li>0x7171    类似于高亮,更加明显</li>
-<li>IFNULL(a,0x22)        判断是否为NULL,是的话就返回0x22,否则返回a</li>
-<li>0x7423 的写法可以规避单引号过滤 </li>
-<li>distinct 过滤重复</li>
-<li>group_concat( user ,0x3a, password)<br>group_concat()会计算哪些行属于同一组,将属于同一组的列显示出来.要返回哪些列,由函<br>数参数(就是字段名)决定.分组必须有个标准,就是根据group by指定的列进行分组    <a href="http://www.cnblogs.com/wangtao_20/archive/2011/02/23/1961860.html" target="_blank" rel="external">王滔’s blog</a>‘</li>
-<li>char(115)  unicode-&gt;string</li>
-<li>version()  @@version         版本号</li>
-<li>@@datadir         mysql物理路径</li>
-<li>user()     当前的mysql用户        example: root@localhost</li>
-<li>load_file()     加载物理路径,需要file_priv权限<br>windows: load_file(‘c:\boot.ini’)<br>linux:     load_file(‘/etc/passwd’)<br>可以利用hex编码避免php的正则匹配 load_file(0x编码后字符)</li>
-<li>ORD()     ord(‘i’)    返回第一个字符的ASCII</li>
-<li>EXISTS()     指定一个子查询，检测行的存在返回Blooean结果</li>
-<li>MID(String, Start [, Length])          取子串        MySQL<br>[substring/]substr(String,Start[,Length])        取子串        支持SQL Server,Oracle[MySQL]<br>注意:<code>开始位置为1</code> 但是0为起始点不会报错,不过不回显示任何东西</li>
-<li>WHERE itemid (REGEXP 0x5b5e302d395d)     <code>REGEXP</code>正则对象的使用</li>
-<li><code>----手动高亮----</code><br>concat( select database() ) 会导致mysql语法错误,想了一会儿知道原因了…<br><code>concat( (select database()) , &#39;xxx&#39; );</code>   看完这句话然后默默的删掉’xxx’,然后自然就懂啦</li>
-<li>length( )    显示长度,返回int</li>
-<li>ascii()    字符转ascii<br>  char()    ascii转字符</li>
-<li></li>
-</ol>
+		<p>看小学生杀手的时候发现几个指南方法，记一下</p>
+<h2 id="借助太阳指向">借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
+<h3 id="原理">原理</h3><p>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
+<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
+<h2 id="立杆测影-指东针">立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
+<h3 id="日晷原理">日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
+<h2 id="Reference">Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -141,7 +124,7 @@ version()            -&amp;gt;5.6.1">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/11/13/2015/sql函数/" data-title="sql日常记录 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/01/31/2016/指南/" data-title="手表指南方法 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -156,9 +139,9 @@ version()            -&amp;gt;5.6.1">
  
 
 <div class="next">
-<a href="/11/13/2015/web安全测试/"  title="web安全测试读书笔记">
+<a href="/01/30/2016/daily1/"  title="linux日常更新-01">
  <strong>下一篇：</strong><br/> 
- <span>web安全测试读书笔记
+ <span>linux日常更新-01
 </span>
 </a>
 </div>
@@ -167,7 +150,7 @@ version()            -&amp;gt;5.6.1">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="11/13/2015/sql函数/" data-title="sql日常记录" data-url="http://a1ex.net/11/13/2015/sql函数/"></div>
+	<div class="ds-thread" data-thread-key="01/31/2016/指南/" data-title="手表指南方法" data-url="http://a1ex.net/01/31/2016/指南/"></div>
 </section>
 
 
@@ -177,7 +160,7 @@ version()            -&amp;gt;5.6.1">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#借助太阳指向"><span class="toc-number">1.</span> <span class="toc-text">借助太阳指向</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原理"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#立杆测影-指东针"><span class="toc-number">2.</span> <span class="toc-text">立杆测影-指东针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#日晷原理"><span class="toc-number">2.1.</span> <span class="toc-text">日晷原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
@@ -189,7 +172,7 @@ version()            -&amp;gt;5.6.1">
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 12.5px;">bash</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a>
+       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16.67px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -197,7 +180,7 @@ version()            -&amp;gt;5.6.1">
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -211,7 +194,7 @@ version()            -&amp;gt;5.6.1">
 		  
 		
 		  
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>8</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>7</sup></a></li>
 		  
 		
 		  

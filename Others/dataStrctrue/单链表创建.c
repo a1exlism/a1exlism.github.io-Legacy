@@ -8,7 +8,7 @@ typedef struct node{
 }node,*Lnode;
 
 //-----单链表创建---------
-Lnode createNode( int num ){		//num个节点	返回根节点
+Lnode createNode( int num ){	//num个节点	返回根节点
 	int i = 1;
 	Lnode root;
 	root = (Lnode)malloc(sizeof(node));
