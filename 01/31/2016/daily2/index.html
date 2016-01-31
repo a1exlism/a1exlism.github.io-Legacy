@@ -12,21 +12,21 @@
 
     
     <meta name="description" content="环境:UbuntuCommondSystem系统添加证书1.将证书ca-certificates.crt入 /etc/ssl/certs目录下然后更新证书sudo  update-ca-certificates2.
-superuserkissdata
-SoftWareDevice/Driver">
+
+来自kissdata,自己暂时没有尝试过12345678910## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux日常更新-02">
 <meta property="og:url" content="http://a1ex.net/01/31/2016/daily2/index.html">
 <meta property="og:site_name" content="A1exlism">
 <meta property="og:description" content="环境:UbuntuCommondSystem系统添加证书1.将证书ca-certificates.crt入 /etc/ssl/certs目录下然后更新证书sudo  update-ca-certificates2.
-superuserkissdata
-SoftWareDevice/Driver">
-<meta property="og:updated_time" content="2016-01-31T08:43:47.632Z">
+
+来自kissdata,自己暂时没有尝试过12345678910## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github">
+<meta property="og:updated_time" content="2016-01-31T09:16:28.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux日常更新-02">
 <meta name="twitter:description" content="环境:UbuntuCommondSystem系统添加证书1.将证书ca-certificates.crt入 /etc/ssl/certs目录下然后更新证书sudo  update-ca-certificates2.
-superuserkissdata
-SoftWareDevice/Driver">
+
+来自kissdata,自己暂时没有尝试过12345678910## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -91,7 +91,7 @@ SoftWareDevice/Driver">
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-01-31T08:43:47.632Z" itemprop="datePublished"> 发表于 01-31-2016</time>
+    <time datetime="2016-01-31T09:16:28.036Z" itemprop="datePublished"> 发表于 01-31-2016</time>
     
   </p>
 </header>
@@ -105,7 +105,10 @@ SoftWareDevice/Driver">
 		</div>
 		
 		<h1 id="环境:Ubuntu">环境:Ubuntu</h1><h2 id="Commond">Commond</h2><h2 id="System">System</h2><h3 id="系统添加证书">系统添加证书</h3><p>1.<br>将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.</p>
-<p><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a><br><a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a></p>
+<blockquote>
+<p>来自<a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a>,自己暂时没有尝试过<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github 为例进行说明</span></span><br><span class="line">sudo mkdir /usr/share/ca-certificates/github.com/</span><br><span class="line"><span class="comment">## 进入到所创建好的目录，这里使用了一种 !!:2 来指代上面的目录，索引从0开始，即 sudo对应0，mkdir对应1</span></span><br><span class="line"><span class="built_in">cd</span> !!:<span class="number">2</span></span><br><span class="line"><span class="comment">## 将准备好的要导入的证书复制到当前目录下</span></span><br><span class="line">sudo cp /path/to//github.com.crt .</span><br><span class="line"><span class="comment">## 运行配置命令导入，运行此命令后会出现类似下图所示的配置选项，相应配置即可</span></span><br><span class="line">sudo dpkg-reconfigure ca-certificates</span><br><span class="line"><span class="comment">## 配置好后再更新一下</span></span><br><span class="line">sudo update-ca-certificates</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>Reference:<br><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a></p>
 <h2 id="SoftWare">SoftWare</h2><h2 id="Device/Driver">Device/Driver</h2>  
 	</div>
 		<footer class="article-footer clearfix">
@@ -127,18 +130,18 @@ SoftWareDevice/Driver">
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/01/31/2016/daily1/" title="linux日常更新-01">
+ <a href="/01/31/2016/Gae-phone/" title="">
   <strong>上一篇：</strong><br/>
   <span>
-  linux日常更新-01</span>
+  (no title)</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/01/31/2016/指南/"  title="手表指南方法">
+<a href="/01/31/2016/daily1/"  title="linux日常更新-01">
  <strong>下一篇：</strong><br/> 
- <span>手表指南方法
+ <span>linux日常更新-01
 </span>
 </a>
 </div>
@@ -169,7 +172,7 @@ SoftWareDevice/Driver">
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 12px;">Wall</a> <a href="/tags/bash/" style="font-size: 14px;">bash</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/GAE/" style="font-size: 10px;">GAE</a> <a href="/tags/GAE-Android/" style="font-size: 10px;">GAE Android</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/bash/" style="font-size: 12.5px;">bash</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -177,7 +180,7 @@ SoftWareDevice/Driver">
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -191,8 +194,6 @@ SoftWareDevice/Driver">
 		  
 		
 		  
-			<li><a href="/categories/GAE/" title="GAE">GAE<sup>2</sup></a></li>
-		  
 		
 		  
 			<li><a href="/categories/Linux/" title="Linux">Linux<sup>8</sup></a></li>
@@ -204,6 +205,10 @@ SoftWareDevice/Driver">
 		
 		  
 			<li><a href="/categories/SQL/" title="SQL">SQL<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Wall/" title="Wall">Wall<sup>2</sup></a></li>
 		  
 		
 		  
