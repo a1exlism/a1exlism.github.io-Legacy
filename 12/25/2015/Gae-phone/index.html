@@ -1,6 +1,5 @@
 
-  
-    <!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -15,14 +14,14 @@
     <meta name="description" content="前提1.拥有国内VPS或者学生认证资格(可以去腾讯或者阿里租国内服务器，比qq会员还省钱= =)2.熟悉GoAgent和一丁点的linux基础
 正文下载并启用在服务器上下载xx-net,找个合适的地方进行git clone https://github.com/XX-net/XX-Net.git之后root权限启用xx-netcd XX-NET &amp;amp; sudo ./start.sh
 xx-n">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="借助GAE实现手机爬梯">
-<meta property="og:url" content="http://a1ex.net/Gae-phone.html">
+<meta property="og:url" content="http://a1ex.net/12/25/2015/Gae-phone/index.html">
 <meta property="og:site_name" content="A1exlism">
 <meta property="og:description" content="前提1.拥有国内VPS或者学生认证资格(可以去腾讯或者阿里租国内服务器，比qq会员还省钱= =)2.熟悉GoAgent和一丁点的linux基础
 正文下载并启用在服务器上下载xx-net,找个合适的地方进行git clone https://github.com/XX-net/XX-Net.git之后root权限启用xx-netcd XX-NET &amp;amp; sudo ./start.sh
 xx-n">
-<meta property="og:updated_time" content="2016-01-31T08:24:58.593Z">
+<meta property="og:updated_time" content="2016-01-31T08:41:46.719Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="借助GAE实现手机爬梯">
 <meta name="twitter:description" content="前提1.拥有国内VPS或者学生认证资格(可以去腾讯或者阿里租国内服务器，比qq会员还省钱= =)2.熟悉GoAgent和一丁点的linux基础
@@ -41,9 +40,9 @@ xx-n">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 
-      <body>
-        <header>
-          
+  <body>
+    <header>
+      
 <div>
 		
 			<div id="imglogo">
@@ -77,15 +76,15 @@ xx-n">
 				</ul>
 			</nav>			
 </div>
-        </header>
-        <div id="container">
-          <div id="main" class="page" itemscope itemprop="blogPost">
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
 	<article itemprop="articleBody"> 
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Gae-phone.html" title="借助GAE实现手机爬梯" itemprop="url">借助GAE实现手机爬梯</a>
+      <a href="/12/25/2015/Gae-phone/" title="借助GAE实现手机爬梯" itemprop="url">借助GAE实现手机爬梯</a>
   </h1>
   <p class="article-author">By
        
@@ -98,6 +97,13 @@ xx-n">
 </header>
 	<div class="article-content">
 		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前提"><span class="toc-number">1.</span> <span class="toc-text">前提</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载并启用"><span class="toc-number">2.1.</span> <span class="toc-text">下载并启用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xx-net配置"><span class="toc-number">2.2.</span> <span class="toc-text">xx-net配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-初始配置可以使用config-yaml文件进行设置。"><span class="toc-number">2.3.</span> <span class="toc-text">1.初始配置可以使用config.yaml文件进行设置。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-还有个手工配置"><span class="toc-number">2.4.</span> <span class="toc-text">2.还有个手工配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-自启动设置"><span class="toc-number">2.5.</span> <span class="toc-text">3.自启动设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android端设置"><span class="toc-number">3.</span> <span class="toc-text">android端设置</span></a></li></ol>
+		
+		</div>
+		
 		<h2 id="前提">前提</h2><p>1.拥有<code>国内</code>VPS或者学生认证资格(可以去<a href="http://www.qcloud.com/event/qcloudSchool" target="_blank" rel="external">腾讯</a>或者<a href="https://www.aliyun.com/act/aliyun/campus.html" target="_blank" rel="external">阿里</a>租国内服务器，比qq会员还省钱= =)<br>2.熟悉GoAgent和一丁点的linux基础</p>
 <h2 id="正文">正文</h2><h3 id="下载并启用">下载并启用</h3><p>在服务器上下载<a href="https://github.com/XX-net" target="_blank" rel="external">xx-net</a>,找个合适的地方进行<code>git clone https://github.com/XX-net/XX-Net.git</code><br>之后root权限启用xx-net<code>cd XX-NET &amp; sudo ./start.sh</code></p>
 <h3 id="xx-net配置">xx-net配置</h3><p>开发大大真的做到了贴心，已经集成了远程管理和后台自启功能，不过服务器系统默认不安装图形界面。<br>可以照着网上教程安装一遍X界面，然后利用浏览器进行各项配置。</p>
@@ -105,6 +111,7 @@ xx-n">
 <p>auto_start: 1 自启 allow_remote_connect:1 允许远程控制 control_port等其他的就是字面意思了</p>
 <h3 id="2-还有个手工配置">2.还有个手工配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vim ./XX-NET/data/gae_proxy/manual.ini <span class="comment">#创建一个手工设置文件</span></span><br><span class="line"><span class="comment">#添加:</span></span><br><span class="line">[listen]</span><br><span class="line">ip = <span class="number">0.0</span>.<span class="number">0.0</span> <span class="comment">#保证外网可以访问</span></span><br><span class="line">port = <span class="number">8087</span> <span class="comment">#按照选择自行更改端口</span></span><br><span class="line">visible = <span class="number">1</span></span><br><span class="line">debuginfo = <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <h3 id="3-自启动设置">3.自启动设置</h3><p>如果webUI无法设置成自启动的话,可以尝试这个<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/rc.local</span><br><span class="line"><span class="comment">#在exit 0之前添加下面这句</span></span><br><span class="line">/home/a1exlism/tools/XX-NET/start.sh</span><br></pre></td></tr></table></figure></p>
+<h2 id="android端设置">android端设置</h2><p>版本:android4.4 关键问题:证书问题 android5.1听朋友说好像问题挺大,等过短时间手机换了再去考虑</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -112,7 +119,7 @@ xx-n">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/Gae-phone.html" data-title="借助GAE实现手机爬梯 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/12/25/2015/Gae-phone/" data-title="借助GAE实现手机爬梯 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -123,15 +130,123 @@ xx-n">
    	       
 	</article>
 	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/01/27/2016/sql函数/" title="sql日常记录">
+  <strong>上一篇：</strong><br/>
+  <span>
+  sql日常记录</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/11/13/2015/web安全测试/"  title="web安全测试读书笔记">
+ <strong>下一篇：</strong><br/> 
+ <span>web安全测试读书笔记
+</span>
+</a>
+</div>
+
+</nav>
+
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="Gae-phone.html" data-title="借助GAE实现手机爬梯" data-url="http://a1ex.net/Gae-phone.html"></div>
+	<div class="ds-thread" data-thread-key="12/25/2015/Gae-phone/" data-title="借助GAE实现手机爬梯" data-url="http://a1ex.net/12/25/2015/Gae-phone/"></div>
 </section>
 
 
 </div>  
-        </div>
-        <footer><div id="footer" >
+      <div class="openaside"><a class="navbutton" href="#" title="Show"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前提"><span class="toc-number">1.</span> <span class="toc-text">前提</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载并启用"><span class="toc-number">2.1.</span> <span class="toc-text">下载并启用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xx-net配置"><span class="toc-number">2.2.</span> <span class="toc-text">xx-net配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-初始配置可以使用config-yaml文件进行设置。"><span class="toc-number">2.3.</span> <span class="toc-text">1.初始配置可以使用config.yaml文件进行设置。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-还有个手工配置"><span class="toc-number">2.4.</span> <span class="toc-text">2.还有个手工配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-自启动设置"><span class="toc-number">2.5.</span> <span class="toc-text">3.自启动设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android端设置"><span class="toc-number">3.</span> <span class="toc-text">android端设置</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide"></a></div>
+<aside class="clearfix">
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 12px;">Wall</a> <a href="/tags/bash/" style="font-size: 14px;">bash</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+  </div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Collection/" title="Collection">Collection<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/GAE/" title="GAE">GAE<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Others/" title="Others">Others<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Web/" title="Web">Web<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://zh.wikipedia.org" target="_blank" title="Wiki">Wiki</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://hexo.io/" target="_blank" title="Hexo">Hexo</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
 	
 	<div class="line">
 		<span></span>
@@ -176,7 +291,7 @@ xx-n">
 		</p>
 </div>
 </footer>
-        <script src="/js/jquery-2.0.3.min.js"></script>
+    <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
@@ -219,8 +334,36 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
   });
 });
 </script>
@@ -330,6 +473,5 @@ _ts(option);
 
 <!-- Tiny_search End -->
 
-      </body>
-     </html>
-     
+  </body>
+</html>
