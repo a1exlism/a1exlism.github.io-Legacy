@@ -79,55 +79,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/01/31/2016/daily2/" title="linux日常更新-02" itemprop="url">linux日常更新-02</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-31T08:43:47.632Z" itemprop="datePublished"> 发表于 01-31-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="环境:Ubuntu">环境:Ubuntu</h1><h2 id="Commond">Commond</h2><h2 id="System">System</h2><h3 id="系统添加证书">系统添加证书</h3><p>1.<br>将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.</p>
-<p><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a><br><a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a></p>
-<h2 id="SoftWare">SoftWare</h2><h2 id="Device/Driver">Device/Driver</h2>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/01/31/2016/daily2/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/daily2/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/01/31/2016/daily1/" title="linux日常更新-01" itemprop="url">linux日常更新-01</a>
   </h1>
   <p class="article-author">By
@@ -135,7 +86,7 @@
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-01-31T08:29:38.542Z" itemprop="datePublished"> 发表于 01-31-2016</time>
+    <time datetime="2016-01-31T08:52:51.742Z" itemprop="datePublished"> 发表于 01-31-2016</time>
     
   </p>
 </header>
@@ -158,8 +109,8 @@
 <p>来自: <a href="http://man.linuxde.net/ifconfig" target="_blank" rel="external">http://man.linuxde.net/ifconfig</a></p>
 <h3 id="更改文件所属用户/组">更改文件所属用户/组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Code</span></span><br><span class="line">chown/chgrp userName fileName/floderName</span><br><span class="line"><span class="comment">#Example</span></span><br><span class="line">chown gust ~/home/genymotion</span><br><span class="line"><span class="comment">#将home目录的genymotion文件所属改为gust</span></span><br></pre></td></tr></table></figure>
 <h3 id="创建文件">创建文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ./test.txt</span><br></pre></td></tr></table></figure>
-<h3 id="删除">删除</h3><p>-i info 删除前逐一确认<br>-f force 直接删除<br>-r recursion 递归删除,即把该文件所有的内容都删除<br>————注意——————-</p>
-<h2 id="在linux没有回收站，所以在使用_rm_命令的时候，切记文件或目录被删除之后就无法再恢复">在linux没有回收站，所以在使用 rm 命令的时候，切记<code>文件或目录被删除之后就无法再恢复</code></h2><h3 id="打开GUI文件夹">打开GUI文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nautilus [option] /home/gust</span><br><span class="line"><span class="comment">#option --d&gt; manpage</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除">删除</h3><p>-i info 删除前逐一确认<br>-f force 直接删除<br>-r recursion 递归删除,即把该文件所有的内容都删除<br>在linux没有回收站，文件或目录被删除之后就<code>无法再恢复</code></p>
+<h3 id="打开GUI文件夹">打开GUI文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nautilus [option] /home/gust</span><br><span class="line"><span class="comment">#option --d&gt; manpage</span></span><br></pre></td></tr></table></figure>
 <h3 id="wget临时代理">wget临时代理</h3><p><code>wget -e &quot;http_proxy=http://&lt;ip&gt;:&lt;port&gt;/&quot; http://www.google.com</code></p>
 <h2 id="System">System</h2><h3 id="更改账户权限">更改账户权限</h3><p>vi /etc/sudoers<br>找到 root ALL=(ALL) ALL<br>再后边增加 用户名 ALL=(ALL) ALL</p>
 <h3 id="桌面_文档等文件改成英文">桌面 文档等文件改成英文</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.UTF-<span class="number">8</span> xdg-user-dirs-update</span><br><span class="line"><span class="comment">#如果注销重进失效,建议把 en_US 写到 ~/.config/user-dirs.locale 文件里再 xdg-user-dirs-update</span></span><br></pre></td></tr></table></figure>
@@ -259,6 +210,55 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 	
 	  	<span></span>
 		<a href="/01/31/2016/daily1/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/daily1/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/01/31/2016/daily2/" title="linux日常更新-02" itemprop="url">linux日常更新-02</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-31T08:43:47.632Z" itemprop="datePublished"> 发表于 01-31-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="环境:Ubuntu">环境:Ubuntu</h1><h2 id="Commond">Commond</h2><h2 id="System">System</h2><h3 id="系统添加证书">系统添加证书</h3><p>1.<br>将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.</p>
+<p><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a><br><a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a></p>
+<h2 id="SoftWare">SoftWare</h2><h2 id="Device/Driver">Device/Driver</h2>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/01/31/2016/daily2/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/daily2/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
