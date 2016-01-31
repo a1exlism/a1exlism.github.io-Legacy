@@ -4,32 +4,35 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>bash基本命令1---命令/文件查询 | A1exlism</title>
+    <title>Linux 查询命令 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="文件查看file [-bLvz] 文件
-命令搜寻which [-a] 命令-a all
-文件搜寻1.whereis [-bmsu] file/folder//基于数据库-b binary only-m manual only-s source only-u except above three//不过似乎home文件不能查找..没卵用 drop it
-2.locate [-ir] keyword-">
+    <meta name="description" content="文件信息1file [-bLvz] filename
+命令which1which -a java #-a all
+文件名updatedb可以更新搜索的datebase
+1.whereis [-bmsu] file/folder-b binary -m manual -s source-u except above three
+2.locate [-ir] keyword-i ignore uppe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bash基本命令1---命令/文件查询">
+<meta property="og:title" content="Linux 查询命令">
 <meta property="og:url" content="http://a1ex.net/10/14/2015/bash1/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="文件查看file [-bLvz] 文件
-命令搜寻which [-a] 命令-a all
-文件搜寻1.whereis [-bmsu] file/folder//基于数据库-b binary only-m manual only-s source only-u except above three//不过似乎home文件不能查找..没卵用 drop it
-2.locate [-ir] keyword-">
-<meta property="og:updated_time" content="2015-10-24T08:55:29.000Z">
+<meta property="og:description" content="文件信息1file [-bLvz] filename
+命令which1which -a java #-a all
+文件名updatedb可以更新搜索的datebase
+1.whereis [-bmsu] file/folder-b binary -m manual -s source-u except above three
+2.locate [-ir] keyword-i ignore uppe">
+<meta property="og:updated_time" content="2016-01-31T07:52:01.693Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bash基本命令1---命令/文件查询">
-<meta name="twitter:description" content="文件查看file [-bLvz] 文件
-命令搜寻which [-a] 命令-a all
-文件搜寻1.whereis [-bmsu] file/folder//基于数据库-b binary only-m manual only-s source only-u except above three//不过似乎home文件不能查找..没卵用 drop it
-2.locate [-ir] keyword-">
+<meta name="twitter:title" content="Linux 查询命令">
+<meta name="twitter:description" content="文件信息1file [-bLvz] filename
+命令which1which -a java #-a all
+文件名updatedb可以更新搜索的datebase
+1.whereis [-bmsu] file/folder-b binary -m manual -s source-u except above three
+2.locate [-ir] keyword-i ignore uppe">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -87,7 +90,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/14/2015/bash1/" title="bash基本命令1---命令/文件查询" itemprop="url">bash基本命令1---命令/文件查询</a>
+      <a href="/10/14/2015/bash1/" title="Linux 查询命令" itemprop="url">Linux 查询命令</a>
   </h1>
   <p class="article-author">By
        
@@ -103,26 +106,28 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件查看"><span class="toc-number">1.</span> <span class="toc-text">文件查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令搜寻"><span class="toc-number">2.</span> <span class="toc-text">命令搜寻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件搜寻"><span class="toc-number">3.</span> <span class="toc-text">文件搜寻</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-whereis_[-bmsu]_file/folder//基于数据库"><span class="toc-number">3.1.</span> <span class="toc-text">1.whereis [-bmsu] file/folder//基于数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-locate_[-ir]_keyword"><span class="toc-number">3.2.</span> <span class="toc-text">2.locate [-ir] keyword</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-_find"><span class="toc-number">3.3.</span> <span class="toc-text">3. find</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小提示&&结论"><span class="toc-number">4.</span> <span class="toc-text">小提示&&结论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件信息"><span class="toc-number">1.</span> <span class="toc-text">文件信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">2.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件名"><span class="toc-number">3.</span> <span class="toc-text">文件名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-whereis_[-bmsu]_file/folder"><span class="toc-number">3.1.</span> <span class="toc-text">1.whereis [-bmsu] file/folder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-locate_[-ir]_keyword"><span class="toc-number">3.2.</span> <span class="toc-text">2.locate [-ir] keyword</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-_find"><span class="toc-number">3.2.1.</span> <span class="toc-text">3. find</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件内容"><span class="toc-number">4.</span> <span class="toc-text">文件内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find_grep_组合技查询"><span class="toc-number">5.</span> <span class="toc-text">find grep 组合技查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">6.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h3 id="文件查看">文件查看</h3><p>file [-bLvz] 文件</p>
-<h3 id="命令搜寻">命令搜寻</h3><p>which [-a] 命令<br>-a all</p>
-<h3 id="文件搜寻">文件搜寻</h3><h4 id="1-whereis_[-bmsu]_file/folder//基于数据库">1.whereis [-bmsu] file/folder//基于数据库</h4><p>-b binary only<br>-m manual only<br>-s source only<br>-u except above three<br>//不过似乎home文件不能查找..没卵用 drop it</p>
-<h4 id="2-locate_[-ir]_keyword">2.locate [-ir] keyword</h4><p>-i ignore uppercase/lowercase<br>-r using regexp<br>//可以进行日常查找,支持home等路径</p>
-<h4 id="3-_find">3. find</h4><p>find [Router] [option] [action]<br>time-&gt;<br>    -mtime n/+n/-n (n 为 number)<br>-newer file : 列出一个比file更新的文件<br>example:<br>    find tools -mtime 0 //24小时之内tools文件夹更改的地方<br>高级功能,按路径查找:<br>    find /etc/ password -mtime 0</p>
-<h3 id="小提示&amp;&amp;结论">小提示&amp;&amp;结论</h3><p><code>updatedb</code>可以更新搜索的datebase</p>
-<p>locate优点可以使用正则<br>find可以基于时间/路径查找</p>
-<p>三者选择:<br>    <code>find&gt;locate&gt;whereis</code></p>
-<h3 id="参考">参考</h3>  
+		<h2 id="文件信息">文件信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file [-bLvz] filename</span><br></pre></td></tr></table></figure>
+<h2 id="命令">命令</h2><p>which<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> <span class="operator">-a</span> java <span class="comment">#-a all</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="文件名">文件名</h2><p><code>updatedb</code>可以更新搜索的datebase</p>
+<h3 id="1-whereis_[-bmsu]_file/folder">1.whereis [-bmsu] file/folder</h3><p>-b binary -m manual -s source<br>-u except above three</p>
+<h3 id="2-locate_[-ir]_keyword">2.locate [-ir] keyword</h3><p>-i ignore uppercase/lowercase<br>-r using regexp #正则</p>
+<h4 id="3-_find">3. find</h4><p>find查找<code>默认递归</code><br>find [Router] [option] [action]</p>
+<p>example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find tools -mtime <span class="number">0</span> <span class="comment">#24小时之内tools文件夹更改的地方</span></span><br><span class="line">find . -name <span class="string">'filename.*'</span> <span class="comment">#在当前目录进行递归查找名为'filename'的任意扩展文件</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="文件内容">文件内容</h2><p>grep<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">"contents"</span> . -r -n <span class="comment">#-r 递归 -n 显示行列号</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="find_grep_组合技查询">find grep 组合技查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find -name *.ini | xargs grep port  <span class="comment">#从当前目录下找到有关'port'的ini文件</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reference">Reference</h2><p><a href="http://www.cnblogs.com/skynet/archive/2010/12/25/1916873.html" target="_blank" rel="external">吴秦(Tyler)</a><br><a href="http://www.ai7.org/wp/html/653.html" target="_blank" rel="external">男单 618</a></p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/10/14/2015/bash1/" data-title="bash基本命令1---命令/文件查询 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/10/14/2015/bash1/" data-title="Linux 查询命令 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -156,7 +161,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="10/14/2015/bash1/" data-title="bash基本命令1---命令/文件查询" data-url="http://a1ex.net/10/14/2015/bash1/"></div>
+	<div class="ds-thread" data-thread-key="10/14/2015/bash1/" data-title="Linux 查询命令" data-url="http://a1ex.net/10/14/2015/bash1/"></div>
 </section>
 
 
@@ -166,7 +171,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件查看"><span class="toc-number">1.</span> <span class="toc-text">文件查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令搜寻"><span class="toc-number">2.</span> <span class="toc-text">命令搜寻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件搜寻"><span class="toc-number">3.</span> <span class="toc-text">文件搜寻</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-whereis_[-bmsu]_file/folder//基于数据库"><span class="toc-number">3.1.</span> <span class="toc-text">1.whereis [-bmsu] file/folder//基于数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-locate_[-ir]_keyword"><span class="toc-number">3.2.</span> <span class="toc-text">2.locate [-ir] keyword</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-_find"><span class="toc-number">3.3.</span> <span class="toc-text">3. find</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小提示&&结论"><span class="toc-number">4.</span> <span class="toc-text">小提示&&结论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件信息"><span class="toc-number">1.</span> <span class="toc-text">文件信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">2.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件名"><span class="toc-number">3.</span> <span class="toc-text">文件名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-whereis_[-bmsu]_file/folder"><span class="toc-number">3.1.</span> <span class="toc-text">1.whereis [-bmsu] file/folder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-locate_[-ir]_keyword"><span class="toc-number">3.2.</span> <span class="toc-text">2.locate [-ir] keyword</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-_find"><span class="toc-number">3.2.1.</span> <span class="toc-text">3. find</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件内容"><span class="toc-number">4.</span> <span class="toc-text">文件内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find_grep_组合技查询"><span class="toc-number">5.</span> <span class="toc-text">find grep 组合技查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">6.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
@@ -178,7 +183,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16.67px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/bash/" style="font-size: 12.5px;">bash</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -186,7 +191,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -200,11 +205,15 @@
 		  
 		
 		  
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>7</sup></a></li>
+			<li><a href="/categories/GAE/" title="GAE">GAE<sup>1</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/Others/" title="Others">Others<sup>4</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Others/" title="Others">Others<sup>3</sup></a></li>
 		  
 		
 		  
