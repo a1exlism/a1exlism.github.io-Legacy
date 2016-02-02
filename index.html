@@ -79,14 +79,14 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/01/31/2016/daily2/" title="linux日常更新-02" itemprop="url">linux日常更新-02</a>
+      <a href="/02/02/2016/daily2/" title="linux日常更新-02" itemprop="url">linux日常更新-02</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-01-31T09:16:28.036Z" itemprop="datePublished"> 发表于 01-31-2016</time>
+    <time datetime="2016-02-02T06:29:59.091Z" itemprop="datePublished"> 发表于 02-02-2016</time>
     
   </p>
 </header>
@@ -97,7 +97,11 @@
 <p>来自<a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a>,自己暂时没有尝试过<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github 为例进行说明</span></span><br><span class="line">sudo mkdir /usr/share/ca-certificates/github.com/</span><br><span class="line"><span class="comment">## 进入到所创建好的目录，这里使用了一种 !!:2 来指代上面的目录，索引从0开始，即 sudo对应0，mkdir对应1</span></span><br><span class="line"><span class="built_in">cd</span> !!:<span class="number">2</span></span><br><span class="line"><span class="comment">## 将准备好的要导入的证书复制到当前目录下</span></span><br><span class="line">sudo cp /path/to//github.com.crt .</span><br><span class="line"><span class="comment">## 运行配置命令导入，运行此命令后会出现类似下图所示的配置选项，相应配置即可</span></span><br><span class="line">sudo dpkg-reconfigure ca-certificates</span><br><span class="line"><span class="comment">## 配置好后再更新一下</span></span><br><span class="line">sudo update-ca-certificates</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>Reference:<br><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a></p>
-<h2 id="SoftWare">SoftWare</h2><h2 id="Device/Driver">Device/Driver</h2>
+<h2 id="SoftWare">SoftWare</h2><h3 id="编译安装源码">编译安装源码</h3><p>不行则请用root权限调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar jxvf file.tar.bz2    /    tar zxvf file.tar.gz</span><br><span class="line"><span class="built_in">cd</span> file</span><br><span class="line">ls <span class="operator">-l</span>      <span class="comment">#一般能找到INSTALL或者Doc安装文档</span></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">./configure;make ;make install</span><br><span class="line"><span class="comment"># 有些不需要configure</span></span><br><span class="line">make; make install</span><br></pre></td></tr></table></figure>
+<h3 id="定制安装">定制安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line">./configure --prefix=/opt/softwareFloader</span><br><span class="line">make; make install</span><br><span class="line">--- 有两种方法可以快速调用 ---</span><br><span class="line"><span class="comment"># 1.创建软链接</span></span><br><span class="line">ln <span class="operator">-s</span> /opt/softwareFloader/bin/software /usr/bin/software </span><br><span class="line"><span class="comment"># 2.添加环境变量,可参照日常更新1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/softwareFloader/bin</span><br></pre></td></tr></table></figure>
+<h3 id="Reference">Reference</h3><p><a href="http://itlab.idcquan.com/linux/set/39862.html" target="_blank" rel="external">ChinaItLab</a></p>
+<h2 id="Device/Driver">Device/Driver</h2>
         
         
         <p class="article-more-link">
@@ -111,7 +115,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/01/31/2016/daily2/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/daily2/" data-count-type="comments">&nbsp;</a>
+		<a href="/02/02/2016/daily2/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/02/2016/daily2/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -393,6 +397,61 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 	
 	  	<span></span>
 		<a href="/01/27/2016/sql函数/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/27/2016/sql函数/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/12/30/2015/xssPlatform/" title="XSS平台搭建" itemprop="url">XSS平台搭建</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-29T16:00:00.000Z" itemprop="datePublished"> 发表于 12-30-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="简介">简介</h2><p>平台名为:<code>sleep-puppy</code>  大名鼎鼎的Netflix搞的一个安全项目<br>环境/框架: <code>Flask + Gunicorn + Nginx</code><br>可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得</p>
+<h2 id="Docker安装">Docker安装</h2><p>DigitalOcean已经打包完了,直接执行命令即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br><span class="line"><span class="comment"># 将用户添加至docker用户组</span></span><br><span class="line">$ sudo usermod <span class="operator">-a</span>G docker $(whoami)</span><br><span class="line"><span class="comment">#安装 Docker Compose</span></span><br><span class="line">$ sudo apt-get -y install python-pip  <span class="comment">#环境</span></span><br><span class="line">$ sudo pip install docker-compose</span><br></pre></td></tr></table></figure>
+<p>不过发现国内这局域网…换成国内源吧,[daocloud],地址在Reference中</p>
+<h2 id="sleep-puppy安装">sleep-puppy安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/Netflix/sleepy-puppy-docker</span><br><span class="line">$ docker-machine ls</span><br><span class="line"><span class="comment">#docker-compose.yaml中IP改成自己的公网IP</span></span><br><span class="line">$ <span class="built_in">cd</span> sleepy-puppy-docker &amp;&amp; docker-compose up</span><br></pre></td></tr></table></figure>
+<p>默认账号密码<br>user: admin<br>pass: password<br>//——PS:大半个月前搭的,具体的坑已经差不多网完了..= =</p>
+<h2 id="简单的API使用">简单的API使用</h2><p><a href="http://www.tothenew.com/blog/using-sleepy-puppy-a-cross-site-scripting-payload-management-framework/" target="_blank" rel="external">ToTheNewDigital</a></p>
+<h2 id="Reference">Reference</h2><p><a href="https://github.com/netflix/sleepy-puppy/wiki/setup" target="_blank" rel="external">github_sleep-puppy</a><br><a href="https://docs.docker.com/engine/installation/ubuntulinux/" target="_blank" rel="external">doc.docker</a>&lt;-纯手动安装<br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-14-04" target="_blank" rel="external">digitalocean</a>&lt;-自动安装+基本docker操作<br><a href="https://get.daocloud.io/" target="_blank" rel="external">daocloud</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/12/30/2015/xssPlatform/#comments" class="ds-thread-count comments-count-link" data-thread-key="12/30/2015/xssPlatform/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -724,92 +783,6 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/30/2015/mySql1/" title="MySQL基础" itemprop="url">MySQL基础</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-29T16:00:00.000Z" itemprop="datePublished"> 发表于 10-30-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="基本数据查询">基本数据查询</h2><p>1.创建CREATE<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tablename (<span class="keyword">field</span> type [(<span class="keyword">size</span>)] [<span class="keyword">NOT</span> <span class="literal">NULL</span>]&#123;, <span class="keyword">field</span> type [(<span class="keyword">size</span>)] [<span class="keyword">NOT</span> <span class="literal">NULL</span>]...&#125;[,<span class="keyword">PRIMARY</span> <span class="keyword">KEY</span>(<span class="keyword">field</span>&#123;,<span class="keyword">field</span>...&#125;)]);</span></span><br></pre></td></tr></table></figure></p>
-<p>2.选择SELECT<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> id &lt; <span class="number">20</span> <span class="keyword">AND</span> age &gt; <span class="number">25</span>;</span></span><br></pre></td></tr></table></figure></p>
-<p>3.范围BETWEEN..AND<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> id <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">10</span>;</span></span><br></pre></td></tr></table></figure></p>
-<p>4.模糊查询LIKE<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">'%son'</span>;</span>  #比如找一个名字后缀为'son'的人</span><br></pre></td></tr></table></figure></p>
-<p>LIKE通配符:</p>
-<pre><code><span class="comment">%   0或者更多字符</span>
-<span class="name">_</span>   任意一个字符
-[]  指定范围内的任意单个字符
-[^] 不再指定范围内的任意单个字符
-</code></pre><p>Example:</p>
-<pre><code><span class="keyword">Like</span><span class="string">"[CK]%"</span> 返回以 C 或者 K 开始的任意字符串
-<span class="keyword">Like</span><span class="string">"[S-V]ing"</span> 返回长为 <span class="number">4</span> 个字符的字符串,结尾是<span class="string">"ing"</span>,开始是从 S 到 V
-<span class="keyword">Like</span><span class="string">"M[^c]%"</span> 返回以<span class="string">"M"</span>开始且第二个字符不是<span class="string">"c"</span>的任意字符串
-</code></pre><p>5.创建昵称AS<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> name <span class="keyword">AS</span> 姓名 <span class="keyword">FROM</span> students ;</span></span><br></pre></td></tr></table></figure></p>
-<p>6.查询结果排序ORDER BY ASC升序DESC降序<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">'%son'</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> age <span class="keyword">ASC</span>,id <span class="keyword">DESC</span>;</span>#age优先排列</span><br></pre></td></tr></table></figure></p>
-<p>7.统计COUNT<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(id) <span class="keyword">FROM</span> students;</span> #查询id字段的行数</span><br></pre></td></tr></table></figure></p>
-<p>8.分组GROUP BY<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">GROUP</span> <span class="keyword">BY</span> age (<span class="keyword">HAVING</span> id &gt; <span class="number">5</span>);</span>  #括号可略,添加附加条件</span><br></pre></td></tr></table></figure></p>
-<p>9.联合查询UNION<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 前提是两个表字段一样--</span></span><br><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">UNION</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students_bak;</span>  #合并两个表的查询记录,Veen图的合并</span><br><span class="line"><span class="comment">-- 默认记录不重复,不过可以使用UNION ALL显示所有记录</span></span><br><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">UNION</span> <span class="keyword">ALL</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students_bak;</span></span><br></pre></td></tr></table></figure></p>
-<p>10.子查询/嵌套查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 该查询ORDER BY无效--</span></span><br><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> name = (<span class="keyword">SELECT</span> age <span class="keyword">FROM</span> <span class="keyword">WHERE</span> age = <span class="number">20</span>);</span></span><br></pre></td></tr></table></figure></p>
-<p><a href="http://www.jellythink.com/archives/932" target="_blank" rel="external">例1</a><br><a href="http://www.5idev.com/p-mysql_subquery.shtml" target="_blank" rel="external">例2</a></p>
-<h2 id="数据更新语句">数据更新语句</h2><ol>
-<li><p>INSERT<br>—&gt; VALUES结构(插入单条记录)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tablename [(colname&#123;,colname...&#125;)]&#123;<span class="keyword">VALUES</span> (expr|<span class="literal">NULL</span>&#123;,expr|<span class="literal">NULL</span>....&#125;)|Subquery&#125;</span><br><span class="line"><span class="comment">-- Example:</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> school.stuents(<span class="string">'s_name'</span>,<span class="string">'s_age'</span>)</span><br><span class="line">  <span class="keyword">VALUES</span> (<span class="string">'xiaobai'</span>,<span class="string">'20'</span>);</span></span><br><span class="line"><span class="comment">-- OR</span></span><br><span class="line"><span class="operator"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> school.students(<span class="string">'s_id'</span>,<span class="string">'s_name'</span>,<span class="string">'s_age'</span>)</span><br><span class="line">  <span class="keyword">VALUES</span> (<span class="literal">NULL</span>, <span class="string">'laoli'</span>, <span class="string">'10'</span>);</span></span><br></pre></td></tr></table></figure>
-<p>—&gt;子查询Subquery(可插入多条记录)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> newStudens</span><br><span class="line">  <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> name = <span class="string">'laowang'</span>;</span></span><br><span class="line"><span class="comment">-- 往newStudents表中插入students的一个字段(改为age就能插入多个了..)</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>UPDATE<br>—&gt; grammar </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">UPDATE</span> tablename</span><br><span class="line">  <span class="keyword">SET</span> colname= &#123;expr|<span class="literal">NULL</span>|(subquery)&#125;</span><br><span class="line">    &#123;, colname= &#123;expr|<span class="literal">NULL</span>|(subquery).....&#125;&#125;</span><br><span class="line">      [WH ERE search_condition]   <span class="comment">-- 子查询</span></span><br><span class="line">  <span class="comment">-- -&gt;Example:</span></span><br><span class="line">  <span class="keyword">UPDATE</span> students</span><br><span class="line">    <span class="keyword">SET</span> age = age + <span class="number">10</span></span><br><span class="line">      <span class="keyword">WHERE</span> name = <span class="string">'doubi'</span>;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>DELETE</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tablename</span><br><span class="line">  [<span class="keyword">WHERE</span> search_condition]</span><br><span class="line"><span class="comment">-- -&gt;Example:</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> students</span><br><span class="line">  <span class="keyword">WHERE</span> neme = <span class="string">'doubi'</span>;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="MySQL注释">MySQL注释</h2><ol>
-<li><code>#...</code></li>
-<li><code>-- ..</code>  有个空格</li>
-<li><code>/*...*/</code></li>
-</ol>
-<h2 id="others">others</h2><p>不等于 <code>&lt;&gt;</code></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/30/2015/mySql1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/30/2015/mySql1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -826,7 +799,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/GAE/" style="font-size: 10px;">GAE</a> <a href="/tags/GAE-Android/" style="font-size: 10px;">GAE Android</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/bash/" style="font-size: 12.5px;">bash</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/XSS平台/" style="font-size: 10px;">XSS平台</a> <a href="/tags/bash/" style="font-size: 14px;">bash</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -834,7 +807,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -864,7 +837,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>12</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>13</sup></a></li>
 		  
 		
 		  

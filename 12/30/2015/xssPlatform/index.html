@@ -4,29 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>linux日常更新-02 | A1exlism</title>
+    <title>XSS平台搭建 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="环境:UbuntuCommondSystem系统添加证书1.将证书ca-certificates.crt入 /etc/ssl/certs目录下然后更新证书sudo  update-ca-certificates2.
-
-来自kissdata,自己暂时没有尝试过12345678910## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github">
+    <meta name="description" content="简介平台名为:sleep-puppy  大名鼎鼎的Netflix搞的一个安全项目环境/框架: Flask + Gunicorn + Nginx可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得
+Docker安装DigitalOcean已经打包完了,直接执行命令即可
+123456$ wget -qO- https://get.docker.com/ | sh# 将用户添">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux日常更新-02">
-<meta property="og:url" content="http://a1ex.net/01/31/2016/daily2/index.html">
+<meta property="og:title" content="XSS平台搭建">
+<meta property="og:url" content="http://a1ex.net/12/30/2015/xssPlatform/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="环境:UbuntuCommondSystem系统添加证书1.将证书ca-certificates.crt入 /etc/ssl/certs目录下然后更新证书sudo  update-ca-certificates2.
-
-来自kissdata,自己暂时没有尝试过12345678910## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github">
-<meta property="og:updated_time" content="2016-01-31T09:16:28.036Z">
+<meta property="og:description" content="简介平台名为:sleep-puppy  大名鼎鼎的Netflix搞的一个安全项目环境/框架: Flask + Gunicorn + Nginx可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得
+Docker安装DigitalOcean已经打包完了,直接执行命令即可
+123456$ wget -qO- https://get.docker.com/ | sh# 将用户添">
+<meta property="og:updated_time" content="2016-02-02T07:13:05.643Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux日常更新-02">
-<meta name="twitter:description" content="环境:UbuntuCommondSystem系统添加证书1.将证书ca-certificates.crt入 /etc/ssl/certs目录下然后更新证书sudo  update-ca-certificates2.
-
-来自kissdata,自己暂时没有尝试过12345678910## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github">
+<meta name="twitter:title" content="XSS平台搭建">
+<meta name="twitter:description" content="简介平台名为:sleep-puppy  大名鼎鼎的Netflix搞的一个安全项目环境/框架: Flask + Gunicorn + Nginx可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得
+Docker安装DigitalOcean已经打包完了,直接执行命令即可
+123456$ wget -qO- https://get.docker.com/ | sh# 将用户添">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -84,14 +84,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/01/31/2016/daily2/" title="linux日常更新-02" itemprop="url">linux日常更新-02</a>
+      <a href="/12/30/2015/xssPlatform/" title="XSS平台搭建" itemprop="url">XSS平台搭建</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-01-31T09:16:28.036Z" itemprop="datePublished"> 发表于 01-31-2016</time>
+    <time datetime="2015-12-29T16:00:00.000Z" itemprop="datePublished"> 发表于 12-30-2015</time>
     
   </p>
 </header>
@@ -100,23 +100,26 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#环境:Ubuntu"><span class="toc-number">1.</span> <span class="toc-text">环境:Ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Commond"><span class="toc-number">1.1.</span> <span class="toc-text">Commond</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System"><span class="toc-number">1.2.</span> <span class="toc-text">System</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统添加证书"><span class="toc-number">1.2.1.</span> <span class="toc-text">系统添加证书</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SoftWare"><span class="toc-number">1.3.</span> <span class="toc-text">SoftWare</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Device/Driver"><span class="toc-number">1.4.</span> <span class="toc-text">Device/Driver</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker安装"><span class="toc-number">2.</span> <span class="toc-text">Docker安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep-puppy安装"><span class="toc-number">3.</span> <span class="toc-text">sleep-puppy安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的API使用"><span class="toc-number">4.</span> <span class="toc-text">简单的API使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="环境:Ubuntu">环境:Ubuntu</h1><h2 id="Commond">Commond</h2><h2 id="System">System</h2><h3 id="系统添加证书">系统添加证书</h3><p>1.<br>将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.</p>
-<blockquote>
-<p>来自<a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a>,自己暂时没有尝试过<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github 为例进行说明</span></span><br><span class="line">sudo mkdir /usr/share/ca-certificates/github.com/</span><br><span class="line"><span class="comment">## 进入到所创建好的目录，这里使用了一种 !!:2 来指代上面的目录，索引从0开始，即 sudo对应0，mkdir对应1</span></span><br><span class="line"><span class="built_in">cd</span> !!:<span class="number">2</span></span><br><span class="line"><span class="comment">## 将准备好的要导入的证书复制到当前目录下</span></span><br><span class="line">sudo cp /path/to//github.com.crt .</span><br><span class="line"><span class="comment">## 运行配置命令导入，运行此命令后会出现类似下图所示的配置选项，相应配置即可</span></span><br><span class="line">sudo dpkg-reconfigure ca-certificates</span><br><span class="line"><span class="comment">## 配置好后再更新一下</span></span><br><span class="line">sudo update-ca-certificates</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>Reference:<br><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a></p>
-<h2 id="SoftWare">SoftWare</h2><h2 id="Device/Driver">Device/Driver</h2>  
+		<h2 id="简介">简介</h2><p>平台名为:<code>sleep-puppy</code>  大名鼎鼎的Netflix搞的一个安全项目<br>环境/框架: <code>Flask + Gunicorn + Nginx</code><br>可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得</p>
+<h2 id="Docker安装">Docker安装</h2><p>DigitalOcean已经打包完了,直接执行命令即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br><span class="line"><span class="comment"># 将用户添加至docker用户组</span></span><br><span class="line">$ sudo usermod <span class="operator">-a</span>G docker $(whoami)</span><br><span class="line"><span class="comment">#安装 Docker Compose</span></span><br><span class="line">$ sudo apt-get -y install python-pip  <span class="comment">#环境</span></span><br><span class="line">$ sudo pip install docker-compose</span><br></pre></td></tr></table></figure>
+<p>不过发现国内这局域网…换成国内源吧,[daocloud],地址在Reference中</p>
+<h2 id="sleep-puppy安装">sleep-puppy安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/Netflix/sleepy-puppy-docker</span><br><span class="line">$ docker-machine ls</span><br><span class="line"><span class="comment">#docker-compose.yaml中IP改成自己的公网IP</span></span><br><span class="line">$ <span class="built_in">cd</span> sleepy-puppy-docker &amp;&amp; docker-compose up</span><br></pre></td></tr></table></figure>
+<p>默认账号密码<br>user: admin<br>pass: password<br>//——PS:大半个月前搭的,具体的坑已经差不多网完了..= =</p>
+<h2 id="简单的API使用">简单的API使用</h2><p><a href="http://www.tothenew.com/blog/using-sleepy-puppy-a-cross-site-scripting-payload-management-framework/" target="_blank" rel="external">ToTheNewDigital</a></p>
+<h2 id="Reference">Reference</h2><p><a href="https://github.com/netflix/sleepy-puppy/wiki/setup" target="_blank" rel="external">github_sleep-puppy</a><br><a href="https://docs.docker.com/engine/installation/ubuntulinux/" target="_blank" rel="external">doc.docker</a>&lt;-纯手动安装<br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-14-04" target="_blank" rel="external">digitalocean</a>&lt;-自动安装+基本docker操作<br><a href="https://get.daocloud.io/" target="_blank" rel="external">daocloud</a></p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/01/31/2016/daily2/" data-title="linux日常更新-02 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/12/30/2015/xssPlatform/" data-title="XSS平台搭建 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -129,11 +132,19 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/01/27/2016/sql函数/" title="sql日常记录">
+  <strong>上一篇：</strong><br/>
+  <span>
+  sql日常记录</span>
+</a>
+</div>
+
 
 <div class="next">
-<a href="/01/31/2016/daily1/"  title="linux日常更新-01">
+<a href="/12/25/2015/Gae-phone/"  title="借助GAE实现手机爬梯">
  <strong>下一篇：</strong><br/> 
- <span>linux日常更新-01
+ <span>借助GAE实现手机爬梯
 </span>
 </a>
 </div>
@@ -142,7 +153,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="01/31/2016/daily2/" data-title="linux日常更新-02" data-url="http://a1ex.net/01/31/2016/daily2/"></div>
+	<div class="ds-thread" data-thread-key="12/30/2015/xssPlatform/" data-title="XSS平台搭建" data-url="http://a1ex.net/12/30/2015/xssPlatform/"></div>
 </section>
 
 
@@ -152,7 +163,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#环境:Ubuntu"><span class="toc-number">1.</span> <span class="toc-text">环境:Ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Commond"><span class="toc-number">1.1.</span> <span class="toc-text">Commond</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System"><span class="toc-number">1.2.</span> <span class="toc-text">System</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统添加证书"><span class="toc-number">1.2.1.</span> <span class="toc-text">系统添加证书</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SoftWare"><span class="toc-number">1.3.</span> <span class="toc-text">SoftWare</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Device/Driver"><span class="toc-number">1.4.</span> <span class="toc-text">Device/Driver</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker安装"><span class="toc-number">2.</span> <span class="toc-text">Docker安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep-puppy安装"><span class="toc-number">3.</span> <span class="toc-text">sleep-puppy安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的API使用"><span class="toc-number">4.</span> <span class="toc-text">简单的API使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
@@ -164,7 +175,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/GAE/" style="font-size: 10px;">GAE</a> <a href="/tags/GAE-Android/" style="font-size: 10px;">GAE Android</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/bash/" style="font-size: 12.5px;">bash</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/XSS平台/" style="font-size: 10px;">XSS平台</a> <a href="/tags/bash/" style="font-size: 14px;">bash</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 10px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -172,7 +183,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -202,7 +213,7 @@
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>12</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>13</sup></a></li>
 		  
 		
 		  
