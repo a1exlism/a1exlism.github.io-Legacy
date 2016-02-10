@@ -1,0 +1,469 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>读书笔记--鸟哥私房菜 | A1exlism</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="A1ex">
+    
+
+    
+    <meta name="description" content="Commond非纯文本文件查看 odod -t [filetype] filename1hexlism@dell:/var/log$ od -t c Xorg.1.log
+ls按容量,时间查询123ls -h #容量ls --full-time #完整时间ls --time=[use,atime,ctime] #分别对应下面的touch三种情况
+ls -F   #输出文件类型
+完全复制1cp -a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记--鸟哥私房菜">
+<meta property="og:url" content="http://a1ex.net/02/11/2016/book-vbird/index.html">
+<meta property="og:site_name" content="A1exlism">
+<meta property="og:description" content="Commond非纯文本文件查看 odod -t [filetype] filename1hexlism@dell:/var/log$ od -t c Xorg.1.log
+ls按容量,时间查询123ls -h #容量ls --full-time #完整时间ls --time=[use,atime,ctime] #分别对应下面的touch三种情况
+ls -F   #输出文件类型
+完全复制1cp -a">
+<meta property="og:updated_time" content="2016-02-10T16:07:10.422Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读书笔记--鸟哥私房菜">
+<meta name="twitter:description" content="Commond非纯文本文件查看 odod -t [filetype] filename1hexlism@dell:/var/log$ od -t c Xorg.1.log
+ls按容量,时间查询123ls -h #容量ls --full-time #完整时间ls --time=[use,atime,ctime] #分别对应下面的touch三种情况
+ls -F   #输出文件类型
+完全复制1cp -a">
+<link rel="publisher" href="106896526077043222500">
+
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="A1exlism" title="A1exlism"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="A1exlism">A1exlism</a></h1>
+				<h2 class="blog-motto">Learning and bloging</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Find" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/02/11/2016/book-vbird/" title="读书笔记--鸟哥私房菜" itemprop="url">读书笔记--鸟哥私房菜</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-10T16:07:10.422Z" itemprop="datePublished"> 发表于 02-11-2016</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Commond"><span class="toc-number">1.</span> <span class="toc-text">Commond</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#非纯文本文件查看_od"><span class="toc-number">1.1.</span> <span class="toc-text">非纯文本文件查看 od</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls按容量,时间查询"><span class="toc-number">1.2.</span> <span class="toc-text">ls按容量,时间查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完全复制"><span class="toc-number">1.3.</span> <span class="toc-text">完全复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#touch修改文件时间"><span class="toc-number">1.4.</span> <span class="toc-text">touch修改文件时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件隐藏属性attr"><span class="toc-number">1.5.</span> <span class="toc-text">文件隐藏属性attr</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#chattr"><span class="toc-number">1.5.1.</span> <span class="toc-text">chattr</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lsattr"><span class="toc-number">1.5.2.</span> <span class="toc-text">lsattr</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">2.</span> <span class="toc-text">Reference</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="Commond">Commond</h2><h3 id="非纯文本文件查看_od">非纯文本文件查看 od</h3><p>od -t [filetype] filename<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexlism@dell:/var/<span class="built_in">log</span>$ od -t c Xorg.<span class="number">1</span>.log</span><br></pre></td></tr></table></figure></p>
+<h3 id="ls按容量,时间查询">ls按容量,时间查询</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -h <span class="comment">#容量</span></span><br><span class="line">ls --full-time <span class="comment">#完整时间</span></span><br><span class="line">ls --time=[use,atime,ctime] <span class="comment">#分别对应下面的touch三种情况</span></span><br></pre></td></tr></table></figure>
+<p>ls -F   #输出文件类型</p>
+<h3 id="完全复制">完全复制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp <span class="operator">-a</span> ./file1 /another/floder/file2</span><br></pre></td></tr></table></figure>
+<p>-a == -pdr<br>-p:复制文件属性<br>-d:如果是link file,复制链接文件而不是链接过去的大文件<br>-r:递归复制</p>
+<h3 id="touch修改文件时间">touch修改文件时间</h3><p>三种时间在以下情况变化:<br>modification time(mtime) 内容被改<br>change time(ctime) 属性或者权限被改变(e.g., 重命名)<br>access time(atime) 被访问</p>
+<h3 id="文件隐藏属性attr">文件隐藏属性attr</h3><h4 id="chattr">chattr</h4><p>chattr [+-=] [option]<br>option(常用):<br>a(root):只能增加数据,不能修改和删除<br>d:禁止文件被dump<br>i(root):禁止基本一切操作(增删改查)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">chattr +i testfile</span><br><span class="line">rm testfile</span><br><span class="line"><span class="comment">#rm：是否删除有写保护的普通空文件 "testfile"？ y</span></span><br><span class="line"><span class="comment">#rm: 无法删除"testfile": 不允许的操作</span></span><br><span class="line">chattr -i testfile</span><br><span class="line">rm testfile</span><br></pre></td></tr></table></figure></p>
+<h4 id="lsattr">lsattr</h4><p>和ls差不多用法<br>三个option:<br>-a all<br>-d 忽略目录内文件<br>-R 递归<br>e.g., <code>lsattr -aR</code></p>
+<h2 id="Reference">Reference</h2><p>鸟哥私房菜</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://a1ex.net/02/11/2016/book-vbird/" data-title="读书笔记--鸟哥私房菜 | A1exlism" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/02/10/2016/daily2/"  title="linux日常更新-02">
+ <strong>下一篇：</strong><br/> 
+ <span>linux日常更新-02
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="02/11/2016/book-vbird/" data-title="读书笔记--鸟哥私房菜" data-url="http://a1ex.net/02/11/2016/book-vbird/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Commond"><span class="toc-number">1.</span> <span class="toc-text">Commond</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#非纯文本文件查看_od"><span class="toc-number">1.1.</span> <span class="toc-text">非纯文本文件查看 od</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls按容量,时间查询"><span class="toc-number">1.2.</span> <span class="toc-text">ls按容量,时间查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完全复制"><span class="toc-number">1.3.</span> <span class="toc-text">完全复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#touch修改文件时间"><span class="toc-number">1.4.</span> <span class="toc-text">touch修改文件时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件隐藏属性attr"><span class="toc-number">1.5.</span> <span class="toc-text">文件隐藏属性attr</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#chattr"><span class="toc-number">1.5.1.</span> <span class="toc-text">chattr</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lsattr"><span class="toc-number">1.5.2.</span> <span class="toc-text">lsattr</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">2.</span> <span class="toc-text">Reference</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide"></a></div>
+<aside class="clearfix">
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Sites/" style="font-size: 10px;">Sites</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/bash/" style="font-size: 14px;">bash</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/书记/" style="font-size: 12px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+  </div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Collection/" title="Collection">Collection<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Others/" title="Others">Others<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Wall/" title="Wall">Wall<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Web/" title="Web">Web<sup>13</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://zh.wikipedia.org" target="_blank" title="Wiki">Wiki</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://hexo.io/" target="_blank" title="Hexo">Hexo</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Blog site <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/a1exlism" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/a1exlism" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		<a href="https://www.facebook.com/a1exlism" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		<a href="https://plus.google.com/106896526077043222500?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"a1exnet"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-63657599-1', 'a1ex.net');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Swift_search Begin -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','6CrKq4WqLzE2qozYG7T_','2.0.0');
+</script>
+
+
+<!-- Tiny_search End -->
+  </body>
+</html>

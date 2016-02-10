@@ -1,10 +1,10 @@
 
-  <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   
-    <title>标签 : XSS平台 | A1exlism</title>
+    <title>search | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
@@ -13,12 +13,13 @@
     
     <meta name="description" content="A1ex&apos;s Blog">
 <meta property="og:type" content="website">
-<meta property="og:title" content="A1exlism">
-<meta property="og:url" content="http://a1ex.net/tags/XSS平台/index.html">
+<meta property="og:title" content="search">
+<meta property="og:url" content="http://a1ex.net/search/index.html">
 <meta property="og:site_name" content="A1exlism">
 <meta property="og:description" content="A1ex&apos;s Blog">
+<meta property="og:updated_time" content="2016-02-08T15:54:41.148Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A1exlism">
+<meta name="twitter:title" content="search">
 <meta name="twitter:description" content="A1ex&apos;s Blog">
 <link rel="publisher" href="106896526077043222500">
 
@@ -60,10 +61,10 @@
 					
 					<li>
  					
-						<form class="search">
-							<label>Search</label>
-						<input type="text" id="ts-search-input" name="q" size="30" placeholder="Find"><br>
-						</form>
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Find" />
+					</form>
 					
 					</li>
 				</ul>
@@ -72,30 +73,25 @@
       </header>
       <div id="container">
         
-
-<div class="archive-title" >
-  <h2 class="tag-icon">XSS平台</h2>
-  
+<div  id="main" class="page">
+  <div id='cse' style='width:100%;text-align:center'>正在加载搜索结果，请稍等。</div>
 </div>
-<div id="main" class="archive-part clearfix">
-  <div id="archive-page">
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/12/30/2015/xssPlatform/" title="XSS平台搭建" itemprop="url">
-  
-
-    <time datetime="2015-12-29T16:00:00.000Z" itemprop="datePublished">12-30-2015</time>
-
-
-    <h1 itemprop="name">XSS平台搭建</h1>
-
-  </a>
-</section>
-
-
-  </div>
-</div>
+<script src="http://www.google.com.hk/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+google.load('search', '1', {language : 'zh-CN',style: google.loader.themes.MINIMALIST});
+google.setOnLoadCallback(function(){
+  var customSearchControl = new google.search.CustomSearchControl('008661468644915742837:cvg-rht3rlc');
+  customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  var options = new google.search.DrawOptions();
+  options.setAutoComplete(true);
+  customSearchControl.draw('cse', options);
+  var match = location.search.match(/q=([^&]*)(&|$)/);
+  if(match && match[1]){
+    var search = decodeURIComponent(match[1]); 
+    customSearchControl.execute(search);
+  }
+},true);
+</script>
 
       </div>
       <footer><div id="footer" >
@@ -247,26 +243,18 @@ ga('send', 'pageview');
 
 <!-- MathJax End -->
 
-<!-- Tiny_search Begin -->
+<!-- Swift_search Begin -->
 
-<script>
-var option = {
-  engineKey: '0ebf6d79de6f09a2386e'
-};
-(function(w,d,t,u,n,s,e){
-  s = d.createElement(t);
-  s.src = u;
-  s.async = 1;
-  w[n] = function(r){
-    w[n].opts = r;
-  };
-  e = d.getElementsByTagName(t)[0];
-  e.parentNode.insertBefore(s, e);
-})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
-_ts(option);
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','6CrKq4WqLzE2qozYG7T_','2.0.0');
 </script>
 
-<!-- Tiny_search End -->
 
+<!-- Tiny_search End -->
     </body>
    </html>
