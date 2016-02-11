@@ -78,14 +78,14 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/02/10/2016/book-vbird/" title="读书笔记--鸟哥私房菜" itemprop="url">读书笔记--鸟哥私房菜</a>
+      <a href="/02/11/2016/book-vbird/" title="读书笔记--鸟哥私房菜" itemprop="url">读书笔记--鸟哥私房菜</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-10T15:17:21.000Z" itemprop="datePublished"> 发表于 02-10-2016</time>
+    <time datetime="2016-02-10T16:07:10.422Z" itemprop="datePublished"> 发表于 02-11-2016</time>
     
   </p>
 </header>
@@ -114,7 +114,63 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/02/10/2016/book-vbird/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/10/2016/book-vbird/" data-count-type="comments">&nbsp;</a>
+		<a href="/02/11/2016/book-vbird/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/11/2016/book-vbird/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/02/10/2016/daily2/" title="linux日常更新-02" itemprop="url">linux日常更新-02</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-10T15:17:38.546Z" itemprop="datePublished"> 发表于 02-10-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="环境:Ubuntu">环境:Ubuntu</h1><h2 id="Commond">Commond</h2><h2 id="System">System</h2><h3 id="系统添加证书">系统添加证书</h3><p>1.<br>将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.</p>
+<blockquote>
+<p>来自<a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a>,自己暂时没有尝试过<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github 为例进行说明</span></span><br><span class="line">sudo mkdir /usr/share/ca-certificates/github.com/</span><br><span class="line"><span class="comment">## 进入到所创建好的目录，这里使用了一种 !!:2 来指代上面的目录，索引从0开始，即 sudo对应0，mkdir对应1</span></span><br><span class="line"><span class="built_in">cd</span> !!:<span class="number">2</span></span><br><span class="line"><span class="comment">## 将准备好的要导入的证书复制到当前目录下</span></span><br><span class="line">sudo cp /path/to//github.com.crt .</span><br><span class="line"><span class="comment">## 运行配置命令导入，运行此命令后会出现类似下图所示的配置选项，相应配置即可</span></span><br><span class="line">sudo dpkg-reconfigure ca-certificates</span><br><span class="line"><span class="comment">## 配置好后再更新一下</span></span><br><span class="line">sudo update-ca-certificates</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>Reference:<br><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a></p>
+<h2 id="SoftWare">SoftWare</h2><h3 id="编译安装源码">编译安装源码</h3><p>不行则请用root权限调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar jxvf file.tar.bz2    /    tar zxvf file.tar.gz</span><br><span class="line"><span class="built_in">cd</span> file</span><br><span class="line">ls <span class="operator">-l</span>      <span class="comment">#一般能找到INSTALL或者Doc安装文档</span></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">./configure;make ;make install</span><br><span class="line"><span class="comment"># 有些不需要configure</span></span><br><span class="line">make; make install</span><br></pre></td></tr></table></figure>
+<h3 id="定制安装">定制安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line">./configure --prefix=/opt/softwareFloader</span><br><span class="line">make; make install</span><br><span class="line">--- 有两种方法可以快速调用 ---</span><br><span class="line"><span class="comment"># 1.创建软链接</span></span><br><span class="line">ln <span class="operator">-s</span> /opt/softwareFloader/bin/software /usr/bin/software </span><br><span class="line"><span class="comment"># 2.添加环境变量,可参照日常更新1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/softwareFloader/bin</span><br></pre></td></tr></table></figure>
+<h3 id="Reference">Reference</h3><p><a href="http://itlab.idcquan.com/linux/set/39862.html" target="_blank" rel="external">ChinaItLab</a></p>
+<h2 id="Device/Driver">Device/Driver</h2>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/02/10/2016/daily2/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/10/2016/daily2/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -147,10 +203,25 @@
 </header>
     <div class="article-content">
         
-        <h3 id="主题环境">主题环境</h3><p>hexo 3.0<br><a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman</a>修改于pacman(基本差不多)</p>
+        <h2 id="主题环境">主题环境</h2><p>hexo 3.0<br><a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman</a>修改于pacman(基本差不多)</p>
 <p>以前使用的<code>Tinyso</code>(微搜),不过这几个月已经无限502-504了,看了一下官方博客,好像从2015就没维护了..放弃换成<code>Swiftype</code>,15天free trial 网上查了一下好像过期不影响站内搜索,如果失效就更新..</p>
-<h3 id="正文">正文</h3><p>1.注册账号-&gt;<a href="https://swiftype.com" target="_blank" rel="external">Swiftype</a><br>2.</p>
-<h3 id="有点小问题,待续">有点小问题,待续</h3><h3 id="Reference">Reference</h3><p><a href="http://www.jianshu.com/p/2010ad07d960" target="_blank" rel="external">Hexo静态博客添加站内搜索—Swiftype</a></p>
+<h3 id="正文">正文</h3><h4 id="Swiftype">Swiftype</h4><p>1.注册账号-&gt;<a href="https://swiftype.com" target="_blank" rel="external">Swiftype</a><br>2.create engine(search engine,名字随便取) -&gt; 填入自己的URL验证<br>3.My Search Engines -&gt; <img src="/imgs/hexoSearch/hexoSearch1.png" alt="1"><br><img src="/imgs/hexoSearch/hexoSearch2.png" alt="2"><br>4.记下以下的class名.<br><img src="/imgs/hexoSearch/hexoSearch3.png" alt="3"></p>
+<h4 id="文件修改">文件修改</h4><ol>
+<li><p>/yourOwnPath/hexo/themes/jacman/<code>_config.yml</code>末尾</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">swift_search:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建文件/yourOwnPath/hexo/themes/jacman/layout/_partial/<code>swift_search.ejs</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将调用的代码复制进去</span></span><br><span class="line">&lt;% <span class="keyword">if</span> (theme.swift_search.enable)&#123; %&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="clojure"></span><br><span class="line">  <span class="list">(<span class="keyword">function</span><span class="list">(<span class="keyword">w</span>,d,t,u,n,s,e)</span><span class="collection">&#123;w<span class="collection">['SwiftypeObject']</span>=n;w<span class="collection">[n]</span>=w<span class="collection">[n]</span>||function<span class="list">()</span><span class="collection">&#123;</span><br><span class="line">  <span class="list">(<span class="keyword">w</span><span class="collection">[n]</span>.q=w<span class="collection">[n]</span>.q||<span class="collection">[]</span>)</span>.push<span class="list">(<span class="keyword">arguments</span>)</span><span class="comment">;&#125;;s=d.createElement(t);</span></span><br><span class="line">  e=d.getElementsByTagName<span class="list">(<span class="keyword">t</span>)</span><span class="collection">[<span class="number">0</span>]</span><span class="comment">;s.async=1;s.src=u;e.parentNode.insertBefore(s,e);</span></span><br><span class="line">  &#125;</span>)<span class="list">(<span class="keyword">window</span>,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st')</span><span class="comment">;</span></span><br><span class="line">  </span><br><span class="line">  _st<span class="list">(<span class="keyword">'install'</span>,'6CrKq4WqLzE2qozYG7T_','2.0.0')</span><span class="comment">;</span></span><br><span class="line"></span></span></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">%</span> &#125; %&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>/yourOwnPath/hexo/themes/jacman/layout/_partial/<code>header.ejs</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将该html代码插入在google_cse之前,不然报错..</span></span><br><span class="line"><span class="comment">//action可以模仿其他search写法,默认本页面显示</span></span><br><span class="line">&lt;% <span class="keyword">if</span>(theme.swift_search.enable)&#123; %&gt;</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">class</span>=<span class="value">"search"</span> <span class="attribute">action</span>=<span class="value">""</span> <span class="attribute">method</span>=<span class="value">"get"</span> <span class="attribute">accept-charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">class</span>=<span class="value">"st-default-search-input"</span> <span class="attribute">style</span>=<span class="value">"webkit-border-radius: 0;border-radius: 0;"</span> <span class="attribute">placeholder</span>=<span class="value">"Search"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">form</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">%</span> &#125; //根据后面的<span class="attribute">if</span> <span class="attribute">else</span>结构完成闭合</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>/yourOwnPath/hexo/themes/jacman/layout/_partial/<code>after_footer.ejs</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//最后添加如下代码,使swift_search.ejs文件生效</span></span><br><span class="line">&lt;!-- Swift_search Begin --&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">%-</span> <span class="attribute">partial</span>('<span class="attribute">swift_search</span>') %&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Tiny_search End --&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="调试">调试</h4><p>hexo g;hexo s<br>测试是否成功<br>默认应该和本blog一样的效果</p>
+<h3 id="Reference">Reference</h3><p><a href="http://www.jianshu.com/p/2010ad07d960" target="_blank" rel="external">Hexo静态博客添加站内搜索—Swiftype</a></p>
 
         
         
@@ -166,62 +237,6 @@
 	
 	  	<span></span>
 		<a href="/02/08/2016/hexoSearch/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/08/2016/hexoSearch/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/01/31/2016/daily2/" title="linux日常更新-02" itemprop="url">linux日常更新-02</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-31T06:16:38.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="环境:Ubuntu">环境:Ubuntu</h1><h2 id="Commond">Commond</h2><h2 id="System">System</h2><h3 id="系统添加证书">系统添加证书</h3><p>1.<br>将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.</p>
-<blockquote>
-<p>来自<a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a>,自己暂时没有尝试过<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github 为例进行说明</span></span><br><span class="line">sudo mkdir /usr/share/ca-certificates/github.com/</span><br><span class="line"><span class="comment">## 进入到所创建好的目录，这里使用了一种 !!:2 来指代上面的目录，索引从0开始，即 sudo对应0，mkdir对应1</span></span><br><span class="line"><span class="built_in">cd</span> !!:<span class="number">2</span></span><br><span class="line"><span class="comment">## 将准备好的要导入的证书复制到当前目录下</span></span><br><span class="line">sudo cp /path/to//github.com.crt .</span><br><span class="line"><span class="comment">## 运行配置命令导入，运行此命令后会出现类似下图所示的配置选项，相应配置即可</span></span><br><span class="line">sudo dpkg-reconfigure ca-certificates</span><br><span class="line"><span class="comment">## 配置好后再更新一下</span></span><br><span class="line">sudo update-ca-certificates</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>Reference:<br><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a></p>
-<h2 id="SoftWare">SoftWare</h2><h3 id="编译安装源码">编译安装源码</h3><p>不行则请用root权限调用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar jxvf file.tar.bz2    /    tar zxvf file.tar.gz</span><br><span class="line"><span class="built_in">cd</span> file</span><br><span class="line">ls <span class="operator">-l</span>      <span class="comment">#一般能找到INSTALL或者Doc安装文档</span></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">./configure;make ;make install</span><br><span class="line"><span class="comment"># 有些不需要configure</span></span><br><span class="line">make; make install</span><br></pre></td></tr></table></figure>
-<h3 id="定制安装">定制安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line">./configure --prefix=/opt/softwareFloader</span><br><span class="line">make; make install</span><br><span class="line">--- 有两种方法可以快速调用 ---</span><br><span class="line"><span class="comment"># 1.创建软链接</span></span><br><span class="line">ln <span class="operator">-s</span> /opt/softwareFloader/bin/software /usr/bin/software </span><br><span class="line"><span class="comment"># 2.添加环境变量,可参照日常更新1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/softwareFloader/bin</span><br></pre></td></tr></table></figure>
-<h3 id="Reference">Reference</h3><p><a href="http://itlab.idcquan.com/linux/set/39862.html" target="_blank" rel="external">ChinaItLab</a></p>
-<h2 id="Device/Driver">Device/Driver</h2>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/01/31/2016/daily2/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/daily2/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -453,7 +468,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-01-27T11:05:59.000Z" itemprop="datePublished"> 发表于 01-27-2016</time>
+    <time datetime="2016-01-27T11:05:59.649Z" itemprop="datePublished"> 发表于 01-27-2016</time>
     
   </p>
 </header>
@@ -799,7 +814,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
