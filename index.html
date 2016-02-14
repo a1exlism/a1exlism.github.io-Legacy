@@ -85,7 +85,7 @@
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-13T15:48:50.807Z" itemprop="datePublished"> 发表于 02-13-2016</time>
+    <time datetime="2016-02-13T15:50:40.372Z" itemprop="datePublished"> 发表于 02-13-2016</time>
     
   </p>
 </header>
@@ -179,6 +179,7 @@
 </blockquote>
 <p>End. 重启之后就没事啦</p>
 <h2 id="Reference">Reference</h2><p><a href="http://www.evilcodingmonkey.com/2014/01/23/ubuntu-activate-multi-touch-on-elantech/" target="_blank" rel="external">ubuntu-activate-multi-touch-on-elantech-evilcodingmonkey</a><br><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=42&amp;t=304955" target="_blank" rel="external">Sony Vaio 触摸板不能识别解决办法-UbuntuForum</a><br>想了解DKMS可以看看这个-&gt;<a href="http://www.cnblogs.com/wwang/archive/2011/06/21/2085571.html" target="_blank" rel="external">DKMS简介</a></p>
+<h2 id="后记">后记</h2><p>发现重启几次之后触摸板又挂了<br>发现dkms安装了但并没有加载,所以开机自启加载两句话= =<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sudo vi /etc/rc.local 在这里添加下面两条内容</span></span><br><span class="line">sudo rmmod psmouse</span><br><span class="line">sudo modprobe psmouse</span><br></pre></td></tr></table></figure></p>
 
         
         

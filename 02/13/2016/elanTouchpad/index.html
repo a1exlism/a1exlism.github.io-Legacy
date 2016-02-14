@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="A1exlism">
 <meta property="og:description" content="问题触摸板开启状态下开机,碰到触摸板任何按键均失效,只有外接鼠标有效,使用笔记本内置快捷键进行休眠重新开机恢复,但是触摸板已经没卵用了
 环境12345678a1exlism@dell~$ uname -r3.19.0-49-generica1exlism@dell:~$ lsb_release -aNo LSB modules are available.Distributor ID: Ubunt">
-<meta property="og:updated_time" content="2016-02-13T12:22:43.447Z">
+<meta property="og:updated_time" content="2016-02-14T04:43:58.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux-触摸板失效解决">
 <meta name="twitter:description" content="问题触摸板开启状态下开机,碰到触摸板任何按键均失效,只有外接鼠标有效,使用笔记本内置快捷键进行休眠重新开机恢复,但是触摸板已经没卵用了
@@ -96,7 +96,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">2.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">3.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#适用于任何笔记本"><span class="toc-number">3.1.</span> <span class="toc-text">适用于任何笔记本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elanTouchpad方案[推荐]"><span class="toc-number">3.2.</span> <span class="toc-text">elanTouchpad方案[推荐]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">2.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">3.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#适用于任何笔记本"><span class="toc-number">3.1.</span> <span class="toc-text">适用于任何笔记本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elanTouchpad方案[推荐]"><span class="toc-number">3.2.</span> <span class="toc-text">elanTouchpad方案[推荐]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后记"><span class="toc-number">5.</span> <span class="toc-text">后记</span></a></li></ol>
 		
 		</div>
 		
@@ -119,6 +119,7 @@
 </blockquote>
 <p>End. 重启之后就没事啦</p>
 <h2 id="Reference">Reference</h2><p><a href="http://www.evilcodingmonkey.com/2014/01/23/ubuntu-activate-multi-touch-on-elantech/" target="_blank" rel="external">ubuntu-activate-multi-touch-on-elantech-evilcodingmonkey</a><br><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=42&amp;t=304955" target="_blank" rel="external">Sony Vaio 触摸板不能识别解决办法-UbuntuForum</a><br>想了解DKMS可以看看这个-&gt;<a href="http://www.cnblogs.com/wwang/archive/2011/06/21/2085571.html" target="_blank" rel="external">DKMS简介</a></p>
+<h2 id="后记">后记</h2><p>发现重启几次之后触摸板又挂了<br>发现dkms安装了但并没有加载,所以开机自启加载两句话= =<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sudo vi /etc/rc.local 在这里添加下面两条内容</span></span><br><span class="line">sudo rmmod psmouse</span><br><span class="line">sudo modprobe psmouse</span><br></pre></td></tr></table></figure></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -170,7 +171,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">2.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">3.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#适用于任何笔记本"><span class="toc-number">3.1.</span> <span class="toc-text">适用于任何笔记本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elanTouchpad方案[推荐]"><span class="toc-number">3.2.</span> <span class="toc-text">elanTouchpad方案[推荐]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">2.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">3.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#适用于任何笔记本"><span class="toc-number">3.1.</span> <span class="toc-text">适用于任何笔记本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elanTouchpad方案[推荐]"><span class="toc-number">3.2.</span> <span class="toc-text">elanTouchpad方案[推荐]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后记"><span class="toc-number">5.</span> <span class="toc-text">后记</span></a></li></ol>
  
   </div>
 
