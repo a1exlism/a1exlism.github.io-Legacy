@@ -656,15 +656,39 @@ noauto          开机不自动挂载
 </header>
     <div class="article-content">
         
-        <h2 id="文件信息">文件信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file [-bLvz] filename</span><br></pre></td></tr></table></figure>
-<h2 id="命令">命令</h2><p>which<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> <span class="operator">-a</span> java <span class="comment">#-a all</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="文件名">文件名</h2><p><code>updatedb</code>可以更新搜索的datebase</p>
-<h3 id="1-whereis_[-bmsu]_file/folder">1.whereis [-bmsu] file/folder</h3><p>-b binary -m manual -s source<br>-u except above three</p>
-<h3 id="2-locate_[-ir]_keyword">2.locate [-ir] keyword</h3><p>-i ignore uppercase/lowercase<br>-r using regexp #正则</p>
-<h3 id="3-_find">3. find</h3><p>find查找<code>默认递归</code><br>find [Router] [option] [action]</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find tools -mtime <span class="number">0</span> <span class="comment">#24小时之内tools文件夹更改的地方</span></span><br><span class="line">find . -name <span class="string">'filename.*'</span> <span class="comment">#在当前目录进行递归查找名为'filename'的任意扩展文件</span></span><br></pre></td></tr></table></figure>
-<h2 id="文件内容">文件内容</h2><p>grep<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">"contents"</span> . -r -n <span class="comment">#-r 递归 -n 显示行列号</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="find_grep_组合技查询">find grep 组合技查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find -name *.ini | xargs grep port  <span class="comment">#从当前目录下找到有关'port'的ini文件</span></span><br></pre></td></tr></table></figure>
+        <h2 id="文件类型">文件类型</h2><blockquote>
+<p>file ~/.bashrc</p>
+</blockquote>
+<h2 id="可执行文件">可执行文件</h2><p>-a all 找出所有的,有时候需要root权限查找例如<code>ifconfig</code></p>
+<blockquote>
+<p>which -a java</p>
+</blockquote>
+<h2 id="文件名">文件名</h2><h3 id="1-whereis_[-bmsu]_file/folder">1.whereis [-bmsu] file/folder</h3><p>—-依赖数据库—-<br>-b 二进制 -m manual路径下的文件(说明文件) -s 源文件<br>-u except above three</p>
+<blockquote>
+<p>whereis ifconfig<br>whereis -m passwd</p>
+</blockquote>
+<h3 id="2-locate_[-ir]_keyword">2.locate [-ir] keyword</h3><p>—-依赖数据库—-<br>-i 忽略大小写<br>-r regexp正则</p>
+<blockquote>
+<p>locate -i PAssWd</p>
+</blockquote>
+<p>手动更新数据库—&gt;<code>updatedb</code></p>
+<h3 id="3-_find_[Router]_[option]_[action]">3. find [Router] [option] [action]</h3><p>—-直接查找硬盘—-<br>find查找<code>默认递归</code></p>
+<h4 id="时间">时间</h4><p>-atime -ctime -mtime<br><img src="/imgs/bash/linux-find-time.png" alt="1"><br>图示为<code>mtime</code>选项,作图过程中忍不住安利个网站- -<a href="https://www.processon.com" target="_blank" rel="external">ProcessOn</a><br>24小时之内tools文件夹更改的地方</p>
+<blockquote>
+<p>find / -mtime 0. </p>
+</blockquote>
+<h4 id="文件名/文件类型">文件名/文件类型</h4><p>在当前目录进行递归查找名为’filename’的任意扩展文件</p>
+<blockquote>
+<p>find . -name ‘filename.*’<br>find ~ -type s<br>type缩写===&gt;<a href="http://man.linuxde.net/find" target="_blank" rel="external">linuxde</a></p>
+</blockquote>
+<h2 id="文件内容">文件内容</h2><p>-r 递归 -n 显示行列号</p>
+<blockquote>
+<p>grep “contents” . -r -n </p>
+</blockquote>
+<h3 id="find_grep_组合技查询">find grep 组合技查询</h3><p>从当前目录下找到有关’port’的ini文件</p>
+<blockquote>
+<p>$ find -name *.ini | xargs grep port</p>
+</blockquote>
 <h2 id="Reference">Reference</h2><p><a href="http://www.cnblogs.com/skynet/archive/2010/12/25/1916873.html" target="_blank" rel="external">吴秦(Tyler)</a><br><a href="http://www.ai7.org/wp/html/653.html" target="_blank" rel="external">男单 618</a></p>
 
         
@@ -776,6 +800,30 @@ noauto          开机不自动挂载
           <li>
             
             	<a href="http://hexo.io/" target="_blank" title="Hexo">Hexo</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://man.linuxde.net/" target="_blank" title="Linux命令大全">Linux命令大全</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.regexr.com/" target="_blank" title="Regexr">Regexr</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.processon.com/" target="_blank" title="ProcessOn">ProcessOn</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://linuxtoy.org" target="_blank" title="LinuxToy">LinuxToy</a>
             
           </li>
         
