@@ -1,3 +1,0 @@
-放个地址方便查看:
-linux等通用的文件管理系统
-FHS:http://www.pathname.com/fhs/pub/fhs-2.3.html#THEFILESYSTEM

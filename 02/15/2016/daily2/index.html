@@ -1,0 +1,532 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>linux日常更新-02 | A1exlism</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="A1ex">
+    
+
+    
+    <meta name="description" content="环境:UbuntuCommond查询公网IP
+高迪curl ifconfig.mecurl ipinfo.io
+
+System系统添加证书1.将证书ca-certificates.crt入 /etc/ssl/certs目录下然后更新证书sudo  update-ca-certificates2.&amp;gt;kissdata,自己暂时没有尝试过12345678910## 在 /usr/share/ca-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux日常更新-02">
+<meta property="og:url" content="http://a1ex.net/02/15/2016/daily2/index.html">
+<meta property="og:site_name" content="A1exlism">
+<meta property="og:description" content="环境:UbuntuCommond查询公网IP
+高迪curl ifconfig.mecurl ipinfo.io
+
+System系统添加证书1.将证书ca-certificates.crt入 /etc/ssl/certs目录下然后更新证书sudo  update-ca-certificates2.&amp;gt;kissdata,自己暂时没有尝试过12345678910## 在 /usr/share/ca-">
+<meta property="og:updated_time" content="2016-02-15T06:27:10.288Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux日常更新-02">
+<meta name="twitter:description" content="环境:UbuntuCommond查询公网IP
+高迪curl ifconfig.mecurl ipinfo.io
+
+System系统添加证书1.将证书ca-certificates.crt入 /etc/ssl/certs目录下然后更新证书sudo  update-ca-certificates2.&amp;gt;kissdata,自己暂时没有尝试过12345678910## 在 /usr/share/ca-">
+<link rel="publisher" href="106896526077043222500">
+
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="A1exlism" title="A1exlism"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="A1exlism">A1exlism</a></h1>
+				<h2 class="blog-motto">Learning and bloging</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="" method="get" accept-charset="utf-8">
+						<input type="text" class="st-default-search-input" style="webkit-border-radius: 0;border-radius: 0;" placeholder="Search">
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/02/15/2016/daily2/" title="linux日常更新-02" itemprop="url">linux日常更新-02</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-15T06:27:10.288Z" itemprop="datePublished"> 发表于 02-15-2016</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#环境:Ubuntu"><span class="toc-number">1.</span> <span class="toc-text">环境:Ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Commond"><span class="toc-number">1.1.</span> <span class="toc-text">Commond</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询公网IP"><span class="toc-number">1.1.1.</span> <span class="toc-text">查询公网IP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System"><span class="toc-number">1.2.</span> <span class="toc-text">System</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统添加证书"><span class="toc-number">1.2.1.</span> <span class="toc-text">系统添加证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GUI界面设置自启动"><span class="toc-number">1.2.2.</span> <span class="toc-text">GUI界面设置自启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改默认语言"><span class="toc-number">1.2.3.</span> <span class="toc-text">更改默认语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unity中彻底清除最近打开文档(视频)的历史记录"><span class="toc-number">1.2.4.</span> <span class="toc-text">unity中彻底清除最近打开文档(视频)的历史记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#桌面快捷方式"><span class="toc-number">1.2.5.</span> <span class="toc-text">桌面快捷方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清垃圾"><span class="toc-number">1.2.6.</span> <span class="toc-text">清垃圾</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SoftWare"><span class="toc-number">1.3.</span> <span class="toc-text">SoftWare</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编译安装源码"><span class="toc-number">1.3.1.</span> <span class="toc-text">编译安装源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定制安装"><span class="toc-number">1.3.2.</span> <span class="toc-text">定制安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不错的软件推荐"><span class="toc-number">1.3.3.</span> <span class="toc-text">不错的软件推荐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dpkg安装卸载"><span class="toc-number">1.3.4.</span> <span class="toc-text">dpkg安装卸载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sublime中文输入"><span class="toc-number">1.3.5.</span> <span class="toc-text">sublime中文输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#material_design主题"><span class="toc-number">1.3.6.</span> <span class="toc-text">material design主题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Device/Driver"><span class="toc-number">1.4.</span> <span class="toc-text">Device/Driver</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于硬盘"><span class="toc-number">1.4.1.</span> <span class="toc-text">关于硬盘</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="环境:Ubuntu">环境:Ubuntu</h1><h2 id="Commond">Commond</h2><h3 id="查询公网IP">查询公网IP</h3><blockquote>
+<p><a href="http://gaodi2002.blog.51cto.com/" target="_blank" rel="external">高迪</a><br>curl ifconfig.me<br>curl ipinfo.io</p>
+</blockquote>
+<h2 id="System">System</h2><h3 id="系统添加证书">系统添加证书</h3><p>1.将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.&gt;<a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a>,自己暂时没有尝试过<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github 为例进行说明</span></span><br><span class="line">sudo mkdir /usr/share/ca-certificates/github.com/</span><br><span class="line"><span class="comment">## 进入到所创建好的目录，这里使用了一种 !!:2 来指代上面的目录，索引从0开始，即 sudo对应0，mkdir对应1</span></span><br><span class="line"><span class="built_in">cd</span> !!:<span class="number">2</span></span><br><span class="line"><span class="comment">## 将准备好的要导入的证书复制到当前目录下</span></span><br><span class="line">sudo cp /path/to//github.com.crt .</span><br><span class="line"><span class="comment">## 运行配置命令导入，运行此命令后会出现类似下图所示的配置选项，相应配置即可</span></span><br><span class="line">sudo dpkg-reconfigure ca-certificates</span><br><span class="line"><span class="comment">## 配置好后再更新一下</span></span><br><span class="line">sudo update-ca-certificates</span><br></pre></td></tr></table></figure></p>
+<p>Reference:<br><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a></p>
+<h3 id="GUI界面设置自启动">GUI界面设置自启动</h3><blockquote>
+<p><a href="http://www.linuxidc.com/Linux/2013-04/83060.htm" target="_blank" rel="external">Linuxidc-byguess</a><br>gnome-session-properties</p>
+</blockquote>
+<h3 id="更改默认语言">更改默认语言</h3><p><a href="http://tonychiu.blog.51cto.com/656605/393131" target="_blank" rel="external">qiujichun</a></p>
+<h3 id="unity中彻底清除最近打开文档(视频)的历史记录">unity中彻底清除最近打开文档(视频)的历史记录</h3><blockquote>
+<p><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=337582" target="_blank" rel="external">ubuntu1023</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文档的历史记录</span></span><br><span class="line">rm ~/.local/share/zeitgeist/activity.sqlite &amp;&amp; zeitgeist-daemon --replace</span><br><span class="line"><span class="comment">#播放器中的“最近打开”的历史记录</span></span><br><span class="line">rm -v ~/.local/share/recently-used.xbel</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="桌面快捷方式">桌面快捷方式</h3><p><a href="http://os.51cto.com/art/201311/418841.htm" target="_blank" rel="external">51CTO</a><br><a href="http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/" target="_blank" rel="external">howopensource</a></p>
+<h3 id="清垃圾">清垃圾</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#清apt缓存</span></span><br><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
+<p><code>autoremove慎用</code><br>其他请看<a href="http://www.cnblogs.com/yc_sunniwell/archive/2010/07/15/1778265.html#undefined" target="_blank" rel="external">cnblogs-yc_sunniwell</a></p>
+<h2 id="SoftWare">SoftWare</h2><h3 id="编译安装源码">编译安装源码</h3><p>不行则请用root权限调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar jxvf file.tar.bz2    /    tar zxvf file.tar.gz</span><br><span class="line"><span class="built_in">cd</span> file</span><br><span class="line">ls <span class="operator">-l</span>      <span class="comment">#一般能找到INSTALL或者Doc安装文档</span></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">./configure;make ;make install</span><br><span class="line"><span class="comment"># 有些不需要configure</span></span><br><span class="line">make; make install</span><br></pre></td></tr></table></figure>
+<h3 id="定制安装">定制安装</h3><blockquote>
+<p><a href="http://itlab.idcquan.com/linux/set/39862.html" target="_blank" rel="external">ChinaItLab</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line">./configure --prefix=/opt/softwareFloader</span><br><span class="line">make; make install</span><br><span class="line">--- 有两种方法可以快速调用 ---</span><br><span class="line"><span class="comment"># 1.创建软链接</span></span><br><span class="line">ln <span class="operator">-s</span> /opt/softwareFloader/bin/software /usr/bin/software </span><br><span class="line"><span class="comment"># 2.添加环境变量,可参照日常更新1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/softwareFloader/bin</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="不错的软件推荐">不错的软件推荐</h3><p>==&gt;<a href="http://askubuntu.com/questions/30334/what-application-indicators-are-available" target="_blank" rel="external">AskUbuntu</a>&lt;==<br>在用的两个小插件<br>1.sudo apt-get install indicator-multiload  系统状态监测,柱状图表示<br>2.sudo apt-get install indicator-cpufreq  CPU频率设置(我这个版本只有节能和性能两种功能了,很棒)</p>
+<h3 id="dpkg安装卸载">dpkg安装卸载</h3><blockquote>
+<p><a href="http://www.thegeekstuff.com/2010/06/install-remove-deb-package/" target="_blank" rel="external">thegeekstuff-SASIKALA</a><br>dpkg -i packge  #i install<br>dpkg -r packge  #r remove<br>dpkg -l packge  #l list 配合grep来查询包是否存在<br>Reference:<a href="http://wrchiu.blog.51cto.com/817024/359085" target="_blank" rel="external">51CTO</a></p>
+</blockquote>
+<h3 id="sublime中文输入">sublime中文输入</h3><p>轮子有大牛写好了<br>———-Ubuntu———-<br>===&gt;<a href="http://blog.csdn.net/cywosp/article/details/32350899" target="_blank" rel="external">csdn-cywosp</a>&lt;===  </p>
+<p>虽然这样desktop图标可以用了,其他的方式还是不行,所以用linux的<code>alias</code>功能!</p>
+<blockquote>
+<p>sudo vi .bashrc</p>
+</blockquote>
+<p>根据alias编写格式将原来的subl改成以下内容<br>.so文件路径按自己情况更改</p>
+<blockquote>
+<p>alias subl=’LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’</p>
+</blockquote>
+<h3 id="material_design主题">material design主题</h3><p><a href="http://itsfoss.com/install-paper-theme-linux/" target="_blank" rel="external">itsfoss-ABHISHEK</a></p>
+<h2 id="Device/Driver">Device/Driver</h2><h3 id="关于硬盘">关于硬盘</h3><ol>
+<li>Ubuntu自带:<code>baobab</code></li>
+<li>有关分区 <blockquote>
+<p><a href="http://gparted.sourceforge.net/livecd.php" target="_blank" rel="external">sourceforge</a><br>gparted</p>
+</blockquote>
+</li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://a1ex.net/02/15/2016/daily2/" data-title="linux日常更新-02 | A1exlism" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/02/15/2016/daily-sql/" title="sql日常记录">
+  <strong>上一篇：</strong><br/>
+  <span>
+  sql日常记录</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/02/14/2016/book-vbird/"  title="读书笔记--鸟哥私房菜">
+ <strong>下一篇：</strong><br/> 
+ <span>读书笔记--鸟哥私房菜
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="02/15/2016/daily2/" data-title="linux日常更新-02" data-url="http://a1ex.net/02/15/2016/daily2/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#环境:Ubuntu"><span class="toc-number">1.</span> <span class="toc-text">环境:Ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Commond"><span class="toc-number">1.1.</span> <span class="toc-text">Commond</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询公网IP"><span class="toc-number">1.1.1.</span> <span class="toc-text">查询公网IP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System"><span class="toc-number">1.2.</span> <span class="toc-text">System</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统添加证书"><span class="toc-number">1.2.1.</span> <span class="toc-text">系统添加证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GUI界面设置自启动"><span class="toc-number">1.2.2.</span> <span class="toc-text">GUI界面设置自启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改默认语言"><span class="toc-number">1.2.3.</span> <span class="toc-text">更改默认语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unity中彻底清除最近打开文档(视频)的历史记录"><span class="toc-number">1.2.4.</span> <span class="toc-text">unity中彻底清除最近打开文档(视频)的历史记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#桌面快捷方式"><span class="toc-number">1.2.5.</span> <span class="toc-text">桌面快捷方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清垃圾"><span class="toc-number">1.2.6.</span> <span class="toc-text">清垃圾</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SoftWare"><span class="toc-number">1.3.</span> <span class="toc-text">SoftWare</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编译安装源码"><span class="toc-number">1.3.1.</span> <span class="toc-text">编译安装源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定制安装"><span class="toc-number">1.3.2.</span> <span class="toc-text">定制安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不错的软件推荐"><span class="toc-number">1.3.3.</span> <span class="toc-text">不错的软件推荐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dpkg安装卸载"><span class="toc-number">1.3.4.</span> <span class="toc-text">dpkg安装卸载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sublime中文输入"><span class="toc-number">1.3.5.</span> <span class="toc-text">sublime中文输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#material_design主题"><span class="toc-number">1.3.6.</span> <span class="toc-text">material design主题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Device/Driver"><span class="toc-number">1.4.</span> <span class="toc-text">Device/Driver</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于硬盘"><span class="toc-number">1.4.1.</span> <span class="toc-text">关于硬盘</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide"></a></div>
+<aside class="clearfix">
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 11.67px;">GAE</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 18.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 11.67px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+  </div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Collection/" title="Collection">Collection<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Others/" title="Others">Others<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Wall/" title="Wall">Wall<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Web/" title="Web">Web<sup>13</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://zh.wikipedia.org" target="_blank" title="Wiki">Wiki</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://hexo.io/" target="_blank" title="Hexo">Hexo</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://man.linuxde.net/" target="_blank" title="Linux命令大全">Linux命令大全</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.regexr.com/" target="_blank" title="Regexr">Regexr</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.processon.com/" target="_blank" title="ProcessOn">ProcessOn</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://linuxtoy.org" target="_blank" title="LinuxToy">LinuxToy</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Blog site <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/a1exlism" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/a1exlism" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		<a href="https://www.facebook.com/a1exlism" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		<a href="https://plus.google.com/106896526077043222500?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"a1exnet"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-63657599-1', 'a1ex.net');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Swift_search Begin -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','6CrKq4WqLzE2qozYG7T_','2.0.0');
+</script>
+
+
+<!-- Tiny_search End -->
+  </body>
+</html>

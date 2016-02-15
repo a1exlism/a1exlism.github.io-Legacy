@@ -1,0 +1,347 @@
+
+  
+    <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>PHP基础 | A1exlism</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="A1ex">
+    
+
+    
+    <meta name="description" content=".字符串连接
+第一次给变量赋值时变量才会生效
+
+文件处理
+fopen()文件打开php.txt123456789101112131415161718192021222324252627282930313233343536373839  $fp = @fopen(&quot;$_SERVER[&apos;DOCUMENT_ROOT&apos;]/../php.txt&quot;,&apos;w&apos;); //write方法              /">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PHP基础">
+<meta property="og:url" content="http://a1ex.net/Others/wait/php/php基础.html">
+<meta property="og:site_name" content="A1exlism">
+<meta property="og:description" content=".字符串连接
+第一次给变量赋值时变量才会生效
+
+文件处理
+fopen()文件打开php.txt123456789101112131415161718192021222324252627282930313233343536373839  $fp = @fopen(&quot;$_SERVER[&apos;DOCUMENT_ROOT&apos;]/../php.txt&quot;,&apos;w&apos;); //write方法              /">
+<meta property="og:updated_time" content="2016-02-15T03:08:16.156Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP基础">
+<meta name="twitter:description" content=".字符串连接
+第一次给变量赋值时变量才会生效
+
+文件处理
+fopen()文件打开php.txt123456789101112131415161718192021222324252627282930313233343536373839  $fp = @fopen(&quot;$_SERVER[&apos;DOCUMENT_ROOT&apos;]/../php.txt&quot;,&apos;w&apos;); //write方法              /">
+<link rel="publisher" href="106896526077043222500">
+
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+      <body>
+        <header>
+          
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="A1exlism" title="A1exlism"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="A1exlism">A1exlism</a></h1>
+				<h2 class="blog-motto">Learning and bloging</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="" method="get" accept-charset="utf-8">
+						<input type="text" class="st-default-search-input" style="webkit-border-radius: 0;border-radius: 0;" placeholder="Search">
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+        </header>
+        <div id="container">
+          <div id="main" class="page" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Others/wait/php/php基础.html" title="PHP基础" itemprop="url">PHP基础</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-04T16:00:00.000Z" itemprop="datePublished"> 发表于 11-05-2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h3 id=""> </h3><ol>
+<li><code>.</code>字符串连接</li>
+<li>第一次给变量赋值时变量才会生效</li>
+</ol>
+<h3 id="文件处理">文件处理</h3><ol>
+<li>fopen()<br>文件打开php.txt<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">  <span class="variable">$fp</span> = @fopen(<span class="string">"$_SERVER['DOCUMENT_ROOT']/../php.txt"</span>,<span class="string">'w'</span>); <span class="comment">//write方法</span></span><br><span class="line">              <span class="comment">//  上面这个为内置变量 指向web服务器根目录</span></span><br><span class="line">              @中@可选,选入表示忽略所有该函数产生的错误</span><br><span class="line">```  </span><br><span class="line">文件模式: r/r+   w/w+ x/x+(谨慎写入,从头写入) a/a+(追加) b(binary)</span><br><span class="line"><span class="number">2.</span> fwrite()/fputs()/file_put_contents()</span><br><span class="line"><span class="number">3.</span> addslshes()/stripslashes() 添加/删除 <span class="string">'\' [转义]</span><br><span class="line">4. 字符串匹配和替换:</span><br><span class="line">  strstr()</span><br><span class="line">  str_replace()</span><br><span class="line"></span><br><span class="line">### 文件包含漏洞原理</span><br><span class="line">require()</span><br><span class="line">include()</span><br><span class="line">这两个函数都可以重新使用任何类型的代码,但是require()在语句调用失败之后会返回error而停止执行,但include()只返回警告warning</span><br><span class="line">变体函数:</span><br><span class="line">  require_once()</span><br><span class="line">  include_once()</span><br><span class="line">抛出异常 throw new Exception('</span>message<span class="string">',code); //throw是一个语言结构</span><br><span class="line">Exception()是一个已经定义好处理异常的类</span><br><span class="line">catch(异常处理类名,异常处理的对象)&#123;</span><br><span class="line">  codes when unusual;</span><br><span class="line">&#125;</span><br><span class="line">```php</span><br><span class="line">//完整的异常处理机制</span><br><span class="line">&lt;?php </span><br><span class="line">try &#123;</span><br><span class="line">  throw new Exception('</span>Error<span class="string">',32);</span><br><span class="line">&#125; catch (Exception $e) &#123;</span><br><span class="line">  echo "Exception".$e-&gt;getCode().'</span>:<span class="string">'.$e-&gt;getMessage().'</span>&lt;br&gt;<span class="string">';</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//------</span><br><span class="line">getCode();  //返回 传递给构造函数的代码</span><br><span class="line">getMessage()  //返回 传递给构造函数的消息</span><br><span class="line">getFile() //错误文件的完整路径</span><br><span class="line">getLine() //错误行</span><br><span class="line">//------</span><br><span class="line">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="在web中通过PHP访问datebase(MySQL为例)">在web中通过PHP访问datebase(MySQL为例)</h2><ol>
+<li>建立和database的连接<br>a.面向对象<br>@db = new mysqli(‘localhost’, ‘username’, ‘password’, ‘school’);<br>//访问地址为’localhost’的’school’数据库<br>//@ 防止在浏览器产生出错回显 db为数据库对象<br>b.面向过程<br>@$db = mysqli(‘localhost’,’username’, ‘password’, ‘school’);</li>
+<li>sql执行<br>$query = “select * from school where locate=’Xi’an’”; //放入变量名减少操作<br>a.面向对象<br>$result = $db-&gt;query($query);<br>b.面向过程<br>$result = mysqli_query($db,$query);<br>Forexample:<br>a.Object<br>$num_results = $result-&gt;num_rows;<br>b.Method<br>$num_results = mysqli_num_rows(%result);</li>
+</ol>
+<h2 id="文件系统">文件系统</h2><h3 id="上传">上传</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 上传的HTML代码实现 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">from</span> <span class="attribute">action</span>=<span class="value">"upload.php"</span> <span class="attribute">method</span>=<span class="value">"post"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"file"</span> <span class="attribute">name</span>=<span class="value">"upLoadFile "</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">from</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>和文件处理有关的指令:register_globals //默认开启<br>上传的文件保存在 全局数组变量 <code>$_FILES</code>中,同时里面会保存客户端上传时的file标记名,本例为<code>upLoadFile</code><br>About<code>$_FILES&#39;:
+● 存储在$_FILES[&#39;uploadfile&#39;][ &#39;tmp_name&#39;] 文件在 Web 服务器中临时存储的位置
+● 存储在$_FILES[&#39;uploadfile&#39;][ &#39;name&#39;]     上传的文件的文件名
+● 存储在$_FILES[&#39;uploadfile&#39;][ &#39;size&#39;]     文件的字节大小
+● 存储在$_FILES[&#39;uploadfile&#39;][ &#39;type&#39;]     文件的 MIME 类型,例如:text/plain 或 image/gif
+● 存储在$_FILES[&#39;uploadfile&#39;][ &#39;error&#39;]    任何与文件上传相关的错误代码</code>脚本在执行结束前会将临时文件删除`</p>
+<h3 id="目录,文件">目录,文件</h3><p>//php的这些函数和linux的命令大同小异<br>opendir() closedir() //打开/关闭目录<br>readdir()   //目录读取<br>mkdir() rmdir() //创建/删除目录<br>dirname($path)<br>basename($path)<br>fileatime()  filemtime() //最近访问/最近修改时间<br>fileowner()  filegroup() //返回用户标识uid和组标识gid<br>chmod(file,permission)   //文件权限修改 linuxOnly<br>touch(Name)   //创建一个名为Name的文件<br>unlink($filename)   //删除文件<br>copy($source_path,$destination_path) rename($old_name,$new_name)</p>
+<h3 id="命令执行函数">命令执行函数</h3><p>exec()<br>passthru()    //和exec()类似 结果直接在浏览器输出<br>system()      //和passthru()差不多,暂时不考虑<br>环境变量:<br>  getenv()<br>  putenv()</p>
+<h3 id="PHP的会话控制">PHP的会话控制</h3><p>setcookie($cookie_name,$value);</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://a1ex.net/Others/wait/php/php基础.html" data-title="PHP基础 | A1exlism" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="Others/wait/php/php基础.html" data-title="PHP基础" data-url="http://a1ex.net/Others/wait/php/php基础.html"></div>
+</section>
+
+
+</div>  
+        </div>
+        <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Blog site <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/a1exlism" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/a1exlism" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		<a href="https://www.facebook.com/a1exlism" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		<a href="https://plus.google.com/106896526077043222500?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
+		
+		
+		</p>
+</div>
+</footer>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"a1exnet"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-63657599-1', 'a1ex.net');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Swift_search Begin -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','6CrKq4WqLzE2qozYG7T_','2.0.0');
+</script>
+
+
+<!-- Tiny_search End -->
+      </body>
+     </html>
+     
