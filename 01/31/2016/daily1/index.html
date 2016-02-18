@@ -33,7 +33,7 @@ Commond压缩包
 *.tar.bz2用tar –xjf 解压 
 *.Z 用 uncompress 解压 
 *.tar.Z 用t">
-<meta property="og:updated_time" content="2016-02-18T08:59:29.930Z">
+<meta property="og:updated_time" content="2016-02-18T09:13:17.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux日常更新-01">
 <meta name="twitter:description" content="环境:debian8最后更新日期:2016-01-31
@@ -156,12 +156,12 @@ export https_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;</code></p>
 <p>2.任意,在<code>/usr/share/applications/</code>目录中添加或者使用已有的desktop</p>
 <blockquote>
 <p>sudo vim /etc/gnome/defaults.list<br>将gedit.desktop批量替换为 编辑器.desktop </p>
+</blockquote>
 <h3 id="备份">备份</h3><ol>
 <li>sudo su</li>
 <li>tar<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Bak/Kali_bak/backup.tgz --exclude=/media --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /</span><br><span class="line"><span class="comment"># 最后的/为需要备份的目录</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-</blockquote>
 <h4 id="增量备份及差别">增量备份及差别</h4><pre><code>tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span> /<span class="tag">var</span>
 tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span>.<span class="number">1</span> /var
 </code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Bak/Kali_bak/backup.tgz.<span class="number">1</span> --exclude=/media --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys  /</span><br></pre></td></tr></table></figure>

@@ -1,0 +1,325 @@
+
+  
+    <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>A1exlism</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="A1ex">
+    
+
+    
+    <meta name="description" content="——————————Vim——————————
+常用:Ctrl+v  块选择!    强制执行0-$    Home-Endn-&amp;gt;Enter    向下移动n行:n1,n2s/word1/word2/g        n1行和n2行之间批量替换:word2-&amp;gt;word1:1,$s/word1/word2/g        全局替换:1,$s/word1/word2/gc">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A1exlism">
+<meta property="og:url" content="http://a1ex.net/Others/mark.html">
+<meta property="og:site_name" content="A1exlism">
+<meta property="og:description" content="——————————Vim——————————
+常用:Ctrl+v  块选择!    强制执行0-$    Home-Endn-&amp;gt;Enter    向下移动n行:n1,n2s/word1/word2/g        n1行和n2行之间批量替换:word2-&amp;gt;word1:1,$s/word1/word2/g        全局替换:1,$s/word1/word2/gc">
+<meta property="og:updated_time" content="2016-02-18T09:24:56.956Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A1exlism">
+<meta name="twitter:description" content="——————————Vim——————————
+常用:Ctrl+v  块选择!    强制执行0-$    Home-Endn-&amp;gt;Enter    向下移动n行:n1,n2s/word1/word2/g        n1行和n2行之间批量替换:word2-&amp;gt;word1:1,$s/word1/word2/g        全局替换:1,$s/word1/word2/gc">
+<link rel="publisher" href="106896526077043222500">
+
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+      <body>
+        <header>
+          
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="A1exlism" title="A1exlism"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="A1exlism">A1exlism</a></h1>
+				<h2 class="blog-motto">Learning and bloging</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="" method="get" accept-charset="utf-8">
+						<input type="text" class="st-default-search-input" style="webkit-border-radius: 0;border-radius: 0;" placeholder="Search">
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+        </header>
+        <div id="container">
+          <div id="main" class="page" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Others/mark.html" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-18T09:24:56.956Z" itemprop="datePublished"> 发表于 02-18-2016</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p>——————————Vim——————————</p>
+<h1 id="常用:">常用:</h1><p>Ctrl+v  块选择<br>!    强制执行<br>0-$    Home-End<br>n-&gt;Enter    向下移动n行<br>:n1,n2s/word1/word2/g        n1行和n2行之间批量替换:word2-&gt;word1<br>:1,$s/word1/word2/g        全局替换<br>:1,$s/word1/word2/gc        c选项==&gt;confirm 确认选项<br>nyy/ndd            复制/删除光标之下的n行<br>u/Ctrl+r             撤销/还原<br>.             Repeat重复</p>
+<h1 id="一般:">一般:</h1><p>Ctrl+<gbdu>    翻页<br>+-    非空格下/上一行<br>n<space>    光标移动n格<br>[y,d]0/d$    [复制/删除]光标到行首/尾字符</space></gbdu></p>
+<p>可视区域内:<br>    H    左上角<br>    M    中央<br>    L    右下角</p>
+<h1 id="file">file</h1><p>:r[filename]    读入文件<br>:! command    vim中执行cmd<br>:n1,n2 w [filename]    将n1-n2内容保存为filename</p>
+<h1 id="muti_file">muti file</h1><p>——#Vim Option#——<br>:set nu    /no    左侧边栏显示/关闭行号<br>:set ruler    右下角显示行列编号</p>
+<h1 id="多窗口">多窗口</h1><p>:sp [filename]<br>Ctrl+w =&gt;j/k 切换窗口</p>
+<p>——————————WebVim——————————<br>visualMode: g-&gt;v可以进行选中<br>切换选项卡    g-&gt;t<br>复制当前地址    g-&gt;e<br>to first page    g0<br>last        g$</p>
+<p>——————技术摘录————————<br>2.路由-&gt;跃点<br>    <a href="http://itbbs.pconline.com.cn/network/16188527.html" target="_blank" rel="external">http://itbbs.pconline.com.cn/network/16188527.html</a><br>3.Markdown<br>    Markdown语句怎么不能分行显示<br>    .md格式 行尾及两个以上的空格才能换行<br>7.ip/24 ip/16<br>    qos限速,g7w<br>—————————-依赖注入————————————————————</p>
+<h2 id="终于理解了，A类中有声明为B类的一个变量就是依赖，而B类的对象在调用者C实例化后传递给A，这就是注入，调用者C调用A中的方法实现了B的功能，这就是依赖注入。而注入依赖的时候大多传递接口或父类（多态性），配合工厂模式达到隔离类的目的，符合面向对象开闭原则">终于理解了，A类中有声明为B类的一个变量就是依赖，而B类的对象在调用者C实例化后传递给A，这就是注入，调用者C调用A中的方法实现了B的功能，这就是依赖注入。而注入依赖的时候大多传递接口或父类（多态性），配合工厂模式达到隔离类的目的，符合面向对象开闭原则</h2>  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://a1ex.net/Others/mark.html" data-title="A1exlism" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="Others/mark.html" data-title="" data-url="http://a1ex.net/Others/mark.html"></div>
+</section>
+
+
+</div>  
+        </div>
+        <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Blog site <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/a1exlism" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/a1exlism" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		<a href="https://www.facebook.com/a1exlism" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		<a href="https://plus.google.com/106896526077043222500?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
+		
+		
+		</p>
+</div>
+</footer>
+        <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"a1exnet"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-63657599-1', 'a1ex.net');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Swift_search Begin -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','6CrKq4WqLzE2qozYG7T_','2.0.0');
+</script>
+
+
+<!-- Tiny_search End -->
+      </body>
+     </html>
+     
