@@ -33,7 +33,7 @@ Commond压缩包
 *.tar.bz2用tar –xjf 解压 
 *.Z 用 uncompress 解压 
 *.tar.Z 用t">
-<meta property="og:updated_time" content="2016-02-15T06:27:07.437Z">
+<meta property="og:updated_time" content="2016-02-18T08:59:29.930Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux日常更新-01">
 <meta name="twitter:description" content="环境:debian8最后更新日期:2016-01-31
@@ -149,12 +149,19 @@ Commond压缩包
 export https_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;</code></p>
 <h4 id="Apt-get">Apt-get</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apt/apt.conf</span><br><span class="line"><span class="comment">#添加下列内容</span></span><br><span class="line">Acquire &#123;</span><br><span class="line">　　      http::proxy <span class="string">"http://user:pass@yourProxyAddress:port"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Reference<br><a href="https://sites.google.com/site/debianpackageshare/Home/linux-tips/page-47" target="_blank" rel="external">@carlosloveleo</a></p>
-<h3 id="修改默认编辑器">修改默认编辑器</h3><pre><code>sudo update-alternatives --config <span class="keyword">editor</span>    <span class="comment">//内置可用,不适用sublime</span>
-</code></pre><h3 id="备份">备份</h3><ol>
+<h3 id="修改默认编辑器">修改默认编辑器</h3><p>1.不适用sublime</p>
+<blockquote>
+<p>sudo update-alternatives —config editor</p>
+</blockquote>
+<p>2.任意,在<code>/usr/share/applications/</code>目录中添加或者使用已有的desktop</p>
+<blockquote>
+<p>sudo vim /etc/gnome/defaults.list<br>将gedit.desktop批量替换为 编辑器.desktop </p>
+<h3 id="备份">备份</h3><ol>
 <li>sudo su</li>
 <li>tar<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Bak/Kali_bak/backup.tgz --exclude=/media --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /</span><br><span class="line"><span class="comment"># 最后的/为需要备份的目录</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+</blockquote>
 <h4 id="增量备份及差别">增量备份及差别</h4><pre><code>tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span> /<span class="tag">var</span>
 tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span>.<span class="number">1</span> /var
 </code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Bak/Kali_bak/backup.tgz.<span class="number">1</span> --exclude=/media --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys  /</span><br></pre></td></tr></table></figure>
@@ -245,18 +252,18 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/02/08/2016/hexoSearch/" title="Hexo站内搜索">
+ <a href="/01/31/2016/指南/" title="手表指南方法">
   <strong>上一篇：</strong><br/>
   <span>
-  Hexo站内搜索</span>
+  手表指南方法</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/01/31/2016/指南/"  title="手表指南方法">
+<a href="/12/30/2015/xssPlatform/"  title="XSS平台搭建">
  <strong>下一篇：</strong><br/> 
- <span>手表指南方法
+ <span>XSS平台搭建
 </span>
 </a>
 </div>

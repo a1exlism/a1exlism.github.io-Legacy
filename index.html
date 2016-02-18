@@ -78,6 +78,97 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/02/18/2016/daily2/" title="linux日常更新-02" itemprop="url">linux日常更新-02</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-18T08:40:23.405Z" itemprop="datePublished"> 发表于 02-18-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="环境:Ubuntu">环境:Ubuntu</h1><h2 id="Commond">Commond</h2><h3 id="查询公网IP">查询公网IP</h3><blockquote>
+<p><a href="http://gaodi2002.blog.51cto.com/" target="_blank" rel="external">高迪</a><br>curl ifconfig.me<br>curl ipinfo.io</p>
+</blockquote>
+<h2 id="System">System</h2><h3 id="系统保存的desktop目录">系统保存的desktop目录</h3><blockquote>
+<p>/usr/share/applications/</p>
+</blockquote>
+<h3 id="系统添加证书">系统添加证书</h3><p>1.将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.&gt;<a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a>,自己暂时没有尝试过<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github 为例进行说明</span></span><br><span class="line">sudo mkdir /usr/share/ca-certificates/github.com/</span><br><span class="line"><span class="comment">## 进入到所创建好的目录，这里使用了一种 !!:2 来指代上面的目录，索引从0开始，即 sudo对应0，mkdir对应1</span></span><br><span class="line"><span class="built_in">cd</span> !!:<span class="number">2</span></span><br><span class="line"><span class="comment">## 将准备好的要导入的证书复制到当前目录下</span></span><br><span class="line">sudo cp /path/to//github.com.crt .</span><br><span class="line"><span class="comment">## 运行配置命令导入，运行此命令后会出现类似下图所示的配置选项，相应配置即可</span></span><br><span class="line">sudo dpkg-reconfigure ca-certificates</span><br><span class="line"><span class="comment">## 配置好后再更新一下</span></span><br><span class="line">sudo update-ca-certificates</span><br></pre></td></tr></table></figure></p>
+<p>Reference:<br><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a></p>
+<h3 id="GUI界面设置自启动">GUI界面设置自启动</h3><blockquote>
+<p><a href="http://www.linuxidc.com/Linux/2013-04/83060.htm" target="_blank" rel="external">Linuxidc-byguess</a><br>gnome-session-properties</p>
+</blockquote>
+<h3 id="更改默认语言">更改默认语言</h3><p><a href="http://tonychiu.blog.51cto.com/656605/393131" target="_blank" rel="external">qiujichun</a></p>
+<h3 id="unity中彻底清除最近打开文档(视频)的历史记录">unity中彻底清除最近打开文档(视频)的历史记录</h3><blockquote>
+<p><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=337582" target="_blank" rel="external">ubuntu1023</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文档的历史记录</span></span><br><span class="line">rm ~/.local/share/zeitgeist/activity.sqlite &amp;&amp; zeitgeist-daemon --replace</span><br><span class="line"><span class="comment">#播放器中的“最近打开”的历史记录</span></span><br><span class="line">rm -v ~/.local/share/recently-used.xbel</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="桌面快捷方式">桌面快捷方式</h3><p><a href="http://os.51cto.com/art/201311/418841.htm" target="_blank" rel="external">51CTO</a><br><a href="http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/" target="_blank" rel="external">howopensource</a></p>
+<h3 id="清垃圾">清垃圾</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#清apt缓存</span></span><br><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
+<p><code>autoremove慎用</code><br>其他请看<a href="http://www.cnblogs.com/yc_sunniwell/archive/2010/07/15/1778265.html#undefined" target="_blank" rel="external">cnblogs-yc_sunniwell</a></p>
+<h2 id="SoftWare">SoftWare</h2><h3 id="编译安装源码">编译安装源码</h3><p>不行则请用root权限调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar jxvf file.tar.bz2    /    tar zxvf file.tar.gz</span><br><span class="line"><span class="built_in">cd</span> file</span><br><span class="line">ls <span class="operator">-l</span>      <span class="comment">#一般能找到INSTALL或者Doc安装文档</span></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">./configure;make ;make install</span><br><span class="line"><span class="comment"># 有些不需要configure</span></span><br><span class="line">make; make install</span><br></pre></td></tr></table></figure>
+<h3 id="定制安装">定制安装</h3><blockquote>
+<p><a href="http://itlab.idcquan.com/linux/set/39862.html" target="_blank" rel="external">ChinaItLab</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line">./configure --prefix=/opt/softwareFloader</span><br><span class="line">make; make install</span><br><span class="line">--- 有两种方法可以快速调用 ---</span><br><span class="line"><span class="comment"># 1.创建软链接</span></span><br><span class="line">ln <span class="operator">-s</span> /opt/softwareFloader/bin/software /usr/bin/software </span><br><span class="line"><span class="comment"># 2.添加环境变量,可参照日常更新1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/softwareFloader/bin</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="不错的软件推荐">不错的软件推荐</h3><p>==&gt;<a href="http://askubuntu.com/questions/30334/what-application-indicators-are-available" target="_blank" rel="external">AskUbuntu</a>&lt;==<br>在用的两个小插件<br>1.sudo apt-get install indicator-multiload  系统状态监测,柱状图表示<br>2.sudo apt-get install indicator-cpufreq  CPU频率设置(我这个版本只有节能和性能两种功能了,很棒)</p>
+<h3 id="dpkg安装卸载">dpkg安装卸载</h3><blockquote>
+<p><a href="http://www.thegeekstuff.com/2010/06/install-remove-deb-package/" target="_blank" rel="external">thegeekstuff-SASIKALA</a><br>dpkg -i packge  #i install<br>dpkg -r packge  #r remove<br>dpkg -l packge  #l list 配合grep来查询包是否存在<br>Reference:<a href="http://wrchiu.blog.51cto.com/817024/359085" target="_blank" rel="external">51CTO</a></p>
+</blockquote>
+<h3 id="sublime中文输入">sublime中文输入</h3><p>轮子有大牛写好了<br>———-Ubuntu———-<br>===&gt;<a href="http://blog.csdn.net/cywosp/article/details/32350899" target="_blank" rel="external">csdn-cywosp</a>&lt;===  </p>
+<p>虽然这样desktop图标可以用了,其他的方式还是不行,所以用linux的<code>alias</code>功能!</p>
+<blockquote>
+<p>sudo vi .bashrc</p>
+</blockquote>
+<p>根据alias编写格式将原来的subl改成以下内容<br>.so文件路径按自己情况更改</p>
+<blockquote>
+<p>alias subl=’LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’</p>
+</blockquote>
+<h3 id="material_design主题">material design主题</h3><p><a href="http://itsfoss.com/install-paper-theme-linux/" target="_blank" rel="external">itsfoss-ABHISHEK</a></p>
+<h2 id="Device/Driver">Device/Driver</h2><h3 id="关于硬盘">关于硬盘</h3><ol>
+<li>Ubuntu自带:<code>baobab</code></li>
+<li>有关分区 <blockquote>
+<p><a href="http://gparted.sourceforge.net/livecd.php" target="_blank" rel="external">sourceforge</a><br>gparted</p>
+</blockquote>
+</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/02/18/2016/daily2/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/18/2016/daily2/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/02/15/2016/daily-collection/" title="Daily Collection" itemprop="url">Daily Collection</a>
   </h1>
   <p class="article-author">By
@@ -191,94 +282,6 @@
 	
 	  	<span></span>
 		<a href="/02/15/2016/daily-sql/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/15/2016/daily-sql/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/02/15/2016/daily2/" title="linux日常更新-02" itemprop="url">linux日常更新-02</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-15T06:27:10.288Z" itemprop="datePublished"> 发表于 02-15-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="环境:Ubuntu">环境:Ubuntu</h1><h2 id="Commond">Commond</h2><h3 id="查询公网IP">查询公网IP</h3><blockquote>
-<p><a href="http://gaodi2002.blog.51cto.com/" target="_blank" rel="external">高迪</a><br>curl ifconfig.me<br>curl ipinfo.io</p>
-</blockquote>
-<h2 id="System">System</h2><h3 id="系统添加证书">系统添加证书</h3><p>1.将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.&gt;<a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a>,自己暂时没有尝试过<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github 为例进行说明</span></span><br><span class="line">sudo mkdir /usr/share/ca-certificates/github.com/</span><br><span class="line"><span class="comment">## 进入到所创建好的目录，这里使用了一种 !!:2 来指代上面的目录，索引从0开始，即 sudo对应0，mkdir对应1</span></span><br><span class="line"><span class="built_in">cd</span> !!:<span class="number">2</span></span><br><span class="line"><span class="comment">## 将准备好的要导入的证书复制到当前目录下</span></span><br><span class="line">sudo cp /path/to//github.com.crt .</span><br><span class="line"><span class="comment">## 运行配置命令导入，运行此命令后会出现类似下图所示的配置选项，相应配置即可</span></span><br><span class="line">sudo dpkg-reconfigure ca-certificates</span><br><span class="line"><span class="comment">## 配置好后再更新一下</span></span><br><span class="line">sudo update-ca-certificates</span><br></pre></td></tr></table></figure></p>
-<p>Reference:<br><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a></p>
-<h3 id="GUI界面设置自启动">GUI界面设置自启动</h3><blockquote>
-<p><a href="http://www.linuxidc.com/Linux/2013-04/83060.htm" target="_blank" rel="external">Linuxidc-byguess</a><br>gnome-session-properties</p>
-</blockquote>
-<h3 id="更改默认语言">更改默认语言</h3><p><a href="http://tonychiu.blog.51cto.com/656605/393131" target="_blank" rel="external">qiujichun</a></p>
-<h3 id="unity中彻底清除最近打开文档(视频)的历史记录">unity中彻底清除最近打开文档(视频)的历史记录</h3><blockquote>
-<p><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=337582" target="_blank" rel="external">ubuntu1023</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文档的历史记录</span></span><br><span class="line">rm ~/.local/share/zeitgeist/activity.sqlite &amp;&amp; zeitgeist-daemon --replace</span><br><span class="line"><span class="comment">#播放器中的“最近打开”的历史记录</span></span><br><span class="line">rm -v ~/.local/share/recently-used.xbel</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="桌面快捷方式">桌面快捷方式</h3><p><a href="http://os.51cto.com/art/201311/418841.htm" target="_blank" rel="external">51CTO</a><br><a href="http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/" target="_blank" rel="external">howopensource</a></p>
-<h3 id="清垃圾">清垃圾</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#清apt缓存</span></span><br><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
-<p><code>autoremove慎用</code><br>其他请看<a href="http://www.cnblogs.com/yc_sunniwell/archive/2010/07/15/1778265.html#undefined" target="_blank" rel="external">cnblogs-yc_sunniwell</a></p>
-<h2 id="SoftWare">SoftWare</h2><h3 id="编译安装源码">编译安装源码</h3><p>不行则请用root权限调用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar jxvf file.tar.bz2    /    tar zxvf file.tar.gz</span><br><span class="line"><span class="built_in">cd</span> file</span><br><span class="line">ls <span class="operator">-l</span>      <span class="comment">#一般能找到INSTALL或者Doc安装文档</span></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">./configure;make ;make install</span><br><span class="line"><span class="comment"># 有些不需要configure</span></span><br><span class="line">make; make install</span><br></pre></td></tr></table></figure>
-<h3 id="定制安装">定制安装</h3><blockquote>
-<p><a href="http://itlab.idcquan.com/linux/set/39862.html" target="_blank" rel="external">ChinaItLab</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line">./configure --prefix=/opt/softwareFloader</span><br><span class="line">make; make install</span><br><span class="line">--- 有两种方法可以快速调用 ---</span><br><span class="line"><span class="comment"># 1.创建软链接</span></span><br><span class="line">ln <span class="operator">-s</span> /opt/softwareFloader/bin/software /usr/bin/software </span><br><span class="line"><span class="comment"># 2.添加环境变量,可参照日常更新1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/softwareFloader/bin</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="不错的软件推荐">不错的软件推荐</h3><p>==&gt;<a href="http://askubuntu.com/questions/30334/what-application-indicators-are-available" target="_blank" rel="external">AskUbuntu</a>&lt;==<br>在用的两个小插件<br>1.sudo apt-get install indicator-multiload  系统状态监测,柱状图表示<br>2.sudo apt-get install indicator-cpufreq  CPU频率设置(我这个版本只有节能和性能两种功能了,很棒)</p>
-<h3 id="dpkg安装卸载">dpkg安装卸载</h3><blockquote>
-<p><a href="http://www.thegeekstuff.com/2010/06/install-remove-deb-package/" target="_blank" rel="external">thegeekstuff-SASIKALA</a><br>dpkg -i packge  #i install<br>dpkg -r packge  #r remove<br>dpkg -l packge  #l list 配合grep来查询包是否存在<br>Reference:<a href="http://wrchiu.blog.51cto.com/817024/359085" target="_blank" rel="external">51CTO</a></p>
-</blockquote>
-<h3 id="sublime中文输入">sublime中文输入</h3><p>轮子有大牛写好了<br>———-Ubuntu———-<br>===&gt;<a href="http://blog.csdn.net/cywosp/article/details/32350899" target="_blank" rel="external">csdn-cywosp</a>&lt;===  </p>
-<p>虽然这样desktop图标可以用了,其他的方式还是不行,所以用linux的<code>alias</code>功能!</p>
-<blockquote>
-<p>sudo vi .bashrc</p>
-</blockquote>
-<p>根据alias编写格式将原来的subl改成以下内容<br>.so文件路径按自己情况更改</p>
-<blockquote>
-<p>alias subl=’LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’</p>
-</blockquote>
-<h3 id="material_design主题">material design主题</h3><p><a href="http://itsfoss.com/install-paper-theme-linux/" target="_blank" rel="external">itsfoss-ABHISHEK</a></p>
-<h2 id="Device/Driver">Device/Driver</h2><h3 id="关于硬盘">关于硬盘</h3><ol>
-<li>Ubuntu自带:<code>baobab</code></li>
-<li>有关分区 <blockquote>
-<p><a href="http://gparted.sourceforge.net/livecd.php" target="_blank" rel="external">sourceforge</a><br>gparted</p>
-</blockquote>
-</li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/02/15/2016/daily2/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/15/2016/daily2/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -463,7 +466,7 @@
     <div class="article-content">
         
         <h2 id="主题环境">主题环境</h2><p>hexo 3.0<br><a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman</a>修改于pacman(基本差不多)</p>
-<p>以前使用的<code>Tinyso</code>(微搜),不过这几个月已经无限502-504了,看了一下官方博客,好像从2015就没维护了..放弃换成<code>Swiftype</code>,15天free trial 网上查了一下好像过期不影响站内搜索,如果失效就更新..</p>
+<p>以前使用的<code>Tinyso</code>(微搜),不过这几个月已经无限502-504了,看了一下官方博客,好像从2015就没维护了..放弃换成<code>Swiftype</code>,15天free trial 网上查了一下好像过期不影响站内搜索,如果失效就更新..<br>—FreeTrail 过后测试正常,SwiftSearch可放心食用</p>
 <h3 id="正文">正文</h3><h4 id="Swiftype">Swiftype</h4><p>1.注册账号-&gt;<a href="https://swiftype.com" target="_blank" rel="external">Swiftype</a><br>2.create engine(search engine,名字随便取) -&gt; 填入自己的URL验证<br>3.My Search Engines -&gt; <img src="/imgs/hexoSearch/hexoSearch1.png" alt="1"><br><img src="/imgs/hexoSearch/hexoSearch2.png" alt="2"><br>4.记下以下的class名.<br><img src="/imgs/hexoSearch/hexoSearch3.png" alt="3"></p>
 <h4 id="文件修改">文件修改</h4><ol>
 <li><p>/yourOwnPath/hexo/themes/jacman/<code>_config.yml</code>末尾</p>
@@ -496,6 +499,60 @@
 	
 	  	<span></span>
 		<a href="/02/08/2016/hexoSearch/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/08/2016/hexoSearch/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/01/31/2016/指南/" title="手表指南方法" itemprop="url">手表指南方法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>看小学生杀手的时候发现几个指南方法，记一下</p>
+<h2 id="借助太阳指向">借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
+<h3 id="原理">原理</h3><p>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
+<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
+<h2 id="立杆测影-指东针">立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
+<h3 id="日晷原理">日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
+<h2 id="Reference">Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/01/31/2016/指南/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/指南/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -556,12 +613,19 @@
 export https_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;</code></p>
 <h4 id="Apt-get">Apt-get</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apt/apt.conf</span><br><span class="line"><span class="comment">#添加下列内容</span></span><br><span class="line">Acquire &#123;</span><br><span class="line">　　      http::proxy <span class="string">"http://user:pass@yourProxyAddress:port"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Reference<br><a href="https://sites.google.com/site/debianpackageshare/Home/linux-tips/page-47" target="_blank" rel="external">@carlosloveleo</a></p>
-<h3 id="修改默认编辑器">修改默认编辑器</h3><pre><code>sudo update-alternatives --config <span class="keyword">editor</span>    <span class="comment">//内置可用,不适用sublime</span>
-</code></pre><h3 id="备份">备份</h3><ol>
+<h3 id="修改默认编辑器">修改默认编辑器</h3><p>1.不适用sublime</p>
+<blockquote>
+<p>sudo update-alternatives —config editor</p>
+</blockquote>
+<p>2.任意,在<code>/usr/share/applications/</code>目录中添加或者使用已有的desktop</p>
+<blockquote>
+<p>sudo vim /etc/gnome/defaults.list<br>将gedit.desktop批量替换为 编辑器.desktop </p>
+<h3 id="备份">备份</h3><ol>
 <li>sudo su</li>
 <li>tar<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Bak/Kali_bak/backup.tgz --exclude=/media --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /</span><br><span class="line"><span class="comment"># 最后的/为需要备份的目录</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+</blockquote>
 <h4 id="增量备份及差别">增量备份及差别</h4><pre><code>tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span> /<span class="tag">var</span>
 tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span>.<span class="number">1</span> /var
 </code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Bak/Kali_bak/backup.tgz.<span class="number">1</span> --exclude=/media --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys  /</span><br></pre></td></tr></table></figure>
@@ -646,60 +710,6 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 	
 	  	<span></span>
 		<a href="/01/31/2016/daily1/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/daily1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/01/31/2016/指南/" title="手表指南方法" itemprop="url">手表指南方法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>看小学生杀手的时候发现几个指南方法，记一下</p>
-<h2 id="借助太阳指向">借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
-<h3 id="原理">原理</h3><p>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
-<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
-<h2 id="立杆测影-指东针">立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
-<h3 id="日晷原理">日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
-<h2 id="Reference">Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/01/31/2016/指南/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/指南/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
