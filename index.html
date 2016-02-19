@@ -85,7 +85,7 @@
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-19T08:28:48.384Z" itemprop="datePublished"> 发表于 02-19-2016</time>
+    <time datetime="2016-02-19T15:53:46.310Z" itemprop="datePublished"> 发表于 02-19-2016</time>
     
   </p>
 </header>
@@ -164,11 +164,11 @@
 </blockquote>
 </li>
 </ol>
-<h4 id="变量内容">变量内容</h4><p>0x1 删除</p>
+<h4 id="变量内容">变量内容</h4><p><strong>0x1</strong> 删除</p>
 <blockquote>
 <p><code>#/##</code> 从左往右删除最短/最长一条<br><code>%,%%</code>和#一样,不过是从右往左<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#root权限,没有:的情况下</span></span><br><span class="line">mailtest=<span class="variable">$MAIL</span></span><br><span class="line"><span class="comment">#删除顶级目录</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;mailtest#/*/&#125;</span></span><br><span class="line"><span class="comment">#删除末级目录</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;mailtest%/*&#125;</span></span><br><span class="line"><span class="comment">#有:情况下</span></span><br><span class="line">path=<span class="variable">$PATH</span></span><br><span class="line"><span class="comment">#只保留第一个环境</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;path%%:*&#125;</span></span><br><span class="line"><span class="comment">#只保留最后一个环境</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;path1##*:&#125;</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>0x2 替换</p>
+<p><strong>0x2</strong> 替换</p>
 <ol>
 <li>直接替换<blockquote>
 <p>${变量/oldWord/newWord}</p>
@@ -194,20 +194,20 @@
 <h4 id="基本符号&gt;_&gt;&gt;_&lt;&lt;_&lt;">基本符号&gt; &gt;&gt; &lt;&lt; &lt;</h4><p>单个字符==&gt;替换<br>双字符===&gt;累加<br>和c++一样&gt;输出,&lt;输入<br>代码:0输入 1输出 2错误输出</p>
 <p>栗子:</p>
 <h4 id="&gt;_&gt;&gt;区别">&gt;  &gt;&gt;区别</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将ll内容输出至rootfile,terminal不显示</span></span><br><span class="line">a1exlism@dell:~$ ll / &gt; /tmp/rootfile</span><br><span class="line"><span class="comment">#用&gt;&gt;将~的内容累加至rootfile</span></span><br><span class="line">a1exlism@dell:~$ ll ~ &gt;&gt; /tmp/rootfile </span><br><span class="line"><span class="comment">#符号&gt;将rootfile进行重写,原先的内容全部消失</span></span><br><span class="line">a1exlism@dell:~$ ll / &gt; /tmp/rootfile</span><br></pre></td></tr></table></figure>
-<h4 id="错误输出">错误输出</h4><p>涉及到前面提到的代码—<br>0x1. stdout输出至file1,stderr输出至file2</p>
+<h4 id="错误输出">错误输出</h4><p>涉及到前面提到的代码—<br><strong>0x1</strong>. stdout输出至file1,stderr输出至file2</p>
 <blockquote>
 <p>find / -name *.desktop &gt;file1 2&gt;file2</p>
 </blockquote>
-<p>0x2. 丢弃错误数据==&gt;放到<code>黑洞</code>设备<code>/dev/null</code></p>
+<p><strong>0x2</strong>. 丢弃错误数据==&gt;放到<code>黑洞</code>设备<code>/dev/null</code></p>
 <blockquote>
 <p>find / -name *.desktop &gt;file1 2&gt;/dev/null</p>
 </blockquote>
-<p>0x3. 将错误正确数据分开放入同一个文件</p>
+<p><strong>0x3</strong>. 将错误正确数据分开放入同一个文件</p>
 <blockquote>
 <p><code>1.</code>find / -name <em>.desktop &gt; file 2&gt;&gt; file =, =<br><code>2.</code>find / -name </em>.desktop &gt; file 2&gt;&amp;1  这个表示不理解,放弃</p>
 </blockquote>
-<h4 id="标准输入">标准输入</h4><p>0x1. 栗子<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cat 创建文件</span></span><br><span class="line">cat catfile</span><br><span class="line">stdin</span><br><span class="line">Ctrl+D</span><br><span class="line"><span class="comment">#利用文件写入</span></span><br><span class="line">cat &gt; catfile &lt; ~/.bash_<span class="built_in">history</span></span><br><span class="line">diff ~/.bash_<span class="built_in">history</span> catfile  <span class="comment">#无输出</span></span><br></pre></td></tr></table></figure></p>
-<p>0x2. &lt;&lt;为结束字符</p>
+<h4 id="标准输入">标准输入</h4><p><strong>0x1</strong>. 栗子<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cat 创建文件</span></span><br><span class="line">cat catfile</span><br><span class="line">stdin</span><br><span class="line">Ctrl+D</span><br><span class="line"><span class="comment">#利用文件写入</span></span><br><span class="line">cat &gt; catfile &lt; ~/.bash_<span class="built_in">history</span></span><br><span class="line">diff ~/.bash_<span class="built_in">history</span> catfile  <span class="comment">#无输出</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>0x2</strong>. &lt;&lt;为结束字符</p>
 <blockquote>
 <p>cat &gt; catfile &lt;&lt; “EOF”</p>
 </blockquote>
@@ -216,7 +216,53 @@
 <blockquote>
 <p>ll / | less</p>
 </blockquote>
-<h4 id="选取命令">选取命令</h4><h4 id="排序命令">排序命令</h4><h4 id="双向重定向">双向重定向</h4><h4 id="字符转换">字符转换</h4><h4 id="切割命令">切割命令</h4><h4 id="参数代换">参数代换</h4><h4 id="减号">减号</h4><h2 id="Reference">Reference</h2><p>《鸟哥私房菜》</p>
+<h4 id="选取命令">选取命令</h4><p><strong>0x1</strong>. cut</p>
+<blockquote>
+<p>cut -d ‘words’ -f number / cut -c 字符范围</p>
+</blockquote>
+<p>example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#功能和js的split函数一样,以-d的分隔符分成数组,选取组号</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span> | cut <span class="operator">-d</span> : <span class="operator">-f</span> <span class="number">2</span> <span class="comment">#-d delimiter -f fields</span></span><br><span class="line"><span class="comment">#取所有行第12个字符之后的内容</span></span><br><span class="line"><span class="built_in">export</span> &gt; file1</span><br><span class="line"><span class="built_in">export</span> | cut -c <span class="number">12</span>- &gt;file2 <span class="comment">#-c character</span></span><br><span class="line"><span class="comment">#比较一下</span></span><br><span class="line">colordiff [-c] file1 file2 <span class="comment"># -c 为比较所有内容</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>0x2</strong>. grep部分放在了<a href="http://a1exlism.github.io/10/14/2015/bash1/" target="_blank" rel="external">Linux 查询</a>中</p>
+<h4 id="排序命令">排序命令</h4><p><strong>0x1</strong>.sort</p>
+<blockquote>
+<p>sort [-option] file</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#默认字母排序</span></span><br><span class="line">cat /etc/passwd | sort</span><br><span class="line"><span class="comment">#以每行第三个作为排序依据</span></span><br><span class="line">cat /etc/passwd | sort -t : -k <span class="number">3</span>  <span class="comment">#-t --field separator -k key(location)-t --field separator -k key(location)</span></span><br><span class="line"><span class="comment">#cut + sort</span></span><br><span class="line">last | cut <span class="operator">-d</span> <span class="string">' '</span> <span class="operator">-f</span> <span class="number">1</span> | sort</span><br></pre></td></tr></table></figure>
+<p><strong>0x2</strong>.uniq<br>-i 忽略大小写 -c count</p>
+<blockquote>
+<p>uniq [-ic]</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#记录独立用户登陆,依名字排序并统计次数</span></span><br><span class="line">last | cut <span class="operator">-d</span> <span class="string">' '</span> <span class="operator">-f</span> <span class="number">1</span> | sort | uniq -c</span><br></pre></td></tr></table></figure>
+<p><strong>0x3</strong>.wc<br>word count字数统计 -l行 -w字 -m字符</p>
+<blockquote>
+<p>wc [-lwm]</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#记录登陆系统的总人次 grep1排除空白行 grep2排除wtmp</span></span><br><span class="line">last | grep [a-zA-Z] | grep -v wtmp | wc <span class="operator">-l</span></span><br></pre></td></tr></table></figure>
+<h4 id="双向重定向">双向重定向</h4><p>tee -&gt; T 两边都行(stdout+file) -a appand添加(否则覆盖)</p>
+<blockquote>
+<p>tee [-a] file</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#存入文件file并在屏幕以less方式显示</span></span><br><span class="line">cat /var/<span class="built_in">log</span>/kern.log | tee /tmp/<span class="built_in">test</span>Floder/file | less</span><br></pre></td></tr></table></figure>
+<h4 id="字符转换">字符转换</h4><p><strong>0x1</strong>. tr —translate or remove<br>-d delete -s squeeze-replace</p>
+<blockquote>
+<p>tr [-ds] string</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#切换大写</span></span><br><span class="line">last | tr <span class="operator">-s</span> [a-z] [A-Z]</span><br><span class="line"><span class="comment">#删除冒号</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span> | tr <span class="operator">-d</span> :</span><br></pre></td></tr></table></figure>
+<p><strong>0x2</strong>. join数据合并<br>-t 分隔 -i 无视大小写 <code>-1 n</code> 文件1用第n个字段进行分析</p>
+<blockquote>
+<p>join [-ti12] file1 file2</p>
+</blockquote>
+<p>join之前一般需要<code>sort</code>一下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#合并passwd和shadow数据,stdout之后并记录在test文件中</span></span><br><span class="line">join -t : /etc/passwd /etc/shadow |tee <span class="built_in">test</span></span><br><span class="line"><span class="comment">#先看看相同之处</span></span><br><span class="line">head -n <span class="number">3</span> /etc/passwd /etc/group  <span class="comment">#相同之处在file1第四个字段和file2的第三个字段</span></span><br><span class="line"><span class="comment">#文件1以第四个字段GID作为分析内容</span></span><br><span class="line">join -t : -<span class="number">1</span> <span class="number">4</span> /etc/passwd -<span class="number">2</span> <span class="number">3</span> /etc/group</span><br></pre></td></tr></table></figure></p>
+<p>合并后的输出第一字段为相同字段,后面不重复显示</p>
+<p><strong>0x3</strong>. paste数据黏贴[tab]作为分隔符</p>
+<blockquote>
+<p>paste /etc/passwd /etc/shadow</p>
+</blockquote>
+<h4 id="切割命令">切割命令</h4><p>-b —bytes 可加单位 -l line number</p>
+<blockquote>
+<p>split [-bl] file PreFix</p>
+</blockquote>
+<p>———-今天就到这了..2-19-23:53:00—————</p>
+<h4 id="参数代换">参数代换</h4><h4 id="减号">减号</h4><h2 id="Reference">Reference</h2><p>《鸟哥私房菜》</p>
 
         
         
@@ -951,7 +997,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 12px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 12px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 12px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 12px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
