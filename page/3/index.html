@@ -78,6 +78,70 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/10/16/2015/jsThis/" title="Js--头疼的this" itemprop="url">Js--头疼的this</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-15T16:00:00.000Z" itemprop="datePublished"> 发表于 10-16-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="优先参考">优先参考</h2><p><a href="http://www.ibm.com/developerworks/cn/web/1207_wangqf_jsthis/" target="_blank" rel="external">IBM</a><br>推荐先看IBM的链接<br><blockquote><p>在Java等面向对象的语言中，this关键字的含义是明确且具体的，即指代当前对象。一般在编译期确定下来，或称为编译期绑定.JavaScript中，this 是动态绑定，或称为运行期绑定.</p>
+<footer><strong>developerWorks中国</strong><cite>IBM</cite></footer></blockquote></p>
+<p>然而javascript使用运行期绑定的this简直丧心病狂,啥对象都能变2333</p>
+<h3 id="this的四种调用">this的四种调用</h3><h4 id="1-作为对象方法调用">1.作为对象方法调用</h4><p>Note1.js:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> point = &#123; </span><br><span class="line">    x : <span class="number">0</span>, </span><br><span class="line">    y : <span class="number">0</span>, </span><br><span class="line">    moveTo : <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; </span><br><span class="line">       <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">       <span class="keyword">this</span>.x = <span class="keyword">this</span>.x + x; </span><br><span class="line">       <span class="keyword">this</span>.y = <span class="keyword">this</span>.y + y; </span><br><span class="line">       <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">       &#125; </span><br><span class="line">    &#125;; </span><br><span class="line">    point.moveTo(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="comment">//输出结果: 0   1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//moveTo()函数隶属于point对象,this即归为point对象</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="2-作为函数调用">2.作为函数调用</h4><p>Note2.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">noSense</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">    &#125;</span><br><span class="line">    noSense(<span class="number">5</span>);</span><br><span class="line">    alert(<span class="built_in">window</span>.x);    <span class="comment">//5</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//this跟着原型链向上递归查找,之后找到window对象,并进行绑定</span></span><br></pre></td></tr></table></figure></p>
+<p>Note3.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> point = &#123; </span><br><span class="line"> x : <span class="number">0</span>, </span><br><span class="line"> moveTo : <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">     <span class="comment">// 内部函数</span></span><br><span class="line">     <span class="keyword">var</span> moveX = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">     <span class="keyword">this</span>.x = x;<span class="comment">//this 绑定到了哪里？</span></span><br><span class="line">    &#125;; </span><br><span class="line">    moveX(x); </span><br><span class="line">    &#125; </span><br><span class="line"> &#125;; </span><br><span class="line"> point.moveTo(<span class="number">1</span>); </span><br><span class="line"> alert(point.x); <span class="comment">// 0 </span></span><br><span class="line"> <span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">//   1 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//虽然Note3.js在内部函数使用了this,但是this依然绑定了window对象</span></span><br></pre></td></tr></table></figure></p>
+<p>这属于<code>JavaSctipt的设计缺陷</code>,导致this无法绑定外层函数对象</p>
+<p>然而机智的JS玩家利用变量替换解决了这个问题,而替换this的变量一般命名为<code>that</code>,下面是修复的程序</p>
+<p>Note3Fix.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = &#123;</span><br><span class="line">x : <span class="number">0</span>, </span><br><span class="line">moveTo : <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">   alert(<span class="keyword">this</span>);    <span class="comment">//执行过程中,this还未绑定,alert-&gt;[object Object]</span></span><br><span class="line">   <span class="keyword">var</span> that = <span class="keyword">this</span>;    <span class="comment">//[个人理解为是一个继承,请无视!]</span></span><br><span class="line">   <span class="comment">// 内部函数</span></span><br><span class="line">   <span class="keyword">var</span> moveX = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">   that.x = x;</span><br><span class="line">   &#125;; </span><br><span class="line">   moveX(x); </span><br><span class="line">   &#125; </span><br><span class="line">&#125;; </span><br><span class="line">point.moveTo(<span class="number">1</span>); </span><br><span class="line">alert(point.x); <span class="comment">//   1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">//  一个无关的value</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="3-作为构造函数调用">3.作为构造函数调用</h4><p>Note4.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> Point = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x;</span><br><span class="line"> &#125;(<span class="number">1</span>);</span><br><span class="line"> alert(Point.x);    <span class="comment">//1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//JavaScript使用基于原型（prototype）的继承方式.相应的,JavaScript 中的构造函数也很特殊,如果不使用 new 调用,则和普通函数一样.作为又一项约定俗成的准则，构造函数以大写字母开头，提醒调用者使用正确的方式调用.如果调用正确，this 绑定到新创建的对象上--By IBM</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="4-apply/call调用">4.apply/call调用</h4><p>JS中万物皆对象,对象有方法,而apply和call即为<code>函数对象的方法</code>,他们允许切换函数执行的上下文环境(context)[即更换this绑定对象]</p>
+<p>Note5.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">    <span class="keyword">this</span>.x = x; </span><br><span class="line">    <span class="keyword">this</span>.y = y; </span><br><span class="line">    <span class="keyword">this</span>.moveTo = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123; </span><br><span class="line">        <span class="keyword">this</span>.x = x; </span><br><span class="line">        <span class="keyword">this</span>.y = y; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">0</span>, <span class="number">0</span>); <span class="comment">//构造函数生成p1对象</span></span><br><span class="line"><span class="keyword">var</span> p2 = &#123;x: <span class="number">0</span>, y: <span class="number">0</span>&#125;; </span><br><span class="line">p1.moveTo(<span class="number">1</span>, <span class="number">1</span>); </span><br><span class="line">p1.moveTo.apply(p2, [<span class="number">10</span>, <span class="number">10</span>]);  <span class="comment">//apply()使p2可以完整的使用p1的方法,call同理</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="理解this,这个很重要">理解this,这个很重要</h3><p><a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/" target="_blank" rel="external">Understanding JavaScript Function Invocation and “this”</a>——Yehuda Katz表示:<br><code>作为函数调用时，this 绑定到全局对象；作为方法调用时，this 绑定到该方法所属的对象</code></p>
+<h3 id="执行环境因素(ExecutionContext)">执行环境因素(ExecutionContext)</h3><h4 id="Function-bind">Function.bind</h4><p>Note_1.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//code</span></span><br><span class="line">&#125;</span><br><span class="line">button.onclick = myObject.handler;  <span class="comment">//wrong</span></span><br><span class="line">button.onclick = lang.hitch(myObject, myObject.handler); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//这个handler自己不是很清楚.原文[IBM]..不过理解什么意思,函数return之前,this已经被绑定.so...</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="eval方法">eval方法</h4><p>eval()在执行中,()之内的this被eval完整继承</p>
+<h3 id="后记">后记</h3><p><a href="http://www.zhihu.com/question/19878052" target="_blank" rel="external">var foo = function(){}和function foo()的区别-知乎</a> 可以配合前面讲到的看看</p>
+<p>[js在运行期进行绑定,又由于本身是解释性语言,所以使得this绑定很奇怪(个人见解,未论证,无视!)]</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/16/2015/jsThis/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/16/2015/jsThis/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/10/15/2015/bash2/" title="简单脚本创建" itemprop="url">简单脚本创建</a>
   </h1>
   <p class="article-author">By
@@ -264,6 +328,56 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/10/08/2015/talk1/" title="又是一年" itemprop="url">又是一年</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-07T16:00:00.000Z" itemprop="datePublished"> 发表于 10-08-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="小感慨">小感慨</h3><h4 id="反省">反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
+<h4 id="决心">决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
+<h3 id="小目标">小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
+<h3 id="今后每个月来更新一次!">今后每个月来更新一次!</h3>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/08/2015/talk1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/08/2015/talk1/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/10/08/2015/ClientJS-5/" title="Js学习笔记(5)" itemprop="url">Js学习笔记(5)</a>
   </h1>
   <p class="article-author">By
@@ -303,56 +417,6 @@
 	
 	  	<span></span>
 		<a href="/10/08/2015/ClientJS-5/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/08/2015/ClientJS-5/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/08/2015/talk1/" title="又是一年" itemprop="url">又是一年</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-07T16:00:00.000Z" itemprop="datePublished"> 发表于 10-08-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="小感慨">小感慨</h3><h4 id="反省">反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
-<h4 id="决心">决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
-<h3 id="小目标">小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
-<h3 id="今后每个月来更新一次!">今后每个月来更新一次!</h3>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/08/2015/talk1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/08/2015/talk1/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -601,62 +665,6 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/01/2015/ClientJS-1/" title="Js学习笔记(1)" itemprop="url">Js学习笔记(1)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-09-30T16:00:00.000Z" itemprop="datePublished"> 发表于 10-01-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="一步步走Js">一步步走Js</h2><p>一个小概念:<br>    文档(document):呈现静态信息的页面.<br>    document是window的其中一个对象<br>跳转新的界面:<br><code>window.location = &quot;http://www.google.com&quot;;</code><br>设置延迟:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">123</span>);&#125;,<span class="number">1000</span>)    <span class="comment">//1s后启动函数</span></span><br></pre></td></tr></table></figure></p>
-<p>查询元素,插入内容<br>        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(timestamp.firstChild == <span class="literal">null</span>)    </span><br><span class="line">            timestamp.appendChild(<span class="built_in">document</span>.createTextNode(<span class="keyword">new</span> <span class="built_in">Date</span>().toString()));</span><br><span class="line">    <span class="keyword">var</span> timestamp=<span class="built_in">document</span>.getElementById(<span class="string">"timestamp"</span>)</span><br><span class="line">        <span class="comment">//timestamp具有style和className属性</span></span><br></pre></td></tr></table></figure></p>
-<p>添加点击事件:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timestamp.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.innerHTML = <span class="keyword">new</span> <span class="built_in">Date</span>().toString();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>内容显示隐藏的简单实现:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">        <span class="class">.reveal</span> * <span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">none</span></span>;&#125;</span></span><br><span class="line">        <span class="class">.reveal</span> *<span class="class">.handle</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">block</span></span>;&#125;</span></span><br><span class="line">        <span class="comment">/*只有"handle"的元素显示*/</span></span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> elements = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"reveal"</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; elements.length;i++)&#123;</span><br><span class="line">                <span class="keyword">var</span> elt = elements[i];   <span class="comment">//elt为reveal元素节点</span></span><br><span class="line">                <span class="keyword">var</span> title = elt.getElementsByClassName(<span class="string">"handle"</span>)[<span class="number">0</span>];<span class="comment">//第一个handle类的元素</span></span><br><span class="line">                addRevealHandler(title,elt);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">addRevealHandler</span>(<span class="params">title,elt</span>) </span>&#123;</span><br><span class="line">                title.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (elt.className == <span class="string">"reveal"</span>)</span><br><span class="line">                        elt.className = <span class="string">"revealed"</span>;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (elt.className == <span class="string">"revealed"</span>)</span><br><span class="line">                        elt.className = <span class="string">"reveal"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"reveal"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span> <span class="attribute">class</span>=<span class="value">"handle"</span>&gt;</span>CLick here to Reveal Hidden Text<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span>This paragraph is hidden.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Js可以放在Url中实现,使用javascript:协议<br>for example:(所有浏览器均支持)<br>  <code>&lt;a href=&quot;javascript:alert(&#39;123&#39;);&quot;&gt;WTF?&lt;/a&gt;</code></li>
-</ul>
-<h3 id="针对IE的条件注释">针对IE的条件注释</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if IE6]&gt;</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/01/2015/ClientJS-1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/01/2015/ClientJS-1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
@@ -673,7 +681,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 12px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 12px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 18px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -681,7 +689,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -699,7 +707,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 		  
 		
 		  
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>11</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>12</sup></a></li>
 		  
 		
 		  

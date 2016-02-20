@@ -4,35 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Js学习笔记(3) | A1exlism</title>
+    <title>读书笔记--鸟哥私房菜② | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="Window对象计时器
-掌握argument对象
-setTimeout(code,millisec) 单次调用
-setInterval(code,millisec)  循环调用
-示例代码 1234567891011121314151617181920function invoke(f, start, interval, end)&amp;#123;   //Target Function:f()    i">
+    <meta name="description" content="正则Shell ScriptReference《鸟哥私房菜》">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Js学习笔记(3)">
-<meta property="og:url" content="http://a1ex.net/10/03/2015/ClientJS-3/index.html">
+<meta property="og:title" content="读书笔记--鸟哥私房菜②">
+<meta property="og:url" content="http://a1ex.net/02/20/2016/book-vbird2/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="Window对象计时器
-掌握argument对象
-setTimeout(code,millisec) 单次调用
-setInterval(code,millisec)  循环调用
-示例代码 1234567891011121314151617181920function invoke(f, start, interval, end)&amp;#123;   //Target Function:f()    i">
-<meta property="og:updated_time" content="2015-10-26T16:00:35.000Z">
+<meta property="og:description" content="正则Shell ScriptReference《鸟哥私房菜》">
+<meta property="og:updated_time" content="2016-02-20T12:51:23.794Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Js学习笔记(3)">
-<meta name="twitter:description" content="Window对象计时器
-掌握argument对象
-setTimeout(code,millisec) 单次调用
-setInterval(code,millisec)  循环调用
-示例代码 1234567891011121314151617181920function invoke(f, start, interval, end)&amp;#123;   //Target Function:f()    i">
+<meta name="twitter:title" content="读书笔记--鸟哥私房菜②">
+<meta name="twitter:description" content="正则Shell ScriptReference《鸟哥私房菜》">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -89,14 +77,14 @@ setInterval(code,millisec)  循环调用
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/03/2015/ClientJS-3/" title="Js学习笔记(3)" itemprop="url">Js学习笔记(3)</a>
+      <a href="/02/20/2016/book-vbird2/" title="读书笔记--鸟哥私房菜②" itemprop="url">读书笔记--鸟哥私房菜②</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-02T16:00:00.000Z" itemprop="datePublished"> 发表于 10-03-2015</time>
+    <time datetime="2016-02-20T12:51:23.794Z" itemprop="datePublished"> 发表于 02-20-2016</time>
     
   </p>
 </header>
@@ -105,31 +93,19 @@ setInterval(code,millisec)  循环调用
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Window对象"><span class="toc-number">1.</span> <span class="toc-text">Window对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#计时器"><span class="toc-number">1.1.</span> <span class="toc-text">计时器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#掌握"><span class="toc-number">1.1.1.</span> <span class="toc-text">掌握</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例代码"><span class="toc-number">1.1.2.</span> <span class="toc-text">示例代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于URL"><span class="toc-number">1.2.</span> <span class="toc-text">关于URL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#掌握-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">掌握</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#例子"><span class="toc-number">1.2.2.</span> <span class="toc-text">例子</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正则"><span class="toc-number">1.</span> <span class="toc-text">正则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell_Script"><span class="toc-number">2.</span> <span class="toc-text">Shell Script</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="Window对象">Window对象</h2><h3 id="计时器">计时器</h3><hr>
-<h4 id="掌握">掌握</h4><pre><code>argument对象
-<span class="function"><span class="title">setTimeout</span><span class="params">(code,millisec)</span></span> 单次调用
-<span class="function"><span class="title">setInterval</span><span class="params">(code,millisec)</span></span>  循环调用
-</code></pre><h4 id="示例代码">示例代码</h4> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">invoke</span>(<span class="params">f, start, interval, end</span>)</span>&#123;   <span class="comment">//Target Function:f()</span></span><br><span class="line">    <span class="keyword">if</span> (!start)</span><br><span class="line">        start=<span class="number">0</span>;    <span class="comment">//默认设置为立即开始</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>.length &lt;= <span class="number">2</span>)</span><br><span class="line">        setTimeout(f,start);    <span class="comment">//单次调用</span></span><br><span class="line">    <span class="keyword">else</span>&#123;               <span class="comment">//多次调用</span></span><br><span class="line">        setTimeout(repeat,start);   <span class="comment">//start MS之后调用</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">repeat</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> h = setInterval(f,interval);</span><br><span class="line">            <span class="keyword">if</span>(end)</span><br><span class="line">                setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  <span class="comment">//end MS之后停止调用Interval()</span></span><br><span class="line">                    clearInterval(h);</span><br><span class="line">                &#125;,end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="number">666</span>);</span><br><span class="line">&#125;</span><br><span class="line">invoke(f,<span class="number">0</span>,<span class="number">50</span>,<span class="number">200</span>);</span><br></pre></td></tr></table></figure>
-<p>Results : </p>
-<pre><code><span class="number">4</span>*<span class="comment">(666)</span>
-</code></pre><hr>
-<h3 id="关于URL">关于URL</h3><p>window对象的location属性引用了Location对象,表示该窗口中当前显示的文档URL<br> document.location 文档 首次 载入后保存的URL静态字符串<br> location可以赋值相对字符串,例如<code>location=&#39;404.html&#39;</code></p>
-<h4 id="掌握-1">掌握</h4><pre><code>search 属性是一个可读可写的字符串，可设置或返回当前 <span class="built_in">URL</span> 的查询部分（问号 ? 之后的部分）
-stringObject.substring(<span class="built_in">start</span>,<span class="built_in">stop</span>)    取一段字符
-stringObject.<span class="built_in">split</span>(separator,howmany) 字符串分割
-stringObject.indexOf(searchvalue,fromindex)   字符检索
-</code></pre><h4 id="例子">例子</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">urlAges</span>(<span class="params"></span>)</span>&#123;     <span class="comment">//URL参数解析函数</span></span><br><span class="line">    <span class="keyword">var</span> args = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> query = location.search.substring(<span class="number">1</span>);   <span class="comment">//获取url查询字符串</span></span><br><span class="line">    <span class="keyword">var</span> pairs = query.split(<span class="string">"&amp;"</span>);   <span class="comment">//此时的pairs为字符串数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;pairs.length ; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> pos = pairs[i].indexOf(<span class="string">'='</span>);    <span class="comment">//检测第一个'='</span></span><br><span class="line">        <span class="keyword">if</span>(pos == -<span class="number">1</span>)   <span class="comment">//indexOf()由-1开始进行(第一个检测的是0)</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">var</span> name = pairs[i].substring(<span class="number">0</span>,pos);</span><br><span class="line">        <span class="keyword">var</span> value = pairs[i].substring(pos+<span class="number">1</span>);</span><br><span class="line">        value = <span class="built_in">decodeURIComponent</span>(value);  <span class="comment">//value解码</span></span><br><span class="line">        args[name] = value; <span class="comment">//将value存储为args对象的name属性值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
+		<h1 id="正则">正则</h1><h1 id="Shell_Script">Shell Script</h1><h1 id="Reference">Reference</h1><p>《鸟哥私房菜》</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/10/03/2015/ClientJS-3/" data-title="Js学习笔记(3) | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/02/20/2016/book-vbird2/" data-title="读书笔记--鸟哥私房菜② | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -142,19 +118,11 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/10/03/2015/ClientJS-4/" title="Js学习笔记(4)">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Js学习笔记(4)</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/10/02/2015/ClientJS-2/"  title="Js学习笔记(2)">
+<a href="/02/20/2016/book-vbird/"  title="读书笔记--鸟哥私房菜①">
  <strong>下一篇：</strong><br/> 
- <span>Js学习笔记(2)
+ <span>读书笔记--鸟哥私房菜①
 </span>
 </a>
 </div>
@@ -163,7 +131,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="10/03/2015/ClientJS-3/" data-title="Js学习笔记(3)" data-url="http://a1ex.net/10/03/2015/ClientJS-3/"></div>
+	<div class="ds-thread" data-thread-key="02/20/2016/book-vbird2/" data-title="读书笔记--鸟哥私房菜②" data-url="http://a1ex.net/02/20/2016/book-vbird2/"></div>
 </section>
 
 
@@ -173,7 +141,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Window对象"><span class="toc-number">1.</span> <span class="toc-text">Window对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#计时器"><span class="toc-number">1.1.</span> <span class="toc-text">计时器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#掌握"><span class="toc-number">1.1.1.</span> <span class="toc-text">掌握</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例代码"><span class="toc-number">1.1.2.</span> <span class="toc-text">示例代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于URL"><span class="toc-number">1.2.</span> <span class="toc-text">关于URL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#掌握-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">掌握</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#例子"><span class="toc-number">1.2.2.</span> <span class="toc-text">例子</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正则"><span class="toc-number">1.</span> <span class="toc-text">正则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell_Script"><span class="toc-number">2.</span> <span class="toc-text">Shell Script</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
