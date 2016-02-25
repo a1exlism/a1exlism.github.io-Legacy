@@ -23,7 +23,7 @@ ls -F   #输出文件类型
 ls按容量,时间查询123ls -h #容量ls --full-time #完整时间ls --time=[use,atime,ctime] #分别对应下面的touch三种情况
 ls -F   #输出文件类型
 完全复制1cp -a .">
-<meta property="og:updated_time" content="2016-02-20T13:00:09.700Z">
+<meta property="og:updated_time" content="2016-02-25T16:09:15.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记--鸟哥私房菜①">
 <meta name="twitter:description" content="文件系统非纯文本文件查看 odod -t [filetype] filename1a1exlism@dell:/var/log$ od -t c Xorg.1.log
@@ -121,6 +121,9 @@ ls -F   #输出文件类型
 </blockquote>
 <p>和复制还是有区别的,至少硬链接产生的文件使他们两个文件指向同一个block文件</p>
 <p><code>symbolic link</code>符号链接,对应于windows的<code>快捷方式</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line">ln <span class="operator">-s</span> ~ <span class="built_in">test</span>Folder <span class="comment">#-s symbolic</span></span><br><span class="line">ls <span class="operator">-l</span></span><br><span class="line"><span class="comment">#lrwxrwxrwx 1 a1exlism a1exlism   13  2月 14 22:28 testFolder1 -&gt; /home/a1exlism</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>后记<br>ln -s 中的文件目录需要<code>绝对路径</code>,类似于./的相对路径无效</p>
+</blockquote>
 <h1 id="Device/Driver">Device/Driver</h1><h2 id="CMD-磁盘">CMD-磁盘</h2><p>1.<code>df</code> [option] file/floder<br>df ==&gt;disk and floder<br>-i 以inode显示 -h humanized人性化显示(kb,mb,etc)</p>
 <blockquote>
 <p>df /</p>
@@ -307,7 +310,7 @@ ls -F   #输出文件类型
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/02/20/2016/book-vbird2/" title="读书笔记--鸟哥私房菜②">
+ <a href="/02/26/2016/book-vbird2/" title="读书笔记--鸟哥私房菜②">
   <strong>上一篇：</strong><br/>
   <span>
   读书笔记--鸟哥私房菜②</span>

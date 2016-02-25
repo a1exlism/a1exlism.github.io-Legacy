@@ -1,0 +1,589 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>读书笔记--鸟哥私房菜② | A1exlism</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="A1ex">
+    
+
+    
+    <meta name="description" content="正则主要以栗子为主
+grep [-ivn][-A/Bn] ‘keyword’行相关0x1 查找内核中有 eth 字样的行数据,显示行号,额外再显示选中行前(befor)3行和后(after)2行的数据
+
+dmesg | grep -n -B3 -A2 ‘eth’
+
+模糊查询[]0x1 不区分test和taste单词
+
+grep -n ‘t[ae]st’ testfile
+
+反向查找[^]0x1 找">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记--鸟哥私房菜②">
+<meta property="og:url" content="http://a1ex.net/02/26/2016/book-vbird2/index.html">
+<meta property="og:site_name" content="A1exlism">
+<meta property="og:description" content="正则主要以栗子为主
+grep [-ivn][-A/Bn] ‘keyword’行相关0x1 查找内核中有 eth 字样的行数据,显示行号,额外再显示选中行前(befor)3行和后(after)2行的数据
+
+dmesg | grep -n -B3 -A2 ‘eth’
+
+模糊查询[]0x1 不区分test和taste单词
+
+grep -n ‘t[ae]st’ testfile
+
+反向查找[^]0x1 找">
+<meta property="og:updated_time" content="2016-02-25T17:17:33.997Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读书笔记--鸟哥私房菜②">
+<meta name="twitter:description" content="正则主要以栗子为主
+grep [-ivn][-A/Bn] ‘keyword’行相关0x1 查找内核中有 eth 字样的行数据,显示行号,额外再显示选中行前(befor)3行和后(after)2行的数据
+
+dmesg | grep -n -B3 -A2 ‘eth’
+
+模糊查询[]0x1 不区分test和taste单词
+
+grep -n ‘t[ae]st’ testfile
+
+反向查找[^]0x1 找">
+<link rel="publisher" href="106896526077043222500">
+
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="A1exlism" title="A1exlism"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="A1exlism">A1exlism</a></h1>
+				<h2 class="blog-motto">Learning and bloging</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="" method="get" accept-charset="utf-8">
+						<input type="text" class="st-default-search-input" style="webkit-border-radius: 0;border-radius: 0;" placeholder="Search">
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/02/26/2016/book-vbird2/" title="读书笔记--鸟哥私房菜②" itemprop="url">读书笔记--鸟哥私房菜②</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-25T17:17:33.997Z" itemprop="datePublished"> 发表于 02-26-2016</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正则"><span class="toc-number">1.</span> <span class="toc-text">正则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#grep_[-ivn][-A/Bn]_‘keyword’"><span class="toc-number">1.1.</span> <span class="toc-text">grep [-ivn][-A/Bn] ‘keyword’</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#行相关"><span class="toc-number">1.1.1.</span> <span class="toc-text">行相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模糊查询[]"><span class="toc-number">1.1.2.</span> <span class="toc-text">模糊查询[]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反向查找[^]"><span class="toc-number">1.1.3.</span> <span class="toc-text">反向查找[^]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#行-首尾^$"><span class="toc-number">1.1.4.</span> <span class="toc-text">行-首尾^$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符匹配-_*_+"><span class="toc-number">1.1.5.</span> <span class="toc-text">字符匹配. * +</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#-_匹配任意一个字符"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">. 匹配任意一个字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#*_匹配0次以上"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">* 匹配0次以上</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#+_匹配1次以上_需要转义=_="><span class="toc-number">1.1.5.3.</span> <span class="toc-text">+ 匹配1次以上 需要转义= =</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连续字符范围限定{m,n}_需要转义"><span class="toc-number">1.1.6.</span> <span class="toc-text">连续字符范围限定{m,n} 需要转义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed_[-nefr]_action"><span class="toc-number">1.2.</span> <span class="toc-text">sed [-nefr] action</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#action_===_[n1[,n2]]_function"><span class="toc-number">1.2.1.</span> <span class="toc-text">action === [n1[,n2]] function</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栗子"><span class="toc-number">1.3.</span> <span class="toc-text">栗子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#增_删_替换"><span class="toc-number">1.3.1.</span> <span class="toc-text">增 删 替换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显示"><span class="toc-number">1.3.2.</span> <span class="toc-text">显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#!批量替换!"><span class="toc-number">1.3.3.</span> <span class="toc-text">!批量替换!</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#介绍下vim的"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">介绍下vim的</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#扩展正则"><span class="toc-number">2.</span> <span class="toc-text">扩展正则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell_Script"><span class="toc-number">3.</span> <span class="toc-text">Shell Script</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="正则">正则</h1><p>主要以栗子为主</p>
+<h2 id="grep_[-ivn][-A/Bn]_‘keyword’">grep [-ivn][-A/Bn] ‘keyword’</h2><h3 id="行相关">行相关</h3><p>0x1 查找内核中有 eth 字样的行数据,显示行号,额外再显示选中行前(befor)3行和后(after)2行的数据</p>
+<blockquote>
+<p>dmesg | grep -n -B3 -A2 ‘eth’</p>
+</blockquote>
+<h3 id="模糊查询[]">模糊查询<code>[]</code></h3><p>0x1 不区分test和taste单词</p>
+<blockquote>
+<p>grep -n ‘t[ae]st’ testfile</p>
+</blockquote>
+<h3 id="反向查找[^]">反向查找<code>[^]</code></h3><p>0x1 找首字母不是元音的单词所在的行号<br>可以自行去找个测试网站尝试(\s过滤无用空格避免错误判断)</p>
+<blockquote>
+<p>grep -in ‘\b[^aeiou\s][a-z]+\b’ /var/log/kern.log.1</p>
+<blockquote>
+<p>这里自作聪明用<code>()</code>把[a-z]+给框了起来,然后就识别不出来</p>
+</blockquote>
+</blockquote>
+<p>——后记: 发现<code>小括号也需要转义</code>!!= =</p>
+<h3 id="行-首尾^$">行-首尾^$</h3><p>此<code>^</code>区别于上面的<code>^</code>,位置不同<br>0x1 查找二月份的内核日志</p>
+<blockquote>
+<p>grep -in ‘^Feb’ /var/log/kern.log.1</p>
+</blockquote>
+<p>0x2 查找以<code>.</code>作为结尾的数据(.本身存在option含义,需要转义)<br>$在linux中是换行结尾符,windows则为<code>^M$</code></p>
+<blockquote>
+<p>grep -n ‘.$’ /var/log/kern.log.1</p>
+</blockquote>
+<p>0x3 查找空白行(^$首尾相接)</p>
+<blockquote>
+<p>grep -n ‘^$’ ./tmp/testfile</p>
+</blockquote>
+<h3 id="字符匹配-_*_+">字符匹配. * +</h3><h4 id="-_匹配任意一个字符">. 匹配任意一个字符</h4><p>0x1 匹配 l??d </p>
+<blockquote>
+<p>grep -n ‘l..d’ /var/log/kern.log.1</p>
+</blockquote>
+<p>该文件可以匹配到called load等单词</p>
+<h4 id="*_匹配0次以上">* 匹配0次以上</h4><p>0x2 <code>.*</code>的组合表示匹配任意数量字符</p>
+<blockquote>
+<p>grep -n ‘e.*e’ /var/log/kern.log.1</p>
+</blockquote>
+<p>这种情况在两个e之间碰到e不会停下,直到找到最后一个e,形成最长字串</p>
+<h4 id="+_匹配1次以上_需要转义=_=">+ 匹配1次以上 需要转义= =</h4><p>0x3 匹配e/ee/eee/e….</p>
+<blockquote>
+<p>grep -n ‘e+‘ /var/log/kern.log.1</p>
+</blockquote>
+<h3 id="连续字符范围限定{m,n}_需要转义">连续字符范围限定{m,n} 需要转义</h3><p>m,n可以省略其一<br>0x1 仅匹配一个<code>er</code></p>
+<blockquote>
+<p>grep -n ‘(er){1}‘ testfile </p>
+</blockquote>
+<p>0x2 匹配2个以上er</p>
+<blockquote>
+<p>grep -n ‘(er){2,}‘ testfile</p>
+</blockquote>
+<p>这里有一种情况:<code>ererer</code>在{2,}的选择下是一个整体,即{}会自动匹配最高重复数 </p>
+<h2 id="sed_[-nefr]_action">sed [-nefr] action</h2><p>-n silent模式,只出现被处理的那行<br>-e edit -f 将sed动作写入file<br>-r 扩展型regex -i直接修改文件内容</p>
+<h3 id="action_===_[n1[,n2]]_function">action === [n1[,n2]] function</h3><p>所有动作的最小单位均为<code>行</code><br>function:<br>-a add -c 替换 -d delete<br>-i insert -p print  -s 替换,<code>可用正则</code> 加上标题的行号就可以进行<code>批量替换</code>啦~</p>
+<h2 id="栗子">栗子</h2><h3 id="增_删_替换">增 删 替换</h3><p>0x1 /etc/passwd删除2-5行并打印(含行号<code>nl</code>)</p>
+<blockquote>
+<p>nl /etc/passwd | sed ‘2,5d’</p>
+</blockquote>
+<p>0x2 在3-5行前/后换行新添’next’字符串(参照vim)</p>
+<blockquote>
+<p>nl /etc/passwd | sed ‘3,5<code>[i/a]</code> next’</p>
+</blockquote>
+<p>0x3 将1-4行全部替换为’next’</p>
+<blockquote>
+<p>nl /etc/passwd | sed ‘1,4c next’</p>
+</blockquote>
+<h3 id="显示">显示</h3><p>0x1 只显示2-6行内容<br><code>-n</code> 经过处理的</p>
+<blockquote>
+<p>nl /etc/passwd | sed -n ‘2,6p’</p>
+</blockquote>
+<h3 id="!批量替换!">!批量替换!</h3><p>语法: <code>s/word1/word2/g&#39; g可选</code>globe`全局概念<br>0x1 在ifconfig中将ip截取出来</p>
+<blockquote>
+<p>选行-&gt;除首-&gt;除尾<br>ifconfig wlan0 | grep -n ‘192.168’ | sed ‘s/^.<em>ddr://g’ | sed ‘s/\s.</em>.0$//g’</p>
+</blockquote>
+<h4 id="介绍下vim的">介绍下vim的</h4><p>0x1 当前行替换</p>
+<blockquote>
+<p>:s/XXX/YYY/g</p>
+</blockquote>
+<p>0x2 行范围替换</p>
+<blockquote>
+<p>:100, 102s/XXX/YYY/g </p>
+</blockquote>
+<p>0x3 全局替换</p>
+<blockquote>
+<p>%s/XXX/YYY/g</p>
+</blockquote>
+<h1 id="扩展正则">扩展正则</h1><p>——休息 明天下午更新——</p>
+<h1 id="Shell_Script">Shell Script</h1><h1 id="Reference">Reference</h1><p>《鸟哥私房菜》</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://a1ex.net/02/26/2016/book-vbird2/" data-title="读书笔记--鸟哥私房菜② | A1exlism" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/02/20/2016/book-vbird/"  title="读书笔记--鸟哥私房菜①">
+ <strong>下一篇：</strong><br/> 
+ <span>读书笔记--鸟哥私房菜①
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="02/26/2016/book-vbird2/" data-title="读书笔记--鸟哥私房菜②" data-url="http://a1ex.net/02/26/2016/book-vbird2/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正则"><span class="toc-number">1.</span> <span class="toc-text">正则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#grep_[-ivn][-A/Bn]_‘keyword’"><span class="toc-number">1.1.</span> <span class="toc-text">grep [-ivn][-A/Bn] ‘keyword’</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#行相关"><span class="toc-number">1.1.1.</span> <span class="toc-text">行相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模糊查询[]"><span class="toc-number">1.1.2.</span> <span class="toc-text">模糊查询[]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反向查找[^]"><span class="toc-number">1.1.3.</span> <span class="toc-text">反向查找[^]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#行-首尾^$"><span class="toc-number">1.1.4.</span> <span class="toc-text">行-首尾^$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符匹配-_*_+"><span class="toc-number">1.1.5.</span> <span class="toc-text">字符匹配. * +</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#-_匹配任意一个字符"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">. 匹配任意一个字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#*_匹配0次以上"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">* 匹配0次以上</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#+_匹配1次以上_需要转义=_="><span class="toc-number">1.1.5.3.</span> <span class="toc-text">+ 匹配1次以上 需要转义= =</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连续字符范围限定{m,n}_需要转义"><span class="toc-number">1.1.6.</span> <span class="toc-text">连续字符范围限定{m,n} 需要转义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed_[-nefr]_action"><span class="toc-number">1.2.</span> <span class="toc-text">sed [-nefr] action</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#action_===_[n1[,n2]]_function"><span class="toc-number">1.2.1.</span> <span class="toc-text">action === [n1[,n2]] function</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栗子"><span class="toc-number">1.3.</span> <span class="toc-text">栗子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#增_删_替换"><span class="toc-number">1.3.1.</span> <span class="toc-text">增 删 替换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显示"><span class="toc-number">1.3.2.</span> <span class="toc-text">显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#!批量替换!"><span class="toc-number">1.3.3.</span> <span class="toc-text">!批量替换!</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#介绍下vim的"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">介绍下vim的</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#扩展正则"><span class="toc-number">2.</span> <span class="toc-text">扩展正则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell_Script"><span class="toc-number">3.</span> <span class="toc-text">Shell Script</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide"></a></div>
+<aside class="clearfix">
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 18px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+  </div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Collection/" title="Collection">Collection<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Others/" title="Others">Others<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Wall/" title="Wall">Wall<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Web/" title="Web">Web<sup>13</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://zh.wikipedia.org" target="_blank" title="Wiki">Wiki</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://hexo.io/" target="_blank" title="Hexo">Hexo</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://man.linuxde.net/" target="_blank" title="Linux命令大全">Linux命令大全</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.regexr.com/" target="_blank" title="Regexr">Regexr</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.processon.com/" target="_blank" title="ProcessOn">ProcessOn</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://linuxtoy.org" target="_blank" title="LinuxToy">LinuxToy</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Blog site <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/a1exlism" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/a1exlism" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		<a href="https://www.facebook.com/a1exlism" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		<a href="https://plus.google.com/106896526077043222500?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"a1exnet"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-63657599-1', 'a1ex.net');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Swift_search Begin -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','6CrKq4WqLzE2qozYG7T_','2.0.0');
+</script>
+
+
+<!-- Tiny_search End -->
+  </body>
+</html>

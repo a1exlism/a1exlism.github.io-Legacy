@@ -78,20 +78,107 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/02/20/2016/book-vbird2/" title="读书笔记--鸟哥私房菜②" itemprop="url">读书笔记--鸟哥私房菜②</a>
+      <a href="/02/26/2016/book-vbird2/" title="读书笔记--鸟哥私房菜②" itemprop="url">读书笔记--鸟哥私房菜②</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-20T13:00:45.102Z" itemprop="datePublished"> 发表于 02-20-2016</time>
+    <time datetime="2016-02-25T17:17:33.997Z" itemprop="datePublished"> 发表于 02-26-2016</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h1 id="正则">正则</h1><h1 id="Shell_Script">Shell Script</h1><h1 id="Reference">Reference</h1><p>《鸟哥私房菜》</p>
+        <h1 id="正则">正则</h1><p>主要以栗子为主</p>
+<h2 id="grep_[-ivn][-A/Bn]_‘keyword’">grep [-ivn][-A/Bn] ‘keyword’</h2><h3 id="行相关">行相关</h3><p>0x1 查找内核中有 eth 字样的行数据,显示行号,额外再显示选中行前(befor)3行和后(after)2行的数据</p>
+<blockquote>
+<p>dmesg | grep -n -B3 -A2 ‘eth’</p>
+</blockquote>
+<h3 id="模糊查询[]">模糊查询<code>[]</code></h3><p>0x1 不区分test和taste单词</p>
+<blockquote>
+<p>grep -n ‘t[ae]st’ testfile</p>
+</blockquote>
+<h3 id="反向查找[^]">反向查找<code>[^]</code></h3><p>0x1 找首字母不是元音的单词所在的行号<br>可以自行去找个测试网站尝试(\s过滤无用空格避免错误判断)</p>
+<blockquote>
+<p>grep -in ‘\b[^aeiou\s][a-z]+\b’ /var/log/kern.log.1</p>
+<blockquote>
+<p>这里自作聪明用<code>()</code>把[a-z]+给框了起来,然后就识别不出来</p>
+</blockquote>
+</blockquote>
+<p>——后记: 发现<code>小括号也需要转义</code>!!= =</p>
+<h3 id="行-首尾^$">行-首尾^$</h3><p>此<code>^</code>区别于上面的<code>^</code>,位置不同<br>0x1 查找二月份的内核日志</p>
+<blockquote>
+<p>grep -in ‘^Feb’ /var/log/kern.log.1</p>
+</blockquote>
+<p>0x2 查找以<code>.</code>作为结尾的数据(.本身存在option含义,需要转义)<br>$在linux中是换行结尾符,windows则为<code>^M$</code></p>
+<blockquote>
+<p>grep -n ‘.$’ /var/log/kern.log.1</p>
+</blockquote>
+<p>0x3 查找空白行(^$首尾相接)</p>
+<blockquote>
+<p>grep -n ‘^$’ ./tmp/testfile</p>
+</blockquote>
+<h3 id="字符匹配-_*_+">字符匹配. * +</h3><h4 id="-_匹配任意一个字符">. 匹配任意一个字符</h4><p>0x1 匹配 l??d </p>
+<blockquote>
+<p>grep -n ‘l..d’ /var/log/kern.log.1</p>
+</blockquote>
+<p>该文件可以匹配到called load等单词</p>
+<h4 id="*_匹配0次以上">* 匹配0次以上</h4><p>0x2 <code>.*</code>的组合表示匹配任意数量字符</p>
+<blockquote>
+<p>grep -n ‘e.*e’ /var/log/kern.log.1</p>
+</blockquote>
+<p>这种情况在两个e之间碰到e不会停下,直到找到最后一个e,形成最长字串</p>
+<h4 id="+_匹配1次以上_需要转义=_=">+ 匹配1次以上 需要转义= =</h4><p>0x3 匹配e/ee/eee/e….</p>
+<blockquote>
+<p>grep -n ‘e+‘ /var/log/kern.log.1</p>
+</blockquote>
+<h3 id="连续字符范围限定{m,n}_需要转义">连续字符范围限定{m,n} 需要转义</h3><p>m,n可以省略其一<br>0x1 仅匹配一个<code>er</code></p>
+<blockquote>
+<p>grep -n ‘(er){1}‘ testfile </p>
+</blockquote>
+<p>0x2 匹配2个以上er</p>
+<blockquote>
+<p>grep -n ‘(er){2,}‘ testfile</p>
+</blockquote>
+<p>这里有一种情况:<code>ererer</code>在{2,}的选择下是一个整体,即{}会自动匹配最高重复数 </p>
+<h2 id="sed_[-nefr]_action">sed [-nefr] action</h2><p>-n silent模式,只出现被处理的那行<br>-e edit -f 将sed动作写入file<br>-r 扩展型regex -i直接修改文件内容</p>
+<h3 id="action_===_[n1[,n2]]_function">action === [n1[,n2]] function</h3><p>所有动作的最小单位均为<code>行</code><br>function:<br>-a add -c 替换 -d delete<br>-i insert -p print  -s 替换,<code>可用正则</code> 加上标题的行号就可以进行<code>批量替换</code>啦~</p>
+<h2 id="栗子">栗子</h2><h3 id="增_删_替换">增 删 替换</h3><p>0x1 /etc/passwd删除2-5行并打印(含行号<code>nl</code>)</p>
+<blockquote>
+<p>nl /etc/passwd | sed ‘2,5d’</p>
+</blockquote>
+<p>0x2 在3-5行前/后换行新添’next’字符串(参照vim)</p>
+<blockquote>
+<p>nl /etc/passwd | sed ‘3,5<code>[i/a]</code> next’</p>
+</blockquote>
+<p>0x3 将1-4行全部替换为’next’</p>
+<blockquote>
+<p>nl /etc/passwd | sed ‘1,4c next’</p>
+</blockquote>
+<h3 id="显示">显示</h3><p>0x1 只显示2-6行内容<br><code>-n</code> 经过处理的</p>
+<blockquote>
+<p>nl /etc/passwd | sed -n ‘2,6p’</p>
+</blockquote>
+<h3 id="!批量替换!">!批量替换!</h3><p>语法: <code>s/word1/word2/g&#39; g可选</code>globe`全局概念<br>0x1 在ifconfig中将ip截取出来</p>
+<blockquote>
+<p>选行-&gt;除首-&gt;除尾<br>ifconfig wlan0 | grep -n ‘192.168’ | sed ‘s/^.<em>ddr://g’ | sed ‘s/\s.</em>.0$//g’</p>
+</blockquote>
+<h4 id="介绍下vim的">介绍下vim的</h4><p>0x1 当前行替换</p>
+<blockquote>
+<p>:s/XXX/YYY/g</p>
+</blockquote>
+<p>0x2 行范围替换</p>
+<blockquote>
+<p>:100, 102s/XXX/YYY/g </p>
+</blockquote>
+<p>0x3 全局替换</p>
+<blockquote>
+<p>%s/XXX/YYY/g</p>
+</blockquote>
+<h1 id="扩展正则">扩展正则</h1><p>——休息 明天下午更新——</p>
+<h1 id="Shell_Script">Shell Script</h1><h1 id="Reference">Reference</h1><p>《鸟哥私房菜》</p>
 
         
         
@@ -106,7 +193,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/02/20/2016/book-vbird2/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/20/2016/book-vbird2/" data-count-type="comments">&nbsp;</a>
+		<a href="/02/26/2016/book-vbird2/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/26/2016/book-vbird2/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -154,6 +241,9 @@
 </blockquote>
 <p>和复制还是有区别的,至少硬链接产生的文件使他们两个文件指向同一个block文件</p>
 <p><code>symbolic link</code>符号链接,对应于windows的<code>快捷方式</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line">ln <span class="operator">-s</span> ~ <span class="built_in">test</span>Folder <span class="comment">#-s symbolic</span></span><br><span class="line">ls <span class="operator">-l</span></span><br><span class="line"><span class="comment">#lrwxrwxrwx 1 a1exlism a1exlism   13  2月 14 22:28 testFolder1 -&gt; /home/a1exlism</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>后记<br>ln -s 中的文件目录需要<code>绝对路径</code>,类似于./的相对路径无效</p>
+</blockquote>
 <h1 id="Device/Driver">Device/Driver</h1><h2 id="CMD-磁盘">CMD-磁盘</h2><p>1.<code>df</code> [option] file/floder<br>df ==&gt;disk and floder<br>-i 以inode显示 -h humanized人性化显示(kb,mb,etc)</p>
 <blockquote>
 <p>df /</p>
