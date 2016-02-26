@@ -19,7 +19,7 @@ Commond压缩包压缩1..tar 用tar -cvf FILE.tar DIR 压缩2..gz 用 gzip FILE 
 <meta property="og:site_name" content="A1exlism">
 <meta property="og:description" content="环境:debian8最后更新日期:2016-01-31
 Commond压缩包压缩1..tar 用tar -cvf FILE.tar DIR 压缩2..gz 用 gzip FILE 压缩3..tar.gz 和 .tgz 用 tar -zcvf FILE.tar.gz DIR 压缩4..bz2 用 bzip2 -z FILE 压缩5..tar.bz2 用 tar -jcvf FILE.tar.bz2">
-<meta property="og:updated_time" content="2016-02-20T12:40:18.586Z">
+<meta property="og:updated_time" content="2016-02-26T12:07:40.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux日常更新-01">
 <meta name="twitter:description" content="环境:debian8最后更新日期:2016-01-31
@@ -148,8 +148,9 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <p>backup.tgz.1 后面的’.1’为标志</p>
 <p>差量备份:只备份上次完全备份以后有变化的数据(他针对的上次的完全备份,他备份过程中不清除存档属性)<br>增量备份:只备份上次备份以后有变化的数据.(他才不管是那种类型的备份,有变化的数据就备份,他会清除存档属性)</p>
 <p>Reference:<br><a href="http://blog.chinaunix.net/uid-23225855-id-3182334.html" target="_blank" rel="external">一片浮云而已</a><br><a href="http://www.blogjava.net/MEYE/archive/2011/08/25/357250.html" target="_blank" rel="external">MEYE</a></p>
-<h3 id="添加环境变量">添加环境变量</h3><h4 id="临时">临时</h4><p>参考:<a href="http://www.a1ex.net/10/15/2015/bash2/" target="_blank" rel="external">bash基本命令2</a></p>
-<h4 id="永久(lifetime)">永久(lifetime)</h4><p>所有用户:/etc/profile<br>独立用户:/root/.bashrc or /home/你的用户/.bashrc<br>添加:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PATH</span>:需要添加的路径"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="添加环境变量">添加环境变量</h3><h4 id="临时">临时</h4><p>添加:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PATH</span>:需要添加的路径"</span></span><br></pre></td></tr></table></figure></p>
+<p>参考:<a href="http://www.a1ex.net/10/15/2015/bash2/" target="_blank" rel="external">bash基本命令2</a></p>
+<h4 id="永久(lifetime)">永久(lifetime)</h4><p>所有用户:/etc/profile<br>独立用户:/root/.bashrc or /home/你的用户/.bashrc</p>
 <h3 id="脚本自启动">脚本自启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line"><span class="comment">### BEGIN INIT INFO</span></span><br><span class="line"><span class="comment">#file name : test</span></span><br><span class="line"><span class="comment">### INIT INFO</span></span><br><span class="line">    Your Codes</span><br></pre></td></tr></table></figure>
 <ol>
 <li>移动,更改权限<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mv <span class="built_in">test</span> /etc/init.d/</span><br><span class="line">sudo chmod <span class="number">775</span> /etc/init.d/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
@@ -232,18 +233,18 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/02/08/2016/hexoSearch/" title="Hexo站内搜索">
+ <a href="/01/31/2016/指南/" title="手表指南方法">
   <strong>上一篇：</strong><br/>
   <span>
-  Hexo站内搜索</span>
+  手表指南方法</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/01/31/2016/指南/"  title="手表指南方法">
+<a href="/12/30/2015/xssPlatform/"  title="XSS平台搭建">
  <strong>下一篇：</strong><br/> 
- <span>手表指南方法
+ <span>XSS平台搭建
 </span>
 </a>
 </div>

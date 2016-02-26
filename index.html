@@ -78,14 +78,14 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/02/26/2016/book-vbird3/" title="读书笔记--鸟哥私房菜③" itemprop="url">读书笔记--鸟哥私房菜③</a>
+      <a href="/02/27/2016/book-vbird3/" title="读书笔记--鸟哥私房菜③" itemprop="url">读书笔记--鸟哥私房菜③</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-26T06:55:38.644Z" itemprop="datePublished"> 发表于 02-26-2016</time>
+    <time datetime="2016-02-26T17:10:06.061Z" itemprop="datePublished"> 发表于 02-27-2016</time>
     
   </p>
 </header>
@@ -95,7 +95,24 @@
 <blockquote>
 <p>这行用来声明使用bash语法,运行时可加载bash环境<br><code>#!/bin/bash</code></p>
 </blockquote>
-<h2 id="代码练习放在新库中">代码练习放在新库中</h2>
+<h2 id="代码练习放在新库中">代码练习放在新库中</h2><ol>
+<li>sh02.sh<br>Standard input and output.</li>
+<li>sh03.sh<br>随日期变化创建具时间的文件名</li>
+<li>sh04.sh<br>数值运算<br>declare 定义变量类型<blockquote>
+<p>declare -i total=$firstnum*$secondnum</p>
+</blockquote>
+</li>
+</ol>
+<p>直接用两个小括号<code>(())</code>brakets来代替<br>这种写法需要记住!</p>
+<blockquote>
+<p>variable=<code>$(($a*$b))</code></p>
+</blockquote>
+<h2 id="source_VS_bash">source VS bash</h2><p>这两者都可以执行脚本,但是bash会创建一个新的bash环境(子进程)供script使用,而source则是直接执行script.<br>script中的变量也就类似于main()函数中的子函数(bash-script)和主函数(source script)中变量的关系了.<br>=&gt;sh02.sh为例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">"xxx"</span> firstname</span><br></pre></td></tr></table></figure></p>
+<p>source sh02.sh 中的firstname在执行完之后依然存在,<br>而bash sh02.sh中的变量就消失了</p>
+<p>不注销用<code>source ~/.bashrc</code>改变变量的原因也就是这个了</p>
+<h2 id="判断式">判断式</h2><h3 id="test_[option]_file_&amp;&amp;/||_function">test [option] file &amp;&amp;/|| function</h3><p>sh05.sh 判断文件名是否存在,是目录还是文件,并判断执行者的权限<br>常用[option]:-e 存在性 -f file -d dirctory<br>! 反向状态 01互换</p>
+<p>man了一下test,发现也没有找到test指定路径或者递归的做法,<br>即test只能判断当前目录下的文件,也不支持通配符一类的东西</p>
+<h3 id="判断符号[]">判断符号[]</h3>
         
         
         <p class="article-more-link">
@@ -109,7 +126,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/02/26/2016/book-vbird3/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/26/2016/book-vbird3/" data-count-type="comments">&nbsp;</a>
+		<a href="/02/27/2016/book-vbird3/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/27/2016/book-vbird3/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -880,6 +897,60 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/01/31/2016/指南/" title="手表指南方法" itemprop="url">手表指南方法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>看小学生杀手的时候发现几个指南方法，记一下</p>
+<h2 id="借助太阳指向">借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
+<h3 id="原理">原理</h3><p>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
+<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
+<h2 id="立杆测影-指东针">立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
+<h3 id="日晷原理">日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
+<h2 id="Reference">Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/01/31/2016/指南/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/指南/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/01/31/2016/daily1/" title="linux日常更新-01" itemprop="url">linux日常更新-01</a>
   </h1>
   <p class="article-author">By
@@ -941,8 +1012,9 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <p>backup.tgz.1 后面的’.1’为标志</p>
 <p>差量备份:只备份上次完全备份以后有变化的数据(他针对的上次的完全备份,他备份过程中不清除存档属性)<br>增量备份:只备份上次备份以后有变化的数据.(他才不管是那种类型的备份,有变化的数据就备份,他会清除存档属性)</p>
 <p>Reference:<br><a href="http://blog.chinaunix.net/uid-23225855-id-3182334.html" target="_blank" rel="external">一片浮云而已</a><br><a href="http://www.blogjava.net/MEYE/archive/2011/08/25/357250.html" target="_blank" rel="external">MEYE</a></p>
-<h3 id="添加环境变量">添加环境变量</h3><h4 id="临时">临时</h4><p>参考:<a href="http://www.a1ex.net/10/15/2015/bash2/" target="_blank" rel="external">bash基本命令2</a></p>
-<h4 id="永久(lifetime)">永久(lifetime)</h4><p>所有用户:/etc/profile<br>独立用户:/root/.bashrc or /home/你的用户/.bashrc<br>添加:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PATH</span>:需要添加的路径"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="添加环境变量">添加环境变量</h3><h4 id="临时">临时</h4><p>添加:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PATH</span>:需要添加的路径"</span></span><br></pre></td></tr></table></figure></p>
+<p>参考:<a href="http://www.a1ex.net/10/15/2015/bash2/" target="_blank" rel="external">bash基本命令2</a></p>
+<h4 id="永久(lifetime)">永久(lifetime)</h4><p>所有用户:/etc/profile<br>独立用户:/root/.bashrc or /home/你的用户/.bashrc</p>
 <h3 id="脚本自启动">脚本自启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line"><span class="comment">### BEGIN INIT INFO</span></span><br><span class="line"><span class="comment">#file name : test</span></span><br><span class="line"><span class="comment">### INIT INFO</span></span><br><span class="line">    Your Codes</span><br></pre></td></tr></table></figure>
 <ol>
 <li>移动,更改权限<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mv <span class="built_in">test</span> /etc/init.d/</span><br><span class="line">sudo chmod <span class="number">775</span> /etc/init.d/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
@@ -1019,60 +1091,6 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 	
 	  	<span></span>
 		<a href="/01/31/2016/daily1/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/daily1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/01/31/2016/指南/" title="手表指南方法" itemprop="url">手表指南方法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>看小学生杀手的时候发现几个指南方法，记一下</p>
-<h2 id="借助太阳指向">借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
-<h3 id="原理">原理</h3><p>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
-<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
-<h2 id="立杆测影-指东针">立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
-<h3 id="日晷原理">日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
-<h2 id="Reference">Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/01/31/2016/指南/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/指南/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
