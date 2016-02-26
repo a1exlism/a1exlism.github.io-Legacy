@@ -78,6 +78,75 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/10/21/2015/linuxMount/" title="分区挂载/自动加载" itemprop="url">分区挂载/自动加载</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-20T16:00:00.000Z" itemprop="datePublished"> 发表于 10-21-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="分区挂载">分区挂载</h3><h4 id="mount命令">mount命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount [-t vfstype] [-o options] device dir</span><br></pre></td></tr></table></figure>
+<ol>
+<li>-t<br> vfstype类型选择 ——<code>可以不指定,系统自动选择</code><br>  iso9660            光盘/光盘映像<br>  vfat               fat32文件系统<br>  ntfs               ntfs文件系统</li>
+<li>-o<br> option 挂载设置<br>  ro:                read only(只读)<br>  rw:                read write(读写)<br>  loop:              把文件作为硬盘分区进行挂载<br>  iocharset:         指定该文件系统所用的字符集</li>
+<li>devie<br> 所要挂载的设备,可以通过<code>sudo fdisk -l</code>进行查询</li>
+<li>dir<br> 所需要挂载的目录,e.g: /media/data #data为目标挂载目录 </li>
+</ol>
+<h4 id="注意">注意</h4><p>在一般的user用户之下mount可能会出现权限问题,<code>chmod 777 挂载目录</code>可以使一般user也可以正常使用</p>
+<h3 id="开机自动挂载">开机自动挂载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/fstab</span><br></pre></td></tr></table></figure>
+<p>输入格式:<br>    <code>&lt;file system&gt;&lt;mount point&gt;&lt;type&gt;&lt;options&gt;&lt;dump&gt;&lt;pass&gt;</code><br>    挂载分区—挂载点(目录)—分区类型—挂载设置—dump备份设置—fsck磁盘检查设置</p>
+<h4 id="option参数">option参数</h4><pre><code>defaults: rw, suid, dev, <span class="keyword">exec</span>, auto, nouser, <span class="keyword">and</span> async.
+auto:           系统自动挂载,fstab默认就是这个选项
+nouser          只有root用户可以挂载
+ro <span class="keyword">read</span>         only只读权限
+rw <span class="keyword">read</span>         <span class="keyword">write</span>读写权限
+user            任何用户都可以挂载
+noauto          开机不自动挂载
+请注意<span class="string">`光驱和软驱只有在装有介质时才可以进行挂载,因此它是noauto`</span>
+</code></pre><h4 id="dump">dump</h4><p>当其值设置为1时,将允许dump备份程序备份；设置为0时,忽略备份操作；</p>
+<h4 id="fsck磁盘检查设置">fsck磁盘检查设置</h4><p>其值是一个顺序.当其值为0时,永远不检查；而 / 根目录分区永远都为1.其它分区从2开始,数字越小越先检查,如果两个分区的数字相同,则同时检查</p>
+<h3 id="Reference">Reference</h3><p>分区自动挂载—-<a href="http://www.bootf.com/582.html" target="_blank" rel="external">VPS管理百科</a><br>分区挂载—-<a href="http://qspy.is-programmer.com/posts/40900.html" target="_blank" rel="external">Qspy随手记</a></p>
+<h3 id="自己是这么挂载的">自己是这么挂载的</h3><p>mount -t ntfs -o rw /dev/sdb5 /media/gust       #挂载<br>/dev/sdb5 /media/gust ntfs-3g rw,user,auto 0 0  #自动挂载</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/21/2015/linuxMount/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/21/2015/linuxMount/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/10/16/2015/jsThis/" title="Js--头疼的this" itemprop="url">Js--头疼的this</a>
   </h1>
   <p class="article-author">By
@@ -605,66 +674,6 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/02/2015/ClientJS-2/" title="Js学习笔记(2)" itemprop="url">Js学习笔记(2)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-01T16:00:00.000Z" itemprop="datePublished"> 发表于 10-02-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="同源策略">同源策略</h2><p>同源策略的存在限制了JS的释放范围</p>
-<h3 id="何时生效">何时生效</h3><p>当多个<code>&lt;iframe&gt;</code>标签或者打开其他浏览器窗口的时候策略生效<br>脚本只能读取和所属文档来源相同的窗口和文档的属性</p>
-<h4 id="文档来源判定">文档来源判定</h4><p>协议,主机,载入文档的URL端口</p>
-<h2 id="严格的同源策略?">严格的同源策略?</h2><p>在实际操作情况之下,同源策略并不能保证如此严格的条件.Example:</p>
-<h3 id="1-网站存在多个子域">1.网站存在多个子域</h3><p>例如a.exp.com需要读取来自b.exp.com的a.html里与b.html均加入<br><code>document.domain = &quot;xxx.com&quot;;</code>   但是必须是共有的根域名,上则为exp.com,这样两个页面就可以互相操作了,也就实现了所谓的”跨域”.</p>
-<h3 id="2-跨资源共享(Corss-Origin_Resource_Sharing)">2.跨资源共享(Corss-Origin Resource Sharing)</h3><p>利用这个标准提供的”Origin”和对应的Access-Control-Allow-Origin: xxx.com来扩展http,可实现任意的http请求</p>
-<h3 id="3-跨文档消息(cross-document_messaging)">3.跨文档消息(cross-document messaging)</h3><p>这个功能可以使一个文档的脚本直接一步传输给目标文档并允许执行.利用<code>postMessage()</code>方法</p>
-<h2 id="跨站脚本(XSS)">跨站脚本(XSS)</h2><p>如果目标网页有存在html标签插入功能,而且后台并没有相应的过滤原则,则存在该风险.攻击者只需要加入XSS的Js脚本,通过<code>src=hack.js</code>插入或者直接执行js脚本</p>
-<h4 id="简单的防御">简单的防御</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name = name.replace(<span class="regexp">/&lt;/g</span>, <span class="string">"&amp;lt;"</span>).replace(<span class="regexp">/&gt;/g</span>, <span class="string">"&amp;gt;"</span>);</span><br></pre></td></tr></table></figure>
-<p>针对于IE存在一个<a href="https://msdn.microsoft.com/en-us/en_US/library/windows/apps/hh466094.aspx" target="_blank" rel="external">toStaticHTML()</a>的API,可以过滤相当一部分的标签</p>
-<h4 id="HTML5的安全策略">HTML5的安全策略</h4><p>HTML5中<code>&lt;iframe&gt;</code>定义了一个sandbox属性,实现之后允许显示不可信内容,但自动禁用脚本</p>
-<h2 id="DDoS">DDoS</h2><p>例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">  <span class="built_in">window</span>.open(<span class="string">'about:blank'</span>, <span class="string">''</span>, <span class="string">'width=645,height=550'</span>); <span class="comment">//窗体大小不填则创建新标签,否则创建新窗体</span></span><br><span class="line">&#125;<span class="comment">//请勿随便尝试= ,=</span></span><br></pre></td></tr></table></figure></p>
-<p>为了防止被聪明的浏览器检测到,使用<a href="http://www.w3school.com.cn/jsref/met_win_setinterval.asp" target="_blank" rel="external">window.setInterval()</a>来保证自己的生存</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/02/2015/ClientJS-2/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/02/2015/ClientJS-2/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
@@ -681,7 +690,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 18px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -689,7 +698,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -707,7 +716,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 		  
 		
 		  
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>12</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>13</sup></a></li>
 		  
 		
 		  

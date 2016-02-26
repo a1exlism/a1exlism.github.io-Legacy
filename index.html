@@ -78,6 +78,57 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/02/26/2016/book-vbird3/" title="读书笔记--鸟哥私房菜③" itemprop="url">读书笔记--鸟哥私房菜③</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-26T06:55:38.644Z" itemprop="datePublished"> 发表于 02-26-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Shell_Script">Shell Script</h1><h2 id="基础">基础</h2><p>0x1. 条件<br> 编写的shell.sh需要rx权限<br>0x2. 执行<br>  1.绝对/相对路径<br>  2.export $PATH 直接执行<br>  3.bash shell.sh<br>0x3. 文件规范</p>
+<blockquote>
+<p>这行用来声明使用bash语法,运行时可加载bash环境<br><code>#!/bin/bash</code></p>
+</blockquote>
+<h2 id="代码练习放在新库中">代码练习放在新库中</h2>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/02/26/2016/book-vbird3/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/26/2016/book-vbird3/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/02/26/2016/book-vbird2/" title="读书笔记--鸟哥私房菜②" itemprop="url">读书笔记--鸟哥私房菜②</a>
   </h1>
   <p class="article-author">By
@@ -85,7 +136,7 @@
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-25T17:17:33.997Z" itemprop="datePublished"> 发表于 02-26-2016</time>
+    <time datetime="2016-02-25T16:00:00.000Z" itemprop="datePublished"> 发表于 02-26-2016</time>
     
   </p>
 </header>
@@ -165,7 +216,7 @@
 <blockquote>
 <p>选行-&gt;除首-&gt;除尾<br>ifconfig wlan0 | grep -n ‘192.168’ | sed ‘s/^.<em>ddr://g’ | sed ‘s/\s.</em>.0$//g’</p>
 </blockquote>
-<h4 id="介绍下vim的">介绍下vim的</h4><p>0x1 当前行替换</p>
+<h4 id="vim的批量替换">vim的批量替换</h4><p>0x1 当前行替换</p>
 <blockquote>
 <p>:s/XXX/YYY/g</p>
 </blockquote>
@@ -177,8 +228,37 @@
 <blockquote>
 <p>%s/XXX/YYY/g</p>
 </blockquote>
-<h1 id="扩展正则">扩展正则</h1><p>——休息 明天下午更新——</p>
-<h1 id="Shell_Script">Shell Script</h1><h1 id="Reference">Reference</h1><p>《鸟哥私房菜》</p>
+<h2 id="egrep(expand_grep)">egrep(expand grep)</h2><p>(感觉以后还是直接alias grep=egrep好一点)<br><code>X+</code> 1个或以上X <code>X?</code>0或一个X <code>|</code>或<br><code>()</code> 分组 <code>()+</code> 多个重复组判别<br>小李子:</p>
+<blockquote>
+<p>cat /etc/passwd | egrep -n “^c|^s”</p>
+</blockquote>
+<p>(nl居然连grep基本的^都不能用…)</p>
+<h1 id="格式化输出">格式化输出</h1><h2 id="排版printf">排版<code>printf</code></h2><blockquote>
+<p>printf ‘%s\n’ $(nl /etc/passwd)<br>printf ‘\x55\n’</p>
+</blockquote>
+<h2 id="awk_‘[conditions]{actions}’_filename"><code>awk</code> ‘[conditions]{actions}’ filename</h2><h3 id="attention">attention</h3><p>$0 整行 行内:$1 $2 $3 为第n个连续<br>NF 每行的字段总数 NR:目前处理的行号(row) FS:文件分隔符(split)<br>所有动作需要<code>&quot;&quot;</code>括住<br>运算符<code>==</code>表示等于</p>
+<h3 id="对比sed">对比sed</h3><p>相对于sed的行处理,sed主要将数据变为多个字段进行处理</p>
+<h3 id="栗子-1">栗子</h3><p>0x1 取出最近3个账号及登陆IP last -i显示ip</p>
+<blockquote>
+<p>last -in 3<br>a1exlism@dell:~$ last -in 5 | awk ‘{printf $1 “\t” $3”\n”}’</p>
+<blockquote>
+<p>a1exlism 0.0.0.0<br>a1exlism 0.0.0.0<br>a1exlism 0.0.0.0<br>wtmp  Mon</p>
+</blockquote>
+</blockquote>
+<p>0x2 NR NF实践-列出所处理的行列号</p>
+<blockquote>
+<p>last -n 5 | awk ‘{printf $1 “\t lines:” NR “\t columns: “ NF”\n”}’</p>
+</blockquote>
+<p>0x3 awk内部重定向和NS实践-打印以<code>:</code>分割数据后第三<code>大字段</code>中大于5的第二个<code>小字段</code></p>
+<blockquote>
+<p>cat /etc/passwd | awk ‘{FS “:”} $3 &gt; 5 {printf $2 “\n”}’</p>
+</blockquote>
+<p>0x4 awk预置变量(保证第一行数据正确地被执行)</p>
+<blockquote>
+<p>cat /etc/passwd | awk ‘<code>BEGIN</code> {FS “:”} $3 &gt; 5 {printf $2 “\n”}’</p>
+</blockquote>
+<p>0x5 awk的计算功能<br>计算不写了</p>
+<h1 id="Reference">Reference</h1><p>《鸟哥私房菜》</p>
 
         
         
@@ -800,60 +880,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/01/31/2016/指南/" title="手表指南方法" itemprop="url">手表指南方法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>看小学生杀手的时候发现几个指南方法，记一下</p>
-<h2 id="借助太阳指向">借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
-<h3 id="原理">原理</h3><p>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
-<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
-<h2 id="立杆测影-指东针">立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
-<h3 id="日晷原理">日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
-<h2 id="Reference">Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/01/31/2016/指南/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/指南/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/01/31/2016/daily1/" title="linux日常更新-01" itemprop="url">linux日常更新-01</a>
   </h1>
   <p class="article-author">By
@@ -1012,27 +1038,26 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/12/30/2015/xssPlatform/" title="XSS平台搭建" itemprop="url">XSS平台搭建</a>
+      <a href="/01/31/2016/指南/" title="手表指南方法" itemprop="url">手表指南方法</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-12-29T16:00:00.000Z" itemprop="datePublished"> 发表于 12-30-2015</time>
+    <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="简介">简介</h2><p>平台名为:<code>sleep-puppy</code>  大名鼎鼎的Netflix搞的一个安全项目<br>环境/框架: <code>Flask + Gunicorn + Nginx</code><br>可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得</p>
-<h2 id="Docker安装">Docker安装</h2><p>DigitalOcean已经打包完了,直接执行命令即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br><span class="line"><span class="comment"># 将用户添加至docker用户组</span></span><br><span class="line">$ sudo usermod <span class="operator">-a</span>G docker $(whoami)</span><br><span class="line"><span class="comment">#安装 Docker Compose</span></span><br><span class="line">$ sudo apt-get -y install python-pip  <span class="comment">#环境</span></span><br><span class="line">$ sudo pip install docker-compose</span><br></pre></td></tr></table></figure>
-<p>不过发现国内这局域网…换成国内源吧,[daocloud],地址在Reference中</p>
-<h2 id="sleep-puppy安装">sleep-puppy安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/Netflix/sleepy-puppy-docker</span><br><span class="line">$ docker-machine ls</span><br><span class="line"><span class="comment">#docker-compose.yaml中IP改成自己的公网IP</span></span><br><span class="line">$ <span class="built_in">cd</span> sleepy-puppy-docker &amp;&amp; docker-compose up</span><br></pre></td></tr></table></figure>
-<p>默认账号密码<br>user: admin<br>pass: password<br>//——PS:大半个月前搭的,具体的坑已经差不多网完了..= =</p>
-<h2 id="简单的API使用">简单的API使用</h2><p><a href="http://www.tothenew.com/blog/using-sleepy-puppy-a-cross-site-scripting-payload-management-framework/" target="_blank" rel="external">ToTheNewDigital</a></p>
-<h2 id="Reference">Reference</h2><p><a href="https://github.com/netflix/sleepy-puppy/wiki/setup" target="_blank" rel="external">github_sleep-puppy</a><br><a href="https://docs.docker.com/engine/installation/ubuntulinux/" target="_blank" rel="external">doc.docker</a>&lt;-纯手动安装<br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-14-04" target="_blank" rel="external">digitalocean</a>&lt;-自动安装+基本docker操作<br><a href="https://get.daocloud.io/" target="_blank" rel="external">daocloud</a></p>
+        <p>看小学生杀手的时候发现几个指南方法，记一下</p>
+<h2 id="借助太阳指向">借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
+<h3 id="原理">原理</h3><p>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
+<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
+<h2 id="立杆测影-指东针">立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
+<h3 id="日晷原理">日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
+<h2 id="Reference">Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
 
         
         
@@ -1047,7 +1072,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/12/30/2015/xssPlatform/#comments" class="ds-thread-count comments-count-link" data-thread-key="12/30/2015/xssPlatform/" data-count-type="comments">&nbsp;</a>
+		<a href="/01/31/2016/指南/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/指南/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -1077,7 +1102,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 18px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -1085,7 +1110,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -1103,7 +1128,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 		  
 		
 		  
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>12</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>13</sup></a></li>
 		  
 		
 		  

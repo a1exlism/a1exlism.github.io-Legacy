@@ -4,26 +4,35 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Js学习笔记(5) | A1exlism</title>
+    <title>读书笔记--鸟哥私房菜③ | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="节点Js的css选择器12345 document.querySelector(selectors);  //和css选择完全一样 document.querySelectorAll();   //返回Nodelist console.log(document.querySelector(&apos;[ &quot;]&apos;));//栗子&amp;lt;!-- 要加东西!!!! --&amp;gt;
-一些概念和代码nodeType">
+    <meta name="description" content="Shell Script基础0x1. 条件 编写的shell.sh需要rx权限0x2. 执行  1.绝对/相对路径  2.export $PATH 直接执行  3.bash shell.sh0x3. 文件规范
+
+这行用来声明使用bash语法,运行时可加载bash环境#!/bin/bash
+
+代码练习放在新库中">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Js学习笔记(5)">
-<meta property="og:url" content="http://a1ex.net/10/08/2015/ClientJS-5/index.html">
+<meta property="og:title" content="读书笔记--鸟哥私房菜③">
+<meta property="og:url" content="http://a1ex.net/02/26/2016/book-vbird3/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="节点Js的css选择器12345 document.querySelector(selectors);  //和css选择完全一样 document.querySelectorAll();   //返回Nodelist console.log(document.querySelector(&apos;[ &quot;]&apos;));//栗子&amp;lt;!-- 要加东西!!!! --&amp;gt;
-一些概念和代码nodeType">
-<meta property="og:updated_time" content="2015-10-12T14:48:09.000Z">
+<meta property="og:description" content="Shell Script基础0x1. 条件 编写的shell.sh需要rx权限0x2. 执行  1.绝对/相对路径  2.export $PATH 直接执行  3.bash shell.sh0x3. 文件规范
+
+这行用来声明使用bash语法,运行时可加载bash环境#!/bin/bash
+
+代码练习放在新库中">
+<meta property="og:updated_time" content="2016-02-26T06:55:38.644Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Js学习笔记(5)">
-<meta name="twitter:description" content="节点Js的css选择器12345 document.querySelector(selectors);  //和css选择完全一样 document.querySelectorAll();   //返回Nodelist console.log(document.querySelector(&apos;[ &quot;]&apos;));//栗子&amp;lt;!-- 要加东西!!!! --&amp;gt;
-一些概念和代码nodeType">
+<meta name="twitter:title" content="读书笔记--鸟哥私房菜③">
+<meta name="twitter:description" content="Shell Script基础0x1. 条件 编写的shell.sh需要rx权限0x2. 执行  1.绝对/相对路径  2.export $PATH 直接执行  3.bash shell.sh0x3. 文件规范
+
+这行用来声明使用bash语法,运行时可加载bash环境#!/bin/bash
+
+代码练习放在新库中">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -80,14 +89,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/08/2015/ClientJS-5/" title="Js学习笔记(5)" itemprop="url">Js学习笔记(5)</a>
+      <a href="/02/26/2016/book-vbird3/" title="读书笔记--鸟哥私房菜③" itemprop="url">读书笔记--鸟哥私房菜③</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-07T16:00:00.000Z" itemprop="datePublished"> 发表于 10-08-2015</time>
+    <time datetime="2016-02-26T06:55:38.644Z" itemprop="datePublished"> 发表于 02-26-2016</time>
     
   </p>
 </header>
@@ -96,29 +105,22 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#节点"><span class="toc-number">1.</span> <span class="toc-text">节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Js的css选择器"><span class="toc-number">1.1.</span> <span class="toc-text">Js的css选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些概念和代码"><span class="toc-number">1.2.</span> <span class="toc-text">一些概念和代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#节点的增删改查"><span class="toc-number">2.</span> <span class="toc-text">节点的增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建"><span class="toc-number">2.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入"><span class="toc-number">2.2.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除和替换"><span class="toc-number">2.3.</span> <span class="toc-text">删除和替换</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell_Script"><span class="toc-number">1.</span> <span class="toc-text">Shell Script</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码练习放在新库中"><span class="toc-number">1.2.</span> <span class="toc-text">代码练习放在新库中</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="节点">节点</h2><h3 id="Js的css选择器">Js的css选择器</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> document.querySelector(selectors);  //和css选择完全一样</span><br><span class="line"> document.querySelectorAll();   //返回Nodelist</span><br><span class="line"> console.log(document.querySelector('[</span><br><span class="line"> "]'));//栗子</span><br><span class="line">&lt;!-- 要加东西!!!! --&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="一些概念和代码">一些概念和代码</h3><p><a href="http://www.w3school.com.cn/jsref/prop_node_nodetype.asp" target="_blank" rel="external">nodeType</a>    :可用于遍历网页</p>
-<p>获取节点属性:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.attributes[<span class="string">"onload"</span>]; <span class="comment">//&lt;body&gt;的onload属性值</span></span><br></pre></td></tr></table></figure></p>
-<p>获取特定节点的html代码:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">''</span>).innerHTML;  <span class="comment">//以字符串形式展示  </span></span><br><span class="line">                                               .outerHTML;  <span class="comment">//outerHTML包含选中节点的html内容</span></span><br></pre></td></tr></table></figure></p>
-<p><a href="http://zhidao.baidu.com/link?url=cBshl-3vyhx2BKqVmQ1fnmB94xtfrQ6oBLxZHbZjs5jyltwQIVi3cH9GKOF9Zx4hxuJ7GO9R3UIXICsDEtjGwa" target="_blank" rel="external">CDATASection</a></p>
-<p>demo:查找某个节点的所有text节点<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> textContent = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> child,type,s = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span>(child = e.firstChild; child != <span class="literal">null</span>; child = child.nextSibling)&#123;</span><br><span class="line">        type = child.nodeType;</span><br><span class="line">        <span class="keyword">if</span>(type === <span class="number">3</span> || type === <span class="number">4</span>)    <span class="comment">//Text和CDATASection</span></span><br><span class="line">            s += child.nodeValue;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (type === <span class="number">1</span>)</span><br><span class="line">            s += textContent(child);    <span class="comment">//如果该节点是子节点(元素),节点递归</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="节点的增删改查">节点的增删改查</h2><h3 id="创建">创建</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> loadaync = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;   <span class="comment">//head头中插入一条外链js</span></span><br><span class="line">    <span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> s = <span class="built_in">document</span>.creatElement(<span class="string">"script"</span>);</span><br><span class="line">    s.src = url;</span><br><span class="line">    head.appendChild(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Text节点可以用如下方式创建:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newnode = <span class="built_in">document</span>.createTextNode(<span class="string">"New words"</span>);</span><br></pre></td></tr></table></figure></p>
-<h3 id="插入">插入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> insertAt = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">parent, child, n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span> || n &gt;parent.childNodes.length)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Invalid index!"</span>);  <span class="comment">//对n的位置进行报错处理</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == parent.childNodes.length)</span><br><span class="line">        parent.appendChild(child);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        parent.insertBefore(child, parent.childNodes[n]);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="删除和替换">删除和替换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除</span></span><br><span class="line">n.parentNode.removeChild( n );  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//替换n节点</span></span><br><span class="line">n.parentNode.replaceChild( <span class="built_in">document</span>.creatTextNode(<span class="string">"[ Redacted ]"</span>),n);  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
-  
+		<h1 id="Shell_Script">Shell Script</h1><h2 id="基础">基础</h2><p>0x1. 条件<br> 编写的shell.sh需要rx权限<br>0x2. 执行<br>  1.绝对/相对路径<br>  2.export $PATH 直接执行<br>  3.bash shell.sh<br>0x3. 文件规范</p>
+<blockquote>
+<p>这行用来声明使用bash语法,运行时可加载bash环境<br><code>#!/bin/bash</code></p>
+</blockquote>
+<h2 id="代码练习放在新库中">代码练习放在新库中</h2>  
 	</div>
 		<footer class="article-footer clearfix">
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/10/08/2015/ClientJS-5/" data-title="Js学习笔记(5) | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/02/26/2016/book-vbird3/" data-title="读书笔记--鸟哥私房菜③ | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -131,19 +133,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/10/13/2015/ClientJS-6/" title="Js学习笔记(6)">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Js学习笔记(6)</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/10/08/2015/talk1/"  title="又是一年">
+<a href="/02/26/2016/book-vbird2/"  title="读书笔记--鸟哥私房菜②">
  <strong>下一篇：</strong><br/> 
- <span>又是一年
+ <span>读书笔记--鸟哥私房菜②
 </span>
 </a>
 </div>
@@ -152,7 +146,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="10/08/2015/ClientJS-5/" data-title="Js学习笔记(5)" data-url="http://a1ex.net/10/08/2015/ClientJS-5/"></div>
+	<div class="ds-thread" data-thread-key="02/26/2016/book-vbird3/" data-title="读书笔记--鸟哥私房菜③" data-url="http://a1ex.net/02/26/2016/book-vbird3/"></div>
 </section>
 
 
@@ -162,7 +156,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#节点"><span class="toc-number">1.</span> <span class="toc-text">节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Js的css选择器"><span class="toc-number">1.1.</span> <span class="toc-text">Js的css选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些概念和代码"><span class="toc-number">1.2.</span> <span class="toc-text">一些概念和代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#节点的增删改查"><span class="toc-number">2.</span> <span class="toc-text">节点的增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建"><span class="toc-number">2.1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入"><span class="toc-number">2.2.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除和替换"><span class="toc-number">2.3.</span> <span class="toc-text">删除和替换</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell_Script"><span class="toc-number">1.</span> <span class="toc-text">Shell Script</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码练习放在新库中"><span class="toc-number">1.2.</span> <span class="toc-text">代码练习放在新库中</span></a></li></ol></li></ol>
  
   </div>
 
