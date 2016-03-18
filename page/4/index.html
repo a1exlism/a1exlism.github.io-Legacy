@@ -219,6 +219,7 @@
 </ol>
 <h3 id="x64位的Vt-x问题">x64位的Vt-x问题</h3><p>自己在安装的时候出现一个非常恶心的一个问题:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VMware提示VT-x未开启</span><br></pre></td></tr></table></figure></p>
 <p>搜索之后都说Bios中进行设置,然而我的bios是精简版的,支持但是没法开启.<br>搜了半天,发现电脑是<code>一直开着Vt-x的!</code>,360的主动防御干的好事:( ,虽然开启不启动,但是依然存在一个服务项,所以开虚拟机前先开启360,等到360提示关闭<code>晶核引擎</code>之后可以正常执行流程..</p>
+<h2 id="加一个本地硬盘安装的实例">加一个本地硬盘安装的实例</h2><p><a href="http://blog.sciencenet.cn/blog-3027933-956284.html" target="_blank" rel="external">Lifeifu博客</a></p>
 <h3 id="参考">参考</h3><p><a href="http://zdzhu.blog.51cto.com/6180070/1574543" target="_blank" rel="external">张舵主’Blog</a></p>
 
         
@@ -278,7 +279,7 @@
 <li>选择GUI安装,进入正常安装流程</li>
 <li>前几次按照系统推荐的分区导致<code>/</code>剩余空间很小,重装几次之后找到一种方法:首先利用系统自动配置一套分区,之后删除那些改变的分区,改为自己想要的分区.<br>因为不怎么了解boot中efi分区文件的具体操作,所以采用这种笨办法进行分区,此时,系统并不会报’efi分区未设置’这个问题</li>
 </ol>
-<h2 id="注意">注意</h2><p>MBR分区的硬盘要注意自己的主分区是否足够,否则一直会失败<br>发现UEFI引导模式是不可能制作成一个可移动式的系统(除非你只使用安装时候的电脑,未实现)</p>
+<h2 id="Ubuntu_的EFI">Ubuntu 的EFI</h2><h2 id="注意">注意</h2><p>MBR分区的硬盘要注意自己的主分区是否足够,否则一直会失败<br>发现UEFI引导模式是不可能制作成一个可移动式的系统(除非你只使用安装时候的电脑,未实现)</p>
 
         
         
@@ -572,7 +573,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/20/2015/goagent/" title="Goagant" itemprop="url">Goagant</a>
+      <a href="/03/20/2015/g4w/" title="G4W-collection" itemprop="url">G4W-collection</a>
   </h1>
   <p class="article-author">By
        
@@ -588,8 +589,17 @@
         <h2 id="Issues">Issues</h2><pre><code><span class="number">5</span>/<span class="number">35</span>GitHub的大神们更新了g<span class="title">vsIp的使用(版本c35</span>fb<span class="number">8</span>e),简要提一下<span class="comment">(Win下)</span>:
 </code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将checkip.py和checkip.bat放在<span class="built_in">local</span>目录下</span><br><span class="line">运行.bat文件,等待<span class="number">30</span>-<span class="number">50</span>分钟(可以提前关闭)</span><br><span class="line">ip文档文件会在该目录生成,打开tmp_ok文档,提取其中的ip</span><br><span class="line">[PingInfoView](http://www.nirsoft.net/utils/multiple_ping_tool.html)可以帮助你选择最佳的IP=. =</span><br></pre></td></tr></table></figure>
 <h2 id="1-30-2016update">1-30-2016update</h2><h3 id="弃用goagent，启用xx-net">弃用goagent，启用xx-net</h3><p>好久没更新，<code>xx-net</code>在github可下载，根据goagent原理添加了图形界面，还有个自动扫Ip功能= =<br>妥！原作者的项目使用go语言开坑，<code>goproxy</code></p>
-<h3 id="gae部署界面更改">gae部署界面更改</h3><p>部署原理不变，界面变化，projectID(档案ID)即为原<br>APPID</p>
-<h2 id="Bookmarks">Bookmarks</h2><p><a href="https://github.com/mhohai/m2conf" target="_blank" rel="external">批量选择GCC IP</a><br><a href="http://blog.netsh.org/posts/youtube-google-facebook-twitter-wikipedia-hosts_1199.netsh.html#hosts" target="_blank" rel="external">hosts</a><br><a href="https://github.com/goagent/goagent" target="_blank" rel="external">goagent</a><br><a href="http://public-dns.tk/" target="_blank" rel="external">DNS Server List</a><br><a href="https://toolbox.googleapps.com/apps/dig/" target="_blank" rel="external">Dig</a><br><a href="http://www.i7086.com/gaejiashegoagentshezhichangjianwentizongjiejijiejuefangfa" target="_blank" rel="external">goagent设置常见问题</a><br><a href="https://github.com/azzvx/gogotester" target="_blank" rel="external">gogotester</a><br><a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a></p>
+<h3 id="gae部署界面更改">gae部署界面更改</h3><p>部署原理不变，界面变化，projectID(档案ID)即为原APPID</p>
+<h2 id="3-18-2016update">3-18-2016update</h2><h3 id="手机端更新,推荐">手机端更新,推荐</h3><p>网址就不列了,原因都懂,优先级如下</p>
+<ol>
+<li>Lantern</li>
+<li>ShadowSocks-Android</li>
+<li>Psiphon(听说不怎么安全?好歹socket= =)</li>
+</ol>
+<h3 id="手机端手动Proxy">手机端手动Proxy</h3><ol>
+<li>ProxyDroid</li>
+</ol>
+<h2 id="Bookmarks">Bookmarks</h2><p><a href="https://github.com/mhohai/m2conf" target="_blank" rel="external">批量选择GCC IP</a><br><a href="http://blog.netsh.org/posts/youtube-google-facebook-twitter-wikipedia-hosts_1199.netsh.html#hosts" target="_blank" rel="external">hosts</a><br><a href="#">goagent</a><br><a href="http://public-dns.tk/" target="_blank" rel="external">DNS Server List</a><br><a href="https://toolbox.googleapps.com/apps/dig/" target="_blank" rel="external">Dig</a><br><a href="http://www.i7086.com/gaejiashegoagentshezhichangjianwentizongjiejijiejuefangfa" target="_blank" rel="external">goagent设置常见问题</a><br><a href="https://github.com/azzvx/gogotester" target="_blank" rel="external">gogotester</a><br><a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a></p>
 
         
         
@@ -604,7 +614,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/03/20/2015/goagent/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/20/2015/goagent/" data-count-type="comments">&nbsp;</a>
+		<a href="/03/20/2015/g4w/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/20/2015/g4w/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -634,7 +644,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 10px;">GAE</a> <a href="/tags/GFW/" style="font-size: 10px;">GFW</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -642,7 +652,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 

@@ -31,7 +31,7 @@
 运行虚拟机,进入开始画面之后插入U盘.出现如下画面显示我们的U盘正常识别,点击OK进行加载">
 <meta property="og:image" content="http://a1ex.net/imgs//kali install2/1.jpg">
 <meta property="og:image" content="http://a1ex.net/imgs//kali install2/2.jpg">
-<meta property="og:updated_time" content="2015-10-07T05:43:56.000Z">
+<meta property="og:updated_time" content="2016-03-18T15:29:06.263Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="将Kali安装到U盘">
 <meta name="twitter:description" content="声明此方法只在MBR引导情况下实现
@@ -113,7 +113,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#声明"><span class="toc-number">1.</span> <span class="toc-text">声明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">1.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟机操作"><span class="toc-number">1.2.</span> <span class="toc-text">虚拟机操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x64位的Vt-x问题"><span class="toc-number">1.3.</span> <span class="toc-text">x64位的Vt-x问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#声明"><span class="toc-number">1.</span> <span class="toc-text">声明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">1.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟机操作"><span class="toc-number">1.2.</span> <span class="toc-text">虚拟机操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x64位的Vt-x问题"><span class="toc-number">1.3.</span> <span class="toc-text">x64位的Vt-x问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加一个本地硬盘安装的实例"><span class="toc-number">2.</span> <span class="toc-text">加一个本地硬盘安装的实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">2.1.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
 		
 		</div>
 		
@@ -129,6 +129,7 @@
 </ol>
 <h3 id="x64位的Vt-x问题">x64位的Vt-x问题</h3><p>自己在安装的时候出现一个非常恶心的一个问题:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VMware提示VT-x未开启</span><br></pre></td></tr></table></figure></p>
 <p>搜索之后都说Bios中进行设置,然而我的bios是精简版的,支持但是没法开启.<br>搜了半天,发现电脑是<code>一直开着Vt-x的!</code>,360的主动防御干的好事:( ,虽然开启不启动,但是依然存在一个服务项,所以开虚拟机前先开启360,等到360提示关闭<code>晶核引擎</code>之后可以正常执行流程..</p>
+<h2 id="加一个本地硬盘安装的实例">加一个本地硬盘安装的实例</h2><p><a href="http://blog.sciencenet.cn/blog-3027933-956284.html" target="_blank" rel="external">Lifeifu博客</a></p>
 <h3 id="参考">参考</h3><p><a href="http://zdzhu.blog.51cto.com/6180070/1574543" target="_blank" rel="external">张舵主’Blog</a></p>
   
 	</div>
@@ -181,7 +182,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#声明"><span class="toc-number">1.</span> <span class="toc-text">声明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">1.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟机操作"><span class="toc-number">1.2.</span> <span class="toc-text">虚拟机操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x64位的Vt-x问题"><span class="toc-number">1.3.</span> <span class="toc-text">x64位的Vt-x问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#声明"><span class="toc-number">1.</span> <span class="toc-text">声明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">1.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟机操作"><span class="toc-number">1.2.</span> <span class="toc-text">虚拟机操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x64位的Vt-x问题"><span class="toc-number">1.3.</span> <span class="toc-text">x64位的Vt-x问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加一个本地硬盘安装的实例"><span class="toc-number">2.</span> <span class="toc-text">加一个本地硬盘安装的实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">2.1.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
  
   </div>
 
@@ -193,7 +194,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 12px;">GAE</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 10px;">GAE</a> <a href="/tags/GFW/" style="font-size: 10px;">GFW</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -201,7 +202,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
