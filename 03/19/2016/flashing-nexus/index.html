@@ -4,33 +4,35 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Js--window VS Document | A1exlism</title>
+    <title>Nexus 5x刷机 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="Document VS Window这张图基本能说明问题了
-the window contains everything, so you can call window.screen and window.document to get those elements
-Stackoverflow@JKirchartz
-123console.dir(window);console.dir(docume">
+    <meta name="description" content="0x0环境Device: Nexus 5x marshmallow(Android 6.01)Description:  Ubuntu 14.04DevEnv: SDKFiles in need: 
+0x1 解锁BootloaderWarning**该操作会清除手机数据,请及时备份**
+正
+安装好adb和fastboot驱动: 玛雅牛
+unlock bootloader先开启usb debug和O">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Js--window VS Document">
-<meta property="og:url" content="http://a1ex.net/10/27/2015/jsD-W/index.html">
+<meta property="og:title" content="Nexus 5x刷机">
+<meta property="og:url" content="http://a1ex.net/03/19/2016/flashing-nexus/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="Document VS Window这张图基本能说明问题了
-the window contains everything, so you can call window.screen and window.document to get those elements
-Stackoverflow@JKirchartz
-123console.dir(window);console.dir(docume">
-<meta property="og:image" content="http://a1ex.net/imgs/jsStudy/windowVSdocument.jpg">
-<meta property="og:updated_time" content="2015-10-26T16:24:13.000Z">
+<meta property="og:description" content="0x0环境Device: Nexus 5x marshmallow(Android 6.01)Description:  Ubuntu 14.04DevEnv: SDKFiles in need: 
+0x1 解锁BootloaderWarning**该操作会清除手机数据,请及时备份**
+正
+安装好adb和fastboot驱动: 玛雅牛
+unlock bootloader先开启usb debug和O">
+<meta property="og:updated_time" content="2016-03-19T09:42:21.231Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Js--window VS Document">
-<meta name="twitter:description" content="Document VS Window这张图基本能说明问题了
-the window contains everything, so you can call window.screen and window.document to get those elements
-Stackoverflow@JKirchartz
-123console.dir(window);console.dir(docume">
+<meta name="twitter:title" content="Nexus 5x刷机">
+<meta name="twitter:description" content="0x0环境Device: Nexus 5x marshmallow(Android 6.01)Description:  Ubuntu 14.04DevEnv: SDKFiles in need: 
+0x1 解锁BootloaderWarning**该操作会清除手机数据,请及时备份**
+正
+安装好adb和fastboot驱动: 玛雅牛
+unlock bootloader先开启usb debug和O">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -87,14 +89,14 @@ Stackoverflow@JKirchartz
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/27/2015/jsD-W/" title="Js--window VS Document" itemprop="url">Js--window VS Document</a>
+      <a href="/03/19/2016/flashing-nexus/" title="Nexus 5x刷机" itemprop="url">Nexus 5x刷机</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-26T16:00:00.000Z" itemprop="datePublished"> 发表于 10-27-2015</time>
+    <time datetime="2016-03-18T16:00:00.000Z" itemprop="datePublished"> 发表于 03-19-2016</time>
     
   </p>
 </header>
@@ -103,16 +105,46 @@ Stackoverflow@JKirchartz
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Document_VS_Window"><span class="toc-number">1.</span> <span class="toc-text">Document VS Window</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">2.</span> <span class="toc-text">Reference</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0环境"><span class="toc-number">1.</span> <span class="toc-text">0x0环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x1_解锁Bootloader"><span class="toc-number">2.</span> <span class="toc-text">0x1 解锁Bootloader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Warning"><span class="toc-number">2.1.</span> <span class="toc-text">Warning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正"><span class="toc-number">2.2.</span> <span class="toc-text">正</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#刷完之后的坑"><span class="toc-number">2.3.</span> <span class="toc-text">刷完之后的坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x2_刷入第三方Recovery-twrp"><span class="toc-number">3.</span> <span class="toc-text">0x2 刷入第三方Recovery-twrp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正-1"><span class="toc-number">3.2.</span> <span class="toc-text">正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#刷入SuperSu"><span class="toc-number">4.</span> <span class="toc-text">刷入SuperSu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#坑"><span class="toc-number">4.1.</span> <span class="toc-text">坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h3 id="Document_VS_Window">Document VS Window</h3><p><img src="/imgs/jsStudy/windowVSdocument.jpg" alt="1"><br>这张图基本能说明问题了</p>
-<blockquote><p>the window contains everything, so you can call window.screen and window.document to get those elements</p>
-<footer><strong>Stackoverflow</strong><cite>@JKirchartz</cite></footer></blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.dir(<span class="built_in">window</span>);</span><br><span class="line"><span class="built_in">console</span>.dir(<span class="built_in">document</span>);</span><br><span class="line"><span class="built_in">console</span>.dir(screen);</span><br></pre></td></tr></table></figure>
-<p>可以看一下三者的输出结构(不过有点繁琐),顺便学习了console的新用法,直接输出dom结构</p>
-<h3 id="Reference">Reference</h3><p><a href="www.dreamdu.com">梦之都</a><br><a href="http://stackoverflow.com/questions/9895202/what-is-the-difference-between-window-screen-and-document-in-javascript" target="_blank" rel="external">stackoverflow</a></p>
+		<h2 id="0x0环境">0x0环境</h2><p>Device: Nexus 5x marshmallow(Android 6.01)<br>Description:  Ubuntu 14.04<br>DevEnv: SDK<br>Files in need: </p>
+<h2 id="0x1_解锁Bootloader">0x1 解锁Bootloader</h2><h3 id="Warning">Warning</h3><p><code>**该操作会清除手机数据,请及时备份**</code></p>
+<h3 id="正">正</h3><ol>
+<li>安装好adb和fastboot驱动: <a href="http://my.oschina.net/myaniu/blog/103385" target="_blank" rel="external">玛雅牛</a></li>
+<li>unlock bootloader<br>先开启usb debug和OEM unlocking,之后Ubuntu更改为root权限<code>sudo -i</code><blockquote>
+<p>adb devices<br>adb reboot-bootloader<br>fastboot devices<br>fastboot oem unlock</p>
+</blockquote>
+</li>
+</ol>
+<p>解锁之后的state会变成unlock而且开机会有警告,之后用开机键进行启动<br>保修的话用<code>fastboot flashing lock</code>来恢复锁定</p>
+<h3 id="刷完之后的坑">刷完之后的坑</h3><p>此时手机配置已经完全失效,<code>重新进入开发者模式选择USB-debug</code></p>
+<h2 id="0x2_刷入第三方Recovery-twrp">0x2 刷入第三方<a href="https://dl.twrp.me/bullhead/" target="_blank" rel="external">Recovery-twrp</a></h2><p>该版本适用于Nexus<code>5x</code>,其他版本请移步<a href="https://twrp.me/Devices/" target="_blank" rel="external">twrp-device</a>进行查询</p>
+<h3 id="注意">注意</h3><p>一定要检查md5,否则会出现如下问题:<br><strong>FAILED (remote: image is not a boot image)</strong></p>
+<blockquote>
+<p>md5sum twrp-3.0.0-1-bullhead.img</p>
+</blockquote>
+<h3 id="正-1">正</h3><blockquote>
+<p>root@dell:/home/hexlism/Downloads# fastboot flash recovery twrp-3.0.0-1-bullhead.img </p>
+</blockquote>
+<p>如果成功刷入,则应该显示:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">target reported max download size of 536870912 bytes&#10;sending &#39;recovery&#39; (16345 KB)...&#10;OKAY [  0.471s]&#10;writing &#39;recovery&#39;...&#10;OKAY [  0.154s]&#10;finished. total time: 0.625s</span><br></pre></td></tr></table></figure></p>
+<p>刷完之后又多一个警告=, =</p>
+<h2 id="刷入SuperSu">刷入SuperSu</h2><p>当前版本为:BETA-SuperSU-v2.68-20160228150503.zip,下载地址在<code>Reference 0x4</code></p>
+<ol>
+<li><p>放入supersu文件:</p>
+<blockquote>
+<p>adb push BETA-SuperSU-v2.68-20160228150503.zip /sdcard/Downloads</p>
+</blockquote>
+</li>
+<li><p>进入bootloader模式—关机状态,电源+音量下 (或者用命令)</p>
+</li>
+<li>选择recovery mode (前提有twrp)</li>
+<li>在twrp中选择install,之后选择push进去的zip文件即可</li>
+</ol>
+<h3 id="坑">坑</h3><p>我碰到的问题让我虚惊一场,连续三次重启之后成功启动.差点哭晕</p>
+<p>如果twrp提示需要刷入supersu,选择<code>**don&#39;t**</code>,不过我在这个过程中完全没有碰到这个问题</p>
+<h2 id="Reference">Reference</h2><p>0x0. 主要参考 <a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br>0x1. ADB<br><a href="http://www.makeuseof.com/tag/new-adb-make-process-simple-easy/" target="_blank" rel="external">ADB</a><br><a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br><a href="http://www.inexus.co/article-2823-1.html" target="_blank" rel="external">fastboot-adb</a><br>0x2. bootloader<br><a href="http://www.inexus.co/thread-18509-1-1.html" target="_blank" rel="external">inexus</a><br><a href="http://rootmygalaxy.net/how-to-unlock-lg-google-nexus-5x-bootloader-easily/" target="_blank" rel="external">rootmygalaxy</a><br><a href="http://www.androidcentral.com/how-unlock-nexus-5x-bootloader" target="_blank" rel="external">androidcentral</a><br>0x3. Third recovery<br><a href="http://www.inexus.co/thread-23627-1-1.html" target="_blank" rel="external">inexus-recovery</a><br>0x4. <a href="http://download.chainfire.eu/supersu" target="_blank" rel="external">SuperSu</a><br>ADB 命令:<a href="http://bbs.gfan.com/android-4421095-1-1.html" target="_blank" rel="external">gfan</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -120,7 +152,7 @@ Stackoverflow@JKirchartz
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/10/27/2015/jsD-W/" data-title="Js--window VS Document | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/03/19/2016/flashing-nexus/" data-title="Nexus 5x刷机 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -134,18 +166,18 @@ Stackoverflow@JKirchartz
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/10/30/2015/mySql1/" title="MySQL基础">
+ <a href="/03/19/2016/daily2/" title="linux日常更新-02">
   <strong>上一篇：</strong><br/>
   <span>
-  MySQL基础</span>
+  linux日常更新-02</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/10/25/2015/jsInherit/"  title="Js继承-Call/Apply">
+<a href="/02/27/2016/book-vbird3/"  title="读书笔记--鸟哥私房菜③">
  <strong>下一篇：</strong><br/> 
- <span>Js继承-Call/Apply
+ <span>读书笔记--鸟哥私房菜③
 </span>
 </a>
 </div>
@@ -154,7 +186,7 @@ Stackoverflow@JKirchartz
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="10/27/2015/jsD-W/" data-title="Js--window VS Document" data-url="http://a1ex.net/10/27/2015/jsD-W/"></div>
+	<div class="ds-thread" data-thread-key="03/19/2016/flashing-nexus/" data-title="Nexus 5x刷机" data-url="http://a1ex.net/03/19/2016/flashing-nexus/"></div>
 </section>
 
 
@@ -164,7 +196,7 @@ Stackoverflow@JKirchartz
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Document_VS_Window"><span class="toc-number">1.</span> <span class="toc-text">Document VS Window</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">2.</span> <span class="toc-text">Reference</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0环境"><span class="toc-number">1.</span> <span class="toc-text">0x0环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x1_解锁Bootloader"><span class="toc-number">2.</span> <span class="toc-text">0x1 解锁Bootloader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Warning"><span class="toc-number">2.1.</span> <span class="toc-text">Warning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正"><span class="toc-number">2.2.</span> <span class="toc-text">正</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#刷完之后的坑"><span class="toc-number">2.3.</span> <span class="toc-text">刷完之后的坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x2_刷入第三方Recovery-twrp"><span class="toc-number">3.</span> <span class="toc-text">0x2 刷入第三方Recovery-twrp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正-1"><span class="toc-number">3.2.</span> <span class="toc-text">正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#刷入SuperSu"><span class="toc-number">4.</span> <span class="toc-text">刷入SuperSu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#坑"><span class="toc-number">4.1.</span> <span class="toc-text">坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
