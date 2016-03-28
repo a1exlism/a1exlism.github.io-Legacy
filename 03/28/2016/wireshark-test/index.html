@@ -46,8 +46,9 @@ http &amp;amp;&amp;amp; http.request.method==”POST”
 <meta property="og:image" content="http://a1ex.net/imgs/wireshark/jd_2_info.png">
 <meta property="og:image" content="http://a1ex.net/imgs/wireshark/jd_login_3.png">
 <meta property="og:image" content="http://a1ex.net/imgs/wireshark/jd_login_4.png">
+<meta property="og:image" content="http://a1ex.net/imgs/wireshark/jd_key_.png">
 <meta property="og:image" content="http://a1ex.net/imgs/wireshark/jd-login_report.png">
-<meta property="og:updated_time" content="2016-03-28T02:59:04.865Z">
+<meta property="og:updated_time" content="2016-03-28T05:22:28.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wireshark小记">
 <meta name="twitter:description" content="基础TCP握手状态EMC_wiresharkOSI模型应用层-&amp;gt;SSL-&amp;gt;TCP-&amp;gt;IP
@@ -177,8 +178,8 @@ http &amp;amp;&amp;amp; http.request.method==”POST”
 <h3 id="分析">分析</h3><p>0x00. 直接http进行过滤</p>
 <p>0x01.<br><img src="/imgs/wireshark/jd_1.png" alt="8"> 进入客户端的状态,评价,收获等界面</p>
 <p>0x02. <img src="/imgs/wireshark/jd_2_info.png" alt="9"> 进入客户端之后后端传过来的数据</p>
-<p>0x03.<br><img src="/imgs/wireshark/jd_login_3.png" alt="10"><br><img src="/imgs/wireshark/jd_login_4.png" alt="11">这些包中分析出来在<code>/stat/access</code>中将一段<code>Key[truncated]</code><br>传给服务器,尝试base64,然并卵= =,上图 <code>jd_key_.png</code></p>
-<p>还有个<code>/login_report/</code>base64解出来是这么个东西<img src="/imgs/wireshark/jd-login_report.png" alt="12">,后面正常,前面这个感觉像个校验码.</p>
+<p>0x03.<br><img src="/imgs/wireshark/jd_login_3.png" alt="10"><br><img src="/imgs/wireshark/jd_login_4.png" alt="11">这些包中分析出来在<code>/stat/access</code>中将一段<code>Key[truncated]</code><br>传给服务器,尝试base64,然并卵= =,上图 <img src="/imgs/wireshark/jd_key_.png" alt="12"></p>
+<p>还有个<code>/login_report/</code>base64解出来是这么个东西<img src="/imgs/wireshark/jd-login_report.png" alt="13">,后面正常,前面这个感觉像个校验码.</p>
 <p>基本也能确定了,密码差不多就是那个form表单的key了,不过加密不知道的话也没什么卵用</p>
 <h2 id="Reference">Reference</h2><p>资料:SSL<br>参考至<a href="">SSL与TLS</a>,Eric Rescorla著:<br>ssl流程(一般用于HTTPS):HTTP建立TCP连接之后,并在其中建立一条SSL隧道,之后在SSL隧道中发送同样的请求,服务器则以相同的方式用SSL进行相应<br>SSL握手流程:<a href="http://www.cnblogs.com/happyhippy/archive/2007/05/14/746476.html" target="_blank" rel="external">CSDN</a><br><a href="http://blog.chinaunix.net/uid-26833883-id-3627644.html" target="_blank" rel="external">TCP/UDP/IP协议分析_程姚根</a><br><a href="http://blog.csdn.net/hldjf/article/details/7450565" target="_blank" rel="external">TCP-PDU</a><br><a href="http://blog.csdn.net/chenglian_999/article/details/4672177" target="_blank" rel="external">Vim-16进制</a><br><a href="http://man.chinaunix.net/newsoft/ApacheManual/howto/cgi.html" target="_blank" rel="external">Apache2-CGI</a><br><a href="https://www.zhihu.com/question/21432096" target="_blank" rel="external">CGI-知乎</a><br><a href="http://www.trinea.cn/android/tcpdump_wireshark/" target="_blank" rel="external">Android抓包_Trinea</a><br><a href="http://blog.sina.com.cn/s/blog_89fa41ef0102w18c.html" target="_blank" rel="external">linux cooked capture</a><br><a href="http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html" target="_blank" rel="external">TCP状态</a><br><a href="https://jimshaver.net/2015/02/11/decrypting-tls-browser-traffic-with-wireshark-the-easy-way/" target="_blank" rel="external">听说能拆SSL?</a><br><a href="http://www.cnblogs.com/happyhippy/archive/2007/05/14/746476.html" target="_blank" rel="external">SSL握手</a><br><a href="http://blog.csdn.net/hursing/article/details/20543837" target="_blank" rel="external">wireshark-SSLv3</a><br><a href="http://bbs.51cto.com/thread-886816-1.html" target="_blank" rel="external">51CTO- 有关QQ登录服务器（UDP与TCP）</a><br><a href="http://www.cnblogs.com/Heart-J/p/4580849.html" target="_blank" rel="external">山鹰-qq</a></p>
   
