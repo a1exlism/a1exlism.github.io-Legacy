@@ -78,6 +78,57 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/11/04/2015/1111/" title="双十一自动抢红包" itemprop="url">双十一自动抢红包</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-03T16:00:00.000Z" itemprop="datePublished"> 发表于 11-04-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>早上脑子一抽想搞个红包玩玩,然后就写了个脚本,代码地址:<br><a href="https://github.com/a1exlism/a1exlism.github.io/blob/master/Others/Widget" target="_blank" rel="external">A1exlism’s Github</a><br>=.  =</p>
+<p>或多或少知道自己的css选择比较垃圾…</p>
+<p>还有感受了一下计时器递归导致的后果2333</p>
+<p>丢个地址学学<br><a href="www.qianduan.net/taming-advanced-css-selectors/">征服高级CSS选择器</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/11/04/2015/1111/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/04/2015/1111/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/10/30/2015/mySql1/" title="MySQL基础" itemprop="url">MySQL基础</a>
   </h1>
   <p class="article-author">By
@@ -592,64 +643,6 @@ noauto          开机不自动挂载
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/08/2015/ClientJS-5/" title="Js学习笔记(5)" itemprop="url">Js学习笔记(5)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-07T16:00:00.000Z" itemprop="datePublished"> 发表于 10-08-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="节点">节点</h2><h3 id="Js的css选择器">Js的css选择器</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> document.querySelector(selectors);  //和css选择完全一样</span><br><span class="line"> document.querySelectorAll();   //返回Nodelist</span><br><span class="line"> console.log(document.querySelector('[</span><br><span class="line"> "]'));//栗子</span><br><span class="line">&lt;!-- 要加东西!!!! --&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="一些概念和代码">一些概念和代码</h3><p><a href="http://www.w3school.com.cn/jsref/prop_node_nodetype.asp" target="_blank" rel="external">nodeType</a>    :可用于遍历网页</p>
-<p>获取节点属性:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.attributes[<span class="string">"onload"</span>]; <span class="comment">//&lt;body&gt;的onload属性值</span></span><br></pre></td></tr></table></figure></p>
-<p>获取特定节点的html代码:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">''</span>).innerHTML;  <span class="comment">//以字符串形式展示  </span></span><br><span class="line">                                               .outerHTML;  <span class="comment">//outerHTML包含选中节点的html内容</span></span><br></pre></td></tr></table></figure></p>
-<p><a href="http://zhidao.baidu.com/link?url=cBshl-3vyhx2BKqVmQ1fnmB94xtfrQ6oBLxZHbZjs5jyltwQIVi3cH9GKOF9Zx4hxuJ7GO9R3UIXICsDEtjGwa" target="_blank" rel="external">CDATASection</a></p>
-<p>demo:查找某个节点的所有text节点<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> textContent = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> child,type,s = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span>(child = e.firstChild; child != <span class="literal">null</span>; child = child.nextSibling)&#123;</span><br><span class="line">        type = child.nodeType;</span><br><span class="line">        <span class="keyword">if</span>(type === <span class="number">3</span> || type === <span class="number">4</span>)    <span class="comment">//Text和CDATASection</span></span><br><span class="line">            s += child.nodeValue;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (type === <span class="number">1</span>)</span><br><span class="line">            s += textContent(child);    <span class="comment">//如果该节点是子节点(元素),节点递归</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="节点的增删改查">节点的增删改查</h2><h3 id="创建">创建</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> loadaync = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;   <span class="comment">//head头中插入一条外链js</span></span><br><span class="line">    <span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> s = <span class="built_in">document</span>.creatElement(<span class="string">"script"</span>);</span><br><span class="line">    s.src = url;</span><br><span class="line">    head.appendChild(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Text节点可以用如下方式创建:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newnode = <span class="built_in">document</span>.createTextNode(<span class="string">"New words"</span>);</span><br></pre></td></tr></table></figure></p>
-<h3 id="插入">插入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> insertAt = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">parent, child, n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span> || n &gt;parent.childNodes.length)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Invalid index!"</span>);  <span class="comment">//对n的位置进行报错处理</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == parent.childNodes.length)</span><br><span class="line">        parent.appendChild(child);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        parent.insertBefore(child, parent.childNodes[n]);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="删除和替换">删除和替换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除</span></span><br><span class="line">n.parentNode.removeChild( n );  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//替换n节点</span></span><br><span class="line">n.parentNode.replaceChild( <span class="built_in">document</span>.creatTextNode(<span class="string">"[ Redacted ]"</span>),n);  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/08/2015/ClientJS-5/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/08/2015/ClientJS-5/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/10/08/2015/talk1/" title="又是一年" itemprop="url">又是一年</a>
   </h1>
   <p class="article-author">By
@@ -710,7 +703,7 @@ noauto          开机不自动挂载
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 12px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 10px;">GAE</a> <a href="/tags/GFW/" style="font-size: 10px;">GFW</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 10px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 10px;">GAE</a> <a href="/tags/GFW/" style="font-size: 10px;">GFW</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18.33px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 11.67px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 15px;">Shell</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -718,7 +711,7 @@ noauto          开机不自动挂载
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -732,7 +725,7 @@ noauto          开机不自动挂载
 		  
 		
 		  
-			<li><a href="/categories/Device/" title="Device">Device<sup>2</sup></a></li>
+			<li><a href="/categories/Device/" title="Device">Device<sup>3</sup></a></li>
 		  
 		
 		  

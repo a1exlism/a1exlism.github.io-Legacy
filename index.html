@@ -78,6 +78,63 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/03/30/2016/nexus-xposed/" title="Android6.0.1 Xposed安装以及插件推荐" itemprop="url">Android6.0.1 Xposed安装以及插件推荐</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-30T10:54:10.363Z" itemprop="datePublished"> 发表于 03-30-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能</p>
+<h2 id="环境&amp;要求">环境&amp;要求</h2><p>已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包<br>安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk<br>框架模块: xposed-v80-sdk23-arm64.zip<br>下载地址: <a href="http://forum.xda-developers.com/showpost.php?p=58828974" target="_blank" rel="external">XDA_Xposed for Lollipop and Marshmallow</a></p>
+<h2 id="正文">正文</h2><ol>
+<li>手机关机后(防止意外关机导致应用优化)长按<code>电源键+音量下</code><br>或者直接连上电脑adb reboot-bootloader进入recovery mode</li>
+<li>进入Recovery Mode,选择Install,将放在Downloads中的框架模块选中安装即可</li>
+<li>重启后安装xposed安装程序,提示xposed actived</li>
+<li>下载安装插件,启用之后进行软重启(比较快)</li>
+</ol>
+<h2 id="推荐几个插件">推荐几个插件</h2><p>不装LBE就用<code>greenify</code>,root的休眠功能+xposed扩展非常棒<br>开机管理: BootManager<br>权限管理: XPrivacy<br>广告过滤: MinMinGuard<br>Ist保存插件: Instagram Downloader</p>
+<h2 id="Reference">Reference</h2><p><a href="http://www.inexus.co/article-3823-1.html" target="_blank" rel="external">Inexus-Xposed安装</a><br><a href="http://forum.xda-developers.com/showpost.php?p=58828974" target="_blank" rel="external">XDA</a><br>插件推荐: <a href="https://www.zhihu.com/question/22063862" target="_blank" rel="external">==知乎链接==</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/03/30/2016/nexus-xposed/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/30/2016/nexus-xposed/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/03/28/2016/wireshark-test/" title="wireshark小记" itemprop="url">wireshark小记</a>
   </h1>
   <p class="article-author">By
@@ -443,7 +500,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/19/2016/flashing-nexus/" title="Nexus 5x刷机" itemprop="url">Nexus 5x刷机</a>
+      <a href="/03/19/2016/nexus-flashing/" title="Nexus 5x刷机" itemprop="url">Nexus 5x刷机</a>
   </h1>
   <p class="article-author">By
        
@@ -507,7 +564,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/03/19/2016/flashing-nexus/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/19/2016/flashing-nexus/" data-count-type="comments">&nbsp;</a>
+		<a href="/03/19/2016/nexus-flashing/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/19/2016/nexus-flashing/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -1090,73 +1147,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/02/13/2016/elanTouchpad/" title="linux-触摸板失效解决" itemprop="url">linux-触摸板失效解决</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-12T16:00:00.000Z" itemprop="datePublished"> 发表于 02-13-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="问题">问题</h2><p>触摸板开启状态下开机,碰到触摸板任何按键均失效,只有外接鼠标有效,使用笔记本内置快捷键进行休眠重新开机恢复,但是触摸板已经没卵用了</p>
-<h2 id="环境">环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a1exlism@dell~$ uname -r</span><br><span class="line"><span class="number">3.19</span>.<span class="number">0</span>-<span class="number">49</span>-generic</span><br><span class="line">a1exlism@dell:~$ lsb_release <span class="operator">-a</span></span><br><span class="line">No LSB modules are available.</span><br><span class="line">Distributor ID: Ubuntu</span><br><span class="line">Description:  Ubuntu <span class="number">15.04</span></span><br><span class="line">Release:  <span class="number">15.04</span></span><br><span class="line">Codename: vivid</span><br></pre></td></tr></table></figure>
-<h2 id="正文">正文</h2><h3 id="适用于任何笔记本">适用于任何笔记本</h3><blockquote>
-<p><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=42&amp;t=304955" target="_blank" rel="external">Sony Vaio 触摸板不能识别解决办法</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. sudo vi /etc/default/grub</span><br><span class="line"><span class="number">2</span>. 找到GRUB_CMDLINE_LINUX=<span class="string">""</span> 添加 i8042.reset i8042.nomux i8042.nopnp i8042.noloop </span><br><span class="line"><span class="comment">#添加完后GRUB_CMDLINE_LINUX="i8042.reset i8042.nomux i8042.nopnp i8042.noloop"</span></span><br><span class="line"><span class="number">3</span>. sudo update-grub</span><br><span class="line"><span class="number">4</span>. sudo reboot</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>通过更改grub设置,加载内核过程中会将触摸板简单的识别成<code>鼠标</code>设备,即丧失了多指触摸功能  </p>
-<h3 id="elanTouchpad方案[推荐]">elanTouchpad方案[推荐]</h3><p>感觉不支持的应该都是这家<code>Elan</code>触摸板了= =<br>From—&gt;<a href="http://www.evilcodingmonkey.com/2014/01/23/ubuntu-activate-multi-touch-on-elantech/" target="_blank" rel="external">evilcodingmonkey</a></p>
-<p>1.</p>
-<blockquote>
-<p>cat /proc/bus/input/devices | grep “Name=”  </p>
-</blockquote>
-<p>应该能看到这个—&gt; N: Name=”ETPS/2 Elantech Touchpad”  </p>
-<p>2.<br>下载<a href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1166442/+attachment/3941591/+files/psmouse-elantech-x551c.tar.gz" target="_blank" rel="external">this archive</a>(from Ubuntu’s bug reporting page)<br>//国内可以用<a href="http://pan.baidu.com/s/1kTOOlE3" target="_blank" rel="external">百度云</a></p>
-<p>3.</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Downloads</span><br><span class="line">sudo dkms ldtarball psmouse-elantech-x551c.tar.gz</span><br><span class="line">sudo dkms install -m psmouse -v elantech-x551c</span><br><span class="line">sudo rmmod psmouse</span><br><span class="line">sudo modprobe psmouse</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>End. 重启之后就没事啦</p>
-<h2 id="Reference">Reference</h2><p><a href="http://www.evilcodingmonkey.com/2014/01/23/ubuntu-activate-multi-touch-on-elantech/" target="_blank" rel="external">ubuntu-activate-multi-touch-on-elantech-evilcodingmonkey</a><br><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=42&amp;t=304955" target="_blank" rel="external">Sony Vaio 触摸板不能识别解决办法-UbuntuForum</a><br>想了解DKMS可以看看这个-&gt;<a href="http://www.cnblogs.com/wwang/archive/2011/06/21/2085571.html" target="_blank" rel="external">DKMS简介</a></p>
-<h2 id="后记">后记</h2><p>发现重启几次之后触摸板又挂了<br>发现dkms安装了但并没有加载,所以开机自启加载两句话= =<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sudo vi /etc/rc.local 在这里添加下面两条内容</span></span><br><span class="line">sudo rmmod psmouse</span><br><span class="line">sudo modprobe psmouse</span><br></pre></td></tr></table></figure></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/02/13/2016/elanTouchpad/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/13/2016/elanTouchpad/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -1173,7 +1163,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 12px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 10px;">GAE</a> <a href="/tags/GFW/" style="font-size: 10px;">GFW</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 10px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 10px;">GAE</a> <a href="/tags/GFW/" style="font-size: 10px;">GFW</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18.33px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 11.67px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 15px;">Shell</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -1181,7 +1171,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -1195,7 +1185,7 @@
 		  
 		
 		  
-			<li><a href="/categories/Device/" title="Device">Device<sup>2</sup></a></li>
+			<li><a href="/categories/Device/" title="Device">Device<sup>3</sup></a></li>
 		  
 		
 		  
