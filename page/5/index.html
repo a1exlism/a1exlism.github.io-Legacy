@@ -173,8 +173,7 @@
 </header>
     <div class="article-content">
         
-        <h2 id="Issues">Issues</h2><pre><code><span class="number">5</span>/<span class="number">35</span>GitHub的大神们更新了g<span class="title">vsIp的使用(版本c35</span>fb<span class="number">8</span>e),简要提一下<span class="comment">(Win下)</span>:
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将checkip.py和checkip.bat放在<span class="built_in">local</span>目录下</span><br><span class="line">运行.bat文件,等待<span class="number">30</span>-<span class="number">50</span>分钟(可以提前关闭)</span><br><span class="line">ip文档文件会在该目录生成,打开tmp_ok文档,提取其中的ip</span><br><span class="line">[PingInfoView](http://www.nirsoft.net/utils/multiple_ping_tool.html)可以帮助你选择最佳的IP=. =</span><br></pre></td></tr></table></figure>
+        <h2 id="Issues">Issues</h2><p><del>5/35GitHub的大神们更新了gvsIp的使用(版本c35fb8e),简要提一下(Win下):<br>gvsIp已失效</del></p>
 <h2 id="1-30-2016update">1-30-2016update</h2><h3 id="弃用goagent，启用xx-net">弃用goagent，启用xx-net</h3><p>好久没更新，<code>xx-net</code>在github可下载，根据goagent原理添加了图形界面，还有个自动扫Ip功能= =<br>妥！原作者的项目使用go语言开坑，<code>goproxy</code></p>
 <h3 id="gae部署界面更改">gae部署界面更改</h3><p>部署原理不变，界面变化，projectID(档案ID)即为原APPID</p>
 <h2 id="3-18-2016update">3-18-2016update</h2><h3 id="手机端更新,推荐">手机端更新,推荐</h3><p>网址就不列了,原因都懂,优先级如下</p>
@@ -186,7 +185,29 @@
 <h3 id="手机端手动Proxy">手机端手动Proxy</h3><ol>
 <li>ProxyDroid</li>
 </ol>
-<h2 id="Bookmarks">Bookmarks</h2><p><a href="https://github.com/mhohai/m2conf" target="_blank" rel="external">批量选择GCC IP</a><br><a href="http://blog.netsh.org/posts/youtube-google-facebook-twitter-wikipedia-hosts_1199.netsh.html#hosts" target="_blank" rel="external">hosts</a><br><a href="#">goagent</a><br><a href="http://public-dns.tk/" target="_blank" rel="external">DNS Server List</a><br><a href="https://toolbox.googleapps.com/apps/dig/" target="_blank" rel="external">Dig</a><br><a href="http://www.i7086.com/gaejiashegoagentshezhichangjianwentizongjiejijiejuefangfa" target="_blank" rel="external">goagent设置常见问题</a><br><a href="https://github.com/azzvx/gogotester" target="_blank" rel="external">gogotester</a><br><a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a></p>
+<h2 id="4-3-2016update">4-3-2016update</h2><h3 id="本页面网址更改">本页面网址更改</h3><p>更改后该页面所有网站打开需要多走一步,加密关键词:<code>base</code></p>
+<h3 id="正">正</h3><p>窝槽,最近这几天网络真的是全线崩盘,不过看了日期也就默默忍受了=L =<br>依靠GAE的各类软件统统阵亡,花了两天来寻找替代品,未雨绸缪总是好的.</p>
+<p>结果如下(PC端):</p>
+<ol>
+<li><p>lantern配置(太懒,自己没有测试过,还有每个版本差别比较大): <a href="">aHR0cHM6Ly9nb2Nocm9tZS5pbmZvL2xhbnRlcm4tZ3VpZGUv</a><br>据说能达到流畅看油管1080P</p>
+</li>
+<li><p>SS推荐,自己找了很久,速度还算不错的:<code>不算广告,爱信不信</code><br><a href="aHR0cHM6Ly93d3cuY2VsbHN5c3RlY2guY24=">猫梯</a>  ===&gt;&gt;听说以后改<code>Cisco_Anyconnect</code><br><a href="aHR0cHM6Ly9saWFuamlhbmcubW9l">喵帕斯</a>  ===&gt;&gt;速度很不错!<br>SS的路也走不远了,喝茶的喝茶,闲聊的闲聊:-(</p>
+</li>
+<li><p>通过Code_could平台<br><strong>移动端搞这个比较麻烦</strong></p>
+<ol>
+<li>HeroKu</li>
+<li>OpenShift</li>
+<li>Koding</li>
+<li>etc<br>原理都一样: remote机器开的ssh可以为本地一个隧道,进行端口转发即可.<br>条件: <code>开放的SSH</code><br>Code:<blockquote>
+<p>ssh -D 7001 username@remote-host</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+<p>-D 表示动态绑定 7001为本地端口,如果上传了id_rsa.pub,就没有密码登陆了</p>
+<p>Reference见 <a href="./#Bookmarks">Bookmarks</a></p>
+<h2 id="Bookmarks">Bookmarks</h2><p><a href="aHR0cHM6Ly9naXRodWIuY29tL21ob2hhaS9tMmNvbmY=">批量选择GCC IP</a> <a href="aHR0cHM6Ly90b29sYm94Lmdvb2dsZWFwcHMuY29tL2FwcHMvZGlnLw==">Dig</a>  <a href="aHR0cHM6Ly9naXRodWIuY29tL2F6enZ4L2dvZ290ZXN0ZXI=">gogotester</a><br><a href="aHR0cDovL3B1YmxpYy1kbnMudGsv">DNS Server List</a> <a href="dHRwOi8vYmxvZy5uZXRzaC5vcmcvcG9zdHMveW91dHViZS1nb29nbGUtZmFjZWJvb2stdHdpdHRlci13aWtpcGVkaWEtaG9zdHNfMTE5OS5uZXRzaC5odG1sI2hvc3Rz">hosts</a><br><del><a href="#">goagent</a>  <a href="aHR0cDovL3d3dy5pNzA4Ni5jb20vZ2Flamlhc2hlZ29hZ2VudHNoZXpoaWNoYW5namlhbndlbnRpem9uZ2ppZWppamllanVlZmFuZ2Zh">goagent设置常见问题</a></del><br><a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a> <a href="https://www.openshift.com/" target="_blank" rel="external">OpenShift</a> <a href="Koding.com">Koding</a><br><a href="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tL2EvMTE5MDAwMDAwMzkzOTYxNQ==">SSH隧道翻墙-segmentfault</a> <a href="https://hev.cc/1184.html" target="_blank" rel="external">端口转发原理-Heiher’s Blog</a></p>
 
         
         
@@ -231,7 +252,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/GAE/" style="font-size: 10px;">GAE</a> <a href="/tags/GFW/" style="font-size: 10px;">GFW</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18.33px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 11.67px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 15px;">Shell</a> <a href="/tags/Wall/" style="font-size: 10px;">Wall</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 14px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 12px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 12px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -239,7 +260,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -257,6 +278,10 @@
 		  
 		
 		  
+			<li><a href="/categories/G4W/" title="G4W">G4W<sup>2</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
 		  
 		
@@ -270,10 +295,6 @@
 		
 		  
 			<li><a href="/categories/SQL/" title="SQL">SQL<sup>4</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Wall/" title="Wall">Wall<sup>2</sup></a></li>
 		  
 		
 		  
