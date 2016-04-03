@@ -78,6 +78,156 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/04/03/2016/daily2/" title="linux日常更新-02" itemprop="url">linux日常更新-02</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-03T12:09:43.116Z" itemprop="datePublished"> 发表于 04-03-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="环境:Ubuntu">环境:Ubuntu</h1><h2 id="Commond">Commond</h2><h3 id="command快捷键emacs">command快捷键emacs</h3><p>Ctrl+u  删除当前输入</p>
+<h3 id="查询公网IP">查询公网IP</h3><blockquote>
+<p><a href="http://gaodi2002.blog.51cto.com/" target="_blank" rel="external">高迪</a><br>curl ifconfig.me<br>curl ipinfo.io</p>
+</blockquote>
+<h2 id="System">System</h2><h3 id="Shell转义">Shell转义</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>‘’</code>(单引号)</td>
+<td style="text-align:center">硬转义，其内部所有的shell 元字符、通配符都会被关掉。注意，硬转义中不允许出现<code>’</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>“”</code>(双引号)</td>
+<td style="text-align:center">软转义，其内部只允许出现特定的shell 元字符：<code>$</code>用于参数代换 `  用于命令代替</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\</code>(反斜杠)</td>
+<td style="text-align:center">转义，去除其后紧跟的元字符或通配符的特殊意义。</td>
+</tr>
+</tbody>
+</table>
+<p>Reference: <a href="http://www.cnblogs.com/chengmo/archive/2010/10/17/1853344.html" target="_blank" rel="external">程默’s Linux</a></p>
+<h3 id="系统保存的desktop目录">系统保存的desktop目录</h3><blockquote>
+<p>/usr/share/applications/</p>
+</blockquote>
+<h3 id="系统添加证书">系统添加证书</h3><p>1.将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.&gt;<a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a>,自己暂时没有尝试过<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github 为例进行说明</span></span><br><span class="line">sudo mkdir /usr/share/ca-certificates/github.com/</span><br><span class="line"><span class="comment">## 进入到所创建好的目录，这里使用了一种 !!:2 来指代上面的目录，索引从0开始，即 sudo对应0，mkdir对应1</span></span><br><span class="line"><span class="built_in">cd</span> !!:<span class="number">2</span></span><br><span class="line"><span class="comment">## 将准备好的要导入的证书复制到当前目录下</span></span><br><span class="line">sudo cp /path/to//github.com.crt .</span><br><span class="line"><span class="comment">## 运行配置命令导入，运行此命令后会出现类似下图所示的配置选项，相应配置即可</span></span><br><span class="line">sudo dpkg-reconfigure ca-certificates</span><br><span class="line"><span class="comment">## 配置好后再更新一下</span></span><br><span class="line">sudo update-ca-certificates</span><br></pre></td></tr></table></figure></p>
+<p>Reference:<br><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a></p>
+<h3 id="GUI界面设置自启动">GUI界面设置自启动</h3><blockquote>
+<p><a href="http://www.linuxidc.com/Linux/2013-04/83060.htm" target="_blank" rel="external">Linuxidc-byguess</a><br>gnome-session-properties</p>
+</blockquote>
+<h3 id="更改默认语言">更改默认语言</h3><p><a href="http://tonychiu.blog.51cto.com/656605/393131" target="_blank" rel="external">qiujichun</a></p>
+<h3 id="unity中彻底清除最近打开文档(视频)的历史记录">unity中彻底清除最近打开文档(视频)的历史记录</h3><blockquote>
+<p><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=337582" target="_blank" rel="external">ubuntu1023</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文档的历史记录</span></span><br><span class="line">rm ~/.local/share/zeitgeist/activity.sqlite &amp;&amp; zeitgeist-daemon --replace</span><br><span class="line"><span class="comment">#播放器中的“最近打开”的历史记录</span></span><br><span class="line">rm -v ~/.local/share/recently-used.xbel</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="桌面快捷方式">桌面快捷方式</h3><p><a href="http://os.51cto.com/art/201311/418841.htm" target="_blank" rel="external">51CTO</a><br><a href="http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/" target="_blank" rel="external">howopensource</a></p>
+<h3 id="清垃圾">清垃圾</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#清apt缓存</span></span><br><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
+<p><code>autoremove慎用</code><br>其他请看<a href="http://www.cnblogs.com/yc_sunniwell/archive/2010/07/15/1778265.html#undefined" target="_blank" rel="external">cnblogs-yc_sunniwell</a></p>
+<h2 id="SoftWare">SoftWare</h2><h3 id="Vmware_突然没法上网">Vmware 突然没法上网</h3><p>Edit-&gt;NetWork Setting-&gt;手动更改子网并分配Ip</p>
+<h3 id="LAMP套件">LAMP套件</h3><p><a href="http://howtoubuntu.org/how-to-install-lamp-on-ubuntu" target="_blank" rel="external">HowToUbunutu</a></p>
+<h3 id="gtk错误">gtk错误</h3><p>错误描述:</p>
+<blockquote>
+<p>Gtk-WARNING **: 无法在模块路径中找到主题引擎：“pixmap”？</p>
+</blockquote>
+<p>解决:安装以下依赖包</p>
+<blockquote>
+<p>gtk2-engines-pixbuf</p>
+</blockquote>
+<h3 id="编译安装源码">编译安装源码</h3><p>不行则请用root权限调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar jxvf file.tar.bz2    /    tar zxvf file.tar.gz</span><br><span class="line"><span class="built_in">cd</span> file</span><br><span class="line">ls <span class="operator">-l</span>      <span class="comment">#一般能找到INSTALL或者Doc安装文档</span></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">./configure;make ;make install</span><br><span class="line"><span class="comment"># 有些不需要configure</span></span><br><span class="line">make; make install</span><br></pre></td></tr></table></figure>
+<h3 id="定制安装">定制安装</h3><blockquote>
+<p><a href="http://itlab.idcquan.com/linux/set/39862.html" target="_blank" rel="external">ChinaItLab</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line">./configure --prefix=/opt/softwareFloader</span><br><span class="line">make; make install</span><br><span class="line">--- 有两种方法可以快速调用 ---</span><br><span class="line"><span class="comment"># 1.创建软链接</span></span><br><span class="line">ln <span class="operator">-s</span> /opt/softwareFloader/bin/software /usr/bin/software </span><br><span class="line"><span class="comment"># 2.添加环境变量,可参照日常更新1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/softwareFloader/bin</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="不错的软件推荐">不错的软件推荐</h3><p>==&gt;<a href="http://askubuntu.com/questions/30334/what-application-indicators-are-available" target="_blank" rel="external">AskUbuntu</a>&lt;==<br>在用的两个小插件<br>1.sudo apt-get install indicator-multiload  系统状态监测,柱状图表示<br>2.sudo apt-get install indicator-cpufreq  CPU频率设置(我这个版本只有节能和性能两种功能了,很棒)</p>
+<h3 id="dpkg安装卸载">dpkg安装卸载</h3><blockquote>
+<p><a href="http://www.thegeekstuff.com/2010/06/install-remove-deb-package/" target="_blank" rel="external">thegeekstuff-SASIKALA</a><br>dpkg -i packge  #i install<br>dpkg -r packge  #r remove<br>dpkg -l packge  #l list 配合grep来查询包是否存在<br>Reference:<a href="http://wrchiu.blog.51cto.com/817024/359085" target="_blank" rel="external">51CTO</a></p>
+</blockquote>
+<h3 id="sublime中文输入">sublime中文输入</h3><p>轮子有大牛写好了<br>———-Ubuntu———-<br>===&gt;<a href="http://blog.csdn.net/cywosp/article/details/32350899" target="_blank" rel="external">csdn-cywosp</a>&lt;===  </p>
+<p>虽然这样desktop图标可以用了,其他的方式还是不行,所以用linux的<code>alias</code>功能!</p>
+<blockquote>
+<p>sudo vi .bashrc</p>
+</blockquote>
+<p>根据alias编写格式将原来的subl改成以下内容<br>.so文件路径按自己情况更改</p>
+<blockquote>
+<p>alias subl=’LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’</p>
+</blockquote>
+<h3 id="sublime_3103_cpu100%">sublime 3103 cpu100%</h3><p>在.config/sublime-text-3/Packages/User/Preferences.sublime-settings 中加入<br><code>&quot;index_files&quot;:false,</code></p>
+<h3 id="Theme-material_design">Theme-material design</h3><p><a href="http://itsfoss.com/install-paper-theme-linux/" target="_blank" rel="external">itsfoss-ABHISHEK</a></p>
+<h2 id="Device/Driver">Device/Driver</h2><h3 id="U盘格式化">U盘格式化</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. df #&#26597;&#30475;&#25346;&#36733;&#30340;U&#30424;&#10;2. umount /dev/sdc1 #&#25105;&#30340;u&#30424;&#20026;/dev/sdc1&#10;3. mkfs -t vfat /dev/sdc1 #&#26684;&#24335;&#21270;&#22909;&#24930;...&#10;or mkfs.vfat /dev/sdc1&#10;# -L label &#26356;&#25913;&#21367;&#21517;&#23383;</span><br></pre></td></tr></table></figure>
+<h3 id="iso镜像制作">iso镜像制作</h3><ol>
+<li><p>查看挂载</p>
+<blockquote>
+<p>sudo fdisk -l</p>
+</blockquote>
+</li>
+<li><p>切换权限</p>
+<blockquote>
+<p>sudo -i</p>
+</blockquote>
+</li>
+<li><p>cat重定向</p>
+<blockquote>
+<p>cat xxx.iso &gt; /dev/sdc1</p>
+</blockquote>
+</li>
+<li><p>弹出U盘,需要等待U盘写入</p>
+<blockquote>
+<p>sudo eject -s /dev/sdc1</p>
+</blockquote>
+</li>
+</ol>
+<p>Preference:<a href="http://blog.csdn.net/longerzone/article/details/12941727" target="_blank" rel="external">CSDN_longerzone</a></p>
+<h3 id="关于硬盘">关于硬盘</h3><ol>
+<li>Ubuntu自带:<code>baobab</code></li>
+<li>有关分区 <blockquote>
+<p><a href="http://gparted.sourceforge.net/livecd.php" target="_blank" rel="external">sourceforge</a><br>gparted</p>
+</blockquote>
+</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/04/03/2016/daily2/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/03/2016/daily2/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/04/03/2016/daily-collection/" title="Daily Collection" itemprop="url">Daily Collection</a>
   </h1>
   <p class="article-author">By
@@ -119,6 +269,90 @@
 	
 	  	<span></span>
 		<a href="/04/03/2016/daily-collection/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/03/2016/daily-collection/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/04/03/2016/linux-optimize/" title="Linux_优化" itemprop="url">Linux_优化</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-02T16:00:00.000Z" itemprop="datePublished"> 发表于 04-03-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="前言">前言</h2><p>妈的智障(容我爆句粗口),终于搞定这破风扇了,以前在图书馆都特么异常的响,根本不给我面子!</p>
+<h2 id="优化">优化</h2><h3 id="环境">环境</h3><p>Kernel: 3.19.0-56-generic x64<br>Release: Ubuntu 15.04</p>
+<h3 id="优化项目">优化项目</h3><ol>
+<li>风扇</li>
+<li>内置电源使用优化</li>
+</ol>
+<h3 id="风扇">风扇</h3><p>(Thinkpad请忽略,以后我也买= =)</p>
+<p>Issue:<br>最近实在受不了风扇一天到晚的响,一直以为自己的<code>indicator-cpufreq</code>很正常,是bios的问题,今天一看发现有问题</p>
+<blockquote>
+<p>indicator-cpufreq -f </p>
+</blockquote>
+<p><code>-f</code>也是网上留意到的,manpage也就两个无用选项.这个选项用了之后才发现我那个powersaved模式根本没有卵用,一直是急速模式(超频3.5GHz)的状态,怪不得风扇一天到晚响</p>
+<p>Solution:</p>
+<blockquote>
+<p>sudo gnome-session-properties</p>
+</blockquote>
+<p>打开GUI自启动界面(以前安装完indicator-cpufreq就自动加入了自动启动),添加<code>-f</code>选项,来显示实时cpu频率</p>
+<blockquote>
+<p>sudo vi /etc/default/grub</p>
+</blockquote>
+<p>在<code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash&quot;</code>里面添加<code>intel_pstate=disable</code></p>
+<p>之后更新一下grub</p>
+<blockquote>
+<p>sudo update-grub</p>
+</blockquote>
+<p>重启之后同样设置powersave,然后cpu频率就正常了…</p>
+<h3 id="电源优化">电源优化</h3><p>软件: TLP</p>
+<blockquote>
+<p>sudo add-apt-repository ppa:linrunner/tlp<br> sudo apt-get update<br> sudo apt-get install tlp tlp-rdw smartmontools ethtool</p>
+</blockquote>
+<p>基本装完的默认设置看了一下也没什么要改的.具体的配置什么的请看<a href="#Reference">#Reference</a></p>
+<h3 id="Intel_GPU优化">Intel GPU优化</h3><p>同第一个,在default中添加</p>
+<blockquote>
+<p>i915.lvds_downclock=1 drm.vblankoffdelay=1 i915.semaphores=1 i915_enable_rc6=1 i915_enable_fbc=1</p>
+</blockquote>
+<p>然后update重启</p>
+<h2 id="Reference">Reference</h2><p>ASKubuntu:<br><a href="http://askubuntu.com/questions/285434/is-there-a-power-saving-application-similar-to-jupiter" target="_blank" rel="external">saving_applicaion</a><br><a href="http://askubuntu.com/questions/544266/why-are-missing-the-frequency-options-on-cpufreq-utils-indicator" target="_blank" rel="external">frequency_options</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/04/03/2016/linux-optimize/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/03/2016/linux-optimize/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -269,156 +503,6 @@
 	
 	  	<span></span>
 		<a href="/03/28/2016/wireshark-test/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/28/2016/wireshark-test/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/03/26/2016/daily2/" title="linux日常更新-02" itemprop="url">linux日常更新-02</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-26T07:42:57.018Z" itemprop="datePublished"> 发表于 03-26-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="环境:Ubuntu">环境:Ubuntu</h1><h2 id="Commond">Commond</h2><h3 id="command快捷键emacs">command快捷键emacs</h3><p>Ctrl+u  删除当前输入</p>
-<h3 id="查询公网IP">查询公网IP</h3><blockquote>
-<p><a href="http://gaodi2002.blog.51cto.com/" target="_blank" rel="external">高迪</a><br>curl ifconfig.me<br>curl ipinfo.io</p>
-</blockquote>
-<h2 id="System">System</h2><h3 id="Shell转义">Shell转义</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">字符</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>‘’</code>(单引号)</td>
-<td style="text-align:center">硬转义，其内部所有的shell 元字符、通配符都会被关掉。注意，硬转义中不允许出现<code>’</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>“”</code>(双引号)</td>
-<td style="text-align:center">软转义，其内部只允许出现特定的shell 元字符：<code>$</code>用于参数代换 `  用于命令代替</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>\</code>(反斜杠)</td>
-<td style="text-align:center">转义，去除其后紧跟的元字符或通配符的特殊意义。</td>
-</tr>
-</tbody>
-</table>
-<p>Reference: <a href="http://www.cnblogs.com/chengmo/archive/2010/10/17/1853344.html" target="_blank" rel="external">程默’s Linux</a></p>
-<h3 id="系统保存的desktop目录">系统保存的desktop目录</h3><blockquote>
-<p>/usr/share/applications/</p>
-</blockquote>
-<h3 id="系统添加证书">系统添加证书</h3><p>1.将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.&gt;<a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a>,自己暂时没有尝试过<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github 为例进行说明</span></span><br><span class="line">sudo mkdir /usr/share/ca-certificates/github.com/</span><br><span class="line"><span class="comment">## 进入到所创建好的目录，这里使用了一种 !!:2 来指代上面的目录，索引从0开始，即 sudo对应0，mkdir对应1</span></span><br><span class="line"><span class="built_in">cd</span> !!:<span class="number">2</span></span><br><span class="line"><span class="comment">## 将准备好的要导入的证书复制到当前目录下</span></span><br><span class="line">sudo cp /path/to//github.com.crt .</span><br><span class="line"><span class="comment">## 运行配置命令导入，运行此命令后会出现类似下图所示的配置选项，相应配置即可</span></span><br><span class="line">sudo dpkg-reconfigure ca-certificates</span><br><span class="line"><span class="comment">## 配置好后再更新一下</span></span><br><span class="line">sudo update-ca-certificates</span><br></pre></td></tr></table></figure></p>
-<p>Reference:<br><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a></p>
-<h3 id="GUI界面设置自启动">GUI界面设置自启动</h3><blockquote>
-<p><a href="http://www.linuxidc.com/Linux/2013-04/83060.htm" target="_blank" rel="external">Linuxidc-byguess</a><br>gnome-session-properties</p>
-</blockquote>
-<h3 id="更改默认语言">更改默认语言</h3><p><a href="http://tonychiu.blog.51cto.com/656605/393131" target="_blank" rel="external">qiujichun</a></p>
-<h3 id="unity中彻底清除最近打开文档(视频)的历史记录">unity中彻底清除最近打开文档(视频)的历史记录</h3><blockquote>
-<p><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=337582" target="_blank" rel="external">ubuntu1023</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文档的历史记录</span></span><br><span class="line">rm ~/.local/share/zeitgeist/activity.sqlite &amp;&amp; zeitgeist-daemon --replace</span><br><span class="line"><span class="comment">#播放器中的“最近打开”的历史记录</span></span><br><span class="line">rm -v ~/.local/share/recently-used.xbel</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="桌面快捷方式">桌面快捷方式</h3><p><a href="http://os.51cto.com/art/201311/418841.htm" target="_blank" rel="external">51CTO</a><br><a href="http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/" target="_blank" rel="external">howopensource</a></p>
-<h3 id="清垃圾">清垃圾</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#清apt缓存</span></span><br><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
-<p><code>autoremove慎用</code><br>其他请看<a href="http://www.cnblogs.com/yc_sunniwell/archive/2010/07/15/1778265.html#undefined" target="_blank" rel="external">cnblogs-yc_sunniwell</a></p>
-<h2 id="SoftWare">SoftWare</h2><h3 id="Vmware_突然没法上网">Vmware 突然没法上网</h3><p>Edit-&gt;NetWork Setting-&gt;手动更改子网并分配Ip</p>
-<h3 id="LAMP套件">LAMP套件</h3><p><a href="http://howtoubuntu.org/how-to-install-lamp-on-ubuntu" target="_blank" rel="external">HowToUbunutu</a></p>
-<h3 id="gtk错误">gtk错误</h3><p>错误描述:</p>
-<blockquote>
-<p>Gtk-WARNING **: 无法在模块路径中找到主题引擎：“pixmap”？</p>
-</blockquote>
-<p>解决:安装以下依赖包</p>
-<blockquote>
-<p>gtk2-engines-pixbuf</p>
-</blockquote>
-<h3 id="编译安装源码">编译安装源码</h3><p>不行则请用root权限调用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar jxvf file.tar.bz2    /    tar zxvf file.tar.gz</span><br><span class="line"><span class="built_in">cd</span> file</span><br><span class="line">ls <span class="operator">-l</span>      <span class="comment">#一般能找到INSTALL或者Doc安装文档</span></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">./configure;make ;make install</span><br><span class="line"><span class="comment"># 有些不需要configure</span></span><br><span class="line">make; make install</span><br></pre></td></tr></table></figure>
-<h3 id="定制安装">定制安装</h3><blockquote>
-<p><a href="http://itlab.idcquan.com/linux/set/39862.html" target="_blank" rel="external">ChinaItLab</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line">./configure --prefix=/opt/softwareFloader</span><br><span class="line">make; make install</span><br><span class="line">--- 有两种方法可以快速调用 ---</span><br><span class="line"><span class="comment"># 1.创建软链接</span></span><br><span class="line">ln <span class="operator">-s</span> /opt/softwareFloader/bin/software /usr/bin/software </span><br><span class="line"><span class="comment"># 2.添加环境变量,可参照日常更新1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/softwareFloader/bin</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="不错的软件推荐">不错的软件推荐</h3><p>==&gt;<a href="http://askubuntu.com/questions/30334/what-application-indicators-are-available" target="_blank" rel="external">AskUbuntu</a>&lt;==<br>在用的两个小插件<br>1.sudo apt-get install indicator-multiload  系统状态监测,柱状图表示<br>2.sudo apt-get install indicator-cpufreq  CPU频率设置(我这个版本只有节能和性能两种功能了,很棒)</p>
-<h3 id="dpkg安装卸载">dpkg安装卸载</h3><blockquote>
-<p><a href="http://www.thegeekstuff.com/2010/06/install-remove-deb-package/" target="_blank" rel="external">thegeekstuff-SASIKALA</a><br>dpkg -i packge  #i install<br>dpkg -r packge  #r remove<br>dpkg -l packge  #l list 配合grep来查询包是否存在<br>Reference:<a href="http://wrchiu.blog.51cto.com/817024/359085" target="_blank" rel="external">51CTO</a></p>
-</blockquote>
-<h3 id="sublime中文输入">sublime中文输入</h3><p>轮子有大牛写好了<br>———-Ubuntu———-<br>===&gt;<a href="http://blog.csdn.net/cywosp/article/details/32350899" target="_blank" rel="external">csdn-cywosp</a>&lt;===  </p>
-<p>虽然这样desktop图标可以用了,其他的方式还是不行,所以用linux的<code>alias</code>功能!</p>
-<blockquote>
-<p>sudo vi .bashrc</p>
-</blockquote>
-<p>根据alias编写格式将原来的subl改成以下内容<br>.so文件路径按自己情况更改</p>
-<blockquote>
-<p>alias subl=’LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’</p>
-</blockquote>
-<h3 id="sublime_3103_cpu100%">sublime 3103 cpu100%</h3><p>在.config/sublime-text-3/Packages/User/Preferences.sublime-settings 中加入<br><code>&quot;index_files&quot;:false,</code></p>
-<h3 id="Theme-material_design">Theme-material design</h3><p><a href="http://itsfoss.com/install-paper-theme-linux/" target="_blank" rel="external">itsfoss-ABHISHEK</a></p>
-<h2 id="Device/Driver">Device/Driver</h2><h3 id="U盘格式化">U盘格式化</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. df #&#26597;&#30475;&#25346;&#36733;&#30340;U&#30424;&#10;2. umount /dev/sdc1 #&#25105;&#30340;u&#30424;&#20026;/dev/sdc1&#10;3. mkfs -t vfat /dev/sdc1 #&#26684;&#24335;&#21270;&#22909;&#24930;...&#10;or mkfs.vfat /dev/sdc1&#10;# -L label &#26356;&#25913;&#21367;&#21517;&#23383;</span><br></pre></td></tr></table></figure>
-<h3 id="iso镜像制作">iso镜像制作</h3><ol>
-<li><p>查看挂载</p>
-<blockquote>
-<p>sudo fdisk -l</p>
-</blockquote>
-</li>
-<li><p>切换权限</p>
-<blockquote>
-<p>sudo -i</p>
-</blockquote>
-</li>
-<li><p>cat重定向</p>
-<blockquote>
-<p>cat xxx.iso &gt; /dev/sdc1</p>
-</blockquote>
-</li>
-<li><p>弹出U盘,需要等待U盘写入</p>
-<blockquote>
-<p>sudo eject -s /dev/sdc1</p>
-</blockquote>
-</li>
-</ol>
-<p>Preference:<a href="http://blog.csdn.net/longerzone/article/details/12941727" target="_blank" rel="external">CSDN_longerzone</a></p>
-<h3 id="关于硬盘">关于硬盘</h3><ol>
-<li>Ubuntu自带:<code>baobab</code></li>
-<li>有关分区 <blockquote>
-<p><a href="http://gparted.sourceforge.net/livecd.php" target="_blank" rel="external">sourceforge</a><br>gparted</p>
-</blockquote>
-</li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/03/26/2016/daily2/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/26/2016/daily2/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -1070,83 +1154,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/02/15/2016/daily-sql/" title="sql日常记录" itemprop="url">sql日常记录</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-15T06:29:57.623Z" itemprop="datePublished"> 发表于 02-15-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <ol>
-<li>字符串截取<br> left(str, len);    /    right(str, len);        //len&gt;= 0<br> i.e.    :    select left(‘abcde’, 4);            //截取前面四个</li>
-<li>char(60,112,62)<br> <p>            //可以用来字符截取,字太多了</p></li>
-<li>version()            -&gt;5.6.11</li>
-<li>limit m,n           m-start      n—length    <code>开始为0</code><br>limit n             n—length</li>
-<li>cast(value as type)       获取一个类型的值,并转换类型<br>convert(type ,value)      转换类型      type -&gt;signed unsigned<br>cast(‘a’ as signed)             返回0        cast(‘123’ as int)    返回123<br>convert( int ,’123’)        返回123</li>
-<li>concat( a, b)  连接函数,对ab进行连接</li>
-<li>mit(a,1,50)       1-50 截取字符串</li>
-<li>select * from (xxx)a    a为别名</li>
-<li>group by xx   以字段分类</li>
-<li>select count(*)   返回统计的行数</li>
-<li>0x7171    类似于高亮,更加明显</li>
-<li>IFNULL(a,0x22)        判断是否为NULL,是的话就返回0x22,否则返回a</li>
-<li>0x7423 的写法可以规避单引号过滤 </li>
-<li>distinct 过滤重复</li>
-<li>group_concat( user ,0x3a, password)<br>group_concat()会计算哪些行属于同一组,将属于同一组的列显示出来.要返回哪些列,由函<br>数参数(就是字段名)决定.分组必须有个标准,就是根据group by指定的列进行分组    <a href="http://www.cnblogs.com/wangtao_20/archive/2011/02/23/1961860.html" target="_blank" rel="external">王滔’s blog</a>‘</li>
-<li>char(115)  unicode-&gt;string</li>
-<li>version()  @@version         版本号</li>
-<li>@@datadir         mysql物理路径</li>
-<li>user()     当前的mysql用户        example: root@localhost</li>
-<li>load_file()     加载物理路径,需要file_priv权限<br>windows: load_file(‘c:\boot.ini’)<br>linux:     load_file(‘/etc/passwd’)<br>可以利用hex编码避免php的正则匹配 load_file(0x编码后字符)</li>
-<li>ORD()     ord(‘i’)    返回第一个字符的ASCII</li>
-<li>EXISTS()     指定一个子查询，检测行的存在返回Blooean结果</li>
-<li>MID(String, Start [, Length])          取子串        MySQL<br>[substring/]substr(String,Start[,Length])        取子串        支持SQL Server,Oracle[MySQL]<br>注意:<code>开始位置为1</code> 但是0为起始点不会报错,不过不回显示任何东西</li>
-<li>WHERE itemid (REGEXP 0x5b5e302d395d)     <code>REGEXP</code>正则对象的使用</li>
-<li><code>----手动高亮----</code><br>concat( select database() ) 会导致mysql语法错误,想了一会儿知道原因了…<br><code>concat( (select database()) , &#39;xxx&#39; );</code>   看完这句话然后默默的删掉’xxx’,然后自然就懂啦</li>
-<li>length( )    显示长度,返回int</li>
-<li>ascii()    字符转ascii<br>  char()    ascii转字符</li>
-<li></li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/02/15/2016/daily-sql/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/15/2016/daily-sql/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -1171,7 +1178,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -1197,7 +1204,7 @@
 		  
 		
 		  
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>14</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>15</sup></a></li>
 		  
 		
 		  

