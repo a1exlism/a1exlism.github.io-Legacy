@@ -78,6 +78,108 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/07/15/2015/ChromeConsole/" title="Chrome调试合集" itemprop="url">Chrome调试合集</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-07-14T16:00:00.000Z" itemprop="datePublished"> 发表于 07-15-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Chrome调试">Chrome调试</h2><ul>
+<li>shift+enter可多行输入</li>
+</ul>
+<ol>
+<li>样式<br> console.info()<br> console.debug()<br> console.warn()<br> console.error()</li>
+<li>占位符:<br> console.log()和 c的printf()一样<br> 只能用%d/%i %f %s %o(objective)</li>
+<li><p>分组显示:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.group(<span class="string">'第一组信息'</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'第一组信息'</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'第一组信息'</span>);</span><br><span class="line"><span class="built_in">console</span>.groupEnd();</span><br><span class="line"><span class="built_in">console</span>.group(<span class="string">'second'</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'2.1'</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'2.2'</span>);</span><br><span class="line"><span class="built_in">console</span>.groupEnd();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.dir()    //显示一个对象所有value和func()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.dir(dog);	<span class="comment">//Object:dog</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.dirxml()    //显示node中的html/xml代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> node=<span class="built_in">document</span>.getElementById(<span class="string">'tab1'</span>);</span><br><span class="line"><span class="built_in">console</span>.dirxml(node);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.assert()    //断言 判断是否为真<br> 测试:<code>console.assert(1==1,&#39;如果为0则出现这句话&#39;);</code><br> chrome下返回undefined<br> ff下不返回值<br> 1==0时chrome和ff均报错</p>
+</li>
+<li><p>console.trace()    //函数轨迹调用    </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.trace();</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">&#125;	<span class="comment">//js中函数同步执行,可以利用trace追踪有关该函数的相关执行顺序</span></span><br><span class="line"><span class="keyword">var</span> x = add3(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add3</span>(<span class="params">a,b</span>)</span>&#123;<span class="keyword">return</span> add2(a,b);&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add2</span>(<span class="params">a,b</span>)</span>&#123;<span class="keyword">return</span> add1(a,b);&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add1</span>(<span class="params">a,b</span>)</span>&#123;<span class="keyword">return</span> add(a,b);&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>计时功能//计算代码运行时间</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.time(<span class="string">'timer1'</span>);</span><br><span class="line"><span class="comment">// Your function</span></span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'timer1'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>性能分析Profiler</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.profile(<span class="string">'性能分析器一'</span>);</span><br><span class="line">Foo();</span><br><span class="line"><span class="built_in">console</span>.profileEnd();</span><br><span class="line">暂时无法实现这个功能</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console.count()    //统计次数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> i=<span class="number">0</span>;</span><br><span class="line">	i++;</span><br><span class="line">	<span class="built_in">console</span>.count(<span class="string">'执行次数'</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo();foo();foo();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>inspect(‘节点’)<br>截取特定的元素于console</p>
+</li>
+</ol>
+<p>//——-更新———</p>
+<ol>
+<li>console.dir( x );<br>获取对象完整信息<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cat</span>(<span class="params"> name, age, score </span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = name ;</span><br><span class="line">	<span class="keyword">this</span>.age = age ;</span><br><span class="line">	<span class="keyword">this</span>.score = score;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> c = <span class="keyword">new</span> cat( <span class="string">'tom'</span>, <span class="number">10</span>, [<span class="number">8</span>,<span class="number">8</span>,<span class="number">8</span>]);</span><br><span class="line"><span class="built_in">console</span>.dir( c );</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Other">Other</h3><ol>
+<li>$(Chrome 控制台中原生支持类jQuery的选择器)<ul>
+<li><code>$_</code></li>
+<li><code>$(selector)</code>    选择首元素<br> <code>$$(selector)</code>    选择元素合集</li>
+</ul>
+</li>
+<li><p>keys&amp;values</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tboy=&#123;</span><br><span class="line">	name:<span class="string">'123'</span>,height:<span class="string">'222'</span></span><br><span class="line">&#125;;</span><br><span class="line">keys(tboy);</span><br><span class="line">values(tboy);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>debug&amp;undebug<br> 打断点和取消断点</p>
+</li>
+<li>copy(document.body)<br> 可以复制内容到剪贴板</li>
+</ol>
+<h2 id="参考">参考</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/03/firebug_console_tutorial.html" target="_blank" rel="external">阮一峰</a></li>
+<li><a href="http://www.cnblogs.com/Wayou/p/chrome-console-tips-and-tricks.html" target="_blank" rel="external">刘哇勇</a></li>
+<li>xxx</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/07/15/2015/ChromeConsole/#comments" class="ds-thread-count comments-count-link" data-thread-key="07/15/2015/ChromeConsole/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/07/08/2015/Router/" title="360弃子C301刷机" itemprop="url">360弃子C301刷机</a>
   </h1>
   <p class="article-author">By
@@ -327,7 +429,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 14px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 12px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 12px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.67px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18.33px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 13.33px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 15px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -335,7 +437,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -349,7 +451,7 @@
 		  
 		
 		  
-			<li><a href="/categories/Device/" title="Device">Device<sup>3</sup></a></li>
+			<li><a href="/categories/Device/" title="Device">Device<sup>4</sup></a></li>
 		  
 		
 		  

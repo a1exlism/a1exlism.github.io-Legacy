@@ -4,35 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Daily Collection | A1exlism</title>
+    <title>Android6.0.1 Xposed安装以及插件推荐 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="DEV快照  IDEA注册码  短网址code-paste  从FE的角度上再看输入url后都发生了什么 
-FunSilk  代码自实现  ChromeGameByAutoThe F12’s Note  
-FunctionProbe实现  Mortenclaussen制图利器ProcessOn  sketchPad
-Linux文件系统FHS
-Tools&amp;amp;Usageddos—-LOIC 低轨">
+    <meta name="description" content="xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能
+环境&amp;amp;要求已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk框架模块: xposed-v80-sdk23-arm64.zip下载地址: XDA_X">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Daily Collection">
-<meta property="og:url" content="http://a1ex.net/04/03/2016/daily-collection/index.html">
+<meta property="og:title" content="Android6.0.1 Xposed安装以及插件推荐">
+<meta property="og:url" content="http://a1ex.net/04/06/2016/nexus-xposed/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="DEV快照  IDEA注册码  短网址code-paste  从FE的角度上再看输入url后都发生了什么 
-FunSilk  代码自实现  ChromeGameByAutoThe F12’s Note  
-FunctionProbe实现  Mortenclaussen制图利器ProcessOn  sketchPad
-Linux文件系统FHS
-Tools&amp;amp;Usageddos—-LOIC 低轨">
-<meta property="og:updated_time" content="2016-04-03T08:30:24.795Z">
+<meta property="og:description" content="xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能
+环境&amp;amp;要求已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk框架模块: xposed-v80-sdk23-arm64.zip下载地址: XDA_X">
+<meta property="og:updated_time" content="2016-04-06T03:29:53.256Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Daily Collection">
-<meta name="twitter:description" content="DEV快照  IDEA注册码  短网址code-paste  从FE的角度上再看输入url后都发生了什么 
-FunSilk  代码自实现  ChromeGameByAutoThe F12’s Note  
-FunctionProbe实现  Mortenclaussen制图利器ProcessOn  sketchPad
-Linux文件系统FHS
-Tools&amp;amp;Usageddos—-LOIC 低轨">
+<meta name="twitter:title" content="Android6.0.1 Xposed安装以及插件推荐">
+<meta name="twitter:description" content="xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能
+环境&amp;amp;要求已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk框架模块: xposed-v80-sdk23-arm64.zip下载地址: XDA_X">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -89,14 +80,14 @@ Tools&amp;amp;Usageddos—-LOIC 低轨">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/04/03/2016/daily-collection/" title="Daily Collection" itemprop="url">Daily Collection</a>
+      <a href="/04/06/2016/nexus-xposed/" title="Android6.0.1 Xposed安装以及插件推荐" itemprop="url">Android6.0.1 Xposed安装以及插件推荐</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-04-03T08:30:24.795Z" itemprop="datePublished"> 发表于 04-03-2016</time>
+    <time datetime="2016-04-06T03:29:53.256Z" itemprop="datePublished"> 发表于 04-06-2016</time>
     
   </p>
 </header>
@@ -105,23 +96,20 @@ Tools&amp;amp;Usageddos—-LOIC 低轨">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DEV"><span class="toc-number">1.</span> <span class="toc-text">DEV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fun"><span class="toc-number">2.</span> <span class="toc-text">Fun</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-number">3.</span> <span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">4.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools&Usage"><span class="toc-number">5.</span> <span class="toc-text">Tools&Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebDesign"><span class="toc-number">6.</span> <span class="toc-text">WebDesign</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other’s"><span class="toc-number">7.</span> <span class="toc-text">Other’s</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Videos"><span class="toc-number">8.</span> <span class="toc-text">Videos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#买买买"><span class="toc-number">9.</span> <span class="toc-text">买买买</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境&要求"><span class="toc-number">1.</span> <span class="toc-text">环境&要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐几个插件"><span class="toc-number">3.</span> <span class="toc-text">推荐几个插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="DEV">DEV</h2><p><a href="https://archive.org/web/" target="_blank" rel="external">快照</a>  <a href="http://idea.lanyus.com/" target="_blank" rel="external">IDEA注册码</a>  <a href="http://www.waqiang.com/index.php/url/shorten" target="_blank" rel="external">短网址</a><br><a href="http://paste.ofcode.org/" target="_blank" rel="external">code-paste</a>  <a href="http://div.io/topic/609?page=1" target="_blank" rel="external">从FE的角度上再看输入url后都发生了什么</a> </p>
-<h2 id="Fun">Fun</h2><p><a href="http://weavesilk.com/" target="_blank" rel="external">Silk</a>  <a href="http://codepen.io/jakealbaugh/full/PwLXXP/" target="_blank" rel="external">代码自实现</a>  <a href="http://chirag64.github.io/t-rex-runner-bot/" target="_blank" rel="external">ChromeGameByAuto</a><br><a href="http://tholman.com/dom-animator/" target="_blank" rel="external">The F12’s Note</a>  </p>
-<h2 id="Function">Function</h2><p><a href="http://www.hotcleaner.com/clickclean-app.html" target="_blank" rel="external">Probe实现</a>  <a href="http://www.mortenclaussen.com/" target="_blank" rel="external">Mortenclaussen</a><br><code>制图利器</code><a href="https://www.processon.com/" target="_blank" rel="external">ProcessOn</a>  <a href="https://sketch.io/sketchpad/" target="_blank" rel="external">sketchPad</a></p>
-<h2 id="Linux">Linux</h2><p>文件系统<a href="http://www.pathname.com/fhs/pub/fhs-2.3.html#THEFILESYSTEM" target="_blank" rel="external">FHS</a></p>
-<h2 id="Tools&amp;Usage">Tools&amp;Usage</h2><p>ddos—-<a href="https://github.com/NewEraCracker/LOIC" target="_blank" rel="external">LOIC 低轨道离子炮</a></p>
-<blockquote>
-<p>sql xss xml的常用字典(Kali2.0)<br>/usr/share/wfuzz/wordlist</p>
-</blockquote>
-<h2 id="WebDesign">WebDesign</h2><p><a href="https://pages.github.com/" target="_blank" rel="external">Github</a>  <a href="https://www.heroku.com/" target="_blank" rel="external">heroku</a>  <a href="http://lmgtfy.com/?q=let+me+google+that+for+you&amp;l=1" target="_blank" rel="external">lmgtfy</a><br><a href="https://www.qingcloud.com/" target="_blank" rel="external">青云</a>  <a href="https://divshot.com/features" target="_blank" rel="external">divshot</a>  <a href="http://www.andrewmcwatters.com/" target="_blank" rel="external">ACPM</a>  <a href="http://blocsapp.com/" target="_blank" rel="external">Blocs</a><br><a href="http://bootswatch.com/" target="_blank" rel="external">Bootswatch</a>  <a href="http://sweet.2ch.sc/uptime.svg" target="_blank" rel="external">サーバ稼働状況</a>  <a href="https://twentyoverten.com" target="_blank" rel="external">Twenty Over Ten</a><br><a href="http://www.apple.com/" target="_blank" rel="external">Apple</a>  <a href="http://www.lucacasati.net/" target="_blank" rel="external">lucacasati</a>  <a href="http://www.squarespace.com/" target="_blank" rel="external">Build awebsite</a>  <a href="http://union.co/" target="_blank" rel="external">Union</a><br><a href="http://liulanqi.baidu.com/" target="_blank" rel="external">Baidu Browser</a>  </p>
-<h2 id="Other’s">Other’s</h2><p><a href="https://ruby-china.org/topics/17505" target="_blank" rel="external">如何学好一门编程语言技巧方法一粒-译</a></p>
-<hr>
-<h2 id="Videos">Videos</h2><p><a href="www.kaixindy.com">海阔天空</a><br><a href="http://en.savefrom.net/" target="_blank" rel="external">YouTuBe-Download1</a>  <a href="http://vidstatsx.com/" target="_blank" rel="external">YouTuBe-Download2</a>  </p>
-<h2 id="买买买">买买买</h2><p><a href="www.smzdm.com">什么值得买</a></p>
+		<p>xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能</p>
+<h2 id="环境&amp;要求">环境&amp;要求</h2><p>已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包<br>安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk<br>框架模块: xposed-v80-sdk23-arm64.zip<br>下载地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">XDA_Xposed for Lollipop and Marshmallow</a></p>
+<h2 id="正文">正文</h2><ol>
+<li>手机关机后(防止意外关机导致应用优化)长按<code>电源键+音量下</code><br>或者直接连上电脑adb reboot-bootloader进入recovery mode</li>
+<li>进入Recovery Mode,选择Install,将放在Downloads中的框架模块选中安装即可</li>
+<li>重启后安装xposed安装程序,提示xposed actived</li>
+<li>下载安装插件,启用之后进行软重启(比较快)</li>
+</ol>
+<h2 id="推荐几个插件">推荐几个插件</h2><p>不装LBE就用<code>greenify</code>,root的休眠功能+xposed扩展非常棒<br>阻止运行: Prevent Running<br>禁止唤醒: No WakeLock 作者Blog:<a href="https://www.linangran.com/?p=611" target="_blank" rel="external">Angran Lin’s Blog</a><br>开机管理: BootManager<br><del>权限管理: XPrivacy 控制太烦,而且原生已有权限控制,弃用</del><br>广告过滤: MinMinGuard<br>Ist保存插件: Instagram Downloader <code>少更新Ist</code><br>禁止内置浏览器: ExLink(去你大爷的浏览器)<br>状态栏+底栏颜色优化,很棒: PerfectColorBar<br>来电显示: Phone Location<br>自定义手电筒快捷键: Xposed Torch<br><del>防撤回: QQUnrecalled/WechatUnrecalled</del></p>
+<h2 id="Reference">Reference</h2><p><a href="http://www.inexus.co/article-3823-1.html" target="_blank" rel="external">Inexus-Xposed安装</a><br><a href="http://forum.xda-developers.com/showpost.php?p=58828974" target="_blank" rel="external">XDA</a><br>插件推荐: <a href="https://www.zhihu.com/question/22063862" target="_blank" rel="external">==知乎链接==</a><br>刚找到的一个新地址: <a href="http://xposed.appkg.com/1051.html" target="_blank" rel="external">Xposed</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -129,7 +117,7 @@ Tools&amp;amp;Usageddos—-LOIC 低轨">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/04/03/2016/daily-collection/" data-title="Daily Collection | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/04/06/2016/nexus-xposed/" data-title="Android6.0.1 Xposed安装以及插件推荐 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -143,18 +131,18 @@ Tools&amp;amp;Usageddos—-LOIC 低轨">
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/04/03/2016/daily2/" title="linux日常更新-02">
+ <a href="/04/06/2016/daily-collection/" title="Daily Collection">
   <strong>上一篇：</strong><br/>
   <span>
-  linux日常更新-02</span>
+  Daily Collection</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/04/03/2016/linux-optimize/"  title="Linux_优化">
+<a href="/04/03/2016/daily2/"  title="linux日常更新-02">
  <strong>下一篇：</strong><br/> 
- <span>Linux_优化
+ <span>linux日常更新-02
 </span>
 </a>
 </div>
@@ -163,7 +151,7 @@ Tools&amp;amp;Usageddos—-LOIC 低轨">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="04/03/2016/daily-collection/" data-title="Daily Collection" data-url="http://a1ex.net/04/03/2016/daily-collection/"></div>
+	<div class="ds-thread" data-thread-key="04/06/2016/nexus-xposed/" data-title="Android6.0.1 Xposed安装以及插件推荐" data-url="http://a1ex.net/04/06/2016/nexus-xposed/"></div>
 </section>
 
 
@@ -173,7 +161,7 @@ Tools&amp;amp;Usageddos—-LOIC 低轨">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DEV"><span class="toc-number">1.</span> <span class="toc-text">DEV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fun"><span class="toc-number">2.</span> <span class="toc-text">Fun</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-number">3.</span> <span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">4.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools&Usage"><span class="toc-number">5.</span> <span class="toc-text">Tools&Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebDesign"><span class="toc-number">6.</span> <span class="toc-text">WebDesign</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other’s"><span class="toc-number">7.</span> <span class="toc-text">Other’s</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Videos"><span class="toc-number">8.</span> <span class="toc-text">Videos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#买买买"><span class="toc-number">9.</span> <span class="toc-text">买买买</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境&要求"><span class="toc-number">1.</span> <span class="toc-text">环境&要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐几个插件"><span class="toc-number">3.</span> <span class="toc-text">推荐几个插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
@@ -185,7 +173,7 @@ Tools&amp;amp;Usageddos—-LOIC 低轨">
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 14px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 12px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 12px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 14px;">Shell</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.67px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18.33px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 13.33px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 15px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -193,7 +181,7 @@ Tools&amp;amp;Usageddos—-LOIC 低轨">
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -207,7 +195,7 @@ Tools&amp;amp;Usageddos—-LOIC 低轨">
 		  
 		
 		  
-			<li><a href="/categories/Device/" title="Device">Device<sup>3</sup></a></li>
+			<li><a href="/categories/Device/" title="Device">Device<sup>4</sup></a></li>
 		  
 		
 		  
