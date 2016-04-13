@@ -78,6 +78,139 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/10/15/2015/bash2/" title="简单脚本创建" itemprop="url">简单脚本创建</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-14T16:00:00.000Z" itemprop="datePublished"> 发表于 10-15-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="example">example</h3><p>example.sh: //脚本放置于/home/tools/路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">"say something"</span> sth</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$sth</span> <span class="string">"what you said will be output"</span></span><br><span class="line"><span class="built_in">exit</span> <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="创建环境变量,使-sh在任何路径下使用">创建环境变量,使.sh在任何路径下使用</h3><p>: 隔开路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mypath=/home/tools/</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$mypath</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="给脚本添加执行权限">给脚本添加执行权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意路径</span></span><br><span class="line">chmod +x ./example.sh</span><br><span class="line"><span class="comment">#or</span></span><br><span class="line">chmod <span class="number">1</span> ./example.sh</span><br><span class="line"><span class="comment">#chmod </span></span><br><span class="line"><span class="comment"># 4  read | 2  write |  1 executive</span></span><br></pre></td></tr></table></figure>
+<h3 id="参考">参考</h3>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/15/2015/bash2/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/15/2015/bash2/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/10/14/2015/bash1/" title="Linux 查询" itemprop="url">Linux 查询</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-13T16:00:00.000Z" itemprop="datePublished"> 发表于 10-14-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="文件类型">文件类型</h2><blockquote>
+<p>file ~/.bashrc</p>
+</blockquote>
+<h2 id="可执行文件">可执行文件</h2><p>-a all 找出所有的,有时候需要root权限查找例如<code>ifconfig</code></p>
+<blockquote>
+<p>which -a java</p>
+</blockquote>
+<h2 id="文件名">文件名</h2><h3 id="1-whereis_[-bmsu]_file/folder">1.whereis [-bmsu] file/folder</h3><p>—-依赖数据库—-<br>-b 二进制 -m manual路径下的文件(说明文件) -s 源文件<br>-u except above three</p>
+<blockquote>
+<p>whereis ifconfig<br>whereis -m passwd</p>
+</blockquote>
+<h3 id="2-locate_[-ir]_keyword">2.locate [-ir] keyword</h3><p>—-依赖数据库—-<br>-i 忽略大小写<br>-r regexp正则</p>
+<blockquote>
+<p>locate -i PAssWd</p>
+</blockquote>
+<p>手动更新数据库—&gt;<code>updatedb</code></p>
+<h3 id="3-_find_[Router]_[option]_[action]">3. find [Router] [option] [action]</h3><p>—-直接查找硬盘—-<br>find查找`默认递归</p>
+<h4 id="指定路径">指定路径</h4><p>排除<code>/media</code>和<code>/lib</code>路径查询包含<code>application</code>字样的文件<br><strong>注意</strong>,()需要转义 -i忽略大小写<br>&gt;<br>sudo find /  ( -path /media -o -path /lib ) -prune -o -iname “application” -print </p>
+<p>Reference: <a href="http://blog.csdn.net/imfinger/article/details/6371601" target="_blank" rel="external">lionfun</a></p>
+<h4 id="时间">时间</h4><p>-atime -ctime -mtime<br><img src="/imgs/bash/linux-find-time.png" alt="1"><br>图示为<code>mtime</code>选项,作图过程中忍不住安利个网站- -<a href="https://www.processon.com" target="_blank" rel="external">ProcessOn</a><br>24小时之内tools文件夹更改的地方</p>
+<blockquote>
+<p>find / -mtime 0. </p>
+</blockquote>
+<h4 id="文件名/文件类型">文件名/文件类型</h4><p>在当前目录进行递归查找名为’filename’的任意扩展文件</p>
+<blockquote>
+<p>find . -name ‘filename.*’<br>find ~ -type s<br>type缩写===&gt;<a href="http://man.linuxde.net/find" target="_blank" rel="external">linuxde</a></p>
+</blockquote>
+<h2 id="文件内容">文件内容</h2><h3 id="grep_[-acinv]_[—color=auto]_‘words’_file">grep [-acinv] [—color=auto] ‘words’ file</h3><p>常用: -r 递归 -n 行号 -v 反向 -i 无视大小写<br>栗子:</p>
+<blockquote>
+<p>grep “contents” . -r -n</p>
+</blockquote>
+<h3 id="更多grep写在了这边==&gt;鸟哥读书记">更多grep写在了这边==&gt;<a href="http://a1exlism.github.io/#stq=grep+%E6%AD%A3%E5%88%99&amp;stp=1" target="_blank" rel="external">鸟哥读书记</a></h3><h3 id="find_grep_组合技查询">find grep 组合技查询</h3><p>从当前目录下找到有关’port’的ini文件</p>
+<blockquote>
+<p>$ find -name *.ini | xargs grep port</p>
+</blockquote>
+<h2 id="Reference">Reference</h2><p><a href="http://www.cnblogs.com/skynet/archive/2010/12/25/1916873.html" target="_blank" rel="external">吴秦(Tyler)</a><br><a href="http://www.ai7.org/wp/html/653.html" target="_blank" rel="external">男单 618</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/14/2015/bash1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/14/2015/bash1/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/10/13/2015/ClientJS-6/" title="Js学习笔记(6)" itemprop="url">Js学习笔记(6)</a>
   </h1>
   <p class="article-author">By
@@ -522,126 +655,6 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/09/28/2015/kali-install2/" title="将Kali安装到U盘" itemprop="url">将Kali安装到U盘</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-09-27T16:00:00.000Z" itemprop="datePublished"> 发表于 09-28-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="声明">声明</h2><p>此方法只在MBR引导情况下实现</p>
-<h3 id="准备">准备</h3><p>虚拟机(VM/VirtualBox)<br>download<a href="https://www.kali.org/downloads/" target="_blank" rel="external">Kali Linux</a></p>
-<h3 id="虚拟机操作">虚拟机操作</h3><ol>
-<li>正常创建一个新的虚拟机,选择稍后安装系统</li>
-<li>创建完之后,设置该虚拟机属性,cd/dvd中加载所要安装的ISO文件.</li>
-<li>将刚才创建的硬盘<code>移除</code>!,顺便检查一下USB驱动是否添加,是否为3.0</li>
-<li>运行虚拟机,进入开始画面之后插入U盘.出现如下画面显示我们的U盘正常识别,点击OK进行加载<img src="/imgs//kali install2/1.jpg" alt="1"></li>
-<li>之后按照下图指示进行连接(和宿主机切断连接),<br><img src="/imgs//kali install2/2.jpg" alt="2"></li>
-<li>之后就可以进行一般的GUI安装了.</li>
-</ol>
-<h3 id="x64位的Vt-x问题">x64位的Vt-x问题</h3><p>自己在安装的时候出现一个非常恶心的一个问题:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VMware提示VT-x未开启</span><br></pre></td></tr></table></figure></p>
-<p>搜索之后都说Bios中进行设置,然而我的bios是精简版的,支持但是没法开启.<br>搜了半天,发现电脑是<code>一直开着Vt-x的!</code>,360的主动防御干的好事:( ,虽然开启不启动,但是依然存在一个服务项,所以开虚拟机前先开启360,等到360提示关闭<code>晶核引擎</code>之后可以正常执行流程..</p>
-<h2 id="加一个本地硬盘安装的实例">加一个本地硬盘安装的实例</h2><p><a href="http://blog.sciencenet.cn/blog-3027933-956284.html" target="_blank" rel="external">Lifeifu博客</a></p>
-<h3 id="参考">参考</h3><p><a href="http://zdzhu.blog.51cto.com/6180070/1574543" target="_blank" rel="external">张舵主’Blog</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/09/28/2015/kali-install2/#comments" class="ds-thread-count comments-count-link" data-thread-key="09/28/2015/kali-install2/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/09/20/2015/kali-Install1/" title="Kali UEFI安装" itemprop="url">Kali UEFI安装</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-09-19T16:00:00.000Z" itemprop="datePublished"> 发表于 09-20-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="准备">准备</h2><ol>
-<li>download<a href="https://www.kali.org/downloads/" target="_blank" rel="external">Kali Linux</a>,记得校验SHA1Sum</li>
-<li>UltraISO 烧录至USB</li>
-<li>打开boot文件夹,用归档工具(zip等)把img里面的三个文件夹解压至根目录</li>
-<li>利用DiskGenius/PartAssist切一块分区(未分配状态)来预留一块连续空间.</li>
-</ol>
-<h2 id="安装">安装</h2><ol>
-<li>Windows下<code>shift+重启</code>进入BIOS界面,设置优先级</li>
-<li>选择GUI安装,进入正常安装流程</li>
-<li>前几次按照系统推荐的分区导致<code>/</code>剩余空间很小,重装几次之后找到一种方法:首先利用系统自动配置一套分区,之后删除那些改变的分区,改为自己想要的分区.<br>因为不怎么了解boot中efi分区文件的具体操作,所以采用这种笨办法进行分区,此时,系统并不会报’efi分区未设置’这个问题</li>
-</ol>
-<h2 id="Ubuntu_的EFI">Ubuntu 的EFI</h2><h2 id="注意">注意</h2><p>MBR分区的硬盘要注意自己的主分区是否足够,否则一直会失败<br>发现UEFI引导模式是不可能制作成一个可移动式的系统(除非你只使用安装时候的电脑,未实现)</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/09/20/2015/kali-Install1/#comments" class="ds-thread-count comments-count-link" data-thread-key="09/20/2015/kali-Install1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next<span></span></a>
@@ -666,7 +679,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -704,7 +717,7 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>13</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>15</sup></a></li>
 		  
 		
 		  

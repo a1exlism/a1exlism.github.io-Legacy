@@ -4,38 +4,41 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Daily Collection | A1exlism</title>
+    <title>ES6-JS的块级作用域 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="DEV快照  IDEA注册码  短网址code-paste  从FE的角度上再看输入url后都发生了什么 
-FunSilk  代码自实现  ChromeGameByAutoThe F12’s Note  
-FunctionProbe实现  Mortenclaussen制图利器ProcessOn  sketchPad
-Linux文件系统FHS
-AndroidXdaXposed)
-Tools&amp;amp;">
+    <meta name="description" content="ES6_js也能和其他语言一样使用块级作用域了~块级作用域: 一对花括号{}括起来的代码域一下子感觉js高级好多,块级作用域和执行域都在了~
+给几个例子,区别一下
+
+var
+
+
+12345var num = 5;for( var i = 0; i &amp;lt; num; i++ )&amp;#123;  console.log(i); //0 1 2 3 4&amp;#125;console.log(i); //">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Daily Collection">
-<meta property="og:url" content="http://a1ex.net/04/06/2016/daily-collection/index.html">
+<meta property="og:title" content="ES6-JS的块级作用域">
+<meta property="og:url" content="http://a1ex.net/04/12/2016/js-let/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="DEV快照  IDEA注册码  短网址code-paste  从FE的角度上再看输入url后都发生了什么 
-FunSilk  代码自实现  ChromeGameByAutoThe F12’s Note  
-FunctionProbe实现  Mortenclaussen制图利器ProcessOn  sketchPad
-Linux文件系统FHS
-AndroidXdaXposed)
-Tools&amp;amp;">
-<meta property="og:updated_time" content="2016-04-06T03:30:49.190Z">
+<meta property="og:description" content="ES6_js也能和其他语言一样使用块级作用域了~块级作用域: 一对花括号{}括起来的代码域一下子感觉js高级好多,块级作用域和执行域都在了~
+给几个例子,区别一下
+
+var
+
+
+12345var num = 5;for( var i = 0; i &amp;lt; num; i++ )&amp;#123;  console.log(i); //0 1 2 3 4&amp;#125;console.log(i); //">
+<meta property="og:updated_time" content="2016-04-12T02:34:01.924Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Daily Collection">
-<meta name="twitter:description" content="DEV快照  IDEA注册码  短网址code-paste  从FE的角度上再看输入url后都发生了什么 
-FunSilk  代码自实现  ChromeGameByAutoThe F12’s Note  
-FunctionProbe实现  Mortenclaussen制图利器ProcessOn  sketchPad
-Linux文件系统FHS
-AndroidXdaXposed)
-Tools&amp;amp;">
+<meta name="twitter:title" content="ES6-JS的块级作用域">
+<meta name="twitter:description" content="ES6_js也能和其他语言一样使用块级作用域了~块级作用域: 一对花括号{}括起来的代码域一下子感觉js高级好多,块级作用域和执行域都在了~
+给几个例子,区别一下
+
+var
+
+
+12345var num = 5;for( var i = 0; i &amp;lt; num; i++ )&amp;#123;  console.log(i); //0 1 2 3 4&amp;#125;console.log(i); //">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -92,14 +95,14 @@ Tools&amp;amp;">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/04/06/2016/daily-collection/" title="Daily Collection" itemprop="url">Daily Collection</a>
+      <a href="/04/12/2016/js-let/" title="ES6-JS的块级作用域" itemprop="url">ES6-JS的块级作用域</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-04-06T03:30:49.190Z" itemprop="datePublished"> 发表于 04-06-2016</time>
+    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
     
   </p>
 </header>
@@ -108,24 +111,24 @@ Tools&amp;amp;">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DEV"><span class="toc-number">1.</span> <span class="toc-text">DEV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fun"><span class="toc-number">2.</span> <span class="toc-text">Fun</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-number">3.</span> <span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">4.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android"><span class="toc-number">5.</span> <span class="toc-text">Android</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools&Usage"><span class="toc-number">6.</span> <span class="toc-text">Tools&Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebDesign"><span class="toc-number">7.</span> <span class="toc-text">WebDesign</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other’s"><span class="toc-number">8.</span> <span class="toc-text">Other’s</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Videos"><span class="toc-number">9.</span> <span class="toc-text">Videos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#买买买"><span class="toc-number">10.</span> <span class="toc-text">买买买</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6_js也能和其他语言一样使用块级作用域了~"><span class="toc-number">1.</span> <span class="toc-text">ES6_js也能和其他语言一样使用块级作用域了~</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#给几个例子,区别一下"><span class="toc-number">2.</span> <span class="toc-text">给几个例子,区别一下</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="DEV">DEV</h2><p><a href="https://archive.org/web/" target="_blank" rel="external">快照</a>  <a href="http://idea.lanyus.com/" target="_blank" rel="external">IDEA注册码</a>  <a href="http://www.waqiang.com/index.php/url/shorten" target="_blank" rel="external">短网址</a><br><a href="http://paste.ofcode.org/" target="_blank" rel="external">code-paste</a>  <a href="http://div.io/topic/609?page=1" target="_blank" rel="external">从FE的角度上再看输入url后都发生了什么</a> </p>
-<h2 id="Fun">Fun</h2><p><a href="http://weavesilk.com/" target="_blank" rel="external">Silk</a>  <a href="http://codepen.io/jakealbaugh/full/PwLXXP/" target="_blank" rel="external">代码自实现</a>  <a href="http://chirag64.github.io/t-rex-runner-bot/" target="_blank" rel="external">ChromeGameByAuto</a><br><a href="http://tholman.com/dom-animator/" target="_blank" rel="external">The F12’s Note</a>  </p>
-<h2 id="Function">Function</h2><p><a href="http://www.hotcleaner.com/clickclean-app.html" target="_blank" rel="external">Probe实现</a>  <a href="http://www.mortenclaussen.com/" target="_blank" rel="external">Mortenclaussen</a><br><code>制图利器</code><a href="https://www.processon.com/" target="_blank" rel="external">ProcessOn</a>  <a href="https://sketch.io/sketchpad/" target="_blank" rel="external">sketchPad</a></p>
-<h2 id="Linux">Linux</h2><p>文件系统<a href="http://www.pathname.com/fhs/pub/fhs-2.3.html#THEFILESYSTEM" target="_blank" rel="external">FHS</a></p>
-<h2 id="Android">Android</h2><p><a href="http://www.xda-developers.com/" target="_blank" rel="external">Xda</a><br><a href="http://xposed.appkg.com/1051.html" target="_blank" rel="external">Xposed</a>)</p>
-<h2 id="Tools&amp;Usage">Tools&amp;Usage</h2><p>ddos—-<a href="https://github.com/NewEraCracker/LOIC" target="_blank" rel="external">LOIC 低轨道离子炮</a></p>
-<blockquote>
-<p>sql xss xml的常用字典(Kali2.0)<br>/usr/share/wfuzz/wordlist</p>
+		<h3 id="ES6_js也能和其他语言一样使用块级作用域了~">ES6_js也能和其他语言一样使用块级作用域了~</h3><p>块级作用域: 一对花括号<code>{}</code>括起来的代码域<br>一下子感觉js高级好多,块级作用域和执行域都在了~</p>
+<h3 id="给几个例子,区别一下">给几个例子,区别一下</h3><blockquote>
+<ol>
+<li>var</li>
+</ol>
 </blockquote>
-<h2 id="WebDesign">WebDesign</h2><p><a href="https://pages.github.com/" target="_blank" rel="external">Github</a>  <a href="https://www.heroku.com/" target="_blank" rel="external">heroku</a>  <a href="http://lmgtfy.com/?q=let+me+google+that+for+you&amp;l=1" target="_blank" rel="external">lmgtfy</a><br><a href="https://www.qingcloud.com/" target="_blank" rel="external">青云</a>  <a href="https://divshot.com/features" target="_blank" rel="external">divshot</a>  <a href="http://www.andrewmcwatters.com/" target="_blank" rel="external">ACPM</a>  <a href="http://blocsapp.com/" target="_blank" rel="external">Blocs</a><br><a href="http://bootswatch.com/" target="_blank" rel="external">Bootswatch</a>  <a href="http://sweet.2ch.sc/uptime.svg" target="_blank" rel="external">サーバ稼働状況</a>  <a href="https://twentyoverten.com" target="_blank" rel="external">Twenty Over Ten</a><br><a href="http://www.apple.com/" target="_blank" rel="external">Apple</a>  <a href="http://www.lucacasati.net/" target="_blank" rel="external">lucacasati</a>  <a href="http://www.squarespace.com/" target="_blank" rel="external">Build awebsite</a>  <a href="http://union.co/" target="_blank" rel="external">Union</a><br><a href="http://liulanqi.baidu.com/" target="_blank" rel="external">Baidu Browser</a>  </p>
-<h2 id="Other’s">Other’s</h2><p><a href="https://ruby-china.org/topics/17505" target="_blank" rel="external">如何学好一门编程语言技巧方法一粒-译</a></p>
-<hr>
-<h2 id="Videos">Videos</h2><p><a href="www.kaixindy.com">海阔天空</a><br><a href="http://en.savefrom.net/" target="_blank" rel="external">YouTuBe-Download1</a>  <a href="http://vidstatsx.com/" target="_blank" rel="external">YouTuBe-Download2</a>  </p>
-<h2 id="买买买">买买买</h2><p><a href="www.smzdm.com">什么值得买</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; num; i++ )&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">//0 1 2 3 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//  5</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>let</li>
+</ol>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; num; i++)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">//0 1 2 3 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//  Error: i is not defined</span></span><br></pre></td></tr></table></figure>
+<p>应该很清楚了</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -133,7 +136,7 @@ Tools&amp;amp;">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/04/06/2016/daily-collection/" data-title="Daily Collection | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/04/12/2016/js-let/" data-title="ES6-JS的块级作用域 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -147,18 +150,18 @@ Tools&amp;amp;">
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/04/06/2016/nexus-ota-update/" title="Nexus原生OTA升级(ROOT+XP),无需PC">
+ <a href="/04/12/2016/js-arrow-func/" title="js_arrow function">
   <strong>上一篇：</strong><br/>
   <span>
-  Nexus原生OTA升级(ROOT+XP),无需PC</span>
+  js_arrow function</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/04/06/2016/nexus-xposed/"  title="Android6.0.1 Xposed安装以及插件推荐">
+<a href="/04/06/2016/nexus-ota-update/"  title="Nexus原生OTA升级(ROOT+XP),无需PC">
  <strong>下一篇：</strong><br/> 
- <span>Android6.0.1 Xposed安装以及插件推荐
+ <span>Nexus原生OTA升级(ROOT+XP),无需PC
 </span>
 </a>
 </div>
@@ -167,7 +170,7 @@ Tools&amp;amp;">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="04/06/2016/daily-collection/" data-title="Daily Collection" data-url="http://a1ex.net/04/06/2016/daily-collection/"></div>
+	<div class="ds-thread" data-thread-key="04/12/2016/js-let/" data-title="ES6-JS的块级作用域" data-url="http://a1ex.net/04/12/2016/js-let/"></div>
 </section>
 
 
@@ -177,7 +180,7 @@ Tools&amp;amp;">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DEV"><span class="toc-number">1.</span> <span class="toc-text">DEV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fun"><span class="toc-number">2.</span> <span class="toc-text">Fun</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Function"><span class="toc-number">3.</span> <span class="toc-text">Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">4.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android"><span class="toc-number">5.</span> <span class="toc-text">Android</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools&Usage"><span class="toc-number">6.</span> <span class="toc-text">Tools&Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebDesign"><span class="toc-number">7.</span> <span class="toc-text">WebDesign</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other’s"><span class="toc-number">8.</span> <span class="toc-text">Other’s</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Videos"><span class="toc-number">9.</span> <span class="toc-text">Videos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#买买买"><span class="toc-number">10.</span> <span class="toc-text">买买买</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6_js也能和其他语言一样使用块级作用域了~"><span class="toc-number">1.</span> <span class="toc-text">ES6_js也能和其他语言一样使用块级作用域了~</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#给几个例子,区别一下"><span class="toc-number">2.</span> <span class="toc-text">给几个例子,区别一下</span></a></li></ol>
  
   </div>
 
@@ -197,7 +200,7 @@ Tools&amp;amp;">
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -235,7 +238,7 @@ Tools&amp;amp;">
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>13</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>15</sup></a></li>
 		  
 		
 		  
