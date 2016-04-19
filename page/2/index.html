@@ -78,6 +78,90 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/03/19/2016/nexus-flashing/" title="Nexus 5x解锁+第三方" itemprop="url">Nexus 5x解锁+第三方</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T16:00:00.000Z" itemprop="datePublished"> 发表于 03-19-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="0x0环境">0x0环境</h2><p>Device: Nexus 5x marshmallow(Android 6.01)<br>Description:  Ubuntu 14.04<br>DevEnv: SDK<br>Files in need: </p>
+<h2 id="0x1_解锁Bootloader">0x1 解锁Bootloader</h2><h3 id="Warning">Warning</h3><p><code>**该操作会清除手机数据,请及时备份**</code></p>
+<h3 id="正">正</h3><ol>
+<li>安装好adb和fastboot驱动: <a href="http://my.oschina.net/myaniu/blog/103385" target="_blank" rel="external">玛雅牛</a></li>
+<li>unlock bootloader<br>先开启usb debug和OEM unlocking,之后Ubuntu更改为root权限<code>sudo -i</code><blockquote>
+<p>adb devices<br>adb reboot-bootloader<br>fastboot devices<br>fastboot oem unlock</p>
+</blockquote>
+</li>
+</ol>
+<p>解锁之后的state会变成unlock而且开机会有警告,之后用开机键进行启动<br>保修的话用<code>fastboot flashing lock</code>来恢复锁定</p>
+<h3 id="刷完之后的坑">刷完之后的坑</h3><p>此时手机配置已经完全失效,<code>重新进入开发者模式选择USB-debug</code></p>
+<h2 id="0x2_刷入第三方Recovery-twrp">0x2 刷入第三方<a href="https://dl.twrp.me/bullhead/" target="_blank" rel="external">Recovery-twrp</a></h2><p>该版本适用于Nexus<code>5x</code>,其他版本请移步<a href="https://twrp.me/Devices/" target="_blank" rel="external">twrp-device</a>进行查询</p>
+<h3 id="注意">注意</h3><p>一定要检查md5,否则会出现如下问题:<br><strong>FAILED (remote: image is not a boot image)</strong></p>
+<blockquote>
+<p>md5sum twrp-3.0.0-1-bullhead.img</p>
+</blockquote>
+<h3 id="正-1">正</h3><blockquote>
+<p>root@dell:/home/hexlism/Downloads# fastboot flash recovery twrp-3.0.0-1-bullhead.img </p>
+</blockquote>
+<p>如果成功刷入,则应该显示:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">target reported max download size of 536870912 bytes&#10;sending &#39;recovery&#39; (16345 KB)...&#10;OKAY [  0.471s]&#10;writing &#39;recovery&#39;...&#10;OKAY [  0.154s]&#10;finished. total time: 0.625s</span><br></pre></td></tr></table></figure></p>
+<p>刷完之后又多一个警告=, =</p>
+<h2 id="刷入SuperSu">刷入SuperSu</h2><p>当前版本为:BETA-SuperSU-v2.68-20160228150503.zip,下载地址在<code>Reference 0x4</code></p>
+<ol>
+<li><p>放入supersu文件:</p>
+<blockquote>
+<p>adb push BETA-SuperSU-v2.68-20160228150503.zip /sdcard/Downloads</p>
+</blockquote>
+</li>
+<li><p>进入bootloader模式—关机状态,电源+音量下 (或者用命令)</p>
+</li>
+<li>选择recovery mode (前提有twrp)</li>
+<li>在twrp中选择install,之后选择push进去的zip文件即可</li>
+</ol>
+<h3 id="坑">坑</h3><p>我碰到的问题让我虚惊一场,连续三次重启之后成功启动.差点哭晕</p>
+<p>如果twrp提示需要刷入supersu,选择<code>**don&#39;t**</code>,不过我在这个过程中完全没有碰到这个问题</p>
+<h2 id="Reference">Reference</h2><p>0x0. 主要参考 <a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br>0x1. ADB<br><a href="http://www.makeuseof.com/tag/new-adb-make-process-simple-easy/" target="_blank" rel="external">ADB</a><br><a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br><a href="http://www.inexus.co/article-2823-1.html" target="_blank" rel="external">fastboot-adb</a><br>0x2. bootloader<br><a href="http://www.inexus.co/thread-18509-1-1.html" target="_blank" rel="external">inexus</a><br><a href="http://rootmygalaxy.net/how-to-unlock-lg-google-nexus-5x-bootloader-easily/" target="_blank" rel="external">rootmygalaxy</a><br><a href="http://www.androidcentral.com/how-unlock-nexus-5x-bootloader" target="_blank" rel="external">androidcentral</a><br>0x3. Third recovery<br><a href="http://www.inexus.co/thread-23627-1-1.html" target="_blank" rel="external">inexus-recovery</a><br>0x4. <a href="http://download.chainfire.eu/supersu" target="_blank" rel="external">SuperSu</a><br>ADB 命令:<a href="http://bbs.gfan.com/android-4421095-1-1.html" target="_blank" rel="external">gfan</a></p>
+<h2 id="后续开启Google_Now">后续开启Google Now</h2><p>不需要模拟地址,不需要拔卡,不过<code>需要root</code><br>一件开启=====&gt;&gt;<a href="http://www.coolapk.com/apk/com.czbix.nowenabler" target="_blank" rel="external">酷安-Google Now Enabler</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/03/19/2016/nexus-flashing/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/19/2016/nexus-flashing/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/02/27/2016/book-vbird3/" title="读书笔记--鸟哥私房菜③" itemprop="url">读书笔记--鸟哥私房菜③</a>
   </h1>
   <p class="article-author">By
@@ -1042,73 +1126,6 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/12/25/2015/Gae-phone/" title="借助GAE实现手机爬梯" itemprop="url">借助GAE实现手机爬梯</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-12-24T16:00:00.000Z" itemprop="datePublished"> 发表于 12-25-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="前提">前提</h2><p>1.拥有<code>国内</code>VPS或者学生认证资格(可以去<a href="http://www.qcloud.com/event/qcloudSchool" target="_blank" rel="external">腾讯</a>或者<a href="https://www.aliyun.com/act/aliyun/campus.html" target="_blank" rel="external">阿里</a>租国内服务器，比qq会员还省钱= =)<br>2.熟悉GoAgent和一丁点的linux基础</p>
-<h2 id="正文">正文</h2><h3 id="下载并启用">下载并启用</h3><p>在服务器上下载<a href="https://github.com/XX-net" target="_blank" rel="external">xx-net</a>,找个合适的地方进行<code>git clone https://github.com/XX-net/XX-Net.git</code><br>之后root权限启用xx-net<code>cd XX-NET &amp; sudo ./start.sh</code></p>
-<h3 id="xx-net配置">xx-net配置</h3><p>开发大大真的做到了贴心，已经集成了远程管理和后台自启功能，不过服务器系统默认不安装图形界面。<br>可以照着网上教程安装一遍X界面，然后利用浏览器进行各项配置。</p>
-<h3 id="1-初始配置可以使用config-yaml文件进行设置。">1.初始配置可以使用<code>config.yaml</code>文件进行设置。</h3><p>文件目录:<code>*/xx-net/data/launcher/config.yaml</code><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modules:&#10;  gae_proxy: &#123;auto_start: 1, current_version: &#39;&#39;&#125;&#10;  launcher: &#123;allow_remote_connect: 0, auto_start: 1, control_port: 8085, current_version: &#39;&#39;,&#10;    popup_webui: 0, proxy: gae, show_systray: 1&#125;&#10;  php_proxy: &#123;control_port: 8083&#125;&#10;update: &#123;check_update: stable, last_path: /home/a1exlism/tools/xx-net/launcher, uuid: 30988f10-9cf8-4c76-ba90-cd62d56ff304&#125;</span><br></pre></td></tr></table></figure></p>
-<p>auto_start: 1 自启 allow_remote_connect:1 允许远程控制 control_port等其他的就是字面意思了</p>
-<h3 id="2-还有个手工配置">2.还有个手工配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vim ./XX-NET/data/gae_proxy/manual.ini <span class="comment">#创建一个手工设置文件</span></span><br><span class="line"><span class="comment">#添加:</span></span><br><span class="line">[listen]</span><br><span class="line">ip = <span class="number">0.0</span>.<span class="number">0.0</span> <span class="comment">#保证外网可以访问</span></span><br><span class="line">port = <span class="number">8087</span> <span class="comment">#按照选择自行更改端口</span></span><br><span class="line">visible = <span class="number">1</span></span><br><span class="line">debuginfo = <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<p>原理:<a href="https://program-think.blogspot.com/2013/01/cross-host-use-gfw-tool.html" target="_blank" rel="external">编程随想</a></p>
-<h3 id="3-自启动设置">3.自启动设置</h3><p>如果webUI无法设置成自启动的话,可以尝试这个<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/rc.local</span><br><span class="line"><span class="comment">#在exit 0之前添加下面这句</span></span><br><span class="line">/home/a1exlism/tools/XX-NET/start.sh</span><br></pre></td></tr></table></figure></p>
-<h3 id="关闭终端之前保持start-py的运行">关闭终端之前保持start.py的运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(/home/a1exlism/tools/XX-NET/start.sh &amp;)</span><br><span class="line"><span class="comment">#类似于js闭包概念 可以无视当前命令=, =</span></span><br></pre></td></tr></table></figure>
-<h2 id="android端设置">android端设置</h2><p>版本:android4.4(已Root) 关键问题:证书问题 android5.1听朋友说好像问题挺大,等过短时间手机换了再去考虑</p>
-<h3 id="远程copy证书">远程copy证书</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#利用ssh中的scp(secure copy)命令进行远程传输</span></span><br><span class="line">scp root@Your IP:/xx-net/data/gae_proxy/CA.crt  /home/a1exlism/Downloads</span><br><span class="line"><span class="comment">#ssh端口如果更改则添加-P参数 -r递归</span></span><br></pre></td></tr></table></figure>
-<h3 id="证书转换">证书转换</h3><p>xx-net的ctr证书和android系统证书还是有较大区别的.为了不设置锁屏,而且更加的自由,将xx-net生成的证书进行转换.</p>
-<ol>
-<li>获取证书<code>hash</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#通过firefox将crt转换成pem格式</span></span><br><span class="line">openssl x509 -inform PEM -subject_<span class="built_in">hash</span>_old -in CA.pem | head -<span class="number">1</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>2.转换crt<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat CA.crt &gt; bbe23816.<span class="number">0</span>   <span class="comment">#bbe23816为刚才产生的hash值</span></span><br><span class="line">openssl x509 -inform PEM -text -in PortSwiggerCA.crt -out /dev/null &gt;&gt; bbe23816.<span class="number">0</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="证书安装">证书安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">adb push bbe23816.<span class="number">0</span> /sdcard/</span><br><span class="line">adb shell <span class="comment">#接入android shell</span></span><br><span class="line">shell@hwp6-c00:/ $ su</span><br><span class="line">root@hwp6-c00:/ <span class="comment"># mount -o remount,rw /system   #以读写形式挂载/system目录</span></span><br><span class="line">root@hwp6-c00:/ <span class="comment"># cp /sdcard/bbe23816.0 /system/etc/security/cacerts/   #复制</span></span><br><span class="line">root@hwp6-c00:/ <span class="comment"># chmod 644 /system/etc/security/cacerts/bbe23816.0   #更改权限</span></span><br></pre></td></tr></table></figure>
-<h2 id="后记">后记</h2><p>用过一段时间之后发现有点小问题,有时候手机会莫名其妙的无法使用,而PC端一直正常.<br>然后利用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep satrt.py <span class="comment">#找到启用的进程</span></span><br><span class="line"><span class="built_in">kill</span> <span class="operator">-s</span> <span class="number">9</span> PID <span class="comment">#将该进程杀掉</span></span><br><span class="line">(/home/hexlism/xx-net/start.sh &amp;) <span class="comment">#重新启动</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="Reference">Reference</h2><p><a href="https://github.com/XX-net/XX-Net/issues/1277" target="_blank" rel="external">github.XX-NET</a><br>SSH 远程传输scp<a href="http://www.vpser.net/manage/scp.html" target="_blank" rel="external">VPS侦探</a><br>Burp CA安装<a href="http://godick.maxcell.org/install-burp-ca.html" target="_blank" rel="external">godick.maxcell</a><br><a href="http://bbs.gfan.com/forum.php?mod=viewthread&amp;action=printable&amp;tid=4120383" target="_blank" rel="external">机锋论坛</a><br><a href="http://www.cnblogs.com/peida/archd837.html" target="_blank" rel="external">kill-1</a><br><a href="http://blog.csdn.net/andy572633/article/details/7211546" target="_blank" rel="external">kill-2</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/12/25/2015/Gae-phone/#comments" class="ds-thread-count comments-count-link" data-thread-key="12/25/2015/Gae-phone/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
@@ -1125,7 +1142,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.67px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18.33px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 13.33px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 15px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.67px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18.33px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 13.33px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 15px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 11.67px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -1133,7 +1150,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -1171,7 +1188,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>15</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>16</sup></a></li>
 		  
 		
 		  

@@ -78,6 +78,80 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/04/19/2016/xss-1/" title="xss习题集_1" itemprop="url">xss习题集_1</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-18T16:00:00.000Z" itemprop="datePublished"> 发表于 04-19-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>最近做了一个xss练习.<br>练习站点: <a href="http://xss-quiz.int21h.jp" target="_blank" rel="external">http://xss-quiz.int21h.jp</a><br>如果需要练习,请使用<code>firefox</code>或者<code>IE</code></p>
+<h3 id="笔记">笔记</h3><ol>
+<li>test1-2</li>
+</ol>
+<p>script标签中可以使用<code>\x \</code>等进制</p>
+<ol>
+<li><p>一旦&lt;&gt;被实体化之后,XSS就无法绕过</p>
+</li>
+<li><p>标签属性中可以尝试使用Entity实体编码进行正则绕过<br> Chrome的js检测绕过! 火狐存在路径问题</p>
+<blockquote>
+<p>POC如下</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"jav&amp;#10;ascript:alert('XSS');"</span>&gt;</span>xxx<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"jav&amp;#x0D;ascript:alert('XSS');"</span>&gt;</span>xxx<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>利用iframe的src属性<br>iframe可以调用父级 parent.alert(),data协议有个规定,一旦使用很可能会跳转至新的标签页,但是内嵌iframe会相对好一点</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">src</span>=<span class="value">"data:text/html;base64,PHNjcmlwdD5wYXJlbnQuYWxlcnQoZG9jdW1lbnQuZG9tYWluKTs8L3NjcmlwdD4"</span><span class="value">&lt;</span>/<span class="attribute">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引号过滤的话就很困难了, 靠其他情况绕过</p>
+</li>
+<li><p>document.write() 编码绕过<br>a.unicode   无需\转义,直接写就行 例: <code>\u003c</code><br>b.16hex &amp; 8hex   需要对\进行转义例如: </p>
+<pre><code>`<span class="command">\\</span>x3cscript<span class="command">\\</span>x3ealert(/xss/)<span class="command">\\</span>x3c<span class="command">\\</span>x2fscript<span class="command">\\</span>x3e`
+`<span class="command">\\</span>74script<span class="command">\\</span>76alert(document.domain)<span class="command">\\</span>74<span class="command">\\</span>57script<span class="command">\\</span>76`
+</code></pre></li>
+<li><p>JS段中实体编码绕过正则过滤<br>Twitter DomXss at Sep 24, 2010</p>
+</li>
+</ol>
+<h3 id="Reference_&amp;_Dictionary">Reference &amp; Dictionary</h3><p><a href="http://www.w3school.com.cn/tags/html_ref_entities.html" target="_blank" rel="external">实体编码表</a><br><a href="https://github.com/matachi/MaTachi.github.io/blob/master/src/pages/solutions-to-the-wargame-xss-challenges-at-xss-quiz-int21h-jp.md" target="_blank" rel="external">write up_1</a><br><a href="https://blogs.tunelko.com/2013/12/02/xss-challenges/" target="_blank" rel="external">write up_2</a><br><a href="http://blog.knownsec.com/Knownsec_RD_Checklist/xss/xss_quiz.txt" target="_blank" rel="external">write up_3</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/04/19/2016/xss-1/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/19/2016/xss-1/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/04/12/2016/js-arrow-func/" title="js_arrow function" itemprop="url">js_arrow function</a>
   </h1>
   <p class="article-author">By
@@ -745,90 +819,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/03/19/2016/nexus-flashing/" title="Nexus 5x解锁+第三方" itemprop="url">Nexus 5x解锁+第三方</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-18T16:00:00.000Z" itemprop="datePublished"> 发表于 03-19-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="0x0环境">0x0环境</h2><p>Device: Nexus 5x marshmallow(Android 6.01)<br>Description:  Ubuntu 14.04<br>DevEnv: SDK<br>Files in need: </p>
-<h2 id="0x1_解锁Bootloader">0x1 解锁Bootloader</h2><h3 id="Warning">Warning</h3><p><code>**该操作会清除手机数据,请及时备份**</code></p>
-<h3 id="正">正</h3><ol>
-<li>安装好adb和fastboot驱动: <a href="http://my.oschina.net/myaniu/blog/103385" target="_blank" rel="external">玛雅牛</a></li>
-<li>unlock bootloader<br>先开启usb debug和OEM unlocking,之后Ubuntu更改为root权限<code>sudo -i</code><blockquote>
-<p>adb devices<br>adb reboot-bootloader<br>fastboot devices<br>fastboot oem unlock</p>
-</blockquote>
-</li>
-</ol>
-<p>解锁之后的state会变成unlock而且开机会有警告,之后用开机键进行启动<br>保修的话用<code>fastboot flashing lock</code>来恢复锁定</p>
-<h3 id="刷完之后的坑">刷完之后的坑</h3><p>此时手机配置已经完全失效,<code>重新进入开发者模式选择USB-debug</code></p>
-<h2 id="0x2_刷入第三方Recovery-twrp">0x2 刷入第三方<a href="https://dl.twrp.me/bullhead/" target="_blank" rel="external">Recovery-twrp</a></h2><p>该版本适用于Nexus<code>5x</code>,其他版本请移步<a href="https://twrp.me/Devices/" target="_blank" rel="external">twrp-device</a>进行查询</p>
-<h3 id="注意">注意</h3><p>一定要检查md5,否则会出现如下问题:<br><strong>FAILED (remote: image is not a boot image)</strong></p>
-<blockquote>
-<p>md5sum twrp-3.0.0-1-bullhead.img</p>
-</blockquote>
-<h3 id="正-1">正</h3><blockquote>
-<p>root@dell:/home/hexlism/Downloads# fastboot flash recovery twrp-3.0.0-1-bullhead.img </p>
-</blockquote>
-<p>如果成功刷入,则应该显示:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">target reported max download size of 536870912 bytes&#10;sending &#39;recovery&#39; (16345 KB)...&#10;OKAY [  0.471s]&#10;writing &#39;recovery&#39;...&#10;OKAY [  0.154s]&#10;finished. total time: 0.625s</span><br></pre></td></tr></table></figure></p>
-<p>刷完之后又多一个警告=, =</p>
-<h2 id="刷入SuperSu">刷入SuperSu</h2><p>当前版本为:BETA-SuperSU-v2.68-20160228150503.zip,下载地址在<code>Reference 0x4</code></p>
-<ol>
-<li><p>放入supersu文件:</p>
-<blockquote>
-<p>adb push BETA-SuperSU-v2.68-20160228150503.zip /sdcard/Downloads</p>
-</blockquote>
-</li>
-<li><p>进入bootloader模式—关机状态,电源+音量下 (或者用命令)</p>
-</li>
-<li>选择recovery mode (前提有twrp)</li>
-<li>在twrp中选择install,之后选择push进去的zip文件即可</li>
-</ol>
-<h3 id="坑">坑</h3><p>我碰到的问题让我虚惊一场,连续三次重启之后成功启动.差点哭晕</p>
-<p>如果twrp提示需要刷入supersu,选择<code>**don&#39;t**</code>,不过我在这个过程中完全没有碰到这个问题</p>
-<h2 id="Reference">Reference</h2><p>0x0. 主要参考 <a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br>0x1. ADB<br><a href="http://www.makeuseof.com/tag/new-adb-make-process-simple-easy/" target="_blank" rel="external">ADB</a><br><a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br><a href="http://www.inexus.co/article-2823-1.html" target="_blank" rel="external">fastboot-adb</a><br>0x2. bootloader<br><a href="http://www.inexus.co/thread-18509-1-1.html" target="_blank" rel="external">inexus</a><br><a href="http://rootmygalaxy.net/how-to-unlock-lg-google-nexus-5x-bootloader-easily/" target="_blank" rel="external">rootmygalaxy</a><br><a href="http://www.androidcentral.com/how-unlock-nexus-5x-bootloader" target="_blank" rel="external">androidcentral</a><br>0x3. Third recovery<br><a href="http://www.inexus.co/thread-23627-1-1.html" target="_blank" rel="external">inexus-recovery</a><br>0x4. <a href="http://download.chainfire.eu/supersu" target="_blank" rel="external">SuperSu</a><br>ADB 命令:<a href="http://bbs.gfan.com/android-4421095-1-1.html" target="_blank" rel="external">gfan</a></p>
-<h2 id="后续开启Google_Now">后续开启Google Now</h2><p>不需要模拟地址,不需要拔卡,不过<code>需要root</code><br>一件开启=====&gt;&gt;<a href="http://www.coolapk.com/apk/com.czbix.nowenabler" target="_blank" rel="external">酷安-Google Now Enabler</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/03/19/2016/nexus-flashing/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/19/2016/nexus-flashing/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -845,7 +835,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.67px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18.33px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 13.33px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 15px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.67px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18.33px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 13.33px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 15px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 11.67px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -853,7 +843,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -891,7 +881,7 @@
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>15</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>16</sup></a></li>
 		  
 		
 		  
