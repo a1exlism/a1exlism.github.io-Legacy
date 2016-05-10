@@ -78,6 +78,128 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/05/10/2016/js-variable-lift/" title="Js_变量提升" itemprop="url">Js_变量提升</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-09T16:00:00.000Z" itemprop="datePublished"> 发表于 05-10-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="JavaSript的预编译模式">JavaSript的预编译模式</h3><p><strong>预编译模式代码不是从上到下,一行一行解析的!</strong><br><strong>预编译模式代码不是从上到下,一行一行解析的!</strong><br><strong>预编译模式代码不是从上到下,一行一行解析的!</strong></p>
+<p>编译阶段,解析引擎会把<code>定义式</code>的函数优先执行,也会把所有<code>var变量创建</code>,默认值为undefined,以提高程序的执行效率！<br>而<code>变量提升</code>的作用也就符合了这个预编译的模式:<br>  在一个函数体内声明的变量,JS解析器都会将其移动到<code>函数体的顶部</code></p>
+<h3 id="实例">实例</h3><blockquote>
+<p>例1</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'World!'</span>;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> name === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> name = <span class="string">'Jack'</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Goodbye '</span> + name);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Hello '</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>分析:<br>  这里面虽然有个if,但是归于其<code>预编译模式</code>,所以会爬到<code>var name = &#39;Jack&#39;</code>,因此在函数头会添加一行<code>var name</code>,那么name就变成了一个函数内的局部变量<br>  最终输出<code>Hello Jack</code></p>
+<blockquote>
+<p>例2</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="number">5</span>;</span><br><span class="line">    alert(<span class="built_in">window</span>.a);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line">    alert(a);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>分析:<br>  这里面还是需要有一个预编译的思想,这样的话就很容易知道a也会因为后面的<code>var a = 10</code>而引起变量提升变成一个函数内的<code>局部变量</code>,window.a其实根本没有被定义过(<code>undefined</code>)</p>
+<h3 id="Reference">Reference</h3><p><a href="https://segmentfault.com/search?q=变量提升" target="_blank" rel="external">question:变量提升_SegmentFault</a><br><a href="http://blog.csdn.net/celte/article/details/39412683" target="_blank" rel="external">Celte</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/05/10/2016/js-variable-lift/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/10/2016/js-variable-lift/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/05/09/2016/js-invocation-patten/" title="JS_函数调用&amp;this" itemprop="url">JS_函数调用&amp;this</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-08T16:00:00.000Z" itemprop="datePublished"> 发表于 05-09-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="记读&lt;&lt;JavaScript语言精粹&gt;&gt;">记读<code>&lt;&lt;JavaScript语言精粹&gt;&gt;</code></h2><p>不敢跳过,毕竟这个是THE REAL GOOD PART OF JAVASCRIPT  | XP<br>看完发现自己大部分也差不多了解了, 这个里面的火车图有点想吐槽啊…看得一愣一愣的…</p>
+<h2 id="函数调用的几种模式">函数调用的几种模式</h2><ol>
+<li>方法调用（Method Invocation）</li>
+<li>函数调用（Function Invocation）</li>
+<li>构造函数调用（Constructor Invocation）</li>
+<li>apply和call调用（Apply And Call Invocation）</li>
+</ol>
+<h2 id="方法调用函数调用构造函数调用的区别">方法调用<em>函数调用</em>构造函数调用的区别</h2><h3 id="方法调用_Method_Invocation">方法调用    Method Invocation</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.value ++;</span><br><span class="line">		<span class="comment">//	this --&gt; obj</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure>
+<h3 id="函数调用">函数调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fucntion add( a, b )&#123;</span><br><span class="line">	<span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line">add(<span class="number">1</span>,<span class="number">2</span>);	<span class="comment">//函数调用</span></span><br></pre></td></tr></table></figure>
+<h3 id="构造函数调用">构造函数调用</h3><p>混合了经典的面向对象的语法和自身原型性质(C++和Java中，实例是通过使用<code>new</code>操作符生成)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> instance = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		name: <span class="string">'Nexus'</span>,</span><br><span class="line">		model: <span class="string">'5x'</span></span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> inst1 = <span class="keyword">new</span> instance();</span><br></pre></td></tr></table></figure></p>
+<h2 id="函数调用和this">函数调用和this</h2><p>由于js一开始的设计缺陷,导致存在这个bug:函数调用之后this会指向一个全局变量<code>window.xxx</code></p>
+<h3 id="‘错误’代码">‘错误’代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.value);	<span class="comment">//0</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> innerFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			alert(++<span class="keyword">this</span>.value);	<span class="comment">//501</span></span><br><span class="line">		&#125;</span><br><span class="line">		innerFunction();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure>
+<p>运行之后可以很明显的看出来第二个alert居然指向了全局的变量window.value<br>原因已经在上文中谈到</p>
+<h3 id="代码改进">代码改进</h3><p>利用js函数内声明的变量会存在<code>运行域</code>这个特性,来构造一个that(约定俗成的一个变量名了= =)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.value);	<span class="comment">//0</span></span><br><span class="line">		<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">		<span class="keyword">var</span> innerFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			alert( ++that.value );	<span class="comment">//1</span></span><br><span class="line">		&#125;</span><br><span class="line">		innerFunction();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure></p>
+<h2 id="Reference">Reference</h2><p><a href="http://doctrina.org/Javascript-Function-Invocation-Patterns.html" target="_blank" rel="external">JavaScript: Function Invocation Patterns</a><br><a href="https://github.com/CoffeeXu/Front-end/blob/master/JavaScript%20Function%20Invocation%20Patterns.md" target="_blank" rel="external">CoffeeXu</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/05/09/2016/js-invocation-patten/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/09/2016/js-invocation-patten/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/05/09/2016/js-stack-heap/" title="JS_引用类型和基本类型区别" itemprop="url">JS_引用类型和基本类型区别</a>
   </h1>
   <p class="article-author">By
@@ -676,115 +798,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/04/12/2016/js-arrow-func/" title="js_arrow function" itemprop="url">js_arrow function</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="箭头函数">箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
-<h3 id="例子">例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/04/12/2016/js-arrow-func/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-arrow-func/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/04/12/2016/js-let/" title="ES6-JS的块级作用域" itemprop="url">ES6-JS的块级作用域</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="ES6_js也能和其他语言一样使用块级作用域了~">ES6_js也能和其他语言一样使用块级作用域了~</h3><p>块级作用域: 一对花括号<code>{}</code>括起来的代码域<br>一下子感觉js高级好多,块级作用域和执行域都在了~</p>
-<h3 id="给几个例子,区别一下">给几个例子,区别一下</h3><blockquote>
-<ol>
-<li>var</li>
-</ol>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; num; i++ )&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">//0 1 2 3 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//  5</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<ol>
-<li>let</li>
-</ol>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; num; i++)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">//0 1 2 3 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//  Error: i is not defined</span></span><br></pre></td></tr></table></figure>
-<p>应该很清楚了</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/04/12/2016/js-let/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-let/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -801,7 +814,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.67px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 13.33px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 18.33px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 13.33px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.43px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 18.57px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14.29px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 12.86px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 17.14px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.43px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 12.86px;">XSS</a> <a href="/tags/daily/" style="font-size: 15.71px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15.71px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -809,7 +822,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -847,7 +860,7 @@
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>19</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>21</sup></a></li>
 		  
 		
 		  

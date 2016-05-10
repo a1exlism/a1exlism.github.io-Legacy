@@ -78,6 +78,115 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/04/12/2016/js-arrow-func/" title="js_arrow function" itemprop="url">js_arrow function</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="箭头函数">箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
+<h3 id="例子">例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/04/12/2016/js-arrow-func/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-arrow-func/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/04/12/2016/js-let/" title="ES6-JS的块级作用域" itemprop="url">ES6-JS的块级作用域</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="ES6_js也能和其他语言一样使用块级作用域了~">ES6_js也能和其他语言一样使用块级作用域了~</h3><p>块级作用域: 一对花括号<code>{}</code>括起来的代码域<br>一下子感觉js高级好多,块级作用域和执行域都在了~</p>
+<h3 id="给几个例子,区别一下">给几个例子,区别一下</h3><blockquote>
+<ol>
+<li>var</li>
+</ol>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; num; i++ )&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">//0 1 2 3 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//  5</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>let</li>
+</ol>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; num; i++)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">//0 1 2 3 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//  Error: i is not defined</span></span><br></pre></td></tr></table></figure>
+<p>应该很清楚了</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/04/12/2016/js-let/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-let/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/04/06/2016/nexus-ota-update/" title="Nexus原生OTA升级(ROOT+XP),无需PC" itemprop="url">Nexus原生OTA升级(ROOT+XP),无需PC</a>
   </h1>
   <p class="article-author">By
@@ -668,400 +777,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/02/26/2016/book-vbird2/" title="读书笔记--鸟哥私房菜②" itemprop="url">读书笔记--鸟哥私房菜②</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-25T16:00:00.000Z" itemprop="datePublished"> 发表于 02-26-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="正则">正则</h1><p>主要以栗子为主</p>
-<h2 id="grep_[-ivn][-A/Bn]_‘keyword’">grep [-ivn][-A/Bn] ‘keyword’</h2><h3 id="行相关">行相关</h3><p>0x1 查找内核中有 eth 字样的行数据,显示行号,额外再显示选中行前(befor)3行和后(after)2行的数据</p>
-<blockquote>
-<p>dmesg | grep -n -B3 -A2 ‘eth’</p>
-</blockquote>
-<h3 id="模糊查询[]">模糊查询<code>[]</code></h3><p>0x1 不区分test和taste单词</p>
-<blockquote>
-<p>grep -n ‘t[ae]st’ testfile</p>
-</blockquote>
-<h3 id="反向查找[^]">反向查找<code>[^]</code></h3><p>0x1 找首字母不是元音的单词所在的行号<br>可以自行去找个测试网站尝试(\s过滤无用空格避免错误判断)</p>
-<blockquote>
-<p>grep -in ‘\b[^aeiou\s][a-z]+\b’ /var/log/kern.log.1</p>
-<blockquote>
-<p>这里自作聪明用<code>()</code>把[a-z]+给框了起来,然后就识别不出来</p>
-</blockquote>
-</blockquote>
-<p>——后记: 发现<code>小括号也需要转义</code>!!= =</p>
-<h3 id="行-首尾^$">行-首尾^$</h3><p>此<code>^</code>区别于上面的<code>^</code>,位置不同<br>0x1 查找二月份的内核日志</p>
-<blockquote>
-<p>grep -in ‘^Feb’ /var/log/kern.log.1</p>
-</blockquote>
-<p>0x2 查找以<code>.</code>作为结尾的数据(.本身存在option含义,需要转义)<br>$在linux中是换行结尾符,windows则为<code>^M$</code></p>
-<blockquote>
-<p>grep -n ‘.$’ /var/log/kern.log.1</p>
-</blockquote>
-<p>0x3 查找空白行(^$首尾相接)</p>
-<blockquote>
-<p>grep -n ‘^$’ ./tmp/testfile</p>
-</blockquote>
-<h3 id="字符匹配-_*_+">字符匹配. * +</h3><h4 id="-_匹配任意一个字符">. 匹配任意一个字符</h4><p>0x1 匹配 l??d </p>
-<blockquote>
-<p>grep -n ‘l..d’ /var/log/kern.log.1</p>
-</blockquote>
-<p>该文件可以匹配到called load等单词</p>
-<h4 id="*_匹配0次以上">* 匹配0次以上</h4><p>0x2 <code>.*</code>的组合表示匹配任意数量字符</p>
-<blockquote>
-<p>grep -n ‘e.*e’ /var/log/kern.log.1</p>
-</blockquote>
-<p>这种情况在两个e之间碰到e不会停下,直到找到最后一个e,形成最长字串</p>
-<h4 id="+_匹配1次以上_需要转义=_=">+ 匹配1次以上 需要转义= =</h4><p>0x3 匹配e/ee/eee/e….</p>
-<blockquote>
-<p>grep -n ‘e+‘ /var/log/kern.log.1</p>
-</blockquote>
-<h3 id="连续字符范围限定{m,n}_需要转义">连续字符范围限定{m,n} 需要转义</h3><p>m,n可以省略其一<br>0x1 仅匹配一个<code>er</code></p>
-<blockquote>
-<p>grep -n ‘(er){1}‘ testfile </p>
-</blockquote>
-<p>0x2 匹配2个以上er</p>
-<blockquote>
-<p>grep -n ‘(er){2,}‘ testfile</p>
-</blockquote>
-<p>这里有一种情况:<code>ererer</code>在{2,}的选择下是一个整体,即{}会自动匹配最高重复数 </p>
-<h2 id="sed_[-nefr]_action">sed [-nefr] action</h2><p>-n silent模式,只出现被处理的那行<br>-e edit -f 将sed动作写入file<br>-r 扩展型regex -i直接修改文件内容</p>
-<h3 id="action_===_[n1[,n2]]_function">action === [n1[,n2]] function</h3><p>所有动作的最小单位均为<code>行</code><br>function:<br>-a add -c 替换 -d delete<br>-i insert -p print  -s 替换,<code>可用正则</code> 加上标题的行号就可以进行<code>批量替换</code>啦~</p>
-<h2 id="栗子">栗子</h2><h3 id="增_删_替换">增 删 替换</h3><p>0x1 /etc/passwd删除2-5行并打印(含行号<code>nl</code>)</p>
-<blockquote>
-<p>nl /etc/passwd | sed ‘2,5d’</p>
-</blockquote>
-<p>0x2 在3-5行前/后换行新添’next’字符串(参照vim)</p>
-<blockquote>
-<p>nl /etc/passwd | sed ‘3,5<code>[i/a]</code> next’</p>
-</blockquote>
-<p>0x3 将1-4行全部替换为’next’</p>
-<blockquote>
-<p>nl /etc/passwd | sed ‘1,4c next’</p>
-</blockquote>
-<h3 id="显示">显示</h3><p>0x1 只显示2-6行内容<br><code>-n</code> 经过处理的</p>
-<blockquote>
-<p>nl /etc/passwd | sed -n ‘2,6p’</p>
-</blockquote>
-<h3 id="!批量替换!">!批量替换!</h3><p>语法: <code>s/word1/word2/g&#39; g可选</code>globe`全局概念<br>0x1 在ifconfig中将ip截取出来</p>
-<blockquote>
-<p>选行-&gt;除首-&gt;除尾<br>ifconfig wlan0 | grep -n ‘192.168’ | sed ‘s/^.<em>ddr://g’ | sed ‘s/\s.</em>.0$//g’</p>
-</blockquote>
-<h4 id="vim的批量替换">vim的批量替换</h4><p>0x1 当前行替换</p>
-<blockquote>
-<p>:s/XXX/YYY/g</p>
-</blockquote>
-<p>0x2 行范围替换</p>
-<blockquote>
-<p>:100, 102s/XXX/YYY/g </p>
-</blockquote>
-<p>0x3 全局替换</p>
-<blockquote>
-<p>%s/XXX/YYY/g</p>
-</blockquote>
-<h2 id="egrep(expand_grep)">egrep(expand grep)</h2><p>(感觉以后还是直接alias grep=egrep好一点)<br><code>X+</code> 1个或以上X <code>X?</code>0或一个X <code>|</code>或<br><code>()</code> 分组 <code>()+</code> 多个重复组判别<br>小李子:</p>
-<blockquote>
-<p>cat /etc/passwd | egrep -n “^c|^s”</p>
-</blockquote>
-<p>(nl居然连grep基本的^都不能用…)</p>
-<h1 id="格式化输出">格式化输出</h1><h2 id="排版printf">排版<code>printf</code></h2><blockquote>
-<p>printf ‘%s\n’ $(nl /etc/passwd)<br>printf ‘\x55\n’</p>
-</blockquote>
-<h2 id="awk_‘[conditions]{actions}’_filename"><code>awk</code> ‘[conditions]{actions}’ filename</h2><h3 id="attention">attention</h3><p>$0 整行 行内:$1 $2 $3 为第n个连续<br>NF 每行的字段总数 NR:目前处理的行号(row) FS:文件分隔符(split)<br>所有动作需要<code>&quot;&quot;</code>括住<br>运算符<code>==</code>表示等于</p>
-<h3 id="对比sed">对比sed</h3><p>相对于sed的行处理,sed主要将数据变为多个字段进行处理</p>
-<h3 id="栗子-1">栗子</h3><p>0x1 取出最近3个账号及登陆IP last -i显示ip</p>
-<blockquote>
-<p>last -in 3<br>a1exlism@dell:~$ last -in 5 | awk ‘{printf $1 “\t” $3”\n”}’</p>
-<blockquote>
-<p>a1exlism 0.0.0.0<br>a1exlism 0.0.0.0<br>a1exlism 0.0.0.0<br>wtmp  Mon</p>
-</blockquote>
-</blockquote>
-<p>0x2 NR NF实践-列出所处理的行列号</p>
-<blockquote>
-<p>last -n 5 | awk ‘{printf $1 “\t lines:” NR “\t columns: “ NF”\n”}’</p>
-</blockquote>
-<p>0x3 awk内部重定向和NS实践-打印以<code>:</code>分割数据后第三<code>大字段</code>中大于5的第二个<code>小字段</code></p>
-<blockquote>
-<p>cat /etc/passwd | awk ‘{FS “:”} $3 &gt; 5 {printf $2 “\n”}’</p>
-</blockquote>
-<p>0x4 awk预置变量(保证第一行数据正确地被执行)</p>
-<blockquote>
-<p>cat /etc/passwd | awk ‘<code>BEGIN</code> {FS “:”} $3 &gt; 5 {printf $2 “\n”}’</p>
-</blockquote>
-<p>0x5 awk的计算功能<br>计算不写了</p>
-<h1 id="Reference">Reference</h1><p>《鸟哥私房菜》</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/02/26/2016/book-vbird2/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/26/2016/book-vbird2/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/02/20/2016/book-vbird/" title="读书笔记--鸟哥私房菜①" itemprop="url">读书笔记--鸟哥私房菜①</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-19T16:00:00.000Z" itemprop="datePublished"> 发表于 02-20-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="文件系统">文件系统</h1><h2 id="非纯文本文件查看_od">非纯文本文件查看 od</h2><p>od -t [filetype] filename<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a1exlism@dell:/var/<span class="built_in">log</span>$ od -t c Xorg.<span class="number">1</span>.log</span><br></pre></td></tr></table></figure></p>
-<h2 id="ls按容量,时间查询">ls按容量,时间查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -h <span class="comment">#容量</span></span><br><span class="line">ls --full-time <span class="comment">#完整时间</span></span><br><span class="line">ls --time=[use,atime,ctime] <span class="comment">#分别对应下面的touch三种情况</span></span><br></pre></td></tr></table></figure>
-<p>ls -F   #输出文件类型</p>
-<h2 id="完全复制">完全复制</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp <span class="operator">-a</span> ./file1 /another/floder/file2</span><br></pre></td></tr></table></figure>
-<p>-a == -pdr<br>-p:复制文件属性<br>-d:如果是link file,复制链接文件而不是链接过去的大文件<br>-r:递归复制</p>
-<h2 id="touch修改文件时间">touch修改文件时间</h2><p>三种时间在以下情况变化:<br>modification time(mtime) 内容被改<br>change time(ctime) 属性或者权限被改变(e.g., 重命名)<br>access time(atime) 被访问</p>
-<h2 id="文件隐藏属性attr">文件隐藏属性attr</h2><h3 id="chattr">chattr</h3><p>chattr [+-=] [option]<br>option(常用):<br>a(root):只能增加数据,不能修改和删除<br>d:禁止文件被dump<br>i(root):禁止基本一切操作(增删改查)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">chattr +i testfile</span><br><span class="line">rm testfile</span><br><span class="line"><span class="comment">#rm：是否删除有写保护的普通空文件 "testfile"？ y</span></span><br><span class="line"><span class="comment">#rm: 无法删除"testfile": 不允许的操作</span></span><br><span class="line">chattr -i testfile</span><br><span class="line">rm testfile</span><br></pre></td></tr></table></figure></p>
-<h3 id="lsattr">lsattr</h3><p>和ls差不多用法<br>三个option:<br>-a all<br>-d 忽略目录内文件<br>-R 递归<br>e.g., <code>lsattr -aR</code></p>
-<h2 id="Ext2文件系统介绍">Ext2文件系统介绍</h2><p>暂时感觉ext2-4这些概念差不多..<br>Ext2文件系统采用的是 <code>Indexed Allocation</code>(索引式文件系统),和数据结构中的结构体指针差不多,windows那种的话应该和U盘的<br>super block: 记录文件系统的整体信息,包括inode/block总量,使用量,剩余量和文件系统的格式和相关信息<br><code>inode: 记录文件属性,一个文件占用一个inode,同时记录该文件数据所在的block号码</code><br>block: 实际记录文件的内容,文件过大会占用多个block<br><code>磁盘的碎片整理</code>==&gt;<a href="http://zxgchinese.blog.51cto.com/2508492/1131456" target="_blank" rel="external">51CTO-明诚阁</a></p>
-<h2 id="文件链接:_ln">文件链接: ln</h2><p><code>hard link</code>硬链接</p>
-<blockquote>
-<p>无法<br>1.链接目录<br>2.跨文件系统</p>
-</blockquote>
-<p>和复制还是有区别的,至少硬链接产生的文件使他们两个文件指向同一个block文件</p>
-<p><code>symbolic link</code>符号链接,对应于windows的<code>快捷方式</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line">ln <span class="operator">-s</span> ~ <span class="built_in">test</span>Folder <span class="comment">#-s symbolic</span></span><br><span class="line">ls <span class="operator">-l</span></span><br><span class="line"><span class="comment">#lrwxrwxrwx 1 a1exlism a1exlism   13  2月 14 22:28 testFolder1 -&gt; /home/a1exlism</span></span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>后记<br>ln -s 中的文件目录需要<code>绝对路径</code>,类似于./的相对路径无效</p>
-</blockquote>
-<h1 id="Device/Driver">Device/Driver</h1><h2 id="CMD-磁盘">CMD-磁盘</h2><p>1.<code>df</code> [option] file/floder<br>df ==&gt;disk and floder<br>-i 以inode显示 -h humanized人性化显示(kb,mb,etc)</p>
-<blockquote>
-<p>df /</p>
-</blockquote>
-<p>2.<code>du</code><br>du ==&gt; disk usage 磁盘使用状态<br>-s sum只显示总量</p>
-<blockquote>
-<p>du ~</p>
-</blockquote>
-<h2 id="查询文件系统">查询文件系统</h2><p>dumpe2fs [-bh] 设备文件名<br>-b broken size 显示坏道<br>-h 只显示superblock</p>
-<h2 id="磁盘分区fdisk">磁盘分区fdisk</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df <span class="comment">#查看大致文件系统的物理地址</span></span><br><span class="line">fdisk /dev/sdb</span><br></pre></td></tr></table></figure>
-<p>之后按m就能解决一切了..不过小心按w(保存)</p>
-<h2 id="磁盘格式化mkfs">磁盘格式化mkfs</h2><p>make file system</p>
-<blockquote>
-<p>mkfs [-t 文件系统格式] 设备文件名<br>文件格式:ext4,exFat…</p>
-</blockquote>
-<p>不细搞了</p>
-<h2 id="磁盘检验fsck,badblocks">磁盘检验fsck,badblocks</h2><p>file system check</p>
-<blockquote>
-<p>mkfs [-t 文件系统格式] [option] 设备文件名</p>
-</blockquote>
-<h2 id="iso镜像loop模式挂载"><code>iso</code>镜像loop模式挂载</h2><p>un/mount需要root权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /tmp/mountFloder</span><br><span class="line">mount -o loop /media/a1exlism/Data/ISO/ubuntu-<span class="number">15.04</span>-desktop-amd64.iso </span><br><span class="line">df <span class="comment">#查看一下有没有挂载</span></span><br><span class="line">umount /tmp/mountFloder</span><br></pre></td></tr></table></figure></p>
-<h1 id="Shell">Shell</h1><p>command记忆功能(注销之后才会被记录):</p>
-<blockquote>
-<p>vim .bash_history </p>
-</blockquote>
-<p>分行输入,添加<code>\</code>,enter<br>bash中引用变量:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入当前kernel</span></span><br><span class="line"><span class="built_in">cd</span> /lib/modules/`uname -r`/kernel</span><br><span class="line"><span class="comment">#`表示优先执行</span></span><br><span class="line"><span class="built_in">cd</span> /lib/modules/$(uname -r)/kernel</span><br></pre></td></tr></table></figure></p>
-<h2 id="变量">变量</h2><h3 id="内置命令">内置命令</h3><ol>
-<li><p>环境变量</p>
-<blockquote>
-<p>env</p>
-</blockquote>
-</li>
-<li><p>所有变量</p>
-<blockquote>
-<p>set</p>
-</blockquote>
-</li>
-<li><p>自定义变量转换为环境变量</p>
-<blockquote>
-<p>export val</p>
-</blockquote>
-</li>
-<li><p>变量声明<br>-a arr  -i integer<br>-x export -r readonly</p>
-<blockquote>
-<p>declare [-aixr] val</p>
-</blockquote>
-</li>
-<li><p>删除变量/函数<br>-v  variable only -f function only</p>
-<blockquote>
-<p>unset [-vf] mylove</p>
-</blockquote>
-</li>
-<li><p>用户限制</p>
-<blockquote>
-<p><a href="http://man.linuxde.net/ulimit" target="_blank" rel="external">ulimit</a><br>ulimit [-SHacdfltu] 配额</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="变量内容">变量内容</h3><p><strong>0x1</strong> 删除</p>
-<blockquote>
-<p><code>#/##</code> 从左往右删除最短/最长一条<br><code>%,%%</code>和#一样,不过是从右往左<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#root权限,没有:的情况下</span></span><br><span class="line">mailtest=<span class="variable">$MAIL</span></span><br><span class="line"><span class="comment">#删除顶级目录</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;mailtest#/*/&#125;</span></span><br><span class="line"><span class="comment">#删除末级目录</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;mailtest%/*&#125;</span></span><br><span class="line"><span class="comment">#有:情况下</span></span><br><span class="line">path=<span class="variable">$PATH</span></span><br><span class="line"><span class="comment">#只保留第一个环境</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;path%%:*&#125;</span></span><br><span class="line"><span class="comment">#只保留最后一个环境</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;path1##*:&#125;</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p><strong>0x2</strong> 替换</p>
-<ol>
-<li>直接替换<blockquote>
-<p>${变量/oldWord/newWord}</p>
-</blockquote>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#只替换首个</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;path/sbin/SBIN&#125;</span></span><br><span class="line"><span class="comment">#全局替换</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;path//sbin/SBIN&#125;</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>判断型替换<br><code>:-</code>判断USERNAME变量是否存在,不存在则创建变量并赋值为a1exlism(只有-的情况下在变量为空状态无法赋值)<blockquote>
-<p>USERNAME=${USERNAME:-a1exlism}</p>
-</blockquote>
-</li>
-</ol>
-<h2 id="历史命令">历史命令</h2><h3 id="查询历史命令">查询历史命令</h3><p>前面提到<code>~/.bash_history</code>,history则是读取</p>
-<blockquote>
-<p>history [n]  最近n条<br>history [-c]  清除历史<br>history [-raw]  读取/添加/写入histfiles(添加和写入感觉一模一样..)</p>
-</blockquote>
-<h3 id="执行历史命令">执行历史命令</h3><p>!n !command 就不讲了</p>
-<blockquote>
-<p><code>!!</code>执行上一条命令</p>
-</blockquote>
-<h2 id="数据流重定向">数据流重定向</h2><p>顾名思义,数据放入了一个缓冲区,看到重定向符号就将数据转移</p>
-<h3 id="&gt;_&gt;&gt;_&lt;&lt;_&lt;描述">&gt; &gt;&gt; &lt;&lt; &lt;描述</h3><p>单个字符==&gt;替换<br>双字符===&gt;累加<br>和c++一样&gt;输出,&lt;输入<br>代码:0输入 1输出 2错误输出</p>
-<p>栗子:</p>
-<h3 id="&gt;_&gt;&gt;区别">&gt;  &gt;&gt;区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将ll内容输出至rootfile,terminal不显示</span></span><br><span class="line">a1exlism@dell:~$ ll / &gt; /tmp/rootfile</span><br><span class="line"><span class="comment">#用&gt;&gt;将~的内容累加至rootfile</span></span><br><span class="line">a1exlism@dell:~$ ll ~ &gt;&gt; /tmp/rootfile </span><br><span class="line"><span class="comment">#符号&gt;将rootfile进行重写,原先的内容全部消失</span></span><br><span class="line">a1exlism@dell:~$ ll / &gt; /tmp/rootfile</span><br></pre></td></tr></table></figure>
-<h3 id="错误输出">错误输出</h3><p>涉及到前面提到的代码—<br><strong>0x1</strong>. stdout输出至file1,stderr输出至file2</p>
-<blockquote>
-<p>find / -name *.desktop &gt;file1 2&gt;file2</p>
-</blockquote>
-<p><strong>0x2</strong>. 丢弃错误数据==&gt;放到<code>黑洞</code>设备<code>/dev/null</code></p>
-<blockquote>
-<p>find / -name *.desktop &gt;file1 2&gt;/dev/null</p>
-</blockquote>
-<p><strong>0x3</strong>. 将错误正确数据分开放入同一个文件</p>
-<blockquote>
-<p><code>1.</code>find / -name <em>.desktop &gt; file 2&gt;&gt; file =, =<br><code>2.</code>find / -name </em>.desktop &gt; file 2&gt;&amp;1  这个表示不理解,放弃</p>
-</blockquote>
-<h3 id="标准输入">标准输入</h3><p><strong>0x1</strong>. 栗子<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cat 创建文件</span></span><br><span class="line">cat catfile</span><br><span class="line">stdin</span><br><span class="line">Ctrl+D</span><br><span class="line"><span class="comment">#利用文件写入</span></span><br><span class="line">cat &gt; catfile &lt; ~/.bash_<span class="built_in">history</span></span><br><span class="line">diff ~/.bash_<span class="built_in">history</span> catfile  <span class="comment">#无输出</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>0x2</strong>. &lt;&lt;为结束字符</p>
-<blockquote>
-<p>cat &gt; catfile &lt;&lt; “EOF”</p>
-</blockquote>
-<h3 id="命令判断">命令判断</h3><p>&amp;&amp;   两者为<code>同或</code>关系,a1-&gt;b1,a0-&gt;b0<br>||    两者为<code>异或</code>关系,a1-&gt;b0,a0-&gt;b1<br>执行顺序为<code>从左到右</code>的顺序执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不清楚/tmp/abc的存在,直接创建/tmp/abc/def文件</span></span><br><span class="line">ls /tmp/abc || mkdir -p /tmp/abc &amp;&amp; touch /tmp/abc/def</span><br><span class="line"><span class="comment">#ls 报错是因为判断是在创建之前..</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="管道Pipe">管道Pipe</h2><p><code>|</code> 类似于重定向将标准<code>输出</code>以某种方式输出</p>
-<blockquote>
-<p>ll / | less</p>
-</blockquote>
-<h3 id="选取命令">选取命令</h3><h4 id="cut">cut</h4><blockquote>
-<p>cut -d ‘words’ -f number / cut -c 字符范围</p>
-</blockquote>
-<p>example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#功能和js的split函数一样,以-d的分隔符分成数组,选取组号</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span> | cut <span class="operator">-d</span> : <span class="operator">-f</span> <span class="number">2</span> <span class="comment">#-d delimiter -f fields</span></span><br><span class="line"><span class="comment">#取所有行第12个字符之后的内容</span></span><br><span class="line"><span class="built_in">export</span> &gt; file1</span><br><span class="line"><span class="built_in">export</span> | cut -c <span class="number">12</span>- &gt;file2 <span class="comment">#-c character</span></span><br><span class="line"><span class="comment">#比较一下</span></span><br><span class="line">colordiff [-c] file1 file2 <span class="comment"># -c 为比较所有内容</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="grep">grep</h4><p>这部分放在了<a href="http://a1exlism.github.io/10/14/2015/bash1/" target="_blank" rel="external">Linux 查询</a>中</p>
-<h3 id="排序命令">排序命令</h3><h4 id="sort">sort</h4><blockquote>
-<p>sort [-option] file</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#默认字母排序</span></span><br><span class="line">cat /etc/passwd | sort</span><br><span class="line"><span class="comment">#以每行第三个作为排序依据</span></span><br><span class="line">cat /etc/passwd | sort -t : -k <span class="number">3</span>  <span class="comment">#-t --field separator -k key(location)-t --field separator -k key(location)</span></span><br><span class="line"><span class="comment">#cut + sort</span></span><br><span class="line">last | cut <span class="operator">-d</span> <span class="string">' '</span> <span class="operator">-f</span> <span class="number">1</span> | sort</span><br></pre></td></tr></table></figure>
-<h4 id="uniq">uniq</h4><p>-i 忽略大小写 -c count</p>
-<blockquote>
-<p>uniq [-ic]</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#记录独立用户登陆,依名字排序并统计次数</span></span><br><span class="line">last | cut <span class="operator">-d</span> <span class="string">' '</span> <span class="operator">-f</span> <span class="number">1</span> | sort | uniq -c</span><br></pre></td></tr></table></figure>
-<h4 id="wc">wc</h4><p>word count字数统计 -l行 -w字 -m字符</p>
-<blockquote>
-<p>wc [-lwm]</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#记录登陆系统的总人次 grep1排除空白行 grep2排除wtmp</span></span><br><span class="line">last | grep [a-zA-Z] | grep -v wtmp | wc <span class="operator">-l</span></span><br></pre></td></tr></table></figure>
-<h3 id="双向重定向">双向重定向</h3><p>tee -&gt; T 两边都行(stdout+file) -a appand添加(否则覆盖)</p>
-<blockquote>
-<p>tee [-a] file</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#存入文件file并在屏幕以less方式显示</span></span><br><span class="line">cat /var/<span class="built_in">log</span>/kern.log | tee /tmp/<span class="built_in">test</span>Floder/file | less</span><br></pre></td></tr></table></figure>
-<h3 id="字符转换">字符转换</h3><h4 id="tr">tr</h4><p>translate or remove<br>[option]: -d delete -s squeeze-replace</p>
-<blockquote>
-<p>tr [-ds] string</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#切换大写</span></span><br><span class="line">last | tr <span class="operator">-s</span> [a-z] [A-Z]</span><br><span class="line"><span class="comment">#删除冒号</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span> | tr <span class="operator">-d</span> :</span><br></pre></td></tr></table></figure>
-<h3 id="数据合并">数据合并</h3><h4 id="join">join</h4><p>-t 分隔 -i 无视大小写 <code>-1 n</code> 文件1用第n个字段进行分析</p>
-<blockquote>
-<p>join [-ti12] file1 file2</p>
-</blockquote>
-<p>join之前一般需要<code>sort</code>一下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#合并passwd和shadow数据,stdout之后并记录在test文件中</span></span><br><span class="line">join -t : /etc/passwd /etc/shadow |tee <span class="built_in">test</span></span><br><span class="line"><span class="comment">#先看看相同之处</span></span><br><span class="line">head -n <span class="number">3</span> /etc/passwd /etc/group  <span class="comment">#相同之处在file1第四个字段和file2的第三个字段</span></span><br><span class="line"><span class="comment">#文件1以第四个字段GID作为分析内容</span></span><br><span class="line">join -t : -<span class="number">1</span> <span class="number">4</span> /etc/passwd -<span class="number">2</span> <span class="number">3</span> /etc/group</span><br></pre></td></tr></table></figure></p>
-<p>合并后的输出第一字段为相同字段,后面不重复显示</p>
-<h4 id="paste">paste</h4><p>数据直接黏贴,[tab]作为分隔符</p>
-<blockquote>
-<p>paste /etc/passwd /etc/shadow</p>
-</blockquote>
-<h3 id="切割/合成">切割/合成</h3><h4 id="split">split</h4><p>-b —bytes 可加单位 -l line number</p>
-<blockquote>
-<p>split [-bl] file PreFix</p>
-</blockquote>
-<h4 id="cat">cat</h4><p>利用数据流重定向</p>
-<blockquote>
-<p>cat files* &gt;&gt; file</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 200M文件切割成四份,每份60M--videos会被分成四部分,只有第一个能看,也不能调进度</span></span><br><span class="line"><span class="built_in">cd</span> /tmp/<span class="built_in">test</span>Floder; split -b <span class="number">60</span>m ~/Downloads/video.rmvb videos </span><br><span class="line"><span class="comment"># 合并上述文件</span></span><br><span class="line">cat videos* &gt;&gt; viedo.rmvb <span class="comment">#确实很棒 数据流重定向</span></span><br></pre></td></tr></table></figure>
-<h3 id="参数代换">参数代换</h3><p><code>xargs</code>为不支持管道符号的command提供了额外的支持<br>-0 特殊字符格式化 -e EOF符 n 次数</p>
-<blockquote>
-<p>xargs [-0epn] command</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查询前三个账户并用echo来显示 (栗子不怎么恰当,不过原书finger的栗子已失效)</span></span><br><span class="line">cut <span class="operator">-d</span> : <span class="operator">-f</span> <span class="number">1</span> /etc/passwd | head -n <span class="number">3</span> |xargs <span class="built_in">echo</span> </span><br><span class="line"><span class="comment">#echo5个账号,第三个账号为bin,xargs以'bin'作为EOF标识</span></span><br><span class="line">cut <span class="operator">-d</span> : <span class="operator">-f</span> <span class="number">1</span> /etc/passwd | xargs -n <span class="number">5</span> <span class="operator">-e</span> <span class="string">'bin'</span> <span class="built_in">echo</span> <span class="comment">#注意-e'bin'连在一起</span></span><br></pre></td></tr></table></figure>
-<h3 id="减号-">减号<code>-</code></h3><p>在一条命令中(管道符隔开),前面的stdout作为后面的stdin(变量存储)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 类似于匿名函数,减少了文件名的产生</span></span><br><span class="line">tar -cvf - /tmp/<span class="built_in">test</span>Floder/ | tar -xvf -</span><br></pre></td></tr></table></figure></p>
-<h1 id="Reference">Reference</h1><p>《鸟哥私房菜》</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/02/20/2016/book-vbird/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/20/2016/book-vbird/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
@@ -1078,7 +793,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.67px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 13.33px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 18.33px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.67px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 13.33px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+       <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.43px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 18.57px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14.29px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 12.86px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 17.14px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.43px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 12.86px;">XSS</a> <a href="/tags/daily/" style="font-size: 15.71px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15.71px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
     </div>
   </div>
 
@@ -1086,7 +801,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -1124,7 +839,7 @@
 		  
 		
 		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>19</sup></a></li>
+			<li><a href="/categories/Web/" title="Web">Web<sup>21</sup></a></li>
 		  
 		
 		  

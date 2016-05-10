@@ -4,26 +4,35 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Js学习笔记(1) | A1exlism</title>
+    <title>JS_函数调用&amp;this | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="一步步走Js一个小概念:    文档(document):呈现静态信息的页面.    document是window的其中一个对象跳转新的界面:window.location = &amp;quot;http://www.google.com&amp;quot;;设置延迟:1setTimeout(function()&amp;#123;alert(123);&amp;#125;,1000)    //1s后启动函数
-查询元素,插">
+    <meta name="description" content="记读&amp;lt;&amp;lt;JavaScript语言精粹&amp;gt;&amp;gt;不敢跳过,毕竟这个是THE REAL GOOD PART OF JAVASCRIPT  | XP看完发现自己大部分也差不多了解了, 这个里面的火车图有点想吐槽啊…看得一愣一愣的…
+函数调用的几种模式
+方法调用（Method Invocation）
+函数调用（Function Invocation）
+构造函数调用（Constructor">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Js学习笔记(1)">
-<meta property="og:url" content="http://a1ex.net/10/01/2015/ClientJS-1/index.html">
+<meta property="og:title" content="JS_函数调用&this">
+<meta property="og:url" content="http://a1ex.net/05/09/2016/js-invocation-patten/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="一步步走Js一个小概念:    文档(document):呈现静态信息的页面.    document是window的其中一个对象跳转新的界面:window.location = &amp;quot;http://www.google.com&amp;quot;;设置延迟:1setTimeout(function()&amp;#123;alert(123);&amp;#125;,1000)    //1s后启动函数
-查询元素,插">
-<meta property="og:updated_time" content="2015-11-12T10:06:05.000Z">
+<meta property="og:description" content="记读&amp;lt;&amp;lt;JavaScript语言精粹&amp;gt;&amp;gt;不敢跳过,毕竟这个是THE REAL GOOD PART OF JAVASCRIPT  | XP看完发现自己大部分也差不多了解了, 这个里面的火车图有点想吐槽啊…看得一愣一愣的…
+函数调用的几种模式
+方法调用（Method Invocation）
+函数调用（Function Invocation）
+构造函数调用（Constructor">
+<meta property="og:updated_time" content="2016-05-09T14:41:28.159Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Js学习笔记(1)">
-<meta name="twitter:description" content="一步步走Js一个小概念:    文档(document):呈现静态信息的页面.    document是window的其中一个对象跳转新的界面:window.location = &amp;quot;http://www.google.com&amp;quot;;设置延迟:1setTimeout(function()&amp;#123;alert(123);&amp;#125;,1000)    //1s后启动函数
-查询元素,插">
+<meta name="twitter:title" content="JS_函数调用&this">
+<meta name="twitter:description" content="记读&amp;lt;&amp;lt;JavaScript语言精粹&amp;gt;&amp;gt;不敢跳过,毕竟这个是THE REAL GOOD PART OF JAVASCRIPT  | XP看完发现自己大部分也差不多了解了, 这个里面的火车图有点想吐槽啊…看得一愣一愣的…
+函数调用的几种模式
+方法调用（Method Invocation）
+函数调用（Function Invocation）
+构造函数调用（Constructor">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -80,14 +89,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/01/2015/ClientJS-1/" title="Js学习笔记(1)" itemprop="url">Js学习笔记(1)</a>
+      <a href="/05/09/2016/js-invocation-patten/" title="JS_函数调用&amp;this" itemprop="url">JS_函数调用&amp;this</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-09-30T16:00:00.000Z" itemprop="datePublished"> 发表于 10-01-2015</time>
+    <time datetime="2016-05-08T16:00:00.000Z" itemprop="datePublished"> 发表于 05-09-2016</time>
     
   </p>
 </header>
@@ -96,19 +105,25 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一步步走Js"><span class="toc-number">1.</span> <span class="toc-text">一步步走Js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#针对IE的条件注释"><span class="toc-number">1.1.</span> <span class="toc-text">针对IE的条件注释</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#记读<<JavaScript语言精粹>>"><span class="toc-number">1.</span> <span class="toc-text">记读<<JavaScript语言精粹>></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数调用的几种模式"><span class="toc-number">2.</span> <span class="toc-text">函数调用的几种模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法调用函数调用构造函数调用的区别"><span class="toc-number">3.</span> <span class="toc-text">方法调用函数调用构造函数调用的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法调用_Method_Invocation"><span class="toc-number">3.1.</span> <span class="toc-text">方法调用    Method Invocation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数调用"><span class="toc-number">3.2.</span> <span class="toc-text">函数调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造函数调用"><span class="toc-number">3.3.</span> <span class="toc-text">构造函数调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数调用和this"><span class="toc-number">4.</span> <span class="toc-text">函数调用和this</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#‘错误’代码"><span class="toc-number">4.1.</span> <span class="toc-text">‘错误’代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码改进"><span class="toc-number">4.2.</span> <span class="toc-text">代码改进</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="一步步走Js">一步步走Js</h2><p>一个小概念:<br>    文档(document):呈现静态信息的页面.<br>    document是window的其中一个对象<br>跳转新的界面:<br><code>window.location = &quot;http://www.google.com&quot;;</code><br>设置延迟:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">123</span>);&#125;,<span class="number">1000</span>)    <span class="comment">//1s后启动函数</span></span><br></pre></td></tr></table></figure></p>
-<p>查询元素,插入内容<br>        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(timestamp.firstChild == <span class="literal">null</span>)    </span><br><span class="line">            timestamp.appendChild(<span class="built_in">document</span>.createTextNode(<span class="keyword">new</span> <span class="built_in">Date</span>().toString()));</span><br><span class="line">    <span class="keyword">var</span> timestamp=<span class="built_in">document</span>.getElementById(<span class="string">"timestamp"</span>)</span><br><span class="line">        <span class="comment">//timestamp具有style和className属性</span></span><br></pre></td></tr></table></figure></p>
-<p>添加点击事件:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timestamp.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.innerHTML = <span class="keyword">new</span> <span class="built_in">Date</span>().toString();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>内容显示隐藏的简单实现:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">        <span class="class">.reveal</span> * <span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">none</span></span>;&#125;</span></span><br><span class="line">        <span class="class">.reveal</span> *<span class="class">.handle</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">block</span></span>;&#125;</span></span><br><span class="line">        <span class="comment">/*只有"handle"的元素显示*/</span></span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> elements = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"reveal"</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; elements.length;i++)&#123;</span><br><span class="line">                <span class="keyword">var</span> elt = elements[i];   <span class="comment">//elt为reveal元素节点</span></span><br><span class="line">                <span class="keyword">var</span> title = elt.getElementsByClassName(<span class="string">"handle"</span>)[<span class="number">0</span>];<span class="comment">//第一个handle类的元素</span></span><br><span class="line">                addRevealHandler(title,elt);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">addRevealHandler</span>(<span class="params">title,elt</span>) </span>&#123;</span><br><span class="line">                title.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (elt.className == <span class="string">"reveal"</span>)</span><br><span class="line">                        elt.className = <span class="string">"revealed"</span>;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (elt.className == <span class="string">"revealed"</span>)</span><br><span class="line">                        elt.className = <span class="string">"reveal"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"reveal"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span> <span class="attribute">class</span>=<span class="value">"handle"</span>&gt;</span>CLick here to Reveal Hidden Text<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span>This paragraph is hidden.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Js可以放在Url中实现,使用javascript:协议<br>for example:(所有浏览器均支持)<br>  <code>&lt;a href=&quot;javascript:alert(&#39;123&#39;);&quot;&gt;WTF?&lt;/a&gt;</code></li>
-</ul>
-<h3 id="针对IE的条件注释">针对IE的条件注释</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if IE6]&gt;</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+		<h2 id="记读&lt;&lt;JavaScript语言精粹&gt;&gt;">记读<code>&lt;&lt;JavaScript语言精粹&gt;&gt;</code></h2><p>不敢跳过,毕竟这个是THE REAL GOOD PART OF JAVASCRIPT  | XP<br>看完发现自己大部分也差不多了解了, 这个里面的火车图有点想吐槽啊…看得一愣一愣的…</p>
+<h2 id="函数调用的几种模式">函数调用的几种模式</h2><ol>
+<li>方法调用（Method Invocation）</li>
+<li>函数调用（Function Invocation）</li>
+<li>构造函数调用（Constructor Invocation）</li>
+<li>apply和call调用（Apply And Call Invocation）</li>
+</ol>
+<h2 id="方法调用函数调用构造函数调用的区别">方法调用<em>函数调用</em>构造函数调用的区别</h2><h3 id="方法调用_Method_Invocation">方法调用    Method Invocation</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.value ++;</span><br><span class="line">		<span class="comment">//	this --&gt; obj</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure>
+<h3 id="函数调用">函数调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fucntion add( a, b )&#123;</span><br><span class="line">	<span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line">add(<span class="number">1</span>,<span class="number">2</span>);	<span class="comment">//函数调用</span></span><br></pre></td></tr></table></figure>
+<h3 id="构造函数调用">构造函数调用</h3><p>混合了经典的面向对象的语法和自身原型性质(C++和Java中，实例是通过使用<code>new</code>操作符生成)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> instance = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		name: <span class="string">'Nexus'</span>,</span><br><span class="line">		model: <span class="string">'5x'</span></span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> inst1 = <span class="keyword">new</span> instance();</span><br></pre></td></tr></table></figure></p>
+<h2 id="函数调用和this">函数调用和this</h2><p>由于js一开始的设计缺陷,导致存在这个bug:函数调用之后this会指向一个全局变量<code>window.xxx</code></p>
+<h3 id="‘错误’代码">‘错误’代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.value);	<span class="comment">//0</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> innerFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			alert(++<span class="keyword">this</span>.value);	<span class="comment">//501</span></span><br><span class="line">		&#125;</span><br><span class="line">		innerFunction();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure>
+<p>运行之后可以很明显的看出来第二个alert居然指向了全局的变量window.value<br>原因已经在上文中谈到</p>
+<h3 id="代码改进">代码改进</h3><p>利用js函数内声明的变量会存在<code>运行域</code>这个特性,来构造一个that(约定俗成的一个变量名了= =)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.value);	<span class="comment">//0</span></span><br><span class="line">		<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">		<span class="keyword">var</span> innerFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			alert( ++that.value );	<span class="comment">//1</span></span><br><span class="line">		&#125;</span><br><span class="line">		innerFunction();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure></p>
+<h2 id="Reference">Reference</h2><p><a href="http://doctrina.org/Javascript-Function-Invocation-Patterns.html" target="_blank" rel="external">JavaScript: Function Invocation Patterns</a><br><a href="https://github.com/CoffeeXu/Front-end/blob/master/JavaScript%20Function%20Invocation%20Patterns.md" target="_blank" rel="external">CoffeeXu</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -116,7 +131,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/10/01/2015/ClientJS-1/" data-title="Js学习笔记(1) | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/05/09/2016/js-invocation-patten/" data-title="JS_函数调用&amp;this | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -130,18 +145,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/10/02/2015/ClientJS-2/" title="Js学习笔记(2)">
+ <a href="/05/10/2016/js-variable-lift/" title="Js_变量提升">
   <strong>上一篇：</strong><br/>
   <span>
-  Js学习笔记(2)</span>
+  Js_变量提升</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/09/28/2015/kali-install2/"  title="将Kali安装到U盘">
+<a href="/05/09/2016/js-stack-heap/"  title="JS_引用类型和基本类型区别">
  <strong>下一篇：</strong><br/> 
- <span>将Kali安装到U盘
+ <span>JS_引用类型和基本类型区别
 </span>
 </a>
 </div>
@@ -150,7 +165,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="10/01/2015/ClientJS-1/" data-title="Js学习笔记(1)" data-url="http://a1ex.net/10/01/2015/ClientJS-1/"></div>
+	<div class="ds-thread" data-thread-key="05/09/2016/js-invocation-patten/" data-title="JS_函数调用&this" data-url="http://a1ex.net/05/09/2016/js-invocation-patten/"></div>
 </section>
 
 
@@ -160,7 +175,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一步步走Js"><span class="toc-number">1.</span> <span class="toc-text">一步步走Js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#针对IE的条件注释"><span class="toc-number">1.1.</span> <span class="toc-text">针对IE的条件注释</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#记读<<JavaScript语言精粹>>"><span class="toc-number">1.</span> <span class="toc-text">记读<<JavaScript语言精粹>></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数调用的几种模式"><span class="toc-number">2.</span> <span class="toc-text">函数调用的几种模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法调用函数调用构造函数调用的区别"><span class="toc-number">3.</span> <span class="toc-text">方法调用函数调用构造函数调用的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法调用_Method_Invocation"><span class="toc-number">3.1.</span> <span class="toc-text">方法调用    Method Invocation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数调用"><span class="toc-number">3.2.</span> <span class="toc-text">函数调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造函数调用"><span class="toc-number">3.3.</span> <span class="toc-text">构造函数调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数调用和this"><span class="toc-number">4.</span> <span class="toc-text">函数调用和this</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#‘错误’代码"><span class="toc-number">4.1.</span> <span class="toc-text">‘错误’代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码改进"><span class="toc-number">4.2.</span> <span class="toc-text">代码改进</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
