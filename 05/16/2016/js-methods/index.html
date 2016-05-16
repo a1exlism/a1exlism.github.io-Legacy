@@ -4,29 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>G4W-collection | A1exlism</title>
+    <title>JS_方法的理解和使用 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="Issues5/35GitHub的大神们更新了gvsIp的使用(版本c35fb8e),简要提一下(Win下):gvsIp已失效
-1-30-2016update弃用goagent，启用xx-net好久没更新，xx-net在github可下载，根据goagent原理添加了图形界面，还有个自动扫Ip功能= =妥！原作者的项目使用go语言开坑，goproxy
-gae部署界面更改部署原理不变，界面变化，pr">
+    <meta name="description" content="0x1.前言发现以前自己还写过一篇原型问题,看到一篇讲protoype的博客发现自己还不清不楚,顺便还介绍了各种方法,记录一下.
+0x2.介绍方法1.对象方法:1234567function product(name,price)&amp;#123;  this.name = name;  this.price = price;  this.introduce = function()&amp;#123;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="G4W-collection">
-<meta property="og:url" content="http://a1ex.net/03/20/2015/g4w/index.html">
+<meta property="og:title" content="JS_方法的理解和使用">
+<meta property="og:url" content="http://a1ex.net/05/16/2016/js-methods/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="Issues5/35GitHub的大神们更新了gvsIp的使用(版本c35fb8e),简要提一下(Win下):gvsIp已失效
-1-30-2016update弃用goagent，启用xx-net好久没更新，xx-net在github可下载，根据goagent原理添加了图形界面，还有个自动扫Ip功能= =妥！原作者的项目使用go语言开坑，goproxy
-gae部署界面更改部署原理不变，界面变化，pr">
-<meta property="og:updated_time" content="2016-04-03T08:43:10.958Z">
+<meta property="og:description" content="0x1.前言发现以前自己还写过一篇原型问题,看到一篇讲protoype的博客发现自己还不清不楚,顺便还介绍了各种方法,记录一下.
+0x2.介绍方法1.对象方法:1234567function product(name,price)&amp;#123;  this.name = name;  this.price = price;  this.introduce = function()&amp;#123;">
+<meta property="og:updated_time" content="2016-05-16T14:02:28.054Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="G4W-collection">
-<meta name="twitter:description" content="Issues5/35GitHub的大神们更新了gvsIp的使用(版本c35fb8e),简要提一下(Win下):gvsIp已失效
-1-30-2016update弃用goagent，启用xx-net好久没更新，xx-net在github可下载，根据goagent原理添加了图形界面，还有个自动扫Ip功能= =妥！原作者的项目使用go语言开坑，goproxy
-gae部署界面更改部署原理不变，界面变化，pr">
+<meta name="twitter:title" content="JS_方法的理解和使用">
+<meta name="twitter:description" content="0x1.前言发现以前自己还写过一篇原型问题,看到一篇讲protoype的博客发现自己还不清不楚,顺便还介绍了各种方法,记录一下.
+0x2.介绍方法1.对象方法:1234567function product(name,price)&amp;#123;  this.name = name;  this.price = price;  this.introduce = function()&amp;#123;">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -83,14 +80,14 @@ gae部署界面更改部署原理不变，界面变化，pr">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/20/2015/g4w/" title="G4W-collection" itemprop="url">G4W-collection</a>
+      <a href="/05/16/2016/js-methods/" title="JS_方法的理解和使用" itemprop="url">JS_方法的理解和使用</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-03-19T16:00:00.000Z" itemprop="datePublished"> 发表于 03-20-2015</time>
+    <time datetime="2016-05-15T16:00:00.000Z" itemprop="datePublished"> 发表于 05-16-2016</time>
     
   </p>
 </header>
@@ -99,45 +96,23 @@ gae部署界面更改部署原理不变，界面变化，pr">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Issues"><span class="toc-number">1.</span> <span class="toc-text">Issues</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-30-2016update"><span class="toc-number">2.</span> <span class="toc-text">1-30-2016update</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#弃用goagent，启用xx-net"><span class="toc-number">2.1.</span> <span class="toc-text">弃用goagent，启用xx-net</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gae部署界面更改"><span class="toc-number">2.2.</span> <span class="toc-text">gae部署界面更改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-18-2016update"><span class="toc-number">3.</span> <span class="toc-text">3-18-2016update</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#手机端更新,推荐"><span class="toc-number">3.1.</span> <span class="toc-text">手机端更新,推荐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手机端手动Proxy"><span class="toc-number">3.2.</span> <span class="toc-text">手机端手动Proxy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-2016update"><span class="toc-number">4.</span> <span class="toc-text">4-3-2016update</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#本页面网址更改"><span class="toc-number">4.1.</span> <span class="toc-text">本页面网址更改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正"><span class="toc-number">4.2.</span> <span class="toc-text">正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bookmarks"><span class="toc-number">5.</span> <span class="toc-text">Bookmarks</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x1-前言"><span class="toc-number">1.</span> <span class="toc-text">0x1.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x2-介绍方法"><span class="toc-number">2.</span> <span class="toc-text">0x2.介绍方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x3-具体的代码示例(对象VS类方法)"><span class="toc-number">3.</span> <span class="toc-text">0x3.具体的代码示例(对象VS类方法)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x5-_同名情况"><span class="toc-number">4.</span> <span class="toc-text">0x5. 同名情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x4-_实例调用类方法"><span class="toc-number">5.</span> <span class="toc-text">0x4. 实例调用类方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x5-_Reference"><span class="toc-number">6.</span> <span class="toc-text">0x5. Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="Issues">Issues</h2><p><del>5/35GitHub的大神们更新了gvsIp的使用(版本c35fb8e),简要提一下(Win下):<br>gvsIp已失效</del></p>
-<h2 id="1-30-2016update">1-30-2016update</h2><h3 id="弃用goagent，启用xx-net">弃用goagent，启用xx-net</h3><p>好久没更新，<code>xx-net</code>在github可下载，根据goagent原理添加了图形界面，还有个自动扫Ip功能= =<br>妥！原作者的项目使用go语言开坑，<code>goproxy</code></p>
-<h3 id="gae部署界面更改">gae部署界面更改</h3><p>部署原理不变，界面变化，projectID(档案ID)即为原APPID</p>
-<h2 id="3-18-2016update">3-18-2016update</h2><h3 id="手机端更新,推荐">手机端更新,推荐</h3><p>网址就不列了,原因都懂,优先级如下</p>
-<ol>
-<li>Lantern</li>
-<li>ShadowSocks-Android</li>
-<li>Psiphon(听说不怎么安全?好歹socket= =)</li>
-</ol>
-<h3 id="手机端手动Proxy">手机端手动Proxy</h3><ol>
-<li>ProxyDroid</li>
-</ol>
-<h2 id="4-3-2016update">4-3-2016update</h2><h3 id="本页面网址更改">本页面网址更改</h3><p>更改后该页面所有网站打开需要多走一步,加密关键词:<code>base</code></p>
-<h3 id="正">正</h3><p>窝槽,最近这几天网络真的是全线崩盘,不过看了日期也就默默忍受了=L =<br>依靠GAE的各类软件统统阵亡,花了两天来寻找替代品,未雨绸缪总是好的.</p>
-<p>结果如下(PC端):</p>
-<ol>
-<li><p>lantern配置(太懒,自己没有测试过,还有每个版本差别比较大): <a href="">aHR0cHM6Ly9nb2Nocm9tZS5pbmZvL2xhbnRlcm4tZ3VpZGUv</a><br>据说能达到流畅看油管1080P</p>
-</li>
-<li><p>SS推荐,自己找了很久,速度还算不错的:<code>不算广告,爱信不信</code><br><a href="aHR0cHM6Ly93d3cuY2VsbHN5c3RlY2guY24=">猫梯</a>  ===&gt;&gt;听说以后改<code>Cisco_Anyconnect</code><br><a href="aHR0cHM6Ly9saWFuamlhbmcubW9l">喵帕斯</a>  ===&gt;&gt;速度很不错!<br>SS的路也走不远了,喝茶的喝茶,闲聊的闲聊:-(</p>
-</li>
-<li><p>通过Code_could平台<br><strong>移动端搞这个比较麻烦</strong></p>
-<ol>
-<li>HeroKu</li>
-<li>OpenShift</li>
-<li>Koding</li>
-<li>etc<br>原理都一样: remote机器开的ssh可以为本地一个隧道,进行端口转发即可.<br>条件: <code>开放的SSH</code><br>Code:<blockquote>
-<p>ssh -D 7001 username@remote-host</p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ol>
-<p>-D 表示动态绑定 7001为本地端口,如果上传了id_rsa.pub,就没有密码登陆了</p>
-<p>Reference见 <a href="./#Bookmarks">Bookmarks</a></p>
-<h2 id="Bookmarks">Bookmarks</h2><p><a href="aHR0cHM6Ly9naXRodWIuY29tL21ob2hhaS9tMmNvbmY=">批量选择GCC IP</a> <a href="aHR0cHM6Ly90b29sYm94Lmdvb2dsZWFwcHMuY29tL2FwcHMvZGlnLw==">Dig</a>  <a href="aHR0cHM6Ly9naXRodWIuY29tL2F6enZ4L2dvZ290ZXN0ZXI=">gogotester</a><br><a href="aHR0cDovL3B1YmxpYy1kbnMudGsv">DNS Server List</a> <a href="dHRwOi8vYmxvZy5uZXRzaC5vcmcvcG9zdHMveW91dHViZS1nb29nbGUtZmFjZWJvb2stdHdpdHRlci13aWtpcGVkaWEtaG9zdHNfMTE5OS5uZXRzaC5odG1sI2hvc3Rz">hosts</a><br><del><a href="#">goagent</a>  <a href="aHR0cDovL3d3dy5pNzA4Ni5jb20vZ2Flamlhc2hlZ29hZ2VudHNoZXpoaWNoYW5namlhbndlbnRpem9uZ2ppZWppamllanVlZmFuZ2Zh">goagent设置常见问题</a></del><br><a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a> <a href="https://www.openshift.com/" target="_blank" rel="external">OpenShift</a> <a href="Koding.com">Koding</a><br><a href="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tL2EvMTE5MDAwMDAwMzkzOTYxNQ==">SSH隧道翻墙-segmentfault</a> <a href="https://hev.cc/1184.html" target="_blank" rel="external">端口转发原理-Heiher’s Blog</a></p>
+		<h2 id="0x1-前言">0x1.前言</h2><p>发现以前自己还写过一篇原型问题,看到一篇讲protoype的博客发现自己还不清不楚,顺便还介绍了各种方法,记录一下.</p>
+<h2 id="0x2-介绍方法">0x2.介绍方法</h2><p>1.对象方法:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">product</span>(<span class="params">name,price</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.price = price;</span><br><span class="line">  <span class="keyword">this</span>.introduce = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'This product\'s name is: '</span> + <span class="keyword">this</span>.name);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对象方法如名字所说,本质还是一个对象(Object).<br>不过可以用作一个类(class),可以通过new来实例化一个对象<code>var car = new product(&#39;car&#39;,500000)</code>,其中product方法中的this因此将指针指向了car</p>
+<p>2.类方法(本质是<code>静态方法</code>)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">product.price = fucntion()&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'The price is :'</span> + <span class="keyword">this</span>.price);<span class="comment">// this -&gt; product</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看作这个函数本身添加了一个名为price属性函数(方法),但是在实例化过程中他<code>不会被携带</code>给实例,因为他没有办法传递(前面的传递是通过this指针来操作的)</p>
+<p>3.原型方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">product.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'The product named '</span> + <span class="keyword">this</span>.name + <span class="string">'values $'</span> + <span class="keyword">this</span>.price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>总结</code>: 对象方法含有this, 类方法根据对象名添加, 原型方法 class.prototype.func 看一下就行啦</p>
+<h2 id="0x3-具体的代码示例(对象VS类方法)">0x3.具体的代码示例(对象VS类方法)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> BaseClass = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="comment">//对象方法</span></span><br><span class="line">  <span class="keyword">this</span>.f1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">' This is a object function.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">BaseClass.f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//静态方法(类方法) </span></span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">' This is a static method '</span>); </span><br><span class="line">&#125; </span><br><span class="line">BaseClass.f2();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> BaseClass();<span class="comment">//实例化</span></span><br><span class="line"></span><br><span class="line">instance1.f1();</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">  instance1.f2();<span class="comment">//instance1.f2 is not a function </span></span><br><span class="line">&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'---Error:---\n'</span> + err + <span class="string">'\n----'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(instance1)); <span class="comment">//[ 'f1' ]</span></span><br></pre></td></tr></table></figure>
+<h2 id="0x5-_同名情况">0x5. 同名情况</h2><p>只考虑对象方法和原型方法同名,类方法上面已经讨论,不纠结=. =<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> product = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> car = <span class="keyword">new</span> product();</span><br><span class="line">product.prototype.func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line">car.func(); <span class="comment">//  1</span></span><br><span class="line"><span class="keyword">delete</span> car.func;</span><br><span class="line">car.func(); <span class="comment">//  2</span></span><br></pre></td></tr></table></figure></p>
+<p>只有在内置的对象方法被删除之后,语法才会去沿着原型链向上寻找同名函数</p>
+<h2 id="0x4-_实例调用类方法">0x4. 实例调用类方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object.price.call(object);</span><br></pre></td></tr></table></figure>
+<p>利用<code>all</code>或者<code>apply</code>调用过来(个人理解这是将词法作用域/上下文环境复制过来的意思)</p>
+<h2 id="0x5-_Reference">0x5. Reference</h2><p><a href="http://linder0209.iteye.com/blog/1076172" target="_blank" rel="external">javascript中静态方法、实例方法、内部方法和原型的一点见解_linder0209</a><br><a href="http://www.hi-docs.com/article/detail-MTE=.html" target="_blank" rel="external">JavaScript类方法，对象方法(this)，原型方法(prototype)_hi-docs</a><br><a href="http://www.cnblogs.com/yjf512/archive/2011/06/03/2071914.html#!comments" target="_blank" rel="external">JS中的prototype_轩脉刃</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -145,7 +120,7 @@ gae部署界面更改部署原理不变，界面变化，pr">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://a1ex.net/03/20/2015/g4w/" data-title="G4W-collection | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://a1ex.net/05/16/2016/js-methods/" data-title="JS_方法的理解和使用 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -158,20 +133,20 @@ gae部署界面更改部署原理不变，界面变化，pr">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/06/30/2015/daily-git/" title="Git Daily">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Git Daily</span>
+
+<div class="next">
+<a href="/05/10/2016/js-variable-lift/"  title="Js_变量提升">
+ <strong>下一篇：</strong><br/> 
+ <span>Js_变量提升
+</span>
 </a>
 </div>
-
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="03/20/2015/g4w/" data-title="G4W-collection" data-url="http://a1ex.net/03/20/2015/g4w/"></div>
+	<div class="ds-thread" data-thread-key="05/16/2016/js-methods/" data-title="JS_方法的理解和使用" data-url="http://a1ex.net/05/16/2016/js-methods/"></div>
 </section>
 
 
@@ -181,7 +156,7 @@ gae部署界面更改部署原理不变，界面变化，pr">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Issues"><span class="toc-number">1.</span> <span class="toc-text">Issues</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-30-2016update"><span class="toc-number">2.</span> <span class="toc-text">1-30-2016update</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#弃用goagent，启用xx-net"><span class="toc-number">2.1.</span> <span class="toc-text">弃用goagent，启用xx-net</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gae部署界面更改"><span class="toc-number">2.2.</span> <span class="toc-text">gae部署界面更改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-18-2016update"><span class="toc-number">3.</span> <span class="toc-text">3-18-2016update</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#手机端更新,推荐"><span class="toc-number">3.1.</span> <span class="toc-text">手机端更新,推荐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手机端手动Proxy"><span class="toc-number">3.2.</span> <span class="toc-text">手机端手动Proxy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-2016update"><span class="toc-number">4.</span> <span class="toc-text">4-3-2016update</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#本页面网址更改"><span class="toc-number">4.1.</span> <span class="toc-text">本页面网址更改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正"><span class="toc-number">4.2.</span> <span class="toc-text">正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bookmarks"><span class="toc-number">5.</span> <span class="toc-text">Bookmarks</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x1-前言"><span class="toc-number">1.</span> <span class="toc-text">0x1.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x2-介绍方法"><span class="toc-number">2.</span> <span class="toc-text">0x2.介绍方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x3-具体的代码示例(对象VS类方法)"><span class="toc-number">3.</span> <span class="toc-text">0x3.具体的代码示例(对象VS类方法)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x5-_同名情况"><span class="toc-number">4.</span> <span class="toc-text">0x5. 同名情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x4-_实例调用类方法"><span class="toc-number">5.</span> <span class="toc-text">0x4. 实例调用类方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x5-_Reference"><span class="toc-number">6.</span> <span class="toc-text">0x5. Reference</span></a></li></ol>
  
   </div>
 
