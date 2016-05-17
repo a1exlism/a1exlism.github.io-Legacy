@@ -7,19 +7,19 @@
     <title>A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="A1ex">
+    <meta name="author" content="a1ex">
     
 
     
-    <meta name="description" content="A1ex&apos;s Blog">
+    <meta name="description" content="Quentin&apos;s Blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="A1exlism">
-<meta property="og:url" content="http://a1ex.net/page/2/index.html">
+<meta property="og:url" content="http://csser.work/page/2/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="A1ex&apos;s Blog">
+<meta property="og:description" content="Quentin&apos;s Blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A1exlism">
-<meta name="twitter:description" content="A1ex&apos;s Blog">
+<meta name="twitter:description" content="Quentin&apos;s Blog">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -44,7 +44,7 @@
 			
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/" title="A1exlism">A1exlism</a></h1>
-				<h2 class="blog-motto">Learning and bloging</h2>
+				<h2 class="blog-motto">虽然走的很慢,但我不会后退.</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
@@ -53,6 +53,8 @@
 					<ul>
 					 
 						<li><a href="/">Home</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
 					
 						<li><a href="/archives">Archives</a></li>
 					
@@ -78,163 +80,11 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/04/24/2016/daily2/" title="linux日常更新-02" itemprop="url">linux日常更新-02</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-24T09:02:27.876Z" itemprop="datePublished"> 发表于 04-24-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="环境:Ubuntu">环境:Ubuntu</h1><h2 id="Commond">Commond</h2><h3 id="command快捷键emacs">command快捷键emacs</h3><p>Ctrl+u  删除当前输入</p>
-<h3 id="查询公网IP">查询公网IP</h3><blockquote>
-<p><a href="http://gaodi2002.blog.51cto.com/" target="_blank" rel="external">高迪</a><br>curl ifconfig.me<br>curl ipinfo.io</p>
-</blockquote>
-<h2 id="System">System</h2><h3 id="Shell转义">Shell转义</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">字符</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>‘’</code>(单引号)</td>
-<td style="text-align:center">硬转义，其内部所有的shell 元字符、通配符都会被关掉。注意，硬转义中不允许出现<code>’</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>“”</code>(双引号)</td>
-<td style="text-align:center">软转义，其内部只允许出现特定的shell 元字符：<code>$</code>用于参数代换 `  用于命令代替</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>\</code>(反斜杠)</td>
-<td style="text-align:center">转义，去除其后紧跟的元字符或通配符的特殊意义。</td>
-</tr>
-</tbody>
-</table>
-<p>Reference: <a href="http://www.cnblogs.com/chengmo/archive/2010/10/17/1853344.html" target="_blank" rel="external">程默’s Linux</a></p>
-<h3 id="系统保存的desktop目录">系统保存的desktop目录</h3><blockquote>
-<p>/usr/share/applications/</p>
-</blockquote>
-<h3 id="系统添加证书">系统添加证书</h3><p>1.将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.&gt;<a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a>,自己暂时没有尝试过<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github 为例进行说明</span></span><br><span class="line">sudo mkdir /usr/share/ca-certificates/github.com/</span><br><span class="line"><span class="comment">## 进入到所创建好的目录，这里使用了一种 !!:2 来指代上面的目录，索引从0开始，即 sudo对应0，mkdir对应1</span></span><br><span class="line"><span class="built_in">cd</span> !!:<span class="number">2</span></span><br><span class="line"><span class="comment">## 将准备好的要导入的证书复制到当前目录下</span></span><br><span class="line">sudo cp /path/to//github.com.crt .</span><br><span class="line"><span class="comment">## 运行配置命令导入，运行此命令后会出现类似下图所示的配置选项，相应配置即可</span></span><br><span class="line">sudo dpkg-reconfigure ca-certificates</span><br><span class="line"><span class="comment">## 配置好后再更新一下</span></span><br><span class="line">sudo update-ca-certificates</span><br></pre></td></tr></table></figure></p>
-<p>Reference:<br><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a></p>
-<h3 id="GUI界面设置自启动">GUI界面设置自启动</h3><blockquote>
-<p><a href="http://www.linuxidc.com/Linux/2013-04/83060.htm" target="_blank" rel="external">Linuxidc-byguess</a><br>gnome-session-properties</p>
-</blockquote>
-<h3 id="更改默认语言">更改默认语言</h3><p><a href="http://tonychiu.blog.51cto.com/656605/393131" target="_blank" rel="external">qiujichun</a></p>
-<h3 id="手动添加字体(16-04)">手动添加字体(16.04)</h3><p><a href="http://my.oschina.net/itblog/blog/278566" target="_blank" rel="external">oschina_摆渡者</a></p>
-<h3 id="unity中彻底清除最近打开文档(视频)的历史记录">unity中彻底清除最近打开文档(视频)的历史记录</h3><blockquote>
-<p><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=337582" target="_blank" rel="external">ubuntu1023</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文档的历史记录</span></span><br><span class="line">rm ~/.local/share/zeitgeist/activity.sqlite &amp;&amp; zeitgeist-daemon --replace</span><br><span class="line"><span class="comment">#播放器中的“最近打开”的历史记录</span></span><br><span class="line">rm -v ~/.local/share/recently-used.xbel</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="桌面快捷方式">桌面快捷方式</h3><p><a href="http://os.51cto.com/art/201311/418841.htm" target="_blank" rel="external">51CTO</a><br><a href="http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/" target="_blank" rel="external">howopensource</a></p>
-<h3 id="清垃圾">清垃圾</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#清apt缓存</span></span><br><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
-<p><code>autoremove慎用</code><br>其他请看<a href="http://www.cnblogs.com/yc_sunniwell/archive/2010/07/15/1778265.html#undefined" target="_blank" rel="external">cnblogs-yc_sunniwell</a></p>
-<h2 id="SoftWare">SoftWare</h2><h3 id="Vmware_突然没法上网">Vmware 突然没法上网</h3><p>Edit-&gt;NetWork Setting-&gt;手动更改子网并分配Ip</p>
-<h3 id="Vmware_卸载">Vmware 卸载</h3><p><a href="http://blog.csdn.net/allenlinrui/article/details/7269980" target="_blank" rel="external">Allen的技术天空</a></p>
-<h3 id="LAMP套件">LAMP套件</h3><p><a href="http://howtoubuntu.org/how-to-install-lamp-on-ubuntu" target="_blank" rel="external">HowToUbunutu</a></p>
-<h3 id="gtk错误">gtk错误</h3><p>错误描述:</p>
-<blockquote>
-<p>Gtk-WARNING **: 无法在模块路径中找到主题引擎：“pixmap”？</p>
-</blockquote>
-<p>解决:安装以下依赖包</p>
-<blockquote>
-<p>gtk2-engines-pixbuf</p>
-</blockquote>
-<h3 id="编译安装源码">编译安装源码</h3><p>不行则请用root权限调用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar jxvf file.tar.bz2    /    tar zxvf file.tar.gz</span><br><span class="line"><span class="built_in">cd</span> file</span><br><span class="line">ls <span class="operator">-l</span>      <span class="comment">#一般能找到INSTALL或者Doc安装文档</span></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">./configure;make ;make install</span><br><span class="line"><span class="comment"># 有些不需要configure</span></span><br><span class="line">make; make install</span><br></pre></td></tr></table></figure>
-<h3 id="定制安装">定制安装</h3><blockquote>
-<p><a href="http://itlab.idcquan.com/linux/set/39862.html" target="_blank" rel="external">ChinaItLab</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line">./configure --prefix=/opt/softwareFloader</span><br><span class="line">make; make install</span><br><span class="line">--- 有两种方法可以快速调用 ---</span><br><span class="line"><span class="comment"># 1.创建软链接</span></span><br><span class="line">ln <span class="operator">-s</span> /opt/softwareFloader/bin/software /usr/bin/software </span><br><span class="line"><span class="comment"># 2.添加环境变量,可参照日常更新1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/softwareFloader/bin</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="不错的软件推荐">不错的软件推荐</h3><p>==&gt;<a href="http://askubuntu.com/questions/30334/what-application-indicators-are-available" target="_blank" rel="external">AskUbuntu</a>&lt;==<br>在用的两个小插件<br>1.sudo apt-get install indicator-multiload  系统状态监测,柱状图表示<br>2.sudo apt-get install indicator-cpufreq  CPU频率设置(我这个版本只有节能和性能两种功能了,很棒)</p>
-<h3 id="dpkg安装卸载">dpkg安装卸载</h3><blockquote>
-<p><a href="http://www.thegeekstuff.com/2010/06/install-remove-deb-package/" target="_blank" rel="external">thegeekstuff-SASIKALA</a><br>dpkg -i packge  #i install<br>dpkg -r packge  #r remove<br>dpkg -l packge  #l list 配合grep来查询包是否存在<br>Reference:<a href="http://wrchiu.blog.51cto.com/817024/359085" target="_blank" rel="external">51CTO</a></p>
-</blockquote>
-<h3 id="sublime中文输入">sublime中文输入</h3><p>轮子有大牛写好了<br>———-Ubuntu———-<br>===&gt;<a href="http://blog.csdn.net/cywosp/article/details/32350899" target="_blank" rel="external">csdn-cywosp</a>&lt;===  </p>
-<p>虽然这样desktop图标可以用了,其他的方式还是不行,所以用linux的<code>alias</code>功能!</p>
-<blockquote>
-<p>sudo vi .bashrc</p>
-</blockquote>
-<p>根据alias编写格式将原来的subl改成以下内容<br>.so文件路径按自己情况更改</p>
-<blockquote>
-<p>alias subl=’LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’</p>
-</blockquote>
-<h3 id="sublime_3103_cpu100%">sublime 3103 cpu100%</h3><p>在.config/sublime-text-3/Packages/User/Preferences.sublime-settings 中加入<br><code>&quot;index_files&quot;:false,</code></p>
-<h3 id="Theme-material_design">Theme-material design</h3><p><a href="http://itsfoss.com/install-paper-theme-linux/" target="_blank" rel="external">itsfoss-ABHISHEK</a></p>
-<h2 id="Device/Driver">Device/Driver</h2><h3 id="U盘格式化">U盘格式化</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. df #&#26597;&#30475;&#25346;&#36733;&#30340;U&#30424;&#10;2. umount /dev/sdc1 #&#25105;&#30340;u&#30424;&#20026;/dev/sdc1&#10;3. mkfs -t vfat /dev/sdc1 #&#26684;&#24335;&#21270;&#22909;&#24930;...&#10;or mkfs.vfat /dev/sdc1&#10;# -L label &#26356;&#25913;&#21367;&#21517;&#23383;</span><br></pre></td></tr></table></figure>
-<h3 id="iso镜像制作">iso镜像制作</h3><ol>
-<li><p>查看挂载</p>
-<blockquote>
-<p>sudo fdisk -l</p>
-</blockquote>
-</li>
-<li><p>切换权限</p>
-<blockquote>
-<p>sudo -i</p>
-</blockquote>
-</li>
-<li><p>cat重定向</p>
-<blockquote>
-<p>cat xxx.iso &gt; /dev/sdc1</p>
-</blockquote>
-</li>
-<li><p>弹出U盘,需要等待U盘写入</p>
-<blockquote>
-<p>sudo eject -s /dev/sdc1</p>
-</blockquote>
-</li>
-</ol>
-<p>Preference:<a href="http://blog.csdn.net/longerzone/article/details/12941727" target="_blank" rel="external">CSDN_longerzone</a></p>
-<h3 id="关于硬盘">关于硬盘</h3><ol>
-<li>Ubuntu自带:<code>baobab</code></li>
-<li>有关分区 <blockquote>
-<p><a href="http://gparted.sourceforge.net/livecd.php" target="_blank" rel="external">sourceforge</a><br>gparted</p>
-</blockquote>
-</li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/04/24/2016/daily2/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/24/2016/daily2/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/04/19/2016/xss-1/" title="xss习题集_1" itemprop="url">xss习题集_1</a>
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-04-18T16:00:00.000Z" itemprop="datePublished"> 发表于 04-19-2016</time>
@@ -280,7 +130,6 @@
     <footer class="article-footer clearfix">
 
 
-
 <div class="comments-count">
 	
 	  	<span></span>
@@ -304,59 +153,11 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/04/12/2016/js-arrow-func/" title="js_arrow function" itemprop="url">js_arrow function</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="箭头函数">箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
-<h3 id="例子">例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/04/12/2016/js-arrow-func/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-arrow-func/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/04/12/2016/js-let/" title="ES6-JS的块级作用域" itemprop="url">ES6-JS的块级作用域</a>
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
@@ -389,7 +190,6 @@
     <footer class="article-footer clearfix">
 
 
-
 <div class="comments-count">
 	
 	  	<span></span>
@@ -413,30 +213,21 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/04/06/2016/nexus-ota-update/" title="Nexus原生OTA升级(ROOT+XP),无需PC" itemprop="url">Nexus原生OTA升级(ROOT+XP),无需PC</a>
+      <a href="/04/12/2016/js-arrow-func/" title="js_arrow function" itemprop="url">js_arrow function</a>
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-04-06T03:35:12.229Z" itemprop="datePublished"> 发表于 04-06-2016</time>
+    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="环境">环境</h2><p>Nexus5x Rooted Xposed</p>
-<h2 id="过程">过程</h2><h3 id="优点">优点</h3><ol>
-<li>不需要PC 2. 不需要清数据 3. 可以顺便安装Xposed</li>
-</ol>
-<p><code>自己是先卸载了Xposed之后再升级的,没卸载的升级没有尝试过</code></p>
-<h3 id="正">正</h3><p>这个我就不多讲了,需要的软件<code>Flashfire</code><br>更新软件包: <a href="https://developers.google.com/android/nexus/images" target="_blank" rel="external">Nexus_Factory_images</a><br>Xposed框架地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">Xposed</a></p>
-<p>直接上地址(墙):</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ED6N4DJTaU4" frameborder="0" allowfullscreen></iframe>
-
-<h2 id="结合PC的ota">结合PC的ota</h2><p>这个自己没用过.需要的自己看一下,<code>不需要清数据</code><br><a href="https://m.reddit.com/r/nexus5x/comments/44duji/rooted_it_how_to_apply_the_ota_update/" target="_blank" rel="external">reddit</a></p>
-
+        <h3 id="箭头函数">箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
+<h3 id="例子">例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>
         
         
         <p class="article-more-link">
@@ -446,11 +237,10 @@
     <footer class="article-footer clearfix">
 
 
-
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/04/06/2016/nexus-ota-update/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/06/2016/nexus-ota-update/" data-count-type="comments">&nbsp;</a>
+		<a href="/04/12/2016/js-arrow-func/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-arrow-func/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -470,68 +260,11 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/04/06/2016/nexus-xposed/" title="Android6.0.1 Xposed安装以及插件推荐" itemprop="url">Android6.0.1 Xposed安装以及插件推荐</a>
+      <a href="/04/03/2016/linux-hard-optimize/" title="Linux_优化" itemprop="url">Linux_优化</a>
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-06T03:29:53.256Z" itemprop="datePublished"> 发表于 04-06-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能</p>
-<h2 id="环境&amp;要求">环境&amp;要求</h2><p>已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包<br>安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk<br>框架模块: xposed-v80-sdk23-arm64.zip<br>下载地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">XDA_Xposed for Lollipop and Marshmallow</a></p>
-<h2 id="正文">正文</h2><ol>
-<li>手机关机后(防止意外关机导致应用优化)长按<code>电源键+音量下</code><br>或者直接连上电脑adb reboot-bootloader进入recovery mode</li>
-<li>进入Recovery Mode,选择Install,将放在Downloads中的框架模块选中安装即可</li>
-<li>重启后安装xposed安装程序,提示xposed actived</li>
-<li>下载安装插件,启用之后进行软重启(比较快)</li>
-</ol>
-<h2 id="推荐几个插件">推荐几个插件</h2><p>不装LBE就用<code>greenify</code>,root的休眠功能+xposed扩展非常棒<br>阻止运行: Prevent Running<br>禁止唤醒: No WakeLock 作者Blog:<a href="https://www.linangran.com/?p=611" target="_blank" rel="external">Angran Lin’s Blog</a><br>开机管理: BootManager<br><del>权限管理: XPrivacy 控制太烦,而且原生已有权限控制,弃用</del><br>广告过滤: MinMinGuard<br>Ist保存插件: Instagram Downloader <code>少更新Ist</code><br>禁止内置浏览器: ExLink(去你大爷的浏览器)<br>状态栏+底栏颜色优化,很棒: PerfectColorBar<br>来电显示: Phone Location<br>自定义手电筒快捷键: Xposed Torch<br><del>防撤回: QQUnrecalled/WechatUnrecalled</del></p>
-<h2 id="Reference">Reference</h2><p><a href="http://www.inexus.co/article-3823-1.html" target="_blank" rel="external">Inexus-Xposed安装</a><br><a href="http://forum.xda-developers.com/showpost.php?p=58828974" target="_blank" rel="external">XDA</a><br>插件推荐: <a href="https://www.zhihu.com/question/22063862" target="_blank" rel="external">==知乎链接==</a><br>刚找到的一个新地址: <a href="http://xposed.appkg.com/1051.html" target="_blank" rel="external">Xposed</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/04/06/2016/nexus-xposed/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/06/2016/nexus-xposed/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/04/03/2016/linux-optimize/" title="Linux_优化" itemprop="url">Linux_优化</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-04-02T16:00:00.000Z" itemprop="datePublished"> 发表于 04-03-2016</time>
@@ -587,11 +320,10 @@
     <footer class="article-footer clearfix">
 
 
-
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/04/03/2016/linux-optimize/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/03/2016/linux-optimize/" data-count-type="comments">&nbsp;</a>
+		<a href="/04/03/2016/linux-hard-optimize/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/03/2016/linux-hard-optimize/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -615,7 +347,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-03-31T16:00:00.000Z" itemprop="datePublished"> 发表于 04-01-2016</time>
@@ -648,7 +380,6 @@
     <footer class="article-footer clearfix">
 
 
-
 <div class="comments-count">
 	
 	  	<span></span>
@@ -672,11 +403,123 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/28/2016/wireshark-test/" title="wireshark小记" itemprop="url">wireshark小记</a>
+      <a href="/03/30/2016/device-nexus-ota-update/" title="Nexus原生OTA升级(ROOT+XP),无需PC" itemprop="url">Nexus原生OTA升级(ROOT+XP),无需PC</a>
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-29T16:00:00.000Z" itemprop="datePublished"> 发表于 03-30-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="环境">环境</h2><p>Nexus5x Rooted Xposed</p>
+<h2 id="过程">过程</h2><h3 id="优点">优点</h3><ol>
+<li>不需要PC 2. 不需要清数据 3. 可以顺便安装Xposed</li>
+</ol>
+<p><code>自己是先卸载了Xposed之后再升级的,没卸载的升级没有尝试过</code></p>
+<h3 id="正">正</h3><p>这个我就不多讲了,需要的软件<code>Flashfire</code><br>更新软件包: <a href="https://developers.google.com/android/nexus/images" target="_blank" rel="external">Nexus_Factory_images</a><br>Xposed框架地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">Xposed</a></p>
+<p>直接上地址(墙):</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ED6N4DJTaU4" frameborder="0" allowfullscreen></iframe>
+
+<h2 id="结合PC的ota">结合PC的ota</h2><p>这个自己没用过.需要的自己看一下,<code>不需要清数据</code><br><a href="https://m.reddit.com/r/nexus5x/comments/44duji/rooted_it_how_to_apply_the_ota_update/" target="_blank" rel="external">reddit</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/03/30/2016/device-nexus-ota-update/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/30/2016/device-nexus-ota-update/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/03/30/2016/device-nexus-xposed/" title="Android6.0.1 Xposed安装以及插件推荐" itemprop="url">Android6.0.1 Xposed安装以及插件推荐</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-29T16:00:00.000Z" itemprop="datePublished"> 发表于 03-30-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能</p>
+<h2 id="环境&amp;要求">环境&amp;要求</h2><p>已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包<br>安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk<br>框架模块: xposed-v80-sdk23-arm64.zip<br>下载地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">XDA_Xposed for Lollipop and Marshmallow</a></p>
+<h2 id="正文">正文</h2><ol>
+<li>手机关机后(防止意外关机导致应用优化)长按<code>电源键+音量下</code><br>或者直接连上电脑adb reboot-bootloader进入recovery mode</li>
+<li>进入Recovery Mode,选择Install,将放在Downloads中的框架模块选中安装即可</li>
+<li>重启后安装xposed安装程序,提示xposed actived</li>
+<li>下载安装插件,启用之后进行软重启(比较快)</li>
+</ol>
+<h2 id="推荐几个插件">推荐几个插件</h2><p>不装LBE就用<code>greenify</code>,root的休眠功能+xposed扩展非常棒<br>阻止运行: Prevent Running<br>禁止唤醒: No WakeLock 作者Blog:<a href="https://www.linangran.com/?p=611" target="_blank" rel="external">Angran Lin’s Blog</a><br>开机管理: BootManager<br><del>权限管理: XPrivacy 控制太烦,而且原生已有权限控制,弃用</del><br>广告过滤: MinMinGuard<br>Ist保存插件: Instagram Downloader <code>少更新Ist</code><br>禁止内置浏览器: ExLink(去你大爷的浏览器)<br>状态栏+底栏颜色优化,很棒: PerfectColorBar<br>来电显示: Phone Location<br>自定义手电筒快捷键: Xposed Torch<br><del>防撤回: QQUnrecalled/WechatUnrecalled</del></p>
+<h2 id="Reference">Reference</h2><p><a href="http://www.inexus.co/article-3823-1.html" target="_blank" rel="external">Inexus-Xposed安装</a><br><a href="http://forum.xda-developers.com/showpost.php?p=58828974" target="_blank" rel="external">XDA</a><br>插件推荐: <a href="https://www.zhihu.com/question/22063862" target="_blank" rel="external">==知乎链接==</a><br>刚找到的一个新地址: <a href="http://xposed.appkg.com/1051.html" target="_blank" rel="external">Xposed</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/03/30/2016/device-nexus-xposed/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/30/2016/device-nexus-xposed/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/03/28/2016/net-wireshark-test/" title="wireshark小记" itemprop="url">wireshark小记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-03-27T16:00:00.000Z" itemprop="datePublished"> 发表于 03-28-2016</time>
@@ -741,11 +584,10 @@
     <footer class="article-footer clearfix">
 
 
-
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/03/28/2016/wireshark-test/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/28/2016/wireshark-test/" data-count-type="comments">&nbsp;</a>
+		<a href="/03/28/2016/net-wireshark-test/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/28/2016/net-wireshark-test/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -765,11 +607,11 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/20/2016/chrome-ubuntu/" title="ubuntu chrome cpu25%" itemprop="url">ubuntu chrome cpu25%</a>
+      <a href="/03/20/2016/linux-ubuntu-chrome/" title="ubuntu chrome cpu25%" itemprop="url">ubuntu chrome cpu25%</a>
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-03-19T16:00:00.000Z" itemprop="datePublished"> 发表于 03-20-2016</time>
@@ -803,11 +645,93 @@
     <footer class="article-footer clearfix">
 
 
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/03/20/2016/linux-ubuntu-chrome/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/20/2016/linux-ubuntu-chrome/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/03/19/2016/device-nexus-flashing/" title="Nexus 5x解锁+第三方" itemprop="url">Nexus 5x解锁+第三方</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T16:00:00.000Z" itemprop="datePublished"> 发表于 03-19-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="0x0环境">0x0环境</h2><p>Device: Nexus 5x marshmallow(Android 6.01)<br>Description:  Ubuntu 14.04<br>DevEnv: SDK<br>Files in need: </p>
+<h2 id="0x1_解锁Bootloader">0x1 解锁Bootloader</h2><h3 id="Warning">Warning</h3><p><code>**该操作会清除手机数据,请及时备份**</code></p>
+<h3 id="正">正</h3><ol>
+<li>安装好adb和fastboot驱动: <a href="http://my.oschina.net/myaniu/blog/103385" target="_blank" rel="external">玛雅牛</a></li>
+<li>unlock bootloader<br>先开启usb debug和OEM unlocking,之后Ubuntu更改为root权限<code>sudo -i</code><blockquote>
+<p>adb devices<br>adb reboot-bootloader<br>fastboot devices<br>fastboot oem unlock</p>
+</blockquote>
+</li>
+</ol>
+<p>解锁之后的state会变成unlock而且开机会有警告,之后用开机键进行启动<br>保修的话用<code>fastboot flashing lock</code>来恢复锁定</p>
+<h3 id="刷完之后的坑">刷完之后的坑</h3><p>此时手机配置已经完全失效,<code>重新进入开发者模式选择USB-debug</code></p>
+<h2 id="0x2_刷入第三方Recovery-twrp">0x2 刷入第三方<a href="https://dl.twrp.me/bullhead/" target="_blank" rel="external">Recovery-twrp</a></h2><p>该版本适用于Nexus<code>5x</code>,其他版本请移步<a href="https://twrp.me/Devices/" target="_blank" rel="external">twrp-device</a>进行查询</p>
+<h3 id="注意">注意</h3><p>一定要检查md5,否则会出现如下问题:<br><strong>FAILED (remote: image is not a boot image)</strong></p>
+<blockquote>
+<p>md5sum twrp-3.0.0-1-bullhead.img</p>
+</blockquote>
+<h3 id="正-1">正</h3><blockquote>
+<p>root@dell:/home/hexlism/Downloads# fastboot flash recovery twrp-3.0.0-1-bullhead.img </p>
+</blockquote>
+<p>如果成功刷入,则应该显示:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">target reported max download size of 536870912 bytes&#10;sending &#39;recovery&#39; (16345 KB)...&#10;OKAY [  0.471s]&#10;writing &#39;recovery&#39;...&#10;OKAY [  0.154s]&#10;finished. total time: 0.625s</span><br></pre></td></tr></table></figure></p>
+<p>刷完之后又多一个警告=, =</p>
+<h2 id="刷入SuperSu">刷入SuperSu</h2><p>当前版本为:BETA-SuperSU-v2.68-20160228150503.zip,下载地址在<code>Reference 0x4</code></p>
+<ol>
+<li><p>放入supersu文件:</p>
+<blockquote>
+<p>adb push BETA-SuperSU-v2.68-20160228150503.zip /sdcard/Downloads</p>
+</blockquote>
+</li>
+<li><p>进入bootloader模式—关机状态,电源+音量下 (或者用命令)</p>
+</li>
+<li>选择recovery mode (前提有twrp)</li>
+<li>在twrp中选择install,之后选择push进去的zip文件即可</li>
+</ol>
+<h3 id="坑">坑</h3><p>我碰到的问题让我虚惊一场,连续三次重启之后成功启动.差点哭晕</p>
+<p>如果twrp提示需要刷入supersu,选择<code>**don&#39;t**</code>,不过我在这个过程中完全没有碰到这个问题</p>
+<h2 id="Reference">Reference</h2><p>0x0. 主要参考 <a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br>0x1. ADB<br><a href="http://www.makeuseof.com/tag/new-adb-make-process-simple-easy/" target="_blank" rel="external">ADB</a><br><a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br><a href="http://www.inexus.co/article-2823-1.html" target="_blank" rel="external">fastboot-adb</a><br>0x2. bootloader<br><a href="http://www.inexus.co/thread-18509-1-1.html" target="_blank" rel="external">inexus</a><br><a href="http://rootmygalaxy.net/how-to-unlock-lg-google-nexus-5x-bootloader-easily/" target="_blank" rel="external">rootmygalaxy</a><br><a href="http://www.androidcentral.com/how-unlock-nexus-5x-bootloader" target="_blank" rel="external">androidcentral</a><br>0x3. Third recovery<br><a href="http://www.inexus.co/thread-23627-1-1.html" target="_blank" rel="external">inexus-recovery</a><br>0x4. <a href="http://download.chainfire.eu/supersu" target="_blank" rel="external">SuperSu</a><br>ADB 命令:<a href="http://bbs.gfan.com/android-4421095-1-1.html" target="_blank" rel="external">gfan</a></p>
+<h2 id="后续开启Google_Now">后续开启Google Now</h2><p>不需要模拟地址,不需要拔卡,不过<code>需要root</code><br>一件开启=====&gt;&gt;<a href="http://www.coolapk.com/apk/com.czbix.nowenabler" target="_blank" rel="external">酷安-Google Now Enabler</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
 
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/03/20/2016/chrome-ubuntu/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/20/2016/chrome-ubuntu/" data-count-type="comments">&nbsp;</a>
+		<a href="/03/19/2016/device-nexus-flashing/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/19/2016/device-nexus-flashing/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -837,7 +761,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/G4W/" style="font-size: 11.43px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 18.57px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 14.29px;">MySQL</a> <a href="/tags/Nexus-5x/" style="font-size: 12.86px;">Nexus-5x</a> <a href="/tags/Router/" style="font-size: 10px;">Router</a> <a href="/tags/Shell/" style="font-size: 17.14px;">Shell</a> <a href="/tags/Web/" style="font-size: 11.43px;">Web</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/XSS/" style="font-size: 12.86px;">XSS</a> <a href="/tags/daily/" style="font-size: 15.71px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/touchpad/" style="font-size: 10px;">touchpad</a> <a href="/tags/书记/" style="font-size: 15.71px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
+       <a href="/tags/Device/" style="font-size: 15px;">Device</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 13.33px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/SQLInjection/" style="font-size: 11.67px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 15px;">Shell</a> <a href="/tags/XSS/" style="font-size: 13.33px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 13.33px;">hard</a> <a href="/tags/nexus5x/" style="font-size: 13.33px;">nexus5x</a> <a href="/tags/soft/" style="font-size: 11.67px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.67px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 11.67px;">闲谈</a>
     </div>
   </div>
 
@@ -845,57 +769,8 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
-
-
-  
-<div class="categorieslist">
-	<p class="asidetitle">分类</p>
-		<ul>
-		
-		  
-			<li><a href="/categories/Collection/" title="Collection">Collection<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Device/" title="Device">Device<sup>4</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/G4W/" title="G4W">G4W<sup>2</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>18</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Others/" title="Others">Others<sup>3</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/SQL/" title="SQL">SQL<sup>4</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Web/" title="Web">Web<sup>21</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/wireshark/" title="wireshark">wireshark<sup>1</sup></a></li>
-		  
-		
-		</ul>
-</div>
 
 
   <div class="linkslist">
@@ -983,7 +858,7 @@
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="A1ex">A1ex</a>
+		<a href="/about" target="_blank" title="a1ex">a1ex</a>
 		
 		
 		</p>
@@ -1068,7 +943,7 @@ $(document).ready(function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-63657599-1', 'a1ex.net');  
+ga('create', 'UA-63657599-2', 'csser.work');  
 ga('send', 'pageview');
 </script>
 

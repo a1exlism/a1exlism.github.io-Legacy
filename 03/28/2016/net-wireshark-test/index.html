@@ -1,0 +1,527 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>wireshark小记 | A1exlism</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="a1ex">
+    
+
+    
+    <meta name="description" content="基础TCP握手状态EMC_wiresharkOSI模型应用层-&amp;gt;SSL-&amp;gt;TCP-&amp;gt;IP
+杭电直接用这个过滤
+
+http &amp;amp;&amp;amp; http.request.method==”POST”
+
+直接得出表段:学号,密码(经验证为MD5)echo -n password | openssl md5
+163邮箱测试帐号名: ji2hanpgf 
+
+老方法过滤出IPhttp &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wireshark小记">
+<meta property="og:url" content="http://csser.work/03/28/2016/net-wireshark-test/index.html">
+<meta property="og:site_name" content="A1exlism">
+<meta property="og:description" content="基础TCP握手状态EMC_wiresharkOSI模型应用层-&amp;gt;SSL-&amp;gt;TCP-&amp;gt;IP
+杭电直接用这个过滤
+
+http &amp;amp;&amp;amp; http.request.method==”POST”
+
+直接得出表段:学号,密码(经验证为MD5)echo -n password | openssl md5
+163邮箱测试帐号名: ji2hanpgf 
+
+老方法过滤出IPhttp &amp;">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/hdu_1.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/maill_163_1.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/mail_163_2.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/mail_163_3.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/qq_udp_1.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/qq_udp_2.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/qq_udp_3.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/qq_udp_4.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/qq_udp_5.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/jd_1.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/jd_2_info.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/jd_login_3.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/jd_login_4.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/jd_key_.png">
+<meta property="og:image" content="http://csser.work/imgs/wireshark/jd-login_report.png">
+<meta property="og:updated_time" content="2016-05-17T15:52:56.692Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wireshark小记">
+<meta name="twitter:description" content="基础TCP握手状态EMC_wiresharkOSI模型应用层-&amp;gt;SSL-&amp;gt;TCP-&amp;gt;IP
+杭电直接用这个过滤
+
+http &amp;amp;&amp;amp; http.request.method==”POST”
+
+直接得出表段:学号,密码(经验证为MD5)echo -n password | openssl md5
+163邮箱测试帐号名: ji2hanpgf 
+
+老方法过滤出IPhttp &amp;">
+<link rel="publisher" href="106896526077043222500">
+
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="A1exlism" title="A1exlism"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="A1exlism">A1exlism</a></h1>
+				<h2 class="blog-motto">虽然走的很慢,但我不会后退.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="" method="get" accept-charset="utf-8">
+						<input type="text" class="st-default-search-input" style="webkit-border-radius: 0;border-radius: 0;" placeholder="Search">
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/03/28/2016/net-wireshark-test/" title="wireshark小记" itemprop="url">wireshark小记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-27T16:00:00.000Z" itemprop="datePublished"> 发表于 03-28-2016</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#杭电"><span class="toc-number">2.</span> <span class="toc-text">杭电</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#163邮箱"><span class="toc-number">3.</span> <span class="toc-text">163邮箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#qq_Client"><span class="toc-number">4.</span> <span class="toc-text">qq Client</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境"><span class="toc-number">4.1.</span> <span class="toc-text">环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JD客户端抓包"><span class="toc-number">5.</span> <span class="toc-text">JD客户端抓包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境-1"><span class="toc-number">5.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dcpdump安装"><span class="toc-number">5.2.</span> <span class="toc-text">dcpdump安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登陆过程"><span class="toc-number">5.3.</span> <span class="toc-text">登陆过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">5.4.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">6.</span> <span class="toc-text">Reference</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="基础">基础</h2><p><a href="http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html" target="_blank" rel="external">TCP握手状态</a><br><a href="https://community.emc.com/message/818739#818739" target="_blank" rel="external">EMC_wireshark</a><br><a href="https://en.wikipedia.org/wiki/OSI_model" target="_blank" rel="external">OSI模型</a>应用层-&gt;SSL-&gt;TCP-&gt;IP</p>
+<h2 id="杭电">杭电</h2><p>直接用这个过滤</p>
+<blockquote>
+<p>http &amp;&amp; http.request.method==”POST”</p>
+</blockquote>
+<p><img src="/imgs/wireshark/hdu_1.png" alt="1"><br>直接得出表段:学号,密码(经验证为MD5)<br>echo -n password | openssl md5</p>
+<h2 id="163邮箱">163邮箱</h2><p>测试帐号名: ji2hanpgf </p>
+<blockquote>
+<p>老方法过滤出IP<br>http &amp;&amp; http.request.method==”POST”</p>
+</blockquote>
+<p>0x00. ip筛选,打算看一下过程,linux下默认启用ssl登陆..</p>
+<blockquote>
+<p><a href="https://ask.wireshark.org/questions/22230/filter-for-partial-ip-address" target="_blank" rel="external">ask.wireshark</a><br>ip.dst_host matches “^123.58.”</p>
+</blockquote>
+<p>0x01. 查找第一个握手包,加上指定地址,ip.addr不会用通配符</p>
+<blockquote>
+<p>(ip.src_host matches “^123.58.” || ip.dst_host matches “^123.58.”) &amp;&amp; tcp.flags.syn == 1</p>
+</blockquote>
+<p>0x02. TCP Stream<br><img src="/imgs/wireshark/maill_163_1.png" alt="2">看到<code>GeoTrust SSL</code>字样,查了一下163采用了这个ssl服务<br>在这里也看到了tcp的完整握手流程,cli-&gt;serv-&gt;cli  </p>
+<p>0x03. 1226th TLSv1.2<br>在最上层中secure sockets layer中看到Pubkey(length:65),这个和搜到的也是一致(server将公钥发给client,之后client进行加密传输)<br><img src="/imgs/wireshark/mail_163_2.png" alt="3"></p>
+<p>0x04. 继续ip过滤,之后看到一条重要的消息1268th,1233rd. length都上千 Application Data,打开后在最后看到encrypt Data字样, </p>
+<p>0x05.<br><img src="/imgs/wireshark/mail_163_3.png" alt="3"><br>中找到cipher suite字样,看到加密类型是<code>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA(0xc013)</code>,查了一下,</p>
+<blockquote>
+<p>正向保密 <a href="http://www.infoq.com/cn/articles/keeping-your-secrets" target="_blank" rel="external">infoQ</a><br>那个密码套件的名称看起来相当神秘，但如果你把它拆开来看就很好懂了。 “TLS” 自然是指TLS协议。 “ECDHE” 是说使用带有短暂性密钥的椭圆曲线Diffie-Hellman密钥交换（也就是说要为每个会话创建新密钥并且事后也不会记下来）。“RSA”表明用RSA 非对称加密保护TLS握手的安全。 “AES_128_CBC” 是说在密码块链接模式中用带有128位密钥的AES 非对称加密保护真正的数据交换。最后的 “SHA” 表明用 SHA 安全哈希算法。<br>这可能是在Oracle的Java 7上用TLS 1.1所能用到的最好密码套件。如果用TLS 1.2 ，你可以升级成TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256，使用更强(也更安全)的 SHA2 摘要算法。理想情况下，用GCM（伽罗瓦​​/计数器模式）之类的模式代替CBC更好，但Oracle的 Java 7 JSSE (Java 安全套接字扩展)实现还不支持。<br>你可能还要考虑从 “ECDHE” 去掉“EC”。密码学大师布鲁斯·施奈尔现在推荐优先选用离散对数而不是椭圆曲线加密 (在这篇文章中还有很多非常棒的建议，教你如何保证自己以及你的数据交换的安全)。椭圆曲线技术更快，但可能会有政府组织故意引入的弱点。但大多数商业安全网站目前似乎只支持Diffie-Hellman的椭圆曲线版本，所以这个例子里就用它了。</p>
+</blockquote>
+<p>看了介绍,已经知道无解了..结束</p>
+<h2 id="qq_Client">qq Client</h2><h3 id="环境">环境</h3><p>QQLite win10(虚拟机) mac地址: 00-0C-29-A7-AA-00 包采用的是UDP定向包(高级设置)</p>
+<blockquote>
+<p><a href="https://www.zhihu.com/question/20292749/answer/18294472" target="_blank" rel="external">知乎-向小刚</a><br>登陆采用TCP协议和HTTP协议，你和好友之间发送消息，主要采用UDP协议，内网传文件采用了P2P技术。总来的说：<br>1.登陆过程，客户端client 采用TCP协议向服务器server发送信息，HTTP协议下载信息。登陆之后，会有一个TCP连接来保持在线状态。<br>2.和好友发消息，客户端client采用UDP协议，但是需要通过服务器转发。腾讯为了确保传输消息的可靠，采用上层协议来保证可靠传输。如果消息发送失败，客户端会提示消息发送失败，并可重新发送。<br>3.如果是在内网里面的两个客户端传文件，QQ采用的是P2P技术，不需要服务器中转。</p>
+</blockquote>
+<p>0x00. oicq过滤,找到最早一条,之后用<code>ip.addr==183.232.127.253</code>直接过滤出两者交互状态</p>
+<p>0x01.<br><img src="/imgs/wireshark/qq_udp_1.png" alt="3"> QQ号 版本号 etc</p>
+<p>0x02.<br><img src="/imgs/wireshark/qq_udp_2.png" alt="4"> 防止帐号在同一台设备登陆?<br><img src="/imgs/wireshark/qq_udp_3.png" alt="5"> 这个前缀很多,而且cli和server端都有,算是保证无连接状态的稳定性?<br>上面的reference中提到是tcp传输数据,不过感觉好奇怪…前面有4个UDP协议的端口交换过程,从该图看到应该是搜集client设备信息,Data是一串数字+字母,看起来只是校验而已<br>,之后才是OICQ的传输</p>
+<p>0x03. OICQ分析<br><del>从图中看的话,有Data,len为38,</del>  <a href="#Reference">Reference</a>了解到Seq和Ack Number的关系,client发送了两个数据,并且有相同的头,返回也有固定格式,基于UDP这种无连接方式,参考知乎牛说的,直接可以无视UDP了,直接看TCP</p>
+<p>0x04. TCP分析-1<br><img src="/imgs/wireshark/qq_udp_4.png" alt="6"><br><del>图中的三次握手和四次挥手还是非常明显<code>http://dldir1.qq.com/qqfile/status/qqcam-logo.png</code>,看了半天发现登陆到退出,全过程只是接受了一张小图片,上客户端找半天也没找到..</del> 没用,扔了</p>
+<p>0x05. TCP分析-2<br><img src="/imgs/wireshark/qq_udp_5.png" alt="7"><br>抓到一个地址<code>183.232.127.254/cgi-bin.httpconn</code>,搜了一下是tx的后台(c++)<br>用POSTMan传了一个数据,返回200,len不对,和抓的包一致,网上查这个路径也说不上来,感觉就这个路径啦,完结= =</p>
+<h2 id="JD客户端抓包">JD客户端抓包</h2><h3 id="环境-1">环境</h3><p>Android6.0.1(ROOTed) tcpdump抓取 5.x及以上需要下载具有PIE的tcpdump</p>
+<h3 id="dcpdump安装">dcpdump安装</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb push ./Downloads/tcpdump /sdcard&#10;adb shell&#10;su&#10;mv /sdcard/tcpdump /data/local/tcpdump &#38;&#38; cd /data/local&#10;chmod 6775 ./tcpdump&#10;./tcpdump -i any -p -s 0 -w /sdcard/phoneCapture.pcap&#10;# Ctrl+C &#20572;&#27490;&#25318;&#25130;&#10;adb pull /sdcard/phoneCapture.pcap</span><br></pre></td></tr></table></figure>
+<h3 id="登陆过程">登陆过程</h3><p>由于保存过密码自动登陆,查看过个人页面,之后退出登陆,后重新输入密码进行登陆</p>
+<h3 id="分析">分析</h3><p>0x00. 直接http进行过滤</p>
+<p>0x01.<br><img src="/imgs/wireshark/jd_1.png" alt="8"> 进入客户端的状态,评价,收获等界面</p>
+<p>0x02. <img src="/imgs/wireshark/jd_2_info.png" alt="9"> 进入客户端之后后端传过来的数据</p>
+<p>0x03.<br><img src="/imgs/wireshark/jd_login_3.png" alt="10"><br><img src="/imgs/wireshark/jd_login_4.png" alt="11">这些包中分析出来在<code>/stat/access</code>中将一段<code>Key[truncated]</code><br>传给服务器,尝试base64,然并卵= =,上图 <img src="/imgs/wireshark/jd_key_.png" alt="12"></p>
+<p>还有个<code>/login_report/</code>base64解出来是这么个东西<img src="/imgs/wireshark/jd-login_report.png" alt="13">,后面正常,前面这个感觉像个校验码.</p>
+<p>基本也能确定了,密码差不多就是那个form表单的key了,不过加密不知道的话也没什么卵用</p>
+<h2 id="Reference">Reference</h2><p>资料:SSL<br>参考至<a href="">SSL与TLS</a>,Eric Rescorla著:<br>ssl流程(一般用于HTTPS):HTTP建立TCP连接之后,并在其中建立一条SSL隧道,之后在SSL隧道中发送同样的请求,服务器则以相同的方式用SSL进行相应<br>SSL握手流程:<a href="http://www.cnblogs.com/happyhippy/archive/2007/05/14/746476.html" target="_blank" rel="external">CSDN</a><br><a href="http://blog.chinaunix.net/uid-26833883-id-3627644.html" target="_blank" rel="external">TCP/UDP/IP协议分析_程姚根</a><br><a href="http://blog.csdn.net/hldjf/article/details/7450565" target="_blank" rel="external">TCP-PDU</a><br><a href="http://blog.csdn.net/chenglian_999/article/details/4672177" target="_blank" rel="external">Vim-16进制</a><br><a href="http://man.chinaunix.net/newsoft/ApacheManual/howto/cgi.html" target="_blank" rel="external">Apache2-CGI</a><br><a href="https://www.zhihu.com/question/21432096" target="_blank" rel="external">CGI-知乎</a><br><a href="http://www.trinea.cn/android/tcpdump_wireshark/" target="_blank" rel="external">Android抓包_Trinea</a><br><a href="http://blog.sina.com.cn/s/blog_89fa41ef0102w18c.html" target="_blank" rel="external">linux cooked capture</a><br><a href="http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html" target="_blank" rel="external">TCP状态</a><br><a href="https://jimshaver.net/2015/02/11/decrypting-tls-browser-traffic-with-wireshark-the-easy-way/" target="_blank" rel="external">听说能拆SSL?</a><br><a href="http://www.cnblogs.com/happyhippy/archive/2007/05/14/746476.html" target="_blank" rel="external">SSL握手</a><br><a href="http://blog.csdn.net/hursing/article/details/20543837" target="_blank" rel="external">wireshark-SSLv3</a><br><a href="http://bbs.51cto.com/thread-886816-1.html" target="_blank" rel="external">51CTO- 有关QQ登录服务器（UDP与TCP）</a><br><a href="http://www.cnblogs.com/Heart-J/p/4580849.html" target="_blank" rel="external">山鹰-qq</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://csser.work/03/28/2016/net-wireshark-test/" data-title="wireshark小记 | A1exlism" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/03/30/2016/device-nexus-xposed/" title="Android6.0.1 Xposed安装以及插件推荐">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Android6.0.1 Xposed安装以及插件推荐</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/03/20/2016/linux-ubuntu-chrome/"  title="ubuntu chrome cpu25%">
+ <strong>下一篇：</strong><br/> 
+ <span>ubuntu chrome cpu25%
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="03/28/2016/net-wireshark-test/" data-title="wireshark小记" data-url="http://csser.work/03/28/2016/net-wireshark-test/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#杭电"><span class="toc-number">2.</span> <span class="toc-text">杭电</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#163邮箱"><span class="toc-number">3.</span> <span class="toc-text">163邮箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#qq_Client"><span class="toc-number">4.</span> <span class="toc-text">qq Client</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境"><span class="toc-number">4.1.</span> <span class="toc-text">环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JD客户端抓包"><span class="toc-number">5.</span> <span class="toc-text">JD客户端抓包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境-1"><span class="toc-number">5.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dcpdump安装"><span class="toc-number">5.2.</span> <span class="toc-text">dcpdump安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登陆过程"><span class="toc-number">5.3.</span> <span class="toc-text">登陆过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">5.4.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">6.</span> <span class="toc-text">Reference</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide"></a></div>
+<aside class="clearfix">
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Device/" style="font-size: 15px;">Device</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 13.33px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/SQLInjection/" style="font-size: 11.67px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 15px;">Shell</a> <a href="/tags/XSS/" style="font-size: 13.33px;">XSS</a> <a href="/tags/daily/" style="font-size: 16.67px;">daily</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 13.33px;">hard</a> <a href="/tags/nexus5x/" style="font-size: 13.33px;">nexus5x</a> <a href="/tags/soft/" style="font-size: 11.67px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.67px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 11.67px;">闲谈</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://zh.wikipedia.org" target="_blank" title="Wiki">Wiki</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://hexo.io/" target="_blank" title="Hexo">Hexo</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://man.linuxde.net/" target="_blank" title="Linux命令大全">Linux命令大全</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.regexr.com/" target="_blank" title="Regexr">Regexr</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.processon.com/" target="_blank" title="ProcessOn">ProcessOn</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://linuxtoy.org" target="_blank" title="LinuxToy">LinuxToy</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Blog site <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/a1exlism" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/a1exlism" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		<a href="https://www.facebook.com/a1exlism" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		<a href="https://plus.google.com/106896526077043222500?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"a1exnet"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-63657599-2', 'csser.work');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Swift_search Begin -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','6CrKq4WqLzE2qozYG7T_','2.0.0');
+</script>
+
+
+<!-- Tiny_search End -->
+  </body>
+</html>
