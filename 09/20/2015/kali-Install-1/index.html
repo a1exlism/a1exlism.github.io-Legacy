@@ -7,7 +7,7 @@
     <title>Kali UEFI安装 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -58,7 +58,7 @@ Windows下shift+重启进入BIOS界面,设置优先级
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -110,7 +110,7 @@ Windows下shift+重启进入BIOS界面,设置优先级
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2015-09-19T16:00:00.000Z" itemprop="datePublished"> 发表于 09-20-2015</time>
@@ -122,22 +122,22 @@ Windows下shift+重启进入BIOS界面,设置优先级
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu_的EFI"><span class="toc-number">3.</span> <span class="toc-text">Ubuntu 的EFI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-number">4.</span> <span class="toc-text">注意</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu-的EFI"><span class="toc-number">3.</span> <span class="toc-text">Ubuntu 的EFI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-number">4.</span> <span class="toc-text">注意</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="准备">准备</h2><ol>
+		<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ol>
 <li>download<a href="https://www.kali.org/downloads/" target="_blank" rel="external">Kali Linux</a>,记得校验SHA1Sum</li>
 <li>UltraISO 烧录至USB</li>
 <li>打开boot文件夹,用归档工具(zip等)把img里面的三个文件夹解压至根目录</li>
 <li>利用DiskGenius/PartAssist切一块分区(未分配状态)来预留一块连续空间.</li>
 </ol>
-<h2 id="安装">安装</h2><ol>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
 <li>Windows下<code>shift+重启</code>进入BIOS界面,设置优先级</li>
 <li>选择GUI安装,进入正常安装流程</li>
 <li>前几次按照系统推荐的分区导致<code>/</code>剩余空间很小,重装几次之后找到一种方法:首先利用系统自动配置一套分区,之后删除那些改变的分区,改为自己想要的分区.<br>因为不怎么了解boot中efi分区文件的具体操作,所以采用这种笨办法进行分区,此时,系统并不会报’efi分区未设置’这个问题</li>
 </ol>
-<h2 id="Ubuntu_的EFI">Ubuntu 的EFI</h2><h2 id="注意">注意</h2><p>MBR分区的硬盘要注意自己的主分区是否足够,否则一直会失败<br>发现UEFI引导模式是不可能制作成一个可移动式的系统(除非你只使用安装时候的电脑,未实现)</p>
+<h2 id="Ubuntu-的EFI"><a href="#Ubuntu-的EFI" class="headerlink" title="Ubuntu 的EFI"></a>Ubuntu 的EFI</h2><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>MBR分区的硬盘要注意自己的主分区是否足够,否则一直会失败<br>发现UEFI引导模式是不可能制作成一个可移动式的系统(除非你只使用安装时候的电脑,未实现)</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -188,7 +188,7 @@ Windows下shift+重启进入BIOS界面,设置优先级
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu_的EFI"><span class="toc-number">3.</span> <span class="toc-text">Ubuntu 的EFI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-number">4.</span> <span class="toc-text">注意</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu-的EFI"><span class="toc-number">3.</span> <span class="toc-text">Ubuntu 的EFI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-number">4.</span> <span class="toc-text">注意</span></a></li></ol>
  
   </div>
 
@@ -297,7 +297,7 @@ Windows下shift+重启进入BIOS界面,设置优先级
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

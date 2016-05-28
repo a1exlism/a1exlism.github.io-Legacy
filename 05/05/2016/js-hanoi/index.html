@@ -7,7 +7,7 @@
     <title>汉诺塔_递归 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -34,6 +34,7 @@
 正做了张图, 目标: 将塔SRC移到DST,利用AUX作为中转
 抽象化: 一个汉诺塔只需要分为底层B和上层A步骤:  A(SRC) =&amp;gt; AUX;  B(SRC) =&amp;gt; DST;  A(AUX) =&amp;gt; DST; 
 代码实现一旦最大一个放在底下之后就可以忽略掉了1234567">
+<meta name="twitter:image" content="http://csser.work/imgs/hanoi/1.svg">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -44,7 +45,7 @@
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -96,7 +97,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-04T16:00:00.000Z" itemprop="datePublished"> 发表于 05-05-2016</time>
@@ -112,13 +113,13 @@
 		
 		</div>
 		
-		<h3 id="前言">前言</h3><p>这个问题在大一学C的时候就一直纠结,再次看书遇到,就把他写下来作为笔记了!</p>
-<h3 id="理解">理解</h3><p>整体的概念 数学归纳法</p>
-<h3 id="正">正</h3><p>做了张图, 目标: 将塔SRC移到DST,利用AUX作为中转<br><img src="/imgs/hanoi/1.svg" alt="1"></p>
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这个问题在大一学C的时候就一直纠结,再次看书遇到,就把他写下来作为笔记了!</p>
+<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>整体的概念 数学归纳法</p>
+<h3 id="正"><a href="#正" class="headerlink" title="正"></a>正</h3><p>做了张图, 目标: 将塔SRC移到DST,利用AUX作为中转<br><img src="/imgs/hanoi/1.svg" alt="1"></p>
 <p>抽象化:<br> 一个汉诺塔只需要分为底层B和上层A<br>步骤:<br>  A(SRC) =&gt; AUX;<br>  B(SRC) =&gt; DST;<br>  A(AUX) =&gt; DST; </p>
-<h3 id="代码实现">代码实现</h3><p>一旦最大一个放在底下之后就可以忽略掉了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hanoi = <span class="function"><span class="keyword">function</span>(<span class="params"> disc, src, aux, dst</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( disc &gt; <span class="number">0</span> )&#123;</span><br><span class="line">    hanoi( disc-<span class="number">1</span>, src, dst, aux);  <span class="comment">//上层A(含多个)</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Move disc'</span> + disc + <span class="string">' from '</span> + src + <span class="string">' to '</span> + dst ); <span class="comment">//下层B</span></span><br><span class="line">    hanoi( disc-<span class="number">1</span>, aux, src, dst);  <span class="comment">//上层A(含多个)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="思考">思考</h3><p>只要能抽象出来, 递归还是有点像一种声明式函数的</p>
-<h3 id="Reference">Reference</h3><p><a href="https://www.zhihu.com/question/24385418/answer/46241635" target="_blank" rel="external">知乎</a></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>一旦最大一个放在底下之后就可以忽略掉了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hanoi = <span class="function"><span class="keyword">function</span>(<span class="params"> disc, src, aux, dst</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( disc &gt; <span class="number">0</span> )&#123;</span><br><span class="line">    hanoi( disc<span class="number">-1</span>, src, dst, aux);  <span class="comment">//上层A(含多个)</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Move disc'</span> + disc + <span class="string">' from '</span> + src + <span class="string">' to '</span> + dst ); <span class="comment">//下层B</span></span><br><span class="line">    hanoi( disc<span class="number">-1</span>, aux, src, dst);  <span class="comment">//上层A(含多个)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>只要能抽象出来, 递归还是有点像一种声明式函数的</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.zhihu.com/question/24385418/answer/46241635" target="_blank" rel="external">知乎</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -278,7 +279,7 @@
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

@@ -7,7 +7,7 @@
     <title>Shell 2&gt;&amp;1 Meaning | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -46,7 +46,7 @@ xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文�
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -98,7 +98,7 @@ xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文�
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-07T16:00:00.000Z" itemprop="datePublished"> 发表于 05-08-2016</time>
@@ -110,18 +110,18 @@ xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文�
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x1_&含义"><span class="toc-number">1.</span> <span class="toc-text">0x1 &含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x2_特殊用法:_&>_filename"><span class="toc-number">2.</span> <span class="toc-text">0x2 特殊用法: &> filename</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x3_调用顺序"><span class="toc-number">3.</span> <span class="toc-text">0x3 调用顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference:"><span class="toc-number">4.</span> <span class="toc-text">Reference:</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x1-amp-含义"><span class="toc-number">1.</span> <span class="toc-text">0x1 &含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x2-特殊用法-amp-gt-filename"><span class="toc-number">2.</span> <span class="toc-text">0x2 特殊用法: &> filename</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x3-调用顺序"><span class="toc-number">3.</span> <span class="toc-text">0x3 调用顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference:</span></a></li></ol>
 		
 		</div>
 		
 		<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
-<h3 id="0x1_&amp;含义">0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
+<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
 <blockquote>
 <p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
 </blockquote>
 <p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
-<h3 id="0x2_特殊用法:_&amp;&gt;_filename">0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
-<h3 id="0x3_调用顺序">0x3 调用顺序</h3><blockquote>
+<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
+<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
 <p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
 </blockquote>
 <p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
@@ -129,7 +129,7 @@ xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文�
 <p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
 </blockquote>
 <p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
-<h3 id="Reference:">Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -180,7 +180,7 @@ xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文�
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x1_&含义"><span class="toc-number">1.</span> <span class="toc-text">0x1 &含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x2_特殊用法:_&>_filename"><span class="toc-number">2.</span> <span class="toc-text">0x2 特殊用法: &> filename</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x3_调用顺序"><span class="toc-number">3.</span> <span class="toc-text">0x3 调用顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference:"><span class="toc-number">4.</span> <span class="toc-text">Reference:</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x1-amp-含义"><span class="toc-number">1.</span> <span class="toc-text">0x1 &含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x2-特殊用法-amp-gt-filename"><span class="toc-number">2.</span> <span class="toc-text">0x2 特殊用法: &> filename</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x3-调用顺序"><span class="toc-number">3.</span> <span class="toc-text">0x3 调用顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference:</span></a></li></ol>
  
   </div>
 
@@ -289,7 +289,7 @@ xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文�
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

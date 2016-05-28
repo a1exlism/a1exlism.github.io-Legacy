@@ -7,7 +7,7 @@
     <title>ubuntu chrome cpu25% | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -37,7 +37,7 @@ Issue开启Chrome之后,风扇开始转,monitor看到gnome-keyring-daemoncpu占�
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -89,7 +89,7 @@ Issue开启Chrome之后,风扇开始转,monitor看到gnome-keyring-daemoncpu占�
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-03-19T16:00:00.000Z" itemprop="datePublished"> 发表于 03-20-2016</time>
@@ -105,16 +105,16 @@ Issue开启Chrome之后,风扇开始转,monitor看到gnome-keyring-daemoncpu占�
 		
 		</div>
 		
-		<h2 id="环境">环境</h2><p>Description:  Ubuntu 15.04 vivid<br>Chrome Version: 50.0.2661.26 beta x64</p>
-<h2 id="Issue">Issue</h2><p>开启Chrome之后,风扇开始转,monitor看到<code>gnome-keyring-daemon</code>cpu占用达到阈值</p>
-<h2 id="原因">原因</h2><p>搜索了一下发现是chrome对gnome-keyring-daemon的调用太多,但ubuntu默认的memlock应该在1M以内,<br>所以造成无法写入并一直尝试写入而导致的cpu占用.</p>
-<h2 id="解决">解决</h2><p>永久关闭keyring服务(鉴于ubuntu恶心的包依赖)之后重启</p>
+		<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Description:  Ubuntu 15.04 vivid<br>Chrome Version: 50.0.2661.26 beta x64</p>
+<h2 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h2><p>开启Chrome之后,风扇开始转,monitor看到<code>gnome-keyring-daemon</code>cpu占用达到阈值</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>搜索了一下发现是chrome对gnome-keyring-daemon的调用太多,但ubuntu默认的memlock应该在1M以内,<br>所以造成无法写入并一直尝试写入而导致的cpu占用.</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>永久关闭keyring服务(鉴于ubuntu恶心的包依赖)之后重启</p>
 <blockquote>
 <p>sudo chmod -x /usr/bin/gnome-keyring</p>
 </blockquote>
-<h2 id="后遗症">后遗症</h2><p>发现开启多个tab之后风扇依然呼呼转,但是cpu使用率却在5%以下,这个就不知道怎么解决了..</p>
-<h2 id="弯路">弯路</h2><p>根据reference2通过修改<code>/etc/security/limits.conf</code>将memlock提高至10000<br>重启之后更要命,磁盘一直以10M/s的速度在进行写入,自己也不不清楚,所以重新恢复原样</p>
-<h2 id="Reference">Reference</h2><p>阅读顺序:</p>
+<h2 id="后遗症"><a href="#后遗症" class="headerlink" title="后遗症"></a>后遗症</h2><p>发现开启多个tab之后风扇依然呼呼转,但是cpu使用率却在5%以下,这个就不知道怎么解决了..</p>
+<h2 id="弯路"><a href="#弯路" class="headerlink" title="弯路"></a>弯路</h2><p>根据reference2通过修改<code>/etc/security/limits.conf</code>将memlock提高至10000<br>重启之后更要命,磁盘一直以10M/s的速度在进行写入,自己也不不清楚,所以重新恢复原样</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>阅读顺序:</p>
 <ol>
 <li><a href="https://productforums.google.com/forum/#!topic/chrome/0nLjeCisf1A" target="_blank" rel="external">Chrome-help-forum</a></li>
 <li><a href="http://stackoverflow.com/questions/34588/how-do-i-change-the-number-of-open-files-limit-in-linux" target="_blank" rel="external">Linux-limit</a></li>
@@ -279,7 +279,7 @@ Issue开启Chrome之后,风扇开始转,monitor看到gnome-keyring-daemoncpu占�
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

@@ -7,7 +7,7 @@
     <title>xss习题集_1 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -64,7 +64,7 @@ POC如下
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -116,7 +116,7 @@ POC如下
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-04-18T16:00:00.000Z" itemprop="datePublished"> 发表于 04-19-2016</time>
@@ -128,12 +128,12 @@ POC如下
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#笔记"><span class="toc-number">1.</span> <span class="toc-text">笔记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference_&_Dictionary"><span class="toc-number">2.</span> <span class="toc-text">Reference & Dictionary</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#笔记"><span class="toc-number">1.</span> <span class="toc-text">笔记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference-amp-Dictionary"><span class="toc-number">2.</span> <span class="toc-text">Reference & Dictionary</span></a></li></ol>
 		
 		</div>
 		
 		<p>最近做了一个xss练习.<br>练习站点: <a href="http://xss-quiz.int21h.jp" target="_blank" rel="external">http://xss-quiz.int21h.jp</a><br>如果需要练习,请使用<code>firefox</code>或者<code>IE</code></p>
-<h3 id="笔记">笔记</h3><ol>
+<h3 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h3><ol>
 <li>test1-2</li>
 </ol>
 <p>script标签中可以使用<code>\x \</code>等进制</p>
@@ -143,22 +143,22 @@ POC如下
 <li><p>标签<code>src href</code>属性中可以尝试使用Entity实体编码进行正则绕过<br> Chrome的js检测绕过! 火狐存在路径问题</p>
 <blockquote>
 <p>POC如下</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"jav&amp;#10;ascript:alert('XSS');"</span>&gt;</span>xxx<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"jav&amp;#x0D;ascript:alert('XSS');"</span>&gt;</span>xxx<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"jav&amp;#10;ascript:alert('XSS');"</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"jav&amp;#x0D;ascript:alert('XSS');"</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
 <li><p>利用iframe的src属性<br>iframe可以调用父级 parent.alert(),data协议有个规定,一旦使用很可能会跳转至新的标签页,但是内嵌iframe会相对好一点</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">src</span>=<span class="value">"data:text/html;base64,PHNjcmlwdD5wYXJlbnQuYWxlcnQoZG9jdW1lbnQuZG9tYWluKTs8L3NjcmlwdD4"</span><span class="value">&lt;</span>/<span class="attribute">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src="data:text/html;base64,PHNjcmlwdD5wYXJlbnQuYWxlcnQoZG9jdW1lbnQuZG9tYWluKTs8L3NjcmlwdD4"&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>引号过滤的话就很困难了, 靠其他情况绕过</p>
 </li>
 <li><p>document.write() 编码绕过<br>a.unicode   无需\转义,直接写就行 例: <code>\u003c</code><br>b.16hex &amp; 8hex   需要对\进行转义例如: </p>
-<pre><code>`<span class="command">\\</span>x3cscript<span class="command">\\</span>x3ealert(/xss/)<span class="command">\\</span>x3c<span class="command">\\</span>x2fscript<span class="command">\\</span>x3e`
-`<span class="command">\\</span>74script<span class="command">\\</span>76alert(document.domain)<span class="command">\\</span>74<span class="command">\\</span>57script<span class="command">\\</span>76`
+<pre><code>`\\x3cscript\\x3ealert(/xss/)\\x3c\\x2fscript\\x3e`
+`\\74script\\76alert(document.domain)\\74\\57script\\76`
 </code></pre></li>
 <li><p>JS段中实体编码绕过正则过滤<br>Twitter DomXss at Sep 24, 2010</p>
 </li>
 </ol>
-<h3 id="Reference_&amp;_Dictionary">Reference &amp; Dictionary</h3><p><a href="http://www.w3school.com.cn/tags/html_ref_entities.html" target="_blank" rel="external">实体编码表</a><br><a href="https://github.com/matachi/MaTachi.github.io/blob/master/src/pages/solutions-to-the-wargame-xss-challenges-at-xss-quiz-int21h-jp.md" target="_blank" rel="external">write up_1</a><br><a href="https://blogs.tunelko.com/2013/12/02/xss-challenges/" target="_blank" rel="external">write up_2</a><br><a href="http://blog.knownsec.com/Knownsec_RD_Checklist/xss/xss_quiz.txt" target="_blank" rel="external">write up_3</a></p>
+<h3 id="Reference-amp-Dictionary"><a href="#Reference-amp-Dictionary" class="headerlink" title="Reference &amp; Dictionary"></a>Reference &amp; Dictionary</h3><p><a href="http://www.w3school.com.cn/tags/html_ref_entities.html" target="_blank" rel="external">实体编码表</a><br><a href="https://github.com/matachi/MaTachi.github.io/blob/master/src/pages/solutions-to-the-wargame-xss-challenges-at-xss-quiz-int21h-jp.md" target="_blank" rel="external">write up_1</a><br><a href="https://blogs.tunelko.com/2013/12/02/xss-challenges/" target="_blank" rel="external">write up_2</a><br><a href="http://blog.knownsec.com/Knownsec_RD_Checklist/xss/xss_quiz.txt" target="_blank" rel="external">write up_3</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -209,7 +209,7 @@ POC如下
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#笔记"><span class="toc-number">1.</span> <span class="toc-text">笔记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference_&_Dictionary"><span class="toc-number">2.</span> <span class="toc-text">Reference & Dictionary</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#笔记"><span class="toc-number">1.</span> <span class="toc-text">笔记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference-amp-Dictionary"><span class="toc-number">2.</span> <span class="toc-text">Reference & Dictionary</span></a></li></ol>
  
   </div>
 
@@ -318,7 +318,7 @@ POC如下
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

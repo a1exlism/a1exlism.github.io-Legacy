@@ -7,13 +7,13 @@
     <title>分区挂载/自动加载 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
     <meta name="description" content="分区挂载mount命令1mount [-t vfstype] [-o options] device dir
 
--t vfstype类型选择 ——可以不指定,系统自动选择  iso9660            光盘/光盘映像  vfat               fat32文件系统  ntfs               ntfs文件系统
+-t vfstype类型选择 —-可以不指定,系统自动选择  iso9660            光盘/光盘映像  vfat               fat32文件系统  ntfs               ntfs文件系统
 -o option 挂载设置  ro:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分区挂载/自动加载">
@@ -21,14 +21,14 @@
 <meta property="og:site_name" content="A1exlism">
 <meta property="og:description" content="分区挂载mount命令1mount [-t vfstype] [-o options] device dir
 
--t vfstype类型选择 ——可以不指定,系统自动选择  iso9660            光盘/光盘映像  vfat               fat32文件系统  ntfs               ntfs文件系统
+-t vfstype类型选择 —-可以不指定,系统自动选择  iso9660            光盘/光盘映像  vfat               fat32文件系统  ntfs               ntfs文件系统
 -o option 挂载设置  ro:">
 <meta property="og:updated_time" content="2016-05-17T15:48:50.024Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分区挂载/自动加载">
 <meta name="twitter:description" content="分区挂载mount命令1mount [-t vfstype] [-o options] device dir
 
--t vfstype类型选择 ——可以不指定,系统自动选择  iso9660            光盘/光盘映像  vfat               fat32文件系统  ntfs               ntfs文件系统
+-t vfstype类型选择 —-可以不指定,系统自动选择  iso9660            光盘/光盘映像  vfat               fat32文件系统  ntfs               ntfs文件系统
 -o option 挂载设置  ro:">
 <link rel="publisher" href="106896526077043222500">
 
@@ -40,7 +40,7 @@
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -92,7 +92,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2015-10-20T16:00:00.000Z" itemprop="datePublished"> 发表于 10-21-2015</time>
@@ -108,28 +108,28 @@
 		
 		</div>
 		
-		<h3 id="分区挂载">分区挂载</h3><h4 id="mount命令">mount命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount [-t vfstype] [-o options] device dir</span><br></pre></td></tr></table></figure>
+		<h3 id="分区挂载"><a href="#分区挂载" class="headerlink" title="分区挂载"></a>分区挂载</h3><h4 id="mount命令"><a href="#mount命令" class="headerlink" title="mount命令"></a>mount命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount [-t vfstype] [-o options] device dir</span><br></pre></td></tr></table></figure>
 <ol>
-<li>-t<br> vfstype类型选择 ——<code>可以不指定,系统自动选择</code><br>  iso9660            光盘/光盘映像<br>  vfat               fat32文件系统<br>  ntfs               ntfs文件系统</li>
+<li>-t<br> vfstype类型选择 —-<code>可以不指定,系统自动选择</code><br>  iso9660            光盘/光盘映像<br>  vfat               fat32文件系统<br>  ntfs               ntfs文件系统</li>
 <li>-o<br> option 挂载设置<br>  ro:                read only(只读)<br>  rw:                read write(读写)<br>  loop:              把文件作为硬盘分区进行挂载<br>  iocharset:         指定该文件系统所用的字符集</li>
 <li>devie<br> 所要挂载的设备,可以通过<code>sudo fdisk -l</code>进行查询</li>
 <li>dir<br> 所需要挂载的目录,e.g: /media/data #data为目标挂载目录 </li>
 </ol>
-<h4 id="注意">注意</h4><p>在一般的user用户之下mount可能会出现权限问题,<code>chmod 777 挂载目录</code>可以使一般user也可以正常使用</p>
-<h3 id="开机自动挂载">开机自动挂载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/fstab</span><br></pre></td></tr></table></figure>
-<p>输入格式:<br>    <code>&lt;file system&gt;&lt;mount point&gt;&lt;type&gt;&lt;options&gt;&lt;dump&gt;&lt;pass&gt;</code><br>    挂载分区—挂载点(目录)—分区类型—挂载设置—dump备份设置—fsck磁盘检查设置</p>
-<h4 id="option参数">option参数</h4><pre><code>defaults: rw, suid, dev, <span class="keyword">exec</span>, auto, nouser, <span class="keyword">and</span> async.
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>在一般的user用户之下mount可能会出现权限问题,<code>chmod 777 挂载目录</code>可以使一般user也可以正常使用</p>
+<h3 id="开机自动挂载"><a href="#开机自动挂载" class="headerlink" title="开机自动挂载"></a>开机自动挂载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/fstab</span><br></pre></td></tr></table></figure>
+<p>输入格式:<br>    <code>&lt;file system&gt;&lt;mount point&gt;&lt;type&gt;&lt;options&gt;&lt;dump&gt;&lt;pass&gt;</code><br>    挂载分区–挂载点(目录)–分区类型–挂载设置–dump备份设置–fsck磁盘检查设置</p>
+<h4 id="option参数"><a href="#option参数" class="headerlink" title="option参数"></a>option参数</h4><pre><code>defaults: rw, suid, dev, exec, auto, nouser, and async.
 auto:           系统自动挂载,fstab默认就是这个选项
 nouser          只有root用户可以挂载
-ro <span class="keyword">read</span>         only只读权限
-rw <span class="keyword">read</span>         <span class="keyword">write</span>读写权限
+ro read         only只读权限
+rw read         write读写权限
 user            任何用户都可以挂载
 noauto          开机不自动挂载
-请注意<span class="string">`光驱和软驱只有在装有介质时才可以进行挂载,因此它是noauto`</span>
-</code></pre><h4 id="dump">dump</h4><p>当其值设置为1时,将允许dump备份程序备份；设置为0时,忽略备份操作；</p>
-<h4 id="fsck磁盘检查设置">fsck磁盘检查设置</h4><p>其值是一个顺序.当其值为0时,永远不检查；而 / 根目录分区永远都为1.其它分区从2开始,数字越小越先检查,如果两个分区的数字相同,则同时检查</p>
-<h3 id="Reference">Reference</h3><p>分区自动挂载—-<a href="http://www.bootf.com/582.html" target="_blank" rel="external">VPS管理百科</a><br>分区挂载—-<a href="http://qspy.is-programmer.com/posts/40900.html" target="_blank" rel="external">Qspy随手记</a></p>
-<h3 id="自己是这么挂载的">自己是这么挂载的</h3><p>mount -t ntfs -o rw /dev/sdb5 /media/gust       #挂载<br>/dev/sdb5 /media/gust ntfs-3g rw,user,auto 0 0  #自动挂载</p>
+请注意`光驱和软驱只有在装有介质时才可以进行挂载,因此它是noauto`
+</code></pre><h4 id="dump"><a href="#dump" class="headerlink" title="dump"></a>dump</h4><p>当其值设置为1时,将允许dump备份程序备份；设置为0时,忽略备份操作；</p>
+<h4 id="fsck磁盘检查设置"><a href="#fsck磁盘检查设置" class="headerlink" title="fsck磁盘检查设置"></a>fsck磁盘检查设置</h4><p>其值是一个顺序.当其值为0时,永远不检查；而 / 根目录分区永远都为1.其它分区从2开始,数字越小越先检查,如果两个分区的数字相同,则同时检查</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>分区自动挂载—<a href="http://www.bootf.com/582.html" target="_blank" rel="external">VPS管理百科</a><br>分区挂载—<a href="http://qspy.is-programmer.com/posts/40900.html" target="_blank" rel="external">Qspy随手记</a></p>
+<h3 id="自己是这么挂载的"><a href="#自己是这么挂载的" class="headerlink" title="自己是这么挂载的"></a>自己是这么挂载的</h3><p>mount -t ntfs -o rw /dev/sdb5 /media/gust       #挂载<br>/dev/sdb5 /media/gust ntfs-3g rw,user,auto 0 0  #自动挂载</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -289,7 +289,7 @@ noauto          开机不自动挂载
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

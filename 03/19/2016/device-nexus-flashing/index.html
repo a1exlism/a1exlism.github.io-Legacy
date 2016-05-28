@@ -7,7 +7,7 @@
     <title>Nexus 5x解锁+第三方 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -43,7 +43,7 @@ unlock bootloader先开启usb debug和O">
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -95,7 +95,7 @@ unlock bootloader先开启usb debug和O">
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-03-18T16:00:00.000Z" itemprop="datePublished"> 发表于 03-19-2016</time>
@@ -107,13 +107,13 @@ unlock bootloader先开启usb debug和O">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0环境"><span class="toc-number">1.</span> <span class="toc-text">0x0环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x1_解锁Bootloader"><span class="toc-number">2.</span> <span class="toc-text">0x1 解锁Bootloader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Warning"><span class="toc-number">2.1.</span> <span class="toc-text">Warning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正"><span class="toc-number">2.2.</span> <span class="toc-text">正</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#刷完之后的坑"><span class="toc-number">2.3.</span> <span class="toc-text">刷完之后的坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x2_刷入第三方Recovery-twrp"><span class="toc-number">3.</span> <span class="toc-text">0x2 刷入第三方Recovery-twrp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正-1"><span class="toc-number">3.2.</span> <span class="toc-text">正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#刷入SuperSu"><span class="toc-number">4.</span> <span class="toc-text">刷入SuperSu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#坑"><span class="toc-number">4.1.</span> <span class="toc-text">坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后续开启Google_Now"><span class="toc-number">6.</span> <span class="toc-text">后续开启Google Now</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0环境"><span class="toc-number">1.</span> <span class="toc-text">0x0环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x1-解锁Bootloader"><span class="toc-number">2.</span> <span class="toc-text">0x1 解锁Bootloader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Warning"><span class="toc-number">2.1.</span> <span class="toc-text">Warning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正"><span class="toc-number">2.2.</span> <span class="toc-text">正</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#刷完之后的坑"><span class="toc-number">2.3.</span> <span class="toc-text">刷完之后的坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x2-刷入第三方Recovery-twrp"><span class="toc-number">3.</span> <span class="toc-text">0x2 刷入第三方Recovery-twrp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正-1"><span class="toc-number">3.2.</span> <span class="toc-text">正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#刷入SuperSu"><span class="toc-number">4.</span> <span class="toc-text">刷入SuperSu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#坑"><span class="toc-number">4.1.</span> <span class="toc-text">坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后续开启Google-Now"><span class="toc-number">6.</span> <span class="toc-text">后续开启Google Now</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="0x0环境">0x0环境</h2><p>Device: Nexus 5x marshmallow(Android 6.01)<br>Description:  Ubuntu 14.04<br>DevEnv: SDK<br>Files in need: </p>
-<h2 id="0x1_解锁Bootloader">0x1 解锁Bootloader</h2><h3 id="Warning">Warning</h3><p><code>**该操作会清除手机数据,请及时备份**</code></p>
-<h3 id="正">正</h3><ol>
+		<h2 id="0x0环境"><a href="#0x0环境" class="headerlink" title="0x0环境"></a>0x0环境</h2><p>Device: Nexus 5x marshmallow(Android 6.01)<br>Description:  Ubuntu 14.04<br>DevEnv: SDK<br>Files in need: </p>
+<h2 id="0x1-解锁Bootloader"><a href="#0x1-解锁Bootloader" class="headerlink" title="0x1 解锁Bootloader"></a>0x1 解锁Bootloader</h2><h3 id="Warning"><a href="#Warning" class="headerlink" title="Warning"></a>Warning</h3><p><code>**该操作会清除手机数据,请及时备份**</code></p>
+<h3 id="正"><a href="#正" class="headerlink" title="正"></a>正</h3><ol>
 <li>安装好adb和fastboot驱动: <a href="http://my.oschina.net/myaniu/blog/103385" target="_blank" rel="external">玛雅牛</a></li>
 <li>unlock bootloader<br>先开启usb debug和OEM unlocking,之后Ubuntu更改为root权限<code>sudo -i</code><blockquote>
 <p>adb devices<br>adb reboot-bootloader<br>fastboot devices<br>fastboot oem unlock</p>
@@ -121,33 +121,33 @@ unlock bootloader先开启usb debug和O">
 </li>
 </ol>
 <p>解锁之后的state会变成unlock而且开机会有警告,之后用开机键进行启动<br>保修的话用<code>fastboot flashing lock</code>来恢复锁定</p>
-<h3 id="刷完之后的坑">刷完之后的坑</h3><p>此时手机配置已经完全失效,<code>重新进入开发者模式选择USB-debug</code></p>
-<h2 id="0x2_刷入第三方Recovery-twrp">0x2 刷入第三方<a href="https://dl.twrp.me/bullhead/" target="_blank" rel="external">Recovery-twrp</a></h2><p>该版本适用于Nexus<code>5x</code>,其他版本请移步<a href="https://twrp.me/Devices/" target="_blank" rel="external">twrp-device</a>进行查询</p>
-<h3 id="注意">注意</h3><p>一定要检查md5,否则会出现如下问题:<br><strong>FAILED (remote: image is not a boot image)</strong></p>
+<h3 id="刷完之后的坑"><a href="#刷完之后的坑" class="headerlink" title="刷完之后的坑"></a>刷完之后的坑</h3><p>此时手机配置已经完全失效,<code>重新进入开发者模式选择USB-debug</code></p>
+<h2 id="0x2-刷入第三方Recovery-twrp"><a href="#0x2-刷入第三方Recovery-twrp" class="headerlink" title="0x2 刷入第三方Recovery-twrp"></a>0x2 刷入第三方<a href="https://dl.twrp.me/bullhead/" target="_blank" rel="external">Recovery-twrp</a></h2><p>该版本适用于Nexus<code>5x</code>,其他版本请移步<a href="https://twrp.me/Devices/" target="_blank" rel="external">twrp-device</a>进行查询</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>一定要检查md5,否则会出现如下问题:<br><strong>FAILED (remote: image is not a boot image)</strong></p>
 <blockquote>
 <p>md5sum twrp-3.0.0-1-bullhead.img</p>
 </blockquote>
-<h3 id="正-1">正</h3><blockquote>
+<h3 id="正-1"><a href="#正-1" class="headerlink" title="正"></a>正</h3><blockquote>
 <p>root@dell:/home/hexlism/Downloads# fastboot flash recovery twrp-3.0.0-1-bullhead.img </p>
 </blockquote>
-<p>如果成功刷入,则应该显示:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">target reported max download size of 536870912 bytes&#10;sending &#39;recovery&#39; (16345 KB)...&#10;OKAY [  0.471s]&#10;writing &#39;recovery&#39;...&#10;OKAY [  0.154s]&#10;finished. total time: 0.625s</span><br></pre></td></tr></table></figure></p>
+<p>如果成功刷入,则应该显示:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">target reported max download size of 536870912 bytes</span><br><span class="line">sending &apos;recovery&apos; (16345 KB)...</span><br><span class="line">OKAY [  0.471s]</span><br><span class="line">writing &apos;recovery&apos;...</span><br><span class="line">OKAY [  0.154s]</span><br><span class="line">finished. total time: 0.625s</span><br></pre></td></tr></table></figure></p>
 <p>刷完之后又多一个警告=, =</p>
-<h2 id="刷入SuperSu">刷入SuperSu</h2><p>当前版本为:BETA-SuperSU-v2.68-20160228150503.zip,下载地址在<code>Reference 0x4</code></p>
+<h2 id="刷入SuperSu"><a href="#刷入SuperSu" class="headerlink" title="刷入SuperSu"></a>刷入SuperSu</h2><p>当前版本为:BETA-SuperSU-v2.68-20160228150503.zip,下载地址在<code>Reference 0x4</code></p>
 <ol>
 <li><p>放入supersu文件:</p>
 <blockquote>
 <p>adb push BETA-SuperSU-v2.68-20160228150503.zip /sdcard/Downloads</p>
 </blockquote>
 </li>
-<li><p>进入bootloader模式—关机状态,电源+音量下 (或者用命令)</p>
+<li><p>进入bootloader模式–关机状态,电源+音量下 (或者用命令)</p>
 </li>
 <li>选择recovery mode (前提有twrp)</li>
 <li>在twrp中选择install,之后选择push进去的zip文件即可</li>
 </ol>
-<h3 id="坑">坑</h3><p>我碰到的问题让我虚惊一场,连续三次重启之后成功启动.差点哭晕</p>
+<h3 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h3><p>我碰到的问题让我虚惊一场,连续三次重启之后成功启动.差点哭晕</p>
 <p>如果twrp提示需要刷入supersu,选择<code>**don&#39;t**</code>,不过我在这个过程中完全没有碰到这个问题</p>
-<h2 id="Reference">Reference</h2><p>0x0. 主要参考 <a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br>0x1. ADB<br><a href="http://www.makeuseof.com/tag/new-adb-make-process-simple-easy/" target="_blank" rel="external">ADB</a><br><a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br><a href="http://www.inexus.co/article-2823-1.html" target="_blank" rel="external">fastboot-adb</a><br>0x2. bootloader<br><a href="http://www.inexus.co/thread-18509-1-1.html" target="_blank" rel="external">inexus</a><br><a href="http://rootmygalaxy.net/how-to-unlock-lg-google-nexus-5x-bootloader-easily/" target="_blank" rel="external">rootmygalaxy</a><br><a href="http://www.androidcentral.com/how-unlock-nexus-5x-bootloader" target="_blank" rel="external">androidcentral</a><br>0x3. Third recovery<br><a href="http://www.inexus.co/thread-23627-1-1.html" target="_blank" rel="external">inexus-recovery</a><br>0x4. <a href="http://download.chainfire.eu/supersu" target="_blank" rel="external">SuperSu</a><br>ADB 命令:<a href="http://bbs.gfan.com/android-4421095-1-1.html" target="_blank" rel="external">gfan</a></p>
-<h2 id="后续开启Google_Now">后续开启Google Now</h2><p>不需要模拟地址,不需要拔卡,不过<code>需要root</code><br>一件开启=====&gt;&gt;<a href="http://www.coolapk.com/apk/com.czbix.nowenabler" target="_blank" rel="external">酷安-Google Now Enabler</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>0x0. 主要参考 <a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br>0x1. ADB<br><a href="http://www.makeuseof.com/tag/new-adb-make-process-simple-easy/" target="_blank" rel="external">ADB</a><br><a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br><a href="http://www.inexus.co/article-2823-1.html" target="_blank" rel="external">fastboot-adb</a><br>0x2. bootloader<br><a href="http://www.inexus.co/thread-18509-1-1.html" target="_blank" rel="external">inexus</a><br><a href="http://rootmygalaxy.net/how-to-unlock-lg-google-nexus-5x-bootloader-easily/" target="_blank" rel="external">rootmygalaxy</a><br><a href="http://www.androidcentral.com/how-unlock-nexus-5x-bootloader" target="_blank" rel="external">androidcentral</a><br>0x3. Third recovery<br><a href="http://www.inexus.co/thread-23627-1-1.html" target="_blank" rel="external">inexus-recovery</a><br>0x4. <a href="http://download.chainfire.eu/supersu" target="_blank" rel="external">SuperSu</a><br>ADB 命令:<a href="http://bbs.gfan.com/android-4421095-1-1.html" target="_blank" rel="external">gfan</a></p>
+<h2 id="后续开启Google-Now"><a href="#后续开启Google-Now" class="headerlink" title="后续开启Google Now"></a>后续开启Google Now</h2><p>不需要模拟地址,不需要拔卡,不过<code>需要root</code><br>一件开启=====&gt;&gt;<a href="http://www.coolapk.com/apk/com.czbix.nowenabler" target="_blank" rel="external">酷安-Google Now Enabler</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -198,7 +198,7 @@ unlock bootloader先开启usb debug和O">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0环境"><span class="toc-number">1.</span> <span class="toc-text">0x0环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x1_解锁Bootloader"><span class="toc-number">2.</span> <span class="toc-text">0x1 解锁Bootloader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Warning"><span class="toc-number">2.1.</span> <span class="toc-text">Warning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正"><span class="toc-number">2.2.</span> <span class="toc-text">正</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#刷完之后的坑"><span class="toc-number">2.3.</span> <span class="toc-text">刷完之后的坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x2_刷入第三方Recovery-twrp"><span class="toc-number">3.</span> <span class="toc-text">0x2 刷入第三方Recovery-twrp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正-1"><span class="toc-number">3.2.</span> <span class="toc-text">正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#刷入SuperSu"><span class="toc-number">4.</span> <span class="toc-text">刷入SuperSu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#坑"><span class="toc-number">4.1.</span> <span class="toc-text">坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后续开启Google_Now"><span class="toc-number">6.</span> <span class="toc-text">后续开启Google Now</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0环境"><span class="toc-number">1.</span> <span class="toc-text">0x0环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x1-解锁Bootloader"><span class="toc-number">2.</span> <span class="toc-text">0x1 解锁Bootloader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Warning"><span class="toc-number">2.1.</span> <span class="toc-text">Warning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正"><span class="toc-number">2.2.</span> <span class="toc-text">正</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#刷完之后的坑"><span class="toc-number">2.3.</span> <span class="toc-text">刷完之后的坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x2-刷入第三方Recovery-twrp"><span class="toc-number">3.</span> <span class="toc-text">0x2 刷入第三方Recovery-twrp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正-1"><span class="toc-number">3.2.</span> <span class="toc-text">正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#刷入SuperSu"><span class="toc-number">4.</span> <span class="toc-text">刷入SuperSu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#坑"><span class="toc-number">4.1.</span> <span class="toc-text">坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后续开启Google-Now"><span class="toc-number">6.</span> <span class="toc-text">后续开启Google Now</span></a></li></ol>
  
   </div>
 
@@ -307,7 +307,7 @@ unlock bootloader先开启usb debug和O">
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

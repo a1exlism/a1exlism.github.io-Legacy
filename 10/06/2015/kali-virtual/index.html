@@ -7,7 +7,7 @@
     <title>Kali2.0安装虚拟机 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -36,6 +36,7 @@
 添加源 deb http://download.virtualbox.org/virtualbox/debian jessie contrib gedit /etc/apt/sources.list
 下载Oracle公钥apt-key add oracle_vbox.asc进行导入
 安装12apt-get updateapt-g">
+<meta name="twitter:image" content="http://csser.work/imgs/kali2Virtual/1.png">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -46,7 +47,7 @@
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -98,7 +99,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2015-10-05T16:00:00.000Z" itemprop="datePublished"> 发表于 10-06-2015</time>
@@ -110,26 +111,26 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#以VirtualBox为例"><span class="toc-number">1.</span> <span class="toc-text">以VirtualBox为例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kali_Linux_virtualbox_(rc=-1908)"><span class="toc-number">1.2.</span> <span class="toc-text">Kali Linux virtualbox (rc=-1908)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原因"><span class="toc-number">1.2.1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决"><span class="toc-number">1.2.2.</span> <span class="toc-text">解决</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#添加源并更新"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">添加源并更新</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#获取内核和相应版本的linux-header"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">获取内核和相应版本的linux-header</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#安装-1"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#完成图"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">完成图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">1.3.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#以VirtualBox为例"><span class="toc-number">1.</span> <span class="toc-text">以VirtualBox为例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kali-Linux-virtualbox-rc-1908"><span class="toc-number">1.2.</span> <span class="toc-text">Kali Linux virtualbox (rc=-1908)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原因"><span class="toc-number">1.2.1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决"><span class="toc-number">1.2.2.</span> <span class="toc-text">解决</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#添加源并更新"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">添加源并更新</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#获取内核和相应版本的linux-header"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">获取内核和相应版本的linux-header</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#安装-1"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#完成图"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">完成图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">1.3.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="以VirtualBox为例">以VirtualBox为例</h2><h3 id="安装">安装</h3><p>根据官方文档<a href="https://www.virtualbox.org/wiki/Linux_Downloads" target="_blank" rel="external">Oracle Linux</a></p>
+		<h2 id="以VirtualBox为例"><a href="#以VirtualBox为例" class="headerlink" title="以VirtualBox为例"></a>以VirtualBox为例</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>根据官方文档<a href="https://www.virtualbox.org/wiki/Linux_Downloads" target="_blank" rel="external">Oracle Linux</a></p>
 <ol>
 <li>添加源 <code>deb http://download.virtualbox.org/virtualbox/debian jessie contrib</code><br> gedit /etc/apt/sources.list</li>
 <li>下载<a href="https://www.virtualbox.org/download/oracle_vbox.asc" target="_blank" rel="external">Oracle公钥</a><br><code>apt-key add oracle_vbox.asc</code>进行导入</li>
-<li>安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install virtualbox-<span class="number">5.0</span></span><br></pre></td></tr></table></figure>
+<li>安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install virtualbox-5.0</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h3 id="Kali_Linux_virtualbox_(rc=-1908)">Kali Linux virtualbox (rc=-1908)</h3><h4 id="原因">原因</h4><p>deb的源问题,导致原本的linux-header依赖没法安装</p>
-<h4 id="解决">解决</h4><h5 id="添加源并更新">添加源并更新</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#New</span></span><br><span class="line">deb http://http.kali.org/kali sana main non-free contrib</span><br><span class="line">deb http://security.kali.org/kali-security sana/updates main contrib non-free</span><br><span class="line"><span class="comment">#Origin</span></span><br><span class="line">deb-src http://http.kali.org/kali sana main non-free contrib</span><br><span class="line">deb-src http://security.kali.org/kali-security sana/updates main contrib non-free</span><br><span class="line"><span class="comment">#gedit /etc/apt/source.list</span></span><br><span class="line"></span><br><span class="line">apt-get update &amp;&amp; upgrade</span><br></pre></td></tr></table></figure>
-<h5 id="获取内核和相应版本的linux-header">获取内核和相应版本的linux-header</h5><pre><code>uname -<span class="literal">r</span>
-apt-cache <span class="keyword">search</span> linux-header
+<h3 id="Kali-Linux-virtualbox-rc-1908"><a href="#Kali-Linux-virtualbox-rc-1908" class="headerlink" title="Kali Linux virtualbox (rc=-1908)"></a>Kali Linux virtualbox (rc=-1908)</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>deb的源问题,导致原本的linux-header依赖没法安装</p>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><h5 id="添加源并更新"><a href="#添加源并更新" class="headerlink" title="添加源并更新"></a>添加源并更新</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#New</span></span><br><span class="line">deb http://http.kali.org/kali sana main non-free contrib</span><br><span class="line">deb http://security.kali.org/kali-security sana/updates main contrib non-free</span><br><span class="line"><span class="comment">#Origin</span></span><br><span class="line">deb-src http://http.kali.org/kali sana main non-free contrib</span><br><span class="line">deb-src http://security.kali.org/kali-security sana/updates main contrib non-free</span><br><span class="line"><span class="comment">#gedit /etc/apt/source.list</span></span><br><span class="line"></span><br><span class="line">apt-get update &amp;&amp; upgrade</span><br></pre></td></tr></table></figure>
+<h5 id="获取内核和相应版本的linux-header"><a href="#获取内核和相应版本的linux-header" class="headerlink" title="获取内核和相应版本的linux-header"></a>获取内核和相应版本的linux-header</h5><pre><code>uname -r
+apt-cache search linux-header
 </code></pre><p><img src="/imgs/kali2Virtual/1.png" alt="1"></p>
-<h5 id="安装-1">安装</h5><pre><code>apt-<span class="keyword">get</span> install xxx
+<h5 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h5><pre><code>apt-get install xxx
 </code></pre><p><img src="/imgs/kali2Virtual/2.png" alt="2"></p>
-<h5 id="完成图">完成图</h5><p><img src="/imgs/kali2Virtual/3.png" alt="3"></p>
-<h3 id="参考">参考</h3><p><a href="http://zhidao.baidu.com/link?url=wXtAPXdRSeneWV3jLAfBbPQp9knA8tVNQD-kGkOVBXOAZ8ivPMTDhq9rk508-ebXA24ItJzQgua2bBGnmEvPRa" target="_blank" rel="external">Baidu</a><br><a href="https://www.felixrr.pro/archives/399/kali-2-0-virtualbox-guest-additions-and-linux-headers" target="_blank" rel="external">felixrr.pro</a></p>
+<h5 id="完成图"><a href="#完成图" class="headerlink" title="完成图"></a>完成图</h5><p><img src="/imgs/kali2Virtual/3.png" alt="3"></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://zhidao.baidu.com/link?url=wXtAPXdRSeneWV3jLAfBbPQp9knA8tVNQD-kGkOVBXOAZ8ivPMTDhq9rk508-ebXA24ItJzQgua2bBGnmEvPRa" target="_blank" rel="external">Baidu</a><br><a href="https://www.felixrr.pro/archives/399/kali-2-0-virtualbox-guest-additions-and-linux-headers" target="_blank" rel="external">felixrr.pro</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -180,7 +181,7 @@ apt-cache <span class="keyword">search</span> linux-header
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#以VirtualBox为例"><span class="toc-number">1.</span> <span class="toc-text">以VirtualBox为例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kali_Linux_virtualbox_(rc=-1908)"><span class="toc-number">1.2.</span> <span class="toc-text">Kali Linux virtualbox (rc=-1908)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原因"><span class="toc-number">1.2.1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决"><span class="toc-number">1.2.2.</span> <span class="toc-text">解决</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#添加源并更新"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">添加源并更新</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#获取内核和相应版本的linux-header"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">获取内核和相应版本的linux-header</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#安装-1"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#完成图"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">完成图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">1.3.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#以VirtualBox为例"><span class="toc-number">1.</span> <span class="toc-text">以VirtualBox为例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kali-Linux-virtualbox-rc-1908"><span class="toc-number">1.2.</span> <span class="toc-text">Kali Linux virtualbox (rc=-1908)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原因"><span class="toc-number">1.2.1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决"><span class="toc-number">1.2.2.</span> <span class="toc-text">解决</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#添加源并更新"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">添加源并更新</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#获取内核和相应版本的linux-header"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">获取内核和相应版本的linux-header</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#安装-1"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#完成图"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">完成图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">1.3.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
  
   </div>
 
@@ -289,7 +290,7 @@ apt-cache <span class="keyword">search</span> linux-header
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

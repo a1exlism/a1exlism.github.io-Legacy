@@ -7,7 +7,7 @@
     <title>读书笔记--鸟哥私房菜② | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -58,7 +58,7 @@ grep -n ‘t[ae]st’ testfile
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -110,7 +110,7 @@ grep -n ‘t[ae]st’ testfile
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-02-25T16:00:00.000Z" itemprop="datePublished"> 发表于 02-26-2016</time>
@@ -122,28 +122,28 @@ grep -n ‘t[ae]st’ testfile
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正则"><span class="toc-number">1.</span> <span class="toc-text">正则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#grep_[-ivn][-A/Bn]_‘keyword’"><span class="toc-number">1.1.</span> <span class="toc-text">grep [-ivn][-A/Bn] ‘keyword’</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#行相关"><span class="toc-number">1.1.1.</span> <span class="toc-text">行相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模糊查询[]"><span class="toc-number">1.1.2.</span> <span class="toc-text">模糊查询[]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反向查找[^]"><span class="toc-number">1.1.3.</span> <span class="toc-text">反向查找[^]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#行-首尾^$"><span class="toc-number">1.1.4.</span> <span class="toc-text">行-首尾^$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符匹配-_*_+"><span class="toc-number">1.1.5.</span> <span class="toc-text">字符匹配. * +</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#-_匹配任意一个字符"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">. 匹配任意一个字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#*_匹配0次以上"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">* 匹配0次以上</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#+_匹配1次以上_需要转义=_="><span class="toc-number">1.1.5.3.</span> <span class="toc-text">+ 匹配1次以上 需要转义= =</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连续字符范围限定{m,n}_需要转义"><span class="toc-number">1.1.6.</span> <span class="toc-text">连续字符范围限定{m,n} 需要转义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed_[-nefr]_action"><span class="toc-number">1.2.</span> <span class="toc-text">sed [-nefr] action</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#action_===_[n1[,n2]]_function"><span class="toc-number">1.2.1.</span> <span class="toc-text">action === [n1[,n2]] function</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栗子"><span class="toc-number">1.3.</span> <span class="toc-text">栗子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#增_删_替换"><span class="toc-number">1.3.1.</span> <span class="toc-text">增 删 替换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显示"><span class="toc-number">1.3.2.</span> <span class="toc-text">显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#!批量替换!"><span class="toc-number">1.3.3.</span> <span class="toc-text">!批量替换!</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vim的批量替换"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">vim的批量替换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#egrep(expand_grep)"><span class="toc-number">1.4.</span> <span class="toc-text">egrep(expand grep)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#格式化输出"><span class="toc-number">2.</span> <span class="toc-text">格式化输出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#排版printf"><span class="toc-number">2.1.</span> <span class="toc-text">排版printf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk_‘[conditions]{actions}’_filename"><span class="toc-number">2.2.</span> <span class="toc-text">awk ‘[conditions]{actions}’ filename</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#attention"><span class="toc-number">2.2.1.</span> <span class="toc-text">attention</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对比sed"><span class="toc-number">2.2.2.</span> <span class="toc-text">对比sed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栗子-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">栗子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正则"><span class="toc-number">1.</span> <span class="toc-text">正则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#grep-ivn-A-Bn-‘keyword’"><span class="toc-number">1.1.</span> <span class="toc-text">grep [-ivn][-A/Bn] ‘keyword’</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#行相关"><span class="toc-number">1.1.1.</span> <span class="toc-text">行相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模糊查询"><span class="toc-number">1.1.2.</span> <span class="toc-text">模糊查询[]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反向查找"><span class="toc-number">1.1.3.</span> <span class="toc-text">反向查找[^]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#行-首尾"><span class="toc-number">1.1.4.</span> <span class="toc-text">行-首尾^$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符匹配"><span class="toc-number">1.1.5.</span> <span class="toc-text">字符匹配. * +</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#匹配任意一个字符"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">. 匹配任意一个字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#匹配0次以上"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">* 匹配0次以上</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#匹配1次以上-需要转义"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">+ 匹配1次以上 需要转义= =</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连续字符范围限定-m-n-需要转义"><span class="toc-number">1.1.6.</span> <span class="toc-text">连续字符范围限定{m,n} 需要转义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed-nefr-action"><span class="toc-number">1.2.</span> <span class="toc-text">sed [-nefr] action</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#action-n1-n2-function"><span class="toc-number">1.2.1.</span> <span class="toc-text">action === [n1[,n2]] function</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栗子"><span class="toc-number">1.3.</span> <span class="toc-text">栗子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#增-删-替换"><span class="toc-number">1.3.1.</span> <span class="toc-text">增 删 替换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显示"><span class="toc-number">1.3.2.</span> <span class="toc-text">显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#批量替换"><span class="toc-number">1.3.3.</span> <span class="toc-text">!批量替换!</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vim的批量替换"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">vim的批量替换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#egrep-expand-grep"><span class="toc-number">1.4.</span> <span class="toc-text">egrep(expand grep)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#格式化输出"><span class="toc-number">2.</span> <span class="toc-text">格式化输出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#排版printf"><span class="toc-number">2.1.</span> <span class="toc-text">排版printf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk-‘-conditions-actions-’-filename"><span class="toc-number">2.2.</span> <span class="toc-text">awk ‘[conditions]{actions}’ filename</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#attention"><span class="toc-number">2.2.1.</span> <span class="toc-text">attention</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对比sed"><span class="toc-number">2.2.2.</span> <span class="toc-text">对比sed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栗子-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">栗子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="正则">正则</h1><p>主要以栗子为主</p>
-<h2 id="grep_[-ivn][-A/Bn]_‘keyword’">grep [-ivn][-A/Bn] ‘keyword’</h2><h3 id="行相关">行相关</h3><p>0x1 查找内核中有 eth 字样的行数据,显示行号,额外再显示选中行前(befor)3行和后(after)2行的数据</p>
+		<h1 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h1><p>主要以栗子为主</p>
+<h2 id="grep-ivn-A-Bn-‘keyword’"><a href="#grep-ivn-A-Bn-‘keyword’" class="headerlink" title="grep [-ivn][-A/Bn] ‘keyword’"></a>grep [-ivn][-A/Bn] ‘keyword’</h2><h3 id="行相关"><a href="#行相关" class="headerlink" title="行相关"></a>行相关</h3><p>0x1 查找内核中有 eth 字样的行数据,显示行号,额外再显示选中行前(befor)3行和后(after)2行的数据</p>
 <blockquote>
 <p>dmesg | grep -n -B3 -A2 ‘eth’</p>
 </blockquote>
-<h3 id="模糊查询[]">模糊查询<code>[]</code></h3><p>0x1 不区分test和taste单词</p>
+<h3 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询[]"></a>模糊查询<code>[]</code></h3><p>0x1 不区分test和taste单词</p>
 <blockquote>
 <p>grep -n ‘t[ae]st’ testfile</p>
 </blockquote>
-<h3 id="反向查找[^]">反向查找<code>[^]</code></h3><p>0x1 找首字母不是元音的单词所在的行号<br>可以自行去找个测试网站尝试(\s过滤无用空格避免错误判断)</p>
+<h3 id="反向查找"><a href="#反向查找" class="headerlink" title="反向查找[^]"></a>反向查找<code>[^]</code></h3><p>0x1 找首字母不是元音的单词所在的行号<br>可以自行去找个测试网站尝试(\s过滤无用空格避免错误判断)</p>
 <blockquote>
 <p>grep -in ‘\b[^aeiou\s][a-z]+\b’ /var/log/kern.log.1</p>
 <blockquote>
 <p>这里自作聪明用<code>()</code>把[a-z]+给框了起来,然后就识别不出来</p>
 </blockquote>
 </blockquote>
-<p>——后记: 发现<code>小括号也需要转义</code>!!= =</p>
-<h3 id="行-首尾^$">行-首尾^$</h3><p>此<code>^</code>区别于上面的<code>^</code>,位置不同<br>0x1 查找二月份的内核日志</p>
+<p>—-后记: 发现<code>小括号也需要转义</code>!!= =</p>
+<h3 id="行-首尾"><a href="#行-首尾" class="headerlink" title="行-首尾^$"></a>行-首尾^$</h3><p>此<code>^</code>区别于上面的<code>^</code>,位置不同<br>0x1 查找二月份的内核日志</p>
 <blockquote>
 <p>grep -in ‘^Feb’ /var/log/kern.log.1</p>
 </blockquote>
@@ -155,21 +155,21 @@ grep -n ‘t[ae]st’ testfile
 <blockquote>
 <p>grep -n ‘^$’ ./tmp/testfile</p>
 </blockquote>
-<h3 id="字符匹配-_*_+">字符匹配. * +</h3><h4 id="-_匹配任意一个字符">. 匹配任意一个字符</h4><p>0x1 匹配 l??d </p>
+<h3 id="字符匹配"><a href="#字符匹配" class="headerlink" title="字符匹配. * +"></a>字符匹配. * +</h3><h4 id="匹配任意一个字符"><a href="#匹配任意一个字符" class="headerlink" title=". 匹配任意一个字符"></a>. 匹配任意一个字符</h4><p>0x1 匹配 l??d </p>
 <blockquote>
 <p>grep -n ‘l..d’ /var/log/kern.log.1</p>
 </blockquote>
 <p>该文件可以匹配到called load等单词</p>
-<h4 id="*_匹配0次以上">* 匹配0次以上</h4><p>0x2 <code>.*</code>的组合表示匹配任意数量字符</p>
+<h4 id="匹配0次以上"><a href="#匹配0次以上" class="headerlink" title="* 匹配0次以上"></a>* 匹配0次以上</h4><p>0x2 <code>.*</code>的组合表示匹配任意数量字符</p>
 <blockquote>
 <p>grep -n ‘e.*e’ /var/log/kern.log.1</p>
 </blockquote>
 <p>这种情况在两个e之间碰到e不会停下,直到找到最后一个e,形成最长字串</p>
-<h4 id="+_匹配1次以上_需要转义=_=">+ 匹配1次以上 需要转义= =</h4><p>0x3 匹配e/ee/eee/e….</p>
+<h4 id="匹配1次以上-需要转义"><a href="#匹配1次以上-需要转义" class="headerlink" title="+ 匹配1次以上 需要转义= ="></a>+ 匹配1次以上 需要转义= =</h4><p>0x3 匹配e/ee/eee/e….</p>
 <blockquote>
 <p>grep -n ‘e+‘ /var/log/kern.log.1</p>
 </blockquote>
-<h3 id="连续字符范围限定{m,n}_需要转义">连续字符范围限定{m,n} 需要转义</h3><p>m,n可以省略其一<br>0x1 仅匹配一个<code>er</code></p>
+<h3 id="连续字符范围限定-m-n-需要转义"><a href="#连续字符范围限定-m-n-需要转义" class="headerlink" title="连续字符范围限定{m,n} 需要转义"></a>连续字符范围限定{m,n} 需要转义</h3><p>m,n可以省略其一<br>0x1 仅匹配一个<code>er</code></p>
 <blockquote>
 <p>grep -n ‘(er){1}‘ testfile </p>
 </blockquote>
@@ -178,9 +178,9 @@ grep -n ‘t[ae]st’ testfile
 <p>grep -n ‘(er){2,}‘ testfile</p>
 </blockquote>
 <p>这里有一种情况:<code>ererer</code>在{2,}的选择下是一个整体,即{}会自动匹配最高重复数 </p>
-<h2 id="sed_[-nefr]_action">sed [-nefr] action</h2><p>-n silent模式,只出现被处理的那行<br>-e edit -f 将sed动作写入file<br>-r 扩展型regex -i直接修改文件内容</p>
-<h3 id="action_===_[n1[,n2]]_function">action === [n1[,n2]] function</h3><p>所有动作的最小单位均为<code>行</code><br>function:<br>-a add -c 替换 -d delete<br>-i insert -p print  -s 替换,<code>可用正则</code> 加上标题的行号就可以进行<code>批量替换</code>啦~</p>
-<h2 id="栗子">栗子</h2><h3 id="增_删_替换">增 删 替换</h3><p>0x1 /etc/passwd删除2-5行并打印(含行号<code>nl</code>)</p>
+<h2 id="sed-nefr-action"><a href="#sed-nefr-action" class="headerlink" title="sed [-nefr] action"></a>sed [-nefr] action</h2><p>-n silent模式,只出现被处理的那行<br>-e edit -f 将sed动作写入file<br>-r 扩展型regex -i直接修改文件内容</p>
+<h3 id="action-n1-n2-function"><a href="#action-n1-n2-function" class="headerlink" title="action === [n1[,n2]] function"></a>action === [n1[,n2]] function</h3><p>所有动作的最小单位均为<code>行</code><br>function:<br>-a add -c 替换 -d delete<br>-i insert -p print  -s 替换,<code>可用正则</code> 加上标题的行号就可以进行<code>批量替换</code>啦~</p>
+<h2 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h2><h3 id="增-删-替换"><a href="#增-删-替换" class="headerlink" title="增 删 替换"></a>增 删 替换</h3><p>0x1 /etc/passwd删除2-5行并打印(含行号<code>nl</code>)</p>
 <blockquote>
 <p>nl /etc/passwd | sed ‘2,5d’</p>
 </blockquote>
@@ -192,15 +192,15 @@ grep -n ‘t[ae]st’ testfile
 <blockquote>
 <p>nl /etc/passwd | sed ‘1,4c next’</p>
 </blockquote>
-<h3 id="显示">显示</h3><p>0x1 只显示2-6行内容<br><code>-n</code> 经过处理的</p>
+<h3 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h3><p>0x1 只显示2-6行内容<br><code>-n</code> 经过处理的</p>
 <blockquote>
 <p>nl /etc/passwd | sed -n ‘2,6p’</p>
 </blockquote>
-<h3 id="!批量替换!">!批量替换!</h3><p>语法: <code>s/word1/word2/g&#39; g可选</code>globe`全局概念<br>0x1 在ifconfig中将ip截取出来</p>
+<h3 id="批量替换"><a href="#批量替换" class="headerlink" title="!批量替换!"></a>!批量替换!</h3><p>语法: <code>s/word1/word2/g&#39; g可选</code>globe`全局概念<br>0x1 在ifconfig中将ip截取出来</p>
 <blockquote>
 <p>选行-&gt;除首-&gt;除尾<br>ifconfig wlan0 | grep -n ‘192.168’ | sed ‘s/^.<em>ddr://g’ | sed ‘s/\s.</em>.0$//g’</p>
 </blockquote>
-<h4 id="vim的批量替换">vim的批量替换</h4><p>0x1 当前行替换</p>
+<h4 id="vim的批量替换"><a href="#vim的批量替换" class="headerlink" title="vim的批量替换"></a>vim的批量替换</h4><p>0x1 当前行替换</p>
 <blockquote>
 <p>:s/XXX/YYY/g</p>
 </blockquote>
@@ -212,17 +212,17 @@ grep -n ‘t[ae]st’ testfile
 <blockquote>
 <p>%s/XXX/YYY/g</p>
 </blockquote>
-<h2 id="egrep(expand_grep)">egrep(expand grep)</h2><p>(感觉以后还是直接alias grep=egrep好一点)<br><code>X+</code> 1个或以上X <code>X?</code>0或一个X <code>|</code>或<br><code>()</code> 分组 <code>()+</code> 多个重复组判别<br>小李子:</p>
+<h2 id="egrep-expand-grep"><a href="#egrep-expand-grep" class="headerlink" title="egrep(expand grep)"></a>egrep(expand grep)</h2><p>(感觉以后还是直接alias grep=egrep好一点)<br><code>X+</code> 1个或以上X <code>X?</code>0或一个X <code>|</code>或<br><code>()</code> 分组 <code>()+</code> 多个重复组判别<br>小李子:</p>
 <blockquote>
 <p>cat /etc/passwd | egrep -n “^c|^s”</p>
 </blockquote>
 <p>(nl居然连grep基本的^都不能用…)</p>
-<h1 id="格式化输出">格式化输出</h1><h2 id="排版printf">排版<code>printf</code></h2><blockquote>
+<h1 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h1><h2 id="排版printf"><a href="#排版printf" class="headerlink" title="排版printf"></a>排版<code>printf</code></h2><blockquote>
 <p>printf ‘%s\n’ $(nl /etc/passwd)<br>printf ‘\x55\n’</p>
 </blockquote>
-<h2 id="awk_‘[conditions]{actions}’_filename"><code>awk</code> ‘[conditions]{actions}’ filename</h2><h3 id="attention">attention</h3><p>$0 整行 行内:$1 $2 $3 为第n个连续<br>NF 每行的字段总数 NR:目前处理的行号(row) FS:文件分隔符(split)<br>所有动作需要<code>&quot;&quot;</code>括住<br>运算符<code>==</code>表示等于</p>
-<h3 id="对比sed">对比sed</h3><p>相对于sed的行处理,sed主要将数据变为多个字段进行处理</p>
-<h3 id="栗子-1">栗子</h3><p>0x1 取出最近3个账号及登陆IP last -i显示ip</p>
+<h2 id="awk-‘-conditions-actions-’-filename"><a href="#awk-‘-conditions-actions-’-filename" class="headerlink" title="awk ‘[conditions]{actions}’ filename"></a><code>awk</code> ‘[conditions]{actions}’ filename</h2><h3 id="attention"><a href="#attention" class="headerlink" title="attention"></a>attention</h3><p>$0 整行 行内:$1 $2 $3 为第n个连续<br>NF 每行的字段总数 NR:目前处理的行号(row) FS:文件分隔符(split)<br>所有动作需要<code>&quot;&quot;</code>括住<br>运算符<code>==</code>表示等于</p>
+<h3 id="对比sed"><a href="#对比sed" class="headerlink" title="对比sed"></a>对比sed</h3><p>相对于sed的行处理,sed主要将数据变为多个字段进行处理</p>
+<h3 id="栗子-1"><a href="#栗子-1" class="headerlink" title="栗子"></a>栗子</h3><p>0x1 取出最近3个账号及登陆IP last -i显示ip</p>
 <blockquote>
 <p>last -in 3<br>a1exlism@dell:~$ last -in 5 | awk ‘{printf $1 “\t” $3”\n”}’</p>
 <blockquote>
@@ -242,7 +242,7 @@ grep -n ‘t[ae]st’ testfile
 <p>cat /etc/passwd | awk ‘<code>BEGIN</code> {FS “:”} $3 &gt; 5 {printf $2 “\n”}’</p>
 </blockquote>
 <p>0x5 awk的计算功能<br>计算不写了</p>
-<h1 id="Reference">Reference</h1><p>《鸟哥私房菜》</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>《鸟哥私房菜》</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -293,7 +293,7 @@ grep -n ‘t[ae]st’ testfile
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正则"><span class="toc-number">1.</span> <span class="toc-text">正则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#grep_[-ivn][-A/Bn]_‘keyword’"><span class="toc-number">1.1.</span> <span class="toc-text">grep [-ivn][-A/Bn] ‘keyword’</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#行相关"><span class="toc-number">1.1.1.</span> <span class="toc-text">行相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模糊查询[]"><span class="toc-number">1.1.2.</span> <span class="toc-text">模糊查询[]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反向查找[^]"><span class="toc-number">1.1.3.</span> <span class="toc-text">反向查找[^]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#行-首尾^$"><span class="toc-number">1.1.4.</span> <span class="toc-text">行-首尾^$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符匹配-_*_+"><span class="toc-number">1.1.5.</span> <span class="toc-text">字符匹配. * +</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#-_匹配任意一个字符"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">. 匹配任意一个字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#*_匹配0次以上"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">* 匹配0次以上</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#+_匹配1次以上_需要转义=_="><span class="toc-number">1.1.5.3.</span> <span class="toc-text">+ 匹配1次以上 需要转义= =</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连续字符范围限定{m,n}_需要转义"><span class="toc-number">1.1.6.</span> <span class="toc-text">连续字符范围限定{m,n} 需要转义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed_[-nefr]_action"><span class="toc-number">1.2.</span> <span class="toc-text">sed [-nefr] action</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#action_===_[n1[,n2]]_function"><span class="toc-number">1.2.1.</span> <span class="toc-text">action === [n1[,n2]] function</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栗子"><span class="toc-number">1.3.</span> <span class="toc-text">栗子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#增_删_替换"><span class="toc-number">1.3.1.</span> <span class="toc-text">增 删 替换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显示"><span class="toc-number">1.3.2.</span> <span class="toc-text">显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#!批量替换!"><span class="toc-number">1.3.3.</span> <span class="toc-text">!批量替换!</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vim的批量替换"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">vim的批量替换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#egrep(expand_grep)"><span class="toc-number">1.4.</span> <span class="toc-text">egrep(expand grep)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#格式化输出"><span class="toc-number">2.</span> <span class="toc-text">格式化输出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#排版printf"><span class="toc-number">2.1.</span> <span class="toc-text">排版printf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk_‘[conditions]{actions}’_filename"><span class="toc-number">2.2.</span> <span class="toc-text">awk ‘[conditions]{actions}’ filename</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#attention"><span class="toc-number">2.2.1.</span> <span class="toc-text">attention</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对比sed"><span class="toc-number">2.2.2.</span> <span class="toc-text">对比sed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栗子-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">栗子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正则"><span class="toc-number">1.</span> <span class="toc-text">正则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#grep-ivn-A-Bn-‘keyword’"><span class="toc-number">1.1.</span> <span class="toc-text">grep [-ivn][-A/Bn] ‘keyword’</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#行相关"><span class="toc-number">1.1.1.</span> <span class="toc-text">行相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模糊查询"><span class="toc-number">1.1.2.</span> <span class="toc-text">模糊查询[]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反向查找"><span class="toc-number">1.1.3.</span> <span class="toc-text">反向查找[^]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#行-首尾"><span class="toc-number">1.1.4.</span> <span class="toc-text">行-首尾^$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符匹配"><span class="toc-number">1.1.5.</span> <span class="toc-text">字符匹配. * +</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#匹配任意一个字符"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">. 匹配任意一个字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#匹配0次以上"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">* 匹配0次以上</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#匹配1次以上-需要转义"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">+ 匹配1次以上 需要转义= =</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连续字符范围限定-m-n-需要转义"><span class="toc-number">1.1.6.</span> <span class="toc-text">连续字符范围限定{m,n} 需要转义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed-nefr-action"><span class="toc-number">1.2.</span> <span class="toc-text">sed [-nefr] action</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#action-n1-n2-function"><span class="toc-number">1.2.1.</span> <span class="toc-text">action === [n1[,n2]] function</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栗子"><span class="toc-number">1.3.</span> <span class="toc-text">栗子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#增-删-替换"><span class="toc-number">1.3.1.</span> <span class="toc-text">增 删 替换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显示"><span class="toc-number">1.3.2.</span> <span class="toc-text">显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#批量替换"><span class="toc-number">1.3.3.</span> <span class="toc-text">!批量替换!</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vim的批量替换"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">vim的批量替换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#egrep-expand-grep"><span class="toc-number">1.4.</span> <span class="toc-text">egrep(expand grep)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#格式化输出"><span class="toc-number">2.</span> <span class="toc-text">格式化输出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#排版printf"><span class="toc-number">2.1.</span> <span class="toc-text">排版printf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk-‘-conditions-actions-’-filename"><span class="toc-number">2.2.</span> <span class="toc-text">awk ‘[conditions]{actions}’ filename</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#attention"><span class="toc-number">2.2.1.</span> <span class="toc-text">attention</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对比sed"><span class="toc-number">2.2.2.</span> <span class="toc-text">对比sed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栗子-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">栗子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
@@ -402,7 +402,7 @@ grep -n ‘t[ae]st’ testfile
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

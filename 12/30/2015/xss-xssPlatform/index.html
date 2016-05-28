@@ -7,7 +7,7 @@
     <title>XSS平台搭建 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -37,7 +37,7 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -89,7 +89,7 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2015-12-29T16:00:00.000Z" itemprop="datePublished"> 发表于 12-30-2015</time>
@@ -105,14 +105,14 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
 		
 		</div>
 		
-		<h2 id="简介">简介</h2><p>平台名为:<code>sleep-puppy</code>  大名鼎鼎的Netflix搞的一个安全项目<br>环境/框架: <code>Flask + Gunicorn + Nginx</code><br>可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得</p>
-<h2 id="Docker安装">Docker安装</h2><p>DigitalOcean已经打包完了,直接执行命令即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br><span class="line"><span class="comment"># 将用户添加至docker用户组</span></span><br><span class="line">$ sudo usermod <span class="operator">-a</span>G docker $(whoami)</span><br><span class="line"><span class="comment">#安装 Docker Compose</span></span><br><span class="line">$ sudo apt-get -y install python-pip  <span class="comment">#环境</span></span><br><span class="line">$ sudo pip install docker-compose</span><br></pre></td></tr></table></figure>
+		<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>平台名为:<code>sleep-puppy</code>  大名鼎鼎的Netflix搞的一个安全项目<br>环境/框架: <code>Flask + Gunicorn + Nginx</code><br>可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得</p>
+<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><p>DigitalOcean已经打包完了,直接执行命令即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br><span class="line"><span class="comment"># 将用户添加至docker用户组</span></span><br><span class="line">$ sudo usermod <span class="_">-a</span>G docker $(whoami)</span><br><span class="line"><span class="comment">#安装 Docker Compose</span></span><br><span class="line">$ sudo apt-get -y install python-pip  <span class="comment">#环境</span></span><br><span class="line">$ sudo pip install docker-compose</span><br></pre></td></tr></table></figure>
 <p>不过发现国内这局域网…换成国内源吧,[daocloud],地址在Reference中</p>
-<h2 id="sleep-puppy安装">sleep-puppy安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/Netflix/sleepy-puppy-docker</span><br><span class="line">$ docker-machine ls</span><br><span class="line"><span class="comment">#docker-compose.yaml中IP改成自己的公网IP</span></span><br><span class="line">$ <span class="built_in">cd</span> sleepy-puppy-docker &amp;&amp; docker-compose up</span><br></pre></td></tr></table></figure>
-<p>默认账号密码<br>user: admin<br>pass: password<br>//——PS:大半个月前搭的,具体的坑已经差不多网完了..= =</p>
-<h2 id="简单的API使用">简单的API使用</h2><p><a href="http://www.tothenew.com/blog/using-sleepy-puppy-a-cross-site-scripting-payload-management-framework/" target="_blank" rel="external">ToTheNewDigital</a></p>
-<h2 id="Reference">Reference</h2><p><a href="https://github.com/netflix/sleepy-puppy/wiki/setup" target="_blank" rel="external">github_sleep-puppy</a><br><a href="https://docs.docker.com/engine/installation/ubuntulinux/" target="_blank" rel="external">doc.docker</a>&lt;-纯手动安装<br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-14-04" target="_blank" rel="external">digitalocean</a>&lt;-自动安装+基本docker操作<br><a href="https://get.daocloud.io/" target="_blank" rel="external">daocloud</a></p>
+<h2 id="sleep-puppy安装"><a href="#sleep-puppy安装" class="headerlink" title="sleep-puppy安装"></a>sleep-puppy安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/Netflix/sleepy-puppy-docker</span><br><span class="line">$ docker-machine ls</span><br><span class="line"><span class="comment">#docker-compose.yaml中IP改成自己的公网IP</span></span><br><span class="line">$ <span class="built_in">cd</span> sleepy-puppy-docker &amp;&amp; docker-compose up</span><br></pre></td></tr></table></figure>
+<p>默认账号密码<br>user: admin<br>pass: password<br>//—-PS:大半个月前搭的,具体的坑已经差不多网完了..= =</p>
+<h2 id="简单的API使用"><a href="#简单的API使用" class="headerlink" title="简单的API使用"></a>简单的API使用</h2><p><a href="http://www.tothenew.com/blog/using-sleepy-puppy-a-cross-site-scripting-payload-management-framework/" target="_blank" rel="external">ToTheNewDigital</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://github.com/netflix/sleepy-puppy/wiki/setup" target="_blank" rel="external">github_sleep-puppy</a><br><a href="https://docs.docker.com/engine/installation/ubuntulinux/" target="_blank" rel="external">doc.docker</a>&lt;-纯手动安装<br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-14-04" target="_blank" rel="external">digitalocean</a>&lt;-自动安装+基本docker操作<br><a href="https://get.daocloud.io/" target="_blank" rel="external">daocloud</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -133,10 +133,10 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/01/31/2016/life-指南/" title="手表指南方法">
+ <a href="/01/31/2016/daily-linux-1/" title="linux日常更新-01">
   <strong>上一篇：</strong><br/>
   <span>
-  手表指南方法</span>
+  linux日常更新-01</span>
 </a>
 </div>
 
@@ -272,7 +272,7 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

@@ -7,7 +7,7 @@
     <title>读书笔记--鸟哥私房菜③ | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -49,7 +49,7 @@ sh03.sh随日期">
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -101,7 +101,7 @@ sh03.sh随日期">
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-02-29T16:00:00.000Z" itemprop="datePublished"> 发表于 03-01-2016</time>
@@ -113,15 +113,15 @@ sh03.sh随日期">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell_Script"><span class="toc-number">1.</span> <span class="toc-text">Shell Script</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码练习放在新库中"><span class="toc-number">1.2.</span> <span class="toc-text">代码练习放在新库中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#source_VS_bash"><span class="toc-number">1.3.</span> <span class="toc-text">source VS bash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#判断式"><span class="toc-number">1.4.</span> <span class="toc-text">判断式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#test_[option]_file_&&/||_function"><span class="toc-number">1.4.1.</span> <span class="toc-text">test [option] file &&/|| function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断符号[]"><span class="toc-number">1.4.2.</span> <span class="toc-text">判断符号[]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell_Script_默认变量"><span class="toc-number">1.5.</span> <span class="toc-text">Shell Script 默认变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#shift变量号偏移"><span class="toc-number">1.5.1.</span> <span class="toc-text">shift变量号偏移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if_then_fi"><span class="toc-number">1.6.</span> <span class="toc-text">if then fi</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell-Script"><span class="toc-number">1.</span> <span class="toc-text">Shell Script</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码练习放在新库中"><span class="toc-number">1.2.</span> <span class="toc-text">代码练习放在新库中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#source-VS-bash"><span class="toc-number">1.3.</span> <span class="toc-text">source VS bash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#判断式"><span class="toc-number">1.4.</span> <span class="toc-text">判断式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#test-option-file-amp-amp-function"><span class="toc-number">1.4.1.</span> <span class="toc-text">test [option] file &&/|| function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断符号"><span class="toc-number">1.4.2.</span> <span class="toc-text">判断符号[]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-Script-默认变量"><span class="toc-number">1.5.</span> <span class="toc-text">Shell Script 默认变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#shift变量号偏移"><span class="toc-number">1.5.1.</span> <span class="toc-text">shift变量号偏移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if-then-fi"><span class="toc-number">1.6.</span> <span class="toc-text">if then fi</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="Shell_Script">Shell Script</h1><h2 id="基础">基础</h2><p>0x1. 条件<br> 编写的shell.sh需要rx权限<br>0x2. 执行<br>  1.绝对/相对路径<br>  2.export $PATH 直接执行<br>  3.bash shell.sh<br>0x3. 文件规范</p>
+		<h1 id="Shell-Script"><a href="#Shell-Script" class="headerlink" title="Shell Script"></a>Shell Script</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>0x1. 条件<br> 编写的shell.sh需要rx权限<br>0x2. 执行<br>  1.绝对/相对路径<br>  2.export $PATH 直接执行<br>  3.bash shell.sh<br>0x3. 文件规范</p>
 <blockquote>
 <p>这行用来声明使用bash语法,运行时可加载bash环境<br><code>#!/bin/bash</code></p>
 </blockquote>
-<h2 id="代码练习放在新库中">代码练习放在新库中</h2><ul>
+<h2 id="代码练习放在新库中"><a href="#代码练习放在新库中" class="headerlink" title="代码练习放在新库中"></a>代码练习放在新库中</h2><ul>
 <li>sh02.sh<br>Standard input and output.</li>
 <li>sh03.sh<br>随日期变化创建具时间的文件名</li>
 <li>sh04.sh<br>数值运算<br>declare 定义变量类型<blockquote>
@@ -133,14 +133,14 @@ sh03.sh随日期">
 <blockquote>
 <p>variable=<code>$(($a*$b))</code></p>
 </blockquote>
-<h2 id="source_VS_bash">source VS bash</h2><p>这两者都可以执行脚本,但是bash会创建一个新的bash环境(子进程)供script使用,而source则是直接执行script.<br>script中的变量也就类似于main()函数中的子函数(bash-script)和主函数(source script)中变量的关系了.<br>=&gt;sh02.sh为例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">"xxx"</span> firstname</span><br></pre></td></tr></table></figure></p>
+<h2 id="source-VS-bash"><a href="#source-VS-bash" class="headerlink" title="source VS bash"></a>source VS bash</h2><p>这两者都可以执行脚本,但是bash会创建一个新的bash环境(子进程)供script使用,而source则是直接执行script.<br>script中的变量也就类似于main()函数中的子函数(bash-script)和主函数(source script)中变量的关系了.<br>=&gt;sh02.sh为例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">"xxx"</span> firstname</span><br></pre></td></tr></table></figure></p>
 <p>source sh02.sh 中的firstname在执行完之后依然存在,<br>而bash sh02.sh中的变量就消失了</p>
 <p>不注销用<code>source ~/.bashrc</code>改变变量的原因也就是这个了</p>
-<h2 id="判断式">判断式</h2><h3 id="test_[option]_file_&amp;&amp;/||_function">test [option] file &amp;&amp;/|| function</h3><p>sh05.sh 判断文件名是否存在,是目录还是文件,并判断执行者的权限<br>常用[option]:-e 存在性 -f file -d dirctory<br><code>-a</code> all 同时成立 <code>-o</code> optional 一个成立即可  <code>!</code> 反向状态 01互换</p>
+<h2 id="判断式"><a href="#判断式" class="headerlink" title="判断式"></a>判断式</h2><h3 id="test-option-file-amp-amp-function"><a href="#test-option-file-amp-amp-function" class="headerlink" title="test [option] file &amp;&amp;/|| function"></a>test [option] file &amp;&amp;/|| function</h3><p>sh05.sh 判断文件名是否存在,是目录还是文件,并判断执行者的权限<br>常用[option]:-e 存在性 -f file -d dirctory<br><code>-a</code> all 同时成立 <code>-o</code> optional 一个成立即可  <code>!</code> 反向状态 01互换</p>
 <ul>
 <li>其他的参数在这=&gt; <a href="http://man.linuxde.net/test" target="_blank" rel="external">test</a><br>man了一下test,发现也没有找到test指定路径或者递归的做法,<br>即test只能判断当前目录下的文件,也不支持通配符一类的东西</li>
 </ul>
-<h3 id="判断符号[]">判断符号[]</h3><p>中括号[]基本和test用法一样,不过在if then fi中更常用<br><strong>需要注意</strong>:</p>
+<h3 id="判断符号"><a href="#判断符号" class="headerlink" title="判断符号[]"></a>判断符号[]</h3><p>中括号[]基本和test用法一样,不过在if then fi中更常用<br><strong>需要注意</strong>:</p>
 <ul>
 <li>中括号内部每个单位均需要空格<code> </code>隔开</li>
 <li>中括号内部组件的变量和常量需要<code>&quot;</code>或者<code>&#39;</code>框起来</li>
@@ -150,15 +150,15 @@ sh03.sh随日期">
 <ul>
 <li>sh06.sh<br>判断用户输入并给予不同的结果</li>
 </ul>
-<h2 id="Shell_Script_默认变量">Shell Script 默认变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#A</span></span><br><span class="line">/path/to/scriptname option1 opt2 opt3 opt4 ...</span><br><span class="line">        <span class="variable">$0</span>             <span class="variable">$1</span>    <span class="variable">$2</span>   <span class="variable">$3</span>   <span class="variable">$4</span></span><br><span class="line"><span class="comment">#B</span></span><br><span class="line"><span class="variable">$#</span> 代表参数个数</span><br><span class="line"><span class="variable">$@</span> 代表内置变量A中的内容</span><br><span class="line">$* 比<span class="string">'#@'</span>用法广,代表<span class="string">"<span class="variable">$1c</span><span class="variable">$2c</span><span class="variable">$3</span>..."</span> c为分隔符</span><br></pre></td></tr></table></figure>
+<h2 id="Shell-Script-默认变量"><a href="#Shell-Script-默认变量" class="headerlink" title="Shell Script 默认变量"></a>Shell Script 默认变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#A</span></span><br><span class="line">/path/to/scriptname option1 opt2 opt3 opt4 ...</span><br><span class="line">        <span class="variable">$0</span>             <span class="variable">$1</span>    <span class="variable">$2</span>   <span class="variable">$3</span>   <span class="variable">$4</span></span><br><span class="line"><span class="comment">#B</span></span><br><span class="line"><span class="variable">$#</span> 代表参数个数</span><br><span class="line"><span class="variable">$@</span> 代表内置变量A中的内容</span><br><span class="line">$* 比<span class="string">'#@'</span>用法广,代表<span class="string">"<span class="variable">$1c</span><span class="variable">$2c</span><span class="variable">$3</span>..."</span> c为分隔符</span><br></pre></td></tr></table></figure>
 <ul>
 <li>sh07.sh<br>创建一个具有可选[option]的shell script</li>
 </ul>
-<h3 id="shift变量号偏移">shift变量号偏移</h3><p>即原来的号码<code>增加shift的数量</code></p>
+<h3 id="shift变量号偏移"><a href="#shift变量号偏移" class="headerlink" title="shift变量号偏移"></a>shift变量号偏移</h3><p>即原来的号码<code>增加shift的数量</code></p>
 <ul>
 <li>sh08.sh<br>shift演示</li>
 </ul>
-<h2 id="if_then_fi">if then fi</h2><p><strong>后面因为只要有语言基础的都懂,就不具体讲了</strong></p>
+<h2 id="if-then-fi"><a href="#if-then-fi" class="headerlink" title="if then fi"></a>if then fi</h2><p><strong>后面因为只要有语言基础的都懂,就不具体讲了</strong></p>
 <ul>
 <li>sh06-2.sh<br><code>这里的&amp;&amp;||和前面基础bash中的&amp;&amp;||不要搞错了,含义不同</code><br>基本格式:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ assertions ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">command</span></span><br><span class="line">  (<span class="keyword">elif</span> [ assertions ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">command</span>)</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -218,7 +218,7 @@ sh03.sh随日期">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell_Script"><span class="toc-number">1.</span> <span class="toc-text">Shell Script</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码练习放在新库中"><span class="toc-number">1.2.</span> <span class="toc-text">代码练习放在新库中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#source_VS_bash"><span class="toc-number">1.3.</span> <span class="toc-text">source VS bash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#判断式"><span class="toc-number">1.4.</span> <span class="toc-text">判断式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#test_[option]_file_&&/||_function"><span class="toc-number">1.4.1.</span> <span class="toc-text">test [option] file &&/|| function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断符号[]"><span class="toc-number">1.4.2.</span> <span class="toc-text">判断符号[]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell_Script_默认变量"><span class="toc-number">1.5.</span> <span class="toc-text">Shell Script 默认变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#shift变量号偏移"><span class="toc-number">1.5.1.</span> <span class="toc-text">shift变量号偏移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if_then_fi"><span class="toc-number">1.6.</span> <span class="toc-text">if then fi</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell-Script"><span class="toc-number">1.</span> <span class="toc-text">Shell Script</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码练习放在新库中"><span class="toc-number">1.2.</span> <span class="toc-text">代码练习放在新库中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#source-VS-bash"><span class="toc-number">1.3.</span> <span class="toc-text">source VS bash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#判断式"><span class="toc-number">1.4.</span> <span class="toc-text">判断式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#test-option-file-amp-amp-function"><span class="toc-number">1.4.1.</span> <span class="toc-text">test [option] file &&/|| function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断符号"><span class="toc-number">1.4.2.</span> <span class="toc-text">判断符号[]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-Script-默认变量"><span class="toc-number">1.5.</span> <span class="toc-text">Shell Script 默认变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#shift变量号偏移"><span class="toc-number">1.5.1.</span> <span class="toc-text">shift变量号偏移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if-then-fi"><span class="toc-number">1.6.</span> <span class="toc-text">if then fi</span></a></li></ol></li></ol>
  
   </div>
 
@@ -327,7 +327,7 @@ sh03.sh随日期">
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

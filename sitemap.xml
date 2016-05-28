@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://csser.work/06/30/2015/daily-git/</loc>
+    
+    <lastmod>2016-05-28T07:28:41.981Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/05/09/2016/js-invocation-patten/</loc>
+    
+    <lastmod>2016-05-27T12:50:40.495Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/04/01/2016/daily-collection/</loc>
+    
+    <lastmod>2016-05-26T10:38:50.366Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/04/12/2016/js-arrow-func/</loc>
+    
+    <lastmod>2016-05-18T11:02:40.087Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://csser.work/google0cfcf9236d8e951e.html</loc>
     
     <lastmod>2016-05-17T17:30:44.578Z</lastmod>
@@ -47,20 +75,6 @@
     <loc>http://csser.work/11/13/2015/book-web%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/</loc>
     
     <lastmod>2016-05-17T15:58:18.881Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/05/09/2016/js-invocation-patten/</loc>
-    
-    <lastmod>2016-05-17T15:57:59.867Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/04/01/2016/daily-collection/</loc>
-    
-    <lastmod>2016-05-17T15:53:46.207Z</lastmod>
     
   </url>
   
@@ -212,13 +226,6 @@
   </url>
   
   <url>
-    <loc>http://csser.work/04/12/2016/js-arrow-func/</loc>
-    
-    <lastmod>2016-05-17T15:21:25.091Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://csser.work/10/16/2015/js-this/</loc>
     
     <lastmod>2016-05-17T15:21:20.864Z</lastmod>
@@ -334,13 +341,6 @@
     <loc>http://csser.work/12/21/2015/daily-sql/</loc>
     
     <lastmod>2016-05-17T15:15:26.843Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/06/30/2015/daily-git/</loc>
-    
-    <lastmod>2016-05-17T15:15:06.910Z</lastmod>
     
   </url>
   

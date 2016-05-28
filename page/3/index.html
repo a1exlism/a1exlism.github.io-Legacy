@@ -7,19 +7,19 @@
     <title>A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="Quentin&apos;s Blog">
+    <meta name="description" content="A1ex&apos;s Blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="A1exlism">
 <meta property="og:url" content="http://csser.work/page/3/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="Quentin&apos;s Blog">
+<meta property="og:description" content="A1ex&apos;s Blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A1exlism">
-<meta name="twitter:description" content="Quentin&apos;s Blog">
+<meta name="twitter:description" content="A1ex&apos;s Blog">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -30,7 +30,7 @@
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -84,7 +84,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-03-04T16:00:00.000Z" itemprop="datePublished"> 发表于 03-05-2016</time>
@@ -93,11 +93,12 @@
 </header>
     <div class="article-content">
         
-        <h1 id="环境:Ubuntu">环境:Ubuntu</h1><h2 id="Commond">Commond</h2><h3 id="command快捷键emacs">command快捷键emacs</h3><p>Ctrl+u  删除当前输入</p>
-<h3 id="查询公网IP">查询公网IP</h3><blockquote>
+        <p>#环境:Ubuntu</p>
+<h2 id="Commond"><a href="#Commond" class="headerlink" title="Commond"></a>Commond</h2><h3 id="command快捷键emacs"><a href="#command快捷键emacs" class="headerlink" title="command快捷键emacs"></a>command快捷键emacs</h3><p>Ctrl+u  删除当前输入</p>
+<h3 id="查询公网IP"><a href="#查询公网IP" class="headerlink" title="查询公网IP"></a>查询公网IP</h3><blockquote>
 <p><a href="http://gaodi2002.blog.51cto.com/" target="_blank" rel="external">高迪</a><br>curl ifconfig.me<br>curl ipinfo.io</p>
 </blockquote>
-<h2 id="System">System</h2><h3 id="Shell转义">Shell转义</h3><table>
+<h2 id="System"><a href="#System" class="headerlink" title="System"></a>System</h2><h3 id="Shell转义"><a href="#Shell转义" class="headerlink" title="Shell转义"></a>Shell转义</h3><table>
 <thead>
 <tr>
 <th style="text-align:center">字符</th>
@@ -120,26 +121,26 @@
 </tbody>
 </table>
 <p>Reference: <a href="http://www.cnblogs.com/chengmo/archive/2010/10/17/1853344.html" target="_blank" rel="external">程默’s Linux</a></p>
-<h3 id="系统保存的desktop目录">系统保存的desktop目录</h3><blockquote>
+<h3 id="系统保存的desktop目录"><a href="#系统保存的desktop目录" class="headerlink" title="系统保存的desktop目录"></a>系统保存的desktop目录</h3><blockquote>
 <p>/usr/share/applications/</p>
 </blockquote>
-<h3 id="系统添加证书">系统添加证书</h3><p>1.将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.&gt;<a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a>,自己暂时没有尝试过<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github 为例进行说明</span></span><br><span class="line">sudo mkdir /usr/share/ca-certificates/github.com/</span><br><span class="line"><span class="comment">## 进入到所创建好的目录，这里使用了一种 !!:2 来指代上面的目录，索引从0开始，即 sudo对应0，mkdir对应1</span></span><br><span class="line"><span class="built_in">cd</span> !!:<span class="number">2</span></span><br><span class="line"><span class="comment">## 将准备好的要导入的证书复制到当前目录下</span></span><br><span class="line">sudo cp /path/to//github.com.crt .</span><br><span class="line"><span class="comment">## 运行配置命令导入，运行此命令后会出现类似下图所示的配置选项，相应配置即可</span></span><br><span class="line">sudo dpkg-reconfigure ca-certificates</span><br><span class="line"><span class="comment">## 配置好后再更新一下</span></span><br><span class="line">sudo update-ca-certificates</span><br></pre></td></tr></table></figure></p>
+<h3 id="系统添加证书"><a href="#系统添加证书" class="headerlink" title="系统添加证书"></a>系统添加证书</h3><p>1.将证书ca-certificates.crt入 <code>/etc/ssl/certs</code>目录下<br>然后更新证书<code>sudo  update-ca-certificates</code><br>2.&gt;<a href="http://blog.kissdata.com/2014/06/16/ubuntu-crt-proxy.html" target="_blank" rel="external">kissdata</a>,自己暂时没有尝试过<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在 /usr/share/ca-certificates 目录下新建存放证书所对应的网站目录，这里以 github 为例进行说明</span></span><br><span class="line">sudo mkdir /usr/share/ca-certificates/github.com/</span><br><span class="line"><span class="comment">## 进入到所创建好的目录，这里使用了一种 !!:2 来指代上面的目录，索引从0开始，即 sudo对应0，mkdir对应1</span></span><br><span class="line"><span class="built_in">cd</span> !!:2</span><br><span class="line"><span class="comment">## 将准备好的要导入的证书复制到当前目录下</span></span><br><span class="line">sudo cp /path/to//github.com.crt .</span><br><span class="line"><span class="comment">## 运行配置命令导入，运行此命令后会出现类似下图所示的配置选项，相应配置即可</span></span><br><span class="line">sudo dpkg-reconfigure ca-certificates</span><br><span class="line"><span class="comment">## 配置好后再更新一下</span></span><br><span class="line">sudo update-ca-certificates</span><br></pre></td></tr></table></figure></p>
 <p>Reference:<br><a href="http://superuser.com/questions/327471/why-do-i-get-a-certificate-error-trying-to-setup-a-ubuntu-cloud" target="_blank" rel="external">superuser</a></p>
-<h3 id="GUI界面设置自启动">GUI界面设置自启动</h3><blockquote>
+<h3 id="GUI界面设置自启动"><a href="#GUI界面设置自启动" class="headerlink" title="GUI界面设置自启动"></a>GUI界面设置自启动</h3><blockquote>
 <p><a href="http://www.linuxidc.com/Linux/2013-04/83060.htm" target="_blank" rel="external">Linuxidc-byguess</a><br>gnome-session-properties</p>
 </blockquote>
-<h3 id="更改默认语言">更改默认语言</h3><p><a href="http://tonychiu.blog.51cto.com/656605/393131" target="_blank" rel="external">qiujichun</a></p>
-<h3 id="手动添加字体(16-04)">手动添加字体(16.04)</h3><p><a href="http://my.oschina.net/itblog/blog/278566" target="_blank" rel="external">oschina_摆渡者</a></p>
-<h3 id="unity中彻底清除最近打开文档(视频)的历史记录">unity中彻底清除最近打开文档(视频)的历史记录</h3><blockquote>
+<h3 id="更改默认语言"><a href="#更改默认语言" class="headerlink" title="更改默认语言"></a>更改默认语言</h3><p><a href="http://tonychiu.blog.51cto.com/656605/393131" target="_blank" rel="external">qiujichun</a></p>
+<h3 id="手动添加字体-16-04"><a href="#手动添加字体-16-04" class="headerlink" title="手动添加字体(16.04)"></a>手动添加字体(16.04)</h3><p><a href="http://my.oschina.net/itblog/blog/278566" target="_blank" rel="external">oschina_摆渡者</a></p>
+<h3 id="unity中彻底清除最近打开文档-视频-的历史记录"><a href="#unity中彻底清除最近打开文档-视频-的历史记录" class="headerlink" title="unity中彻底清除最近打开文档(视频)的历史记录"></a>unity中彻底清除最近打开文档(视频)的历史记录</h3><blockquote>
 <p><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=337582" target="_blank" rel="external">ubuntu1023</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文档的历史记录</span></span><br><span class="line">rm ~/.local/share/zeitgeist/activity.sqlite &amp;&amp; zeitgeist-daemon --replace</span><br><span class="line"><span class="comment">#播放器中的“最近打开”的历史记录</span></span><br><span class="line">rm -v ~/.local/share/recently-used.xbel</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<h3 id="桌面快捷方式">桌面快捷方式</h3><p><a href="http://os.51cto.com/art/201311/418841.htm" target="_blank" rel="external">51CTO</a><br><a href="http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/" target="_blank" rel="external">howopensource</a></p>
-<h3 id="清垃圾">清垃圾</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#清apt缓存</span></span><br><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
+<h3 id="桌面快捷方式"><a href="#桌面快捷方式" class="headerlink" title="桌面快捷方式"></a>桌面快捷方式</h3><p><a href="http://os.51cto.com/art/201311/418841.htm" target="_blank" rel="external">51CTO</a><br><a href="http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/" target="_blank" rel="external">howopensource</a></p>
+<h3 id="清垃圾"><a href="#清垃圾" class="headerlink" title="清垃圾"></a>清垃圾</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#清apt缓存</span></span><br><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
 <p><code>autoremove慎用</code><br>其他请看<a href="http://www.cnblogs.com/yc_sunniwell/archive/2010/07/15/1778265.html#undefined" target="_blank" rel="external">cnblogs-yc_sunniwell</a></p>
-<h2 id="SoftWare">SoftWare</h2><h3 id="Vmware_突然没法上网">Vmware 突然没法上网</h3><p>Edit-&gt;NetWork Setting-&gt;手动更改子网并分配Ip</p>
-<h3 id="Vmware_卸载">Vmware 卸载</h3><p><a href="http://blog.csdn.net/allenlinrui/article/details/7269980" target="_blank" rel="external">Allen的技术天空</a></p>
-<h3 id="LAMP套件">LAMP套件</h3><p><a href="http://howtoubuntu.org/how-to-install-lamp-on-ubuntu" target="_blank" rel="external">HowToUbunutu</a></p>
-<h3 id="gtk错误">gtk错误</h3><p>错误描述:</p>
+<h2 id="SoftWare"><a href="#SoftWare" class="headerlink" title="SoftWare"></a>SoftWare</h2><h3 id="Vmware-突然没法上网"><a href="#Vmware-突然没法上网" class="headerlink" title="Vmware 突然没法上网"></a>Vmware 突然没法上网</h3><p>Edit-&gt;NetWork Setting-&gt;手动更改子网并分配Ip</p>
+<h3 id="Vmware-卸载"><a href="#Vmware-卸载" class="headerlink" title="Vmware 卸载"></a>Vmware 卸载</h3><p><a href="http://blog.csdn.net/allenlinrui/article/details/7269980" target="_blank" rel="external">Allen的技术天空</a></p>
+<h3 id="LAMP套件"><a href="#LAMP套件" class="headerlink" title="LAMP套件"></a>LAMP套件</h3><p><a href="http://howtoubuntu.org/how-to-install-lamp-on-ubuntu" target="_blank" rel="external">HowToUbunutu</a></p>
+<h3 id="gtk错误"><a href="#gtk错误" class="headerlink" title="gtk错误"></a>gtk错误</h3><p>错误描述:</p>
 <blockquote>
 <p>Gtk-WARNING **: 无法在模块路径中找到主题引擎：“pixmap”？</p>
 </blockquote>
@@ -147,16 +148,16 @@
 <blockquote>
 <p>gtk2-engines-pixbuf</p>
 </blockquote>
-<h3 id="编译安装源码">编译安装源码</h3><p>不行则请用root权限调用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar jxvf file.tar.bz2    /    tar zxvf file.tar.gz</span><br><span class="line"><span class="built_in">cd</span> file</span><br><span class="line">ls <span class="operator">-l</span>      <span class="comment">#一般能找到INSTALL或者Doc安装文档</span></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">./configure;make ;make install</span><br><span class="line"><span class="comment"># 有些不需要configure</span></span><br><span class="line">make; make install</span><br></pre></td></tr></table></figure>
-<h3 id="定制安装">定制安装</h3><blockquote>
-<p><a href="http://itlab.idcquan.com/linux/set/39862.html" target="_blank" rel="external">ChinaItLab</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line">./configure --prefix=/opt/softwareFloader</span><br><span class="line">make; make install</span><br><span class="line">--- 有两种方法可以快速调用 ---</span><br><span class="line"><span class="comment"># 1.创建软链接</span></span><br><span class="line">ln <span class="operator">-s</span> /opt/softwareFloader/bin/software /usr/bin/software </span><br><span class="line"><span class="comment"># 2.添加环境变量,可参照日常更新1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/softwareFloader/bin</span><br></pre></td></tr></table></figure></p>
+<h3 id="编译安装源码"><a href="#编译安装源码" class="headerlink" title="编译安装源码"></a>编译安装源码</h3><p>不行则请用root权限调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar jxvf file.tar.bz2    /    tar zxvf file.tar.gz</span><br><span class="line"><span class="built_in">cd</span> file</span><br><span class="line">ls <span class="_">-l</span>      <span class="comment">#一般能找到INSTALL或者Doc安装文档</span></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">./configure;make ;make install</span><br><span class="line"><span class="comment"># 有些不需要configure</span></span><br><span class="line">make; make install</span><br></pre></td></tr></table></figure>
+<h3 id="定制安装"><a href="#定制安装" class="headerlink" title="定制安装"></a>定制安装</h3><blockquote>
+<p><a href="http://itlab.idcquan.com/linux/set/39862.html" target="_blank" rel="external">ChinaItLab</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line">./configure --prefix=/opt/softwareFloader</span><br><span class="line">make; make install</span><br><span class="line">--- 有两种方法可以快速调用 ---</span><br><span class="line"><span class="comment"># 1.创建软链接</span></span><br><span class="line">ln <span class="_">-s</span> /opt/softwareFloader/bin/software /usr/bin/software </span><br><span class="line"><span class="comment"># 2.添加环境变量,可参照日常更新1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/softwareFloader/bin</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<h3 id="不错的软件推荐">不错的软件推荐</h3><p>==&gt;<a href="http://askubuntu.com/questions/30334/what-application-indicators-are-available" target="_blank" rel="external">AskUbuntu</a>&lt;==<br>在用的两个小插件<br>1.sudo apt-get install indicator-multiload  系统状态监测,柱状图表示<br>2.sudo apt-get install indicator-cpufreq  CPU频率设置(我这个版本只有节能和性能两种功能了,很棒)</p>
-<h3 id="dpkg安装卸载">dpkg安装卸载</h3><blockquote>
+<h3 id="不错的软件推荐"><a href="#不错的软件推荐" class="headerlink" title="不错的软件推荐"></a>不错的软件推荐</h3><p>==&gt;<a href="http://askubuntu.com/questions/30334/what-application-indicators-are-available" target="_blank" rel="external">AskUbuntu</a>&lt;==<br>在用的两个小插件<br>1.sudo apt-get install indicator-multiload  系统状态监测,柱状图表示<br>2.sudo apt-get install indicator-cpufreq  CPU频率设置(我这个版本只有节能和性能两种功能了,很棒)</p>
+<h3 id="dpkg安装卸载"><a href="#dpkg安装卸载" class="headerlink" title="dpkg安装卸载"></a>dpkg安装卸载</h3><blockquote>
 <p><a href="http://www.thegeekstuff.com/2010/06/install-remove-deb-package/" target="_blank" rel="external">thegeekstuff-SASIKALA</a><br>dpkg -i packge  #i install<br>dpkg -r packge  #r remove<br>dpkg -l packge  #l list 配合grep来查询包是否存在<br>Reference:<a href="http://wrchiu.blog.51cto.com/817024/359085" target="_blank" rel="external">51CTO</a></p>
 </blockquote>
-<h3 id="sublime中文输入">sublime中文输入</h3><p>轮子有大牛写好了<br>———-Ubuntu———-<br>===&gt;<a href="http://blog.csdn.net/cywosp/article/details/32350899" target="_blank" rel="external">csdn-cywosp</a>&lt;===  </p>
+<h3 id="sublime中文输入"><a href="#sublime中文输入" class="headerlink" title="sublime中文输入"></a>sublime中文输入</h3><p>轮子有大牛写好了<br>——-Ubuntu——-<br>===&gt;<a href="http://blog.csdn.net/cywosp/article/details/32350899" target="_blank" rel="external">csdn-cywosp</a>&lt;===  </p>
 <p>虽然这样desktop图标可以用了,其他的方式还是不行,所以用linux的<code>alias</code>功能!</p>
 <blockquote>
 <p>sudo vi .bashrc</p>
@@ -165,10 +166,10 @@
 <blockquote>
 <p>alias subl=’LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’</p>
 </blockquote>
-<h3 id="sublime_3103_cpu100%">sublime 3103 cpu100%</h3><p>在.config/sublime-text-3/Packages/User/Preferences.sublime-settings 中加入<br><code>&quot;index_files&quot;:false,</code></p>
-<h3 id="Theme-material_design">Theme-material design</h3><p><a href="http://itsfoss.com/install-paper-theme-linux/" target="_blank" rel="external">itsfoss-ABHISHEK</a></p>
-<h2 id="Device/Driver">Device/Driver</h2><h3 id="U盘格式化">U盘格式化</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. df #&#26597;&#30475;&#25346;&#36733;&#30340;U&#30424;&#10;2. umount /dev/sdc1 #&#25105;&#30340;u&#30424;&#20026;/dev/sdc1&#10;3. mkfs -t vfat /dev/sdc1 #&#26684;&#24335;&#21270;&#22909;&#24930;...&#10;or mkfs.vfat /dev/sdc1&#10;# -L label &#26356;&#25913;&#21367;&#21517;&#23383;</span><br></pre></td></tr></table></figure>
-<h3 id="iso镜像制作">iso镜像制作</h3><ol>
+<h3 id="sublime-3103-cpu100"><a href="#sublime-3103-cpu100" class="headerlink" title="sublime 3103 cpu100%"></a>sublime 3103 cpu100%</h3><p>在.config/sublime-text-3/Packages/User/Preferences.sublime-settings 中加入<br><code>&quot;index_files&quot;:false,</code></p>
+<h3 id="Theme-material-design"><a href="#Theme-material-design" class="headerlink" title="Theme-material design"></a>Theme-material design</h3><p><a href="http://itsfoss.com/install-paper-theme-linux/" target="_blank" rel="external">itsfoss-ABHISHEK</a></p>
+<h2 id="Device-Driver"><a href="#Device-Driver" class="headerlink" title="Device/Driver"></a>Device/Driver</h2><h3 id="U盘格式化"><a href="#U盘格式化" class="headerlink" title="U盘格式化"></a>U盘格式化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. df #查看挂载的U盘</span><br><span class="line">2. umount /dev/sdc1 #我的u盘为/dev/sdc1</span><br><span class="line">3. mkfs -t vfat /dev/sdc1 #格式化好慢...</span><br><span class="line">or mkfs.vfat /dev/sdc1</span><br><span class="line"># -L label 更改卷名字</span><br></pre></td></tr></table></figure>
+<h3 id="iso镜像制作"><a href="#iso镜像制作" class="headerlink" title="iso镜像制作"></a>iso镜像制作</h3><ol>
 <li><p>查看挂载</p>
 <blockquote>
 <p>sudo fdisk -l</p>
@@ -191,7 +192,7 @@
 </li>
 </ol>
 <p>Preference:<a href="http://blog.csdn.net/longerzone/article/details/12941727" target="_blank" rel="external">CSDN_longerzone</a></p>
-<h3 id="关于硬盘">关于硬盘</h3><ol>
+<h3 id="关于硬盘"><a href="#关于硬盘" class="headerlink" title="关于硬盘"></a>关于硬盘</h3><ol>
 <li>Ubuntu自带:<code>baobab</code></li>
 <li>有关分区 <blockquote>
 <p><a href="http://gparted.sourceforge.net/livecd.php" target="_blank" rel="external">sourceforge</a><br>gparted</p>
@@ -235,7 +236,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-02-29T16:00:00.000Z" itemprop="datePublished"> 发表于 03-01-2016</time>
@@ -244,11 +245,11 @@
 </header>
     <div class="article-content">
         
-        <h1 id="Shell_Script">Shell Script</h1><h2 id="基础">基础</h2><p>0x1. 条件<br> 编写的shell.sh需要rx权限<br>0x2. 执行<br>  1.绝对/相对路径<br>  2.export $PATH 直接执行<br>  3.bash shell.sh<br>0x3. 文件规范</p>
+        <h1 id="Shell-Script"><a href="#Shell-Script" class="headerlink" title="Shell Script"></a>Shell Script</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>0x1. 条件<br> 编写的shell.sh需要rx权限<br>0x2. 执行<br>  1.绝对/相对路径<br>  2.export $PATH 直接执行<br>  3.bash shell.sh<br>0x3. 文件规范</p>
 <blockquote>
 <p>这行用来声明使用bash语法,运行时可加载bash环境<br><code>#!/bin/bash</code></p>
 </blockquote>
-<h2 id="代码练习放在新库中">代码练习放在新库中</h2><ul>
+<h2 id="代码练习放在新库中"><a href="#代码练习放在新库中" class="headerlink" title="代码练习放在新库中"></a>代码练习放在新库中</h2><ul>
 <li>sh02.sh<br>Standard input and output.</li>
 <li>sh03.sh<br>随日期变化创建具时间的文件名</li>
 <li>sh04.sh<br>数值运算<br>declare 定义变量类型<blockquote>
@@ -260,14 +261,14 @@
 <blockquote>
 <p>variable=<code>$(($a*$b))</code></p>
 </blockquote>
-<h2 id="source_VS_bash">source VS bash</h2><p>这两者都可以执行脚本,但是bash会创建一个新的bash环境(子进程)供script使用,而source则是直接执行script.<br>script中的变量也就类似于main()函数中的子函数(bash-script)和主函数(source script)中变量的关系了.<br>=&gt;sh02.sh为例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">"xxx"</span> firstname</span><br></pre></td></tr></table></figure></p>
+<h2 id="source-VS-bash"><a href="#source-VS-bash" class="headerlink" title="source VS bash"></a>source VS bash</h2><p>这两者都可以执行脚本,但是bash会创建一个新的bash环境(子进程)供script使用,而source则是直接执行script.<br>script中的变量也就类似于main()函数中的子函数(bash-script)和主函数(source script)中变量的关系了.<br>=&gt;sh02.sh为例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">"xxx"</span> firstname</span><br></pre></td></tr></table></figure></p>
 <p>source sh02.sh 中的firstname在执行完之后依然存在,<br>而bash sh02.sh中的变量就消失了</p>
 <p>不注销用<code>source ~/.bashrc</code>改变变量的原因也就是这个了</p>
-<h2 id="判断式">判断式</h2><h3 id="test_[option]_file_&amp;&amp;/||_function">test [option] file &amp;&amp;/|| function</h3><p>sh05.sh 判断文件名是否存在,是目录还是文件,并判断执行者的权限<br>常用[option]:-e 存在性 -f file -d dirctory<br><code>-a</code> all 同时成立 <code>-o</code> optional 一个成立即可  <code>!</code> 反向状态 01互换</p>
+<h2 id="判断式"><a href="#判断式" class="headerlink" title="判断式"></a>判断式</h2><h3 id="test-option-file-amp-amp-function"><a href="#test-option-file-amp-amp-function" class="headerlink" title="test [option] file &amp;&amp;/|| function"></a>test [option] file &amp;&amp;/|| function</h3><p>sh05.sh 判断文件名是否存在,是目录还是文件,并判断执行者的权限<br>常用[option]:-e 存在性 -f file -d dirctory<br><code>-a</code> all 同时成立 <code>-o</code> optional 一个成立即可  <code>!</code> 反向状态 01互换</p>
 <ul>
 <li>其他的参数在这=&gt; <a href="http://man.linuxde.net/test" target="_blank" rel="external">test</a><br>man了一下test,发现也没有找到test指定路径或者递归的做法,<br>即test只能判断当前目录下的文件,也不支持通配符一类的东西</li>
 </ul>
-<h3 id="判断符号[]">判断符号[]</h3><p>中括号[]基本和test用法一样,不过在if then fi中更常用<br><strong>需要注意</strong>:</p>
+<h3 id="判断符号"><a href="#判断符号" class="headerlink" title="判断符号[]"></a>判断符号[]</h3><p>中括号[]基本和test用法一样,不过在if then fi中更常用<br><strong>需要注意</strong>:</p>
 <ul>
 <li>中括号内部每个单位均需要空格<code> </code>隔开</li>
 <li>中括号内部组件的变量和常量需要<code>&quot;</code>或者<code>&#39;</code>框起来</li>
@@ -277,15 +278,15 @@
 <ul>
 <li>sh06.sh<br>判断用户输入并给予不同的结果</li>
 </ul>
-<h2 id="Shell_Script_默认变量">Shell Script 默认变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#A</span></span><br><span class="line">/path/to/scriptname option1 opt2 opt3 opt4 ...</span><br><span class="line">        <span class="variable">$0</span>             <span class="variable">$1</span>    <span class="variable">$2</span>   <span class="variable">$3</span>   <span class="variable">$4</span></span><br><span class="line"><span class="comment">#B</span></span><br><span class="line"><span class="variable">$#</span> 代表参数个数</span><br><span class="line"><span class="variable">$@</span> 代表内置变量A中的内容</span><br><span class="line">$* 比<span class="string">'#@'</span>用法广,代表<span class="string">"<span class="variable">$1c</span><span class="variable">$2c</span><span class="variable">$3</span>..."</span> c为分隔符</span><br></pre></td></tr></table></figure>
+<h2 id="Shell-Script-默认变量"><a href="#Shell-Script-默认变量" class="headerlink" title="Shell Script 默认变量"></a>Shell Script 默认变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#A</span></span><br><span class="line">/path/to/scriptname option1 opt2 opt3 opt4 ...</span><br><span class="line">        <span class="variable">$0</span>             <span class="variable">$1</span>    <span class="variable">$2</span>   <span class="variable">$3</span>   <span class="variable">$4</span></span><br><span class="line"><span class="comment">#B</span></span><br><span class="line"><span class="variable">$#</span> 代表参数个数</span><br><span class="line"><span class="variable">$@</span> 代表内置变量A中的内容</span><br><span class="line">$* 比<span class="string">'#@'</span>用法广,代表<span class="string">"<span class="variable">$1c</span><span class="variable">$2c</span><span class="variable">$3</span>..."</span> c为分隔符</span><br></pre></td></tr></table></figure>
 <ul>
 <li>sh07.sh<br>创建一个具有可选[option]的shell script</li>
 </ul>
-<h3 id="shift变量号偏移">shift变量号偏移</h3><p>即原来的号码<code>增加shift的数量</code></p>
+<h3 id="shift变量号偏移"><a href="#shift变量号偏移" class="headerlink" title="shift变量号偏移"></a>shift变量号偏移</h3><p>即原来的号码<code>增加shift的数量</code></p>
 <ul>
 <li>sh08.sh<br>shift演示</li>
 </ul>
-<h2 id="if_then_fi">if then fi</h2><p><strong>后面因为只要有语言基础的都懂,就不具体讲了</strong></p>
+<h2 id="if-then-fi"><a href="#if-then-fi" class="headerlink" title="if then fi"></a>if then fi</h2><p><strong>后面因为只要有语言基础的都懂,就不具体讲了</strong></p>
 <ul>
 <li>sh06-2.sh<br><code>这里的&amp;&amp;||和前面基础bash中的&amp;&amp;||不要搞错了,含义不同</code><br>基本格式:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ assertions ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">command</span></span><br><span class="line">  (<span class="keyword">elif</span> [ assertions ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">command</span>)</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -332,7 +333,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-02-25T16:00:00.000Z" itemprop="datePublished"> 发表于 02-26-2016</time>
@@ -341,24 +342,24 @@
 </header>
     <div class="article-content">
         
-        <h1 id="正则">正则</h1><p>主要以栗子为主</p>
-<h2 id="grep_[-ivn][-A/Bn]_‘keyword’">grep [-ivn][-A/Bn] ‘keyword’</h2><h3 id="行相关">行相关</h3><p>0x1 查找内核中有 eth 字样的行数据,显示行号,额外再显示选中行前(befor)3行和后(after)2行的数据</p>
+        <h1 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h1><p>主要以栗子为主</p>
+<h2 id="grep-ivn-A-Bn-‘keyword’"><a href="#grep-ivn-A-Bn-‘keyword’" class="headerlink" title="grep [-ivn][-A/Bn] ‘keyword’"></a>grep [-ivn][-A/Bn] ‘keyword’</h2><h3 id="行相关"><a href="#行相关" class="headerlink" title="行相关"></a>行相关</h3><p>0x1 查找内核中有 eth 字样的行数据,显示行号,额外再显示选中行前(befor)3行和后(after)2行的数据</p>
 <blockquote>
 <p>dmesg | grep -n -B3 -A2 ‘eth’</p>
 </blockquote>
-<h3 id="模糊查询[]">模糊查询<code>[]</code></h3><p>0x1 不区分test和taste单词</p>
+<h3 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询[]"></a>模糊查询<code>[]</code></h3><p>0x1 不区分test和taste单词</p>
 <blockquote>
 <p>grep -n ‘t[ae]st’ testfile</p>
 </blockquote>
-<h3 id="反向查找[^]">反向查找<code>[^]</code></h3><p>0x1 找首字母不是元音的单词所在的行号<br>可以自行去找个测试网站尝试(\s过滤无用空格避免错误判断)</p>
+<h3 id="反向查找"><a href="#反向查找" class="headerlink" title="反向查找[^]"></a>反向查找<code>[^]</code></h3><p>0x1 找首字母不是元音的单词所在的行号<br>可以自行去找个测试网站尝试(\s过滤无用空格避免错误判断)</p>
 <blockquote>
 <p>grep -in ‘\b[^aeiou\s][a-z]+\b’ /var/log/kern.log.1</p>
 <blockquote>
 <p>这里自作聪明用<code>()</code>把[a-z]+给框了起来,然后就识别不出来</p>
 </blockquote>
 </blockquote>
-<p>——后记: 发现<code>小括号也需要转义</code>!!= =</p>
-<h3 id="行-首尾^$">行-首尾^$</h3><p>此<code>^</code>区别于上面的<code>^</code>,位置不同<br>0x1 查找二月份的内核日志</p>
+<p>—-后记: 发现<code>小括号也需要转义</code>!!= =</p>
+<h3 id="行-首尾"><a href="#行-首尾" class="headerlink" title="行-首尾^$"></a>行-首尾^$</h3><p>此<code>^</code>区别于上面的<code>^</code>,位置不同<br>0x1 查找二月份的内核日志</p>
 <blockquote>
 <p>grep -in ‘^Feb’ /var/log/kern.log.1</p>
 </blockquote>
@@ -370,21 +371,21 @@
 <blockquote>
 <p>grep -n ‘^$’ ./tmp/testfile</p>
 </blockquote>
-<h3 id="字符匹配-_*_+">字符匹配. * +</h3><h4 id="-_匹配任意一个字符">. 匹配任意一个字符</h4><p>0x1 匹配 l??d </p>
+<h3 id="字符匹配"><a href="#字符匹配" class="headerlink" title="字符匹配. * +"></a>字符匹配. * +</h3><h4 id="匹配任意一个字符"><a href="#匹配任意一个字符" class="headerlink" title=". 匹配任意一个字符"></a>. 匹配任意一个字符</h4><p>0x1 匹配 l??d </p>
 <blockquote>
 <p>grep -n ‘l..d’ /var/log/kern.log.1</p>
 </blockquote>
 <p>该文件可以匹配到called load等单词</p>
-<h4 id="*_匹配0次以上">* 匹配0次以上</h4><p>0x2 <code>.*</code>的组合表示匹配任意数量字符</p>
+<h4 id="匹配0次以上"><a href="#匹配0次以上" class="headerlink" title="* 匹配0次以上"></a>* 匹配0次以上</h4><p>0x2 <code>.*</code>的组合表示匹配任意数量字符</p>
 <blockquote>
 <p>grep -n ‘e.*e’ /var/log/kern.log.1</p>
 </blockquote>
 <p>这种情况在两个e之间碰到e不会停下,直到找到最后一个e,形成最长字串</p>
-<h4 id="+_匹配1次以上_需要转义=_=">+ 匹配1次以上 需要转义= =</h4><p>0x3 匹配e/ee/eee/e….</p>
+<h4 id="匹配1次以上-需要转义"><a href="#匹配1次以上-需要转义" class="headerlink" title="+ 匹配1次以上 需要转义= ="></a>+ 匹配1次以上 需要转义= =</h4><p>0x3 匹配e/ee/eee/e….</p>
 <blockquote>
 <p>grep -n ‘e+‘ /var/log/kern.log.1</p>
 </blockquote>
-<h3 id="连续字符范围限定{m,n}_需要转义">连续字符范围限定{m,n} 需要转义</h3><p>m,n可以省略其一<br>0x1 仅匹配一个<code>er</code></p>
+<h3 id="连续字符范围限定-m-n-需要转义"><a href="#连续字符范围限定-m-n-需要转义" class="headerlink" title="连续字符范围限定{m,n} 需要转义"></a>连续字符范围限定{m,n} 需要转义</h3><p>m,n可以省略其一<br>0x1 仅匹配一个<code>er</code></p>
 <blockquote>
 <p>grep -n ‘(er){1}‘ testfile </p>
 </blockquote>
@@ -393,9 +394,9 @@
 <p>grep -n ‘(er){2,}‘ testfile</p>
 </blockquote>
 <p>这里有一种情况:<code>ererer</code>在{2,}的选择下是一个整体,即{}会自动匹配最高重复数 </p>
-<h2 id="sed_[-nefr]_action">sed [-nefr] action</h2><p>-n silent模式,只出现被处理的那行<br>-e edit -f 将sed动作写入file<br>-r 扩展型regex -i直接修改文件内容</p>
-<h3 id="action_===_[n1[,n2]]_function">action === [n1[,n2]] function</h3><p>所有动作的最小单位均为<code>行</code><br>function:<br>-a add -c 替换 -d delete<br>-i insert -p print  -s 替换,<code>可用正则</code> 加上标题的行号就可以进行<code>批量替换</code>啦~</p>
-<h2 id="栗子">栗子</h2><h3 id="增_删_替换">增 删 替换</h3><p>0x1 /etc/passwd删除2-5行并打印(含行号<code>nl</code>)</p>
+<h2 id="sed-nefr-action"><a href="#sed-nefr-action" class="headerlink" title="sed [-nefr] action"></a>sed [-nefr] action</h2><p>-n silent模式,只出现被处理的那行<br>-e edit -f 将sed动作写入file<br>-r 扩展型regex -i直接修改文件内容</p>
+<h3 id="action-n1-n2-function"><a href="#action-n1-n2-function" class="headerlink" title="action === [n1[,n2]] function"></a>action === [n1[,n2]] function</h3><p>所有动作的最小单位均为<code>行</code><br>function:<br>-a add -c 替换 -d delete<br>-i insert -p print  -s 替换,<code>可用正则</code> 加上标题的行号就可以进行<code>批量替换</code>啦~</p>
+<h2 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h2><h3 id="增-删-替换"><a href="#增-删-替换" class="headerlink" title="增 删 替换"></a>增 删 替换</h3><p>0x1 /etc/passwd删除2-5行并打印(含行号<code>nl</code>)</p>
 <blockquote>
 <p>nl /etc/passwd | sed ‘2,5d’</p>
 </blockquote>
@@ -407,15 +408,15 @@
 <blockquote>
 <p>nl /etc/passwd | sed ‘1,4c next’</p>
 </blockquote>
-<h3 id="显示">显示</h3><p>0x1 只显示2-6行内容<br><code>-n</code> 经过处理的</p>
+<h3 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h3><p>0x1 只显示2-6行内容<br><code>-n</code> 经过处理的</p>
 <blockquote>
 <p>nl /etc/passwd | sed -n ‘2,6p’</p>
 </blockquote>
-<h3 id="!批量替换!">!批量替换!</h3><p>语法: <code>s/word1/word2/g&#39; g可选</code>globe`全局概念<br>0x1 在ifconfig中将ip截取出来</p>
+<h3 id="批量替换"><a href="#批量替换" class="headerlink" title="!批量替换!"></a>!批量替换!</h3><p>语法: <code>s/word1/word2/g&#39; g可选</code>globe`全局概念<br>0x1 在ifconfig中将ip截取出来</p>
 <blockquote>
 <p>选行-&gt;除首-&gt;除尾<br>ifconfig wlan0 | grep -n ‘192.168’ | sed ‘s/^.<em>ddr://g’ | sed ‘s/\s.</em>.0$//g’</p>
 </blockquote>
-<h4 id="vim的批量替换">vim的批量替换</h4><p>0x1 当前行替换</p>
+<h4 id="vim的批量替换"><a href="#vim的批量替换" class="headerlink" title="vim的批量替换"></a>vim的批量替换</h4><p>0x1 当前行替换</p>
 <blockquote>
 <p>:s/XXX/YYY/g</p>
 </blockquote>
@@ -427,17 +428,17 @@
 <blockquote>
 <p>%s/XXX/YYY/g</p>
 </blockquote>
-<h2 id="egrep(expand_grep)">egrep(expand grep)</h2><p>(感觉以后还是直接alias grep=egrep好一点)<br><code>X+</code> 1个或以上X <code>X?</code>0或一个X <code>|</code>或<br><code>()</code> 分组 <code>()+</code> 多个重复组判别<br>小李子:</p>
+<h2 id="egrep-expand-grep"><a href="#egrep-expand-grep" class="headerlink" title="egrep(expand grep)"></a>egrep(expand grep)</h2><p>(感觉以后还是直接alias grep=egrep好一点)<br><code>X+</code> 1个或以上X <code>X?</code>0或一个X <code>|</code>或<br><code>()</code> 分组 <code>()+</code> 多个重复组判别<br>小李子:</p>
 <blockquote>
 <p>cat /etc/passwd | egrep -n “^c|^s”</p>
 </blockquote>
 <p>(nl居然连grep基本的^都不能用…)</p>
-<h1 id="格式化输出">格式化输出</h1><h2 id="排版printf">排版<code>printf</code></h2><blockquote>
+<h1 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h1><h2 id="排版printf"><a href="#排版printf" class="headerlink" title="排版printf"></a>排版<code>printf</code></h2><blockquote>
 <p>printf ‘%s\n’ $(nl /etc/passwd)<br>printf ‘\x55\n’</p>
 </blockquote>
-<h2 id="awk_‘[conditions]{actions}’_filename"><code>awk</code> ‘[conditions]{actions}’ filename</h2><h3 id="attention">attention</h3><p>$0 整行 行内:$1 $2 $3 为第n个连续<br>NF 每行的字段总数 NR:目前处理的行号(row) FS:文件分隔符(split)<br>所有动作需要<code>&quot;&quot;</code>括住<br>运算符<code>==</code>表示等于</p>
-<h3 id="对比sed">对比sed</h3><p>相对于sed的行处理,sed主要将数据变为多个字段进行处理</p>
-<h3 id="栗子-1">栗子</h3><p>0x1 取出最近3个账号及登陆IP last -i显示ip</p>
+<h2 id="awk-‘-conditions-actions-’-filename"><a href="#awk-‘-conditions-actions-’-filename" class="headerlink" title="awk ‘[conditions]{actions}’ filename"></a><code>awk</code> ‘[conditions]{actions}’ filename</h2><h3 id="attention"><a href="#attention" class="headerlink" title="attention"></a>attention</h3><p>$0 整行 行内:$1 $2 $3 为第n个连续<br>NF 每行的字段总数 NR:目前处理的行号(row) FS:文件分隔符(split)<br>所有动作需要<code>&quot;&quot;</code>括住<br>运算符<code>==</code>表示等于</p>
+<h3 id="对比sed"><a href="#对比sed" class="headerlink" title="对比sed"></a>对比sed</h3><p>相对于sed的行处理,sed主要将数据变为多个字段进行处理</p>
+<h3 id="栗子-1"><a href="#栗子-1" class="headerlink" title="栗子"></a>栗子</h3><p>0x1 取出最近3个账号及登陆IP last -i显示ip</p>
 <blockquote>
 <p>last -in 3<br>a1exlism@dell:~$ last -in 5 | awk ‘{printf $1 “\t” $3”\n”}’</p>
 <blockquote>
@@ -457,7 +458,7 @@
 <p>cat /etc/passwd | awk ‘<code>BEGIN</code> {FS “:”} $3 &gt; 5 {printf $2 “\n”}’</p>
 </blockquote>
 <p>0x5 awk的计算功能<br>计算不写了</p>
-<h1 id="Reference">Reference</h1><p>《鸟哥私房菜》</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>《鸟哥私房菜》</p>
 
         
         
@@ -495,7 +496,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-02-19T16:00:00.000Z" itemprop="datePublished"> 发表于 02-20-2016</time>
@@ -504,25 +505,25 @@
 </header>
     <div class="article-content">
         
-        <h1 id="文件系统">文件系统</h1><h2 id="非纯文本文件查看_od">非纯文本文件查看 od</h2><p>od -t [filetype] filename<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a1exlism@dell:/var/<span class="built_in">log</span>$ od -t c Xorg.<span class="number">1</span>.log</span><br></pre></td></tr></table></figure></p>
-<h2 id="ls按容量,时间查询">ls按容量,时间查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -h <span class="comment">#容量</span></span><br><span class="line">ls --full-time <span class="comment">#完整时间</span></span><br><span class="line">ls --time=[use,atime,ctime] <span class="comment">#分别对应下面的touch三种情况</span></span><br></pre></td></tr></table></figure>
+        <h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><h2 id="非纯文本文件查看-od"><a href="#非纯文本文件查看-od" class="headerlink" title="非纯文本文件查看 od"></a>非纯文本文件查看 od</h2><p>od -t [filetype] filename<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a1exlism@dell:/var/<span class="built_in">log</span>$ od -t c Xorg.1.log</span><br></pre></td></tr></table></figure></p>
+<h2 id="ls按容量-时间查询"><a href="#ls按容量-时间查询" class="headerlink" title="ls按容量,时间查询"></a>ls按容量,时间查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -h <span class="comment">#容量</span></span><br><span class="line">ls --full-time <span class="comment">#完整时间</span></span><br><span class="line">ls --time=[use,atime,ctime] <span class="comment">#分别对应下面的touch三种情况</span></span><br></pre></td></tr></table></figure>
 <p>ls -F   #输出文件类型</p>
-<h2 id="完全复制">完全复制</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp <span class="operator">-a</span> ./file1 /another/floder/file2</span><br></pre></td></tr></table></figure>
+<h2 id="完全复制"><a href="#完全复制" class="headerlink" title="完全复制"></a>完全复制</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp <span class="_">-a</span> ./file1 /another/floder/file2</span><br></pre></td></tr></table></figure>
 <p>-a == -pdr<br>-p:复制文件属性<br>-d:如果是link file,复制链接文件而不是链接过去的大文件<br>-r:递归复制</p>
-<h2 id="touch修改文件时间">touch修改文件时间</h2><p>三种时间在以下情况变化:<br>modification time(mtime) 内容被改<br>change time(ctime) 属性或者权限被改变(e.g., 重命名)<br>access time(atime) 被访问</p>
-<h2 id="文件隐藏属性attr">文件隐藏属性attr</h2><h3 id="chattr">chattr</h3><p>chattr [+-=] [option]<br>option(常用):<br>a(root):只能增加数据,不能修改和删除<br>d:禁止文件被dump<br>i(root):禁止基本一切操作(增删改查)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">chattr +i testfile</span><br><span class="line">rm testfile</span><br><span class="line"><span class="comment">#rm：是否删除有写保护的普通空文件 "testfile"？ y</span></span><br><span class="line"><span class="comment">#rm: 无法删除"testfile": 不允许的操作</span></span><br><span class="line">chattr -i testfile</span><br><span class="line">rm testfile</span><br></pre></td></tr></table></figure></p>
-<h3 id="lsattr">lsattr</h3><p>和ls差不多用法<br>三个option:<br>-a all<br>-d 忽略目录内文件<br>-R 递归<br>e.g., <code>lsattr -aR</code></p>
-<h2 id="Ext2文件系统介绍">Ext2文件系统介绍</h2><p>暂时感觉ext2-4这些概念差不多..<br>Ext2文件系统采用的是 <code>Indexed Allocation</code>(索引式文件系统),和数据结构中的结构体指针差不多,windows那种的话应该和U盘的<br>super block: 记录文件系统的整体信息,包括inode/block总量,使用量,剩余量和文件系统的格式和相关信息<br><code>inode: 记录文件属性,一个文件占用一个inode,同时记录该文件数据所在的block号码</code><br>block: 实际记录文件的内容,文件过大会占用多个block<br><code>磁盘的碎片整理</code>==&gt;<a href="http://zxgchinese.blog.51cto.com/2508492/1131456" target="_blank" rel="external">51CTO-明诚阁</a></p>
-<h2 id="文件链接:_ln">文件链接: ln</h2><p><code>hard link</code>硬链接</p>
+<h2 id="touch修改文件时间"><a href="#touch修改文件时间" class="headerlink" title="touch修改文件时间"></a>touch修改文件时间</h2><p>三种时间在以下情况变化:<br>modification time(mtime) 内容被改<br>change time(ctime) 属性或者权限被改变(e.g., 重命名)<br>access time(atime) 被访问</p>
+<h2 id="文件隐藏属性attr"><a href="#文件隐藏属性attr" class="headerlink" title="文件隐藏属性attr"></a>文件隐藏属性attr</h2><h3 id="chattr"><a href="#chattr" class="headerlink" title="chattr"></a>chattr</h3><p>chattr [+-=] [option]<br>option(常用):<br>a(root):只能增加数据,不能修改和删除<br>d:禁止文件被dump<br>i(root):禁止基本一切操作(增删改查)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">chattr +i testfile</span><br><span class="line">rm testfile</span><br><span class="line"><span class="comment">#rm：是否删除有写保护的普通空文件 "testfile"？ y</span></span><br><span class="line"><span class="comment">#rm: 无法删除"testfile": 不允许的操作</span></span><br><span class="line">chattr -i testfile</span><br><span class="line">rm testfile</span><br></pre></td></tr></table></figure></p>
+<h3 id="lsattr"><a href="#lsattr" class="headerlink" title="lsattr"></a>lsattr</h3><p>和ls差不多用法<br>三个option:<br>-a all<br>-d 忽略目录内文件<br>-R 递归<br>e.g., <code>lsattr -aR</code></p>
+<h2 id="Ext2文件系统介绍"><a href="#Ext2文件系统介绍" class="headerlink" title="Ext2文件系统介绍"></a>Ext2文件系统介绍</h2><p>暂时感觉ext2-4这些概念差不多..<br>Ext2文件系统采用的是 <code>Indexed Allocation</code>(索引式文件系统),和数据结构中的结构体指针差不多,windows那种的话应该和U盘的<br>super block: 记录文件系统的整体信息,包括inode/block总量,使用量,剩余量和文件系统的格式和相关信息<br><code>inode: 记录文件属性,一个文件占用一个inode,同时记录该文件数据所在的block号码</code><br>block: 实际记录文件的内容,文件过大会占用多个block<br><code>磁盘的碎片整理</code>==&gt;<a href="http://zxgchinese.blog.51cto.com/2508492/1131456" target="_blank" rel="external">51CTO-明诚阁</a></p>
+<h2 id="文件链接-ln"><a href="#文件链接-ln" class="headerlink" title="文件链接: ln"></a>文件链接: ln</h2><p><code>hard link</code>硬链接</p>
 <blockquote>
 <p>无法<br>1.链接目录<br>2.跨文件系统</p>
 </blockquote>
 <p>和复制还是有区别的,至少硬链接产生的文件使他们两个文件指向同一个block文件</p>
-<p><code>symbolic link</code>符号链接,对应于windows的<code>快捷方式</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line">ln <span class="operator">-s</span> ~ <span class="built_in">test</span>Folder <span class="comment">#-s symbolic</span></span><br><span class="line">ls <span class="operator">-l</span></span><br><span class="line"><span class="comment">#lrwxrwxrwx 1 a1exlism a1exlism   13  2月 14 22:28 testFolder1 -&gt; /home/a1exlism</span></span><br></pre></td></tr></table></figure></p>
+<p><code>symbolic link</code>符号链接,对应于windows的<code>快捷方式</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line">ln <span class="_">-s</span> ~ <span class="built_in">test</span>Folder <span class="comment">#-s symbolic</span></span><br><span class="line">ls <span class="_">-l</span></span><br><span class="line"><span class="comment">#lrwxrwxrwx 1 a1exlism a1exlism   13  2月 14 22:28 testFolder1 -&gt; /home/a1exlism</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>后记<br>ln -s 中的文件目录需要<code>绝对路径</code>,类似于./的相对路径无效</p>
 </blockquote>
-<h1 id="Device/Driver">Device/Driver</h1><h2 id="CMD-磁盘">CMD-磁盘</h2><p>1.<code>df</code> [option] file/floder<br>df ==&gt;disk and floder<br>-i 以inode显示 -h humanized人性化显示(kb,mb,etc)</p>
+<h1 id="Device-Driver"><a href="#Device-Driver" class="headerlink" title="Device/Driver"></a>Device/Driver</h1><h2 id="CMD-磁盘"><a href="#CMD-磁盘" class="headerlink" title="CMD-磁盘"></a>CMD-磁盘</h2><p>1.<code>df</code> [option] file/floder<br>df ==&gt;disk and floder<br>-i 以inode显示 -h humanized人性化显示(kb,mb,etc)</p>
 <blockquote>
 <p>df /</p>
 </blockquote>
@@ -530,25 +531,25 @@
 <blockquote>
 <p>du ~</p>
 </blockquote>
-<h2 id="查询文件系统">查询文件系统</h2><p>dumpe2fs [-bh] 设备文件名<br>-b broken size 显示坏道<br>-h 只显示superblock</p>
-<h2 id="磁盘分区fdisk">磁盘分区fdisk</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df <span class="comment">#查看大致文件系统的物理地址</span></span><br><span class="line">fdisk /dev/sdb</span><br></pre></td></tr></table></figure>
+<h2 id="查询文件系统"><a href="#查询文件系统" class="headerlink" title="查询文件系统"></a>查询文件系统</h2><p>dumpe2fs [-bh] 设备文件名<br>-b broken size 显示坏道<br>-h 只显示superblock</p>
+<h2 id="磁盘分区fdisk"><a href="#磁盘分区fdisk" class="headerlink" title="磁盘分区fdisk"></a>磁盘分区fdisk</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df <span class="comment">#查看大致文件系统的物理地址</span></span><br><span class="line">fdisk /dev/sdb</span><br></pre></td></tr></table></figure>
 <p>之后按m就能解决一切了..不过小心按w(保存)</p>
-<h2 id="磁盘格式化mkfs">磁盘格式化mkfs</h2><p>make file system</p>
+<h2 id="磁盘格式化mkfs"><a href="#磁盘格式化mkfs" class="headerlink" title="磁盘格式化mkfs"></a>磁盘格式化mkfs</h2><p>make file system</p>
 <blockquote>
 <p>mkfs [-t 文件系统格式] 设备文件名<br>文件格式:ext4,exFat…</p>
 </blockquote>
 <p>不细搞了</p>
-<h2 id="磁盘检验fsck,badblocks">磁盘检验fsck,badblocks</h2><p>file system check</p>
+<h2 id="磁盘检验fsck-badblocks"><a href="#磁盘检验fsck-badblocks" class="headerlink" title="磁盘检验fsck,badblocks"></a>磁盘检验fsck,badblocks</h2><p>file system check</p>
 <blockquote>
 <p>mkfs [-t 文件系统格式] [option] 设备文件名</p>
 </blockquote>
-<h2 id="iso镜像loop模式挂载"><code>iso</code>镜像loop模式挂载</h2><p>un/mount需要root权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /tmp/mountFloder</span><br><span class="line">mount -o loop /media/a1exlism/Data/ISO/ubuntu-<span class="number">15.04</span>-desktop-amd64.iso </span><br><span class="line">df <span class="comment">#查看一下有没有挂载</span></span><br><span class="line">umount /tmp/mountFloder</span><br></pre></td></tr></table></figure></p>
-<h1 id="Shell">Shell</h1><p>command记忆功能(注销之后才会被记录):</p>
+<h2 id="iso镜像loop模式挂载"><a href="#iso镜像loop模式挂载" class="headerlink" title="iso镜像loop模式挂载"></a><code>iso</code>镜像loop模式挂载</h2><p>un/mount需要root权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /tmp/mountFloder</span><br><span class="line">mount -o loop /media/a1exlism/Data/ISO/ubuntu-15.04-desktop-amd64.iso </span><br><span class="line">df <span class="comment">#查看一下有没有挂载</span></span><br><span class="line">umount /tmp/mountFloder</span><br></pre></td></tr></table></figure></p>
+<h1 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h1><p>command记忆功能(注销之后才会被记录):</p>
 <blockquote>
 <p>vim .bash_history </p>
 </blockquote>
 <p>分行输入,添加<code>\</code>,enter<br>bash中引用变量:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入当前kernel</span></span><br><span class="line"><span class="built_in">cd</span> /lib/modules/`uname -r`/kernel</span><br><span class="line"><span class="comment">#`表示优先执行</span></span><br><span class="line"><span class="built_in">cd</span> /lib/modules/$(uname -r)/kernel</span><br></pre></td></tr></table></figure></p>
-<h2 id="变量">变量</h2><h3 id="内置命令">内置命令</h3><ol>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="内置命令"><a href="#内置命令" class="headerlink" title="内置命令"></a>内置命令</h3><ol>
 <li><p>环境变量</p>
 <blockquote>
 <p>env</p>
@@ -580,7 +581,7 @@
 </blockquote>
 </li>
 </ol>
-<h3 id="变量内容">变量内容</h3><p><strong>0x1</strong> 删除</p>
+<h3 id="变量内容"><a href="#变量内容" class="headerlink" title="变量内容"></a>变量内容</h3><p><strong>0x1</strong> 删除</p>
 <blockquote>
 <p><code>#/##</code> 从左往右删除最短/最长一条<br><code>%,%%</code>和#一样,不过是从右往左<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#root权限,没有:的情况下</span></span><br><span class="line">mailtest=<span class="variable">$MAIL</span></span><br><span class="line"><span class="comment">#删除顶级目录</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;mailtest#/*/&#125;</span></span><br><span class="line"><span class="comment">#删除末级目录</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;mailtest%/*&#125;</span></span><br><span class="line"><span class="comment">#有:情况下</span></span><br><span class="line">path=<span class="variable">$PATH</span></span><br><span class="line"><span class="comment">#只保留第一个环境</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;path%%:*&#125;</span></span><br><span class="line"><span class="comment">#只保留最后一个环境</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;path1##*:&#125;</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
@@ -598,19 +599,19 @@
 </blockquote>
 </li>
 </ol>
-<h2 id="历史命令">历史命令</h2><h3 id="查询历史命令">查询历史命令</h3><p>前面提到<code>~/.bash_history</code>,history则是读取</p>
+<h2 id="历史命令"><a href="#历史命令" class="headerlink" title="历史命令"></a>历史命令</h2><h3 id="查询历史命令"><a href="#查询历史命令" class="headerlink" title="查询历史命令"></a>查询历史命令</h3><p>前面提到<code>~/.bash_history</code>,history则是读取</p>
 <blockquote>
 <p>history [n]  最近n条<br>history [-c]  清除历史<br>history [-raw]  读取/添加/写入histfiles(添加和写入感觉一模一样..)</p>
 </blockquote>
-<h3 id="执行历史命令">执行历史命令</h3><p>!n !command 就不讲了</p>
+<h3 id="执行历史命令"><a href="#执行历史命令" class="headerlink" title="执行历史命令"></a>执行历史命令</h3><p>!n !command 就不讲了</p>
 <blockquote>
 <p><code>!!</code>执行上一条命令</p>
 </blockquote>
-<h2 id="数据流重定向">数据流重定向</h2><p>顾名思义,数据放入了一个缓冲区,看到重定向符号就将数据转移</p>
-<h3 id="&gt;_&gt;&gt;_&lt;&lt;_&lt;描述">&gt; &gt;&gt; &lt;&lt; &lt;描述</h3><p>单个字符==&gt;替换<br>双字符===&gt;累加<br>和c++一样&gt;输出,&lt;输入<br>代码:0输入 1输出 2错误输出</p>
+<h2 id="数据流重定向"><a href="#数据流重定向" class="headerlink" title="数据流重定向"></a>数据流重定向</h2><p>顾名思义,数据放入了一个缓冲区,看到重定向符号就将数据转移</p>
+<h3 id="gt-gt-gt-lt-lt-lt-描述"><a href="#gt-gt-gt-lt-lt-lt-描述" class="headerlink" title="&gt; &gt;&gt; &lt;&lt; &lt;描述"></a>&gt; &gt;&gt; &lt;&lt; &lt;描述</h3><p>单个字符==&gt;替换<br>双字符===&gt;累加<br>和c++一样&gt;输出,&lt;输入<br>代码:0输入 1输出 2错误输出</p>
 <p>栗子:</p>
-<h3 id="&gt;_&gt;&gt;区别">&gt;  &gt;&gt;区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将ll内容输出至rootfile,terminal不显示</span></span><br><span class="line">a1exlism@dell:~$ ll / &gt; /tmp/rootfile</span><br><span class="line"><span class="comment">#用&gt;&gt;将~的内容累加至rootfile</span></span><br><span class="line">a1exlism@dell:~$ ll ~ &gt;&gt; /tmp/rootfile </span><br><span class="line"><span class="comment">#符号&gt;将rootfile进行重写,原先的内容全部消失</span></span><br><span class="line">a1exlism@dell:~$ ll / &gt; /tmp/rootfile</span><br></pre></td></tr></table></figure>
-<h3 id="错误输出">错误输出</h3><p>涉及到前面提到的代码—<br><strong>0x1</strong>. stdout输出至file1,stderr输出至file2</p>
+<h3 id="gt-gt-gt-区别"><a href="#gt-gt-gt-区别" class="headerlink" title="&gt;  &gt;&gt;区别"></a>&gt;  &gt;&gt;区别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将ll内容输出至rootfile,terminal不显示</span></span><br><span class="line">a1exlism@dell:~$ ll / &gt; /tmp/rootfile</span><br><span class="line"><span class="comment">#用&gt;&gt;将~的内容累加至rootfile</span></span><br><span class="line">a1exlism@dell:~$ ll ~ &gt;&gt; /tmp/rootfile </span><br><span class="line"><span class="comment">#符号&gt;将rootfile进行重写,原先的内容全部消失</span></span><br><span class="line">a1exlism@dell:~$ ll / &gt; /tmp/rootfile</span><br></pre></td></tr></table></figure>
+<h3 id="错误输出"><a href="#错误输出" class="headerlink" title="错误输出"></a>错误输出</h3><p>涉及到前面提到的代码–<br><strong>0x1</strong>. stdout输出至file1,stderr输出至file2</p>
 <blockquote>
 <p>find / -name *.desktop &gt;file1 2&gt;file2</p>
 </blockquote>
@@ -622,71 +623,71 @@
 <blockquote>
 <p><code>1.</code>find / -name <em>.desktop &gt; file 2&gt;&gt; file =, =<br><code>2.</code>find / -name </em>.desktop &gt; file 2&gt;&amp;1  这个表示不理解,放弃</p>
 </blockquote>
-<h3 id="标准输入">标准输入</h3><p><strong>0x1</strong>. 栗子<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cat 创建文件</span></span><br><span class="line">cat catfile</span><br><span class="line">stdin</span><br><span class="line">Ctrl+D</span><br><span class="line"><span class="comment">#利用文件写入</span></span><br><span class="line">cat &gt; catfile &lt; ~/.bash_<span class="built_in">history</span></span><br><span class="line">diff ~/.bash_<span class="built_in">history</span> catfile  <span class="comment">#无输出</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="标准输入"><a href="#标准输入" class="headerlink" title="标准输入"></a>标准输入</h3><p><strong>0x1</strong>. 栗子<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cat 创建文件</span></span><br><span class="line">cat catfile</span><br><span class="line">stdin</span><br><span class="line">Ctrl+D</span><br><span class="line"><span class="comment">#利用文件写入</span></span><br><span class="line">cat &gt; catfile &lt; ~/.bash_<span class="built_in">history</span></span><br><span class="line">diff ~/.bash_<span class="built_in">history</span> catfile  <span class="comment">#无输出</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>0x2</strong>. &lt;&lt;为结束字符</p>
 <blockquote>
 <p>cat &gt; catfile &lt;&lt; “EOF”</p>
 </blockquote>
-<h3 id="命令判断">命令判断</h3><p>&amp;&amp;   两者为<code>同或</code>关系,a1-&gt;b1,a0-&gt;b0<br>||    两者为<code>异或</code>关系,a1-&gt;b0,a0-&gt;b1<br>执行顺序为<code>从左到右</code>的顺序执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不清楚/tmp/abc的存在,直接创建/tmp/abc/def文件</span></span><br><span class="line">ls /tmp/abc || mkdir -p /tmp/abc &amp;&amp; touch /tmp/abc/def</span><br><span class="line"><span class="comment">#ls 报错是因为判断是在创建之前..</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="管道Pipe">管道Pipe</h2><p><code>|</code> 类似于重定向将标准<code>输出</code>以某种方式输出</p>
+<h3 id="命令判断"><a href="#命令判断" class="headerlink" title="命令判断"></a>命令判断</h3><p>&amp;&amp;   两者为<code>同或</code>关系,a1-&gt;b1,a0-&gt;b0<br>||    两者为<code>异或</code>关系,a1-&gt;b0,a0-&gt;b1<br>执行顺序为<code>从左到右</code>的顺序执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不清楚/tmp/abc的存在,直接创建/tmp/abc/def文件</span></span><br><span class="line">ls /tmp/abc || mkdir -p /tmp/abc &amp;&amp; touch /tmp/abc/def</span><br><span class="line"><span class="comment">#ls 报错是因为判断是在创建之前..</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="管道Pipe"><a href="#管道Pipe" class="headerlink" title="管道Pipe"></a>管道Pipe</h2><p><code>|</code> 类似于重定向将标准<code>输出</code>以某种方式输出</p>
 <blockquote>
 <p>ll / | less</p>
 </blockquote>
-<h3 id="选取命令">选取命令</h3><h4 id="cut">cut</h4><blockquote>
+<h3 id="选取命令"><a href="#选取命令" class="headerlink" title="选取命令"></a>选取命令</h3><h4 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h4><blockquote>
 <p>cut -d ‘words’ -f number / cut -c 字符范围</p>
 </blockquote>
-<p>example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#功能和js的split函数一样,以-d的分隔符分成数组,选取组号</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span> | cut <span class="operator">-d</span> : <span class="operator">-f</span> <span class="number">2</span> <span class="comment">#-d delimiter -f fields</span></span><br><span class="line"><span class="comment">#取所有行第12个字符之后的内容</span></span><br><span class="line"><span class="built_in">export</span> &gt; file1</span><br><span class="line"><span class="built_in">export</span> | cut -c <span class="number">12</span>- &gt;file2 <span class="comment">#-c character</span></span><br><span class="line"><span class="comment">#比较一下</span></span><br><span class="line">colordiff [-c] file1 file2 <span class="comment"># -c 为比较所有内容</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="grep">grep</h4><p>这部分放在了<a href="http://a1exlism.github.io/10/14/2015/bash1/" target="_blank" rel="external">Linux 查询</a>中</p>
-<h3 id="排序命令">排序命令</h3><h4 id="sort">sort</h4><blockquote>
+<p>example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#功能和js的split函数一样,以-d的分隔符分成数组,选取组号</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span> | cut <span class="_">-d</span> : <span class="_">-f</span> 2 <span class="comment">#-d delimiter -f fields</span></span><br><span class="line"><span class="comment">#取所有行第12个字符之后的内容</span></span><br><span class="line"><span class="built_in">export</span> &gt; file1</span><br><span class="line"><span class="built_in">export</span> | cut -c 12- &gt;file2 <span class="comment">#-c character</span></span><br><span class="line"><span class="comment">#比较一下</span></span><br><span class="line">colordiff [-c] file1 file2 <span class="comment"># -c 为比较所有内容</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h4><p>这部分放在了<a href="http://a1exlism.github.io/10/14/2015/bash1/" target="_blank" rel="external">Linux 查询</a>中</p>
+<h3 id="排序命令"><a href="#排序命令" class="headerlink" title="排序命令"></a>排序命令</h3><h4 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h4><blockquote>
 <p>sort [-option] file</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#默认字母排序</span></span><br><span class="line">cat /etc/passwd | sort</span><br><span class="line"><span class="comment">#以每行第三个作为排序依据</span></span><br><span class="line">cat /etc/passwd | sort -t : -k <span class="number">3</span>  <span class="comment">#-t --field separator -k key(location)-t --field separator -k key(location)</span></span><br><span class="line"><span class="comment">#cut + sort</span></span><br><span class="line">last | cut <span class="operator">-d</span> <span class="string">' '</span> <span class="operator">-f</span> <span class="number">1</span> | sort</span><br></pre></td></tr></table></figure>
-<h4 id="uniq">uniq</h4><p>-i 忽略大小写 -c count</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#默认字母排序</span></span><br><span class="line">cat /etc/passwd | sort</span><br><span class="line"><span class="comment">#以每行第三个作为排序依据</span></span><br><span class="line">cat /etc/passwd | sort -t : -k 3  <span class="comment">#-t --field separator -k key(location)-t --field separator -k key(location)</span></span><br><span class="line"><span class="comment">#cut + sort</span></span><br><span class="line">last | cut <span class="_">-d</span> <span class="string">' '</span> <span class="_">-f</span> 1 | sort</span><br></pre></td></tr></table></figure>
+<h4 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h4><p>-i 忽略大小写 -c count</p>
 <blockquote>
 <p>uniq [-ic]</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#记录独立用户登陆,依名字排序并统计次数</span></span><br><span class="line">last | cut <span class="operator">-d</span> <span class="string">' '</span> <span class="operator">-f</span> <span class="number">1</span> | sort | uniq -c</span><br></pre></td></tr></table></figure>
-<h4 id="wc">wc</h4><p>word count字数统计 -l行 -w字 -m字符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#记录独立用户登陆,依名字排序并统计次数</span></span><br><span class="line">last | cut <span class="_">-d</span> <span class="string">' '</span> <span class="_">-f</span> 1 | sort | uniq -c</span><br></pre></td></tr></table></figure>
+<h4 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h4><p>word count字数统计 -l行 -w字 -m字符</p>
 <blockquote>
 <p>wc [-lwm]</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#记录登陆系统的总人次 grep1排除空白行 grep2排除wtmp</span></span><br><span class="line">last | grep [a-zA-Z] | grep -v wtmp | wc <span class="operator">-l</span></span><br></pre></td></tr></table></figure>
-<h3 id="双向重定向">双向重定向</h3><p>tee -&gt; T 两边都行(stdout+file) -a appand添加(否则覆盖)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#记录登陆系统的总人次 grep1排除空白行 grep2排除wtmp</span></span><br><span class="line">last | grep [a-zA-Z] | grep -v wtmp | wc <span class="_">-l</span></span><br></pre></td></tr></table></figure>
+<h3 id="双向重定向"><a href="#双向重定向" class="headerlink" title="双向重定向"></a>双向重定向</h3><p>tee -&gt; T 两边都行(stdout+file) -a appand添加(否则覆盖)</p>
 <blockquote>
 <p>tee [-a] file</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#存入文件file并在屏幕以less方式显示</span></span><br><span class="line">cat /var/<span class="built_in">log</span>/kern.log | tee /tmp/<span class="built_in">test</span>Floder/file | less</span><br></pre></td></tr></table></figure>
-<h3 id="字符转换">字符转换</h3><h4 id="tr">tr</h4><p>translate or remove<br>[option]: -d delete -s squeeze-replace</p>
+<h3 id="字符转换"><a href="#字符转换" class="headerlink" title="字符转换"></a>字符转换</h3><h4 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h4><p>translate or remove<br>[option]: -d delete -s squeeze-replace</p>
 <blockquote>
 <p>tr [-ds] string</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#切换大写</span></span><br><span class="line">last | tr <span class="operator">-s</span> [a-z] [A-Z]</span><br><span class="line"><span class="comment">#删除冒号</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span> | tr <span class="operator">-d</span> :</span><br></pre></td></tr></table></figure>
-<h3 id="数据合并">数据合并</h3><h4 id="join">join</h4><p>-t 分隔 -i 无视大小写 <code>-1 n</code> 文件1用第n个字段进行分析</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#切换大写</span></span><br><span class="line">last | tr <span class="_">-s</span> [a-z] [A-Z]</span><br><span class="line"><span class="comment">#删除冒号</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span> | tr <span class="_">-d</span> :</span><br></pre></td></tr></table></figure>
+<h3 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h3><h4 id="join"><a href="#join" class="headerlink" title="join"></a>join</h4><p>-t 分隔 -i 无视大小写 <code>-1 n</code> 文件1用第n个字段进行分析</p>
 <blockquote>
 <p>join [-ti12] file1 file2</p>
 </blockquote>
-<p>join之前一般需要<code>sort</code>一下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#合并passwd和shadow数据,stdout之后并记录在test文件中</span></span><br><span class="line">join -t : /etc/passwd /etc/shadow |tee <span class="built_in">test</span></span><br><span class="line"><span class="comment">#先看看相同之处</span></span><br><span class="line">head -n <span class="number">3</span> /etc/passwd /etc/group  <span class="comment">#相同之处在file1第四个字段和file2的第三个字段</span></span><br><span class="line"><span class="comment">#文件1以第四个字段GID作为分析内容</span></span><br><span class="line">join -t : -<span class="number">1</span> <span class="number">4</span> /etc/passwd -<span class="number">2</span> <span class="number">3</span> /etc/group</span><br></pre></td></tr></table></figure></p>
+<p>join之前一般需要<code>sort</code>一下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#合并passwd和shadow数据,stdout之后并记录在test文件中</span></span><br><span class="line">join -t : /etc/passwd /etc/shadow |tee <span class="built_in">test</span></span><br><span class="line"><span class="comment">#先看看相同之处</span></span><br><span class="line">head -n 3 /etc/passwd /etc/group  <span class="comment">#相同之处在file1第四个字段和file2的第三个字段</span></span><br><span class="line"><span class="comment">#文件1以第四个字段GID作为分析内容</span></span><br><span class="line">join -t : -1 4 /etc/passwd -2 3 /etc/group</span><br></pre></td></tr></table></figure></p>
 <p>合并后的输出第一字段为相同字段,后面不重复显示</p>
-<h4 id="paste">paste</h4><p>数据直接黏贴,[tab]作为分隔符</p>
+<h4 id="paste"><a href="#paste" class="headerlink" title="paste"></a>paste</h4><p>数据直接黏贴,[tab]作为分隔符</p>
 <blockquote>
 <p>paste /etc/passwd /etc/shadow</p>
 </blockquote>
-<h3 id="切割/合成">切割/合成</h3><h4 id="split">split</h4><p>-b —bytes 可加单位 -l line number</p>
+<h3 id="切割-合成"><a href="#切割-合成" class="headerlink" title="切割/合成"></a>切割/合成</h3><h4 id="split"><a href="#split" class="headerlink" title="split"></a>split</h4><p>-b –bytes 可加单位 -l line number</p>
 <blockquote>
 <p>split [-bl] file PreFix</p>
 </blockquote>
-<h4 id="cat">cat</h4><p>利用数据流重定向</p>
+<h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><p>利用数据流重定向</p>
 <blockquote>
 <p>cat files* &gt;&gt; file</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 200M文件切割成四份,每份60M--videos会被分成四部分,只有第一个能看,也不能调进度</span></span><br><span class="line"><span class="built_in">cd</span> /tmp/<span class="built_in">test</span>Floder; split -b <span class="number">60</span>m ~/Downloads/video.rmvb videos </span><br><span class="line"><span class="comment"># 合并上述文件</span></span><br><span class="line">cat videos* &gt;&gt; viedo.rmvb <span class="comment">#确实很棒 数据流重定向</span></span><br></pre></td></tr></table></figure>
-<h3 id="参数代换">参数代换</h3><p><code>xargs</code>为不支持管道符号的command提供了额外的支持<br>-0 特殊字符格式化 -e EOF符 n 次数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 200M文件切割成四份,每份60M--videos会被分成四部分,只有第一个能看,也不能调进度</span></span><br><span class="line"><span class="built_in">cd</span> /tmp/<span class="built_in">test</span>Floder; split -b 60m ~/Downloads/video.rmvb videos </span><br><span class="line"><span class="comment"># 合并上述文件</span></span><br><span class="line">cat videos* &gt;&gt; viedo.rmvb <span class="comment">#确实很棒 数据流重定向</span></span><br></pre></td></tr></table></figure>
+<h3 id="参数代换"><a href="#参数代换" class="headerlink" title="参数代换"></a>参数代换</h3><p><code>xargs</code>为不支持管道符号的command提供了额外的支持<br>-0 特殊字符格式化 -e EOF符 n 次数</p>
 <blockquote>
 <p>xargs [-0epn] command</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查询前三个账户并用echo来显示 (栗子不怎么恰当,不过原书finger的栗子已失效)</span></span><br><span class="line">cut <span class="operator">-d</span> : <span class="operator">-f</span> <span class="number">1</span> /etc/passwd | head -n <span class="number">3</span> |xargs <span class="built_in">echo</span> </span><br><span class="line"><span class="comment">#echo5个账号,第三个账号为bin,xargs以'bin'作为EOF标识</span></span><br><span class="line">cut <span class="operator">-d</span> : <span class="operator">-f</span> <span class="number">1</span> /etc/passwd | xargs -n <span class="number">5</span> <span class="operator">-e</span> <span class="string">'bin'</span> <span class="built_in">echo</span> <span class="comment">#注意-e'bin'连在一起</span></span><br></pre></td></tr></table></figure>
-<h3 id="减号-">减号<code>-</code></h3><p>在一条命令中(管道符隔开),前面的stdout作为后面的stdin(变量存储)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 类似于匿名函数,减少了文件名的产生</span></span><br><span class="line">tar -cvf - /tmp/<span class="built_in">test</span>Floder/ | tar -xvf -</span><br></pre></td></tr></table></figure></p>
-<h1 id="Reference">Reference</h1><p>《鸟哥私房菜》</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查询前三个账户并用echo来显示 (栗子不怎么恰当,不过原书finger的栗子已失效)</span></span><br><span class="line">cut <span class="_">-d</span> : <span class="_">-f</span> 1 /etc/passwd | head -n 3 |xargs <span class="built_in">echo</span> </span><br><span class="line"><span class="comment">#echo5个账号,第三个账号为bin,xargs以'bin'作为EOF标识</span></span><br><span class="line">cut <span class="_">-d</span> : <span class="_">-f</span> 1 /etc/passwd | xargs -n 5 <span class="_">-e</span> <span class="string">'bin'</span> <span class="built_in">echo</span> <span class="comment">#注意-e'bin'连在一起</span></span><br></pre></td></tr></table></figure>
+<h3 id="减号"><a href="#减号" class="headerlink" title="减号-"></a>减号<code>-</code></h3><p>在一条命令中(管道符隔开),前面的stdout作为后面的stdin(变量存储)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 类似于匿名函数,减少了文件名的产生</span></span><br><span class="line">tar -cvf - /tmp/<span class="built_in">test</span>Floder/ | tar -xvf -</span><br></pre></td></tr></table></figure></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>《鸟哥私房菜》</p>
 
         
         
@@ -724,7 +725,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-02-12T16:00:00.000Z" itemprop="datePublished"> 发表于 02-13-2016</time>
@@ -733,26 +734,26 @@
 </header>
     <div class="article-content">
         
-        <h2 id="问题">问题</h2><p>触摸板开启状态下开机,碰到触摸板任何按键均失效,只有外接鼠标有效,使用笔记本内置快捷键进行休眠重新开机恢复,但是触摸板已经没卵用了</p>
-<h2 id="环境">环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a1exlism@dell~$ uname -r</span><br><span class="line"><span class="number">3.19</span>.<span class="number">0</span>-<span class="number">49</span>-generic</span><br><span class="line">a1exlism@dell:~$ lsb_release <span class="operator">-a</span></span><br><span class="line">No LSB modules are available.</span><br><span class="line">Distributor ID: Ubuntu</span><br><span class="line">Description:  Ubuntu <span class="number">15.04</span></span><br><span class="line">Release:  <span class="number">15.04</span></span><br><span class="line">Codename: vivid</span><br></pre></td></tr></table></figure>
-<h2 id="正文">正文</h2><h3 id="适用于任何笔记本">适用于任何笔记本</h3><blockquote>
-<p><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=42&amp;t=304955" target="_blank" rel="external">Sony Vaio 触摸板不能识别解决办法</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. sudo vi /etc/default/grub</span><br><span class="line"><span class="number">2</span>. 找到GRUB_CMDLINE_LINUX=<span class="string">""</span> 添加 i8042.reset i8042.nomux i8042.nopnp i8042.noloop </span><br><span class="line"><span class="comment">#添加完后GRUB_CMDLINE_LINUX="i8042.reset i8042.nomux i8042.nopnp i8042.noloop"</span></span><br><span class="line"><span class="number">3</span>. sudo update-grub</span><br><span class="line"><span class="number">4</span>. sudo reboot</span><br></pre></td></tr></table></figure></p>
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>触摸板开启状态下开机,碰到触摸板任何按键均失效,只有外接鼠标有效,使用笔记本内置快捷键进行休眠重新开机恢复,但是触摸板已经没卵用了</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a1exlism@dell~$ uname -r</span><br><span class="line">3.19.0-49-generic</span><br><span class="line">a1exlism@dell:~$ lsb_release <span class="_">-a</span></span><br><span class="line">No LSB modules are available.</span><br><span class="line">Distributor ID: Ubuntu</span><br><span class="line">Description:  Ubuntu 15.04</span><br><span class="line">Release:  15.04</span><br><span class="line">Codename: vivid</span><br></pre></td></tr></table></figure>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="适用于任何笔记本"><a href="#适用于任何笔记本" class="headerlink" title="适用于任何笔记本"></a>适用于任何笔记本</h3><blockquote>
+<p><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=42&amp;t=304955" target="_blank" rel="external">Sony Vaio 触摸板不能识别解决办法</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. sudo vi /etc/default/grub</span><br><span class="line">2. 找到GRUB_CMDLINE_LINUX=<span class="string">""</span> 添加 i8042.reset i8042.nomux i8042.nopnp i8042.noloop </span><br><span class="line"><span class="comment">#添加完后GRUB_CMDLINE_LINUX="i8042.reset i8042.nomux i8042.nopnp i8042.noloop"</span></span><br><span class="line">3. sudo update-grub</span><br><span class="line">4. sudo reboot</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>通过更改grub设置,加载内核过程中会将触摸板简单的识别成<code>鼠标</code>设备,即丧失了多指触摸功能  </p>
-<h3 id="elanTouchpad方案[推荐]">elanTouchpad方案[推荐]</h3><p>感觉不支持的应该都是这家<code>Elan</code>触摸板了= =<br>From—&gt;<a href="http://www.evilcodingmonkey.com/2014/01/23/ubuntu-activate-multi-touch-on-elantech/" target="_blank" rel="external">evilcodingmonkey</a></p>
+<h3 id="elanTouchpad方案-推荐"><a href="#elanTouchpad方案-推荐" class="headerlink" title="elanTouchpad方案[推荐]"></a>elanTouchpad方案[推荐]</h3><p>感觉不支持的应该都是这家<code>Elan</code>触摸板了= =<br>From–&gt;<a href="http://www.evilcodingmonkey.com/2014/01/23/ubuntu-activate-multi-touch-on-elantech/" target="_blank" rel="external">evilcodingmonkey</a></p>
 <p>1.</p>
 <blockquote>
 <p>cat /proc/bus/input/devices | grep “Name=”  </p>
 </blockquote>
-<p>应该能看到这个—&gt; N: Name=”ETPS/2 Elantech Touchpad”  </p>
+<p>应该能看到这个–&gt; N: Name=”ETPS/2 Elantech Touchpad”  </p>
 <p>2.<br>下载<a href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1166442/+attachment/3941591/+files/psmouse-elantech-x551c.tar.gz" target="_blank" rel="external">this archive</a>(from Ubuntu’s bug reporting page)<br>//国内可以用<a href="http://pan.baidu.com/s/1kTOOlE3" target="_blank" rel="external">百度云</a></p>
 <p>3.</p>
 <blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Downloads</span><br><span class="line">sudo dkms ldtarball psmouse-elantech-x551c.tar.gz</span><br><span class="line">sudo dkms install -m psmouse -v elantech-x551c</span><br><span class="line">sudo rmmod psmouse</span><br><span class="line">sudo modprobe psmouse</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>End. 重启之后就没事啦</p>
-<h2 id="Reference">Reference</h2><p><a href="http://www.evilcodingmonkey.com/2014/01/23/ubuntu-activate-multi-touch-on-elantech/" target="_blank" rel="external">ubuntu-activate-multi-touch-on-elantech-evilcodingmonkey</a><br><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=42&amp;t=304955" target="_blank" rel="external">Sony Vaio 触摸板不能识别解决办法-UbuntuForum</a><br>想了解DKMS可以看看这个-&gt;<a href="http://www.cnblogs.com/wwang/archive/2011/06/21/2085571.html" target="_blank" rel="external">DKMS简介</a></p>
-<h2 id="后记">后记</h2><p>发现重启几次之后触摸板又挂了<br>发现dkms安装了但并没有加载,所以开机自启加载两句话= =<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sudo vi /etc/rc.local 在这里添加下面两条内容</span></span><br><span class="line">sudo rmmod psmouse</span><br><span class="line">sudo modprobe psmouse</span><br></pre></td></tr></table></figure></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.evilcodingmonkey.com/2014/01/23/ubuntu-activate-multi-touch-on-elantech/" target="_blank" rel="external">ubuntu-activate-multi-touch-on-elantech-evilcodingmonkey</a><br><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=42&amp;t=304955" target="_blank" rel="external">Sony Vaio 触摸板不能识别解决办法-UbuntuForum</a><br>想了解DKMS可以看看这个-&gt;<a href="http://www.cnblogs.com/wwang/archive/2011/06/21/2085571.html" target="_blank" rel="external">DKMS简介</a></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>发现重启几次之后触摸板又挂了<br>发现dkms安装了但并没有加载,所以开机自启加载两句话= =<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sudo vi /etc/rc.local 在这里添加下面两条内容</span></span><br><span class="line">sudo rmmod psmouse</span><br><span class="line">sudo modprobe psmouse</span><br></pre></td></tr></table></figure></p>
 
         
         
@@ -790,7 +791,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-02-07T16:00:00.000Z" itemprop="datePublished"> 发表于 02-08-2016</time>
@@ -799,25 +800,25 @@
 </header>
     <div class="article-content">
         
-        <h2 id="主题环境">主题环境</h2><p>hexo 3.0<br><a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman</a>修改于pacman(基本差不多)</p>
-<p>以前使用的<code>Tinyso</code>(微搜),不过这几个月已经无限502-504了,看了一下官方博客,好像从2015就没维护了..放弃换成<code>Swiftype</code>,15天free trial 网上查了一下好像过期不影响站内搜索,如果失效就更新..<br>—FreeTrail 过后测试正常,SwiftSearch可放心食用</p>
-<h3 id="正文">正文</h3><h4 id="Swiftype">Swiftype</h4><p>1.注册账号-&gt;<a href="https://swiftype.com" target="_blank" rel="external">Swiftype</a><br>2.create engine(search engine,名字随便取) -&gt; 填入自己的URL验证<br>3.My Search Engines -&gt; <img src="/imgs/hexoSearch/hexoSearch1.png" alt="1"><br><img src="/imgs/hexoSearch/hexoSearch2.png" alt="2"><br>4.记下以下的class名.<br><img src="/imgs/hexoSearch/hexoSearch3.png" alt="3"></p>
-<h4 id="文件修改">文件修改</h4><ol>
+        <h2 id="主题环境"><a href="#主题环境" class="headerlink" title="主题环境"></a>主题环境</h2><p>hexo 3.0<br><a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman</a>修改于pacman(基本差不多)</p>
+<p>以前使用的<code>Tinyso</code>(微搜),不过这几个月已经无限502-504了,看了一下官方博客,好像从2015就没维护了..放弃换成<code>Swiftype</code>,15天free trial 网上查了一下好像过期不影响站内搜索,如果失效就更新..<br>–FreeTrail 过后测试正常,SwiftSearch可放心食用</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="Swiftype"><a href="#Swiftype" class="headerlink" title="Swiftype"></a>Swiftype</h4><p>1.注册账号-&gt;<a href="https://swiftype.com" target="_blank" rel="external">Swiftype</a><br>2.create engine(search engine,名字随便取) -&gt; 填入自己的URL验证<br>3.My Search Engines -&gt; <img src="/imgs/hexoSearch/hexoSearch1.png" alt="1"><br><img src="/imgs/hexoSearch/hexoSearch2.png" alt="2"><br>4.记下以下的class名.<br><img src="/imgs/hexoSearch/hexoSearch3.png" alt="3"></p>
+<h4 id="文件修改"><a href="#文件修改" class="headerlink" title="文件修改"></a>文件修改</h4><ol>
 <li><p>/yourOwnPath/hexo/themes/jacman/<code>_config.yml</code>末尾</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">swift_search:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>创建文件/yourOwnPath/hexo/themes/jacman/layout/_partial/<code>swift_search.ejs</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将调用的代码复制进去</span></span><br><span class="line">&lt;% <span class="keyword">if</span> (theme.swift_search.enable)&#123; %&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="clojure"></span><br><span class="line">  <span class="list">(<span class="keyword">function</span><span class="list">(<span class="keyword">w</span>,d,t,u,n,s,e)</span><span class="collection">&#123;w<span class="collection">['SwiftypeObject']</span>=n;w<span class="collection">[n]</span>=w<span class="collection">[n]</span>||function<span class="list">()</span><span class="collection">&#123;</span><br><span class="line">  <span class="list">(<span class="keyword">w</span><span class="collection">[n]</span>.q=w<span class="collection">[n]</span>.q||<span class="collection">[]</span>)</span>.push<span class="list">(<span class="keyword">arguments</span>)</span><span class="comment">;&#125;;s=d.createElement(t);</span></span><br><span class="line">  e=d.getElementsByTagName<span class="list">(<span class="keyword">t</span>)</span><span class="collection">[<span class="number">0</span>]</span><span class="comment">;s.async=1;s.src=u;e.parentNode.insertBefore(s,e);</span></span><br><span class="line">  &#125;</span>)<span class="list">(<span class="keyword">window</span>,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st')</span><span class="comment">;</span></span><br><span class="line">  </span><br><span class="line">  _st<span class="list">(<span class="keyword">'install'</span>,'6CrKq4WqLzE2qozYG7T_','2.0.0')</span><span class="comment">;</span></span><br><span class="line"></span></span></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">%</span> &#125; %&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将调用的代码复制进去</span></span><br><span class="line">&lt;% <span class="keyword">if</span> (theme.swift_search.enable)&#123; %&gt;</span><br><span class="line">&lt;script type="text/javascript"&gt;</span><br><span class="line">  (function(w,d,t,u,n,s,e)&#123;w['SwiftypeObject']=n;w[n]=w[n]||function()&#123;</span><br><span class="line">  (w[n].q=w[n].q||[]).push(arguments);&#125;;s=d.createElement(t);</span><br><span class="line">  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);</span><br><span class="line">  &#125;)(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');</span><br><span class="line">  </span><br><span class="line">  _st('install','6CrKq4WqLzE2qozYG7T_','2.0.0');</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>/yourOwnPath/hexo/themes/jacman/layout/_partial/<code>header.ejs</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将该html代码插入在google_cse之前,不然报错..</span></span><br><span class="line"><span class="comment">//action可以模仿其他search写法,默认本页面显示</span></span><br><span class="line">&lt;% <span class="keyword">if</span>(theme.swift_search.enable)&#123; %&gt;</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">class</span>=<span class="value">"search"</span> <span class="attribute">action</span>=<span class="value">""</span> <span class="attribute">method</span>=<span class="value">"get"</span> <span class="attribute">accept-charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">class</span>=<span class="value">"st-default-search-input"</span> <span class="attribute">style</span>=<span class="value">"webkit-border-radius: 0;border-radius: 0;"</span> <span class="attribute">placeholder</span>=<span class="value">"Search"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">form</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">%</span> &#125; //根据后面的<span class="attribute">if</span> <span class="attribute">else</span>结构完成闭合</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将该html代码插入在google_cse之前,不然报错..</span></span><br><span class="line"><span class="comment">//action可以模仿其他search写法,默认本页面显示</span></span><br><span class="line">&lt;% <span class="keyword">if</span>(theme.swift_search.enable)&#123; %&gt;</span><br><span class="line">            &lt;form class="search" action="" method="get" accept-charset="utf-8"&gt;</span><br><span class="line">            &lt;input type="text" class="st-default-search-input" style="webkit-border-radius: 0;border-radius: 0;" placeholder="Search"&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">          &lt;% &#125; //根据后面的if else结构完成闭合</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>/yourOwnPath/hexo/themes/jacman/layout/_partial/<code>after_footer.ejs</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//最后添加如下代码,使swift_search.ejs文件生效</span></span><br><span class="line">&lt;!-- Swift_search Begin --&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">%-</span> <span class="attribute">partial</span>('<span class="attribute">swift_search</span>') %&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Tiny_search End --&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//最后添加如下代码,使swift_search.ejs文件生效</span></span><br><span class="line">&lt;!-- Swift_search Begin --&gt;</span><br><span class="line">&lt;%- partial('swift_search') %&gt;</span><br><span class="line">&lt;!-- Tiny_search End --&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h4 id="调试">调试</h4><p>hexo g;hexo s<br>测试是否成功<br>默认应该和本blog一样的效果</p>
-<h3 id="Reference">Reference</h3><p><a href="http://www.jianshu.com/p/2010ad07d960" target="_blank" rel="external">Hexo静态博客添加站内搜索—Swiftype</a></p>
+<h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><p>hexo g;hexo s<br>测试是否成功<br>默认应该和本blog一样的效果</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://www.jianshu.com/p/2010ad07d960" target="_blank" rel="external">Hexo静态博客添加站内搜索–Swiftype</a></p>
 
         
         
@@ -851,169 +852,11 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/01/31/2016/daily-linux-1/" title="linux日常更新-01" itemprop="url">linux日常更新-01</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="环境:debian8">环境:debian8</h1><p>最后更新日期:2016-01-31</p>
-<h2 id="Commond">Commond</h2><h3 id="压缩包">压缩包</h3><h4 id="压缩">压缩</h4><p>1.<em>.tar 用tar -cvf FILE.tar DIR 压缩<br>2.</em>.gz 用 gzip FILE 压缩<br>3.<em>.tar.gz 和 .tgz 用 tar -zcvf FILE.tar.gz DIR 压缩<br>4.</em>.bz2 用 bzip2 -z FILE 压缩<br>5.<em>.tar.bz2 用 tar -jcvf FILE.tar.bz2 DIR 压缩<br>6.</em>.Z 用 compress FILE 压缩<br>7.<em>.tar.Z 用 tar -zcvf FILE.tar.z DIR 压缩<br>8.</em>.rar 用 rar a FILE.rar DIR 压缩<br>9.*.zip 用 zip FILE.zip DIR 压缩</p>
-<h4 id="解压">解压</h4><ol>
-<li>*.tar 用 tar –xvf 解压 </li>
-<li>*.gz 用 gzip -d或者gunzip 解压 </li>
-<li><em>.tar.gz和</em>.tgz 用 tar –xzf 解压 </li>
-<li>*.bz2 用 bzip2 -d或者用bunzip2 解压 </li>
-<li>*.tar.bz2用tar –xjf 解压 </li>
-<li>*.Z 用 uncompress 解压 </li>
-<li>*.tar.Z 用tar –xZf 解压 </li>
-<li>*.rar 用 unrar e解压 </li>
-<li>*.zip 用 unzip 解压</li>
-</ol>
-<h3 id="cmd打开图片">cmd打开图片</h3><p><code>display a.jpg</code>or <code>eog a.jpg</code></p>
-<h3 id="更改mac地址">更改mac地址</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#wlan1 为设备 hw-&gt;hardware root权限</span></span><br><span class="line">ficonfig wlan1 down</span><br><span class="line">ifconfig wlan1 hw ether AA:AA:BB:CC:dd:EE</span><br><span class="line">ifconfig wlan1 up</span><br></pre></td></tr></table></figure>
-<p>来自: <a href="http://man.linuxde.net/ifconfig" target="_blank" rel="external">http://man.linuxde.net/ifconfig</a></p>
-<h3 id="更改文件所属用户/组">更改文件所属用户/组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Code</span></span><br><span class="line">chown/chgrp userName fileName/floderName</span><br><span class="line"><span class="comment">#Example</span></span><br><span class="line">chown gust ~/home/genymotion</span><br><span class="line"><span class="comment">#将home目录的genymotion文件所属改为gust</span></span><br></pre></td></tr></table></figure>
-<h3 id="创建文件">创建文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ./test.txt</span><br></pre></td></tr></table></figure>
-<h3 id="删除">删除</h3><p>-i info 删除前逐一确认<br>-f force 直接删除<br>-r recursion 递归删除,即把该文件所有的内容都删除<br>在linux没有回收站，文件或目录被删除之后就<code>无法再恢复</code></p>
-<h3 id="打开GUI文件夹">打开GUI文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nautilus [option] /home/gust</span><br><span class="line"><span class="comment">#option --d&gt; manpage</span></span><br></pre></td></tr></table></figure>
-<h3 id="wget临时代理">wget临时代理</h3><p><code>wget -e &quot;http_proxy=http://&lt;ip&gt;:&lt;port&gt;/&quot; http://www.google.com</code></p>
-<h2 id="System">System</h2><h3 id="更改账户权限">更改账户权限</h3><p>vi /etc/sudoers<br>找到 root ALL=(ALL) ALL<br>再后边增加 用户名 ALL=(ALL) ALL</p>
-<h3 id="桌面_文档等文件改成英文">桌面 文档等文件改成英文</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.UTF-<span class="number">8</span> xdg-user-dirs-update</span><br><span class="line"><span class="comment">#如果注销重进失效,建议把 en_US 写到 ~/.config/user-dirs.locale 文件里再 xdg-user-dirs-update</span></span><br></pre></td></tr></table></figure>
-<p>Reference:<br><a href="https://bbs.archlinuxcn.org/viewtopic.php?id=2488" target="_blank" rel="external">Archlinux-百合仙子</a><a href="http://blog.csdn.net/topgun_chenlingyun/article/details/8159550" target="_blank" rel="external">TOPFUN</a></p>
-<h3 id="手动添加快捷键">手动添加快捷键</h3><p><a href="http://blog.csdn.net/longerzone/article/details/8932751" target="_blank" rel="external">longerzone</a></p>
-<h3 id="设置全局/apt-get代理">设置全局/apt-get代理</h3><h4 id="全局">全局</h4><p><code>export http_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;
-export https_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;</code></p>
-<h4 id="Apt-get">Apt-get</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apt/apt.conf</span><br><span class="line"><span class="comment">#添加下列内容</span></span><br><span class="line">Acquire &#123;</span><br><span class="line">　　      http::proxy <span class="string">"http://user:pass@yourProxyAddress:port"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Reference<br><a href="https://sites.google.com/site/debianpackageshare/Home/linux-tips/page-47" target="_blank" rel="external">@carlosloveleo</a></p>
-<h3 id="修改默认编辑器">修改默认编辑器</h3><p>1.不适用sublime</p>
-<blockquote>
-<p>sudo update-alternatives —config editor</p>
-</blockquote>
-<p>2.任意,在<code>/usr/share/applications/</code>目录中添加或者使用已有的desktop</p>
-<blockquote>
-<p>sudo vim /etc/gnome/defaults.list<br>将gedit.desktop批量替换为 编辑器.desktop </p>
-</blockquote>
-<h3 id="备份">备份</h3><ol>
-<li>sudo su</li>
-<li>tar<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Bak/Kali_bak/backup.tgz --exclude=/media --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /</span><br><span class="line"><span class="comment"># 最后的/为需要备份的目录</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="增量备份及差别">增量备份及差别</h4><pre><code>tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span> /<span class="tag">var</span>
-tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span>.<span class="number">1</span> /var
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Bak/Kali_bak/backup.tgz.<span class="number">1</span> --exclude=/media --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys  /</span><br></pre></td></tr></table></figure>
-<p>backup.tgz.1 后面的’.1’为标志</p>
-<p>差量备份:只备份上次完全备份以后有变化的数据(他针对的上次的完全备份,他备份过程中不清除存档属性)<br>增量备份:只备份上次备份以后有变化的数据.(他才不管是那种类型的备份,有变化的数据就备份,他会清除存档属性)</p>
-<p>Reference:<br><a href="http://blog.chinaunix.net/uid-23225855-id-3182334.html" target="_blank" rel="external">一片浮云而已</a><br><a href="http://www.blogjava.net/MEYE/archive/2011/08/25/357250.html" target="_blank" rel="external">MEYE</a></p>
-<h3 id="添加环境变量">添加环境变量</h3><h4 id="临时">临时</h4><p>添加:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PATH</span>:需要添加的路径"</span></span><br></pre></td></tr></table></figure></p>
-<p>参考:<a href="http://www.a1ex.net/10/15/2015/bash2/" target="_blank" rel="external">bash基本命令2</a></p>
-<h4 id="永久(lifetime)">永久(lifetime)</h4><p>所有用户:/etc/profile<br>独立用户:/root/.bashrc or /home/你的用户/.bashrc</p>
-<h3 id="脚本自启动">脚本自启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line"><span class="comment">### BEGIN INIT INFO</span></span><br><span class="line"><span class="comment">#file name : test</span></span><br><span class="line"><span class="comment">### INIT INFO</span></span><br><span class="line">    Your Codes</span><br></pre></td></tr></table></figure>
-<ol>
-<li>移动,更改权限<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mv <span class="built_in">test</span> /etc/init.d/</span><br><span class="line">sudo chmod <span class="number">775</span> /etc/init.d/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="两种添加/删除方式">两种添加/删除方式</h4><ol>
-<li><p>insserv方式 </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo insserv /etc/init.d/test   #&#21551;&#21160;&#26381;&#21153;&#10;sudo insserv -r /etc/init.d/test #&#21024;&#38500;&#26381;&#21153;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>update-rc.d </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo update-rc.d <span class="built_in">test</span> defaults <span class="number">95</span> <span class="comment">#启动服务 95为脚本启动顺序</span></span><br><span class="line">sudo update-rc.d <span class="operator">-f</span> /etc/init.d/<span class="built_in">test</span> remove <span class="comment">#删除服务</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="查看服务状态">查看服务状态</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/<span class="built_in">test</span> status <span class="comment">#查看服务状态/日志</span></span><br></pre></td></tr></table></figure>
-<p>执行之后存在warning,测试好像没有影响</p>
-<p>Reference:<br><a href="http://wenzhixin.net.cn/2013/10/30/debian_script_init" target="_blank" rel="external">文翼’s blog</a><br><a href="http://www.linuxidc.com/Linux/2011-12/48922.htm" target="_blank" rel="external">Linux 公社</a></p>
-<h4 id="Ubuntu-rc-local">Ubuntu-rc.local</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/rc.local</span><br><span class="line"><span class="comment">#添加bash内容 适用于小脚本</span></span><br><span class="line"><span class="built_in">exit</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://wangheng.org/ubuntu-to-add-boot-script.html" target="_blank" rel="external">王恒’s Blog</a></p>
-<h2 id="SoftWare">SoftWare</h2><h3 id="协会大神推荐的DSL神器">协会大神推荐的DSL神器</h3><p><a href="http://manpages.ubuntu.com/manpages/saucy/man1/nm-connection-editor.1.html" target="_blank" rel="external">nm-connection-editor</a></p>
-<h3 id="Chrome地址栏输入卡死">Chrome地址栏输入卡死</h3><p>系统字体设置为<code>Droid Sans Fallback</code>,或者自己体验不错的,原生最好= =<br>Reference:<br><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=468448" target="_blank" rel="external">牛牛博客</a><br><a href="http://suselinks.us/how-to-fix-slow-typing-in-chrome-addressbar-in-linux/" target="_blank" rel="external">Ubuntu forum</a></p>
-<h3 id="root帐号无法启动chrome">root帐号无法启动chrome</h3><p><code>#vi /opt/google/chrome/google-chrome</code><br>在最后一行尾加入 —user-data-dir<br>Reference:<br><a href="http://blog.sina.com.cn/s/blog_40983e5e0101dhz0.html" target="_blank" rel="external">午后等风来</a></p>
-<h3 id="Sublime">Sublime</h3><h4 id="Installation">Installation</h4><p><a href="http://www.simonewebdesign.it/how-to-install-sublime-text-3-on-debian/" target="_blank" rel="external">how-to-install-sublime-text-3-on-debian</a></p>
-<h4 id="浏览器打开当前文件">浏览器打开当前文件</h4><p>(= ,=发现只要尝试一下就能出代码..)<br><code>Tools -&gt; Build System -&gt; New Build System</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"shell_cmd"</span>: <span class="string">"google-chrome '<span class="variable">$file</span>'"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="linux_-java8">linux -java8</h3><p>请以root账户进行下列操作</p>
-<ol>
-<li>下载<br>通过<a href="http://www.java.com/en/download/manual.jsp" target="_blank" rel="external">JDK地址</a>找到适合自己的jdk(不需要允许java许可协议,具体请移步<a href="http://www.tsingpost.com/index.php/archives/463/" target="_blank" rel="external">TsingPost</a>)<br>下载的文件以tar.gz结尾,为了方便可以改名例如:<code>java8.tar.gz</code></li>
-<li>解压移动<br>cd /usr/lib<br>mkdir jvm #一些发行版可能提示已存在,可以升级java版本..<br>进入java8.tar.gz所在目录<code>tar -xzvf java8.tar</code><br>解压之后,将文件移至jvm文件夹 <code>mv jre1.8.0_60 /usr/lib/jvm</code></li>
-<li>环境变量<br>当前用户: <code>sudo gedit ~/.bashrc</code><br>全局: <code>sudo gedit /etc/profile</code><br>在文件的结尾添加以下内容<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jre1.<span class="number">8.0</span>_60   <span class="comment">#换成你改的名字    </span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><code>source ~/.bashrc</code> #重新读取一下让新加的代码生效 全局的话换一下地址</p>
-<ol>
-<li>Reference:<br><a href="http://www.tsingpost.com/index.php/archives/463/" target="_blank" rel="external">TsingPost</a><br><a href="http://blog.bilicloud.com/?p=20" target="_blank" rel="external">BlackFox</a></li>
-</ol>
-<h3 id="jython安装">jython安装</h3><ol>
-<li>安装<br><code>java -jar jython-installer-2.7.0.jar</code></li>
-<li>添加环境变量<br>此步骤参考java环境变量,现在只需要在原来java环境变量的<br><code>CLASSPATH</code>添加     <code>你的位置/jython2.7.0/jython.jar</code><br><code>PATH</code>              添加     <code>你的位置/jython2.7.0</code></li>
-<li>注销使之生效</li>
-</ol>
-<h3 id="github">github</h3><p>github-SSH链接-&gt;<a href="http://jianganglu.github.io/2015/08/28/git-ssh/" target="_blank" rel="external">jianganglu Blog</a><br>千万别用sudo..T T</p>
-<h3 id="远程桌面">远程桌面</h3><p>windows:<br>rdesktop -u 帐号 -p 密码 [-f] ip地址<br>-f 默认全屏   Ctrl+ Alt +Enter 退出全屏<br>Reference: <a href="http://blog.csdn.net/zjjyliuweijie/article/details/7048984" target="_blank" rel="external">zjjyliuweijie</a><br>linux: vncviewer -</p>
-<h3 id="torrent下载工具">torrent下载工具</h3><p>qbittorrent   ktorrent  rtorrent    azureus   deluge<br>介绍在这:<a href="http://tiancong.blog.51cto.com/783138/829701" target="_blank" rel="external">tiancong 的BLOG</a></p>
-<h2 id="Device/Driver">Device/Driver</h2><h3 id="网卡驱动">网卡驱动</h3><h4 id="问题">问题</h4><p><code>网卡连接一段时间之后自动断开,只能重启</code></p>
-<h4 id="办法">办法</h4><ol>
-<li>前往github看看有没有自己的型号<a href="https://github.com/lwfinger/rtlwifi_new" target="_blank" rel="external">rtl-github</a>,如果有就clone下来<code>clone https://github.com/phuslu/goagent.git</code> </li>
-<li><p>或者下载zip之后解压<br>3.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> rtlwifi_new/</span><br><span class="line">sudo make </span><br><span class="line">sudo make install </span><br><span class="line">modprobe -v rtl8723be<span class="comment">#换成你自己的网卡型号</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关闭网卡的自动休眠<br><code>sudo echo &quot;options rtl8723be fwlps=0 swlps=0&quot; &gt; /etc/modprobe.d/rtl8723be.conf</code><br>Reference:<br><a href="https://linux.cn/blog-10161-5871.html" target="_blank" rel="external">7th</a></p>
-</li>
-</ol>
-<h3 id="连接路由LAN端口上网">连接路由LAN端口上网</h3><ol>
-<li><p>设置路由器的IP:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/resolv.conf</span><br><span class="line">nameserver <span class="number">192.168</span>.<span class="number">1.1</span></span><br><span class="line"><span class="comment">#192.168.1.1为网关地址,即路由器管理地址</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>给本机添加IP(DHCP)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/network/interfaces</span><br><span class="line"><span class="comment">#--添加--</span></span><br><span class="line">auto eth0</span><br><span class="line">iface eth0 inet dhcp</span><br><span class="line"><span class="comment">#---</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>好像有点小BUG:<br>如果开机过程没有插网线,会一直搜索大概1分钟<br>Reference:<br><a href="http://tieba.baidu.com/p/3247330238" target="_blank" rel="external">贴吧</a></p>
-<h3 id="gnome">gnome</h3><p>打开了一张奇怪的图片,然后就崩了,直接被注销<br>搞了半天也看了gnome的错误日志,然后找到论坛<a href="http://forum.ubuntu.org.cn/viewtopic.php?f=94&amp;t=378902" target="_blank" rel="external">ubuntu12.04安装gnome shell主题，给新手们</a><br>最后发现这个网站<a href="https://extensions.gnome.org/" target="_blank" rel="external">extensions.gnome</a><br><code>firefox</code>打开     然后选择一下插件,不用管warning…<br>备用:<br><a href="http://itsfoss.com/install-switch-themes-gnome-shell/" target="_blank" rel="external">How To Install And Switch Themes In GNOME Shell In Ubuntu</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/01/31/2016/daily-linux-1/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/daily-linux-1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/01/31/2016/life-指南/" title="手表指南方法" itemprop="url">手表指南方法</a>
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
@@ -1023,12 +866,12 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
     <div class="article-content">
         
         <p>看小学生杀手的时候发现几个指南方法，记一下</p>
-<h2 id="借助太阳指向">借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
-<h3 id="原理">原理</h3><p>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
+<h2 id="借助太阳指向"><a href="#借助太阳指向" class="headerlink" title="借助太阳指向"></a>借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
+<p>###原理<br>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
 <p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
-<h2 id="立杆测影-指东针">立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
-<h3 id="日晷原理">日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
-<h2 id="Reference">Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
+<h2 id="立杆测影-指东针"><a href="#立杆测影-指东针" class="headerlink" title="立杆测影-指东针"></a>立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
+<h3 id="日晷原理"><a href="#日晷原理" class="headerlink" title="日晷原理"></a>日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
 
         
         
@@ -1062,11 +905,169 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/01/31/2016/daily-linux-1/" title="linux日常更新-01" itemprop="url">linux日常更新-01</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>#环境:debian8<br>最后更新日期:2016-01-31</p>
+<h2 id="Commond"><a href="#Commond" class="headerlink" title="Commond"></a>Commond</h2><h3 id="压缩包"><a href="#压缩包" class="headerlink" title="压缩包"></a>压缩包</h3><h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><p>1.<em>.tar 用tar -cvf FILE.tar DIR 压缩<br>2.</em>.gz 用 gzip FILE 压缩<br>3.<em>.tar.gz 和 .tgz 用 tar -zcvf FILE.tar.gz DIR 压缩<br>4.</em>.bz2 用 bzip2 -z FILE 压缩<br>5.<em>.tar.bz2 用 tar -jcvf FILE.tar.bz2 DIR 压缩<br>6.</em>.Z 用 compress FILE 压缩<br>7.<em>.tar.Z 用 tar -zcvf FILE.tar.z DIR 压缩<br>8.</em>.rar 用 rar a FILE.rar DIR 压缩<br>9.*.zip 用 zip FILE.zip DIR 压缩</p>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><ol>
+<li>*.tar 用 tar –xvf 解压 </li>
+<li>*.gz 用 gzip -d或者gunzip 解压 </li>
+<li><em>.tar.gz和</em>.tgz 用 tar –xzf 解压 </li>
+<li>*.bz2 用 bzip2 -d或者用bunzip2 解压 </li>
+<li>*.tar.bz2用tar –xjf 解压 </li>
+<li>*.Z 用 uncompress 解压 </li>
+<li>*.tar.Z 用tar –xZf 解压 </li>
+<li>*.rar 用 unrar e解压 </li>
+<li>*.zip 用 unzip 解压</li>
+</ol>
+<h3 id="cmd打开图片"><a href="#cmd打开图片" class="headerlink" title="cmd打开图片"></a>cmd打开图片</h3><p><code>display a.jpg</code>or <code>eog a.jpg</code></p>
+<h3 id="更改mac地址"><a href="#更改mac地址" class="headerlink" title="更改mac地址"></a>更改mac地址</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#wlan1 为设备 hw-&gt;hardware root权限</span></span><br><span class="line">ficonfig wlan1 down</span><br><span class="line">ifconfig wlan1 hw ether AA:AA:BB:CC:dd:EE</span><br><span class="line">ifconfig wlan1 up</span><br></pre></td></tr></table></figure>
+<p>来自: <a href="http://man.linuxde.net/ifconfig" target="_blank" rel="external">http://man.linuxde.net/ifconfig</a></p>
+<h3 id="更改文件所属用户-组"><a href="#更改文件所属用户-组" class="headerlink" title="更改文件所属用户/组"></a>更改文件所属用户/组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Code</span></span><br><span class="line">chown/chgrp userName fileName/floderName</span><br><span class="line"><span class="comment">#Example</span></span><br><span class="line">chown gust ~/home/genymotion</span><br><span class="line"><span class="comment">#将home目录的genymotion文件所属改为gust</span></span><br></pre></td></tr></table></figure>
+<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ./test.txt</span><br></pre></td></tr></table></figure>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>-i info 删除前逐一确认<br>-f force 直接删除<br>-r recursion 递归删除,即把该文件所有的内容都删除<br>在linux没有回收站，文件或目录被删除之后就<code>无法再恢复</code></p>
+<h3 id="打开GUI文件夹"><a href="#打开GUI文件夹" class="headerlink" title="打开GUI文件夹"></a>打开GUI文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nautilus [option] /home/gust</span><br><span class="line"><span class="comment">#option --d&gt; manpage</span></span><br></pre></td></tr></table></figure>
+<h3 id="wget临时代理"><a href="#wget临时代理" class="headerlink" title="wget临时代理"></a>wget临时代理</h3><p><code>wget -e &quot;http_proxy=http://&lt;ip&gt;:&lt;port&gt;/&quot; http://www.google.com</code></p>
+<h2 id="System"><a href="#System" class="headerlink" title="System"></a>System</h2><h3 id="更改账户权限"><a href="#更改账户权限" class="headerlink" title="更改账户权限"></a>更改账户权限</h3><p>vi /etc/sudoers<br>找到 root ALL=(ALL) ALL<br>再后边增加 用户名 ALL=(ALL) ALL</p>
+<h3 id="桌面-文档等文件改成英文"><a href="#桌面-文档等文件改成英文" class="headerlink" title="桌面 文档等文件改成英文"></a>桌面 文档等文件改成英文</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.UTF-8 xdg-user-dirs-update</span><br><span class="line"><span class="comment">#如果注销重进失效,建议把 en_US 写到 ~/.config/user-dirs.locale 文件里再 xdg-user-dirs-update</span></span><br></pre></td></tr></table></figure>
+<p>Reference:<br><a href="https://bbs.archlinuxcn.org/viewtopic.php?id=2488" target="_blank" rel="external">Archlinux-百合仙子</a><a href="http://blog.csdn.net/topgun_chenlingyun/article/details/8159550" target="_blank" rel="external">TOPFUN</a></p>
+<h3 id="手动添加快捷键"><a href="#手动添加快捷键" class="headerlink" title="手动添加快捷键"></a>手动添加快捷键</h3><p><a href="http://blog.csdn.net/longerzone/article/details/8932751" target="_blank" rel="external">longerzone</a></p>
+<h3 id="设置全局-apt-get代理"><a href="#设置全局-apt-get代理" class="headerlink" title="设置全局/apt-get代理"></a>设置全局/apt-get代理</h3><h4 id="全局"><a href="#全局" class="headerlink" title="全局"></a>全局</h4><p><code>export http_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;
+export https_proxy=&quot;http://user:pass@youProxyAddress:port/&quot;</code></p>
+<h4 id="Apt-get"><a href="#Apt-get" class="headerlink" title="Apt-get"></a>Apt-get</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apt/apt.conf</span><br><span class="line"><span class="comment">#添加下列内容</span></span><br><span class="line">Acquire &#123;</span><br><span class="line">　　      http::proxy <span class="string">"http://user:pass@yourProxyAddress:port"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Reference<br><a href="https://sites.google.com/site/debianpackageshare/Home/linux-tips/page-47" target="_blank" rel="external">@carlosloveleo</a></p>
+<h3 id="修改默认编辑器"><a href="#修改默认编辑器" class="headerlink" title="修改默认编辑器"></a>修改默认编辑器</h3><p>1.不适用sublime</p>
+<blockquote>
+<p>sudo update-alternatives –config editor</p>
+</blockquote>
+<p>2.任意,在<code>/usr/share/applications/</code>目录中添加或者使用已有的desktop</p>
+<blockquote>
+<p>sudo vim /etc/gnome/defaults.list<br>将gedit.desktop批量替换为 编辑器.desktop </p>
+</blockquote>
+<h3 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h3><ol>
+<li>sudo su</li>
+<li>tar<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Bak/Kali_bak/backup.tgz --exclude=/media --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /</span><br><span class="line"><span class="comment"># 最后的/为需要备份的目录</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="增量备份及差别"><a href="#增量备份及差别" class="headerlink" title="增量备份及差别"></a>增量备份及差别</h4><pre><code>tar -czvf -g zeng aa.tar.gz /var
+tar -czvf -g zeng aa.tar.gz.1 /var
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvpzf /media/gust/Bak/Kali_bak/backup.tgz.1 --exclude=/media --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys  /</span><br></pre></td></tr></table></figure>
+<p>backup.tgz.1 后面的’.1’为标志</p>
+<p>差量备份:只备份上次完全备份以后有变化的数据(他针对的上次的完全备份,他备份过程中不清除存档属性)<br>增量备份:只备份上次备份以后有变化的数据.(他才不管是那种类型的备份,有变化的数据就备份,他会清除存档属性)</p>
+<p>Reference:<br><a href="http://blog.chinaunix.net/uid-23225855-id-3182334.html" target="_blank" rel="external">一片浮云而已</a><br><a href="http://www.blogjava.net/MEYE/archive/2011/08/25/357250.html" target="_blank" rel="external">MEYE</a></p>
+<h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><h4 id="临时"><a href="#临时" class="headerlink" title="临时"></a>临时</h4><p>添加:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PATH</span>:需要添加的路径"</span></span><br></pre></td></tr></table></figure></p>
+<p>参考:<a href="http://www.a1ex.net/10/15/2015/bash2/" target="_blank" rel="external">bash基本命令2</a></p>
+<h4 id="永久-lifetime"><a href="#永久-lifetime" class="headerlink" title="永久(lifetime)"></a>永久(lifetime)</h4><p>所有用户:/etc/profile<br>独立用户:/root/.bashrc or /home/你的用户/.bashrc</p>
+<h3 id="脚本自启动"><a href="#脚本自启动" class="headerlink" title="脚本自启动"></a>脚本自启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment">### BEGIN INIT INFO</span></span><br><span class="line"><span class="comment">#file name : test</span></span><br><span class="line"><span class="comment">### INIT INFO</span></span><br><span class="line">    Your Codes</span><br></pre></td></tr></table></figure>
+<ol>
+<li>移动,更改权限<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mv <span class="built_in">test</span> /etc/init.d/</span><br><span class="line">sudo chmod 775 /etc/init.d/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="两种添加-删除方式"><a href="#两种添加-删除方式" class="headerlink" title="两种添加/删除方式"></a>两种添加/删除方式</h4><ol>
+<li><p>insserv方式 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo insserv /etc/init.d/test   #启动服务</span><br><span class="line">sudo insserv -r /etc/init.d/test #删除服务</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>update-rc.d </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo update-rc.d <span class="built_in">test</span> defaults 95 <span class="comment">#启动服务 95为脚本启动顺序</span></span><br><span class="line">sudo update-rc.d <span class="_">-f</span> /etc/init.d/<span class="built_in">test</span> remove <span class="comment">#删除服务</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="查看服务状态"><a href="#查看服务状态" class="headerlink" title="查看服务状态"></a>查看服务状态</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/<span class="built_in">test</span> status <span class="comment">#查看服务状态/日志</span></span><br></pre></td></tr></table></figure>
+<p>执行之后存在warning,测试好像没有影响</p>
+<p>Reference:<br><a href="http://wenzhixin.net.cn/2013/10/30/debian_script_init" target="_blank" rel="external">文翼’s blog</a><br><a href="http://www.linuxidc.com/Linux/2011-12/48922.htm" target="_blank" rel="external">Linux 公社</a></p>
+<h4 id="Ubuntu-rc-local"><a href="#Ubuntu-rc-local" class="headerlink" title="Ubuntu-rc.local"></a>Ubuntu-rc.local</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/rc.local</span><br><span class="line"><span class="comment">#添加bash内容 适用于小脚本</span></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+<p><a href="http://wangheng.org/ubuntu-to-add-boot-script.html" target="_blank" rel="external">王恒’s Blog</a></p>
+<h2 id="SoftWare"><a href="#SoftWare" class="headerlink" title="SoftWare"></a>SoftWare</h2><h3 id="协会大神推荐的DSL神器"><a href="#协会大神推荐的DSL神器" class="headerlink" title="协会大神推荐的DSL神器"></a>协会大神推荐的DSL神器</h3><p><a href="http://manpages.ubuntu.com/manpages/saucy/man1/nm-connection-editor.1.html" target="_blank" rel="external">nm-connection-editor</a></p>
+<h3 id="Chrome地址栏输入卡死"><a href="#Chrome地址栏输入卡死" class="headerlink" title="Chrome地址栏输入卡死"></a>Chrome地址栏输入卡死</h3><p>系统字体设置为<code>Droid Sans Fallback</code>,或者自己体验不错的,原生最好= =<br>Reference:<br><a href="http://forum.ubuntu.org.cn/viewtopic.php?t=468448" target="_blank" rel="external">牛牛博客</a><br><a href="http://suselinks.us/how-to-fix-slow-typing-in-chrome-addressbar-in-linux/" target="_blank" rel="external">Ubuntu forum</a></p>
+<h3 id="root帐号无法启动chrome"><a href="#root帐号无法启动chrome" class="headerlink" title="root帐号无法启动chrome"></a>root帐号无法启动chrome</h3><p><code>#vi /opt/google/chrome/google-chrome</code><br>在最后一行尾加入 –user-data-dir<br>Reference:<br><a href="http://blog.sina.com.cn/s/blog_40983e5e0101dhz0.html" target="_blank" rel="external">午后等风来</a></p>
+<h3 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h3><h4 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h4><p><a href="http://www.simonewebdesign.it/how-to-install-sublime-text-3-on-debian/" target="_blank" rel="external">how-to-install-sublime-text-3-on-debian</a></p>
+<h4 id="浏览器打开当前文件"><a href="#浏览器打开当前文件" class="headerlink" title="浏览器打开当前文件"></a>浏览器打开当前文件</h4><p>(= ,=发现只要尝试一下就能出代码..)<br><code>Tools -&gt; Build System -&gt; New Build System</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"shell_cmd"</span>: <span class="string">"google-chrome '<span class="variable">$file</span>'"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="linux-java8"><a href="#linux-java8" class="headerlink" title="linux -java8"></a>linux -java8</h3><p>请以root账户进行下列操作</p>
+<ol>
+<li>下载<br>通过<a href="http://www.java.com/en/download/manual.jsp" target="_blank" rel="external">JDK地址</a>找到适合自己的jdk(不需要允许java许可协议,具体请移步<a href="http://www.tsingpost.com/index.php/archives/463/" target="_blank" rel="external">TsingPost</a>)<br>下载的文件以tar.gz结尾,为了方便可以改名例如:<code>java8.tar.gz</code></li>
+<li>解压移动<br>cd /usr/lib<br>mkdir jvm #一些发行版可能提示已存在,可以升级java版本..<br>进入java8.tar.gz所在目录<code>tar -xzvf java8.tar</code><br>解压之后,将文件移至jvm文件夹 <code>mv jre1.8.0_60 /usr/lib/jvm</code></li>
+<li>环境变量<br>当前用户: <code>sudo gedit ~/.bashrc</code><br>全局: <code>sudo gedit /etc/profile</code><br>在文件的结尾添加以下内容<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jre1.8.0_60   <span class="comment">#换成你改的名字    </span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><code>source ~/.bashrc</code> #重新读取一下让新加的代码生效 全局的话换一下地址</p>
+<ol>
+<li>Reference:<br><a href="http://www.tsingpost.com/index.php/archives/463/" target="_blank" rel="external">TsingPost</a><br><a href="http://blog.bilicloud.com/?p=20" target="_blank" rel="external">BlackFox</a></li>
+</ol>
+<h3 id="jython安装"><a href="#jython安装" class="headerlink" title="jython安装"></a>jython安装</h3><ol>
+<li>安装<br><code>java -jar jython-installer-2.7.0.jar</code></li>
+<li>添加环境变量<br>此步骤参考java环境变量,现在只需要在原来java环境变量的<br><code>CLASSPATH</code>添加     <code>你的位置/jython2.7.0/jython.jar</code><br><code>PATH</code>              添加     <code>你的位置/jython2.7.0</code></li>
+<li>注销使之生效</li>
+</ol>
+<h3 id="github"><a href="#github" class="headerlink" title="github"></a>github</h3><p>github-SSH链接-&gt;<a href="http://jianganglu.github.io/2015/08/28/git-ssh/" target="_blank" rel="external">jianganglu Blog</a><br>千万别用sudo..T T</p>
+<h3 id="远程桌面"><a href="#远程桌面" class="headerlink" title="远程桌面"></a>远程桌面</h3><p>windows:<br>rdesktop -u 帐号 -p 密码 [-f] ip地址<br>-f 默认全屏   Ctrl+ Alt +Enter 退出全屏<br>Reference: <a href="http://blog.csdn.net/zjjyliuweijie/article/details/7048984" target="_blank" rel="external">zjjyliuweijie</a><br>linux: vncviewer -</p>
+<h3 id="torrent下载工具"><a href="#torrent下载工具" class="headerlink" title="torrent下载工具"></a>torrent下载工具</h3><p>qbittorrent   ktorrent  rtorrent    azureus   deluge<br>介绍在这:<a href="http://tiancong.blog.51cto.com/783138/829701" target="_blank" rel="external">tiancong 的BLOG</a></p>
+<h2 id="Device-Driver"><a href="#Device-Driver" class="headerlink" title="Device/Driver"></a>Device/Driver</h2><h3 id="网卡驱动"><a href="#网卡驱动" class="headerlink" title="网卡驱动"></a>网卡驱动</h3><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p><code>网卡连接一段时间之后自动断开,只能重启</code></p>
+<h4 id="办法"><a href="#办法" class="headerlink" title="办法"></a>办法</h4><ol>
+<li>前往github看看有没有自己的型号<a href="https://github.com/lwfinger/rtlwifi_new" target="_blank" rel="external">rtl-github</a>,如果有就clone下来<code>clone https://github.com/phuslu/goagent.git</code> </li>
+<li><p>或者下载zip之后解压<br>3.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> rtlwifi_new/</span><br><span class="line">sudo make </span><br><span class="line">sudo make install </span><br><span class="line">modprobe -v rtl8723be<span class="comment">#换成你自己的网卡型号</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭网卡的自动休眠<br><code>sudo echo &quot;options rtl8723be fwlps=0 swlps=0&quot; &gt; /etc/modprobe.d/rtl8723be.conf</code><br>Reference:<br><a href="https://linux.cn/blog-10161-5871.html" target="_blank" rel="external">7th</a></p>
+</li>
+</ol>
+<h3 id="连接路由LAN端口上网"><a href="#连接路由LAN端口上网" class="headerlink" title="连接路由LAN端口上网"></a>连接路由LAN端口上网</h3><ol>
+<li><p>设置路由器的IP:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/resolv.conf</span><br><span class="line">nameserver 192.168.1.1</span><br><span class="line"><span class="comment">#192.168.1.1为网关地址,即路由器管理地址</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给本机添加IP(DHCP)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/network/interfaces</span><br><span class="line"><span class="comment">#--添加--</span></span><br><span class="line">auto eth0</span><br><span class="line">iface eth0 inet dhcp</span><br><span class="line"><span class="comment">#---</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>好像有点小BUG:<br>如果开机过程没有插网线,会一直搜索大概1分钟<br>Reference:<br><a href="http://tieba.baidu.com/p/3247330238" target="_blank" rel="external">贴吧</a></p>
+<h3 id="gnome"><a href="#gnome" class="headerlink" title="gnome"></a>gnome</h3><p>打开了一张奇怪的图片,然后就崩了,直接被注销<br>搞了半天也看了gnome的错误日志,然后找到论坛<a href="http://forum.ubuntu.org.cn/viewtopic.php?f=94&amp;t=378902" target="_blank" rel="external">ubuntu12.04安装gnome shell主题，给新手们</a><br>最后发现这个网站<a href="https://extensions.gnome.org/" target="_blank" rel="external">extensions.gnome</a><br><code>firefox</code>打开     然后选择一下插件,不用管warning…<br>备用:<br><a href="http://itsfoss.com/install-switch-themes-gnome-shell/" target="_blank" rel="external">How To Install And Switch Themes In GNOME Shell In Ubuntu</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/01/31/2016/daily-linux-1/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/daily-linux-1/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/12/30/2015/xss-xssPlatform/" title="XSS平台搭建" itemprop="url">XSS平台搭建</a>
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2015-12-29T16:00:00.000Z" itemprop="datePublished"> 发表于 12-30-2015</time>
@@ -1075,14 +1076,14 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 </header>
     <div class="article-content">
         
-        <h2 id="简介">简介</h2><p>平台名为:<code>sleep-puppy</code>  大名鼎鼎的Netflix搞的一个安全项目<br>环境/框架: <code>Flask + Gunicorn + Nginx</code><br>可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得</p>
-<h2 id="Docker安装">Docker安装</h2><p>DigitalOcean已经打包完了,直接执行命令即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br><span class="line"><span class="comment"># 将用户添加至docker用户组</span></span><br><span class="line">$ sudo usermod <span class="operator">-a</span>G docker $(whoami)</span><br><span class="line"><span class="comment">#安装 Docker Compose</span></span><br><span class="line">$ sudo apt-get -y install python-pip  <span class="comment">#环境</span></span><br><span class="line">$ sudo pip install docker-compose</span><br></pre></td></tr></table></figure>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>平台名为:<code>sleep-puppy</code>  大名鼎鼎的Netflix搞的一个安全项目<br>环境/框架: <code>Flask + Gunicorn + Nginx</code><br>可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得</p>
+<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><p>DigitalOcean已经打包完了,直接执行命令即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br><span class="line"><span class="comment"># 将用户添加至docker用户组</span></span><br><span class="line">$ sudo usermod <span class="_">-a</span>G docker $(whoami)</span><br><span class="line"><span class="comment">#安装 Docker Compose</span></span><br><span class="line">$ sudo apt-get -y install python-pip  <span class="comment">#环境</span></span><br><span class="line">$ sudo pip install docker-compose</span><br></pre></td></tr></table></figure>
 <p>不过发现国内这局域网…换成国内源吧,[daocloud],地址在Reference中</p>
-<h2 id="sleep-puppy安装">sleep-puppy安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/Netflix/sleepy-puppy-docker</span><br><span class="line">$ docker-machine ls</span><br><span class="line"><span class="comment">#docker-compose.yaml中IP改成自己的公网IP</span></span><br><span class="line">$ <span class="built_in">cd</span> sleepy-puppy-docker &amp;&amp; docker-compose up</span><br></pre></td></tr></table></figure>
-<p>默认账号密码<br>user: admin<br>pass: password<br>//——PS:大半个月前搭的,具体的坑已经差不多网完了..= =</p>
-<h2 id="简单的API使用">简单的API使用</h2><p><a href="http://www.tothenew.com/blog/using-sleepy-puppy-a-cross-site-scripting-payload-management-framework/" target="_blank" rel="external">ToTheNewDigital</a></p>
-<h2 id="Reference">Reference</h2><p><a href="https://github.com/netflix/sleepy-puppy/wiki/setup" target="_blank" rel="external">github_sleep-puppy</a><br><a href="https://docs.docker.com/engine/installation/ubuntulinux/" target="_blank" rel="external">doc.docker</a>&lt;-纯手动安装<br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-14-04" target="_blank" rel="external">digitalocean</a>&lt;-自动安装+基本docker操作<br><a href="https://get.daocloud.io/" target="_blank" rel="external">daocloud</a></p>
+<h2 id="sleep-puppy安装"><a href="#sleep-puppy安装" class="headerlink" title="sleep-puppy安装"></a>sleep-puppy安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/Netflix/sleepy-puppy-docker</span><br><span class="line">$ docker-machine ls</span><br><span class="line"><span class="comment">#docker-compose.yaml中IP改成自己的公网IP</span></span><br><span class="line">$ <span class="built_in">cd</span> sleepy-puppy-docker &amp;&amp; docker-compose up</span><br></pre></td></tr></table></figure>
+<p>默认账号密码<br>user: admin<br>pass: password<br>//—-PS:大半个月前搭的,具体的坑已经差不多网完了..= =</p>
+<h2 id="简单的API使用"><a href="#简单的API使用" class="headerlink" title="简单的API使用"></a>简单的API使用</h2><p><a href="http://www.tothenew.com/blog/using-sleepy-puppy-a-cross-site-scripting-payload-management-framework/" target="_blank" rel="external">ToTheNewDigital</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://github.com/netflix/sleepy-puppy/wiki/setup" target="_blank" rel="external">github_sleep-puppy</a><br><a href="https://docs.docker.com/engine/installation/ubuntulinux/" target="_blank" rel="external">doc.docker</a>&lt;-纯手动安装<br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-14-04" target="_blank" rel="external">digitalocean</a>&lt;-自动安装+基本docker操作<br><a href="https://get.daocloud.io/" target="_blank" rel="external">daocloud</a></p>
 
         
         
@@ -1120,7 +1121,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2015-12-20T16:00:00.000Z" itemprop="datePublished"> 发表于 12-21-2015</time>
@@ -1133,7 +1134,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 <li>字符串截取<br> left(str, len);    /    right(str, len);        //len&gt;= 0<br> i.e.    :    select left(‘abcde’, 4);            //截取前面四个</li>
 <li>char(60,112,62)<br> <p>            //可以用来字符截取,字太多了</p></li>
 <li>version()            -&gt;5.6.11</li>
-<li>limit m,n           m-start      n—length    <code>开始为0</code><br>limit n             n—length</li>
+<li>limit m,n           m-start      n–length    <code>开始为0</code><br>limit n             n–length</li>
 <li>cast(value as type)       获取一个类型的值,并转换类型<br>convert(type ,value)      转换类型      type -&gt;signed unsigned<br>cast(‘a’ as signed)             返回0        cast(‘123’ as int)    返回123<br>convert( int ,’123’)        返回123</li>
 <li>concat( a, b)  连接函数,对ab进行连接</li>
 <li>mit(a,1,50)       1-50 截取字符串</li>
@@ -1299,7 +1300,7 @@ tar -czvf -g zeng aa<span class="class">.tar</span><span class="class">.gz</span
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

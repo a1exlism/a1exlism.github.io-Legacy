@@ -7,7 +7,7 @@
     <title>Js学习笔记(6) | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -40,7 +40,7 @@ Document属性cookie domain location(window共用) referrer(引导) URL tutle la
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -92,7 +92,7 @@ Document属性cookie domain location(window共用) referrer(引导) URL tutle la
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2015-10-12T16:00:00.000Z" itemprop="datePublished"> 发表于 10-13-2015</time>
@@ -104,15 +104,15 @@ Document属性cookie domain location(window共用) referrer(引导) URL tutle la
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML表单"><span class="toc-number">1.</span> <span class="toc-text">HTML表单</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文件上传"><span class="toc-number">1.1.</span> <span class="toc-text">文件上传</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Document属性"><span class="toc-number">2.</span> <span class="toc-text">Document属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#判断referrer并响应"><span class="toc-number">2.1.</span> <span class="toc-text">判断referrer并响应</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#所用函数"><span class="toc-number">2.1.1.</span> <span class="toc-text">所用函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#栗子:"><span class="toc-number">2.1.2.</span> <span class="toc-text">栗子:</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML表单"><span class="toc-number">1.</span> <span class="toc-text">HTML表单</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文件上传"><span class="toc-number">1.1.</span> <span class="toc-text">文件上传</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Document属性"><span class="toc-number">2.</span> <span class="toc-text">Document属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#判断referrer并响应"><span class="toc-number">2.1.</span> <span class="toc-text">判断referrer并响应</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#所用函数"><span class="toc-number">2.1.1.</span> <span class="toc-text">所用函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#栗子"><span class="toc-number">2.1.2.</span> <span class="toc-text">栗子:</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
-		<h3 id="HTML表单">HTML表单</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//筛选特定id,特定属性的表单input元素</span></span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">'#id input[type="putin]'</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="文件上传">文件上传</h4><p><input type="file">该元素的value属性为只读</p>
-<h3 id="Document属性">Document属性</h3><p>cookie domain location(window共用) referrer(引导) URL tutle lastModified</p>
-<h4 id="判断referrer并响应">判断referrer并响应</h4><h5 id="所用函数">所用函数</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stringObject.split(separator,howmany)  <span class="comment">//分隔符,返回string数组类型(无分隔符)</span></span><br><span class="line">indexOf(searchvalue,fromindex)  <span class="comment">//返回第一次见到searchvalue时候的位置</span></span><br><span class="line">stringObject.substring(start,stop)  <span class="comment">//字符串提取</span></span><br><span class="line"><span class="built_in">unescape</span>(string) <span class="comment">//stringURL解码</span></span><br></pre></td></tr></table></figure>
-<h5 id="栗子:">栗子:</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ref = <span class="built_in">document</span>.referrer;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.referrer.indexOf(<span class="string">"https://www.google.com/search?"</span>) == <span class="number">0</span>)&#123;</span><br><span class="line">   <span class="keyword">var</span> args = <span class="built_in">document</span>.referrer.substring(ref.indexOf(<span class="string">"?"</span>)+<span class="number">1</span>).split(<span class="string">"&amp;"</span>) ; <span class="comment">//args为以&amp;为分解符的string数组</span></span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; args.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (args[i].substring(<span class="number">0</span>,<span class="number">2</span>) == <span class="string">"q="</span>)</span><br><span class="line">            <span class="built_in">document</span>.write(<span class="string">"You are searching for: "</span> + <span class="built_in">unescape</span>(args[i].substring(<span class="number">2</span>)).replace(<span class="string">'+'</span>, <span class="string">' '</span>));</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
+		<h3 id="HTML表单"><a href="#HTML表单" class="headerlink" title="HTML表单"></a>HTML表单</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//筛选特定id,特定属性的表单input元素</span></span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">'#id input[type="putin]'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h4><p><input type="file">该元素的value属性为只读</p>
+<h3 id="Document属性"><a href="#Document属性" class="headerlink" title="Document属性"></a>Document属性</h3><p>cookie domain location(window共用) referrer(引导) URL tutle lastModified</p>
+<h4 id="判断referrer并响应"><a href="#判断referrer并响应" class="headerlink" title="判断referrer并响应"></a>判断referrer并响应</h4><h5 id="所用函数"><a href="#所用函数" class="headerlink" title="所用函数"></a>所用函数</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stringObject.split(separator,howmany)  <span class="comment">//分隔符,返回string数组类型(无分隔符)</span></span><br><span class="line">indexOf(searchvalue,fromindex)  <span class="comment">//返回第一次见到searchvalue时候的位置</span></span><br><span class="line">stringObject.substring(start,stop)  <span class="comment">//字符串提取</span></span><br><span class="line"><span class="built_in">unescape</span>(string) <span class="comment">//stringURL解码</span></span><br></pre></td></tr></table></figure>
+<h5 id="栗子"><a href="#栗子" class="headerlink" title="栗子:"></a>栗子:</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ref = <span class="built_in">document</span>.referrer;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.referrer.indexOf(<span class="string">"https://www.google.com/search?"</span>) == <span class="number">0</span>)&#123;</span><br><span class="line">   <span class="keyword">var</span> args = <span class="built_in">document</span>.referrer.substring(ref.indexOf(<span class="string">"?"</span>)+<span class="number">1</span>).split(<span class="string">"&amp;"</span>) ; <span class="comment">//args为以&amp;为分解符的string数组</span></span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; args.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (args[i].substring(<span class="number">0</span>,<span class="number">2</span>) == <span class="string">"q="</span>)</span><br><span class="line">            <span class="built_in">document</span>.write(<span class="string">"You are searching for: "</span> + <span class="built_in">unescape</span>(args[i].substring(<span class="number">2</span>)).replace(<span class="string">'+'</span>, <span class="string">' '</span>));</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 
@@ -162,7 +162,7 @@ Document属性cookie domain location(window共用) referrer(引导) URL tutle la
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML表单"><span class="toc-number">1.</span> <span class="toc-text">HTML表单</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文件上传"><span class="toc-number">1.1.</span> <span class="toc-text">文件上传</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Document属性"><span class="toc-number">2.</span> <span class="toc-text">Document属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#判断referrer并响应"><span class="toc-number">2.1.</span> <span class="toc-text">判断referrer并响应</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#所用函数"><span class="toc-number">2.1.1.</span> <span class="toc-text">所用函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#栗子:"><span class="toc-number">2.1.2.</span> <span class="toc-text">栗子:</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML表单"><span class="toc-number">1.</span> <span class="toc-text">HTML表单</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文件上传"><span class="toc-number">1.1.</span> <span class="toc-text">文件上传</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Document属性"><span class="toc-number">2.</span> <span class="toc-text">Document属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#判断referrer并响应"><span class="toc-number">2.1.</span> <span class="toc-text">判断referrer并响应</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#所用函数"><span class="toc-number">2.1.1.</span> <span class="toc-text">所用函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#栗子"><span class="toc-number">2.1.2.</span> <span class="toc-text">栗子:</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
@@ -271,7 +271,7 @@ Document属性cookie domain location(window共用) referrer(引导) URL tutle la
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>

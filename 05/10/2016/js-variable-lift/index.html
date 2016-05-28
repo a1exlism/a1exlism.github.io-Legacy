@@ -7,7 +7,7 @@
     <title>Js_变量提升 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="a1ex">
+    <meta name="author" content="A1ex">
     
 
     
@@ -37,7 +37,7 @@
     <link rel="apple-touch-icon" href="/img/a1exlism.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/a1exlism.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -89,7 +89,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1ex" target="_blank" itemprop="author">a1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
     <time datetime="2016-05-09T16:00:00.000Z" itemprop="datePublished"> 发表于 05-10-2016</time>
@@ -105,9 +105,9 @@
 		
 		</div>
 		
-		<h3 id="JavaSript的预编译模式">JavaSript的预编译模式</h3><p><strong>预编译模式代码不是从上到下,一行一行解析的!</strong><br><strong>预编译模式代码不是从上到下,一行一行解析的!</strong><br><strong>预编译模式代码不是从上到下,一行一行解析的!</strong></p>
+		<h3 id="JavaSript的预编译模式"><a href="#JavaSript的预编译模式" class="headerlink" title="JavaSript的预编译模式"></a>JavaSript的预编译模式</h3><p><strong>预编译模式代码不是从上到下,一行一行解析的!</strong><br><strong>预编译模式代码不是从上到下,一行一行解析的!</strong><br><strong>预编译模式代码不是从上到下,一行一行解析的!</strong></p>
 <p>编译阶段,解析引擎会把<code>定义式</code>的函数优先执行,也会把所有<code>var变量创建</code>,默认值为undefined,以提高程序的执行效率！<br>而<code>变量提升</code>的作用也就符合了这个预编译的模式:<br>  在一个函数体内声明的变量,JS解析器都会将其移动到<code>函数体的顶部</code></p>
-<h3 id="实例">实例</h3><blockquote>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><blockquote>
 <p>例1</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'World!'</span>;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> name === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> name = <span class="string">'Jack'</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Goodbye '</span> + name);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Hello '</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
@@ -117,7 +117,7 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="number">5</span>;</span><br><span class="line">    alert(<span class="built_in">window</span>.a);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line">    alert(a);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
 <p>分析:<br>  这里面还是需要有一个预编译的思想,这样的话就很容易知道a也会因为后面的<code>var a = 10</code>而引起变量提升变成一个函数内的<code>局部变量</code>,window.a其实根本没有被定义过(<code>undefined</code>)</p>
-<h3 id="Reference">Reference</h3><p><a href="https://segmentfault.com/search?q=变量提升" target="_blank" rel="external">question:变量提升_SegmentFault</a><br><a href="http://blog.csdn.net/celte/article/details/39412683" target="_blank" rel="external">Celte</a></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://segmentfault.com/search?q=变量提升" target="_blank" rel="external">question:变量提升_SegmentFault</a><br><a href="http://blog.csdn.net/celte/article/details/39412683" target="_blank" rel="external">Celte</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -277,7 +277,7 @@
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="a1ex">a1ex</a>
+		<a href="/about" target="_blank" title="A1ex">A1ex</a>
 		
 		
 		</p>
