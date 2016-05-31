@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://csser.work/05/31/2016/js-asynchronous/</loc>
+    
+    <lastmod>2016-05-31T15:24:23.039Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/03/05/2016/daily-linux-2/</loc>
+    
+    <lastmod>2016-05-29T03:22:18.047Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://csser.work/06/30/2015/daily-git/</loc>
     
     <lastmod>2016-05-28T07:28:41.981Z</lastmod>
@@ -341,13 +355,6 @@
     <loc>http://csser.work/12/21/2015/daily-sql/</loc>
     
     <lastmod>2016-05-17T15:15:26.843Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/03/05/2016/daily-linux-2/</loc>
-    
-    <lastmod>2016-05-17T15:14:56.112Z</lastmod>
     
   </url>
   

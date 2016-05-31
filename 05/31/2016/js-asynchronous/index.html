@@ -4,35 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Nexus 5x解锁+第三方 | A1exlism</title>
+    <title>原理上理解js的asynchronous(简) | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="0x0环境Device: Nexus 5x marshmallow(Android 6.01)Description:  Ubuntu 14.04DevEnv: SDKFiles in need: 
-0x1 解锁BootloaderWarning**该操作会清除手机数据,请及时备份**
-正
-安装好adb和fastboot驱动: 玛雅牛
-unlock bootloader先开启usb debug和O">
+    <meta name="description" content="–看了JavaScript异步编程, 一直没看懂异步的原理, 找了segmentfault才知道是怎么一回事.
+example_112345var obj = &amp;#123;&amp;#125;;setTimeout(() =&amp;gt; &amp;#123;	console.log(obj);&amp;#125;, 0);obj.foo = &apos;bar&apos;;
+这里会输出Object {foo: &amp;quot;bar&amp;quot;}">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nexus 5x解锁+第三方">
-<meta property="og:url" content="http://csser.work/03/19/2016/device-nexus-flashing/index.html">
+<meta property="og:title" content="原理上理解js的asynchronous(简)">
+<meta property="og:url" content="http://csser.work/05/31/2016/js-asynchronous/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="0x0环境Device: Nexus 5x marshmallow(Android 6.01)Description:  Ubuntu 14.04DevEnv: SDKFiles in need: 
-0x1 解锁BootloaderWarning**该操作会清除手机数据,请及时备份**
-正
-安装好adb和fastboot驱动: 玛雅牛
-unlock bootloader先开启usb debug和O">
-<meta property="og:updated_time" content="2016-05-17T16:00:52.151Z">
+<meta property="og:description" content="–看了JavaScript异步编程, 一直没看懂异步的原理, 找了segmentfault才知道是怎么一回事.
+example_112345var obj = &amp;#123;&amp;#125;;setTimeout(() =&amp;gt; &amp;#123;	console.log(obj);&amp;#125;, 0);obj.foo = &apos;bar&apos;;
+这里会输出Object {foo: &amp;quot;bar&amp;quot;}">
+<meta property="og:updated_time" content="2016-05-31T15:24:23.039Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nexus 5x解锁+第三方">
-<meta name="twitter:description" content="0x0环境Device: Nexus 5x marshmallow(Android 6.01)Description:  Ubuntu 14.04DevEnv: SDKFiles in need: 
-0x1 解锁BootloaderWarning**该操作会清除手机数据,请及时备份**
-正
-安装好adb和fastboot驱动: 玛雅牛
-unlock bootloader先开启usb debug和O">
+<meta name="twitter:title" content="原理上理解js的asynchronous(简)">
+<meta name="twitter:description" content="–看了JavaScript异步编程, 一直没看懂异步的原理, 找了segmentfault才知道是怎么一回事.
+example_112345var obj = &amp;#123;&amp;#125;;setTimeout(() =&amp;gt; &amp;#123;	console.log(obj);&amp;#125;, 0);obj.foo = &apos;bar&apos;;
+这里会输出Object {foo: &amp;quot;bar&amp;quot;}">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -91,14 +85,14 @@ unlock bootloader先开启usb debug和O">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/19/2016/device-nexus-flashing/" title="Nexus 5x解锁+第三方" itemprop="url">Nexus 5x解锁+第三方</a>
+      <a href="/05/31/2016/js-asynchronous/" title="原理上理解js的asynchronous(简)" itemprop="url">原理上理解js的asynchronous(简)</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-18T16:00:00.000Z" itemprop="datePublished"> 发表于 03-19-2016</time>
+    <time datetime="2016-05-30T16:00:00.000Z" itemprop="datePublished"> 发表于 05-31-2016</time>
     
   </p>
 </header>
@@ -107,54 +101,30 @@ unlock bootloader先开启usb debug和O">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0环境"><span class="toc-number">1.</span> <span class="toc-text">0x0环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x1-解锁Bootloader"><span class="toc-number">2.</span> <span class="toc-text">0x1 解锁Bootloader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Warning"><span class="toc-number">2.1.</span> <span class="toc-text">Warning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正"><span class="toc-number">2.2.</span> <span class="toc-text">正</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#刷完之后的坑"><span class="toc-number">2.3.</span> <span class="toc-text">刷完之后的坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x2-刷入第三方Recovery-twrp"><span class="toc-number">3.</span> <span class="toc-text">0x2 刷入第三方Recovery-twrp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正-1"><span class="toc-number">3.2.</span> <span class="toc-text">正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#刷入SuperSu"><span class="toc-number">4.</span> <span class="toc-text">刷入SuperSu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#坑"><span class="toc-number">4.1.</span> <span class="toc-text">坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后续开启Google-Now"><span class="toc-number">6.</span> <span class="toc-text">后续开启Google Now</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#–"><span class="toc-number">1.</span> <span class="toc-text">–</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">2.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="0x0环境"><a href="#0x0环境" class="headerlink" title="0x0环境"></a>0x0环境</h2><p>Device: Nexus 5x marshmallow(Android 6.01)<br>Description:  Ubuntu 14.04<br>DevEnv: SDK<br>Files in need: </p>
-<h2 id="0x1-解锁Bootloader"><a href="#0x1-解锁Bootloader" class="headerlink" title="0x1 解锁Bootloader"></a>0x1 解锁Bootloader</h2><h3 id="Warning"><a href="#Warning" class="headerlink" title="Warning"></a>Warning</h3><p><code>**该操作会清除手机数据,请及时备份**</code></p>
-<h3 id="正"><a href="#正" class="headerlink" title="正"></a>正</h3><ol>
-<li>安装好adb和fastboot驱动: <a href="http://my.oschina.net/myaniu/blog/103385" target="_blank" rel="external">玛雅牛</a></li>
-<li>unlock bootloader<br>先开启usb debug和OEM unlocking,之后Ubuntu更改为root权限<code>sudo -i</code><blockquote>
-<p>adb devices<br>adb reboot-bootloader<br>fastboot devices<br>fastboot oem unlock</p>
-</blockquote>
-</li>
-</ol>
-<p>解锁之后的state会变成unlock而且开机会有警告,之后用开机键进行启动<br>保修的话用<code>fastboot flashing lock</code>来恢复锁定</p>
-<h3 id="刷完之后的坑"><a href="#刷完之后的坑" class="headerlink" title="刷完之后的坑"></a>刷完之后的坑</h3><p>此时手机配置已经完全失效,<code>重新进入开发者模式选择USB-debug</code></p>
-<h2 id="0x2-刷入第三方Recovery-twrp"><a href="#0x2-刷入第三方Recovery-twrp" class="headerlink" title="0x2 刷入第三方Recovery-twrp"></a>0x2 刷入第三方<a href="https://dl.twrp.me/bullhead/" target="_blank" rel="external">Recovery-twrp</a></h2><p>该版本适用于Nexus<code>5x</code>,其他版本请移步<a href="https://twrp.me/Devices/" target="_blank" rel="external">twrp-device</a>进行查询</p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>一定要检查md5,否则会出现如下问题:<br><strong>FAILED (remote: image is not a boot image)</strong></p>
-<blockquote>
-<p>md5sum twrp-3.0.0-1-bullhead.img</p>
-</blockquote>
-<h3 id="正-1"><a href="#正-1" class="headerlink" title="正"></a>正</h3><blockquote>
-<p>root@dell:/home/hexlism/Downloads# fastboot flash recovery twrp-3.0.0-1-bullhead.img </p>
-</blockquote>
-<p>如果成功刷入,则应该显示:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">target reported max download size of 536870912 bytes</span><br><span class="line">sending &apos;recovery&apos; (16345 KB)...</span><br><span class="line">OKAY [  0.471s]</span><br><span class="line">writing &apos;recovery&apos;...</span><br><span class="line">OKAY [  0.154s]</span><br><span class="line">finished. total time: 0.625s</span><br></pre></td></tr></table></figure></p>
-<p>刷完之后又多一个警告=, =</p>
-<h2 id="刷入SuperSu"><a href="#刷入SuperSu" class="headerlink" title="刷入SuperSu"></a>刷入SuperSu</h2><p>当前版本为:BETA-SuperSU-v2.68-20160228150503.zip,下载地址在<code>Reference 0x4</code></p>
-<ol>
-<li><p>放入supersu文件:</p>
-<blockquote>
-<p>adb push BETA-SuperSU-v2.68-20160228150503.zip /sdcard/Downloads</p>
-</blockquote>
-</li>
-<li><p>进入bootloader模式–关机状态,电源+音量下 (或者用命令)</p>
-</li>
-<li>选择recovery mode (前提有twrp)</li>
-<li>在twrp中选择install,之后选择push进去的zip文件即可</li>
-</ol>
-<h3 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h3><p>我碰到的问题让我虚惊一场,连续三次重启之后成功启动.差点哭晕</p>
-<p>如果twrp提示需要刷入supersu,选择<code>**don&#39;t**</code>,不过我在这个过程中完全没有碰到这个问题</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>0x0. 主要参考 <a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br>0x1. ADB<br><a href="http://www.makeuseof.com/tag/new-adb-make-process-simple-easy/" target="_blank" rel="external">ADB</a><br><a href="http://www.inexus.co/thread-23604-1-1.html" target="_blank" rel="external">http://www.inexus.co/thread-23604-1-1.html</a><br><a href="http://www.inexus.co/article-2823-1.html" target="_blank" rel="external">fastboot-adb</a><br>0x2. bootloader<br><a href="http://www.inexus.co/thread-18509-1-1.html" target="_blank" rel="external">inexus</a><br><a href="http://rootmygalaxy.net/how-to-unlock-lg-google-nexus-5x-bootloader-easily/" target="_blank" rel="external">rootmygalaxy</a><br><a href="http://www.androidcentral.com/how-unlock-nexus-5x-bootloader" target="_blank" rel="external">androidcentral</a><br>0x3. Third recovery<br><a href="http://www.inexus.co/thread-23627-1-1.html" target="_blank" rel="external">inexus-recovery</a><br>0x4. <a href="http://download.chainfire.eu/supersu" target="_blank" rel="external">SuperSu</a><br>ADB 命令:<a href="http://bbs.gfan.com/android-4421095-1-1.html" target="_blank" rel="external">gfan</a></p>
-<h2 id="后续开启Google-Now"><a href="#后续开启Google-Now" class="headerlink" title="后续开启Google Now"></a>后续开启Google Now</h2><p>不需要模拟地址,不需要拔卡,不过<code>需要root</code><br>一件开启=====&gt;&gt;<a href="http://www.coolapk.com/apk/com.czbix.nowenabler" target="_blank" rel="external">酷安-Google Now Enabler</a></p>
+		<h2 id="–"><a href="#–" class="headerlink" title="–"></a>–</h2><p>看了JavaScript异步编程, 一直没看懂异步的原理, 找了segmentfault才知道是怎么一回事.</p>
+<p><strong>example_1</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(obj);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line">obj.foo = <span class="string">'bar'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>这里会输出<code>Object {foo: &quot;bar&quot;}</code></p>
+<p>首先需要了解setTimeout(func, time)是一个<code>异步</code>执行函数, func在这里面就会被<code>回调</code>(简单来说就是被调用), 它先将func放入一个<code>event queue</code>, 之后等外面的函数加载完之后, 它就开始检查event栈中内容,并依次执行.</p>
+<p>再一个例子:</p>
+<p><strong>example_2</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.foo = <span class="string">'bar'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'log_1: '</span> + <span class="built_in">JSON</span>.stringify(obj));</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'log_2: '</span> + <span class="built_in">JSON</span>.stringify(obj));</span><br><span class="line">  <span class="comment">//  多了 bar:foo</span></span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line">obj.bar = <span class="string">'foo'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>这个例子的两个log就解释了前面的那段话了</p>
+<p>如果看了前面两个例子懂了<code>异步回调</code>的话, 再了解一下块级作用域和js作用域(&lt;=ES5)的, 后面两个的区别就很好理解了</p>
+<p><strong>example_3</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">  setTimeout(() =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>这些匿名函数都加入了event queue但是var的原因,i从头到尾用的都是同一个内存,所以回调之后的i都变成了4</p>
+<p><strong>example_4</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">  setTimeout(() =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><code>let</code>关键词是ES6的特性,使js拥有块级作用域,然后就是一个简单匿名函数的传值调用啦</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://segmentfault.com/a/1190000003961547" target="_blank" rel="external">同步与异步、异步与回调-苹果小萝卜</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/03/19/2016/device-nexus-flashing/" data-title="Nexus 5x解锁+第三方 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/05/31/2016/js-asynchronous/" data-title="原理上理解js的asynchronous(简) | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -167,19 +137,11 @@ unlock bootloader先开启usb debug和O">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/03/20/2016/linux-ubuntu-chrome/" title="ubuntu chrome cpu25%">
-  <strong>上一篇：</strong><br/>
-  <span>
-  ubuntu chrome cpu25%</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/03/05/2016/daily-linux-2/"  title="linux日常更新-02">
+<a href="/05/17/2016/say-new-domain/"  title="更换域名了">
  <strong>下一篇：</strong><br/> 
- <span>linux日常更新-02
+ <span>更换域名了
 </span>
 </a>
 </div>
@@ -188,7 +150,7 @@ unlock bootloader先开启usb debug和O">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="03/19/2016/device-nexus-flashing/" data-title="Nexus 5x解锁+第三方" data-url="http://csser.work/03/19/2016/device-nexus-flashing/"></div>
+	<div class="ds-thread" data-thread-key="05/31/2016/js-asynchronous/" data-title="原理上理解js的asynchronous(简)" data-url="http://csser.work/05/31/2016/js-asynchronous/"></div>
 </section>
 
 
@@ -198,7 +160,7 @@ unlock bootloader先开启usb debug和O">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0环境"><span class="toc-number">1.</span> <span class="toc-text">0x0环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x1-解锁Bootloader"><span class="toc-number">2.</span> <span class="toc-text">0x1 解锁Bootloader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Warning"><span class="toc-number">2.1.</span> <span class="toc-text">Warning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正"><span class="toc-number">2.2.</span> <span class="toc-text">正</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#刷完之后的坑"><span class="toc-number">2.3.</span> <span class="toc-text">刷完之后的坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x2-刷入第三方Recovery-twrp"><span class="toc-number">3.</span> <span class="toc-text">0x2 刷入第三方Recovery-twrp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正-1"><span class="toc-number">3.2.</span> <span class="toc-text">正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#刷入SuperSu"><span class="toc-number">4.</span> <span class="toc-text">刷入SuperSu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#坑"><span class="toc-number">4.1.</span> <span class="toc-text">坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后续开启Google-Now"><span class="toc-number">6.</span> <span class="toc-text">后续开启Google Now</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#–"><span class="toc-number">1.</span> <span class="toc-text">–</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">2.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
