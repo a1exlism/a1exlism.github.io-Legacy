@@ -4,26 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>MySQL基础 | A1exlism</title>
+    <title>mysql命令打错回退 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="基本数据查询1.创建CREATE1CREATE TABLE tablename (field type [(size)] [NOT NULL]&amp;#123;, field type [(size)] [NOT NULL]...&amp;#125;[,PRIMARY KEY(field&amp;#123;,field...&amp;#125;)]);
-2.选择SELECT1SELECT * FROM students WHE">
+    <meta name="description" content="前言学习mysql过程中无意中写了两遍同样的语句, 然后就有这篇博客了注意: 恢复的前提是已经开启bin_log了(所以我也晚了一步)
+Version Numbermysql  Ver 14.14 Distrib 5.7.12, for Linux (x86_64) using  EditLine wrapper
+—Configure binlogmysql的配置文件在/etc/my.cnffin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL基础">
-<meta property="og:url" content="http://csser.work/10/30/2015/sql-mySql-1/index.html">
+<meta property="og:title" content="mysql命令打错回退">
+<meta property="og:url" content="http://csser.work/07/02/2016/mysql-binlog/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="基本数据查询1.创建CREATE1CREATE TABLE tablename (field type [(size)] [NOT NULL]&amp;#123;, field type [(size)] [NOT NULL]...&amp;#125;[,PRIMARY KEY(field&amp;#123;,field...&amp;#125;)]);
-2.选择SELECT1SELECT * FROM students WHE">
-<meta property="og:updated_time" content="2016-05-17T15:17:13.021Z">
+<meta property="og:description" content="前言学习mysql过程中无意中写了两遍同样的语句, 然后就有这篇博客了注意: 恢复的前提是已经开启bin_log了(所以我也晚了一步)
+Version Numbermysql  Ver 14.14 Distrib 5.7.12, for Linux (x86_64) using  EditLine wrapper
+—Configure binlogmysql的配置文件在/etc/my.cnffin">
+<meta property="og:updated_time" content="2016-07-02T16:21:37.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL基础">
-<meta name="twitter:description" content="基本数据查询1.创建CREATE1CREATE TABLE tablename (field type [(size)] [NOT NULL]&amp;#123;, field type [(size)] [NOT NULL]...&amp;#125;[,PRIMARY KEY(field&amp;#123;,field...&amp;#125;)]);
-2.选择SELECT1SELECT * FROM students WHE">
+<meta name="twitter:title" content="mysql命令打错回退">
+<meta name="twitter:description" content="前言学习mysql过程中无意中写了两遍同样的语句, 然后就有这篇博客了注意: 恢复的前提是已经开启bin_log了(所以我也晚了一步)
+Version Numbermysql  Ver 14.14 Distrib 5.7.12, for Linux (x86_64) using  EditLine wrapper
+—Configure binlogmysql的配置文件在/etc/my.cnffin">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -82,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/30/2015/sql-mySql-1/" title="MySQL基础" itemprop="url">MySQL基础</a>
+      <a href="/07/02/2016/mysql-binlog/" title="mysql命令打错回退" itemprop="url">mysql命令打错回退</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-29T16:00:00.000Z" itemprop="datePublished"> 发表于 10-30-2015</time>
+    <time datetime="2016-07-01T16:00:00.000Z" itemprop="datePublished"> 发表于 07-02-2016</time>
     
   </p>
 </header>
@@ -98,56 +101,25 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本数据查询"><span class="toc-number">1.</span> <span class="toc-text">基本数据查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据更新语句"><span class="toc-number">2.</span> <span class="toc-text">数据更新语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL注释"><span class="toc-number">3.</span> <span class="toc-text">MySQL注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#others"><span class="toc-number">4.</span> <span class="toc-text">others</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Version-Number"><span class="toc-number">2.</span> <span class="toc-text">Version Number</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#—"><span class="toc-number">3.</span> <span class="toc-text">—</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Configure-binlog"><span class="toc-number">3.1.</span> <span class="toc-text">Configure binlog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Recovery"><span class="toc-number">3.2.</span> <span class="toc-text">Recovery</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="基本数据查询"><a href="#基本数据查询" class="headerlink" title="基本数据查询"></a>基本数据查询</h2><p>1.创建CREATE<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tablename (<span class="keyword">field</span> <span class="keyword">type</span> [(<span class="keyword">size</span>)] [<span class="keyword">NOT</span> <span class="literal">NULL</span>]&#123;, <span class="keyword">field</span> <span class="keyword">type</span> [(<span class="keyword">size</span>)] [<span class="keyword">NOT</span> <span class="literal">NULL</span>]...&#125;[,PRIMARY <span class="keyword">KEY</span>(<span class="keyword">field</span>&#123;,field...&#125;)]);</span><br></pre></td></tr></table></figure></p>
-<p>2.选择SELECT<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> <span class="keyword">id</span> &lt; <span class="number">20</span> <span class="keyword">AND</span> age &gt; <span class="number">25</span>;</span><br></pre></td></tr></table></figure></p>
-<p>3.范围BETWEEN..AND<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure></p>
-<p>4.模糊查询LIKE<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM students WHERE name LIKE '%son';  #比如找一个名字后缀为'son'的人</span><br></pre></td></tr></table></figure></p>
-<p>LIKE通配符:</p>
-<pre><code>%   0或者更多字符
-_   任意一个字符
-[]  指定范围内的任意单个字符
-[^] 不再指定范围内的任意单个字符
-</code></pre><p>Example:</p>
-<pre><code>Like&quot;[CK]%&quot; 返回以 C 或者 K 开始的任意字符串
-Like&quot;[S-V]ing&quot; 返回长为 4 个字符的字符串,结尾是&quot;ing&quot;,开始是从 S 到 V
-Like&quot;M[^c]%&quot; 返回以&quot;M&quot;开始且第二个字符不是&quot;c&quot;的任意字符串
-</code></pre><p>5.创建昵称AS<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">AS</span> 姓名 <span class="keyword">FROM</span> students ;</span><br></pre></td></tr></table></figure></p>
-<p>6.查询结果排序ORDER BY ASC升序DESC降序<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM students WHERE name LIKE '%son' ORDER BY age ASC,id DESC;#age优先排列</span><br></pre></td></tr></table></figure></p>
-<p>7.统计COUNT<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT COUNT(id) FROM students; #查询id字段的行数</span><br></pre></td></tr></table></figure></p>
-<p>8.分组GROUP BY<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM students GROUP BY age (HAVING id &gt; 5);  #括号可略,添加附加条件</span><br></pre></td></tr></table></figure></p>
-<p>9.联合查询UNION<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- 前提是两个表字段一样--</span><br><span class="line">SELECT * FROM students UNION SELECT * FROM students_bak;  #合并两个表的查询记录,Veen图的合并</span><br><span class="line">-- 默认记录不重复,不过可以使用UNION ALL显示所有记录</span><br><span class="line">SELECT * FROM students UNION ALL SELECT * FROM students_bak;</span><br></pre></td></tr></table></figure></p>
-<p>10.子查询/嵌套查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 该查询ORDER BY无效--</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> <span class="keyword">name</span> = (<span class="keyword">SELECT</span> age <span class="keyword">FROM</span> <span class="keyword">WHERE</span> age = <span class="number">20</span>);</span><br></pre></td></tr></table></figure></p>
-<p><a href="http://www.jellythink.com/archives/932" target="_blank" rel="external">例1</a><br><a href="http://www.5idev.com/p-mysql_subquery.shtml" target="_blank" rel="external">例2</a></p>
-<h2 id="数据更新语句"><a href="#数据更新语句" class="headerlink" title="数据更新语句"></a>数据更新语句</h2><ol>
-<li><p>INSERT<br>–&gt; VALUES结构(插入单条记录)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tablename [(colname&#123;,colname...&#125;)]&#123;<span class="keyword">VALUES</span> (expr|<span class="literal">NULL</span>&#123;,expr|NULL....&#125;)|Subquery&#125;</span><br><span class="line"><span class="comment">-- Example:</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> school.stuents(<span class="string">'s_name'</span>,<span class="string">'s_age'</span>)</span><br><span class="line">  <span class="keyword">VALUES</span> (<span class="string">'xiaobai'</span>,<span class="string">'20'</span>);</span><br><span class="line"><span class="comment">-- OR</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> school.students(<span class="string">'s_id'</span>,<span class="string">'s_name'</span>,<span class="string">'s_age'</span>)</span><br><span class="line">  <span class="keyword">VALUES</span> (<span class="literal">NULL</span>, <span class="string">'laoli'</span>, <span class="string">'10'</span>);</span><br></pre></td></tr></table></figure>
-<p>–&gt;子查询Subquery(可插入多条记录)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> newStudens</span><br><span class="line">  <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> <span class="keyword">name</span> = <span class="string">'laowang'</span>;</span><br><span class="line"><span class="comment">-- 往newStudents表中插入students的一个字段(改为age就能插入多个了..)</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>UPDATE<br>–&gt; grammar </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> tablename</span><br><span class="line">  <span class="keyword">SET</span> colname= &#123;expr|<span class="literal">NULL</span>|(subquery)&#125;</span><br><span class="line">    &#123;, colname= &#123;expr|<span class="literal">NULL</span>|(subquery).....&#125;&#125;</span><br><span class="line">      [WH ERE search_condition]   <span class="comment">-- 子查询</span></span><br><span class="line">  <span class="comment">-- -&gt;Example:</span></span><br><span class="line">  <span class="keyword">UPDATE</span> students</span><br><span class="line">    <span class="keyword">SET</span> age = age + <span class="number">10</span></span><br><span class="line">      <span class="keyword">WHERE</span> <span class="keyword">name</span> = <span class="string">'doubi'</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>DELETE</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tablename</span><br><span class="line">  [<span class="keyword">WHERE</span> search_condition]</span><br><span class="line"><span class="comment">-- -&gt;Example:</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> students</span><br><span class="line">  <span class="keyword">WHERE</span> neme = <span class="string">'doubi'</span>;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="MySQL注释"><a href="#MySQL注释" class="headerlink" title="MySQL注释"></a>MySQL注释</h2><ol>
-<li><code>#...</code></li>
-<li><code>-- ..</code>  有个空格</li>
-<li><code>/*...*/</code></li>
-</ol>
-<h2 id="others"><a href="#others" class="headerlink" title="others"></a>others</h2><p>不等于 <code>&lt;&gt;</code></p>
+		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>学习mysql过程中无意中写了两遍同样的语句, 然后就有这篇博客了<br>注意: 恢复的前提是已经开启bin_log了(所以我也晚了一步)</p>
+<h2 id="Version-Number"><a href="#Version-Number" class="headerlink" title="Version Number"></a>Version Number</h2><p>mysql  Ver 14.14 Distrib <code>5.7.12</code>, for Linux (x86_64) using  EditLine wrapper</p>
+<h2 id="—"><a href="#—" class="headerlink" title="—"></a>—</h2><h3 id="Configure-binlog"><a href="#Configure-binlog" class="headerlink" title="Configure binlog"></a>Configure binlog</h3><p>mysql的配置文件在<code>/etc/my.cnf</code><br><del>find / -type f -name “.cnf” | xargs grep “mysqld”能找到真实地址,后话</del><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 添加</span><br><span class="line">[mysqld]</span><br><span class="line">server_id=100 #为server配置一个id</span><br><span class="line">log-bin=/tmp/mysql-binlog #名字随便取</span><br></pre></td></tr></table></figure></p>
+<p>service mysql restart</p>
+<p>mysql&gt;show variables like ‘log_bin’中查看是否开启</p>
+<h3 id="Recovery"><a href="#Recovery" class="headerlink" title="Recovery"></a>Recovery</h3><p>通过时间戳来进行恢复<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqlbinlog --stop-date=<span class="string">"2016-07-02 23:57:59"</span> /tmp/mysql-binlog.000001</span><br><span class="line">$ mysql -uroot -p</span><br></pre></td></tr></table></figure></p>
+<p>More:  man mysqlbinlog(不过有点多..)</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://blog.chinaunix.net/uid-25266990-id-199887.html" target="_blank" rel="external">Linux里如何查找文件内容-鸟哥</a><br><a href="http://www.dewen.net.cn/q/2654/%E6%9C%89%E4%BB%80%E4%B9%88%E5%8A%9E%E6%B3%95%E5%8F%AF%E4%BB%A5%E6%96%B9%E4%BE%BF%E7%9A%84%E6%92%A4%E9%94%80mysql%E4%B8%AD%E7%9A%84%E4%B8%80%E6%AC%A1%E8%AF%AF%E6%93%8D%E4%BD%9C%EF%BC%9F" target="_blank" rel="external">有什么办法可以方便的撤销mysql中的一次误操作?-德问</a><br><a href="http://www.iteblog.com/mysql-binlog_basic_usage" target="_blank" rel="external">MySQL binlog基本用法</a><br><a href="http://blog.itpub.net/26506993/viewspace-2060130/" target="_blank" rel="external">haven’t provided the mandatory server-id-feelpurple</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/10/30/2015/sql-mySql-1/" data-title="MySQL基础 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/07/02/2016/mysql-binlog/" data-title="mysql命令打错回退 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -160,19 +132,11 @@ Like&quot;M[^c]%&quot; 返回以&quot;M&quot;开始且第二个字符不是&quot
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/11/10/2015/sql-injection-dvwa/" title="DVWA-SQLInject">
-  <strong>上一篇：</strong><br/>
-  <span>
-  DVWA-SQLInject</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/10/27/2015/js-window-document/"  title="Js--window VS Document">
+<a href="/05/31/2016/js-asynchronous/"  title="原理上理解js的asynchronous(简)">
  <strong>下一篇：</strong><br/> 
- <span>Js--window VS Document
+ <span>原理上理解js的asynchronous(简)
 </span>
 </a>
 </div>
@@ -181,7 +145,7 @@ Like&quot;M[^c]%&quot; 返回以&quot;M&quot;开始且第二个字符不是&quot
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="10/30/2015/sql-mySql-1/" data-title="MySQL基础" data-url="http://csser.work/10/30/2015/sql-mySql-1/"></div>
+	<div class="ds-thread" data-thread-key="07/02/2016/mysql-binlog/" data-title="mysql命令打错回退" data-url="http://csser.work/07/02/2016/mysql-binlog/"></div>
 </section>
 
 
@@ -191,7 +155,7 @@ Like&quot;M[^c]%&quot; 返回以&quot;M&quot;开始且第二个字符不是&quot
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本数据查询"><span class="toc-number">1.</span> <span class="toc-text">基本数据查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据更新语句"><span class="toc-number">2.</span> <span class="toc-text">数据更新语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL注释"><span class="toc-number">3.</span> <span class="toc-text">MySQL注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#others"><span class="toc-number">4.</span> <span class="toc-text">others</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Version-Number"><span class="toc-number">2.</span> <span class="toc-text">Version Number</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#—"><span class="toc-number">3.</span> <span class="toc-text">—</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Configure-binlog"><span class="toc-number">3.1.</span> <span class="toc-text">Configure binlog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Recovery"><span class="toc-number">3.2.</span> <span class="toc-text">Recovery</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
