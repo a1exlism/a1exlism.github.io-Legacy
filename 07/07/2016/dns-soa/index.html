@@ -4,26 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Android6.0.1 Xposed安装以及插件推荐 | A1exlism</title>
+    <title>DNS SOA NS记录 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能
-环境&amp;amp;要求已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk框架模块: xposed-v80-sdk23-arm64.zip下载地址: XDA_X">
+    <meta name="description" content="main()看到一个dns域传送漏洞, 顺便了解了一下概念
+網中人(↑鸟哥的早期导师↑)
+
+ns 授權很簡單…假設你註冊的 domain 叫 abc.com ，而你有 ns1  與 ns2 兩台 server 。那，你必需從 .com 的權威伺服器授權給你，其設定或類似如此：12345$ORIGIN com.abc IN NS ns1.abc.com.abc IN NS ns2.abc.com.n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android6.0.1 Xposed安装以及插件推荐">
-<meta property="og:url" content="http://csser.work/03/30/2016/device-nexus-xposed/index.html">
+<meta property="og:title" content="DNS SOA NS记录">
+<meta property="og:url" content="http://csser.work/07/07/2016/dns-soa/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能
-环境&amp;amp;要求已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk框架模块: xposed-v80-sdk23-arm64.zip下载地址: XDA_X">
-<meta property="og:updated_time" content="2016-05-17T16:03:09.066Z">
+<meta property="og:description" content="main()看到一个dns域传送漏洞, 顺便了解了一下概念
+網中人(↑鸟哥的早期导师↑)
+
+ns 授權很簡單…假設你註冊的 domain 叫 abc.com ，而你有 ns1  與 ns2 兩台 server 。那，你必需從 .com 的權威伺服器授權給你，其設定或類似如此：12345$ORIGIN com.abc IN NS ns1.abc.com.abc IN NS ns2.abc.com.n">
+<meta property="og:updated_time" content="2016-07-07T15:08:09.035Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android6.0.1 Xposed安装以及插件推荐">
-<meta name="twitter:description" content="xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能
-环境&amp;amp;要求已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk框架模块: xposed-v80-sdk23-arm64.zip下载地址: XDA_X">
+<meta name="twitter:title" content="DNS SOA NS记录">
+<meta name="twitter:description" content="main()看到一个dns域传送漏洞, 顺便了解了一下概念
+網中人(↑鸟哥的早期导师↑)
+
+ns 授權很簡單…假設你註冊的 domain 叫 abc.com ，而你有 ns1  與 ns2 兩台 server 。那，你必需從 .com 的權威伺服器授權給你，其設定或類似如此：12345$ORIGIN com.abc IN NS ns1.abc.com.abc IN NS ns2.abc.com.n">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -82,14 +88,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/30/2016/device-nexus-xposed/" title="Android6.0.1 Xposed安装以及插件推荐" itemprop="url">Android6.0.1 Xposed安装以及插件推荐</a>
+      <a href="/07/07/2016/dns-soa/" title="DNS SOA NS记录" itemprop="url">DNS SOA NS记录</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-29T16:00:00.000Z" itemprop="datePublished"> 发表于 03-30-2016</time>
+    <time datetime="2016-07-06T16:00:00.000Z" itemprop="datePublished"> 发表于 07-07-2016</time>
     
   </p>
 </header>
@@ -98,27 +104,31 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境-amp-要求"><span class="toc-number">1.</span> <span class="toc-text">环境&要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐几个插件"><span class="toc-number">3.</span> <span class="toc-text">推荐几个插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#main"><span class="toc-number">1.</span> <span class="toc-text">main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#網中人"><span class="toc-number">1.1.</span> <span class="toc-text">網中人</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#笑蓝一方天"><span class="toc-number">1.2.</span> <span class="toc-text">笑蓝一方天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能</p>
-<h2 id="环境-amp-要求"><a href="#环境-amp-要求" class="headerlink" title="环境&amp;要求"></a>环境&amp;要求</h2><p>已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包<br>安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk<br>框架模块: xposed-v80-sdk23-arm64.zip<br>下载地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">XDA_Xposed for Lollipop and Marshmallow</a></p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
-<li>手机关机后(防止意外关机导致应用优化)长按<code>电源键+音量下</code><br>或者直接连上电脑adb reboot-bootloader进入recovery mode</li>
-<li>进入Recovery Mode,选择Install,将放在Downloads中的框架模块选中安装即可</li>
-<li>重启后安装xposed安装程序,提示xposed actived</li>
-<li>下载安装插件,启用之后进行软重启(比较快)</li>
-</ol>
-<h2 id="推荐几个插件"><a href="#推荐几个插件" class="headerlink" title="推荐几个插件"></a>推荐几个插件</h2><p>不装LBE就用<code>greenify</code>,root的休眠功能+xposed扩展非常棒<br>阻止运行: Prevent Running<br>禁止唤醒: No WakeLock 作者Blog:<a href="https://www.linangran.com/?p=611" target="_blank" rel="external">Angran Lin’s Blog</a><br>开机管理: BootManager<br><del>权限管理: XPrivacy 控制太烦,而且原生已有权限控制,弃用</del><br>广告过滤: MinMinGuard<br>Ist保存插件: Instagram Downloader <code>少更新Ist</code><br>禁止内置浏览器: ExLink(去你大爷的浏览器)<br>状态栏+底栏颜色优化,很棒: PerfectColorBar<br>来电显示: Phone Location<br>自定义手电筒快捷键: Xposed Torch<br><del>防撤回: QQUnrecalled/WechatUnrecalled</del></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.inexus.co/article-3823-1.html" target="_blank" rel="external">Inexus-Xposed安装</a><br><a href="http://forum.xda-developers.com/showpost.php?p=58828974" target="_blank" rel="external">XDA</a><br>插件推荐: <a href="https://www.zhihu.com/question/22063862" target="_blank" rel="external">==知乎链接==</a><br>刚找到的一个新地址: <a href="http://xposed.appkg.com/1051.html" target="_blank" rel="external">Xposed</a></p>
+		<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p><br><br><br><br><br><!-- 不知道为什么这个排版有这么个问题 --><br>看到一个dns域传送漏洞, 顺便了解了一下概念</p>
+<h3 id="網中人"><a href="#網中人" class="headerlink" title="網中人"></a>網中人</h3><p>(↑鸟哥的早期导师↑)</p>
+<blockquote>
+<p>ns 授權很簡單…<br>假設你註冊的 domain 叫 abc.com ，而你有 ns1  與 ns2 兩台 server 。<br>那，你必需從 .com 的權威伺服器授權給你，其設定或類似如此：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ORIGIN com.</span><br><span class="line">abc IN NS ns1.abc.com.</span><br><span class="line">abc IN NS ns2.abc.com.</span><br><span class="line">ns1.abc IN A 1.2.3.4</span><br><span class="line">ns1.abc IN A 1.2.3.5</span><br></pre></td></tr></table></figure></p>
+<p>然後，你的 ns1 或 ns2 都可是權威伺服器了(各自的 SOA 設為自己即可)。<br>在 abc.com 的 db 中，最少還應類似如下的設定：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ORIGIN abc.com.</span><br><span class="line">@ IN NS ns1.abc.com.</span><br><span class="line">@ IN NS ns2.abc.com.</span><br><span class="line">ns1 IN A 1.2.3.4</span><br><span class="line">ns2 IN A 1.2.3.5</span><br></pre></td></tr></table></figure></p>
+<p>不過，既然 SOA 是自己的話，那事實上，我可以改變 ns 或增加 ns 授權：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ORIGIN abc.com.</span><br><span class="line">@ IN NS ns1.abc.com.</span><br><span class="line">@ IN NS ns2.</span><br><span class="line">@ IN NS ns3.abc.com.</span><br><span class="line">ns1 IN A 1.2.3.4</span><br><span class="line">ns2 IN A 1.2.3.5</span><br><span class="line">ns3 IN A 1.2.3.6</span><br></pre></td></tr></table></figure></p>
+<p>假如你有 sub-zone 要授權，事實上也是利用 ns 啦：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ORIGIN abc.com.</span><br><span class="line">sub1 IN NS ns1.sub1.abc.com.</span><br><span class="line">sub1 IN NS ns2.sub1.abc.com.</span><br><span class="line">ns1.sub1 IN A 4.3.2.1</span><br><span class="line">ns2.sub1 IN A 4.3.2.2</span><br></pre></td></tr></table></figure></p>
+<p>然而，不同版本的 resolver ，對最終的 ns 判定是不一樣的：<br>bind9 是以 abc.com 的權威主機的 ns 為依據，若找不到，那就沒結果。<br>而之前的版本，則可退而求次，以 com. 裡關於 abc.com 的 ns 為答案。</p>
+</blockquote>
+<h3 id="笑蓝一方天"><a href="#笑蓝一方天" class="headerlink" title="笑蓝一方天"></a>笑蓝一方天</h3><blockquote>
+<p>大过年的，拉家常的话说吧。你缺钱了找你爸要，你爸NS到你妈，你去找你妈。你妈(拥有soa)给你钱。</p>
+</blockquote>
+<p>soa(Start of Authority), NS(name server)<br>两个英文意思一出来再看看上面也就懂了吧^_^</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.zhihu.com/question/40028869" target="_blank" rel="external">dns的soa记录与ns记录到底有什么不同-zhihu</a><br><a href="http://www.chinaunix.net/old_jh/16/250360.html" target="_blank" rel="external">dns中soa和ns记录的作用-chinaunix</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/03/30/2016/device-nexus-xposed/" data-title="Android6.0.1 Xposed安装以及插件推荐 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/07/07/2016/dns-soa/" data-title="DNS SOA NS记录 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -131,19 +141,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/04/01/2016/daily-collection/" title="Daily Collection">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Daily Collection</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/03/30/2016/device-nexus-ota-update/"  title="Nexus原生OTA升级(ROOT+XP),无需PC">
+<a href="/07/05/2016/symbol-en-names/"  title="Symbols in English~">
  <strong>下一篇：</strong><br/> 
- <span>Nexus原生OTA升级(ROOT+XP),无需PC
+ <span>Symbols in English~
 </span>
 </a>
 </div>
@@ -152,7 +154,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="03/30/2016/device-nexus-xposed/" data-title="Android6.0.1 Xposed安装以及插件推荐" data-url="http://csser.work/03/30/2016/device-nexus-xposed/"></div>
+	<div class="ds-thread" data-thread-key="07/07/2016/dns-soa/" data-title="DNS SOA NS记录" data-url="http://csser.work/07/07/2016/dns-soa/"></div>
 </section>
 
 
@@ -162,7 +164,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境-amp-要求"><span class="toc-number">1.</span> <span class="toc-text">环境&要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐几个插件"><span class="toc-number">3.</span> <span class="toc-text">推荐几个插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#main"><span class="toc-number">1.</span> <span class="toc-text">main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#網中人"><span class="toc-number">1.1.</span> <span class="toc-text">網中人</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#笑蓝一方天"><span class="toc-number">1.2.</span> <span class="toc-text">笑蓝一方天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
  
   </div>
 
