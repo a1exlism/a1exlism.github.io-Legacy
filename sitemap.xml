@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://csser.work/10/14/2015/linux-cmd-query/</loc>
+    
+    <lastmod>2016-07-15T16:22:41.385Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://csser.work/07/07/2016/dns-soa/</loc>
     
     <lastmod>2016-07-07T15:08:09.035Z</lastmod>
@@ -404,13 +411,6 @@
     <loc>http://csser.work/02/20/2016/book-vbird-1/</loc>
     
     <lastmod>2016-05-17T15:13:43.524Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/10/14/2015/linux-cmd-query/</loc>
-    
-    <lastmod>2016-05-17T15:13:35.831Z</lastmod>
     
   </url>
   

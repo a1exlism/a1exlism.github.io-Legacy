@@ -298,11 +298,14 @@ noauto          开机不自动挂载
 </blockquote>
 <p>手动更新数据库–&gt;<code>updatedb</code></p>
 <h3 id="3-find-Router-option-action"><a href="#3-find-Router-option-action" class="headerlink" title="3. find [Router] [option] [action]"></a>3. find [Router] [option] [action]</h3><p>—直接查找硬盘—<br>find查找`默认递归</p>
-<h4 id="指定路径"><a href="#指定路径" class="headerlink" title="指定路径"></a>指定路径</h4><p>排除<code>/media</code>和<code>/lib</code>路径查询包含<code>application</code>字样的文件<br><strong>注意</strong>,()需要转义 -i忽略大小写<br>&gt;<br>sudo find /  ( -path /media -o -path /lib ) -prune -o -iname “application” -print </p>
+<h4 id="指定路径"><a href="#指定路径" class="headerlink" title="指定路径"></a>指定路径</h4><p>排除<code>/media</code>和<code>/lib</code>路径查询包含<code>application</code>字样的文件<br><strong>注意</strong>,()需要转义 -i忽略大小写</p>
+<blockquote>
+<p>sudo find /  ( -path /media -o -path /lib ) -prune -o -iname “application” -print</p>
+</blockquote>
 <p>Reference: <a href="http://blog.csdn.net/imfinger/article/details/6371601" target="_blank" rel="external">lionfun</a></p>
 <h4 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h4><p>-atime -ctime -mtime<br><img src="/imgs/bash/linux-find-time.png" alt="1"><br>图示为<code>mtime</code>选项,作图过程中忍不住安利个网站- -<a href="https://www.processon.com" target="_blank" rel="external">ProcessOn</a><br>24小时之内tools文件夹更改的地方</p>
 <blockquote>
-<p>find / -mtime 0. </p>
+<p>find / -mtime 0.</p>
 </blockquote>
 <h4 id="文件名-文件类型"><a href="#文件名-文件类型" class="headerlink" title="文件名/文件类型"></a>文件名/文件类型</h4><p>在当前目录进行递归查找名为’filename’的任意扩展文件</p>
 <blockquote>
@@ -315,6 +318,9 @@ noauto          开机不自动挂载
 <h3 id="更多grep写在了这边-gt-鸟哥读书记"><a href="#更多grep写在了这边-gt-鸟哥读书记" class="headerlink" title="更多grep写在了这边==&gt;鸟哥读书记"></a>更多grep写在了这边==&gt;<a href="http://a1exlism.github.io/#stq=grep+%E6%AD%A3%E5%88%99&amp;stp=1" target="_blank" rel="external">鸟哥读书记</a></h3><h3 id="find-grep-组合技查询"><a href="#find-grep-组合技查询" class="headerlink" title="find grep 组合技查询"></a>find grep 组合技查询</h3><p>从当前目录下找到有关’port’的ini文件</p>
 <blockquote>
 <p>$ find -name *.ini | xargs grep port</p>
+</blockquote>
+<h3 id="find-grep快速查询"><a href="#find-grep快速查询" class="headerlink" title="find,grep快速查询"></a>find,grep快速查询</h3><blockquote>
+<p>From: <a href="https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/Linux" target="_blank" rel="external">IBM-grep.find-usage</a><br>find和grep的使用权限是所有用户<br>find命令的作用是在目录中根据文件名搜索文件<br>find 列出当前目录及其子目录的所有文件和文件夹的完整路径。<br>find -name Help.java 在当前目录及其子目录中搜索文件名为Help.java的文件。<br>find . -name Help.java 在当前目录及其子目录中搜索文件名为Help.java的文件(同上)。<br>find / -name Help.java 在整个硬盘中搜索文件名为Help.java的文件。<br>find -perm 755 在当前目录及其子目录中查找指定权限的文件<br>find -type b 在当前目录及其子目录下查找块设备文件。<br>find -type d 在当前目录及其子目录下查文件夹。<br>find -type c 在当前目录及其子目录下查找字符设备文件。<br>find -type p 在当前目录及其子目录下查找管道文件。<br>find -type l 在当前目录及其子目录下查找符号链接文件。<br>find -type f 在当前目录及其子目录下查找普通文件。<br>find -type d -exec ls -l {} \; 查找当前目录及其子目录下的文件夹，并将查找结果以ls -l的方式展现。<br>find -type d -ok rm -rf {} \;查找当前目录及其子目录下的文件夹，并将查找结果依次执行rm -rf命令，但是在执行命令前会有确认提示。<br>grep命令的作用是在目录中根据文件内容搜索文件<br>grep Clock <em> 查找当前目录下的所有文件中包含Clock字符串的文件，不查找子目录<br>grep -r Clock </em> 查找当前目录下的所有文件中包含Clock字符串的文件，查找子目录<br>grep -nr Clock * 查找当前目录下的所有文件中包含Clock字符串的文件，查找子目录，并显示行号</p>
 </blockquote>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.cnblogs.com/skynet/archive/2010/12/25/1916873.html" target="_blank" rel="external">吴秦(Tyler)</a><br><a href="http://www.ai7.org/wp/html/653.html" target="_blank" rel="external">男单 618</a></p>
 
@@ -400,55 +406,6 @@ noauto          开机不自动挂载
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/08/2015/say-1/" title="又是一年" itemprop="url">又是一年</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-07T16:00:00.000Z" itemprop="datePublished"> 发表于 10-08-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="小感慨"><a href="#小感慨" class="headerlink" title="小感慨"></a>小感慨</h3><h4 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
-<h4 id="决心"><a href="#决心" class="headerlink" title="决心"></a>决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
-<h3 id="小目标"><a href="#小目标" class="headerlink" title="小目标"></a>小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
-<h3 id="今后每个月来更新一次"><a href="#今后每个月来更新一次" class="headerlink" title="今后每个月来更新一次!"></a>今后每个月来更新一次!</h3>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/08/2015/say-1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/08/2015/say-1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/10/08/2015/js-client-5/" title="Js学习笔记(5)" itemprop="url">Js学习笔记(5)</a>
   </h1>
   <p class="article-author">By
@@ -487,6 +444,55 @@ noauto          开机不自动挂载
 	
 	  	<span></span>
 		<a href="/10/08/2015/js-client-5/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/08/2015/js-client-5/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/10/08/2015/say-1/" title="又是一年" itemprop="url">又是一年</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-07T16:00:00.000Z" itemprop="datePublished"> 发表于 10-08-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="小感慨"><a href="#小感慨" class="headerlink" title="小感慨"></a>小感慨</h3><h4 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
+<h4 id="决心"><a href="#决心" class="headerlink" title="决心"></a>决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
+<h3 id="小目标"><a href="#小目标" class="headerlink" title="小目标"></a>小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
+<h3 id="今后每个月来更新一次"><a href="#今后每个月来更新一次" class="headerlink" title="今后每个月来更新一次!"></a>今后每个月来更新一次!</h3>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/08/2015/say-1/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/08/2015/say-1/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -568,57 +574,6 @@ apt-cache search linux-header
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/03/2015/js-client-4/" title="Js学习笔记(4)" itemprop="url">Js学习笔记(4)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-02T16:00:00.000Z" itemprop="datePublished"> 发表于 10-03-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="jQuery的-查询"><a href="#jQuery的-查询" class="headerlink" title="jQuery的$查询"></a>jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
-<h3 id="窗体"><a href="#窗体" class="headerlink" title="窗体"></a>窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
-<h3 id="窗体-口之间的交互"><a href="#窗体-口之间的交互" class="headerlink" title="窗体/口之间的交互"></a>窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'A'</span> <span class="attr">src</span>=<span class="string">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'B'</span> <span class="attr">src</span>=<span class="string">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/03/2015/js-client-4/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/03/2015/js-client-4/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/10/03/2015/js-client-3/" title="Js学习笔记(3)" itemprop="url">Js学习笔记(3)</a>
   </h1>
   <p class="article-author">By
@@ -659,6 +614,57 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
 	
 	  	<span></span>
 		<a href="/10/03/2015/js-client-3/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/03/2015/js-client-3/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/10/03/2015/js-client-4/" title="Js学习笔记(4)" itemprop="url">Js学习笔记(4)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-02T16:00:00.000Z" itemprop="datePublished"> 发表于 10-03-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="jQuery的-查询"><a href="#jQuery的-查询" class="headerlink" title="jQuery的$查询"></a>jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
+<h3 id="窗体"><a href="#窗体" class="headerlink" title="窗体"></a>窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
+<h3 id="窗体-口之间的交互"><a href="#窗体-口之间的交互" class="headerlink" title="窗体/口之间的交互"></a>窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'A'</span> <span class="attr">src</span>=<span class="string">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'B'</span> <span class="attr">src</span>=<span class="string">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/03/2015/js-client-4/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/03/2015/js-client-4/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
