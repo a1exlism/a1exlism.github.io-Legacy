@@ -80,6 +80,57 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/10/03/2015/js-client-4/" title="Js学习笔记(4)" itemprop="url">Js学习笔记(4)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-02T16:00:00.000Z" itemprop="datePublished"> 发表于 10-03-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="jQuery的-查询"><a href="#jQuery的-查询" class="headerlink" title="jQuery的$查询"></a>jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
+<h3 id="窗体"><a href="#窗体" class="headerlink" title="窗体"></a>窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
+<h3 id="窗体-口之间的交互"><a href="#窗体-口之间的交互" class="headerlink" title="窗体/口之间的交互"></a>窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'A'</span> <span class="attr">src</span>=<span class="string">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'B'</span> <span class="attr">src</span>=<span class="string">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/03/2015/js-client-4/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/03/2015/js-client-4/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/10/02/2015/js-client-2/" title="Js学习笔记(2)" itemprop="url">Js学习笔记(2)</a>
   </h1>
   <p class="article-author">By
@@ -660,7 +711,7 @@ X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Device/" style="font-size: 14.29px;">Device</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.86px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.57px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15.71px;">MySQL</a> <a href="/tags/SQLInjection/" style="font-size: 11.43px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 14.29px;">Shell</a> <a href="/tags/XSS/" style="font-size: 12.86px;">XSS</a> <a href="/tags/daily/" style="font-size: 15.71px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 12.86px;">hard</a> <a href="/tags/nexus5x/" style="font-size: 12.86px;">nexus5x</a> <a href="/tags/soft/" style="font-size: 11.43px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 17.14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 11.43px;">闲谈</a>
+       <a href="/tags/Device/" style="font-size: 14.29px;">Device</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.86px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.57px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15.71px;">MySQL</a> <a href="/tags/SQLInjection/" style="font-size: 11.43px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 14.29px;">Shell</a> <a href="/tags/XSS/" style="font-size: 12.86px;">XSS</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/daily/" style="font-size: 15.71px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/exploit/" style="font-size: 10px;">exploit</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 12.86px;">hard</a> <a href="/tags/nexus5x/" style="font-size: 12.86px;">nexus5x</a> <a href="/tags/soft/" style="font-size: 11.43px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 17.14px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 11.43px;">闲谈</a>
     </div>
   </div>
 
@@ -668,7 +719,7 @@ X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 

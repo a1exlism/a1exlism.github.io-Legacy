@@ -4,29 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>XSS平台搭建 | A1exlism</title>
+    <title>lcx_nc_sc in Windows | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="简介平台名为:sleep-puppy  大名鼎鼎的Netflix搞的一个安全项目环境/框架: Flask + Gunicorn + Nginx可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得
-Docker安装DigitalOcean已经打包完了,直接执行命令即可
-123456$ wget -qO- https://get.docker.com/ | sh# 将用户添">
+    <meta name="description" content="端口转发神器 LCXLCX可以进行端口转发
+内网渗透样例Cracker控制的主机A(内外网)开了一个端口映射到Target主机B(仅内网)的3389
+那么如果能访问A的3389端口, 也就是能用A的端口进一步控制内网主机B
+这样就突破了内网IP限制, 如下是一般用法1234# 102&apos;s 3389 转发到 101&apos;s 5000lcx -slave 192.168.1.101 5000 192.16">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XSS平台搭建">
-<meta property="og:url" content="http://csser.work/12/30/2015/xss-xssPlatform/index.html">
+<meta property="og:title" content="lcx_nc_sc in Windows">
+<meta property="og:url" content="http://csser.work/07/19/2016/windows-lcx-nc-sc/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="简介平台名为:sleep-puppy  大名鼎鼎的Netflix搞的一个安全项目环境/框架: Flask + Gunicorn + Nginx可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得
-Docker安装DigitalOcean已经打包完了,直接执行命令即可
-123456$ wget -qO- https://get.docker.com/ | sh# 将用户添">
-<meta property="og:updated_time" content="2016-05-17T15:18:15.896Z">
+<meta property="og:description" content="端口转发神器 LCXLCX可以进行端口转发
+内网渗透样例Cracker控制的主机A(内外网)开了一个端口映射到Target主机B(仅内网)的3389
+那么如果能访问A的3389端口, 也就是能用A的端口进一步控制内网主机B
+这样就突破了内网IP限制, 如下是一般用法1234# 102&apos;s 3389 转发到 101&apos;s 5000lcx -slave 192.168.1.101 5000 192.16">
+<meta property="og:updated_time" content="2016-07-19T18:08:06.215Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XSS平台搭建">
-<meta name="twitter:description" content="简介平台名为:sleep-puppy  大名鼎鼎的Netflix搞的一个安全项目环境/框架: Flask + Gunicorn + Nginx可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得
-Docker安装DigitalOcean已经打包完了,直接执行命令即可
-123456$ wget -qO- https://get.docker.com/ | sh# 将用户添">
+<meta name="twitter:title" content="lcx_nc_sc in Windows">
+<meta name="twitter:description" content="端口转发神器 LCXLCX可以进行端口转发
+内网渗透样例Cracker控制的主机A(内外网)开了一个端口映射到Target主机B(仅内网)的3389
+那么如果能访问A的3389端口, 也就是能用A的端口进一步控制内网主机B
+这样就突破了内网IP限制, 如下是一般用法1234# 102&apos;s 3389 转发到 101&apos;s 5000lcx -slave 192.168.1.101 5000 192.16">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -85,14 +88,14 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/12/30/2015/xss-xssPlatform/" title="XSS平台搭建" itemprop="url">XSS平台搭建</a>
+      <a href="/07/19/2016/windows-lcx-nc-sc/" title="lcx_nc_sc in Windows" itemprop="url">lcx_nc_sc in Windows</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-12-29T16:00:00.000Z" itemprop="datePublished"> 发表于 12-30-2015</time>
+    <time datetime="2016-07-18T16:00:00.000Z" itemprop="datePublished"> 发表于 07-19-2016</time>
     
   </p>
 </header>
@@ -101,25 +104,23 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker安装"><span class="toc-number">2.</span> <span class="toc-text">Docker安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep-puppy安装"><span class="toc-number">3.</span> <span class="toc-text">sleep-puppy安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的API使用"><span class="toc-number">4.</span> <span class="toc-text">简单的API使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#端口转发神器-LCX"><span class="toc-number">1.</span> <span class="toc-text">端口转发神器 LCX</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内网渗透样例"><span class="toc-number">1.1.</span> <span class="toc-text">内网渗透样例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Waiting-…"><span class="toc-number"></span> <span class="toc-text">Waiting ….</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NC"><span class="toc-number">1.</span> <span class="toc-text">NC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SC"><span class="toc-number">2.</span> <span class="toc-text">SC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>平台名为:<code>sleep-puppy</code>  大名鼎鼎的Netflix搞的一个安全项目<br>环境/框架: <code>Flask + Gunicorn + Nginx</code><br>可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得</p>
-<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><p>DigitalOcean已经打包完了,直接执行命令即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br><span class="line"><span class="comment"># 将用户添加至docker用户组</span></span><br><span class="line">$ sudo usermod <span class="_">-a</span>G docker $(whoami)</span><br><span class="line"><span class="comment">#安装 Docker Compose</span></span><br><span class="line">$ sudo apt-get -y install python-pip  <span class="comment">#环境</span></span><br><span class="line">$ sudo pip install docker-compose</span><br></pre></td></tr></table></figure>
-<p>不过发现国内这局域网…换成国内源吧,[daocloud],地址在Reference中</p>
-<h2 id="sleep-puppy安装"><a href="#sleep-puppy安装" class="headerlink" title="sleep-puppy安装"></a>sleep-puppy安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/Netflix/sleepy-puppy-docker</span><br><span class="line">$ docker-machine ls</span><br><span class="line"><span class="comment">#docker-compose.yaml中IP改成自己的公网IP</span></span><br><span class="line">$ <span class="built_in">cd</span> sleepy-puppy-docker &amp;&amp; docker-compose up</span><br></pre></td></tr></table></figure>
-<p>默认账号密码<br>user: admin<br>pass: password<br>//—-PS:大半个月前搭的,具体的坑已经差不多网完了..= =</p>
-<h2 id="简单的API使用"><a href="#简单的API使用" class="headerlink" title="简单的API使用"></a>简单的API使用</h2><p><a href="http://www.tothenew.com/blog/using-sleepy-puppy-a-cross-site-scripting-payload-management-framework/" target="_blank" rel="external">ToTheNewDigital</a></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://github.com/netflix/sleepy-puppy/wiki/setup" target="_blank" rel="external">github_sleep-puppy</a><br><a href="https://docs.docker.com/engine/installation/ubuntulinux/" target="_blank" rel="external">doc.docker</a>&lt;-纯手动安装<br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-14-04" target="_blank" rel="external">digitalocean</a>&lt;-自动安装+基本docker操作<br><a href="https://get.daocloud.io/" target="_blank" rel="external">daocloud</a></p>
+		<h2 id="端口转发神器-LCX"><a href="#端口转发神器-LCX" class="headerlink" title="端口转发神器 LCX"></a>端口转发神器 LCX</h2><p>LCX可以进行端口转发</p>
+<h3 id="内网渗透样例"><a href="#内网渗透样例" class="headerlink" title="内网渗透样例"></a>内网渗透样例</h3><pre><code>Cracker控制的主机A(内外网)开了一个端口映射到Target主机B(仅内网)的3389
+那么如果能访问A的3389端口, 也就是能用A的端口进一步控制内网主机B
+</code></pre><p>这样就突破了内网IP限制, 如下是一般用法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 102's 3389 转发到 101's 5000</span></span><br><span class="line">lcx -slave 192.168.1.101 5000 192.168.1.102 3389</span><br><span class="line"><span class="comment"># 101's 5000 转发到 101's 3389</span></span><br><span class="line">lcx -listen 5000 3389 <span class="comment"># 102.168.1.101</span></span><br></pre></td></tr></table></figure></p>
+<p>通过中介101, 使内网102被黑客控制</p>
+<h1 id="Waiting-…"><a href="#Waiting-…" class="headerlink" title="Waiting …."></a>Waiting ….</h1><h2 id="NC"><a href="#NC" class="headerlink" title="NC"></a>NC</h2><h2 id="SC"><a href="#SC" class="headerlink" title="SC"></a>SC</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.secpulse.com/archives/6341.html" target="_blank" rel="external">LCX端口转发-51CTO</a><br><a href="http://www.oschina.net/translate/linux-netcat-command" target="_blank" rel="external">NetCat-OSChina</a><br><a href="http://man.linuxde.net/nc_netcat" target="_blank" rel="external">nc-linuxde</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/12/30/2015/xss-xssPlatform/" data-title="XSS平台搭建 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/07/19/2016/windows-lcx-nc-sc/" data-title="lcx_nc_sc in Windows | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -132,19 +133,11 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/01/31/2016/life-指南/" title="手表指南方法">
-  <strong>上一篇：</strong><br/>
-  <span>
-  手表指南方法</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/12/21/2015/daily-sql/"  title="sql日常记录">
+<a href="/07/07/2016/dns-soa/"  title="DNS SOA NS记录">
  <strong>下一篇：</strong><br/> 
- <span>sql日常记录
+ <span>DNS SOA NS记录
 </span>
 </a>
 </div>
@@ -153,7 +146,7 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="12/30/2015/xss-xssPlatform/" data-title="XSS平台搭建" data-url="http://csser.work/12/30/2015/xss-xssPlatform/"></div>
+	<div class="ds-thread" data-thread-key="07/19/2016/windows-lcx-nc-sc/" data-title="lcx_nc_sc in Windows" data-url="http://csser.work/07/19/2016/windows-lcx-nc-sc/"></div>
 </section>
 
 
@@ -163,7 +156,7 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker安装"><span class="toc-number">2.</span> <span class="toc-text">Docker安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep-puppy安装"><span class="toc-number">3.</span> <span class="toc-text">sleep-puppy安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的API使用"><span class="toc-number">4.</span> <span class="toc-text">简单的API使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#端口转发神器-LCX"><span class="toc-number">1.</span> <span class="toc-text">端口转发神器 LCX</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内网渗透样例"><span class="toc-number">1.1.</span> <span class="toc-text">内网渗透样例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Waiting-…"><span class="toc-number"></span> <span class="toc-text">Waiting ….</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NC"><span class="toc-number">1.</span> <span class="toc-text">NC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SC"><span class="toc-number">2.</span> <span class="toc-text">SC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
