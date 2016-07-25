@@ -446,7 +446,17 @@
 <h3 id="查询公网IP"><a href="#查询公网IP" class="headerlink" title="查询公网IP"></a>查询公网IP</h3><blockquote>
 <p><a href="http://gaodi2002.blog.51cto.com/" target="_blank" rel="external">高迪</a><br>curl ifconfig.me<br>curl ipinfo.io</p>
 </blockquote>
-<h2 id="System"><a href="#System" class="headerlink" title="System"></a>System</h2><h3 id="Shell转义"><a href="#Shell转义" class="headerlink" title="Shell转义"></a>Shell转义</h3><table>
+<h2 id="System"><a href="#System" class="headerlink" title="System"></a>System</h2><h3 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h3><p>(Ubuntu12.04+?)</p>
+<blockquote>
+<p>sudo service network-manager start/stop/restart    // network Interface, useless</p>
+</blockquote>
+<p>DNS(temporary):</p>
+<pre><code>&gt;sudo vi /etc/resolv.conf
+</code></pre><p>DNS(forever):</p>
+<pre><code>&gt;sudo vi /etc/resolvconf/resolv.conf.d/base
+</code></pre><p>Address,Netmask,Getway:</p>
+<pre><code>&gt;sudo vi /etc/network/interfaces
+</code></pre><h3 id="Shell转义"><a href="#Shell转义" class="headerlink" title="Shell转义"></a>Shell转义</h3><table>
 <thead>
 <tr>
 <th style="text-align:center">字符</th>
@@ -499,7 +509,7 @@
 <h3 id="编译安装源码"><a href="#编译安装源码" class="headerlink" title="编译安装源码"></a>编译安装源码</h3><p>不行则请用root权限调用</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar jxvf file.tar.bz2    /    tar zxvf file.tar.gz</span><br><span class="line"><span class="built_in">cd</span> file</span><br><span class="line">ls <span class="_">-l</span>      <span class="comment">#一般能找到INSTALL或者Doc安装文档</span></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">./configure;make ;make install</span><br><span class="line"><span class="comment"># 有些不需要configure</span></span><br><span class="line">make; make install</span><br></pre></td></tr></table></figure>
 <h3 id="定制安装"><a href="#定制安装" class="headerlink" title="定制安装"></a>定制安装</h3><blockquote>
-<p><a href="http://itlab.idcquan.com/linux/set/39862.html" target="_blank" rel="external">ChinaItLab</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line">./configure --prefix=/opt/softwareFloader</span><br><span class="line">make; make install</span><br><span class="line">--- 有两种方法可以快速调用 ---</span><br><span class="line"><span class="comment"># 1.创建软链接</span></span><br><span class="line">ln <span class="_">-s</span> /opt/softwareFloader/bin/software /usr/bin/software </span><br><span class="line"><span class="comment"># 2.添加环境变量,可参照日常更新1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/softwareFloader/bin</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://itlab.idcquan.com/linux/set/39862.html" target="_blank" rel="external">ChinaItLab</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line">./configure --prefix=/opt/softwareFloader</span><br><span class="line">make; make install</span><br><span class="line">--- 有两种方法可以快速调用 ---</span><br><span class="line"><span class="comment"># 1.创建软链接</span></span><br><span class="line">ln <span class="_">-s</span> /opt/softwareFloader/bin/software /usr/bin/software</span><br><span class="line"><span class="comment"># 2.添加环境变量,可参照日常更新1</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/softwareFloader/bin</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h3 id="theme"><a href="#theme" class="headerlink" title="theme"></a>theme</h3><p>发现了另一个gtk主题<code>Numix</code>, 原来那个是material design的一个主题<code>paper</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:numix/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install numix-gtk-theme numix-icon-theme-cirle</span><br></pre></td></tr></table></figure></p>
 <p>paper可以在<code>github</code>上搜到</p>
@@ -544,7 +554,7 @@
 <p>Preference:<a href="http://blog.csdn.net/longerzone/article/details/12941727" target="_blank" rel="external">CSDN_longerzone</a></p>
 <h3 id="关于硬盘"><a href="#关于硬盘" class="headerlink" title="关于硬盘"></a>关于硬盘</h3><ol>
 <li>Ubuntu自带:<code>baobab</code></li>
-<li>有关分区 <blockquote>
+<li>有关分区<blockquote>
 <p><a href="http://gparted.sourceforge.net/livecd.php" target="_blank" rel="external">sourceforge</a><br>gparted</p>
 </blockquote>
 </li>
