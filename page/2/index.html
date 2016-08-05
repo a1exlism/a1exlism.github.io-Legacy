@@ -253,68 +253,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/05/08/2016/linux-cmd-redirect/" title="Shell 2&gt;&amp;1 Meaning" itemprop="url">Shell 2&gt;&amp;1 Meaning</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-05-07T16:00:00.000Z" itemprop="datePublished"> 发表于 05-08-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
-<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
-<blockquote>
-<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
-</blockquote>
-<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
-<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
-<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
-<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
-</blockquote>
-<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
-<blockquote>
-<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
-</blockquote>
-<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/05/08/2016/linux-cmd-redirect/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/08/2016/linux-cmd-redirect/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/05/08/2016/linux-soft-cheat/" title="Linux佳软推荐_Cheat" itemprop="url">Linux佳软推荐_Cheat</a>
   </h1>
   <p class="article-author">By
@@ -359,6 +297,68 @@
 	
 	  	<span></span>
 		<a href="/05/08/2016/linux-soft-cheat/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/08/2016/linux-soft-cheat/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/05/08/2016/linux-cmd-redirect/" title="Shell 2&gt;&amp;1 Meaning" itemprop="url">Shell 2&gt;&amp;1 Meaning</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-07T16:00:00.000Z" itemprop="datePublished"> 发表于 05-08-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
+<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
+<blockquote>
+<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
+</blockquote>
+<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
+<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
+<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
+<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
+</blockquote>
+<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
+<blockquote>
+<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
+</blockquote>
+<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/05/08/2016/linux-cmd-redirect/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/08/2016/linux-cmd-redirect/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -646,7 +646,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/04/12/2016/js-let/" title="ES6-JS的块级作用域" itemprop="url">ES6-JS的块级作用域</a>
+      <a href="/04/12/2016/js-arrow-func/" title="js_arrow function" itemprop="url">js_arrow function</a>
   </h1>
   <p class="article-author">By
        
@@ -659,20 +659,16 @@
 </header>
     <div class="article-content">
         
-        <h3 id="ES6-js也能和其他语言一样使用块级作用域了"><a href="#ES6-js也能和其他语言一样使用块级作用域了" class="headerlink" title="ES6_js也能和其他语言一样使用块级作用域了~"></a>ES6_js也能和其他语言一样使用块级作用域了~</h3><p>块级作用域: 一对花括号<code>{}</code>括起来的代码域<br>一下子感觉js高级好多,块级作用域和执行域都在了~</p>
-<h3 id="给几个例子-区别一下"><a href="#给几个例子-区别一下" class="headerlink" title="给几个例子,区别一下"></a>给几个例子,区别一下</h3><blockquote>
+        <h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>
+<p>在学习nodejs中看到这么一段代码,想了一下<code>=&gt;</code>就代表了一个<code>匿名函数</code>啊,多简洁!<br>代码示例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http.get(<span class="string">'http://www.google.com/index.html'</span>, (res) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got response: <span class="subst">$&#123;res.statusCode&#125;</span>`</span>);</span><br><span class="line">  <span class="comment">// consume response body</span></span><br><span class="line">  res.resume();</span><br><span class="line">&#125;).on(<span class="string">'error'</span>, (e) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got error: <span class="subst">$&#123;e.message&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="05-18-2016更新"><a href="#05-18-2016更新" class="headerlink" title="05/18/2016更新"></a>05/18/2016更新</h3><p>There are some different in <code>this</code> key word.</p>
 <ol>
-<li>var</li>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints:</span></span><br><span class="line">    <span class="comment">//   a b MyEmitter &#123;</span></span><br><span class="line">    <span class="comment">//     domain: null,</span></span><br><span class="line">    <span class="comment">//     _events: &#123; event: [Function] &#125;,</span></span><br><span class="line">    <span class="comment">//     _eventsCount: 1,</span></span><br><span class="line">    <span class="comment">//     _maxListeners: undefined &#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; num; i++ )&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">//0 1 2 3 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//  5</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<ol>
-<li>let</li>
-</ol>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; num; i++)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">//0 1 2 3 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//  Error: i is not defined</span></span><br></pre></td></tr></table></figure>
-<p>应该很清楚了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, (a, b) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints: a b &#123;&#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
+<p>in Instance2 this-&gt;<code>{}</code></p>
 
         
         
@@ -686,7 +682,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/04/12/2016/js-let/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-let/" data-count-type="comments">&nbsp;</a>
+		<a href="/04/12/2016/js-arrow-func/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-arrow-func/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 

