@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://csser.work/08/05/2016/xss-3/</loc>
+    
+    <lastmod>2016-08-05T16:56:12.194Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/08/05/2016/js-template-strings/</loc>
+    
+    <lastmod>2016-08-05T16:45:52.925Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://csser.work/08/01/2016/x-nuca-writeup/</loc>
     
     <lastmod>2016-08-01T06:30:16.827Z</lastmod>

