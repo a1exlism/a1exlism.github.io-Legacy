@@ -4,32 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Xnuca_Writeup | A1exlism</title>
+    <title>无题 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="跟着老司机学着打的..名次就不提了= =
-BaseInjection万能密码post: username=admin’||1#&amp;amp;password=aaa
-BaseReconstrction重构, payload和BaseInjection相同
-Counting Stars查看备注=&amp;gt; mac备份 .DS_Storehex分析发现一个zip: epLF1rEihQp5AjCUcgGry">
+    <meta name="description" content="main()感觉一年下来感觉又是没什么成就, 有点烦.有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.第二件事情就是和协会老司">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Xnuca_Writeup">
-<meta property="og:url" content="http://csser.work/08/01/2016/x-nuca-writeup/index.html">
+<meta property="og:title" content="无题">
+<meta property="og:url" content="http://csser.work/08/07/2016/say-2/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="跟着老司机学着打的..名次就不提了= =
-BaseInjection万能密码post: username=admin’||1#&amp;amp;password=aaa
-BaseReconstrction重构, payload和BaseInjection相同
-Counting Stars查看备注=&amp;gt; mac备份 .DS_Storehex分析发现一个zip: epLF1rEihQp5AjCUcgGry">
-<meta property="og:updated_time" content="2016-08-01T06:30:16.827Z">
+<meta property="og:description" content="main()感觉一年下来感觉又是没什么成就, 有点烦.有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.第二件事情就是和协会老司">
+<meta property="og:updated_time" content="2016-08-07T05:46:12.764Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xnuca_Writeup">
-<meta name="twitter:description" content="跟着老司机学着打的..名次就不提了= =
-BaseInjection万能密码post: username=admin’||1#&amp;amp;password=aaa
-BaseReconstrction重构, payload和BaseInjection相同
-Counting Stars查看备注=&amp;gt; mac备份 .DS_Storehex分析发现一个zip: epLF1rEihQp5AjCUcgGry">
+<meta name="twitter:title" content="无题">
+<meta name="twitter:description" content="main()感觉一年下来感觉又是没什么成就, 有点烦.有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.第二件事情就是和协会老司">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -88,14 +79,14 @@ Counting Stars查看备注=&amp;gt; mac备份 .DS_Storehex分析发现一个zip:
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/08/01/2016/x-nuca-writeup/" title="Xnuca_Writeup" itemprop="url">Xnuca_Writeup</a>
+      <a href="/08/07/2016/say-2/" title="无题" itemprop="url">无题</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-07-31T16:00:00.000Z" itemprop="datePublished"> 发表于 08-01-2016</time>
+    <time datetime="2016-08-06T16:00:00.000Z" itemprop="datePublished"> 发表于 08-07-2016</time>
     
   </p>
 </header>
@@ -104,41 +95,18 @@ Counting Stars查看备注=&amp;gt; mac备份 .DS_Storehex分析发现一个zip:
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#BaseInjection"><span class="toc-number">1.</span> <span class="toc-text">BaseInjection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BaseReconstrction"><span class="toc-number">2.</span> <span class="toc-text">BaseReconstrction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Counting-Stars"><span class="toc-number">3.</span> <span class="toc-text">Counting Stars</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Invisible"><span class="toc-number">4.</span> <span class="toc-text">Invisible</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Normal-normal"><span class="toc-number">5.</span> <span class="toc-text">Normal_normal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DBexplorer"><span class="toc-number">6.</span> <span class="toc-text">DBexplorer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RotatePicture"><span class="toc-number">7.</span> <span class="toc-text">RotatePicture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AdminLogin"><span class="toc-number">8.</span> <span class="toc-text">AdminLogin</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#main"><span class="toc-number">1.</span> <span class="toc-text">main()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exit"><span class="toc-number">2.</span> <span class="toc-text">exit()</span></a></li></ol>
 		
 		</div>
 		
-		<p>跟着老司机学着打的..名次就不提了= =</p>
-<h3 id="BaseInjection"><a href="#BaseInjection" class="headerlink" title="BaseInjection"></a>BaseInjection</h3><p>万能密码<br>post: username=admin’||1#&amp;password=aaa</p>
-<h3 id="BaseReconstrction"><a href="#BaseReconstrction" class="headerlink" title="BaseReconstrction"></a>BaseReconstrction</h3><p>重构, payload和BaseInjection相同</p>
-<h3 id="Counting-Stars"><a href="#Counting-Stars" class="headerlink" title="Counting Stars"></a>Counting Stars</h3><p>查看备注=&gt; mac备份 .DS_Store<br>hex分析发现一个zip: epLF1rEihQp5AjCUcgGry330jkFSC1C7.zip<br>kali中binwalk跑一下发现如下代码:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$S=<span class="string">"song"</span>;</span><br><span class="line">$song=<span class="string">"says"</span>;</span><br><span class="line">$says=<span class="string">"no"</span>;</span><br><span class="line">$no=<span class="string">"more"</span>;</span><br><span class="line">$more=<span class="string">"d0llars"</span>;</span><br><span class="line">$d0llars=<span class="string">"counting"</span>;</span><br><span class="line">$counting=<span class="string">"star"</span>;</span><br><span class="line">$star=<span class="string">"S"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;div style="text-align:center"&gt;What is $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$S&lt;/div&gt;'</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;div style=<span class="string">"text-align:center"</span>&gt;</span><br><span class="line">&lt;form action=<span class="string">"check.php"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">&lt;input type=<span class="string">"text"</span> name=<span class="string">"answer"</span> value=<span class="string">""</span> /&gt;  </span><br><span class="line">&lt;input type=<span class="string">"submit"</span> value=<span class="string">"submit"</span> /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>这个代码吧里面的$那拉出来echo一下就行了…<br>那么向check.php发个请求包即可(用的postman), post数据为 ‘answser=d0llars’</p>
-<h3 id="Invisible"><a href="#Invisible" class="headerlink" title="Invisible"></a>Invisible</h3><p>添加头<code>X-FORWORDED-FOR</code></p>
-<h3 id="Normal-normal"><a href="#Normal-normal" class="headerlink" title="Normal_normal"></a>Normal_normal</h3><p>phpwind + phpbb 的模板, 两个后台地址: /phpwind/admin.php /admin.php 不知道几个意思..<br>通过发帖人进行社工, 找到:<br>帐号zhangrendao密码zhang2010<br>通过<a href="http://www.wooyun.org/bugs/wooyun-2015-0104256" target="_blank" rel="external">wooyun</a>这篇文章直接getshell<br>不过简单的菜刀连接不能用(token限制)<br>最后通过的是<a href="https://gist.github.com/a1exlism/c303f545a119bfdd36018f86a8f9f6e3" target="_blank" rel="external">目录遍历</a>搞得2333</p>
-<h3 id="DBexplorer"><a href="#DBexplorer" class="headerlink" title="DBexplorer"></a>DBexplorer</h3><p>有了提示才懂233<br>vim的缓存文件.db.php.swp找到phpmyadmin地址和帐号密码<br>username:ctfdb    password:ctfmysql123<br>提示有<code>user.MYD</code>, 然后有个文件读写权限的库test..<br>还有个<code>@@datadir</code>也是学到了, (我还是自己find出来手工测试的地址…)</p>
-<blockquote>
-<p>payload<br>LOAD DATA INFILE ‘/var/lib/mysql/mysql/user.MYD’ INTO TABLE q fields terminated by ‘LINES’ TERMINATED BY ‘\0’</p>
-</blockquote>
-<p>也认识了一些文件读取命令: 大文件LOAD DATA INFILE | Pt-fifo-split 一般文件 | load_file<br>至于load_file为什么不能读user.MYD我也不是很懂了…</p>
-<p>后面就是简单的登录就行了</p>
-<h3 id="RotatePicture"><a href="#RotatePicture" class="headerlink" title="RotatePicture"></a>RotatePicture</h3><p>提示：urlopen file schema<br>相关: SSRF file协议<br>(一开始还想上传漏洞什么的)</p>
-<blockquote>
-<p>file:///etc/passwd #单行显示<br>file:///views.py # 找到了一个地址/getredisvalue</p>
-</blockquote>
-<p>找到了内网端口<code>6379</code>, 通过Python urllib HTTP Header Injection进行内网的rediis攻击<br>Reference: <a href="http://drops.wooyun.org/papers/16905" target="_blank" rel="external">wooyun</a><br><a href="https://security.tencent.com/index.php/blog/msg/106" target="_blank" rel="external">TSRC</a></p>
-<blockquote>
-<p>paylaod<br><a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a><br>set c46fb8d3-6322-42ba-8919-dc4b914714db 123<br>:6379</p>
-</blockquote>
-<p>uuid: c46fb8d3-6322-42ba-8919-dc4b914714db 12345</p>
-<h3 id="AdminLogin"><a href="#AdminLogin" class="headerlink" title="AdminLogin"></a>AdminLogin</h3><p>(这个我想吐槽.. ip到底怎么检测的…)<br>注入地址: <code>/news.php?newsid=1</code> 插件还是ff的hackerbar比较友好..添加一个referer: <code>http://question9.erangelab.com/index.php</code><br>由于可以直接爆库报表爆字段, 那就直接给答案好了(mysql的):<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctfphp</span><br><span class="line">	&gt;admin <span class="comment">; news</span></span><br><span class="line">		&gt;id,name,pass <span class="comment">; id,title,content</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ctfadmin</span><br><span class="line"></span>a<span class="number">2224f</span><span class="number">1b</span>f263d<span class="number">26b</span>ab<span class="number">1994723f</span>7565<span class="built_in">a3</span>(administrat0r)</span><br></pre></td></tr></table></figure></p>
-<p>期间主办方默默的改了ip.. 跪了<br>postman ==&gt; <a href="http://121.195.186.238/xnucactfwebadmin/logincheck.php" target="_blank" rel="external">http://121.195.186.238/xnucactfwebadmin/logincheck.php</a><br>postdata: username, password ,submit<br>加一个header: </p>
-  
+		<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
+<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>  
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/08/01/2016/x-nuca-writeup/" data-title="Xnuca_Writeup | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/08/07/2016/say-2/" data-title="无题 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -151,19 +119,11 @@ Counting Stars查看备注=&amp;gt; mac备份 .DS_Storehex分析发现一个zip:
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/08/05/2016/js-template-strings/" title="ES6 模板字符串&amp;&amp;Xss利用">
-  <strong>上一篇：</strong><br/>
-  <span>
-  ES6 模板字符串&amp;&amp;Xss利用</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/07/19/2016/lcx-nc-sc/"  title="lcx_nc_sc in Windows &amp; Linux">
+<a href="/08/07/2016/xss-4/"  title="xss习题集_2.2">
  <strong>下一篇：</strong><br/> 
- <span>lcx_nc_sc in Windows &amp; Linux
+ <span>xss习题集_2.2
 </span>
 </a>
 </div>
@@ -172,7 +132,7 @@ Counting Stars查看备注=&amp;gt; mac备份 .DS_Storehex分析发现一个zip:
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="08/01/2016/x-nuca-writeup/" data-title="Xnuca_Writeup" data-url="http://csser.work/08/01/2016/x-nuca-writeup/"></div>
+	<div class="ds-thread" data-thread-key="08/07/2016/say-2/" data-title="无题" data-url="http://csser.work/08/07/2016/say-2/"></div>
 </section>
 
 
@@ -182,7 +142,7 @@ Counting Stars查看备注=&amp;gt; mac备份 .DS_Storehex分析发现一个zip:
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#BaseInjection"><span class="toc-number">1.</span> <span class="toc-text">BaseInjection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BaseReconstrction"><span class="toc-number">2.</span> <span class="toc-text">BaseReconstrction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Counting-Stars"><span class="toc-number">3.</span> <span class="toc-text">Counting Stars</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Invisible"><span class="toc-number">4.</span> <span class="toc-text">Invisible</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Normal-normal"><span class="toc-number">5.</span> <span class="toc-text">Normal_normal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DBexplorer"><span class="toc-number">6.</span> <span class="toc-text">DBexplorer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RotatePicture"><span class="toc-number">7.</span> <span class="toc-text">RotatePicture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AdminLogin"><span class="toc-number">8.</span> <span class="toc-text">AdminLogin</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#main"><span class="toc-number">1.</span> <span class="toc-text">main()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exit"><span class="toc-number">2.</span> <span class="toc-text">exit()</span></a></li></ol>
  
   </div>
 
