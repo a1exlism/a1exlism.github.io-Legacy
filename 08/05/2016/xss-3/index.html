@@ -128,7 +128,7 @@ ChallengesLevel-1 &amp;lt;&amp;gt; 过滤
 <p>input = input.replace(/[=(]/g, ‘’);</p>
 </blockquote>
 <ol>
-<li>ES6的新特性可以用 ` 来替换 ( <del>不过这题不行</del><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">prompt.call`this, 1`</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li>ES6的新特性可以用 ` 来替换 ( <del>不过这题不行</del><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript">prompt.call`<span class="keyword">this</span>, <span class="number">1</span>`</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>2.找了半天, 找到了vector<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">prompt&amp;#40;1&amp;#41;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
@@ -205,7 +205,7 @@ ChallengesLevel-1 &amp;lt;&amp;gt; 过滤
 <p><a href="https://en.wikipedia.org/wiki/Newline" target="_blank" rel="external">WikiPedia-Newline</a><br>LF:    Line Feed, U+000A<br>VT:    Vertical Tab, U+000B<br>FF:    Form Feed, U+000C<br>CR:    Carriage Return, U+000D<br>CR+LF: CR (U+000D) followed by LF (U+000A)<br>NEL:   Next Line, U+0085<br>LS:    Line Separator, U+2028<br>PS:    Paragraph Separator, U+2029</p>
 </blockquote>
 <p>用法写在下面了, 运行就懂了, 不过<code>&lt;!--</code> 还是和 <code>--&gt;</code>有点区别的(看1, 4)</p>
-<h4 id="example-1"><a href="#example-1" class="headerlink" title="example"></a>example</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="xml"></span><br><span class="line">//	console.log("</span><br><span class="line">	alert(1)<span class="comment">&lt;!--");</span><br><span class="line">	alert(2)--&gt;</span>alert(3)</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">	//	console.log("</span><br><span class="line">		alert(4)--&gt;")</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 注意两个script标签别放一起 --&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="example-1"><a href="#example-1" class="headerlink" title="example"></a>example</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"></span><br><span class="line">//	console.log("</span><br><span class="line">	alert(1)<span class="comment">&lt;!--");</span><br><span class="line">	alert(2)--&gt;</span>alert(3)</span><br><span class="line"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">	//	console.log("</span><br><span class="line">		alert(4)--&gt;")</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 注意两个script标签别放一起 --&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
   
 	</div>
@@ -227,18 +227,18 @@ ChallengesLevel-1 &amp;lt;&amp;gt; 过滤
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/08/07/2016/js-json-parse/" title="JSON使用注意">
+ <a href="/08/05/2016/js-template-strings/" title="ES6 模板字符串&amp;&amp;Xss利用">
   <strong>上一篇：</strong><br/>
   <span>
-  JSON使用注意</span>
+  ES6 模板字符串&amp;&amp;Xss利用</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/08/05/2016/js-template-strings/"  title="ES6 模板字符串&amp;&amp;Xss利用">
+<a href="/08/01/2016/x-nuca-writeup/"  title="Xnuca_Writeup">
  <strong>下一篇：</strong><br/> 
- <span>ES6 模板字符串&amp;&amp;Xss利用
+ <span>Xnuca_Writeup
 </span>
 </a>
 </div>

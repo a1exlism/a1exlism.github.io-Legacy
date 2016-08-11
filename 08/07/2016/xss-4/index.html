@@ -21,7 +21,7 @@ input.replace(/&amp;lt;([a-zA-Z])/g, ‘">
 <meta property="og:description" content="引还是这个站Prompt(1) to win, 不过是下集, 没想到自己不会这么多, 才会出的下集2333
 ChallengesLevel-9
 input.replace(/&amp;lt;([a-zA-Z])/g, ‘">
-<meta property="og:updated_time" content="2016-08-07T13:15:48.995Z">
+<meta property="og:updated_time" content="2016-08-11T13:28:01.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xss习题集_2.2">
 <meta name="twitter:description" content="引还是这个站Prompt(1) to win, 不过是下集, 没想到自己不会这么多, 才会出的下集2333
@@ -101,7 +101,7 @@ input.replace(/&amp;lt;([a-zA-Z])/g, ‘">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引"><span class="toc-number">1.</span> <span class="toc-text">引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Challenges"><span class="toc-number">2.</span> <span class="toc-text">Challenges</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-9"><span class="toc-number">2.1.</span> <span class="toc-text">Level-9</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#example"><span class="toc-number">2.1.1.</span> <span class="toc-text">example</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-10"><span class="toc-number">2.2.</span> <span class="toc-text">Level -10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-11-DOM内json对象执行限制"><span class="toc-number">2.3.</span> <span class="toc-text">Level-11 DOM内json对象执行限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-12"><span class="toc-number">2.4.</span> <span class="toc-text">Level-12</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引"><span class="toc-number">1.</span> <span class="toc-text">引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Challenges"><span class="toc-number">2.</span> <span class="toc-text">Challenges</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-9"><span class="toc-number">2.1.</span> <span class="toc-text">Level-9</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#example"><span class="toc-number">2.1.1.</span> <span class="toc-text">example</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-10"><span class="toc-number">2.2.</span> <span class="toc-text">Level-10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-11-DOM内json对象执行限制"><span class="toc-number">2.3.</span> <span class="toc-text">Level-11 DOM内json对象执行限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-12-script符号过滤"><span class="toc-number">2.4.</span> <span class="toc-text">Level-12 script符号过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-13"><span class="toc-number">2.5.</span> <span class="toc-text">Level-13</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
@@ -116,7 +116,7 @@ input.replace(/&amp;lt;([a-zA-Z])/g, ‘">
 <p>ß  =&gt; SS<br>ı  =&gt; I<br>ſ  =&gt; S</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.write(<span class="string">'&lt;'</span>+<span class="string">'ß'</span>.toUpperCase()[<span class="number">0</span>]+<span class="string">'cript'</span>+<span class="string">'&gt;'</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="Level-10"><a href="#Level-10" class="headerlink" title="Level -10"></a>Level -10</h3><blockquote>
+<h3 id="Level-10"><a href="#Level-10" class="headerlink" title="Level-10"></a>Level-10</h3><blockquote>
 <p>encodeURIComponent(input).replace(/prompt/g, ‘alert’);<br>input.replace(/‘/g, ‘’);</p>
 </blockquote>
 <p>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">promp<span class="string">'t(1)</span></span><br></pre></td></tr></table></figure></p>
@@ -137,7 +137,15 @@ input.replace(/&amp;lt;([a-zA-Z])/g, ‘">
 </blockquote>
 <p>Operator合集: <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators" target="_blank" rel="external">MDN-oprators</a></p>
 <p>看到后面我才知道这题正则什么意思, <code>过滤一切符号类型的operator</code>. 然后从character中考虑就是in, instanceof .etc了</p>
-<h3 id="Level-12"><a href="#Level-12" class="headerlink" title="Level-12"></a>Level-12</h3><p>有点累了, 好多知识点不会, 明天搞定收工</p>
+<h3 id="Level-12-script符号过滤"><a href="#Level-12-script符号过滤" class="headerlink" title="Level-12 script符号过滤"></a>Level-12 script符号过滤</h3><blockquote>
+<p>input = encodeURIComponent(input).replace(/‘/g, ‘’);<br>input = input.replace(/prompt/g, ‘alert’);</p>
+</blockquote>
+<p>和第10题类似, 不过屏蔽了<code>/</code>,<code>=</code>,<code>?</code>,<code>\s</code>, <code>,</code>, <code>+</code>等能想到的一些符号, 不过没有过滤<code>.</code>这个属性引用, 所以可以进行如下的构造</p>
+<p>Vector:(虽然做出来了.不过很长)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(</span><br><span class="line">	<span class="built_in">String</span>.fromCharCode(<span class="number">112</span>)</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">114</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">111</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">109</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">112</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">116</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">40</span>))</span><br><span class="line">		.concat(<span class="number">1</span>)</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">41</span>))</span><br><span class="line">)<span class="comment">//需要去掉\s</span></span><br></pre></td></tr></table></figure></p>
+<p>不过答案还用了<code>toString()</code>,比较灵活~<br>vector2:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(</span><br><span class="line">	(<span class="number">1558153217</span>).toString(<span class="number">36</span>)  <span class="comment">//数字可以通过 parseInt('prompt', 36) 获得</span></span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">40</span>))</span><br><span class="line">		.concat(<span class="number">1</span>)</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">41</span>))</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>也是给我了一个提醒, 想起来以前密码学学的一个toString()和parseInt()的进制转化了.<br>嗯, github还有个改进版本<br>vector3:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>((<span class="number">1558153217</span>).toString(<span class="number">36</span>))(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>eval这个函数感觉像是没来过一样.完全不影响后续输出</p>
+<h3 id="Level-13"><a href="#Level-13" class="headerlink" title="Level-13"></a>Level-13</h3><p>&gt;</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
   
 	</div>
@@ -158,19 +166,11 @@ input.replace(/&amp;lt;([a-zA-Z])/g, ‘">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/08/07/2016/say-2/" title="无题">
-  <strong>上一篇：</strong><br/>
-  <span>
-  无题</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/08/07/2016/js-json-parse/"  title="JSON使用注意">
+<a href="/08/07/2016/say-2/"  title="无题">
  <strong>下一篇：</strong><br/> 
- <span>JSON使用注意
+ <span>无题
 </span>
 </a>
 </div>
@@ -189,7 +189,7 @@ input.replace(/&amp;lt;([a-zA-Z])/g, ‘">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引"><span class="toc-number">1.</span> <span class="toc-text">引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Challenges"><span class="toc-number">2.</span> <span class="toc-text">Challenges</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-9"><span class="toc-number">2.1.</span> <span class="toc-text">Level-9</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#example"><span class="toc-number">2.1.1.</span> <span class="toc-text">example</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-10"><span class="toc-number">2.2.</span> <span class="toc-text">Level -10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-11-DOM内json对象执行限制"><span class="toc-number">2.3.</span> <span class="toc-text">Level-11 DOM内json对象执行限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-12"><span class="toc-number">2.4.</span> <span class="toc-text">Level-12</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引"><span class="toc-number">1.</span> <span class="toc-text">引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Challenges"><span class="toc-number">2.</span> <span class="toc-text">Challenges</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-9"><span class="toc-number">2.1.</span> <span class="toc-text">Level-9</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#example"><span class="toc-number">2.1.1.</span> <span class="toc-text">example</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-10"><span class="toc-number">2.2.</span> <span class="toc-text">Level-10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-11-DOM内json对象执行限制"><span class="toc-number">2.3.</span> <span class="toc-text">Level-11 DOM内json对象执行限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-12-script符号过滤"><span class="toc-number">2.4.</span> <span class="toc-text">Level-12 script符号过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-13"><span class="toc-number">2.5.</span> <span class="toc-text">Level-13</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 

@@ -245,62 +245,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/04/12/2016/js-arrow-func/" title="js_arrow function" itemprop="url">js_arrow function</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>
-<p>在学习nodejs中看到这么一段代码,想了一下<code>=&gt;</code>就代表了一个<code>匿名函数</code>啊,多简洁!<br>代码示例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http.get(<span class="string">'http://www.google.com/index.html'</span>, (res) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got response: <span class="subst">$&#123;res.statusCode&#125;</span>`</span>);</span><br><span class="line">  <span class="comment">// consume response body</span></span><br><span class="line">  res.resume();</span><br><span class="line">&#125;).on(<span class="string">'error'</span>, (e) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got error: <span class="subst">$&#123;e.message&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h3 id="05-18-2016更新"><a href="#05-18-2016更新" class="headerlink" title="05/18/2016更新"></a>05/18/2016更新</h3><p>There are some different in <code>this</code> key word.</p>
-<ol>
-<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints:</span></span><br><span class="line">    <span class="comment">//   a b MyEmitter &#123;</span></span><br><span class="line">    <span class="comment">//     domain: null,</span></span><br><span class="line">    <span class="comment">//     _events: &#123; event: [Function] &#125;,</span></span><br><span class="line">    <span class="comment">//     _eventsCount: 1,</span></span><br><span class="line">    <span class="comment">//     _maxListeners: undefined &#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, (a, b) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints: a b &#123;&#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
-<p>in Instance2 this-&gt;<code>{}</code></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/04/12/2016/js-arrow-func/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-arrow-func/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/04/12/2016/js-let/" title="ES6-JS的块级作用域" itemprop="url">ES6-JS的块级作用域</a>
   </h1>
   <p class="article-author">By
@@ -342,6 +286,62 @@
 	
 	  	<span></span>
 		<a href="/04/12/2016/js-let/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-let/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/04/12/2016/js-arrow-func/" title="js_arrow function" itemprop="url">js_arrow function</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>
+<p>在学习nodejs中看到这么一段代码,想了一下<code>=&gt;</code>就代表了一个<code>匿名函数</code>啊,多简洁!<br>代码示例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http.get(<span class="string">'http://www.google.com/index.html'</span>, (res) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got response: <span class="subst">$&#123;res.statusCode&#125;</span>`</span>);</span><br><span class="line">  <span class="comment">// consume response body</span></span><br><span class="line">  res.resume();</span><br><span class="line">&#125;).on(<span class="string">'error'</span>, (e) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got error: <span class="subst">$&#123;e.message&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="05-18-2016更新"><a href="#05-18-2016更新" class="headerlink" title="05/18/2016更新"></a>05/18/2016更新</h3><p>There are some different in <code>this</code> key word.</p>
+<ol>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints:</span></span><br><span class="line">    <span class="comment">//   a b MyEmitter &#123;</span></span><br><span class="line">    <span class="comment">//     domain: null,</span></span><br><span class="line">    <span class="comment">//     _events: &#123; event: [Function] &#125;,</span></span><br><span class="line">    <span class="comment">//     _eventsCount: 1,</span></span><br><span class="line">    <span class="comment">//     _maxListeners: undefined &#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, (a, b) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints: a b &#123;&#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
+<p>in Instance2 this-&gt;<code>{}</code></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/04/12/2016/js-arrow-func/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-arrow-func/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
