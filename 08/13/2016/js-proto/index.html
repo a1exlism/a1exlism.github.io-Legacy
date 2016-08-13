@@ -4,29 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>原理上理解js的asynchronous(简) | A1exlism</title>
+    <title>Object__proto__ | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="–看了JavaScript异步编程, 一直没看懂异步的原理, 找了segmentfault才知道是怎么一回事.
-example_112345var obj = &amp;#123;&amp;#125;;setTimeout(() =&amp;gt; &amp;#123;	console.log(obj);&amp;#125;, 0);obj.foo = &apos;bar&apos;;
-这里会输出Object {foo: &amp;quot;bar&amp;quot;}">
+    <meta name="description" content="defined还是从做xss题目中学到的使用姿势, 概念还是很简单的
+main()代码:123456789var a = &amp;#123;  &quot;source&quot; : &quot;I am defined.&quot;,  &quot;__proto__&quot; : &amp;#123;    &quot;source&quot; : &quot;I have been redefined!&quot;  &amp;#125;&amp;#125;;a.source; //I am defined.del">
 <meta property="og:type" content="article">
-<meta property="og:title" content="原理上理解js的asynchronous(简)">
-<meta property="og:url" content="http://csser.work/05/31/2016/js-asynchronous/index.html">
+<meta property="og:title" content="Object__proto__">
+<meta property="og:url" content="http://csser.work/08/13/2016/js-proto/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="–看了JavaScript异步编程, 一直没看懂异步的原理, 找了segmentfault才知道是怎么一回事.
-example_112345var obj = &amp;#123;&amp;#125;;setTimeout(() =&amp;gt; &amp;#123;	console.log(obj);&amp;#125;, 0);obj.foo = &apos;bar&apos;;
-这里会输出Object {foo: &amp;quot;bar&amp;quot;}">
-<meta property="og:updated_time" content="2016-06-23T05:24:24.045Z">
+<meta property="og:description" content="defined还是从做xss题目中学到的使用姿势, 概念还是很简单的
+main()代码:123456789var a = &amp;#123;  &quot;source&quot; : &quot;I am defined.&quot;,  &quot;__proto__&quot; : &amp;#123;    &quot;source&quot; : &quot;I have been redefined!&quot;  &amp;#125;&amp;#125;;a.source; //I am defined.del">
+<meta property="og:updated_time" content="2016-08-13T13:31:33.003Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="原理上理解js的asynchronous(简)">
-<meta name="twitter:description" content="–看了JavaScript异步编程, 一直没看懂异步的原理, 找了segmentfault才知道是怎么一回事.
-example_112345var obj = &amp;#123;&amp;#125;;setTimeout(() =&amp;gt; &amp;#123;	console.log(obj);&amp;#125;, 0);obj.foo = &apos;bar&apos;;
-这里会输出Object {foo: &amp;quot;bar&amp;quot;}">
+<meta name="twitter:title" content="Object__proto__">
+<meta name="twitter:description" content="defined还是从做xss题目中学到的使用姿势, 概念还是很简单的
+main()代码:123456789var a = &amp;#123;  &quot;source&quot; : &quot;I am defined.&quot;,  &quot;__proto__&quot; : &amp;#123;    &quot;source&quot; : &quot;I have been redefined!&quot;  &amp;#125;&amp;#125;;a.source; //I am defined.del">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -85,14 +82,14 @@ example_112345var obj = &amp;#123;&amp;#125;;setTimeout(() =&amp;gt; &amp;#123;	
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/05/31/2016/js-asynchronous/" title="原理上理解js的asynchronous(简)" itemprop="url">原理上理解js的asynchronous(简)</a>
+      <a href="/08/13/2016/js-proto/" title="Object__proto__" itemprop="url">Object__proto__</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-05-30T16:00:00.000Z" itemprop="datePublished"> 发表于 05-31-2016</time>
+    <time datetime="2016-08-12T16:00:00.000Z" itemprop="datePublished"> 发表于 08-13-2016</time>
     
   </p>
 </header>
@@ -101,30 +98,22 @@ example_112345var obj = &amp;#123;&amp;#125;;setTimeout(() =&amp;gt; &amp;#123;	
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#–"><span class="toc-number">1.</span> <span class="toc-text">–</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">2.</span> <span class="toc-text">Reference</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#main"><span class="toc-number">2.</span> <span class="toc-text">main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原理"><span class="toc-number">2.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xss应用"><span class="toc-number">2.2.</span> <span class="toc-text">xss应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="–"><a href="#–" class="headerlink" title="–"></a>–</h2><p>看了JavaScript异步编程, 一直没看懂异步的原理, 找了segmentfault才知道是怎么一回事.</p>
-<p><strong>example_1</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(obj);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line">obj.foo = <span class="string">'bar'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>这里会输出<code>Object {foo: &quot;bar&quot;}</code></p>
-<p>首先需要了解setTimeout(func, time)是一个<code>异步</code>执行函数, func在这里面就会被<code>回调</code>(简单来说就是被调用), 它先将func放入一个<code>event queue</code>, 之后等外面的函数加载完之后, 它就开始检查event栈中内容,并依次执行.</p>
-<p>再一个例子:</p>
-<p><strong>example_2</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.foo = <span class="string">'bar'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'log_1: '</span> + <span class="built_in">JSON</span>.stringify(obj));</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'log_2: '</span> + <span class="built_in">JSON</span>.stringify(obj));</span><br><span class="line">  <span class="comment">//  多了 bar:foo</span></span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line">obj.bar = <span class="string">'foo'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>这个例子的两个log就解释了前面的那段话了</p>
-<p>如果看了前面两个例子懂了<code>异步回调</code>的话, 再了解一下块级作用域和js作用域(&lt;=ES5)的, 后面两个的区别就很好理解了</p>
-<p><strong>example_3</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">  setTimeout(() =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>这些匿名函数都加入了event queue但是var的原因,i从头到尾用的都是同一个内存,所以回调之后的i都变成了4</p>
-<p><strong>example_4</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">  setTimeout(() =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p><code>let</code>关键词是ES6的特性,使js拥有块级作用域,然后就是一个简单匿名函数的传值调用啦</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://segmentfault.com/a/1190000003961547" target="_blank" rel="external">同步与异步、异步与回调-苹果小萝卜</a></p>
+		<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>还是从做xss题目中学到的使用姿势, 概念还是很简单的</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p><br><br><br><br><br>代码:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  <span class="string">"source"</span> : <span class="string">"I am defined."</span>,</span><br><span class="line">  <span class="string">"__proto__"</span> : &#123;</span><br><span class="line">    <span class="string">"source"</span> : <span class="string">"I have been redefined!"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">a.source; <span class="comment">//I am defined.</span></span><br><span class="line"><span class="keyword">delete</span> a.source;</span><br><span class="line">a.source; <span class="comment">//I have been redefined!</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><code>原型规则</code>, 优先查找自己属性, 然后找爸爸.</p>
+<h3 id="xss应用"><a href="#xss应用" class="headerlink" title="xss应用"></a>xss应用</h3><p>环境比较叼钻了, 匹配规则导致原有的属性被删掉, 但是可以利用<code>__proto</code>来进行一个重定义来达到目的<br>可以访问这个来测试一下:<a href="http://prompt.ml/13" target="_blank" rel="external">prompt-13</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto" target="_blank" rel="external">MDN-__proto__</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/05/31/2016/js-asynchronous/" data-title="原理上理解js的asynchronous(简) | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/08/13/2016/js-proto/" data-title="Object__proto__ | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -137,19 +126,11 @@ example_112345var obj = &amp;#123;&amp;#125;;setTimeout(() =&amp;gt; &amp;#123;	
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/07/02/2016/mysql-binlog/" title="mysql命令打错回退">
-  <strong>上一篇：</strong><br/>
-  <span>
-  mysql命令打错回退</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/05/17/2016/say-new-domain/"  title="更换域名了">
+<a href="/08/07/2016/xss-4/"  title="xss习题集_2.2">
  <strong>下一篇：</strong><br/> 
- <span>更换域名了
+ <span>xss习题集_2.2
 </span>
 </a>
 </div>
@@ -158,7 +139,7 @@ example_112345var obj = &amp;#123;&amp;#125;;setTimeout(() =&amp;gt; &amp;#123;	
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="05/31/2016/js-asynchronous/" data-title="原理上理解js的asynchronous(简)" data-url="http://csser.work/05/31/2016/js-asynchronous/"></div>
+	<div class="ds-thread" data-thread-key="08/13/2016/js-proto/" data-title="Object__proto__" data-url="http://csser.work/08/13/2016/js-proto/"></div>
 </section>
 
 
@@ -168,7 +149,7 @@ example_112345var obj = &amp;#123;&amp;#125;;setTimeout(() =&amp;gt; &amp;#123;	
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#–"><span class="toc-number">1.</span> <span class="toc-text">–</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">2.</span> <span class="toc-text">Reference</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#main"><span class="toc-number">2.</span> <span class="toc-text">main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原理"><span class="toc-number">2.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xss应用"><span class="toc-number">2.2.</span> <span class="toc-text">xss应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 

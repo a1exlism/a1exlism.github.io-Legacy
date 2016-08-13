@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://csser.work/08/07/2016/js-json-parse/</loc>
+    <loc>http://csser.work/08/07/2016/xss-4/</loc>
     
-    <lastmod>2016-08-11T15:01:25.902Z</lastmod>
+    <lastmod>2016-08-13T17:33:54.085Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://csser.work/08/07/2016/xss-4/</loc>
+    <loc>http://csser.work/08/13/2016/js-proto/</loc>
     
-    <lastmod>2016-08-11T13:28:01.183Z</lastmod>
+    <lastmod>2016-08-13T13:31:33.003Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/08/07/2016/js-json-parse/</loc>
+    
+    <lastmod>2016-08-11T15:01:25.902Z</lastmod>
     
   </url>
   

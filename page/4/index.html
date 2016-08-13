@@ -80,6 +80,67 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/03/20/2016/linux-ubuntu-chrome/" title="ubuntu chrome cpu25%" itemprop="url">ubuntu chrome cpu25%</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-19T16:00:00.000Z" itemprop="datePublished"> 发表于 03-20-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Description:  Ubuntu 15.04 vivid<br>Chrome Version: 50.0.2661.26 beta x64</p>
+<h2 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h2><p>开启Chrome之后,风扇开始转,monitor看到<code>gnome-keyring-daemon</code>cpu占用达到阈值</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>搜索了一下发现是chrome对gnome-keyring-daemon的调用太多,但ubuntu默认的memlock应该在1M以内,<br>所以造成无法写入并一直尝试写入而导致的cpu占用.</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>永久关闭keyring服务(鉴于ubuntu恶心的包依赖)之后重启</p>
+<blockquote>
+<p>sudo chmod -x /usr/bin/gnome-keyring</p>
+</blockquote>
+<h2 id="后遗症"><a href="#后遗症" class="headerlink" title="后遗症"></a>后遗症</h2><p>发现开启多个tab之后风扇依然呼呼转,但是cpu使用率却在5%以下,这个就不知道怎么解决了..</p>
+<h2 id="弯路"><a href="#弯路" class="headerlink" title="弯路"></a>弯路</h2><p>根据reference2通过修改<code>/etc/security/limits.conf</code>将memlock提高至10000<br>重启之后更要命,磁盘一直以10M/s的速度在进行写入,自己也不不清楚,所以重新恢复原样</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>阅读顺序:</p>
+<ol>
+<li><a href="https://productforums.google.com/forum/#!topic/chrome/0nLjeCisf1A" target="_blank" rel="external">Chrome-help-forum</a></li>
+<li><a href="http://stackoverflow.com/questions/34588/how-do-i-change-the-number-of-open-files-limit-in-linux" target="_blank" rel="external">Linux-limit</a></li>
+<li><a href="http://askubuntu.com/questions/3045/how-to-disable-gnome-keyring" target="_blank" rel="external">How to disable GNOME keyring</a></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/03/20/2016/linux-ubuntu-chrome/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/20/2016/linux-ubuntu-chrome/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/03/19/2016/device-nexus-flashing/" title="Nexus 5x解锁+第三方" itemprop="url">Nexus 5x解锁+第三方</a>
   </h1>
   <p class="article-author">By
@@ -947,6 +1008,59 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/01/31/2016/life-指南/" title="手表指南方法" itemprop="url">手表指南方法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>看小学生杀手的时候发现几个指南方法，记一下</p>
+<h2 id="借助太阳指向"><a href="#借助太阳指向" class="headerlink" title="借助太阳指向"></a>借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
+<p>###原理<br>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
+<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
+<h2 id="立杆测影-指东针"><a href="#立杆测影-指东针" class="headerlink" title="立杆测影-指东针"></a>立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
+<h3 id="日晷原理"><a href="#日晷原理" class="headerlink" title="日晷原理"></a>日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/01/31/2016/life-指南/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/life-指南/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/01/31/2016/daily-linux-1/" title="linux日常更新-01" itemprop="url">linux日常更新-01</a>
   </h1>
   <p class="article-author">By
@@ -1099,113 +1213,6 @@ tar -czvf -g zeng aa.tar.gz.1 /var
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/01/31/2016/life-指南/" title="手表指南方法" itemprop="url">手表指南方法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>看小学生杀手的时候发现几个指南方法，记一下</p>
-<h2 id="借助太阳指向"><a href="#借助太阳指向" class="headerlink" title="借助太阳指向"></a>借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
-<p>###原理<br>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
-<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
-<h2 id="立杆测影-指东针"><a href="#立杆测影-指东针" class="headerlink" title="立杆测影-指东针"></a>立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
-<h3 id="日晷原理"><a href="#日晷原理" class="headerlink" title="日晷原理"></a>日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/01/31/2016/life-指南/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2016/life-指南/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/12/30/2015/xss-xssPlatform/" title="XSS平台搭建" itemprop="url">XSS平台搭建</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2015-12-29T16:00:00.000Z" itemprop="datePublished"> 发表于 12-30-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>平台名为:<code>sleep-puppy</code>  大名鼎鼎的Netflix搞的一个安全项目<br>环境/框架: <code>Flask + Gunicorn + Nginx</code><br>可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得</p>
-<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><p>DigitalOcean已经打包完了,直接执行命令即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br><span class="line"><span class="comment"># 将用户添加至docker用户组</span></span><br><span class="line">$ sudo usermod <span class="_">-a</span>G docker $(whoami)</span><br><span class="line"><span class="comment">#安装 Docker Compose</span></span><br><span class="line">$ sudo apt-get -y install python-pip  <span class="comment">#环境</span></span><br><span class="line">$ sudo pip install docker-compose</span><br></pre></td></tr></table></figure>
-<p>不过发现国内这局域网…换成国内源吧,[daocloud],地址在Reference中</p>
-<h2 id="sleep-puppy安装"><a href="#sleep-puppy安装" class="headerlink" title="sleep-puppy安装"></a>sleep-puppy安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/Netflix/sleepy-puppy-docker</span><br><span class="line">$ docker-machine ls</span><br><span class="line"><span class="comment">#docker-compose.yaml中IP改成自己的公网IP</span></span><br><span class="line">$ <span class="built_in">cd</span> sleepy-puppy-docker &amp;&amp; docker-compose up</span><br></pre></td></tr></table></figure>
-<p>默认账号密码<br>user: admin<br>pass: password<br>//—-PS:大半个月前搭的,具体的坑已经差不多网完了..= =</p>
-<h2 id="简单的API使用"><a href="#简单的API使用" class="headerlink" title="简单的API使用"></a>简单的API使用</h2><p><a href="http://www.tothenew.com/blog/using-sleepy-puppy-a-cross-site-scripting-payload-management-framework/" target="_blank" rel="external">ToTheNewDigital</a></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://github.com/netflix/sleepy-puppy/wiki/setup" target="_blank" rel="external">github_sleep-puppy</a><br><a href="https://docs.docker.com/engine/installation/ubuntulinux/" target="_blank" rel="external">doc.docker</a>&lt;-纯手动安装<br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-14-04" target="_blank" rel="external">digitalocean</a>&lt;-自动安装+基本docker操作<br><a href="https://get.daocloud.io/" target="_blank" rel="external">daocloud</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/12/30/2015/xss-xssPlatform/#comments" class="ds-thread-count comments-count-link" data-thread-key="12/30/2015/xss-xssPlatform/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next<span></span></a>
@@ -1230,7 +1237,7 @@ tar -czvf -g zeng aa.tar.gz.1 /var
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
