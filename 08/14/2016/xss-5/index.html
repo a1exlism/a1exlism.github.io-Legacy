@@ -4,29 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>XSS平台搭建 | A1exlism</title>
+    <title>xss习题集_3 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="简介平台名为:sleep-puppy  大名鼎鼎的Netflix搞的一个安全项目环境/框架: Flask + Gunicorn + Nginx可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得
-Docker安装DigitalOcean已经打包完了,直接执行命令即可
-123456$ wget -qO- https://get.docker.com/ | sh# 将用户添">
+    <meta name="description" content="defined从prompt(1)转去的alert(1)
+ChallengesLevel-2 “ \转义JSON.stringify() 双引号, 反斜线, 换行均被转义思路很明确就是闭合”或者&amp;lt;&amp;gt;这题需要了解浏览器对标签的解析吧.. 编辑器开个解析尝试写写看..vector:1&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;alert(1)//
+构造完之后就是:1&amp;lt;scri">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XSS平台搭建">
-<meta property="og:url" content="http://csser.work/12/30/2015/xss-xssPlatform/index.html">
+<meta property="og:title" content="xss习题集_3">
+<meta property="og:url" content="http://csser.work/08/14/2016/xss-5/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="简介平台名为:sleep-puppy  大名鼎鼎的Netflix搞的一个安全项目环境/框架: Flask + Gunicorn + Nginx可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得
-Docker安装DigitalOcean已经打包完了,直接执行命令即可
-123456$ wget -qO- https://get.docker.com/ | sh# 将用户添">
-<meta property="og:updated_time" content="2016-05-17T15:18:15.896Z">
+<meta property="og:description" content="defined从prompt(1)转去的alert(1)
+ChallengesLevel-2 “ \转义JSON.stringify() 双引号, 反斜线, 换行均被转义思路很明确就是闭合”或者&amp;lt;&amp;gt;这题需要了解浏览器对标签的解析吧.. 编辑器开个解析尝试写写看..vector:1&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;alert(1)//
+构造完之后就是:1&amp;lt;scri">
+<meta property="og:updated_time" content="2016-08-14T14:51:46.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XSS平台搭建">
-<meta name="twitter:description" content="简介平台名为:sleep-puppy  大名鼎鼎的Netflix搞的一个安全项目环境/框架: Flask + Gunicorn + Nginx可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得
-Docker安装DigitalOcean已经打包完了,直接执行命令即可
-123456$ wget -qO- https://get.docker.com/ | sh# 将用户添">
+<meta name="twitter:title" content="xss习题集_3">
+<meta name="twitter:description" content="defined从prompt(1)转去的alert(1)
+ChallengesLevel-2 “ \转义JSON.stringify() 双引号, 反斜线, 换行均被转义思路很明确就是闭合”或者&amp;lt;&amp;gt;这题需要了解浏览器对标签的解析吧.. 编辑器开个解析尝试写写看..vector:1&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;alert(1)//
+构造完之后就是:1&amp;lt;scri">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -85,14 +85,14 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/12/30/2015/xss-xssPlatform/" title="XSS平台搭建" itemprop="url">XSS平台搭建</a>
+      <a href="/08/14/2016/xss-5/" title="xss习题集_3" itemprop="url">xss习题集_3</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-12-29T16:00:00.000Z" itemprop="datePublished"> 发表于 12-30-2015</time>
+    <time datetime="2016-08-13T16:00:00.000Z" itemprop="datePublished"> 发表于 08-14-2016</time>
     
   </p>
 </header>
@@ -101,25 +101,22 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker安装"><span class="toc-number">2.</span> <span class="toc-text">Docker安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep-puppy安装"><span class="toc-number">3.</span> <span class="toc-text">sleep-puppy安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的API使用"><span class="toc-number">4.</span> <span class="toc-text">简单的API使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Challenges"><span class="toc-number">2.</span> <span class="toc-text">Challenges</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-2-“-转义"><span class="toc-number">2.1.</span> <span class="toc-text">Level-2 “ \转义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-3"><span class="toc-number">2.2.</span> <span class="toc-text">Level-3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>平台名为:<code>sleep-puppy</code>  大名鼎鼎的Netflix搞的一个安全项目<br>环境/框架: <code>Flask + Gunicorn + Nginx</code><br>可以选择docker镜像包安装,还是歪果仁会玩,正好见识一下docker怎么搞得</p>
-<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><p>DigitalOcean已经打包完了,直接执行命令即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br><span class="line"><span class="comment"># 将用户添加至docker用户组</span></span><br><span class="line">$ sudo usermod <span class="_">-a</span>G docker $(whoami)</span><br><span class="line"><span class="comment">#安装 Docker Compose</span></span><br><span class="line">$ sudo apt-get -y install python-pip  <span class="comment">#环境</span></span><br><span class="line">$ sudo pip install docker-compose</span><br></pre></td></tr></table></figure>
-<p>不过发现国内这局域网…换成国内源吧,[daocloud],地址在Reference中</p>
-<h2 id="sleep-puppy安装"><a href="#sleep-puppy安装" class="headerlink" title="sleep-puppy安装"></a>sleep-puppy安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/Netflix/sleepy-puppy-docker</span><br><span class="line">$ docker-machine ls</span><br><span class="line"><span class="comment">#docker-compose.yaml中IP改成自己的公网IP</span></span><br><span class="line">$ <span class="built_in">cd</span> sleepy-puppy-docker &amp;&amp; docker-compose up</span><br></pre></td></tr></table></figure>
-<p>默认账号密码<br>user: admin<br>pass: password<br>//—-PS:大半个月前搭的,具体的坑已经差不多网完了..= =</p>
-<h2 id="简单的API使用"><a href="#简单的API使用" class="headerlink" title="简单的API使用"></a>简单的API使用</h2><p><a href="http://www.tothenew.com/blog/using-sleepy-puppy-a-cross-site-scripting-payload-management-framework/" target="_blank" rel="external">ToTheNewDigital</a></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://github.com/netflix/sleepy-puppy/wiki/setup" target="_blank" rel="external">github_sleep-puppy</a><br><a href="https://docs.docker.com/engine/installation/ubuntulinux/" target="_blank" rel="external">doc.docker</a>&lt;-纯手动安装<br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-14-04" target="_blank" rel="external">digitalocean</a>&lt;-自动安装+基本docker操作<br><a href="https://get.daocloud.io/" target="_blank" rel="external">daocloud</a></p>
+		<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>从prompt(1)转去的<a href="http://escape.alf.nu/" target="_blank" rel="external">alert(1)</a></p>
+<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><h3 id="Level-2-“-转义"><a href="#Level-2-“-转义" class="headerlink" title="Level-2 “ \转义"></a>Level-2 “ \转义</h3><p>JSON.stringify() 双引号, 反斜线, 换行均被转义<br>思路很明确就是闭合”或者&lt;><br>这题需要了解浏览器对标签的解析吧.. 编辑器开个解析尝试写写看..<br>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="regexp">/script&gt;&lt;script&gt;alert(1)/</span><span class="regexp">/</span></span><br></pre></td></tr></table></figure></p>
+<p>构造完之后就是:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">console</span>.log(<span class="string">"</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="number">1</span>)<span class="comment">//");</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在log里面的<code>&lt;/script&gt;</code>提前闭合了前面的script, 后面用注释绕过引号.这样题目的限制根本没有用到~<br>(测试了一下其他类型的标签没有这种问题)</p>
+<h3 id="Level-3"><a href="#Level-3" class="headerlink" title="Level-3"></a>Level-3</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://escape.alf.nu/" target="_blank" rel="external">alert(1)</a><br><a href="http://www.pwntester.com/blog/2014/01/06/escape-alf-nu-xss-challenges-write-ups-part-148/" target="_blank" rel="external">pwntester-wp-1</a><br><a href="http://www.pwntester.com/blog/2014/01/08/escape-alf-nu-xss-challenges-write-ups-part-257/" target="_blank" rel="external">pwntester-wp-2</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/12/30/2015/xss-xssPlatform/" data-title="XSS平台搭建 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/08/14/2016/xss-5/" data-title="xss习题集_3 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -132,19 +129,11 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/01/31/2016/daily-linux-1/" title="linux日常更新-01">
-  <strong>上一篇：</strong><br/>
-  <span>
-  linux日常更新-01</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/12/21/2015/daily-sql/"  title="sql日常记录">
+<a href="/08/13/2016/js-proto/"  title="Object__proto__">
  <strong>下一篇：</strong><br/> 
- <span>sql日常记录
+ <span>Object__proto__
 </span>
 </a>
 </div>
@@ -153,7 +142,7 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="12/30/2015/xss-xssPlatform/" data-title="XSS平台搭建" data-url="http://csser.work/12/30/2015/xss-xssPlatform/"></div>
+	<div class="ds-thread" data-thread-key="08/14/2016/xss-5/" data-title="xss习题集_3" data-url="http://csser.work/08/14/2016/xss-5/"></div>
 </section>
 
 
@@ -163,7 +152,7 @@ Docker安装DigitalOcean已经打包完了,直接执行命令即可
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker安装"><span class="toc-number">2.</span> <span class="toc-text">Docker安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep-puppy安装"><span class="toc-number">3.</span> <span class="toc-text">sleep-puppy安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的API使用"><span class="toc-number">4.</span> <span class="toc-text">简单的API使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Challenges"><span class="toc-number">2.</span> <span class="toc-text">Challenges</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-2-“-转义"><span class="toc-number">2.1.</span> <span class="toc-text">Level-2 “ \转义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-3"><span class="toc-number">2.2.</span> <span class="toc-text">Level-3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
