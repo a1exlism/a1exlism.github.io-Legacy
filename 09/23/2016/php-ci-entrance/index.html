@@ -4,26 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>linux-触摸板失效解决 | A1exlism</title>
+    <title>CodeIgniter多入口URL整合处理 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="问题触摸板开启状态下开机,碰到触摸板任何按键均失效,只有外接鼠标有效,使用笔记本内置快捷键进行休眠重新开机恢复,但是触摸板已经没卵用了
-环境12345678a1exlism@dell~$ uname -r3.19.0-49-generica1exlism@dell:~$ lsb_release -aNo LSB modules are available.Distributor ID: Ubunt">
+    <meta name="description" content="Defined最近写了点东西, 正好遇到以前不懂的问题, 着手解决php中多入口的实现方法.参考见底写的是关于CodeIgniter(CI)框架的多入口URL控制问题. 其他php框架原理类似
+Main()入口规则和常见的cms一样-index 普通用户-admin 管理员
+方案1:文件名规范利用服务器重写规则进行文件名规范这个说白了就是完全的两份, 改了一下名字~
+目录结构12345678910">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux-触摸板失效解决">
-<meta property="og:url" content="http://csser.work/02/13/2016/linux-hard-elanTouchpad/index.html">
+<meta property="og:title" content="CodeIgniter多入口URL整合处理">
+<meta property="og:url" content="http://csser.work/09/23/2016/php-ci-entrance/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="问题触摸板开启状态下开机,碰到触摸板任何按键均失效,只有外接鼠标有效,使用笔记本内置快捷键进行休眠重新开机恢复,但是触摸板已经没卵用了
-环境12345678a1exlism@dell~$ uname -r3.19.0-49-generica1exlism@dell:~$ lsb_release -aNo LSB modules are available.Distributor ID: Ubunt">
-<meta property="og:updated_time" content="2016-05-17T15:49:42.405Z">
+<meta property="og:description" content="Defined最近写了点东西, 正好遇到以前不懂的问题, 着手解决php中多入口的实现方法.参考见底写的是关于CodeIgniter(CI)框架的多入口URL控制问题. 其他php框架原理类似
+Main()入口规则和常见的cms一样-index 普通用户-admin 管理员
+方案1:文件名规范利用服务器重写规则进行文件名规范这个说白了就是完全的两份, 改了一下名字~
+目录结构12345678910">
+<meta property="og:updated_time" content="2016-09-23T05:07:23.945Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux-触摸板失效解决">
-<meta name="twitter:description" content="问题触摸板开启状态下开机,碰到触摸板任何按键均失效,只有外接鼠标有效,使用笔记本内置快捷键进行休眠重新开机恢复,但是触摸板已经没卵用了
-环境12345678a1exlism@dell~$ uname -r3.19.0-49-generica1exlism@dell:~$ lsb_release -aNo LSB modules are available.Distributor ID: Ubunt">
+<meta name="twitter:title" content="CodeIgniter多入口URL整合处理">
+<meta name="twitter:description" content="Defined最近写了点东西, 正好遇到以前不懂的问题, 着手解决php中多入口的实现方法.参考见底写的是关于CodeIgniter(CI)框架的多入口URL控制问题. 其他php框架原理类似
+Main()入口规则和常见的cms一样-index 普通用户-admin 管理员
+方案1:文件名规范利用服务器重写规则进行文件名规范这个说白了就是完全的两份, 改了一下名字~
+目录结构12345678910">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -82,14 +88,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/02/13/2016/linux-hard-elanTouchpad/" title="linux-触摸板失效解决" itemprop="url">linux-触摸板失效解决</a>
+      <a href="/09/23/2016/php-ci-entrance/" title="CodeIgniter多入口URL整合处理" itemprop="url">CodeIgniter多入口URL整合处理</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-12T16:00:00.000Z" itemprop="datePublished"> 发表于 02-13-2016</time>
+    <time datetime="2016-09-22T16:00:00.000Z" itemprop="datePublished"> 发表于 09-23-2016</time>
     
   </p>
 </header>
@@ -98,37 +104,28 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">2.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">3.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#适用于任何笔记本"><span class="toc-number">3.1.</span> <span class="toc-text">适用于任何笔记本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elanTouchpad方案-推荐"><span class="toc-number">3.2.</span> <span class="toc-text">elanTouchpad方案[推荐]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后记"><span class="toc-number">5.</span> <span class="toc-text">后记</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#入口规则"><span class="toc-number">2.1.</span> <span class="toc-text">入口规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案1-文件名规范"><span class="toc-number">2.2.</span> <span class="toc-text">方案1:文件名规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录结构"><span class="toc-number">2.2.1.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根目录-htaccess重写"><span class="toc-number">2.2.2.</span> <span class="toc-text">根目录.htaccess重写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URL实现"><span class="toc-number">2.2.3.</span> <span class="toc-text">URL实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案2-文件夹归类"><span class="toc-number">2.3.</span> <span class="toc-text">方案2:文件夹归类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录结构-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支-htaccess-重写"><span class="toc-number">2.3.2.</span> <span class="toc-text">分支.htaccess 重写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URL实现-1"><span class="toc-number">2.3.3.</span> <span class="toc-text">URL实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块分组-ThinkPHP"><span class="toc-number">2.4.</span> <span class="toc-text">模块分组(ThinkPHP)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>触摸板开启状态下开机,碰到触摸板任何按键均失效,只有外接鼠标有效,使用笔记本内置快捷键进行休眠重新开机恢复,但是触摸板已经没卵用了</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a1exlism@dell~$ uname -r</span><br><span class="line">3.19.0-49-generic</span><br><span class="line">a1exlism@dell:~$ lsb_release <span class="_">-a</span></span><br><span class="line">No LSB modules are available.</span><br><span class="line">Distributor ID: Ubuntu</span><br><span class="line">Description:  Ubuntu 15.04</span><br><span class="line">Release:  15.04</span><br><span class="line">Codename: vivid</span><br></pre></td></tr></table></figure>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="适用于任何笔记本"><a href="#适用于任何笔记本" class="headerlink" title="适用于任何笔记本"></a>适用于任何笔记本</h3><blockquote>
-<p><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=42&amp;t=304955" target="_blank" rel="external">Sony Vaio 触摸板不能识别解决办法</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. sudo vi /etc/default/grub</span><br><span class="line">2. 找到GRUB_CMDLINE_LINUX=<span class="string">""</span> 添加 i8042.reset i8042.nomux i8042.nopnp i8042.noloop </span><br><span class="line"><span class="comment">#添加完后GRUB_CMDLINE_LINUX="i8042.reset i8042.nomux i8042.nopnp i8042.noloop"</span></span><br><span class="line">3. sudo update-grub</span><br><span class="line">4. sudo reboot</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>通过更改grub设置,加载内核过程中会将触摸板简单的识别成<code>鼠标</code>设备,即丧失了多指触摸功能  </p>
-<h3 id="elanTouchpad方案-推荐"><a href="#elanTouchpad方案-推荐" class="headerlink" title="elanTouchpad方案[推荐]"></a>elanTouchpad方案[推荐]</h3><p>感觉不支持的应该都是这家<code>Elan</code>触摸板了= =<br>From–&gt;<a href="http://www.evilcodingmonkey.com/2014/01/23/ubuntu-activate-multi-touch-on-elantech/" target="_blank" rel="external">evilcodingmonkey</a></p>
-<p>1.</p>
-<blockquote>
-<p>cat /proc/bus/input/devices | grep “Name=”  </p>
-</blockquote>
-<p>应该能看到这个–&gt; N: Name=”ETPS/2 Elantech Touchpad”  </p>
-<p>2.<br>下载<a href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1166442/+attachment/3941591/+files/psmouse-elantech-x551c.tar.gz" target="_blank" rel="external">this archive</a>(from Ubuntu’s bug reporting page)<br>//国内可以用<a href="http://pan.baidu.com/s/1kTOOlE3" target="_blank" rel="external">百度云</a></p>
-<p>3.</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Downloads</span><br><span class="line">sudo dkms ldtarball psmouse-elantech-x551c.tar.gz</span><br><span class="line">sudo dkms install -m psmouse -v elantech-x551c</span><br><span class="line">sudo rmmod psmouse</span><br><span class="line">sudo modprobe psmouse</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>End. 重启之后就没事啦</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.evilcodingmonkey.com/2014/01/23/ubuntu-activate-multi-touch-on-elantech/" target="_blank" rel="external">ubuntu-activate-multi-touch-on-elantech-evilcodingmonkey</a><br><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=42&amp;t=304955" target="_blank" rel="external">Sony Vaio 触摸板不能识别解决办法-UbuntuForum</a><br>想了解DKMS可以看看这个-&gt;<a href="http://www.cnblogs.com/wwang/archive/2011/06/21/2085571.html" target="_blank" rel="external">DKMS简介</a></p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>发现重启几次之后触摸板又挂了<br>发现dkms安装了但并没有加载,所以开机自启加载两句话= =<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sudo vi /etc/rc.local 在这里添加下面两条内容</span></span><br><span class="line">sudo rmmod psmouse</span><br><span class="line">sudo modprobe psmouse</span><br></pre></td></tr></table></figure></p>
+		<h1 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h1><p>最近写了点东西, 正好遇到以前不懂的问题, 着手解决php中多入口的实现方法.参考见底<br>写的是关于<code>CodeIgniter(CI)框架的多入口URL控制问题</code>. 其他php框架原理类似</p>
+<h1 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h1><h2 id="入口规则"><a href="#入口规则" class="headerlink" title="入口规则"></a>入口规则</h2><p>和常见的cms一样<br>-index 普通用户<br>-admin 管理员</p>
+<h2 id="方案1-文件名规范"><a href="#方案1-文件名规范" class="headerlink" title="方案1:文件名规范"></a>方案1:文件名规范</h2><p>利用服务器重写规则进行文件名规范<br>这个说白了就是完全的两份, 改了一下名字~</p>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">application</span><br><span class="line">├── assets</span><br><span class="line">│   ├── css</span><br><span class="line">│   ├── fonts</span><br><span class="line">│   └── js</span><br><span class="line">├── index</span><br><span class="line">│   ├── controllers</span><br><span class="line">├── admin</span><br><span class="line">│   ├── controllers</span><br><span class="line">├── views</span><br><span class="line">├── system</span><br><span class="line">├── index.php	<span class="comment">#入口1</span></span><br><span class="line">├── admin.php <span class="comment">#入口2</span></span><br><span class="line">├── index.html</span><br><span class="line">└── .htaccess</span><br></pre></td></tr></table></figure>
+<h3 id="根目录-htaccess重写"><a href="#根目录-htaccess重写" class="headerlink" title="根目录.htaccess重写"></a>根目录.htaccess重写</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .htaccess</span></span><br><span class="line">RewriteEngine on</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !<span class="_">-d</span></span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !<span class="_">-f</span></span><br><span class="line">RewriteCond <span class="variable">$1</span> !^(index\.php|images|assets|robots\.txt|$)</span><br><span class="line">RewriteRule ^i_(.*)$ /application/index.php/<span class="variable">$1</span> [L]</span><br><span class="line">RewriteRule ^a_(.*)$ /application/admin.php/<span class="variable">$1</span> [L]</span><br></pre></td></tr></table></figure>
+<h3 id="URL实现"><a href="#URL实现" class="headerlink" title="URL实现"></a>URL实现</h3><p>访问users的登录: /i_login/<br>访问admin的登录: /a_login/</p>
+<h2 id="方案2-文件夹归类"><a href="#方案2-文件夹归类" class="headerlink" title="方案2:文件夹归类"></a>方案2:文件夹归类</h2><h3 id="目录结构-1"><a href="#目录结构-1" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">application</span><br><span class="line">├── admin</span><br><span class="line">│   ├── admin.php	<span class="comment">#入口1</span></span><br><span class="line">│   ├── controllers</span><br><span class="line">│   ├── .htaccess</span><br><span class="line">├── assets</span><br><span class="line">│   ├── css</span><br><span class="line">│   ├── fonts</span><br><span class="line">│   └── js</span><br><span class="line">├── index</span><br><span class="line">│   ├── admin.php <span class="comment">#入口2</span></span><br><span class="line">│   ├── controllers</span><br><span class="line">│   ├── .htaccess</span><br><span class="line">├── index.html</span><br><span class="line">├── system</span><br><span class="line">└── views</span><br></pre></td></tr></table></figure>
+<h3 id="分支-htaccess-重写"><a href="#分支-htaccess-重写" class="headerlink" title="分支.htaccess 重写"></a>分支.htaccess 重写</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># admin's .htaccess</span></span><br><span class="line">RewriteEngine on</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !<span class="_">-d</span></span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !<span class="_">-f</span></span><br><span class="line">RewriteCond <span class="variable">$1</span> !^(admin\.php|index\.php|images|assets|robots\.txt|$)</span><br><span class="line">RewriteRule ^(.*)$ /application/index/index.php/<span class="variable">$1</span></span><br></pre></td></tr></table></figure>
+<h3 id="URL实现-1"><a href="#URL实现-1" class="headerlink" title="URL实现"></a>URL实现</h3><p>访问users: /index/<br>访问admin: /admin/<br>根目录的/index.html<code>301跳转</code>可以实现直接访问到/index/index.php/index</p>
+<h2 id="模块分组-ThinkPHP"><a href="#模块分组-ThinkPHP" class="headerlink" title="模块分组(ThinkPHP)"></a>模块分组(ThinkPHP)</h2><p>这个见<a href="#Reference">Reference</a></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://segmentfault.com/q/1010000002491453" target="_blank" rel="external">ThinkPHP两个入口文件-segmentfault</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/02/13/2016/linux-hard-elanTouchpad/" data-title="linux-触摸板失效解决 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/09/23/2016/php-ci-entrance/" data-title="CodeIgniter多入口URL整合处理 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -141,19 +138,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/02/20/2016/book-vbird-1/" title="读书笔记--鸟哥私房菜①">
-  <strong>上一篇：</strong><br/>
-  <span>
-  读书笔记--鸟哥私房菜①</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/02/08/2016/hexo-search/"  title="Hexo站内搜索">
+<a href="/08/14/2016/xss-5/"  title="xss习题集_3">
  <strong>下一篇：</strong><br/> 
- <span>Hexo站内搜索
+ <span>xss习题集_3
 </span>
 </a>
 </div>
@@ -162,7 +151,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="02/13/2016/linux-hard-elanTouchpad/" data-title="linux-触摸板失效解决" data-url="http://csser.work/02/13/2016/linux-hard-elanTouchpad/"></div>
+	<div class="ds-thread" data-thread-key="09/23/2016/php-ci-entrance/" data-title="CodeIgniter多入口URL整合处理" data-url="http://csser.work/09/23/2016/php-ci-entrance/"></div>
 </section>
 
 
@@ -172,7 +161,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">2.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">3.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#适用于任何笔记本"><span class="toc-number">3.1.</span> <span class="toc-text">适用于任何笔记本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elanTouchpad方案-推荐"><span class="toc-number">3.2.</span> <span class="toc-text">elanTouchpad方案[推荐]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后记"><span class="toc-number">5.</span> <span class="toc-text">后记</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#入口规则"><span class="toc-number">2.1.</span> <span class="toc-text">入口规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案1-文件名规范"><span class="toc-number">2.2.</span> <span class="toc-text">方案1:文件名规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录结构"><span class="toc-number">2.2.1.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根目录-htaccess重写"><span class="toc-number">2.2.2.</span> <span class="toc-text">根目录.htaccess重写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URL实现"><span class="toc-number">2.2.3.</span> <span class="toc-text">URL实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案2-文件夹归类"><span class="toc-number">2.3.</span> <span class="toc-text">方案2:文件夹归类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录结构-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支-htaccess-重写"><span class="toc-number">2.3.2.</span> <span class="toc-text">分支.htaccess 重写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URL实现-1"><span class="toc-number">2.3.3.</span> <span class="toc-text">URL实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块分组-ThinkPHP"><span class="toc-number">2.4.</span> <span class="toc-text">模块分组(ThinkPHP)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
