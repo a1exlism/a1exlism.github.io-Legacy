@@ -80,7 +80,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/05/08/2016/linux-soft-cheat/" title="Linux佳软推荐_Cheat" itemprop="url">Linux佳软推荐_Cheat</a>
+      <a href="/05/08/2016/linux-cmd-redirect/" title="Shell 2&gt;&amp;1 Meaning" itemprop="url">Shell 2&gt;&amp;1 Meaning</a>
   </h1>
   <p class="article-author">By
        
@@ -93,23 +93,22 @@
 </header>
     <div class="article-content">
         
-        <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://linux.cn/article-3760-1.html" target="_blank" rel="external">Cheat—— 给Linux初学者和管理员一个终极命令行”备忘单”</a></p>
-<h3 id="Introduce"><a href="#Introduce" class="headerlink" title="Introduce"></a>Introduce</h3><p>比Man精简,实例操作,妈妈再也不怕我不会bash了!</p>
-<h3 id="Enviornment"><a href="#Enviornment" class="headerlink" title="Enviornment"></a>Enviornment</h3><blockquote>
-<p>—In Ubuntu 16.04—<br>sudo apt install git<br>sudo apt install python-pip<br>sudo pip install docopt pygments</p>
-</blockquote>
-<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><blockquote>
-<p>git clone <a href="https://github.com/chrisallenlane/cheat.git" target="_blank" rel="external">https://github.com/chrisallenlane/cheat.git</a><br>cd cheat<br>sudo python setup.py install</p>
-</blockquote>
-<h3 id="Option"><a href="#Option" class="headerlink" title="Option"></a>Option</h3><p>Edit: ~/.bashrc</p>
+        <p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
+<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
 <blockquote>
-<p>export EDITOR = /usr/bin/vim(一个你喜欢的编辑器)<br>语法高亮:export CHEATCOLOR=true(我设置了好像没什么用..)</p>
+<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-<h3 id="创建备忘单"><a href="#创建备忘单" class="headerlink" title="创建备忘单"></a>创建备忘单</h3><p>cheat备忘单的内容保存在<code>~/.cheat/.</code>目录里</p>
+<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
+<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
+<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
+<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
+</blockquote>
+<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
 <blockquote>
-<p>cheat -e -xyz</p>
+<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
 </blockquote>
+<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
 
         
         
@@ -123,7 +122,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/05/08/2016/linux-soft-cheat/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/08/2016/linux-soft-cheat/" data-count-type="comments">&nbsp;</a>
+		<a href="/05/08/2016/linux-cmd-redirect/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/08/2016/linux-cmd-redirect/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
