@@ -80,6 +80,76 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/08/01/2016/x-nuca-writeup/" title="Xnuca_Writeup" itemprop="url">Xnuca_Writeup</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-31T16:00:00.000Z" itemprop="datePublished"> 发表于 08-01-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>跟着老司机学着打的..名次就不提了= =</p>
+<h3 id="BaseInjection"><a href="#BaseInjection" class="headerlink" title="BaseInjection"></a>BaseInjection</h3><p>万能密码<br>post: username=admin’||1#&amp;password=aaa</p>
+<h3 id="BaseReconstrction"><a href="#BaseReconstrction" class="headerlink" title="BaseReconstrction"></a>BaseReconstrction</h3><p>重构, payload和BaseInjection相同</p>
+<h3 id="Counting-Stars"><a href="#Counting-Stars" class="headerlink" title="Counting Stars"></a>Counting Stars</h3><p>查看备注=&gt; mac备份 .DS_Store<br>hex分析发现一个zip: epLF1rEihQp5AjCUcgGry330jkFSC1C7.zip<br>kali中binwalk跑一下发现如下代码:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$S=<span class="string">"song"</span>;</span><br><span class="line">$song=<span class="string">"says"</span>;</span><br><span class="line">$says=<span class="string">"no"</span>;</span><br><span class="line">$no=<span class="string">"more"</span>;</span><br><span class="line">$more=<span class="string">"d0llars"</span>;</span><br><span class="line">$d0llars=<span class="string">"counting"</span>;</span><br><span class="line">$counting=<span class="string">"star"</span>;</span><br><span class="line">$star=<span class="string">"S"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;div style="text-align:center"&gt;What is $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$S&lt;/div&gt;'</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;div style=<span class="string">"text-align:center"</span>&gt;</span><br><span class="line">&lt;form action=<span class="string">"check.php"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">&lt;input type=<span class="string">"text"</span> name=<span class="string">"answer"</span> value=<span class="string">""</span> /&gt;  </span><br><span class="line">&lt;input type=<span class="string">"submit"</span> value=<span class="string">"submit"</span> /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这个代码吧里面的$那拉出来echo一下就行了…<br>那么向check.php发个请求包即可(用的postman), post数据为 ‘answser=d0llars’</p>
+<h3 id="Invisible"><a href="#Invisible" class="headerlink" title="Invisible"></a>Invisible</h3><p>添加头<code>X-FORWORDED-FOR</code></p>
+<h3 id="Normal-normal"><a href="#Normal-normal" class="headerlink" title="Normal_normal"></a>Normal_normal</h3><p>phpwind + phpbb 的模板, 两个后台地址: /phpwind/admin.php /admin.php 不知道几个意思..<br>通过发帖人进行社工, 找到:<br>帐号zhangrendao密码zhang2010<br>通过<a href="http://www.wooyun.org/bugs/wooyun-2015-0104256" target="_blank" rel="external">wooyun</a>这篇文章直接getshell<br>不过简单的菜刀连接不能用(token限制)<br>最后通过的是<a href="https://gist.github.com/a1exlism/c303f545a119bfdd36018f86a8f9f6e3" target="_blank" rel="external">目录遍历</a>搞得2333</p>
+<h3 id="DBexplorer"><a href="#DBexplorer" class="headerlink" title="DBexplorer"></a>DBexplorer</h3><p>有了提示才懂233<br>vim的缓存文件.db.php.swp找到phpmyadmin地址和帐号密码<br>username:ctfdb    password:ctfmysql123<br>提示有<code>user.MYD</code>, 然后有个文件读写权限的库test..<br>还有个<code>@@datadir</code>也是学到了, (我还是自己find出来手工测试的地址…)</p>
+<blockquote>
+<p>payload<br>LOAD DATA INFILE ‘/var/lib/mysql/mysql/user.MYD’ INTO TABLE q fields terminated by ‘LINES’ TERMINATED BY ‘\0’</p>
+</blockquote>
+<p>也认识了一些文件读取命令: 大文件LOAD DATA INFILE | Pt-fifo-split 一般文件 | load_file<br>至于load_file为什么不能读user.MYD我也不是很懂了…</p>
+<p>后面就是简单的登录就行了</p>
+<h3 id="RotatePicture"><a href="#RotatePicture" class="headerlink" title="RotatePicture"></a>RotatePicture</h3><p>提示：urlopen file schema<br>相关: SSRF file协议<br>(一开始还想上传漏洞什么的)</p>
+<blockquote>
+<p>file:///etc/passwd #单行显示<br>file:///views.py # 找到了一个地址/getredisvalue</p>
+</blockquote>
+<p>找到了内网端口<code>6379</code>, 通过Python urllib HTTP Header Injection进行内网的rediis攻击<br>Reference: <a href="http://drops.wooyun.org/papers/16905" target="_blank" rel="external">wooyun</a><br><a href="https://security.tencent.com/index.php/blog/msg/106" target="_blank" rel="external">TSRC</a></p>
+<blockquote>
+<p>paylaod<br><a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a><br>set c46fb8d3-6322-42ba-8919-dc4b914714db 123<br>:6379</p>
+</blockquote>
+<p>uuid: c46fb8d3-6322-42ba-8919-dc4b914714db 12345</p>
+<h3 id="AdminLogin"><a href="#AdminLogin" class="headerlink" title="AdminLogin"></a>AdminLogin</h3><p>(这个我想吐槽.. ip到底怎么检测的…)<br>注入地址: <code>/news.php?newsid=1</code> 插件还是ff的hackerbar比较友好..添加一个referer: <code>http://question9.erangelab.com/index.php</code><br>由于可以直接爆库报表爆字段, 那就直接给答案好了(mysql的):<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctfphp</span><br><span class="line">	&gt;admin <span class="comment">; news</span></span><br><span class="line">		&gt;id,name,pass <span class="comment">; id,title,content</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ctfadmin</span><br><span class="line"></span>a<span class="number">2224f</span><span class="number">1b</span>f263d<span class="number">26b</span>ab<span class="number">1994723f</span>7565<span class="built_in">a3</span>(administrat0r)</span><br></pre></td></tr></table></figure></p>
+<p>期间主办方默默的改了ip.. 跪了<br>postman ==&gt; <a href="http://121.195.186.238/xnucactfwebadmin/logincheck.php" target="_blank" rel="external">http://121.195.186.238/xnucactfwebadmin/logincheck.php</a><br>postdata: username, password ,submit<br>加一个header: </p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/08/01/2016/x-nuca-writeup/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/01/2016/x-nuca-writeup/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/07/19/2016/lcx-nc-sc/" title="lcx_nc_sc in Windows &amp; Linux" itemprop="url">lcx_nc_sc in Windows &amp; Linux</a>
   </h1>
   <p class="article-author">By
@@ -617,58 +687,6 @@ linux:    192.168.55.128
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/05/09/2016/js-stack-heap/" title="JS_引用类型和基本类型区别" itemprop="url">JS_引用类型和基本类型区别</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-05-08T16:00:00.000Z" itemprop="datePublished"> 发表于 05-09-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="实例-听说这是一道简化的JS面试题"><a href="#实例-听说这是一道简化的JS面试题" class="headerlink" title="实例(听说这是一道简化的JS面试题?)"></a>实例(听说这是一道简化的JS面试题?)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFtn</span>(<span class="params">sNm,pObj</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：new obj</span></span><br><span class="line"></span><br><span class="line">    sNm = <span class="string">"change name"</span>;</span><br><span class="line"></span><br><span class="line">    pObj.oName = <span class="string">"change obj"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sNm = <span class="string">"new Name"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pObj = &#123;oName:<span class="string">"new obj"</span>&#125;;</span><br><span class="line"></span><br><span class="line">testFtn(sNm,pObj);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：change obj</span></span><br></pre></td></tr></table></figure>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>看着看着,再结合js的堆栈引用图,然后恍然大悟:这特么不就是<code>C中的传值和传址调用</code>嘛!</p>
-<p>函数内基本类型传入的是值,引用类型传入的是地址,所以函数内改变基本类型的形参并没有什么卵用(因为这个形参的作用域只在函数里面,而且用完销毁).引用类型的话传入了地址,所以很正常的可以改变自己的内容</p>
-<h3 id="引用图"><a href="#引用图" class="headerlink" title="引用图"></a>引用图</h3><p><img src="/imgs/js_stack_heap/1.png" alt="1"></p>
-<h2 id="还有个现成的问题推荐看看"><a href="#还有个现成的问题推荐看看" class="headerlink" title="还有个现成的问题推荐看看"></a>还有个现成的问题推荐看看</h2><p><a href="https://segmentfault.com/q/1010000002417402" target="_blank" rel="external">关于javascript的引用类型</a></p>
-<h2 id="Refernce"><a href="#Refernce" class="headerlink" title="Refernce"></a>Refernce</h2><p><a href="https://segmentfault.com" target="_blank" rel="external">SegmentFault</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/05/09/2016/js-stack-heap/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/09/2016/js-stack-heap/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/05/09/2016/js-invocation-patten/" title="JavaScript语言精粹" itemprop="url">JavaScript语言精粹</a>
   </h1>
   <p class="article-author">By
@@ -741,7 +759,7 @@ linux:    192.168.55.128
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/CodeIgniter/" style="font-size: 11.25px;">CodeIgniter</a> <a href="/tags/Device/" style="font-size: 13.75px;">Device</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/SQLInjection/" style="font-size: 11.25px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 13.75px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.5px;">XSS</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 15px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 12.5px;">hard</a> <a href="/tags/intranet/" style="font-size: 10px;">intranet</a> <a href="/tags/nexus5x/" style="font-size: 12.5px;">nexus5x</a> <a href="/tags/port/" style="font-size: 10px;">port</a> <a href="/tags/soft/" style="font-size: 11.25px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.25px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 12.5px;">闲谈</a>
+       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/CodeIgniter/" style="font-size: 11.25px;">CodeIgniter</a> <a href="/tags/Device/" style="font-size: 13.75px;">Device</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/SQLInjection/" style="font-size: 11.25px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 13.75px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.5px;">XSS</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 15px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 12.5px;">hard</a> <a href="/tags/intranet/" style="font-size: 10px;">intranet</a> <a href="/tags/nexus5x/" style="font-size: 12.5px;">nexus5x</a> <a href="/tags/port/" style="font-size: 10px;">port</a> <a href="/tags/soft/" style="font-size: 11.25px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.25px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 12.5px;">闲谈</a>
     </div>
   </div>
 
@@ -749,7 +767,7 @@ linux:    192.168.55.128
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
