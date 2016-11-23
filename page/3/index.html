@@ -44,7 +44,7 @@
 			
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/" title="A1exlism">A1exlism</a></h1>
-				<h2 class="blog-motto">虽然走的很慢,但我不会后退.</h2>
+				<h2 class="blog-motto">嗯, 路走就对了</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
@@ -73,6 +73,65 @@
     </header>
     <div id="container">
       <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/05/16/2016/js-methods/" title="JS_方法的理解和使用" itemprop="url">JS_方法的理解和使用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-15T16:00:00.000Z" itemprop="datePublished"> 发表于 05-16-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="0x1-前言"><a href="#0x1-前言" class="headerlink" title="0x1.前言"></a>0x1.前言</h2><p>发现以前自己还写过一篇原型问题,看到一篇讲protoype的博客发现自己还不清不楚,顺便还介绍了各种方法,记录一下.</p>
+<h2 id="0x2-介绍方法"><a href="#0x2-介绍方法" class="headerlink" title="0x2.介绍方法"></a>0x2.介绍方法</h2><p>1.对象方法:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">product</span>(<span class="params">name,price</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.price = price;</span><br><span class="line">  <span class="keyword">this</span>.introduce = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'This product\'s name is: '</span> + <span class="keyword">this</span>.name);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对象方法如名字所说,本质还是一个对象(Object).<br>不过可以用作一个类(class),可以通过new来实例化一个对象<code>var car = new product(&#39;car&#39;,500000)</code>,其中product方法中的this因此将指针指向了car</p>
+<p>2.类方法(本质是<code>静态方法</code>)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">product.price = fucntion()&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'The price is :'</span> + <span class="keyword">this</span>.price);<span class="comment">// this -&gt; product</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看作这个函数本身添加了一个名为price属性函数(方法),但是在实例化过程中他<code>不会被携带</code>给实例,因为他没有办法传递(前面的传递是通过this指针来操作的)</p>
+<p>3.原型方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">product.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'The product named '</span> + <span class="keyword">this</span>.name + <span class="string">'values $'</span> + <span class="keyword">this</span>.price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>总结</code>: 对象方法含有this, 类方法根据对象名添加, 原型方法 class.prototype.func 看一下就行啦</p>
+<h2 id="0x3-具体的代码示例-对象VS类方法"><a href="#0x3-具体的代码示例-对象VS类方法" class="headerlink" title="0x3.具体的代码示例(对象VS类方法)"></a>0x3.具体的代码示例(对象VS类方法)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> BaseClass = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="comment">//对象方法</span></span><br><span class="line">  <span class="keyword">this</span>.f1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">' This is a object function.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">BaseClass.f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//静态方法(类方法) </span></span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">' This is a static method '</span>); </span><br><span class="line">&#125; </span><br><span class="line">BaseClass.f2();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> BaseClass();<span class="comment">//实例化</span></span><br><span class="line"></span><br><span class="line">instance1.f1();</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">  instance1.f2();<span class="comment">//instance1.f2 is not a function </span></span><br><span class="line">&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'---Error:---\n'</span> + err + <span class="string">'\n----'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(instance1)); <span class="comment">//[ 'f1' ]</span></span><br></pre></td></tr></table></figure>
+<h2 id="0x5-同名情况"><a href="#0x5-同名情况" class="headerlink" title="0x5. 同名情况"></a>0x5. 同名情况</h2><p>只考虑对象方法和原型方法同名,类方法上面已经讨论,不纠结=. =<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> product = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> car = <span class="keyword">new</span> product();</span><br><span class="line">product.prototype.func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line">car.func(); <span class="comment">//  1</span></span><br><span class="line"><span class="keyword">delete</span> car.func;</span><br><span class="line">car.func(); <span class="comment">//  2</span></span><br></pre></td></tr></table></figure></p>
+<p>只有在内置的对象方法被删除之后,语法才会去沿着原型链向上寻找同名函数</p>
+<h2 id="0x4-实例调用类方法"><a href="#0x4-实例调用类方法" class="headerlink" title="0x4. 实例调用类方法"></a>0x4. 实例调用类方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object.price.call(object);</span><br></pre></td></tr></table></figure>
+<p>利用<code>all</code>或者<code>apply</code>调用过来(个人理解这是将词法作用域/上下文环境复制过来的意思)</p>
+<h2 id="0x5-Reference"><a href="#0x5-Reference" class="headerlink" title="0x5. Reference"></a>0x5. Reference</h2><p><a href="http://linder0209.iteye.com/blog/1076172" target="_blank" rel="external">javascript中静态方法、实例方法、内部方法和原型的一点见解_linder0209</a><br><a href="http://www.hi-docs.com/article/detail-MTE=.html" target="_blank" rel="external">JavaScript类方法，对象方法(this)，原型方法(prototype)_hi-docs</a><br><a href="http://www.cnblogs.com/yjf512/archive/2011/06/03/2071914.html#!comments" target="_blank" rel="external">JS中的prototype_轩脉刃</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/05/16/2016/js-methods/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/16/2016/js-methods/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
 
    
     
@@ -253,6 +312,68 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/05/08/2016/linux-cmd-redirect/" title="Shell 2&gt;&amp;1 Meaning" itemprop="url">Shell 2&gt;&amp;1 Meaning</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-07T16:00:00.000Z" itemprop="datePublished"> 发表于 05-08-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
+<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
+<blockquote>
+<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
+</blockquote>
+<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
+<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
+<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
+<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
+</blockquote>
+<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
+<blockquote>
+<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
+</blockquote>
+<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/05/08/2016/linux-cmd-redirect/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/08/2016/linux-cmd-redirect/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/05/08/2016/linux-soft-cheat/" title="Linux佳软推荐_Cheat" itemprop="url">Linux佳软推荐_Cheat</a>
   </h1>
   <p class="article-author">By
@@ -297,68 +418,6 @@
 	
 	  	<span></span>
 		<a href="/05/08/2016/linux-soft-cheat/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/08/2016/linux-soft-cheat/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/05/08/2016/linux-cmd-redirect/" title="Shell 2&gt;&amp;1 Meaning" itemprop="url">Shell 2&gt;&amp;1 Meaning</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-05-07T16:00:00.000Z" itemprop="datePublished"> 发表于 05-08-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
-<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
-<blockquote>
-<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
-</blockquote>
-<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
-<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
-<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
-<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
-</blockquote>
-<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
-<blockquote>
-<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
-</blockquote>
-<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/05/08/2016/linux-cmd-redirect/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/08/2016/linux-cmd-redirect/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -640,66 +699,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/04/12/2016/js-let/" title="ES6-JS的块级作用域" itemprop="url">ES6-JS的块级作用域</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="ES6-js也能和其他语言一样使用块级作用域了"><a href="#ES6-js也能和其他语言一样使用块级作用域了" class="headerlink" title="ES6_js也能和其他语言一样使用块级作用域了~"></a>ES6_js也能和其他语言一样使用块级作用域了~</h3><p>块级作用域: 一对花括号<code>{}</code>括起来的代码域<br>一下子感觉js高级好多,块级作用域和执行域都在了~</p>
-<h3 id="给几个例子-区别一下"><a href="#给几个例子-区别一下" class="headerlink" title="给几个例子,区别一下"></a>给几个例子,区别一下</h3><blockquote>
-<ol>
-<li>var</li>
-</ol>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; num; i++ )&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">//0 1 2 3 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//  5</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<ol>
-<li>let</li>
-</ol>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; num; i++)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">//0 1 2 3 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//  Error: i is not defined</span></span><br></pre></td></tr></table></figure>
-<p>应该很清楚了</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/04/12/2016/js-let/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-let/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
@@ -716,7 +715,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CodeIgniter/" style="font-size: 11.25px;">CodeIgniter</a> <a href="/tags/Device/" style="font-size: 13.75px;">Device</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/SQLInjection/" style="font-size: 11.25px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 13.75px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.5px;">XSS</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 15px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 12.5px;">hard</a> <a href="/tags/intranet/" style="font-size: 10px;">intranet</a> <a href="/tags/nexus5x/" style="font-size: 12.5px;">nexus5x</a> <a href="/tags/parties/" style="font-size: 10px;">parties</a> <a href="/tags/port/" style="font-size: 10px;">port</a> <a href="/tags/soft/" style="font-size: 12.5px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.25px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 12.5px;">闲谈</a>
+       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CodeIgniter/" style="font-size: 12.5px;">CodeIgniter</a> <a href="/tags/Device/" style="font-size: 13.75px;">Device</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/SQLInjection/" style="font-size: 11.25px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 13.75px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.5px;">XSS</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 15px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 12.5px;">hard</a> <a href="/tags/intranet/" style="font-size: 10px;">intranet</a> <a href="/tags/nexus5x/" style="font-size: 12.5px;">nexus5x</a> <a href="/tags/parties/" style="font-size: 10px;">parties</a> <a href="/tags/port/" style="font-size: 10px;">port</a> <a href="/tags/soft/" style="font-size: 12.5px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.25px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 12.5px;">闲谈</a>
     </div>
   </div>
 
@@ -724,7 +723,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
