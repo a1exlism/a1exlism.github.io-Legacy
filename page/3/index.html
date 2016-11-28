@@ -80,6 +80,55 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/05/17/2016/say-new-domain/" title="更换域名了" itemprop="url">更换域名了</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-16T16:00:00.000Z" itemprop="datePublished"> 发表于 05-17-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>更新了一个新域名<code>csser.work</code>,不过反正没什么人看..给自己做个记录就好啦~<br>主要也是便宜,还有百度可能不会去收录=, =</p>
+<p>这次顺便改了category,这个和tags有点重复,就去掉了.<br>再加了一个sitemap<a href="http://csser.work/sitemap.xml">http://csser.work/sitemap.xml</a>,还要改一堆自己的MD  233</p>
+<p>最后重写了各种md文件,emm…看起来舒服多了</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/05/17/2016/say-new-domain/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/17/2016/say-new-domain/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/05/16/2016/js-methods/" title="JS_方法的理解和使用" itemprop="url">JS_方法的理解和使用</a>
   </h1>
   <p class="article-author">By
@@ -626,79 +675,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/04/19/2016/xss-1/" title="xss习题集_1" itemprop="url">xss习题集_1</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-18T16:00:00.000Z" itemprop="datePublished"> 发表于 04-19-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>最近做了一个xss练习.<br>练习站点: <a href="http://xss-quiz.int21h.jp" target="_blank" rel="external">http://xss-quiz.int21h.jp</a><br>如果需要练习,请使用<code>firefox</code>或者<code>IE</code></p>
-<h3 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h3><ol>
-<li>test1-2</li>
-</ol>
-<p>script标签中可以使用<code>\x \</code>等进制</p>
-<ol>
-<li><p>一旦&lt;&gt;被实体化之后,XSS就无法绕过</p>
-</li>
-<li><p>标签<code>src href</code>属性中可以尝试使用Entity实体编码进行正则绕过<br> Chrome的js检测绕过! 火狐存在路径问题</p>
-<blockquote>
-<p>POC如下</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"jav&amp;#10;ascript:alert('XSS');"</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"jav&amp;#x0D;ascript:alert('XSS');"</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>利用iframe的src属性<br>iframe可以调用父级 parent.alert(),data协议有个规定,一旦使用很可能会跳转至新的标签页,但是内嵌iframe会相对好一点</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src="data:text/html;base64,PHNjcmlwdD5wYXJlbnQuYWxlcnQoZG9jdW1lbnQuZG9tYWluKTs8L3NjcmlwdD4"&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>引号过滤的话就很困难了, 靠其他情况绕过</p>
-</li>
-<li><p>document.write() 编码绕过<br>a.unicode   无需\转义,直接写就行 例: <code>\u003c</code><br>b.16hex &amp; 8hex   需要对\进行转义例如: </p>
-<pre><code>`\\x3cscript\\x3ealert(/xss/)\\x3c\\x2fscript\\x3e`
-`\\74script\\76alert(document.domain)\\74\\57script\\76`
-</code></pre></li>
-<li><p>JS段中实体编码绕过正则过滤<br>Twitter DomXss at Sep 24, 2010</p>
-</li>
-</ol>
-<h3 id="Reference-amp-Dictionary"><a href="#Reference-amp-Dictionary" class="headerlink" title="Reference &amp; Dictionary"></a>Reference &amp; Dictionary</h3><p><a href="http://www.w3school.com.cn/tags/html_ref_entities.html" target="_blank" rel="external">实体编码表</a><br><a href="https://github.com/matachi/MaTachi.github.io/blob/master/src/pages/solutions-to-the-wargame-xss-challenges-at-xss-quiz-int21h-jp.md" target="_blank" rel="external">write up_1</a><br><a href="https://blogs.tunelko.com/2013/12/02/xss-challenges/" target="_blank" rel="external">write up_2</a><br><a href="http://blog.knownsec.com/Knownsec_RD_Checklist/xss/xss_quiz.txt" target="_blank" rel="external">write up_3</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/04/19/2016/xss-1/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/19/2016/xss-1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
@@ -715,7 +691,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CodeIgniter/" style="font-size: 12.5px;">CodeIgniter</a> <a href="/tags/Device/" style="font-size: 13.75px;">Device</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/SQLInjection/" style="font-size: 11.25px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 13.75px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.5px;">XSS</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 15px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 12.5px;">hard</a> <a href="/tags/intranet/" style="font-size: 10px;">intranet</a> <a href="/tags/nexus5x/" style="font-size: 12.5px;">nexus5x</a> <a href="/tags/parties/" style="font-size: 10px;">parties</a> <a href="/tags/port/" style="font-size: 10px;">port</a> <a href="/tags/soft/" style="font-size: 12.5px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.25px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 12.5px;">闲谈</a>
+       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CodeIgniter/" style="font-size: 12.5px;">CodeIgniter</a> <a href="/tags/Device/" style="font-size: 13.75px;">Device</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/SQLInjection/" style="font-size: 11.25px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 13.75px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.5px;">XSS</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 15px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 12.5px;">hard</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/intranet/" style="font-size: 10px;">intranet</a> <a href="/tags/nexus5x/" style="font-size: 12.5px;">nexus5x</a> <a href="/tags/parties/" style="font-size: 10px;">parties</a> <a href="/tags/port/" style="font-size: 10px;">port</a> <a href="/tags/soft/" style="font-size: 12.5px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.25px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 12.5px;">闲谈</a>
     </div>
   </div>
 
@@ -723,7 +699,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 

