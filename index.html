@@ -100,7 +100,25 @@
 </blockquote>
 </li>
 <li><p><a href="http://caibaojian.com/jquery-each-json.html" target="_blank" rel="external">ajax对php echo的数据处理</a></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">	...,</span><br><span class="line">	success: function(data) &#123;</span><br><span class="line">		data = eval(data);		//	string 转换为json对象</span><br><span class="line">		for (key in data) &#123;</span><br><span class="line">			console.log(data[key]);	//	对象遍历</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">3. jQuery对ajax的各种封装方法</span><br><span class="line">[https://my.oschina.net/LuckyWinty/blog/637632?fromerr=lVC30yU2](https://my.oschina.net/LuckyWinty/blog/637632?fromerr=lVC30yU2)</span><br><span class="line"></span><br><span class="line">4. jQuery获取动态绑定对象</span><br><span class="line">[模拟document点击事件](http://www.mr-jie.com/?id=39)</span><br><span class="line"></span><br><span class="line">5. [下拉栏的css设置](https://www.formget.com/css-design-in-select-option/)</span><br><span class="line"></span><br><span class="line">### server-side</span><br><span class="line">1. session加载错误</span><br><span class="line">错误描述：</span><br><span class="line">Message: mkdir() [function.mkdir]: Invalid argument</span><br><span class="line">Message: Session: Configured save path '' is not a directory, doesn't exist or cannot be created.</span><br><span class="line">解决方案：</span><br><span class="line">更改 application/config/config.php中的`$config['sess_save_path']`</span><br><span class="line">refer:[http://codeigniter.org.cn/forums/thread-21295-1-1.html](http://codeigniter.org.cn/forums/thread-21295-1-1.html)</span><br><span class="line"></span><br><span class="line">2. CI多入口解决方案</span><br><span class="line">见blog-CI 分类</span><br><span class="line"></span><br><span class="line">3. 改进load-&gt;view()进行多页面不同的资源文件加载</span><br><span class="line">&gt;[冯义军@德问](http://www.dewen.net.cn/q/1702/PHP+CI+$this-&gt;load-&gt;view();方法修改)</span><br><span class="line">&gt;loadfile.php</span><br><span class="line">```php</span><br><span class="line">$config['loadfile'] = array(</span><br><span class="line">'js' =&gt; array('base'=&gt; array('common.js','base.js','lib.js'),'full' =&gt; 'xx.js','xxx1.js','.....','homePage' =&gt; 'xxx.js');</span><br><span class="line">'css' =&gt; ....</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">	...,</span><br><span class="line">	success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">		data = <span class="built_in">eval</span>(data);		<span class="comment">//	string 转换为json对象</span></span><br><span class="line">		<span class="keyword">for</span> (key <span class="keyword">in</span> data) &#123;</span><br><span class="line">			<span class="built_in">console</span>.log(data[key]);	<span class="comment">//	对象遍历</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>jQuery对ajax的各种封装方法<br><a href="https://my.oschina.net/LuckyWinty/blog/637632?fromerr=lVC30yU2" target="_blank" rel="external">https://my.oschina.net/LuckyWinty/blog/637632?fromerr=lVC30yU2</a></p>
+</li>
+<li><p>jQuery获取动态绑定对象<br><a href="http://www.mr-jie.com/?id=39" target="_blank" rel="external">模拟document点击事件</a></p>
+</li>
+<li><p><a href="https://www.formget.com/css-design-in-select-option/" target="_blank" rel="external">下拉栏的css设置</a></p>
+</li>
+</ol>
+<h3 id="server-side"><a href="#server-side" class="headerlink" title="server-side"></a>server-side</h3><ol>
+<li><p>session加载错误<br>错误描述：<br>Message: mkdir() [function.mkdir]: Invalid argument<br>Message: Session: Configured save path ‘’ is not a directory, doesn’t exist or cannot be created.<br>解决方案：<br>更改 application/config/config.php中的<code>$config[&#39;sess_save_path&#39;]</code><br>refer:<a href="http://codeigniter.org.cn/forums/thread-21295-1-1.html" target="_blank" rel="external">http://codeigniter.org.cn/forums/thread-21295-1-1.html</a></p>
+</li>
+<li><p>CI多入口解决方案<br>见blog-CI 分类</p>
+</li>
+<li><p>改进load-&gt;view()进行多页面不同的资源文件加载</p>
+<blockquote>
+<p><a href="http://www.dewen.net.cn/q/1702/PHP+CI+$this-&gt;load-&gt;view(" target="_blank" rel="external">冯义军@德问</a>;方法修改)<br>loadfile.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$config[<span class="string">'loadfile'</span>] = <span class="keyword">array</span>(</span><br><span class="line"><span class="string">'js'</span> =&gt; <span class="keyword">array</span>(<span class="string">'base'</span>=&gt; <span class="keyword">array</span>(<span class="string">'common.js'</span>,<span class="string">'base.js'</span>,<span class="string">'lib.js'</span>),<span class="string">'full'</span> =&gt; <span class="string">'xx.js'</span>,<span class="string">'xxx1.js'</span>,<span class="string">'.....'</span>,<span class="string">'homePage'</span> =&gt; <span class="string">'xxx.js'</span>);</span><br><span class="line"><span class="string">'css'</span> =&gt; ....</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</blockquote>
 </li>
 </ol>
 <p>那么在load view 前更具不同的页面先调用不同的配置：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">$this</span> -&gt; load -&gt; config(<span class="string">'loadfile'</span>);</span><br><span class="line">$loadFiles = <span class="keyword">$this</span> -&gt; config -&gt; item(<span class="string">'loadfile'</span>);</span><br><span class="line">$data[<span class="string">'js'</span>] =  $loadFiles[<span class="string">'js'</span>][<span class="string">'homePage'</span>];</span><br><span class="line">$data[<span class="string">'css'</span>] = $loadFiles[<span class="string">'css'</span>][<span class="string">'base'</span>];</span><br><span class="line"><span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">"xxx"</span>,$data);</span><br></pre></td></tr></table></figure></p>
@@ -582,53 +600,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/08/07/2016/say-2/" title="无题" itemprop="url">无题</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-06T16:00:00.000Z" itemprop="datePublished"> 发表于 08-07-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
-<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/08/07/2016/say-2/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/07/2016/say-2/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/08/07/2016/js-json-parse/" title="JSON使用注意" itemprop="url">JSON使用注意</a>
   </h1>
   <p class="article-author">By
@@ -680,6 +651,53 @@
 	
 	  	<span></span>
 		<a href="/08/07/2016/js-json-parse/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/07/2016/js-json-parse/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/08/07/2016/say-2/" title="无题" itemprop="url">无题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-06T16:00:00.000Z" itemprop="datePublished"> 发表于 08-07-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
+<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/08/07/2016/say-2/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/07/2016/say-2/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
