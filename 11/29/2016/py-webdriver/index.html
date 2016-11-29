@@ -4,28 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Node Party[3nd]小记 | A1exlism</title>
+    <title>webdriver with python | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="defined挺喜欢js的, 看到这个就报名了, 报名费居然也在红包中返回了手上(233).
-Main()0x01. the missing part of TDD @shupengfeiTest-Driven Development 驱动测试开发, 差不多像单元测试说实话, tdd这个经常在node的文档中看到, 但是自己也没有写过, 仅限于能看懂.dalao的演讲受益匪浅, 做了笔记, 写在这">
+    <meta name="description" content="defined写webdriver的目的: 作业驱动型.写这篇博客目的: 以后用来作索引, 毕竟python还没开始学= =
+Main()讲道理webdriver这个还挺简单的, 各种API封装的和前端基本上一模一样~这边记录下写的时候遇到的收藏夹:
+
+python字符串前缀u和r在python2里面，u表示unicode string，类型是unicode, 没有u表示byte string，类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Node Party[3nd]小记">
-<meta property="og:url" content="http://csser.work/10/22/2016/node-party/index.html">
+<meta property="og:title" content="webdriver with python">
+<meta property="og:url" content="http://csser.work/11/29/2016/py-webdriver/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="defined挺喜欢js的, 看到这个就报名了, 报名费居然也在红包中返回了手上(233).
-Main()0x01. the missing part of TDD @shupengfeiTest-Driven Development 驱动测试开发, 差不多像单元测试说实话, tdd这个经常在node的文档中看到, 但是自己也没有写过, 仅限于能看懂.dalao的演讲受益匪浅, 做了笔记, 写在这">
-<meta property="og:image" content="http://csser.work/imgs/node_party/1.png">
-<meta property="og:updated_time" content="2016-10-22T14:58:11.680Z">
+<meta property="og:description" content="defined写webdriver的目的: 作业驱动型.写这篇博客目的: 以后用来作索引, 毕竟python还没开始学= =
+Main()讲道理webdriver这个还挺简单的, 各种API封装的和前端基本上一模一样~这边记录下写的时候遇到的收藏夹:
+
+python字符串前缀u和r在python2里面，u表示unicode string，类型是unicode, 没有u表示byte string，类">
+<meta property="og:updated_time" content="2016-11-29T10:30:30.101Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Node Party[3nd]小记">
-<meta name="twitter:description" content="defined挺喜欢js的, 看到这个就报名了, 报名费居然也在红包中返回了手上(233).
-Main()0x01. the missing part of TDD @shupengfeiTest-Driven Development 驱动测试开发, 差不多像单元测试说实话, tdd这个经常在node的文档中看到, 但是自己也没有写过, 仅限于能看懂.dalao的演讲受益匪浅, 做了笔记, 写在这">
-<meta name="twitter:image" content="http://csser.work/imgs/node_party/1.png">
+<meta name="twitter:title" content="webdriver with python">
+<meta name="twitter:description" content="defined写webdriver的目的: 作业驱动型.写这篇博客目的: 以后用来作索引, 毕竟python还没开始学= =
+Main()讲道理webdriver这个还挺简单的, 各种API封装的和前端基本上一模一样~这边记录下写的时候遇到的收藏夹:
+
+python字符串前缀u和r在python2里面，u表示unicode string，类型是unicode, 没有u表示byte string，类">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -84,14 +88,14 @@ Main()0x01. the missing part of TDD @shupengfeiTest-Driven Development 驱动测
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/22/2016/node-party/" title="Node Party[3nd]小记" itemprop="url">Node Party[3nd]小记</a>
+      <a href="/11/29/2016/py-webdriver/" title="webdriver with python" itemprop="url">webdriver with python</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-10-21T16:00:00.000Z" itemprop="datePublished"> 发表于 10-22-2016</time>
+    <time datetime="2016-11-28T16:00:00.000Z" itemprop="datePublished"> 发表于 11-29-2016</time>
     
   </p>
 </header>
@@ -100,37 +104,34 @@ Main()0x01. the missing part of TDD @shupengfeiTest-Driven Development 驱动测
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-the-missing-part-of-TDD-shupengfei"><span class="toc-number">2.1.</span> <span class="toc-text">0x01. the missing part of TDD @shupengfei</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-Atom背后的故事-jysperm"><span class="toc-number">2.2.</span> <span class="toc-text">0x02. Atom背后的故事@jysperm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-Prototype-of-“JS-Native”"><span class="toc-number">2.3.</span> <span class="toc-text">0x03. Prototype of “JS-Native”</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EOF"><span class="toc-number">3.</span> <span class="toc-text">EOF</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>挺喜欢js的, 看到这个就报名了, 报名费居然也在红包中返回了手上(233).</p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="0x01-the-missing-part-of-TDD-shupengfei"><a href="#0x01-the-missing-part-of-TDD-shupengfei" class="headerlink" title="0x01. the missing part of TDD @shupengfei"></a>0x01. the missing part of TDD <code>@shupengfei</code></h3><p>Test-Driven Development 驱动测试开发, 差不多像单元测试<br>说实话, tdd这个经常在node的文档中看到, 但是自己也没有写过, 仅限于能看懂.<br>dalao的演讲受益匪浅, 做了笔记, 写在这里</p>
-<blockquote>
-<p>“所有代码都会腐烂”<br>“这个代码应该有人来重构一下, 但不是我” 都表明了在长时间之后的代码变得难以读懂, 难以维护.<br>所以tdd就上线来解决这个问题了~</p>
-</blockquote>
-<p>我听完演讲之后对tdd操作的理解: 由简到繁, function(x)给个要求之后用最少代码实现.<br>if是while的unit, 这个也挺有意思的~<br>还有演讲示例用到了<code>递归</code>, 递归其实挺好用的, 如果不溢出, 按照摩尔定律, 这个性能问题会逐渐消失(除非你代码有fatal error).</p>
-<p>演讲用到了两个例子:</p>
+		<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>写webdriver的目的: 作业驱动型.<br>写这篇博客目的: 以后用来作索引, 毕竟python还没开始学= =</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>讲道理webdriver这个还挺简单的, 各种API封装的和前端基本上一模一样~<br>这边记录下写的时候遇到的收藏夹:</p>
 <ol>
-<li><p>factorization<br>要求只能按照记忆来了:[] -&gt; [1] -&gt; [2] -&gt; <a href="出现问题,分类讨论">n</a> -&gt; [2,2] -&gt; [2, 4] -&gt; [3, 3]…</p>
+<li><a href="https://zhidao.baidu.com/question/265128148922415765.html" target="_blank" rel="external">python字符串前缀u和r</a><br>在python2里面，u表示unicode string，类型是unicode, 没有u表示byte string，类型是 str<br>在python3里面，所有字符串都是unicode string, u前缀没有特殊含义了</li>
+<li>selenium 获取dom元素属性: a.get_attribute(‘href’)<br>文本内容: a.text</li>
+<li>关于断言=&gt;<code>Expected Conditions</code>, 可以看看这个中文解释文档:<a href="http://www.cnblogs.com/nbkhic/p/4885041.html#undefined#undefined" target="_blank" rel="external">python selenium expected_conditions使用实例
+</a></li>
+<li>关于Selenium的官方文档戳这: <a href="http://selenium-python.readthedocs.io/getting-started.html" target="_blank" rel="external">selenium-python</a></li>
+<li><a href="http://cn.python-requests.org/zh_CN/latest/" target="_blank" rel="external">Request-python</a> 关于request的python官方文档</li>
+<li>Python保存时提示”SyntaxError: Non-ASCII character ‘\xe8’ in file” =&gt; 添加如下语句: <code># -*- coding: utf-8 -*-</code></li>
+<li><p>UnicodeEncodeError: ‘ascii’ codec can’t encode characters in position =&gt; 添加</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding( <span class="string">"utf-8"</span> )</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Sort Alogrithm<br>[] -&gt; [1] -&gt; [1,2] -&gt; <a href="出现问题, 进一步讨论">1,3,2</a> -&gt; [3,2,1] -&gt; [x, y, z]</p>
+<li><p><a href="https://sites.google.com/a/chromium.org/chromedriver/getting-started" target="_blank" rel="external">ChromeDriver</a>官方文档</p>
 </li>
 </ol>
-<h3 id="0x02-Atom背后的故事-jysperm"><a href="#0x02-Atom背后的故事-jysperm" class="headerlink" title="0x02. Atom背后的故事@jysperm"></a>0x02. Atom背后的故事<code>@jysperm</code></h3><p>以前用atom的时候很多sublime的操作虽然有兼容, 但是atom始终没办法和sublime比运行速度, 总是用着用着就用回sublime了…遇到问题很多时候都会跳转到精子哥的中文社区<a href="https://atom-china.org/" target="_blank" rel="external">atom中文社区</a>, 今天见到还是挺开心的.</p>
-<p>atom和vscode的模型我还真没去自己研究过, 发现就是<code>electron APP</code>, 下图是electron组件图:<img src="/imgs/node_party/1.png" alt="1"><br>优点很明显</p>
-<blockquote>
-<p>内置chromium内核, 不需要用户支持更新;Node版本自己控制, 随时可以使用最新的语法;Native APIs的原生支持, 保证了跨平台的支持.</p>
-</blockquote>
-<p>后面的话就是一些关于atom的一些hack定制, 和内置的API调用模式等等, 然后也提到了atom的性能问题,比如:<br>1.内置的node_modules整合为单文件模式app.asar, 解决大量小文件读写速度慢的问题;<br>2.利用<code>virtual dom</code>来解决<code>reflow &amp; repaint</code>的多次渲染问题;<br>3.针对于大文件加载, 使用了<code>transform3d</code>来进行块加载, 每次只加载需要显示的部分.</p>
-<h3 id="0x03-Prototype-of-“JS-Native”"><a href="#0x03-Prototype-of-“JS-Native”" class="headerlink" title="0x03. Prototype of “JS-Native”"></a>0x03. Prototype of “JS-Native”</h3><p>这个看完ppt然后也没得出什么结论, 就不写了.</p>
+<h2 id="EOF"><a href="#EOF" class="headerlink" title="EOF"></a>EOF</h2><p>这个暂时也不知道拿来干嘛, 等以后用到再说, 做个收藏夹~</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/10/22/2016/node-party/" data-title="Node Party[3nd]小记 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/11/29/2016/py-webdriver/" data-title="webdriver with python | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -143,19 +144,11 @@ Main()0x01. the missing part of TDD @shupengfeiTest-Driven Development 驱动测
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/11/09/2016/linux-proxychains/" title="Linux佳软推荐_proxychains">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Linux佳软推荐_proxychains</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/10/16/2016/arch-efi-udisk-install/"  title="Arch (U)EFI安装至U盘">
+<a href="/11/28/2016/i18n-with-jquery/"  title="i18n国际化纯前端渲染">
  <strong>下一篇：</strong><br/> 
- <span>Arch (U)EFI安装至U盘
+ <span>i18n国际化纯前端渲染
 </span>
 </a>
 </div>
@@ -164,7 +157,7 @@ Main()0x01. the missing part of TDD @shupengfeiTest-Driven Development 驱动测
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="10/22/2016/node-party/" data-title="Node Party[3nd]小记" data-url="http://csser.work/10/22/2016/node-party/"></div>
+	<div class="ds-thread" data-thread-key="11/29/2016/py-webdriver/" data-title="webdriver with python" data-url="http://csser.work/11/29/2016/py-webdriver/"></div>
 </section>
 
 
@@ -174,7 +167,7 @@ Main()0x01. the missing part of TDD @shupengfeiTest-Driven Development 驱动测
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-the-missing-part-of-TDD-shupengfei"><span class="toc-number">2.1.</span> <span class="toc-text">0x01. the missing part of TDD @shupengfei</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-Atom背后的故事-jysperm"><span class="toc-number">2.2.</span> <span class="toc-text">0x02. Atom背后的故事@jysperm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-Prototype-of-“JS-Native”"><span class="toc-number">2.3.</span> <span class="toc-text">0x03. Prototype of “JS-Native”</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EOF"><span class="toc-number">3.</span> <span class="toc-text">EOF</span></a></li></ol>
  
   </div>
 
