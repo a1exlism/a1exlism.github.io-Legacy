@@ -4,26 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Bootstrap Navbar Hack | A1exlism</title>
+    <title>JS闭包 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="defined以前用bootstrap的时候也遇到过这么个问题, navbar一写, 然后宽度布局就出现问题了, 页面宽度总是大于浏览器宽度.
-css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid &amp;#123;	padding-left: 0 !important;	padding-righ">
+    <meta name="description" content="defined看问题的时候顺便看到了, 闭包面试题面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.
+main()个人理解:看了MDN, 总结了一些结论闭包就是一个 函数加上该函数的上下文环境 的集合.
+一个比较常见的例子:HTML:123&amp;lt;div class=&quot;divs&quot;&amp;gt; aaa &amp;lt;/div&amp;gt;&amp;lt;div class=&quot;divs&quot;&amp;gt; aaa &amp;lt;/di">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bootstrap Navbar Hack">
-<meta property="og:url" content="http://csser.work/06/30/2015/bootstrap-navbar-resposive/index.html">
+<meta property="og:title" content="JS闭包">
+<meta property="og:url" content="http://csser.work/12/02/2016/js-closure/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="defined以前用bootstrap的时候也遇到过这么个问题, navbar一写, 然后宽度布局就出现问题了, 页面宽度总是大于浏览器宽度.
-css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid &amp;#123;	padding-left: 0 !important;	padding-righ">
-<meta property="og:updated_time" content="2016-10-23T08:46:27.752Z">
+<meta property="og:description" content="defined看问题的时候顺便看到了, 闭包面试题面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.
+main()个人理解:看了MDN, 总结了一些结论闭包就是一个 函数加上该函数的上下文环境 的集合.
+一个比较常见的例子:HTML:123&amp;lt;div class=&quot;divs&quot;&amp;gt; aaa &amp;lt;/div&amp;gt;&amp;lt;div class=&quot;divs&quot;&amp;gt; aaa &amp;lt;/di">
+<meta property="og:updated_time" content="2016-12-02T13:25:49.741Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bootstrap Navbar Hack">
-<meta name="twitter:description" content="defined以前用bootstrap的时候也遇到过这么个问题, navbar一写, 然后宽度布局就出现问题了, 页面宽度总是大于浏览器宽度.
-css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid &amp;#123;	padding-left: 0 !important;	padding-righ">
+<meta name="twitter:title" content="JS闭包">
+<meta name="twitter:description" content="defined看问题的时候顺便看到了, 闭包面试题面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.
+main()个人理解:看了MDN, 总结了一些结论闭包就是一个 函数加上该函数的上下文环境 的集合.
+一个比较常见的例子:HTML:123&amp;lt;div class=&quot;divs&quot;&amp;gt; aaa &amp;lt;/div&amp;gt;&amp;lt;div class=&quot;divs&quot;&amp;gt; aaa &amp;lt;/di">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -82,14 +85,14 @@ css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/06/30/2015/bootstrap-navbar-resposive/" title="Bootstrap Navbar Hack" itemprop="url">Bootstrap Navbar Hack</a>
+      <a href="/12/02/2016/js-closure/" title="JS闭包" itemprop="url">JS闭包</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-29T16:00:00.000Z" itemprop="datePublished"> 发表于 06-30-2015</time>
+    <time datetime="2016-12-01T16:00:00.000Z" itemprop="datePublished"> 发表于 12-02-2016</time>
     
   </p>
 </header>
@@ -98,20 +101,26 @@ css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css-codes"><span class="toc-number">2.</span> <span class="toc-text">css-codes</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#main"><span class="toc-number">2.</span> <span class="toc-text">main()</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>以前用bootstrap的时候也遇到过这么个问题, navbar一写, 然后宽度布局就出现问题了, <code>页面宽度总是大于浏览器宽度</code>.</p>
-<h2 id="css-codes"><a href="#css-codes" class="headerlink" title="css-codes"></a>css-codes</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* -- NavBar-Responsive Start  -- */</span></span><br><span class="line"><span class="selector-class">.navbar</span> <span class="selector-class">.container-fluid</span> &#123;</span><br><span class="line">	<span class="attribute">padding-left</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">	<span class="attribute">padding-right</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar-collapse</span>, <span class="selector-class">.navbar-header</span> &#123;</span><br><span class="line">	<span class="attribute">margin-left</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">	<span class="attribute">margin-right</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>测试样例的话就是官方例子就行了.</p>
+		<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>看问题的时候顺便看到了, <a href="http://www.cnblogs.com/xxcanghai/p/4991870.html" target="_blank" rel="external">闭包面试题</a><br>面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>个人理解:<br><br>看了<a href="https://developer.mozilla.org/cn/docs/Web/JavaScript/Closures" target="_blank" rel="external">MDN</a>, 总结了一些结论<br>闭包就是一个 函数加上该函数的上下文环境 的集合.</p>
+<p>一个比较常见的例子:<br>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Javascript:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++)&#123;</span><br><span class="line">		divs[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>无论点哪个都只会输出3, 原因讲的已经很明确了, 在这个函数内部的上下文环境中, i会共用.<br>可能会问, 如果共用, 那么绑定的也只有第三个=&gt; 在绑定的时候i还是从0-&gt;2的, 但是事件触发一定是i在等于3之后的事情了.</p>
+<p>解决办法: 闭包传参, ES6新特性:let<br>这边给个闭包传参的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++) &#123;</span><br><span class="line">		divs[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;)(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>这样每一个onclick都被赋予了一个独立的闭包,可以独立输出0-2.</p>
+<p>另一个模拟类的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shoppingCart</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> goods = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        goodsAdd: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            ++goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsRemove: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            --goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> goods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cartA = <span class="keyword">new</span> shoppingCart();</span><br><span class="line"><span class="keyword">var</span> cartB = <span class="keyword">new</span> shoppingCart();</span><br><span class="line">cartA.goodsAdd();</span><br><span class="line">cartA.goodsShow();</span><br><span class="line"></span><br><span class="line">cartB.goodsAdd();</span><br><span class="line">cartB.goodsRemove();</span><br><span class="line">cartB.goodsShow();</span><br></pre></td></tr></table></figure></p>
+<p>shoppingCart函数有个函数内变量goods, 外部无法访问, 但是它可以通过内部的函数访问到, 即整个shoppingCart函数<code>构成了一个闭包环境</code>.<br>问了一下同学, <code>这个很像面向对象的一个类</code>, goods就是所谓的private变量了.<br>而new出来的对象都是一个独立的闭包, 拥有独立的上下文环境和内容</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/06/30/2015/bootstrap-navbar-resposive/" data-title="Bootstrap Navbar Hack | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/12/02/2016/js-closure/" data-title="JS闭包 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -124,19 +133,11 @@ css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/06/30/2015/daily-git/" title="Git Daily">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Git Daily</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/03/20/2015/g4w/"  title="G4W-collection">
+<a href="/12/02/2016/js-interview-1/"  title="JS面试题1-分析">
  <strong>下一篇：</strong><br/> 
- <span>G4W-collection
+ <span>JS面试题1-分析
 </span>
 </a>
 </div>
@@ -145,7 +146,7 @@ css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="06/30/2015/bootstrap-navbar-resposive/" data-title="Bootstrap Navbar Hack" data-url="http://csser.work/06/30/2015/bootstrap-navbar-resposive/"></div>
+	<div class="ds-thread" data-thread-key="12/02/2016/js-closure/" data-title="JS闭包" data-url="http://csser.work/12/02/2016/js-closure/"></div>
 </section>
 
 
@@ -155,7 +156,7 @@ css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css-codes"><span class="toc-number">2.</span> <span class="toc-text">css-codes</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#main"><span class="toc-number">2.</span> <span class="toc-text">main()</span></a></li></ol>
  
   </div>
 

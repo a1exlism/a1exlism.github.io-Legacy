@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://csser.work/12/02/2016/js-closure/</loc>
+    
+    <lastmod>2016-12-02T13:25:49.741Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://csser.work/12/02/2016/js-interview-1/</loc>
     
-    <lastmod>2016-12-02T10:40:05.575Z</lastmod>
+    <lastmod>2016-12-02T13:11:04.313Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/04/12/2016/js-let/</loc>
+    
+    <lastmod>2016-12-02T12:29:17.054Z</lastmod>
     
   </url>
   
@@ -404,13 +418,6 @@
     <loc>http://csser.work/05/16/2016/js-methods/</loc>
     
     <lastmod>2016-05-17T15:21:37.428Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/04/12/2016/js-let/</loc>
-    
-    <lastmod>2016-05-17T15:21:34.767Z</lastmod>
     
   </url>
   
