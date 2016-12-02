@@ -4,41 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>读书笔记--鸟哥私房菜③ | A1exlism</title>
+    <title>js面试题1-分析 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="Shell Script基础0x1. 条件 编写的shell.sh需要rx权限0x2. 执行  1.绝对/相对路径  2.export $PATH 直接执行  3.bash shell.sh0x3. 文件规范
-
-这行用来声明使用bash语法,运行时可加载bash环境#!/bin/bash
-
-代码练习放在新库中
-sh02.shStandard input and output.
-sh03.sh随日期">
+    <meta name="description" content="defined@掘金上看到的, 做了发现以前看得都还给书本了.题目博客地址: http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments
+相关知识点变量提升, 变量声明优先级, 函数表达式VS变量声明, js对象继承, 构造函数, this指向, 运算符优先级
+题目123456789101112131415161718192021222324">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读书笔记--鸟哥私房菜③">
-<meta property="og:url" content="http://csser.work/03/01/2016/book-vbird-3/index.html">
+<meta property="og:title" content="js面试题1-分析">
+<meta property="og:url" content="http://csser.work/12/02/2016/js-interview-1/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="Shell Script基础0x1. 条件 编写的shell.sh需要rx权限0x2. 执行  1.绝对/相对路径  2.export $PATH 直接执行  3.bash shell.sh0x3. 文件规范
-
-这行用来声明使用bash语法,运行时可加载bash环境#!/bin/bash
-
-代码练习放在新库中
-sh02.shStandard input and output.
-sh03.sh随日期">
-<meta property="og:updated_time" content="2016-05-17T15:14:13.431Z">
+<meta property="og:description" content="defined@掘金上看到的, 做了发现以前看得都还给书本了.题目博客地址: http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments
+相关知识点变量提升, 变量声明优先级, 函数表达式VS变量声明, js对象继承, 构造函数, this指向, 运算符优先级
+题目123456789101112131415161718192021222324">
+<meta property="og:updated_time" content="2016-12-02T10:40:05.575Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读书笔记--鸟哥私房菜③">
-<meta name="twitter:description" content="Shell Script基础0x1. 条件 编写的shell.sh需要rx权限0x2. 执行  1.绝对/相对路径  2.export $PATH 直接执行  3.bash shell.sh0x3. 文件规范
-
-这行用来声明使用bash语法,运行时可加载bash环境#!/bin/bash
-
-代码练习放在新库中
-sh02.shStandard input and output.
-sh03.sh随日期">
+<meta name="twitter:title" content="js面试题1-分析">
+<meta name="twitter:description" content="defined@掘金上看到的, 做了发现以前看得都还给书本了.题目博客地址: http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments
+相关知识点变量提升, 变量声明优先级, 函数表达式VS变量声明, js对象继承, 构造函数, this指向, 运算符优先级
+题目123456789101112131415161718192021222324">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -97,14 +85,14 @@ sh03.sh随日期">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/01/2016/book-vbird-3/" title="读书笔记--鸟哥私房菜③" itemprop="url">读书笔记--鸟哥私房菜③</a>
+      <a href="/12/02/2016/js-interview-1/" title="js面试题1-分析" itemprop="url">js面试题1-分析</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-29T16:00:00.000Z" itemprop="datePublished"> 发表于 03-01-2016</time>
+    <time datetime="2016-12-01T16:00:00.000Z" itemprop="datePublished"> 发表于 12-02-2016</time>
     
   </p>
 </header>
@@ -113,68 +101,37 @@ sh03.sh随日期">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell-Script"><span class="toc-number">1.</span> <span class="toc-text">Shell Script</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码练习放在新库中"><span class="toc-number">1.2.</span> <span class="toc-text">代码练习放在新库中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#source-VS-bash"><span class="toc-number">1.3.</span> <span class="toc-text">source VS bash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#判断式"><span class="toc-number">1.4.</span> <span class="toc-text">判断式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#test-option-file-amp-amp-function"><span class="toc-number">1.4.1.</span> <span class="toc-text">test [option] file &&/|| function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断符号"><span class="toc-number">1.4.2.</span> <span class="toc-text">判断符号[]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-Script-默认变量"><span class="toc-number">1.5.</span> <span class="toc-text">Shell Script 默认变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#shift变量号偏移"><span class="toc-number">1.5.1.</span> <span class="toc-text">shift变量号偏移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if-then-fi"><span class="toc-number">1.6.</span> <span class="toc-text">if then fi</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关知识点"><span class="toc-number">2.</span> <span class="toc-text">相关知识点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">3.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解析"><span class="toc-number">4.</span> <span class="toc-text">解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-通读"><span class="toc-number">4.1.</span> <span class="toc-text">0x00 通读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-Foo-getName"><span class="toc-number">4.2.</span> <span class="toc-text">0x01 Foo.getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-getName"><span class="toc-number">4.3.</span> <span class="toc-text">0x02 getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-Foo-getName"><span class="toc-number">4.4.</span> <span class="toc-text">0x03 Foo().getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x04-getName"><span class="toc-number">4.5.</span> <span class="toc-text">0x04 getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下面三题和运算符优先级相关"><span class="toc-number">4.6.</span> <span class="toc-text">下面三题和运算符优先级相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x05-new-Foo-getName"><span class="toc-number">4.7.</span> <span class="toc-text">0x05 new Foo.getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x06-new-Foo-getName"><span class="toc-number">4.8.</span> <span class="toc-text">0x06 new Foo().getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x07-new-new-Foo-getName"><span class="toc-number">4.9.</span> <span class="toc-text">0x07 new new Foo().getName();</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="Shell-Script"><a href="#Shell-Script" class="headerlink" title="Shell Script"></a>Shell Script</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>0x1. 条件<br> 编写的shell.sh需要rx权限<br>0x2. 执行<br>  1.绝对/相对路径<br>  2.export $PATH 直接执行<br>  3.bash shell.sh<br>0x3. 文件规范</p>
-<blockquote>
-<p>这行用来声明使用bash语法,运行时可加载bash环境<br><code>#!/bin/bash</code></p>
+		<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p><a href="gold.xitu.io/">@掘金</a>上看到的, 做了发现以前看得都还给书本了.<br>题目博客地址: <a href="http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments" target="_blank" rel="external">http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments</a></p>
+<h2 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h2><p>变量提升, 变量声明优先级, 函数表达式VS变量声明, js对象继承, 构造函数, this指向, 运算符优先级</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//	line-1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="number">1</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// console.log(this);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//	line-2</span></span><br><span class="line">Foo.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="number">2</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//	line-3</span></span><br><span class="line">Foo.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	alert(<span class="number">3</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//	line-4</span></span><br><span class="line"><span class="keyword">var</span> getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="number">4</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//	line-5</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//请写出以下输出结果：</span></span><br><span class="line">Foo.getName();</span><br><span class="line">getName();</span><br><span class="line">Foo().getName();</span><br><span class="line">getName();</span><br><span class="line"><span class="keyword">new</span> Foo.getName();</span><br><span class="line"><span class="keyword">new</span> Foo().getName();</span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> Foo().getName();</span><br></pre></td></tr></table></figure>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><h3 id="0x00-通读"><a href="#0x00-通读" class="headerlink" title="0x00 通读"></a>0x00 通读</h3><ol>
+<li>line-1中的getName是一个全局函数变量</li>
+<li>line-4是一个变量声明和赋值两个过程</li>
+<li>line-5是一个函数声明</li>
+</ol>
+<h3 id="0x01-Foo-getName"><a href="#0x01-Foo-getName" class="headerlink" title="0x01 Foo.getName();"></a>0x01 Foo.getName();</h3><p>按照前面讲的, 根据原型链查找, 直接找到了line-2函数, 输出: 2</p>
+<h3 id="0x02-getName"><a href="#0x02-getName" class="headerlink" title="0x02 getName();"></a>0x02 getName();</h3><blockquote>
+<p>小笔记<br>函数变量声明优先级比变量声明高, 变量提升仅仅提升了<code>变量声明</code>.<a href="https://gist.github.com/a1exlism/de8e79a5607c05677c2bdc89ce982714" target="_blank" rel="external">demo演示</a></p>
 </blockquote>
-<h2 id="代码练习放在新库中"><a href="#代码练习放在新库中" class="headerlink" title="代码练习放在新库中"></a>代码练习放在新库中</h2><ul>
-<li>sh02.sh<br>Standard input and output.</li>
-<li>sh03.sh<br>随日期变化创建具时间的文件名</li>
-<li>sh04.sh<br>数值运算<br>declare 定义变量类型<blockquote>
-<p>declare -i total=$firstnum*$secondnum</p>
-</blockquote>
-</li>
-</ul>
-<p>直接用两个小括号<code>(())</code>brakets来代替<br>这种写法需要记住!</p>
-<blockquote>
-<p>variable=<code>$(($a*$b))</code></p>
-</blockquote>
-<h2 id="source-VS-bash"><a href="#source-VS-bash" class="headerlink" title="source VS bash"></a>source VS bash</h2><p>这两者都可以执行脚本,但是bash会创建一个新的bash环境(子进程)供script使用,而source则是直接执行script.<br>script中的变量也就类似于main()函数中的子函数(bash-script)和主函数(source script)中变量的关系了.<br>=&gt;sh02.sh为例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">"xxx"</span> firstname</span><br></pre></td></tr></table></figure></p>
-<p>source sh02.sh 中的firstname在执行完之后依然存在,<br>而bash sh02.sh中的变量就消失了</p>
-<p>不注销用<code>source ~/.bashrc</code>改变变量的原因也就是这个了</p>
-<h2 id="判断式"><a href="#判断式" class="headerlink" title="判断式"></a>判断式</h2><h3 id="test-option-file-amp-amp-function"><a href="#test-option-file-amp-amp-function" class="headerlink" title="test [option] file &amp;&amp;/|| function"></a>test [option] file &amp;&amp;/|| function</h3><p>sh05.sh 判断文件名是否存在,是目录还是文件,并判断执行者的权限<br>常用[option]:-e 存在性 -f file -d dirctory<br><code>-a</code> all 同时成立 <code>-o</code> optional 一个成立即可  <code>!</code> 反向状态 01互换</p>
-<ul>
-<li>其他的参数在这=&gt; <a href="http://man.linuxde.net/test" target="_blank" rel="external">test</a><br>man了一下test,发现也没有找到test指定路径或者递归的做法,<br>即test只能判断当前目录下的文件,也不支持通配符一类的东西</li>
-</ul>
-<h3 id="判断符号"><a href="#判断符号" class="headerlink" title="判断符号[]"></a>判断符号[]</h3><p>中括号[]基本和test用法一样,不过在if then fi中更常用<br><strong>需要注意</strong>:</p>
-<ul>
-<li>中括号内部每个单位均需要空格<code> </code>隔开</li>
-<li>中括号内部组件的变量和常量需要<code>&quot;</code>或者<code>&#39;</code>框起来</li>
-</ul>
-<p>原因可以用这个解释:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name=<span class="string">'quentin smith'</span></span><br><span class="line">[ <span class="variable">$name</span> == <span class="string">"quentin"</span> ]</span><br><span class="line"><span class="comment">#错误提示</span></span><br><span class="line">bash: [: 参数太多</span><br></pre></td></tr></table></figure></p>
-<p>将name变量用字符串代换就知道错误了</p>
-<ul>
-<li>sh06.sh<br>判断用户输入并给予不同的结果</li>
-</ul>
-<h2 id="Shell-Script-默认变量"><a href="#Shell-Script-默认变量" class="headerlink" title="Shell Script 默认变量"></a>Shell Script 默认变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#A</span></span><br><span class="line">/path/to/scriptname option1 opt2 opt3 opt4 ...</span><br><span class="line">        <span class="variable">$0</span>             <span class="variable">$1</span>    <span class="variable">$2</span>   <span class="variable">$3</span>   <span class="variable">$4</span></span><br><span class="line"><span class="comment">#B</span></span><br><span class="line"><span class="variable">$#</span> 代表参数个数</span><br><span class="line"><span class="variable">$@</span> 代表内置变量A中的内容</span><br><span class="line">$* 比<span class="string">'#@'</span>用法广,代表<span class="string">"<span class="variable">$1c</span><span class="variable">$2c</span><span class="variable">$3</span>..."</span> c为分隔符</span><br></pre></td></tr></table></figure>
-<ul>
-<li>sh07.sh<br>创建一个具有可选[option]的shell script</li>
-</ul>
-<h3 id="shift变量号偏移"><a href="#shift变量号偏移" class="headerlink" title="shift变量号偏移"></a>shift变量号偏移</h3><p>即原来的号码<code>增加shift的数量</code></p>
-<ul>
-<li>sh08.sh<br>shift演示</li>
-</ul>
-<h2 id="if-then-fi"><a href="#if-then-fi" class="headerlink" title="if then fi"></a>if then fi</h2><p><strong>后面因为只要有语言基础的都懂,就不具体讲了</strong></p>
-<ul>
-<li>sh06-2.sh<br><code>这里的&amp;&amp;||和前面基础bash中的&amp;&amp;||不要搞错了,含义不同</code><br>基本格式:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ assertions ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">command</span></span><br><span class="line">  (<span class="keyword">elif</span> [ assertions ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">command</span>)</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>+sh10.sh<br>判断本机端口的开放情况<br>下面的是获取主机启动的服务</p>
-<blockquote>
-<p>netstat -tuln</p>
-</blockquote>
-<p>获取之后的格式:<br>1.封包格式(tcp udp.etc) 2.收发包 3.本地IP:port 4.远程ip:port 是否监听<br>tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN<br>22的ssh端口表示任意远程ip的任意端口都能连接</p>
+<p>执行顺序依次: line-5函数声明, line-4变量声明, line-4变量赋值, getName()</p>
+<h3 id="0x03-Foo-getName"><a href="#0x03-Foo-getName" class="headerlink" title="0x03 Foo().getName();"></a>0x03 Foo().getName();</h3><p>这题仔细看, 然后看一下0x00.<br>在line-1中返回了this, 这个this向上查找对象, 最后找到了<code>window</code>对象(浏览器), 所以真正执行的函数应该是<code>window.getName()</code>, 而line-1将这个全局变量进行了赋值, so…</p>
+<h3 id="0x04-getName"><a href="#0x04-getName" class="headerlink" title="0x04 getName();"></a>0x04 getName();</h3><p>由于Foo()被执行, 全局变量被污染, 所以和上题答案一样</p>
+<h3 id="下面三题和运算符优先级相关"><a href="#下面三题和运算符优先级相关" class="headerlink" title="下面三题和运算符优先级相关"></a>下面三题和运算符优先级相关</h3><p>Reference:<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank" rel="external">运算符优先级-MDN</a><br>园括号 &gt; 成员访问 &gt; 计算型成员访问 &gt; new([x]) &gt; 函数调用 &gt; new<br><code>() &gt; ... . ... &gt; ...[...] &gt; new ...(...) &gt; ...(...) &gt; new ...</code><br>new操作顺序<code>从右到左</code>, 注意: new func <code>也算带参数</code></p>
+<h3 id="0x05-new-Foo-getName"><a href="#0x05-new-Foo-getName" class="headerlink" title="0x05 new Foo.getName();"></a>0x05 new Foo.getName();</h3><p>即new (Foo.getName)()</p>
+<p>如果把上面那句改成<code>new Date();</code>是不是一下看懂了呢.构造函数的new操作~</p>
+<h3 id="0x06-new-Foo-getName"><a href="#0x06-new-Foo-getName" class="headerlink" title="0x06 new Foo().getName();"></a>0x06 new Foo().getName();</h3><p>理解为: (new Foo().getName)();<br>差点忘记, 这边返回了this, 然后对象找不到直接的getName函数, 于是跟着原型链把line-3的函数继承上去.</p>
+<h3 id="0x07-new-new-Foo-getName"><a href="#0x07-new-new-Foo-getName" class="headerlink" title="0x07 new new Foo().getName();"></a>0x07 new new Foo().getName();</h3><p>理解为: (new (new Foo().getName))();<br>(new Foo().getName) 表示的是构造函数, 然后就和0x05一样的理解即可.</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/03/01/2016/book-vbird-3/" data-title="读书笔记--鸟哥私房菜③ | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/12/02/2016/js-interview-1/" data-title="js面试题1-分析 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -187,19 +144,11 @@ sh03.sh随日期">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/03/05/2016/daily-linux-2/" title="linux日常更新-02">
-  <strong>上一篇：</strong><br/>
-  <span>
-  linux日常更新-02</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/02/26/2016/book-vbird-2/"  title="读书笔记--鸟哥私房菜②">
+<a href="/11/29/2016/py-webdriver/"  title="webdriver with python">
  <strong>下一篇：</strong><br/> 
- <span>读书笔记--鸟哥私房菜②
+ <span>webdriver with python
 </span>
 </a>
 </div>
@@ -208,7 +157,7 @@ sh03.sh随日期">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="03/01/2016/book-vbird-3/" data-title="读书笔记--鸟哥私房菜③" data-url="http://csser.work/03/01/2016/book-vbird-3/"></div>
+	<div class="ds-thread" data-thread-key="12/02/2016/js-interview-1/" data-title="js面试题1-分析" data-url="http://csser.work/12/02/2016/js-interview-1/"></div>
 </section>
 
 
@@ -218,7 +167,7 @@ sh03.sh随日期">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell-Script"><span class="toc-number">1.</span> <span class="toc-text">Shell Script</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码练习放在新库中"><span class="toc-number">1.2.</span> <span class="toc-text">代码练习放在新库中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#source-VS-bash"><span class="toc-number">1.3.</span> <span class="toc-text">source VS bash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#判断式"><span class="toc-number">1.4.</span> <span class="toc-text">判断式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#test-option-file-amp-amp-function"><span class="toc-number">1.4.1.</span> <span class="toc-text">test [option] file &&/|| function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断符号"><span class="toc-number">1.4.2.</span> <span class="toc-text">判断符号[]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-Script-默认变量"><span class="toc-number">1.5.</span> <span class="toc-text">Shell Script 默认变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#shift变量号偏移"><span class="toc-number">1.5.1.</span> <span class="toc-text">shift变量号偏移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if-then-fi"><span class="toc-number">1.6.</span> <span class="toc-text">if then fi</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关知识点"><span class="toc-number">2.</span> <span class="toc-text">相关知识点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">3.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解析"><span class="toc-number">4.</span> <span class="toc-text">解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-通读"><span class="toc-number">4.1.</span> <span class="toc-text">0x00 通读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-Foo-getName"><span class="toc-number">4.2.</span> <span class="toc-text">0x01 Foo.getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-getName"><span class="toc-number">4.3.</span> <span class="toc-text">0x02 getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-Foo-getName"><span class="toc-number">4.4.</span> <span class="toc-text">0x03 Foo().getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x04-getName"><span class="toc-number">4.5.</span> <span class="toc-text">0x04 getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下面三题和运算符优先级相关"><span class="toc-number">4.6.</span> <span class="toc-text">下面三题和运算符优先级相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x05-new-Foo-getName"><span class="toc-number">4.7.</span> <span class="toc-text">0x05 new Foo.getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x06-new-Foo-getName"><span class="toc-number">4.8.</span> <span class="toc-text">0x06 new Foo().getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x07-new-new-Foo-getName"><span class="toc-number">4.9.</span> <span class="toc-text">0x07 new new Foo().getName();</span></a></li></ol></li></ol>
  
   </div>
 
