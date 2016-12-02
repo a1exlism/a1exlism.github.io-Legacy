@@ -4,26 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Android6.0.1 Xposed安装以及插件推荐 | A1exlism</title>
+    <title>js面试题1-分析 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="A1ex">
     
 
     
-    <meta name="description" content="xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能
-环境&amp;amp;要求已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk框架模块: xposed-v80-sdk23-arm64.zip下载地址: XDA_X">
+    <meta name="description" content="defined@掘金上看到的, 做了发现以前看得都还给书本了.题目博客地址: http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments
+相关知识点变量提升, 变量声明优先级, 函数表达式VS变量声明, js对象继承, 构造函数, this指向, 运算符优先级
+题目123456789101112131415161718192021222324">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android6.0.1 Xposed安装以及插件推荐">
-<meta property="og:url" content="http://csser.work/03/30/2016/device-nexus-xposed/index.html">
+<meta property="og:title" content="js面试题1-分析">
+<meta property="og:url" content="http://csser.work/12/02/2015/js-interview-1/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能
-环境&amp;amp;要求已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk框架模块: xposed-v80-sdk23-arm64.zip下载地址: XDA_X">
-<meta property="og:updated_time" content="2016-08-25T09:33:54.297Z">
+<meta property="og:description" content="defined@掘金上看到的, 做了发现以前看得都还给书本了.题目博客地址: http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments
+相关知识点变量提升, 变量声明优先级, 函数表达式VS变量声明, js对象继承, 构造函数, this指向, 运算符优先级
+题目123456789101112131415161718192021222324">
+<meta property="og:updated_time" content="2016-12-02T09:08:17.918Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android6.0.1 Xposed安装以及插件推荐">
-<meta name="twitter:description" content="xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能
-环境&amp;amp;要求已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk框架模块: xposed-v80-sdk23-arm64.zip下载地址: XDA_X">
+<meta name="twitter:title" content="js面试题1-分析">
+<meta name="twitter:description" content="defined@掘金上看到的, 做了发现以前看得都还给书本了.题目博客地址: http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments
+相关知识点变量提升, 变量声明优先级, 函数表达式VS变量声明, js对象继承, 构造函数, this指向, 运算符优先级
+题目123456789101112131415161718192021222324">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -82,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/30/2016/device-nexus-xposed/" title="Android6.0.1 Xposed安装以及插件推荐" itemprop="url">Android6.0.1 Xposed安装以及插件推荐</a>
+      <a href="/12/02/2015/js-interview-1/" title="js面试题1-分析" itemprop="url">js面试题1-分析</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-29T16:00:00.000Z" itemprop="datePublished"> 发表于 03-30-2016</time>
+    <time datetime="2015-12-01T16:00:00.000Z" itemprop="datePublished"> 发表于 12-02-2015</time>
     
   </p>
 </header>
@@ -98,27 +101,37 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境-amp-要求"><span class="toc-number">1.</span> <span class="toc-text">环境&要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐几个插件"><span class="toc-number">3.</span> <span class="toc-text">推荐几个插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关知识点"><span class="toc-number">2.</span> <span class="toc-text">相关知识点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">3.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解析"><span class="toc-number">4.</span> <span class="toc-text">解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-通读"><span class="toc-number">4.1.</span> <span class="toc-text">0x00 通读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-Foo-getName"><span class="toc-number">4.2.</span> <span class="toc-text">0x01 Foo.getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-getName"><span class="toc-number">4.3.</span> <span class="toc-text">0x02 getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-Foo-getName"><span class="toc-number">4.4.</span> <span class="toc-text">0x03 Foo().getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x04-getName"><span class="toc-number">4.5.</span> <span class="toc-text">0x04 getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下面三题和运算符优先级相关"><span class="toc-number">4.6.</span> <span class="toc-text">下面三题和运算符优先级相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x05-new-Foo-getName"><span class="toc-number">4.7.</span> <span class="toc-text">0x05 new Foo.getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x06-new-Foo-getName"><span class="toc-number">4.8.</span> <span class="toc-text">0x06 new Foo().getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x07-new-new-Foo-getName"><span class="toc-number">4.9.</span> <span class="toc-text">0x07 new new Foo().getName();</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能</p>
-<h2 id="环境-amp-要求"><a href="#环境-amp-要求" class="headerlink" title="环境&amp;要求"></a>环境&amp;要求</h2><p>已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包<br>安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk<br>框架模块: xposed-v80-sdk23-arm64.zip<br>下载地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">XDA_Xposed for Lollipop and Marshmallow</a></p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
-<li>手机关机后(防止意外关机导致应用优化)长按<code>电源键+音量下</code><br>或者直接连上电脑adb reboot-bootloader进入recovery mode</li>
-<li>进入Recovery Mode,选择Install,将放在Downloads中的框架模块选中安装即可</li>
-<li>重启后安装xposed安装程序,提示xposed actived</li>
-<li>下载安装插件,启用之后进行软重启(比较快)</li>
+		<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p><a href="gold.xitu.io/">@掘金</a>上看到的, 做了发现以前看得都还给书本了.<br>题目博客地址: <a href="http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments" target="_blank" rel="external">http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments</a></p>
+<h2 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h2><p>变量提升, 变量声明优先级, 函数表达式VS变量声明, js对象继承, 构造函数, this指向, 运算符优先级</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//	line-1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="number">1</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// console.log(this);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//	line-2</span></span><br><span class="line">Foo.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="number">2</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//	line-3</span></span><br><span class="line">Foo.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	alert(<span class="number">3</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//	line-4</span></span><br><span class="line"><span class="keyword">var</span> getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="number">4</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//	line-5</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//请写出以下输出结果：</span></span><br><span class="line">Foo.getName();</span><br><span class="line">getName();</span><br><span class="line">Foo().getName();</span><br><span class="line">getName();</span><br><span class="line"><span class="keyword">new</span> Foo.getName();</span><br><span class="line"><span class="keyword">new</span> Foo().getName();</span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> Foo().getName();</span><br></pre></td></tr></table></figure>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><h3 id="0x00-通读"><a href="#0x00-通读" class="headerlink" title="0x00 通读"></a>0x00 通读</h3><ol>
+<li>line-1中的getName是一个全局函数变量</li>
+<li>line-4是一个变量声明和赋值两个过程</li>
+<li>line-5是一个函数声明</li>
 </ol>
-<h2 id="推荐几个插件"><a href="#推荐几个插件" class="headerlink" title="推荐几个插件"></a>推荐几个插件</h2><p>ActivityForceNewTask 强制开新任务<br>不装LBE就用<code>greenify</code>,root的休眠功能+xposed扩展非常棒<br>阻止运行: Prevent Running<br>禁止唤醒: No WakeLock 作者Blog:<a href="https://www.linangran.com/?p=611" target="_blank" rel="external">Angran Lin’s Blog</a> (试用了发现也就这样,卸载了)<br>开机管理: BootManager<br><del>权限管理: XPrivacy 控制太烦,而且原生已有权限控制,弃用</del><br><del>广告过滤: MinMinGuard 怕过滤规则过严,弃用</del><br><del>Ist保存插件: Instagram Downloader 很早之前能用</del><br>禁止内置浏览器: ExLink(去你大爷的浏览器)<br>状态栏+底栏颜色优化,很棒: PerfectColorBar<br>来电显示: Phone Location<br>自定义手电筒快捷键: Xposed Torch<br>防撤回: QQUnrecalled/WechatUnrecalled(别干坏事..)</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.inexus.co/article-3823-1.html" target="_blank" rel="external">Inexus-Xposed安装</a><br><a href="http://forum.xda-developers.com/showpost.php?p=58828974" target="_blank" rel="external">XDA</a><br>插件推荐: <a href="https://www.zhihu.com/question/22063862" target="_blank" rel="external">==知乎链接==</a><br>刚找到的一个新地址: <a href="http://xposed.appkg.com/1051.html" target="_blank" rel="external">Xposed</a></p>
+<h3 id="0x01-Foo-getName"><a href="#0x01-Foo-getName" class="headerlink" title="0x01 Foo.getName();"></a>0x01 Foo.getName();</h3><p>按照前面讲的, 根据原型链查找, 直接找到了line-2函数, 输出: 2</p>
+<h3 id="0x02-getName"><a href="#0x02-getName" class="headerlink" title="0x02 getName();"></a>0x02 getName();</h3><blockquote>
+<p>小笔记<br>函数变量声明优先级比变量声明高, 变量提升仅仅提升了<code>变量声明</code>.<a href="https://gist.github.com/a1exlism/de8e79a5607c05677c2bdc89ce982714" target="_blank" rel="external">demo演示</a></p>
+</blockquote>
+<p>执行顺序依次: line-5函数声明, line-4变量声明, line-4变量赋值, getName()</p>
+<h3 id="0x03-Foo-getName"><a href="#0x03-Foo-getName" class="headerlink" title="0x03 Foo().getName();"></a>0x03 Foo().getName();</h3><p>这题仔细看, 然后看一下0x00.<br>在line-1中返回了this, 这个this向上查找对象, 最后找到了<code>window</code>对象(浏览器), 所以真正执行的函数应该是<code>window.getName()</code>, 而line-1将这个全局变量进行了赋值, so…</p>
+<h3 id="0x04-getName"><a href="#0x04-getName" class="headerlink" title="0x04 getName();"></a>0x04 getName();</h3><p>由于Foo()被执行, 全局变量被污染, 所以和上题答案一样</p>
+<h3 id="下面三题和运算符优先级相关"><a href="#下面三题和运算符优先级相关" class="headerlink" title="下面三题和运算符优先级相关"></a>下面三题和运算符优先级相关</h3><p>Reference:<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank" rel="external">运算符优先级-MDN</a><br>园括号 &gt; 成员访问 &gt; 计算型成员访问 &gt; new([x]) &gt; 函数调用 &gt; new<br><code>() &gt; ... . ... &gt; ...[...] &gt; new ...(...) &gt; ...(...) &gt; new ...</code><br>new操作顺序<code>从右到左</code>, 注意: new func <code>也算带参数</code></p>
+<h3 id="0x05-new-Foo-getName"><a href="#0x05-new-Foo-getName" class="headerlink" title="0x05 new Foo.getName();"></a>0x05 new Foo.getName();</h3><p>即new (Foo.getName)()</p>
+<p>如果把上面那句改成<code>new Date();</code>是不是一下看懂了呢.构造函数的new操作~</p>
+<h3 id="0x06-new-Foo-getName"><a href="#0x06-new-Foo-getName" class="headerlink" title="0x06 new Foo().getName();"></a>0x06 new Foo().getName();</h3><p>理解为: (new Foo().getName)();<br>差点忘记, 这边返回了this, 然后对象找不到直接的getName函数, 于是跟着原型链把line-3的函数继承上去.</p>
+<h3 id="0x07-new-new-Foo-getName"><a href="#0x07-new-new-Foo-getName" class="headerlink" title="0x07 new new Foo().getName();"></a>0x07 new new Foo().getName();</h3><p>理解为: (new (new Foo().getName))();<br>(new Foo().getName) 表示的是构造函数, 然后就和0x05一样的理解即可.</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/03/30/2016/device-nexus-xposed/" data-title="Android6.0.1 Xposed安装以及插件推荐 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/12/02/2015/js-interview-1/" data-title="js面试题1-分析 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -132,18 +145,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/03/30/2016/device-nexus-ota-update/" title="Nexus原生OTA升级(ROOT+XP),无需PC">
+ <a href="/12/21/2015/daily-sql/" title="sql日常记录">
   <strong>上一篇：</strong><br/>
   <span>
-  Nexus原生OTA升级(ROOT+XP),无需PC</span>
+  sql日常记录</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/03/28/2016/net-wireshark-test/"  title="wireshark小记">
+<a href="/11/15/2015/wifi-crack/"  title="wifi密码破解">
  <strong>下一篇：</strong><br/> 
- <span>wireshark小记
+ <span>wifi密码破解
 </span>
 </a>
 </div>
@@ -152,7 +165,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="03/30/2016/device-nexus-xposed/" data-title="Android6.0.1 Xposed安装以及插件推荐" data-url="http://csser.work/03/30/2016/device-nexus-xposed/"></div>
+	<div class="ds-thread" data-thread-key="12/02/2015/js-interview-1/" data-title="js面试题1-分析" data-url="http://csser.work/12/02/2015/js-interview-1/"></div>
 </section>
 
 
@@ -162,7 +175,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境-amp-要求"><span class="toc-number">1.</span> <span class="toc-text">环境&要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐几个插件"><span class="toc-number">3.</span> <span class="toc-text">推荐几个插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关知识点"><span class="toc-number">2.</span> <span class="toc-text">相关知识点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">3.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解析"><span class="toc-number">4.</span> <span class="toc-text">解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-通读"><span class="toc-number">4.1.</span> <span class="toc-text">0x00 通读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-Foo-getName"><span class="toc-number">4.2.</span> <span class="toc-text">0x01 Foo.getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-getName"><span class="toc-number">4.3.</span> <span class="toc-text">0x02 getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-Foo-getName"><span class="toc-number">4.4.</span> <span class="toc-text">0x03 Foo().getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x04-getName"><span class="toc-number">4.5.</span> <span class="toc-text">0x04 getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下面三题和运算符优先级相关"><span class="toc-number">4.6.</span> <span class="toc-text">下面三题和运算符优先级相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x05-new-Foo-getName"><span class="toc-number">4.7.</span> <span class="toc-text">0x05 new Foo.getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x06-new-Foo-getName"><span class="toc-number">4.8.</span> <span class="toc-text">0x06 new Foo().getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x07-new-new-Foo-getName"><span class="toc-number">4.9.</span> <span class="toc-text">0x07 new new Foo().getName();</span></a></li></ol></li></ol>
  
   </div>
 
