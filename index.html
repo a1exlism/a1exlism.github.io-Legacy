@@ -7,19 +7,19 @@
     <title>A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="A1ex">
+    <meta name="author" content="a1exlism">
     
 
     
-    <meta name="description" content="A1ex&apos;s Blog">
+    <meta name="description" content="a1exlism&apos;s Blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="A1exlism">
 <meta property="og:url" content="http://csser.work/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="A1ex&apos;s Blog">
+<meta property="og:description" content="a1exlism&apos;s Blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A1exlism">
-<meta name="twitter:description" content="A1ex&apos;s Blog">
+<meta name="twitter:description" content="a1exlism&apos;s Blog">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -82,11 +82,73 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/12/07/2016/i18n-with-jquery/" title="i18n国际化纯前端渲染" itemprop="url">i18n国际化纯前端渲染</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
+		
+  <p class="article-time">
+    <time datetime="2016-12-07T13:28:00.865Z" itemprop="datePublished"> 发表于 12-07-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>项目中有个小要求, 面向的用户主要是英语和西班牙语.<br>也没有搞过, 本来还以为需要写多页面= =</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h3><p>只能实现固定的文字替换, 动态替换这个功能如果有需求则后续更新~</p>
+<h3 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h3><p>利用<code>html5自定义标签 + ajax + json字典</code>传输回调进行实时无刷新替换语言,<br>所以主要难点就是数据模式设置和json处理了</p>
+<h3 id="目录树"><a href="#目录树" class="headerlink" title="目录树"></a>目录树</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-langs</span><br><span class="line"> |-en_US.json</span><br><span class="line"> |-es_ES.json</span><br><span class="line"> |-zh_CN.json</span><br><span class="line">-js</span><br><span class="line"> |-main.js</span><br></pre></td></tr></table></figure>
+<h3 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h3><ol>
+<li><p>HTML with data-* DIY tags</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 语言切换选项 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span> <span class="attr">role</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">data-lang</span>=<span class="string">"chinese"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>[中文]Chinese<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">data-lang</span>=<span class="string">"english"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>[English]English<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">data-lang</span>=<span class="string">"spanish"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>[Español]Spanish<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 显示内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"search"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span> <span class="attr">data-locale</span>=<span class="string">"title"</span>&gt;</span>Watch Search<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">label</span> <span class="attr">data-locale</span>=<span class="string">"label"</span>&gt;</span>Option: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">"form-control"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span> <span class="attr">data-opt</span>=<span class="string">"username"</span> <span class="attr">selected</span>=<span class="string">"selected"</span> <span class="attr">data-locale</span>=<span class="string">"op-1"</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span> <span class="attr">data-opt</span>=<span class="string">"imei"</span> <span class="attr">data-locale</span>=<span class="string">"op-2"</span>&gt;</span>Watch IMEI<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span> <span class="attr">data-opt</span>=<span class="string">"phone_number"</span> <span class="attr">data-locale</span>=<span class="string">"op-3"</span>&gt;</span>Phone number<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JavaScript伪代码(with jQuery)</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//	变量设置</span></span><br><span class="line"><span class="keyword">var</span> xxx = $(<span class="string">'xxx'</span>),</span><br><span class="line">		<span class="comment">/* codes */</span></span><br><span class="line">		yyy = $(<span class="string">'yyy'</span>);</span><br><span class="line"><span class="comment">//	语言设置的主要代码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">langSet</span>(<span class="params">lang</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> dataSearch = data[<span class="string">'tab-search'</span>];</span><br><span class="line">	$(tabSearch).find(<span class="string">'h2'</span>).html(dataSearch[<span class="string">'title'</span>]);</span><br><span class="line">	$(tabSearch).find(<span class="string">'label'</span>).text(dataSearch[<span class="string">'label'</span>] + <span class="string">': '</span>);</span><br><span class="line">	$(tabSearch).find(<span class="string">'option'</span>).each(<span class="function"><span class="keyword">function</span> (<span class="params">index, ele</span>) </span>&#123;</span><br><span class="line">		$(ele).text(dataSearch[<span class="string">'section'</span>][<span class="string">'op-'</span> + index]);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">lanToggle</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">//	click事件绑定, 用于语言切换</span></span><br><span class="line">	$(<span class="string">'.dropdown-menu'</span>).each(<span class="function"><span class="keyword">function</span> (<span class="params">index, element</span>) </span>&#123;</span><br><span class="line">		$(element).find(<span class="string">'a'</span>).bind(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> lang = $(<span class="keyword">this</span>).attr(<span class="string">'data-lang'</span>);</span><br><span class="line">			langCha(lang);</span><br><span class="line">			<span class="comment">//当前语言文字更换,例如显示当前语言: Language(English)</span></span><br><span class="line">			langSet(lang);	<span class="comment">//渲染</span></span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>3.en_US.json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"tab-search"</span>: &#123;</span><br><span class="line">		<span class="attr">"description"</span>: <span class="string">"json格式和命名, 比如这个是en_US.json, 其他的则是zh_CN.json .etc"</span>,</span><br><span class="line">    <span class="attr">"title"</span>: <span class="string">"Watch Search"</span>,</span><br><span class="line">    <span class="attr">"label"</span>: <span class="string">"Option"</span>,</span><br><span class="line">    <span class="attr">"section"</span>: &#123;</span><br><span class="line">      <span class="attr">"op-0"</span>: <span class="string">"Username"</span>,</span><br><span class="line">      <span class="attr">"op-1"</span>: <span class="string">"Watch IMEI"</span>,</span><br><span class="line">      <span class="attr">"op-2"</span>: <span class="string">"Phone number"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="EOF"><a href="#EOF" class="headerlink" title="EOF"></a>EOF</h2><p>本来想直接用jQuery的插件的, 然而用了半天发现这个有点问题, 从segment falut中找了一下方法, 就直接写了, 讲道理构造json和data-* 还是很花时间的.<br>贴个自己的项目地址<a href="https://github.com/a1exlism/kidee" target="_blank" rel="external">https://github.com/a1exlism/kidee</a>, 欢迎fork~</p>
+<h2 id="Update-07-12-2016"><a href="#Update-07-12-2016" class="headerlink" title="Update-07/12/2016"></a>Update-07/12/2016</h2><p>最近在学ES6, 看到一个<code>Template String</code> 也能实现i18n =&gt; <a href="https://gist.github.com/DenisIzmaylov/dbd7e85f384016e3e07a](https://gist.github.com/DenisIzmaylov/dbd7e85f384016e3e07a" target="_blank" rel="external">https://gist.github.com/DenisIzmaylov/dbd7e85f384016e3e07a](https://gist.github.com/DenisIzmaylov/dbd7e85f384016e3e07a</a>)<br>这个translate思路可以的~</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/12/07/2016/i18n-with-jquery/#comments" class="ds-thread-count comments-count-link" data-thread-key="12/07/2016/i18n-with-jquery/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/12/04/2016/browser-render/" title="浏览器渲染/性能优化" itemprop="url">浏览器渲染/性能优化</a>
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
     <time datetime="2016-12-03T16:00:00.000Z" itemprop="datePublished"> 发表于 12-04-2016</time>
@@ -199,66 +261,11 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/12/02/2016/js-closure/" title="JS闭包" itemprop="url">JS闭包</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-12-01T16:00:00.000Z" itemprop="datePublished"> 发表于 12-02-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>看问题的时候顺便看到了, <a href="http://www.cnblogs.com/xxcanghai/p/4991870.html" target="_blank" rel="external">闭包面试题</a><br>面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>个人理解:<br><br>看了<a href="https://developer.mozilla.org/cn/docs/Web/JavaScript/Closures" target="_blank" rel="external">MDN</a>, 总结了一些结论<br>闭包就是一个 函数加上该函数的上下文环境 的集合.</p>
-<p>一个比较常见的例子:<br>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>Javascript:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++)&#123;</span><br><span class="line">		divs[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
-<p>无论点哪个都只会输出3, 原因讲的已经很明确了, 在这个函数内部的上下文环境中, i会共用.<br>可能会问, 如果共用, 那么绑定的也只有第三个=&gt; 在绑定的时候i还是从0-&gt;2的, 但是事件触发一定是i在等于3之后的事情了.</p>
-<p>解决办法: 闭包传参, ES6新特性:let<br>这边给个闭包传参的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++) &#123;</span><br><span class="line">		divs[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;)(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
-<p>这样每一个onclick都被赋予了一个独立的闭包,可以独立输出0-2.</p>
-<p>另一个模拟类的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shoppingCart</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> goods = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        goodsAdd: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            ++goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsRemove: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            --goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> goods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cartA = <span class="keyword">new</span> shoppingCart();</span><br><span class="line"><span class="keyword">var</span> cartB = <span class="keyword">new</span> shoppingCart();</span><br><span class="line">cartA.goodsAdd();</span><br><span class="line">cartA.goodsShow();</span><br><span class="line"></span><br><span class="line">cartB.goodsAdd();</span><br><span class="line">cartB.goodsRemove();</span><br><span class="line">cartB.goodsShow();</span><br></pre></td></tr></table></figure></p>
-<p>shoppingCart函数有个函数内变量goods, 外部无法访问, 但是它可以通过内部的函数访问到, 即整个shoppingCart函数<code>构成了一个闭包环境</code>.<br>问了一下同学, <code>这个很像面向对象的一个类</code>, goods就是所谓的private变量了.<br>而new出来的对象都是一个独立的闭包, 拥有独立的上下文环境和内容</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/12/02/2016/js-closure/#comments" class="ds-thread-count comments-count-link" data-thread-key="12/02/2016/js-closure/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/12/02/2016/js-interview-1/" title="JS面试题1-分析" itemprop="url">JS面试题1-分析</a>
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
     <time datetime="2016-12-01T16:00:00.000Z" itemprop="datePublished"> 发表于 12-02-2016</time>
@@ -320,11 +327,66 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/12/02/2016/js-closure/" title="JS闭包" itemprop="url">JS闭包</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
+		
+  <p class="article-time">
+    <time datetime="2016-12-01T16:00:00.000Z" itemprop="datePublished"> 发表于 12-02-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>看问题的时候顺便看到了, <a href="http://www.cnblogs.com/xxcanghai/p/4991870.html" target="_blank" rel="external">闭包面试题</a><br>面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>个人理解:<br><br>看了<a href="https://developer.mozilla.org/cn/docs/Web/JavaScript/Closures" target="_blank" rel="external">MDN</a>, 总结了一些结论<br>闭包就是一个 函数加上该函数的上下文环境 的集合.</p>
+<p>一个比较常见的例子:<br>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Javascript:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++)&#123;</span><br><span class="line">		divs[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>无论点哪个都只会输出3, 原因讲的已经很明确了, 在这个函数内部的上下文环境中, i会共用.<br>可能会问, 如果共用, 那么绑定的也只有第三个=&gt; 在绑定的时候i还是从0-&gt;2的, 但是事件触发一定是i在等于3之后的事情了.</p>
+<p>解决办法: 闭包传参, ES6新特性:let<br>这边给个闭包传参的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++) &#123;</span><br><span class="line">		divs[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;)(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>这样每一个onclick都被赋予了一个独立的闭包,可以独立输出0-2.</p>
+<p>另一个模拟类的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shoppingCart</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> goods = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        goodsAdd: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            ++goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsRemove: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            --goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> goods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cartA = <span class="keyword">new</span> shoppingCart();</span><br><span class="line"><span class="keyword">var</span> cartB = <span class="keyword">new</span> shoppingCart();</span><br><span class="line">cartA.goodsAdd();</span><br><span class="line">cartA.goodsShow();</span><br><span class="line"></span><br><span class="line">cartB.goodsAdd();</span><br><span class="line">cartB.goodsRemove();</span><br><span class="line">cartB.goodsShow();</span><br></pre></td></tr></table></figure></p>
+<p>shoppingCart函数有个函数内变量goods, 外部无法访问, 但是它可以通过内部的函数访问到, 即整个shoppingCart函数<code>构成了一个闭包环境</code>.<br>问了一下同学, <code>这个很像面向对象的一个类</code>, goods就是所谓的private变量了.<br>而new出来的对象都是一个独立的闭包, 拥有独立的上下文环境和内容</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/12/02/2016/js-closure/#comments" class="ds-thread-count comments-count-link" data-thread-key="12/02/2016/js-closure/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/11/29/2016/py-webdriver/" title="webdriver with python" itemprop="url">webdriver with python</a>
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
     <time datetime="2016-11-28T16:00:00.000Z" itemprop="datePublished"> 发表于 11-29-2016</time>
@@ -383,72 +445,11 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/11/28/2016/i18n-with-jquery/" title="i18n国际化纯前端渲染" itemprop="url">i18n国际化纯前端渲染</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
-		
-  <p class="article-time">
-    <time datetime="2016-11-28T13:39:33.284Z" itemprop="datePublished"> 发表于 11-28-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>项目中有个小要求, 面向的用户主要是英语和西班牙语.<br>也没有搞过, 本来还以为需要写多页面= =</p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h3><p>只能实现固定的文字替换, 动态替换这个功能如果有需求则后续更新~</p>
-<h3 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h3><p>利用<code>html5自定义标签 + ajax + json字典</code>传输回调进行实时无刷新替换语言,<br>所以主要难点就是数据模式设置和json处理了</p>
-<h3 id="目录树"><a href="#目录树" class="headerlink" title="目录树"></a>目录树</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-langs</span><br><span class="line"> |-en_US.json</span><br><span class="line"> |-es_ES.json</span><br><span class="line"> |-zh_CN.json</span><br><span class="line">-js</span><br><span class="line"> |-main.js</span><br></pre></td></tr></table></figure>
-<h3 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h3><ol>
-<li><p>HTML with data-* DIY tags</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 语言切换选项 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span> <span class="attr">role</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">data-lang</span>=<span class="string">"chinese"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>[中文]Chinese<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">data-lang</span>=<span class="string">"english"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>[English]English<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">data-lang</span>=<span class="string">"spanish"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>[Español]Spanish<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 显示内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"search"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span> <span class="attr">data-locale</span>=<span class="string">"title"</span>&gt;</span>Watch Search<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">label</span> <span class="attr">data-locale</span>=<span class="string">"label"</span>&gt;</span>Option: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">"form-control"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span> <span class="attr">data-opt</span>=<span class="string">"username"</span> <span class="attr">selected</span>=<span class="string">"selected"</span> <span class="attr">data-locale</span>=<span class="string">"op-1"</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span> <span class="attr">data-opt</span>=<span class="string">"imei"</span> <span class="attr">data-locale</span>=<span class="string">"op-2"</span>&gt;</span>Watch IMEI<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span> <span class="attr">data-opt</span>=<span class="string">"phone_number"</span> <span class="attr">data-locale</span>=<span class="string">"op-3"</span>&gt;</span>Phone number<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JavaScript伪代码(with jQuery)</p>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//	变量设置</span></span><br><span class="line"><span class="keyword">var</span> xxx = $(<span class="string">'xxx'</span>),</span><br><span class="line">		<span class="comment">/* codes */</span></span><br><span class="line">		yyy = $(<span class="string">'yyy'</span>);</span><br><span class="line"><span class="comment">//	语言设置的主要代码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">langSet</span>(<span class="params">lang</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> dataSearch = data[<span class="string">'tab-search'</span>];</span><br><span class="line">	$(tabSearch).find(<span class="string">'h2'</span>).html(dataSearch[<span class="string">'title'</span>]);</span><br><span class="line">	$(tabSearch).find(<span class="string">'label'</span>).text(dataSearch[<span class="string">'label'</span>] + <span class="string">': '</span>);</span><br><span class="line">	$(tabSearch).find(<span class="string">'option'</span>).each(<span class="function"><span class="keyword">function</span> (<span class="params">index, ele</span>) </span>&#123;</span><br><span class="line">		$(ele).text(dataSearch[<span class="string">'section'</span>][<span class="string">'op-'</span> + index]);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">lanToggle</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">//	click事件绑定, 用于语言切换</span></span><br><span class="line">	$(<span class="string">'.dropdown-menu'</span>).each(<span class="function"><span class="keyword">function</span> (<span class="params">index, element</span>) </span>&#123;</span><br><span class="line">		$(element).find(<span class="string">'a'</span>).bind(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> lang = $(<span class="keyword">this</span>).attr(<span class="string">'data-lang'</span>);</span><br><span class="line">			langCha(lang);</span><br><span class="line">			<span class="comment">//当前语言文字更换,例如显示当前语言: Language(English)</span></span><br><span class="line">			langSet(lang);	<span class="comment">//渲染</span></span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<p>3.en_US.json</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"tab-search"</span>: &#123;</span><br><span class="line">		<span class="attr">"description"</span>: <span class="string">"json格式和命名, 比如这个是en_US.json, 其他的则是zh_CN.json .etc"</span>,</span><br><span class="line">    <span class="attr">"title"</span>: <span class="string">"Watch Search"</span>,</span><br><span class="line">    <span class="attr">"label"</span>: <span class="string">"Option"</span>,</span><br><span class="line">    <span class="attr">"section"</span>: &#123;</span><br><span class="line">      <span class="attr">"op-0"</span>: <span class="string">"Username"</span>,</span><br><span class="line">      <span class="attr">"op-1"</span>: <span class="string">"Watch IMEI"</span>,</span><br><span class="line">      <span class="attr">"op-2"</span>: <span class="string">"Phone number"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="EOF"><a href="#EOF" class="headerlink" title="EOF"></a>EOF</h2><p>本来想直接用jQuery的插件的, 然而用了半天发现这个有点问题, 从segment falut中找了一下方法, 就直接写了, 讲道理构造json和data-* 还是很花时间的.<br>贴个自己的项目地址<a href="https://github.com/a1exlism/kidee" target="_blank" rel="external">https://github.com/a1exlism/kidee</a>, 欢迎fork~</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/11/28/2016/i18n-with-jquery/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/28/2016/i18n-with-jquery/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/11/22/2016/proj-ci/" title="CI &amp; Bootstrap项目开发小结" itemprop="url">CI &amp; Bootstrap项目开发小结</a>
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
     <time datetime="2016-11-21T16:00:00.000Z" itemprop="datePublished"> 发表于 11-22-2016</time>
@@ -535,7 +536,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
     <time datetime="2016-11-08T16:00:00.000Z" itemprop="datePublished"> 发表于 11-09-2016</time>
@@ -588,7 +589,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
     <time datetime="2016-10-21T16:00:00.000Z" itemprop="datePublished"> 发表于 10-22-2016</time>
@@ -654,7 +655,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
     <time datetime="2016-10-15T16:00:00.000Z" itemprop="datePublished"> 发表于 10-16-2016</time>
@@ -733,7 +734,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="A1ex" target="_blank" itemprop="author">A1ex</a>
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
     <time datetime="2016-10-06T16:00:00.000Z" itemprop="datePublished"> 发表于 10-07-2016</time>
@@ -823,7 +824,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -928,7 +929,7 @@
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
 		
-		<a href="/about" target="_blank" title="A1ex">A1ex</a>
+		<a href="/about" target="_blank" title="a1exlism">a1exlism</a>
 		
 		
 		</p>
