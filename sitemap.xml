@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://csser.work/12/07/2016/i18n-with-jquery/</loc>
+    <loc>http://csser.work/12/04/2016/browser-render/</loc>
     
-    <lastmod>2016-12-07T13:28:00.865Z</lastmod>
+    <lastmod>2016-12-11T08:58:03.877Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://csser.work/12/04/2016/browser-render/</loc>
+    <loc>http://csser.work/05/08/2016/linux-cmd-redirect/</loc>
     
-    <lastmod>2016-12-04T14:05:12.099Z</lastmod>
+    <lastmod>2016-12-09T13:19:31.411Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/08/05/2016/js-template-strings/</loc>
+    
+    <lastmod>2016-12-09T13:17:41.326Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/11/22/2016/proj-ci/</loc>
+    
+    <lastmod>2016-12-09T13:11:57.356Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/404.html</loc>
+    
+    <lastmod>2016-12-09T13:03:24.180Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/12/07/2016/i18n-with-jquery/</loc>
+    
+    <lastmod>2016-12-07T13:28:00.865Z</lastmod>
     
   </url>
   
@@ -47,13 +75,6 @@
     <loc>http://csser.work/11/29/2016/py-webdriver/</loc>
     
     <lastmod>2016-11-29T10:30:30.101Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/11/22/2016/proj-ci/</loc>
-    
-    <lastmod>2016-11-28T03:41:31.329Z</lastmod>
     
   </url>
   
@@ -131,13 +152,6 @@
     <loc>http://csser.work/08/07/2016/xss-4/</loc>
     
     <lastmod>2016-08-14T12:10:03.611Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/08/05/2016/js-template-strings/</loc>
-    
-    <lastmod>2016-08-14T12:03:20.704Z</lastmod>
     
   </url>
   
@@ -327,13 +341,6 @@
     <loc>http://csser.work/02/13/2016/linux-hard-elanTouchpad/</loc>
     
     <lastmod>2016-05-17T15:49:42.405Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/05/08/2016/linux-cmd-redirect/</loc>
-    
-    <lastmod>2016-05-17T15:49:05.057Z</lastmod>
     
   </url>
   
@@ -572,13 +579,6 @@
     <loc>http://csser.work/README.html</loc>
     
     <lastmod>2015-10-28T01:23:35.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/404.html</loc>
-    
-    <lastmod>2015-10-08T11:33:46.000Z</lastmod>
     
   </url>
   

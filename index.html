@@ -213,8 +213,12 @@
 <blockquote>
 <p><a href="http://stackoverflow.com/questions/2457405/what-is-the-difference-between-window-load-and-document-readystate" target="_blank" rel="external">What is the difference between Window.load and document.readyState</a><br>window.load - This runs when <code>all content</code> is loaded, including images.<br>document.ready - This runs when the <code>DOM is ready</code>, all the elements are on the page and ready to do, but the images aren’t necessarily loaded.</p>
 </blockquote>
-<p>如果用window.onload来实现和$.ready()一样的写法的话,如下代码:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	Check();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="string">`===`</span></span><br><span class="line">$(<span class="built_in">window</span>).load(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	Check();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>原生这个东西差别还是挺大的, jquery应该是对$(window)的load方法有改进, 所以看上去一样, 但是实现方式不同. 不知道什么时候才能进行jquery源码分析了Orz…</p>
+<p>第二篇参考文: <a href="https://segmentfault.com/q/1010000000667904" target="_blank" rel="external">window.onload和jquery.ready有什么区别么？ - segmentfault</a><br><strong>代码演示</strong>: // 必须放在头才能了解具体加载</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://cdn.bootcss.com/jquery/3.1.1/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">		$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			alert(<span class="built_in">document</span>.readyState);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="comment">// Interactive</span></span><br><span class="line"></span><br><span class="line">		$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			alert(<span class="built_in">document</span>.readyState);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="comment">// Interactive</span></span><br><span class="line"></span><br><span class="line">		<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">				alert(<span class="built_in">document</span>.readyState);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// Complete</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// HTML4</span></span><br><span class="line">		<span class="built_in">document</span>.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">document</span>.readyState == <span class="string">'interactive'</span>) &#123;</span><br><span class="line">				alert(<span class="built_in">document</span>.readyState);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">// Interactive</span></span><br><span class="line"></span><br><span class="line">		HTML5</span><br><span class="line">		<span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			alert(<span class="built_in">document</span>.readyState);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="comment">// Interactive</span></span><br><span class="line"></span><br><span class="line">		$(<span class="built_in">window</span>).on(<span class="string">'load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			alert(<span class="built_in">document</span>.readyState);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="comment">//	Complete</span></span><br><span class="line">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Online Code: 打开<code>F12</code>看看?</p>
+<iframe height="300" scrolling="no" title="window.onload VS $(document).ready() .etc" src="//codepen.io/a1exlism/embed/LbBojb/?height=300&theme-id=26570&default-tab=html&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/a1exlism/pen/LbBojb/" target="_blank" rel="external">window.onload VS $(document).ready() .etc</a> by Quentin Smith (<a href="http://codepen.io/a1exlism" target="_blank" rel="external">@a1exlism</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
+
 <p>看了表格又想了另一个问题</p>
 <blockquote>
 <p><a href="http://stackoverflow.com/questions/3665561/document-readystate-of-interactive-vs-ondomcontentloaded" target="_blank" rel="external">document.readystate of “interactive” vs. ondomcontentloaded?</a><br>To summaries what it means:</p>
@@ -445,7 +449,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/11/22/2016/proj-ci/" title="CI &amp; Bootstrap项目开发小结" itemprop="url">CI &amp; Bootstrap项目开发小结</a>
+      <a href="/11/22/2016/proj-ci/" title="CI and Bootstrap项目开发小结" itemprop="url">CI and Bootstrap项目开发小结</a>
   </h1>
   <p class="article-author">By
        
@@ -890,49 +894,54 @@
 </aside>
 </div>
     </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> Blog site <br/>
-			</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		<a href="http://weibo.com/a1exlism" target="_blank" class="icon-weibo" title="微博"></a>
-		
-		
-		<a href="https://github.com/a1exlism" target="_blank" class="icon-github" title="github"></a>
-		
-		
-		
-		
-		<a href="https://www.facebook.com/a1exlism" target="_blank" class="icon-facebook" title="facebook"></a>
-		
-		
-		
-		
-		
-		<a href="https://plus.google.com/106896526077043222500?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
-		
-		
-	</div>
-			
-		
+    <footer><div id="footer">
+    
+    <div class="line">
+        <span></span>
+        <div class="author"></div>
+    </div>
+    
+    
+    <section class="info">
+        <p> Blog site <br/>
+            </p>
+    </section>
+    
+    <div class="social-font" class="clearfix">
 
-		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
-		
-		<a href="/about" target="_blank" title="a1exlism">a1exlism</a>
-		
-		
-		</p>
+        
+        <a href="https://github.com/a1exlism" target="_blank" class="icon-github" title="github"></a>
+        
+        
+        
+        
+        <a href="http://weibo.com/a1exlism" target="_blank" class="icon-weibo" title="微博"></a>
+        
+        
+        <a href="https://www.facebook.com/a1exlism" target="_blank" class="icon-facebook"
+           title="facebook"></a>
+        
+        
+        
+        
+        
+        <a href="https://plus.google.com/106896526077043222500?rel=author" target="_blank"
+           class="icon-google_plus" title="Google+"></a>
+        
+        
+    </div>
+    
+    
+
+    <p class="copyright">
+        Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a
+                href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a>
+        © 2016
+        
+        <a href="/about" target="_blank" title="a1exlism">a1exlism</a>
+        
+
+    </p>
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
@@ -1028,7 +1037,10 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Top"><img src="/img/scrollup.png"/></a>
+	<a title="Top">
+	</a>
+
+		<!--<img src="/img/scrollup.png"/>-->
 	</div>
 	<script src="/js/totop.js"></script>
 
