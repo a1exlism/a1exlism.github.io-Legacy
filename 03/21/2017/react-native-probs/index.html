@@ -21,7 +21,7 @@ https://github.com/sunnylqm/react-native-project-structure-guide1234567891011121
 <meta property="og:description" content="DefinedReact Native 坑有点多, 遇到问题就放这里面了主要是关于Android方面的
 基本的file structure
 https://github.com/sunnylqm/react-native-project-structure-guide123456789101112131415161718192021222324252627beginner├── android│">
-<meta property="og:updated_time" content="2017-03-21T02:18:37.395Z">
+<meta property="og:updated_time" content="2017-03-21T12:39:38.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Native踩坑调试的日常">
 <meta name="twitter:description" content="DefinedReact Native 坑有点多, 遇到问题就放这里面了主要是关于Android方面的
@@ -94,7 +94,7 @@ https://github.com/sunnylqm/react-native-project-structure-guide1234567891011121
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
-    <time datetime="2017-03-21T02:18:37.395Z" itemprop="datePublished"> 发表于 03-21-2017</time>
+    <time datetime="2017-03-21T12:39:38.670Z" itemprop="datePublished"> 发表于 03-21-2017</time>
     
   </p>
 </header>
@@ -174,7 +174,7 @@ https://github.com/sunnylqm/react-native-project-structure-guide1234567891011121
 </li>
 <li><p><a href="http://stackoverflow.com/questions/30266831/hide-show-components-in-react-native" target="_blank" rel="external">button to toggle show/hide</a></p>
 <blockquote>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">this</span>.state.showTheThing &amp;&amp;</span><br><span class="line">  &lt;TextInput/&gt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  Then just do:</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;showTheThing: <span class="literal">true</span>&#125;)  <span class="comment">// to show it  </span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;showTheThing: <span class="literal">false</span>&#125;) <span class="comment">// to hide it</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">this</span>.state.showTheThing &amp;&amp;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">TextInput</span>/&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  Then just do:</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;showTheThing: <span class="literal">true</span>&#125;)  <span class="comment">// to show it  </span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;showTheThing: <span class="literal">false</span>&#125;) <span class="comment">// to hide it</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
 <li><p>TranformError your/path/xx.jpg: Unexpected character’?’(1:0)<br>Just reload the package with <code>npm start</code></p>
@@ -210,6 +210,20 @@ https://github.com/sunnylqm/react-native-project-structure-guide1234567891011121
 </li>
 <li><p><a href="https://github.com/facebook/react-native/blob/master/docs/Troubleshooting.md" target="_blank" rel="external">Error “code”:”ENOSPC”,”errno”:”ENOSPC”</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=582222 | sudo tee <span class="_">-a</span> /etc/sysctl.conf &amp;&amp; sudo sysctl -p</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="http://stackoverflow.com/questions/39862145/react-children-only-expected-to-receive-a-single-react-element-child-error-whe" target="_blank" rel="external">React.Children.only expected to receive a single React element child</a></p>
+</li>
+</ol>
+<p><touchablehighlight>‘s children should be the only one which means multi children should be <code>wrapped by &lt;View&gt;</code></touchablehighlight></p>
+<ol>
+<li><p><a href="http://stackoverflow.com/questions/29447715/react-native-fixed-footer" target="_blank" rel="external">Footer fixed</a></p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/b7430a396767" target="_blank" rel="external">app刚刚开启时候的启动图配置</a></p>
+</li>
+<li><p>Icon Change</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;applicatio&gt;</span><br><span class="line">  android:icon="@drawable/YourIconName"</span><br><span class="line">&lt;/application&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://kylewbanks.com/blog/fullscreen-background-image-in-react-native" target="_blank" rel="external">启动页image配置</a></p>
 </li>
 </ol>
 <h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>刚刚发现了markdown保证顺序输出的方法了, <code>space*n</code>就能保证处于第几级范围.<br>在行尾加上<code>space*2</code>能作为软换行(soft return)</p>

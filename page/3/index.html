@@ -408,69 +408,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/08/05/2016/js-template-strings/" title="ES6 模板字符串 &amp; Xss利用" itemprop="url">ES6 模板字符串 &amp; Xss利用</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-04T16:00:00.000Z" itemprop="datePublished"> 发表于 08-05-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
-<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
-<pre><code>console.log(` test1        // there is no comments can stand!
-     test2`);
-</code></pre></blockquote>
-<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
-<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
-<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
-<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
-<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
-<p>Update:<br><code>${CMD}</code>可以直接的命令执行~</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">  <span class="string">`<span class="subst">$&#123;alert(1)&#125;</span>`</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/08/05/2016/js-template-strings/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/js-template-strings/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/08/05/2016/xss-3/" title="xss习题集_2.1" itemprop="url">xss习题集_2.1</a>
   </h1>
   <p class="article-author">By
@@ -588,6 +525,69 @@
 	
 	  	<span></span>
 		<a href="/08/05/2016/xss-3/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/xss-3/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/08/05/2016/js-template-strings/" title="ES6 模板字符串 &amp; Xss利用" itemprop="url">ES6 模板字符串 &amp; Xss利用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-04T16:00:00.000Z" itemprop="datePublished"> 发表于 08-05-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
+<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
+<pre><code>console.log(` test1        // there is no comments can stand!
+     test2`);
+</code></pre></blockquote>
+<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
+<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
+<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
+<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
+<p>Update:<br><code>${CMD}</code>可以直接的命令执行~</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">  <span class="string">`<span class="subst">$&#123;alert(1)&#125;</span>`</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/08/05/2016/js-template-strings/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/js-template-strings/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
