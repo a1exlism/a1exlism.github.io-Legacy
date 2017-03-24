@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://csser.work/03/21/2017/react-native-probs/</loc>
+    <loc>http://csser.work/03/24/2017/js-this/</loc>
     
-    <lastmod>2017-03-21T12:39:38.670Z</lastmod>
+    <lastmod>2017-03-24T13:06:13.411Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://csser.work/03/19/2017/tmp-es6-this/</loc>
+    <loc>http://csser.work/03/21/2017/react-native-probs/</loc>
     
-    <lastmod>2017-03-19T12:09:26.529Z</lastmod>
+    <lastmod>2017-03-21T12:39:38.670Z</lastmod>
     
   </url>
   
@@ -488,13 +488,6 @@
     <loc>http://csser.work/05/16/2016/js-methods/</loc>
     
     <lastmod>2016-05-17T15:21:37.428Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/10/16/2015/js-this/</loc>
-    
-    <lastmod>2016-05-17T15:21:20.864Z</lastmod>
     
   </url>
   

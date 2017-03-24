@@ -4,44 +4,37 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>A1exlism</title>
+    <title>about this | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="a1exlism">
     
 
     
-    <meta name="description" content="再谈this
-三个方面:
-
-before ES6
-
-改进方法
-
-ES6 - arrow function">
+    <meta name="description" content="Defined重新理解一遍this自己以前看书写的笔记写的一塌糊涂
+Main()自己做了一张简单的图.核心: 判断function和method的根本区别: 是否依赖于对象
+关于bind(),call()等方法就不写了.
+this trickscodes
+ReferenceGentle explanation of ‘this’ keyword in JavaScriptes6-code-frag">
 <meta property="og:type" content="article">
-<meta property="og:title" content="A1exlism">
-<meta property="og:url" content="http://csser.work/03/19/2017/tmp-es6-this/index.html">
+<meta property="og:title" content="about this">
+<meta property="og:url" content="http://csser.work/03/24/2017/js-this/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="再谈this
-三个方面:
-
-before ES6
-
-改进方法
-
-ES6 - arrow function">
-<meta property="og:updated_time" content="2017-03-19T12:09:26.529Z">
+<meta property="og:description" content="Defined重新理解一遍this自己以前看书写的笔记写的一塌糊涂
+Main()自己做了一张简单的图.核心: 判断function和method的根本区别: 是否依赖于对象
+关于bind(),call()等方法就不写了.
+this trickscodes
+ReferenceGentle explanation of ‘this’ keyword in JavaScriptes6-code-frag">
+<meta property="og:image" content="http://csser.work/imgs/js_this/1.svg">
+<meta property="og:updated_time" content="2017-03-24T13:06:13.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A1exlism">
-<meta name="twitter:description" content="再谈this
-三个方面:
-
-before ES6
-
-改进方法
-
-ES6 - arrow function">
+<meta name="twitter:title" content="about this">
+<meta name="twitter:description" content="Defined重新理解一遍this自己以前看书写的笔记写的一塌糊涂
+Main()自己做了一张简单的图.核心: 判断function和method的根本区别: 是否依赖于对象
+关于bind(),call()等方法就不写了.
+this trickscodes
+ReferenceGentle explanation of ‘this’ keyword in JavaScriptes6-code-frag">
+<meta name="twitter:image" content="http://csser.work/imgs/js_this/1.svg">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -102,14 +95,14 @@ ES6 - arrow function">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/19/2017/tmp-es6-this/" title="" itemprop="url"></a>
+      <a href="/03/24/2017/js-this/" title="about this" itemprop="url">about this</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
-    <time datetime="2017-03-19T12:10:20.088Z" itemprop="datePublished"> 发表于 03-19-2017</time>
+    <time datetime="2017-03-23T16:00:00.000Z" itemprop="datePublished"> 发表于 03-24-2017</time>
     
   </p>
 </header>
@@ -118,27 +111,22 @@ ES6 - arrow function">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this-tricks"><span class="toc-number">3.</span> <span class="toc-text">this tricks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<p>再谈this</p>
-<p>三个方面:</p>
-<ol>
-<li><p>before ES6</p>
-</li>
-<li><p>改进方法</p>
-</li>
-<li><p>ES6 - arrow function</p>
-</li>
-</ol>
+		<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>重新理解一遍this<br><del>自己以前看书写的笔记写的一塌糊涂</del></p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p><img src="/imgs/js_this/1.svg" alt="1"><br>自己做了一张简单的图.<br>核心: 判断function和method的根本区别: <code>是否依赖于对象</code></p>
+<p>关于bind(),call()等方法就不写了.</p>
+<h2 id="this-tricks"><a href="#this-tricks" class="headerlink" title="this tricks"></a>this tricks</h2><p><a href="https://github.com/a1exlism/codeLab/tree/master/js/tricks" target="_blank" rel="external">codes</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://github.com/zchen9/code/issues/1" target="_blank" rel="external">Gentle explanation of ‘this’ keyword in JavaScript</a><br><a href="https://a1exlism.gitbooks.io/es6-code-fragment/content/chapter1.html" target="_blank" rel="external">es6-code-fragment</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/03/19/2017/tmp-es6-this/" data-title="A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/03/24/2017/js-this/" data-title="about this | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -151,19 +139,11 @@ ES6 - arrow function">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/03/21/2017/react-native-probs/" title="React Native踩坑调试的日常">
-  <strong>上一篇：</strong><br/>
-  <span>
-  React Native踩坑调试的日常</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/03/15/2017/3rd-rom-gapps/"  title="第三方Rom+GAPPs安装">
+<a href="/03/21/2017/react-native-probs/"  title="React Native踩坑调试的日常">
  <strong>下一篇：</strong><br/> 
- <span>第三方Rom+GAPPs安装
+ <span>React Native踩坑调试的日常
 </span>
 </a>
 </div>
@@ -172,7 +152,7 @@ ES6 - arrow function">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="03/19/2017/tmp-es6-this/" data-title="" data-url="http://csser.work/03/19/2017/tmp-es6-this/"></div>
+	<div class="ds-thread" data-thread-key="03/24/2017/js-this/" data-title="about this" data-url="http://csser.work/03/24/2017/js-this/"></div>
 </section>
 
 
@@ -182,7 +162,7 @@ ES6 - arrow function">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this-tricks"><span class="toc-number">3.</span> <span class="toc-text">this tricks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
@@ -202,7 +182,7 @@ ES6 - arrow function">
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
