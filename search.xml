@@ -4,19 +4,8 @@
   
     
     <entry>
-      <title><![CDATA[about this]]></title>
-      <url>http://csser.work/03/24/2017/js-this/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>重新理解一遍this<br><del>自己以前看书写的笔记写的一塌糊涂</del></p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p><img src="/imgs/js_this/1.svg" alt="1"><br>自己做了一张简单的图.<br>核心: 判断function和method的根本区别: <code>是否依赖于对象</code></p>
-<p>关于bind(),call()等方法就不写了.</p>
-<h2 id="this-tricks"><a href="#this-tricks" class="headerlink" title="this tricks"></a>this tricks</h2><p><a href="https://github.com/a1exlism/codeLab/tree/master/js/tricks" target="_blank" rel="external">codes</a></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://github.com/zchen9/code/issues/1" target="_blank" rel="external">Gentle explanation of ‘this’ keyword in JavaScript</a><br><a href="https://a1exlism.gitbooks.io/es6-code-fragment/content/chapter1.html" target="_blank" rel="external">es6-code-fragment</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[React Native踩坑调试的日常]]></title>
-      <url>http://csser.work/03/21/2017/react-native-probs/</url>
+      <url>http://csser.work/03/27/2017/react-native-probs/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>React Native 坑有点多, 遇到问题就放这里面了<br>主要是关于Android方面的</p>
 <h2 id="基本的file-structure"><a href="#基本的file-structure" class="headerlink" title="基本的file structure"></a>基本的file structure</h2><blockquote>
 <p><a href="https://github.com/sunnylqm/react-native-project-structure-guide" target="_blank" rel="external">https://github.com/sunnylqm/react-native-project-structure-guide</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">beginner</span><br><span class="line">├── android</span><br><span class="line">│   ├── app</span><br><span class="line">│   │   ├── build             <span class="comment">#   output files(auto generate)</span></span><br><span class="line">│   │   │   └── *</span><br><span class="line">│   │   └── src</span><br><span class="line">│   │       └── main</span><br><span class="line">|   |            ├── java</span><br><span class="line">|   |            │   └── com-xxx      <span class="comment">#  java files</span></span><br><span class="line">|   |            |              └── *.java</span><br><span class="line">|   |            ├── res                    <span class="comment">#    resources</span></span><br><span class="line">|   |            └── AndroidManifest.xml    <span class="comment">#  android settings</span></span><br><span class="line">│   ├── build</span><br><span class="line">│   │   └── intermediates     <span class="comment">#中间件?(暂时不懂)</span></span><br><span class="line">│   │       ├── dex-cache</span><br><span class="line">│   │       └── lint-cache</span><br><span class="line">│   ├── gradle                <span class="comment">#  gradlew integration tool</span></span><br><span class="line">│   │   └── wrapper</span><br><span class="line">│   └── keystores</span><br><span class="line">├── ios                       <span class="comment">#  not for ios, ignore</span></span><br><span class="line">├── app</span><br><span class="line">│   ├── components</span><br><span class="line">│   ├── image</span><br><span class="line">│   ├── page</span><br><span class="line">│   ├── style</span><br><span class="line">│   └── utility</span><br><span class="line">├── node_modules              <span class="comment">#  relies</span></span><br></pre></td></tr></table></figure></p>
@@ -84,7 +73,7 @@
 </li>
 <li><p><a href="http://stackoverflow.com/questions/30266831/hide-show-components-in-react-native" target="_blank" rel="external">button to toggle show/hide</a></p>
 <blockquote>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">this</span>.state.showTheThing &amp;&amp;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">TextInput</span>/&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  Then just do:</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;showTheThing: <span class="literal">true</span>&#125;)  <span class="comment">// to show it  </span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;showTheThing: <span class="literal">false</span>&#125;) <span class="comment">// to hide it</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">this</span>.state.showTheThing &amp;&amp;</span><br><span class="line">  &lt;TextInput/&gt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  Then just do:</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;showTheThing: <span class="literal">true</span>&#125;)  <span class="comment">// to show it  </span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;showTheThing: <span class="literal">false</span>&#125;) <span class="comment">// to hide it</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
 <li><p>TranformError your/path/xx.jpg: Unexpected character’?’(1:0)<br>Just reload the package with <code>npm start</code></p>
@@ -101,10 +90,9 @@
 </li>
 <li><p><a href="http://stackoverflow.com/questions/33297367/100-width-in-react-native-flexbox" target="_blank" rel="external">100%width</a></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">line1: &#123;</span><br><span class="line">    backgroundColor: <span class="string">'#FDD7E4'</span>,</span><br><span class="line">    alignSelf: <span class="string">'stretch'</span>,</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>OR</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  Dimensions</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">var</span> width = Dimensions.get(<span class="string">'window'</span>).width; <span class="comment">//full width</span></span><br><span class="line"><span class="keyword">var</span> height = Dimensions.get(<span class="string">'window'</span>).height; <span class="comment">//full height</span></span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>OR<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  Dimensions</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">var</span> width = Dimensions.get(<span class="string">'window'</span>).width; <span class="comment">//full width</span></span><br><span class="line"><span class="keyword">var</span> height = Dimensions.get(<span class="string">'window'</span>).height; <span class="comment">//full height</span></span><br></pre></td></tr></table></figure></p>
-<ol>
 <li><p><a href="http://stackoverflow.com/questions/34625829/change-button-style-on-press-in-react-native" target="_blank" rel="external">Customizable button</a><br><code>TouchableHighlight</code></p>
 </li>
 <li><p><a href="http://stackoverflow.com/questions/32133013/java-lang-outofmemoryerror-gc-overhead-limit-exceeded-on-android-1-4" target="_blank" rel="external">java.lang.OutOfMemoryError: GC overhead limit exceeded</a><br>android/app/build.gradle<br>add this</p>
@@ -122,10 +110,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=582222 | sudo tee <span class="_">-a</span> /etc/sysctl.conf &amp;&amp; sudo sysctl -p</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><a href="http://stackoverflow.com/questions/39862145/react-children-only-expected-to-receive-a-single-react-element-child-error-whe" target="_blank" rel="external">React.Children.only expected to receive a single React element child</a></p>
-</li>
-</ol>
 <p><touchablehighlight>‘s children should be the only one which means multi children should be <code>wrapped by &lt;View&gt;</code></touchablehighlight></p>
-<ol>
+</li>
 <li><p><a href="http://stackoverflow.com/questions/29447715/react-native-fixed-footer" target="_blank" rel="external">Footer fixed</a></p>
 </li>
 <li><p><a href="http://www.jianshu.com/p/b7430a396767" target="_blank" rel="external">app刚刚开启时候的启动图配置</a></p>
@@ -137,6 +123,74 @@
 </li>
 </ol>
 <h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>刚刚发现了markdown保证顺序输出的方法了, <code>space*n</code>就能保证处于第几级范围.<br>在行尾加上<code>space*2</code>能作为软换行(soft return)</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[React-component]]></title>
+      <url>http://csser.work/03/27/2017/react-quick-start-component/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>接前一篇react基础笔记, 主要记录React组件内容, 一样, 只讲自己不知道的.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="render"><a href="#render" class="headerlink" title="render()"></a>render()</h3><p>尽可能纯粹, 即只进行渲染操作</p>
+<h3 id="getDefaultProps"><a href="#getDefaultProps" class="headerlink" title="getDefaultProps()"></a>getDefaultProps()</h3><p>该函数返回的对象在所有实例中共享.</p>
+<p>###</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://goo.gl/rlLMEz" target="_blank" rel="external">React Native之React速学教程(中)</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ES6-class与this]]></title>
+      <url>http://csser.work/03/27/2017/js-es6-class-and-this/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>本以为重新改了那篇this的文章已经可以正常使用了, 然而react中click绑定还是没搞懂.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>翻阅了一堆, 才发现是最基础的问题. 具体戳这: <a href="https://www.zhihu.com/question/25835666" target="_blank" rel="external">onclick事件绑定函数，为什么在文档里（body标签里）调用时就得加括号，在js代码里去不用？ - zhihu</a></p>
+<p><code>onclick=func &lt;==&gt; onclick=function() { func(); }</code><br>应该说看到这句话应该就能懂为什么了.如果还不清楚, 就看下面这个例子:<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  React 例子</span></span><br><span class="line">render() &#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		&lt;div&gt;</span><br><span class="line">			&lt;input type="text" ref="myTextInput"/&gt;</span><br><span class="line">			&lt;input type="button" value="Focus the text input" onClick=&#123;this.handleClick&#125;/&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br><span class="line">handleClick() &#123;</span><br><span class="line">	this.refs.myTextInput.focus();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此时this之外其实就包裹了一个<code>function(){}</code>, 归类为函数调用(function invocation).<br>function(){}会内建一个上下文,但是<code>即使外部函数拥有该this的上下文环境，它也没有办法影响到内部的this</code>, 所以依然会返回undefined||window</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://reactkungfu.com/2015/07/why-and-how-to-bind-methods-in-your-react-component-classes/" target="_blank" rel="external">Why and how to bind methods in your React component classes?- ReactKungFu</a><br><a href="https://segmentfault.com/a/1190000003798438#articleHeader5" target="_blank" rel="external">JavaScript 原型系统的变迁，以及 ES6 class</a><br>这两篇是一开始看的, 可以当作延伸阅读了…</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[React-基础笔记]]></title>
+      <url>http://csser.work/03/26/2017/react-quick-learn/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>先写的React Native, 发现了好多坑.找到了个比较好的资料库, 跟着学, 在此记录所学知识.<br>所有代码均会在<a href=""></a><br><!-- todo: add address --></p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="HTML-VS-ReactComponent"><a href="#HTML-VS-ReactComponent" class="headerlink" title="HTML VS ReactComponent"></a>HTML VS ReactComponent</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>I'm original html tag<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>,</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">MyConponent</span>/&gt;</span></span></span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<p>React组件首字母必须大写</p>
+<h3 id="Spread-Attributes"><a href="#Spread-Attributes" class="headerlink" title="Spread Attributes"></a>Spread Attributes</h3><p>在看其他代码的时候经常看到类似于<code>&lt;Button info&gt;</code>这种Component, 现在了解了: jsx的新特性-延展属性.<br>写了个小例子, 改得和ReactNative相似了许多~也添加了延展操作符(ES6特性也添加了延展操作符(ES6特性)也添加了延展操作符(ES6特性))</p>
+<p></p><p data-height="300" data-theme-id="26570" data-slug-hash="PpBEGM" data-default-tab="html,result" data-user="a1exlism" data-embed-version="2" data-pen-title="SimpleReactBtnComponent" class="codepen">See the Pen <a href="http://codepen.io/a1exlism/pen/PpBEGM/" target="_blank" rel="external">SimpleReactBtnComponent</a> by Quinn Sheng (<a href="http://codepen.io/a1exlism" target="_blank" rel="external">@a1exlism</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="节点遍历"><a href="#节点遍历" class="headerlink" title="节点遍历"></a>节点遍历</h3><p>this.props.children 会返回组件对象所有属性<br>React.Children.map / React.Children.forEach 可以遍历子节<br>应该对于代码复用效果挺好的.</p>
+<h3 id="PropTypes组件验证机制"><a href="#PropTypes组件验证机制" class="headerlink" title="PropTypes组件验证机制"></a>PropTypes组件验证机制</h3><p>用于检测props传入的数据是否符合规范.<br>类似错误如</p>
+<blockquote>
+<p>Invalid prop <code>title</code> of type <code>number</code> supplied to <code>MyTitle</code>, expected <code>string</code>. in MyTitle</p>
+</blockquote>
+<h3 id="ReactDOM-render-只能渲染一次"><a href="#ReactDOM-render-只能渲染一次" class="headerlink" title="ReactDOM.render()只能渲染一次"></a>ReactDOM.render()只能渲染一次</h3><p>原因: virtual-dom</p>
+<h3 id="ref-获取真实dom属性"><a href="#ref-获取真实dom属性" class="headerlink" title="ref 获取真实dom属性"></a>ref 获取真实dom属性</h3><p>例如: 获取点击事件(virtual dom做不了的)<br>这边有一个bind(this)的问题, 解释在这里:</p>
+<blockquote>
+<p><a href="http://blog.csdn.net/bingjay/article/details/53876773" target="_blank" rel="external">http://blog.csdn.net/bingjay/article/details/53876773</a><br>React.createClass 是es5的写法默认是绑定了bind方法，而es6中 新增加了class，绑定的方法需要绑定this，如果是箭头函数就不需要绑定</p>
+</blockquote>
+<h3 id="组件重复调用"><a href="#组件重复调用" class="headerlink" title="组件重复调用"></a>组件重复调用</h3><p><a href="https://beace.gitbooks.io/react-recording/content/reactzhong_duo_ge_component_de_wen_ti_ji_lu.html" target="_blank" rel="external">https://beace.gitbooks.io/react-recording/content/reactzhong_duo_ge_component_de_wen_ti_ji_lu.html</a><br>和react native基本一样, 需要在最外层套用一个<code>&lt;div&gt;</code>, 保证是一个组件</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://goo.gl/FZEwb0" target="_blank" rel="external">React Native之React速学教程</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[about this]]></title>
+      <url>http://csser.work/03/24/2017/js-this/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>重新理解一遍this<br><del>自己以前看书写的笔记写的一塌糊涂</del></p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p><img src="/imgs/js_this/1.svg" alt="1"><br>自己做了一张简单的图.</p>
+<h3 id="function-VS-method"><a href="#function-VS-method" class="headerlink" title="function VS method"></a>function VS method</h3><p>判断function和method的根本区别: <code>是否依赖于对象</code></p>
+<h3 id="function-VS-arrow-function"><a href="#function-VS-arrow-function" class="headerlink" title="function VS arrow function"></a>function VS arrow function</h3><p>function</p>
+<blockquote>
+<p>在函数调用中,每个新定义的函数都有其自己的this值,上下文执行环境是全局对象||undefined(strict mode)<br>this指向会由内而外寻找, 而function会内建一个context, this会指向直接调用对象(最外层则调用了window/undefined)</p>
+</blockquote>
+<p>这边提一个非常容易犯错的点:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> Obj = &#123;</span><br><span class="line">  func: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span> === Obj);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">window</span> === <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Obj.func()();</span><br><span class="line"><span class="comment">//  true -&gt; true</span></span><br></pre></td></tr></table></figure></p>
+<p>即使外部函数func拥有上下文, 他也<code>无法影响到函数调用中的this上下文</code></p>
+<blockquote>
+<p>arrow function<br>箭头函数并<code>不创建</code>它自身执行的上下文，使得this取决于它在定义时的外部函数。</p>
+</blockquote>
+<p>关于bind(),call()等方法就不写了.</p>
+<h2 id="this-tricks"><a href="#this-tricks" class="headerlink" title="this tricks"></a>this tricks</h2><p><a href="https://github.com/a1exlism/codeLab/tree/master/js/tricks" target="_blank" rel="external">codes</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://github.com/zchen9/code/issues/1" target="_blank" rel="external">Gentle explanation of ‘this’ keyword in JavaScript</a><br><a href="https://a1exlism.gitbooks.io/es6-code-fragment/content/chapter1.html" target="_blank" rel="external">es6-code-fragment</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="external">MDN</a></p>
 ]]></content>
     </entry>
     
@@ -160,42 +214,19 @@
     </entry>
     
     <entry>
-      <title></title>
-      <url>http://csser.work/01/29/2017/about-learning-1/</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[jsfuck - 基础实现 A]]></title>
-      <url>http://csser.work/12/28/2016/js-jsfuck-demos/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>Codewars上遇到一道问题, 刚好能用这个解.<br>重新看了一下, 有新的领悟, 索性把实现写一下</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><h2 id="Refer-amp-Recommend"><a href="#Refer-amp-Recommend" class="headerlink" title="Refer &amp; Recommend"></a>Refer &amp; Recommend</h2><p><a href="http://thomas-yang.me/projects/oh-my-dear-js/" target="_blank" rel="external">js - 等价比较</a><br><a href="https://github.com/aemkei/jsfuck/blob/master/jsfuck.js" target="_blank" rel="external">jsfuck - typecast(类型转换)</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[VisuAlgo - Quick Sort]]></title>
-      <url>http://csser.work/12/22/2016/visualgo-quick-sort/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>先安利 ==&gt; <a href="https://visualgo.net/" target="_blank" rel="external">VisualGo</a><br>表示这学期到下学期会以这个为一个小专题把基础的算法写一遍, 前端也是要会算法的!</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>//  TODO</p>
-<p>##</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[webpack react jsx babel]]></title>
       <url>http://csser.work/12/21/2016/webpack-react/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>Learn from: <a href="https://www.codementor.io/tamizhvendan/tutorials/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr" target="_blank" rel="external">https://www.codementor.io/tamizhvendan/tutorials/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr</a>, some error had been corrected.</p>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>Learn from: <a href="https://www.codementor.io/tamizhvendan/tutorials/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr" target="_blank" rel="external">https://www.codementor.io/tamizhvendan/tutorials/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr</a><br>and <a href="http://www.infoq.com/cn/articles/react-and-webpack" target="_blank" rel="external">http://www.infoq.com/cn/articles/react-and-webpack</a></p>
 <p>This is a note for learning webpack + react + jsx + babel loader</p>
 <h2 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h2><p>The <code>APP_DIR</code> holds the directory path of the React application’s codebase. The <code>BUILD_DIR</code> represents the directory path of the bundle file output.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> BUILD_DIR = path.resolve(__dirname, <span class="string">'src/client/public'</span>);</span><br><span class="line"><span class="keyword">var</span> APP_DIR = path.resolve(__dirname, <span class="string">'src/client/app'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> config = &#123;</span><br><span class="line">  entry: APP_DIR + <span class="string">'/index.jsx'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: BUILD_DIR,</span><br><span class="line">    filename: <span class="string">'bundle.js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = config;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> BUILD_DIR = path.resolve(__dirname, <span class="string">'public/'</span>); <span class="comment">//  the directory shown to others</span></span><br><span class="line"><span class="keyword">const</span> APP_DIR = path.resolve(__dirname, <span class="string">'app/'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  entry: APP_DIR + <span class="string">'/index.jsx'</span>, <span class="comment">// entrance file</span></span><br><span class="line">  output: &#123;</span><br><span class="line">    path: BUILD_DIR,</span><br><span class="line">    filename: <span class="string">'bundle.js'</span> <span class="comment">//  filename after packaged</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = config;</span><br></pre></td></tr></table></figure>
 <h2 id="generate-a-bundle-js"><a href="#generate-a-bundle-js" class="headerlink" title="generate a bundle.js"></a>generate a bundle.js</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ webpack <span class="_">-d</span></span><br></pre></td></tr></table></figure>
 <h2 id="With-Bable"><a href="#With-Bable" class="headerlink" title="With Bable"></a>With Bable</h2><p>install</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i babel-core babel-loader babel-preset-es2015 babel-preset-react -S</span><br></pre></td></tr></table></figure>
-<p>settings</p>
+<p>settings <code>.babelrc</code></p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"presets"</span> : [</span><br><span class="line">        <span class="string">"es2015"</span>,</span><br><span class="line">        <span class="string">"react"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>webpack.config.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Existing Code ....</span></span><br><span class="line"><span class="keyword">var</span> config = &#123;</span><br><span class="line">  <span class="comment">// Existing Code ....</span></span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    loaders: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.jsx?$/</span>,</span><br><span class="line">        include: APP_DIR,</span><br><span class="line">        exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        loader: <span class="string">'babel'</span>,</span><br><span class="line">        query:</span><br><span class="line">        &#123;</span><br><span class="line">          presets: [<span class="string">'react'</span>, <span class="string">'es2015'</span>]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Existing Code ....</span></span><br><span class="line"><span class="keyword">var</span> config = &#123;</span><br><span class="line">  <span class="comment">// Existing Code ....</span></span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    loaders: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.jsx?$/</span>,</span><br><span class="line">        include: APP_DIR,</span><br><span class="line">        exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        loader: <span class="string">'babel-loader'</span>,</span><br><span class="line">        query:</span><br><span class="line">        &#123;</span><br><span class="line">          presets: [<span class="string">'react'</span>, <span class="string">'es2015'</span>]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="With-React"><a href="#With-React" class="headerlink" title="With React"></a>With React</h2><p>npm</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i react react-dom -S</span><br></pre></td></tr></table></figure>
 <p>index.jsx(<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/import" target="_blank" rel="external">import module</a>)</p>
@@ -205,8 +236,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install react-hot-loader --save-dev</span><br></pre></td></tr></table></figure>
 <p>config: should click the click to learn more!</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  loaders: [</span><br><span class="line">    &#123; test: <span class="regexp">/\.jsx?$/</span>, loaders: [<span class="string">'react-hot'</span>, <span class="string">'jsx?harmony'</span>], include: path.join(__dirname, <span class="string">'src'</span>) &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="npm-package-verb"><a href="#npm-package-verb" class="headerlink" title="npm package(verb.)"></a>npm package(verb.)</h2><p>package.json<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"script"</span>: &#123;</span><br><span class="line">    <span class="attr">"dev"</span>: <span class="string">"webpack -d --watch"</span>,</span><br><span class="line">    <span class="attr">"build"</span>: <span class="string">"webpack -p"</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="npm-package-verb"><a href="#npm-package-verb" class="headerlink" title="npm package(verb.)"></a>npm package(verb.)</h2><p>package.json<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"dev"</span>: <span class="string">"webpack -d --watch"</span>,</span><br><span class="line">    <span class="attr">"build"</span>: <span class="string">"webpack -p"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>usage:<br><code>npm run dev</code>, <code>npm run build</code></p>
+<h2 id="Simple-demo-in-github"><a href="#Simple-demo-in-github" class="headerlink" title="Simple demo in github"></a>Simple demo in github</h2><p><a href="https://github.com/a1exlism/codeLab/tree/master/learn/react/React-with-webpack" target="_blank" rel="external">Github-React-with-webpack</a></p>
 <h2 id="EOF"><a href="#EOF" class="headerlink" title="EOF"></a>EOF</h2><p>Webapack is a wonderful tool!</p>
 ]]></content>
     </entry>
@@ -624,33 +656,10 @@
     </entry>
     
     <entry>
-      <title><![CDATA[JSON使用注意]]></title>
-      <url>http://csser.work/08/07/2016/js-json-parse/</url>
-      <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
-<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
-<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
-<p>Update in 08/11/2016</p>
-<blockquote>
-<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
-</blockquote>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
-<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
-</blockquote>
-<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
-<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
-<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
-</blockquote>
-<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
-<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
-</blockquote>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
-]]></content>
+      <title><![CDATA[无题]]></title>
+      <url>http://csser.work/08/07/2016/say-2/</url>
+      <content type="html"><![CDATA[<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
+<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>]]></content>
     </entry>
     
     <entry>
@@ -721,10 +730,56 @@
     </entry>
     
     <entry>
-      <title><![CDATA[无题]]></title>
-      <url>http://csser.work/08/07/2016/say-2/</url>
-      <content type="html"><![CDATA[<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
-<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>]]></content>
+      <title><![CDATA[JSON使用注意]]></title>
+      <url>http://csser.work/08/07/2016/js-json-parse/</url>
+      <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
+<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
+<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
+<p>Update in 08/11/2016</p>
+<blockquote>
+<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
+<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
+</blockquote>
+<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
+<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
+<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
+</blockquote>
+<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
+<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ES6 模板字符串 & Xss利用]]></title>
+      <url>http://csser.work/08/05/2016/js-template-strings/</url>
+      <content type="html"><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
+<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
+<pre><code>console.log(` test1        // there is no comments can stand!
+     test2`);
+</code></pre></blockquote>
+<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
+<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
+<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
+<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
+<p>Update:<br><code>${CMD}</code>可以直接的命令执行~</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">  <span class="string">`<span class="subst">$&#123;alert(1)&#125;</span>`</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
+]]></content>
     </entry>
     
     <entry>
@@ -820,29 +875,6 @@
 <p>用法写在下面了, 运行就懂了, 不过<code>&lt;!--</code> 还是和 <code>--&gt;</code>有点区别的(看1, 4)</p>
 <h4 id="example-1"><a href="#example-1" class="headerlink" title="example"></a>example</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"></span><br><span class="line">//	console.log("</span><br><span class="line">	alert(1)<span class="comment">&lt;!--");</span><br><span class="line">	alert(2)--&gt;</span>alert(3)</span><br><span class="line"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">	//	console.log("</span><br><span class="line">		alert(4)--&gt;")</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 注意两个script标签别放一起 --&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[ES6 模板字符串 & Xss利用]]></title>
-      <url>http://csser.work/08/05/2016/js-template-strings/</url>
-      <content type="html"><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
-<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
-<pre><code>console.log(` test1        // there is no comments can stand!
-     test2`);
-</code></pre></blockquote>
-<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
-<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
-<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
-<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
-<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
-<p>Update:<br><code>${CMD}</code>可以直接的命令执行~</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">  <span class="string">`<span class="subst">$&#123;alert(1)&#125;</span>`</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
 ]]></content>
     </entry>
     
@@ -1094,18 +1126,6 @@ linux:    192.168.55.128
     </entry>
     
     <entry>
-      <title><![CDATA[JS_引用类型和基本类型区别]]></title>
-      <url>http://csser.work/05/09/2016/js-stack-heap/</url>
-      <content type="html"><![CDATA[<h2 id="实例-听说这是一道简化的JS面试题"><a href="#实例-听说这是一道简化的JS面试题" class="headerlink" title="实例(听说这是一道简化的JS面试题?)"></a>实例(听说这是一道简化的JS面试题?)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFtn</span>(<span class="params">sNm,pObj</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：new obj</span></span><br><span class="line"></span><br><span class="line">    sNm = <span class="string">"change name"</span>;</span><br><span class="line"></span><br><span class="line">    pObj.oName = <span class="string">"change obj"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sNm = <span class="string">"new Name"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pObj = &#123;oName:<span class="string">"new obj"</span>&#125;;</span><br><span class="line"></span><br><span class="line">testFtn(sNm,pObj);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：change obj</span></span><br></pre></td></tr></table></figure>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>看着看着,再结合js的堆栈引用图,然后恍然大悟:这特么不就是<code>C中的传值和传址调用</code>嘛!</p>
-<p>函数内基本类型传入的是值,引用类型传入的是地址,所以函数内改变基本类型的形参并没有什么卵用(因为这个形参的作用域只在函数里面,而且用完销毁).引用类型的话传入了地址,所以很正常的可以改变自己的内容</p>
-<h3 id="引用图"><a href="#引用图" class="headerlink" title="引用图"></a>引用图</h3><p><img src="/imgs/js_stack_heap/1.png" alt="1"></p>
-<h2 id="还有个现成的问题推荐看看"><a href="#还有个现成的问题推荐看看" class="headerlink" title="还有个现成的问题推荐看看"></a>还有个现成的问题推荐看看</h2><p><a href="https://segmentfault.com/q/1010000002417402" target="_blank" rel="external">关于javascript的引用类型</a></p>
-<h2 id="Refernce"><a href="#Refernce" class="headerlink" title="Refernce"></a>Refernce</h2><p><a href="https://segmentfault.com" target="_blank" rel="external">SegmentFault</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[JavaScript语言精粹]]></title>
       <url>http://csser.work/05/09/2016/js-invocation-patten/</url>
       <content type="html"><![CDATA[<p>这边讲的是JavaScript的函数调用和this</p>
@@ -1124,6 +1144,40 @@ linux:    192.168.55.128
 <p>运行之后可以很明显的看出来第二个alert居然指向了全局的变量window.value<br>原因已经在上文中谈到</p>
 <h3 id="代码改进"><a href="#代码改进" class="headerlink" title="代码改进"></a>代码改进</h3><p>利用js函数内声明的变量会存在<code>运行域</code>这个特性,来构造一个that(约定俗成的一个变量名了= =)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.value);	<span class="comment">//0</span></span><br><span class="line">		<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">		<span class="keyword">var</span> innerFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			alert( ++that.value );	<span class="comment">//1</span></span><br><span class="line">		&#125;</span><br><span class="line">		innerFunction();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://doctrina.org/Javascript-Function-Invocation-Patterns.html" target="_blank" rel="external">JavaScript: Function Invocation Patterns</a><br><a href="https://github.com/CoffeeXu/Front-end/blob/master/JavaScript%20Function%20Invocation%20Patterns.md" target="_blank" rel="external">CoffeeXu</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JS_引用类型和基本类型区别]]></title>
+      <url>http://csser.work/05/09/2016/js-stack-heap/</url>
+      <content type="html"><![CDATA[<h2 id="实例-听说这是一道简化的JS面试题"><a href="#实例-听说这是一道简化的JS面试题" class="headerlink" title="实例(听说这是一道简化的JS面试题?)"></a>实例(听说这是一道简化的JS面试题?)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFtn</span>(<span class="params">sNm,pObj</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：new obj</span></span><br><span class="line"></span><br><span class="line">    sNm = <span class="string">"change name"</span>;</span><br><span class="line"></span><br><span class="line">    pObj.oName = <span class="string">"change obj"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sNm = <span class="string">"new Name"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pObj = &#123;oName:<span class="string">"new obj"</span>&#125;;</span><br><span class="line"></span><br><span class="line">testFtn(sNm,pObj);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：change obj</span></span><br></pre></td></tr></table></figure>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>看着看着,再结合js的堆栈引用图,然后恍然大悟:这特么不就是<code>C中的传值和传址调用</code>嘛!</p>
+<p>函数内基本类型传入的是值,引用类型传入的是地址,所以函数内改变基本类型的形参并没有什么卵用(因为这个形参的作用域只在函数里面,而且用完销毁).引用类型的话传入了地址,所以很正常的可以改变自己的内容</p>
+<h3 id="引用图"><a href="#引用图" class="headerlink" title="引用图"></a>引用图</h3><p><img src="/imgs/js_stack_heap/1.png" alt="1"></p>
+<h2 id="还有个现成的问题推荐看看"><a href="#还有个现成的问题推荐看看" class="headerlink" title="还有个现成的问题推荐看看"></a>还有个现成的问题推荐看看</h2><p><a href="https://segmentfault.com/q/1010000002417402" target="_blank" rel="external">关于javascript的引用类型</a></p>
+<h2 id="Refernce"><a href="#Refernce" class="headerlink" title="Refernce"></a>Refernce</h2><p><a href="https://segmentfault.com" target="_blank" rel="external">SegmentFault</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Shell 2>&1 Meaning]]></title>
+      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
+      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
+<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
+<blockquote>
+<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
+</blockquote>
+<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
+<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
+<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
+<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
+</blockquote>
+<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
+<blockquote>
+<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
+</blockquote>
+<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
 ]]></content>
     </entry>
     
@@ -1147,28 +1201,6 @@ linux:    192.168.55.128
 <blockquote>
 <p>cheat -e -xyz</p>
 </blockquote>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Shell 2>&1 Meaning]]></title>
-      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
-      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
-<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
-<blockquote>
-<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
-</blockquote>
-<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
-<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
-<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
-<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
-</blockquote>
-<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
-<blockquote>
-<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
-</blockquote>
-<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
 ]]></content>
     </entry>
     
@@ -2541,7 +2573,7 @@ noauto          开机不自动挂载
       <content type="html"><![CDATA[<h3 id="小感慨"><a href="#小感慨" class="headerlink" title="小感慨"></a>小感慨</h3><h4 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
 <h4 id="决心"><a href="#决心" class="headerlink" title="决心"></a>决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
 <h3 id="小目标"><a href="#小目标" class="headerlink" title="小目标"></a>小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
-<h3 id="今后每个月来更新一次"><a href="#今后每个月来更新一次" class="headerlink" title="今后每个月来更新一次!"></a>今后每个月来更新一次!</h3>]]></content>
+]]></content>
     </entry>
     
     <entry>
