@@ -4,6 +4,16 @@
   
     
     <entry>
+      <title><![CDATA[git reset 要命]]></title>
+      <url>http://csser.work/03/28/2017/git-dead/</url>
+      <content type="html"><![CDATA[<p>因为快没电了就直接add -A, 第二天发现push有很多大文件, 打算直接重来, 然后一重来就出了问题…</p>
+<p>恢复: &gt;<a href="http://www.cnblogs.com/jasondan/p/3502894.htmlhttp://www.cnblogs.com/jasondan/p/3502894.html" target="_blank" rel="external">Git恢复reset –hard丢失的文件</a><br>1.先用reflog看看记录的所有HEAD的历史: <code>git reflog</code></p>
+<p>2.然后找到那个SHA，进行恢复: <code>git reset --hard xxxxxx</code></p>
+<p>教训: Do every thing after <code>git commit</code></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[React Native踩坑调试的日常]]></title>
       <url>http://csser.work/03/27/2017/react-native-probs/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>React Native 坑有点多, 遇到问题就放这里面了<br>主要是关于Android方面的</p>
@@ -73,7 +83,7 @@
 </li>
 <li><p><a href="http://stackoverflow.com/questions/30266831/hide-show-components-in-react-native" target="_blank" rel="external">button to toggle show/hide</a></p>
 <blockquote>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">this</span>.state.showTheThing &amp;&amp;</span><br><span class="line">  &lt;TextInput/&gt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  Then just do:</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;showTheThing: <span class="literal">true</span>&#125;)  <span class="comment">// to show it  </span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;showTheThing: <span class="literal">false</span>&#125;) <span class="comment">// to hide it</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">this</span>.state.showTheThing &amp;&amp;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">TextInput</span>/&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  Then just do:</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;showTheThing: <span class="literal">true</span>&#125;)  <span class="comment">// to show it  </span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;showTheThing: <span class="literal">false</span>&#125;) <span class="comment">// to hide it</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
 <li><p>TranformError your/path/xx.jpg: Unexpected character’?’(1:0)<br>Just reload the package with <code>npm start</code></p>
@@ -127,17 +137,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[React-component]]></title>
-      <url>http://csser.work/03/27/2017/react-quick-start-component/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>接前一篇react基础笔记, 主要记录React组件内容, 一样, 只讲自己不知道的.</p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="render"><a href="#render" class="headerlink" title="render()"></a>render()</h3><p>尽可能纯粹, 即只进行渲染操作</p>
-<h3 id="getDefaultProps"><a href="#getDefaultProps" class="headerlink" title="getDefaultProps()"></a>getDefaultProps()</h3><p>该函数返回的对象在所有实例中共享.</p>
-<p>###</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://goo.gl/rlLMEz" target="_blank" rel="external">React Native之React速学教程(中)</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[ES6-class与this]]></title>
       <url>http://csser.work/03/27/2017/js-es6-class-and-this/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>本以为重新改了那篇this的文章已经可以正常使用了, 然而react中click绑定还是没搞懂.</p>
@@ -145,6 +144,17 @@
 <p><code>onclick=func &lt;==&gt; onclick=function() { func(); }</code><br>应该说看到这句话应该就能懂为什么了.如果还不清楚, 就看下面这个例子:<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  React 例子</span></span><br><span class="line">render() &#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		&lt;div&gt;</span><br><span class="line">			&lt;input type="text" ref="myTextInput"/&gt;</span><br><span class="line">			&lt;input type="button" value="Focus the text input" onClick=&#123;this.handleClick&#125;/&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br><span class="line">handleClick() &#123;</span><br><span class="line">	this.refs.myTextInput.focus();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>此时this之外其实就包裹了一个<code>function(){}</code>, 归类为函数调用(function invocation).<br>function(){}会内建一个上下文,但是<code>即使外部函数拥有该this的上下文环境，它也没有办法影响到内部的this</code>, 所以依然会返回undefined||window</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://reactkungfu.com/2015/07/why-and-how-to-bind-methods-in-your-react-component-classes/" target="_blank" rel="external">Why and how to bind methods in your React component classes?- ReactKungFu</a><br><a href="https://segmentfault.com/a/1190000003798438#articleHeader5" target="_blank" rel="external">JavaScript 原型系统的变迁，以及 ES6 class</a><br>这两篇是一开始看的, 可以当作延伸阅读了…</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[React-component]]></title>
+      <url>http://csser.work/03/27/2017/react-quick-start-component/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>接前一篇react基础笔记, 主要记录React组件内容, 一样, 只讲自己不知道的.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="render"><a href="#render" class="headerlink" title="render()"></a>render()</h3><p>尽可能纯粹, 即只进行渲染操作</p>
+<h3 id="getDefaultProps"><a href="#getDefaultProps" class="headerlink" title="getDefaultProps()"></a>getDefaultProps()</h3><p>该函数返回的对象在所有实例中共享.</p>
+<p>###</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://goo.gl/rlLMEz" target="_blank" rel="external">React Native之React速学教程(中)</a></p>
 ]]></content>
     </entry>
     
@@ -663,6 +673,36 @@
     </entry>
     
     <entry>
+      <title><![CDATA[JSON使用注意]]></title>
+      <url>http://csser.work/08/07/2016/js-json-parse/</url>
+      <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
+<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
+<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
+<p>Update in 08/11/2016</p>
+<blockquote>
+<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
+<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
+</blockquote>
+<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
+<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
+<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
+</blockquote>
+<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
+<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[xss习题集_2.2]]></title>
       <url>http://csser.work/08/07/2016/xss-4/</url>
       <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>还是这个站<a href="http://prompt.ml/0" target="_blank" rel="external">Prompt(1) to win</a>, 不过是下集, 没想到自己不会这么多, 才会出的下集2333</p>
@@ -726,36 +766,6 @@
 <p>第三个利用了ES6的模板解析<a href="/08/05/2016/js-template-strings/">这里</a><br>(也考虑到了`这个替代, 模板是没想到..)<br>vector3:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"&gt;<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="string">`#<span class="subst">$&#123;prompt(1)&#125;</span>#`</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>…hideen level没找到, 就不管了, 这些感觉够用了~</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[JSON使用注意]]></title>
-      <url>http://csser.work/08/07/2016/js-json-parse/</url>
-      <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
-<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
-<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
-<p>Update in 08/11/2016</p>
-<blockquote>
-<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
-</blockquote>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
-<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
-</blockquote>
-<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
-<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
-<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
-</blockquote>
-<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
-<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
-</blockquote>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
 ]]></content>
     </entry>
     
@@ -1160,28 +1170,6 @@ linux:    192.168.55.128
     </entry>
     
     <entry>
-      <title><![CDATA[Shell 2>&1 Meaning]]></title>
-      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
-      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
-<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
-<blockquote>
-<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
-</blockquote>
-<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
-<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
-<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
-<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
-</blockquote>
-<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
-<blockquote>
-<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
-</blockquote>
-<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Linux佳软推荐_Cheat]]></title>
       <url>http://csser.work/05/08/2016/linux-soft-cheat/</url>
       <content type="html"><![CDATA[<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://linux.cn/article-3760-1.html" target="_blank" rel="external">Cheat—— 给Linux初学者和管理员一个终极命令行”备忘单”</a></p>
@@ -1201,6 +1189,28 @@ linux:    192.168.55.128
 <blockquote>
 <p>cheat -e -xyz</p>
 </blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Shell 2>&1 Meaning]]></title>
+      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
+      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
+<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
+<blockquote>
+<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
+</blockquote>
+<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
+<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
+<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
+<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
+</blockquote>
+<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
+<blockquote>
+<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
+</blockquote>
+<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
 ]]></content>
     </entry>
     
@@ -1412,22 +1422,6 @@ linux:    192.168.55.128
     </entry>
     
     <entry>
-      <title><![CDATA[Android6.0.1 Xposed安装以及插件推荐]]></title>
-      <url>http://csser.work/03/30/2016/device-nexus-xposed/</url>
-      <content type="html"><![CDATA[<p>xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能</p>
-<h2 id="环境-amp-要求"><a href="#环境-amp-要求" class="headerlink" title="环境&amp;要求"></a>环境&amp;要求</h2><p>已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包<br>安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk<br>框架模块: xposed-v80-sdk23-arm64.zip<br>下载地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">XDA_Xposed for Lollipop and Marshmallow</a></p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
-<li>手机关机后(防止意外关机导致应用优化)长按<code>电源键+音量下</code><br>或者直接连上电脑adb reboot-bootloader进入recovery mode</li>
-<li>进入Recovery Mode,选择Install,将放在Downloads中的框架模块选中安装即可</li>
-<li>重启后安装xposed安装程序,提示xposed actived</li>
-<li>下载安装插件,启用之后进行软重启(比较快)</li>
-</ol>
-<h2 id="推荐几个插件"><a href="#推荐几个插件" class="headerlink" title="推荐几个插件"></a>推荐几个插件</h2><p>ActivityForceNewTask 强制开新任务<br>不装LBE就用<code>greenify</code>,root的休眠功能+xposed扩展非常棒<br>阻止运行: Prevent Running<br>禁止唤醒: No WakeLock 作者Blog:<a href="https://www.linangran.com/?p=611" target="_blank" rel="external">Angran Lin’s Blog</a> (试用了发现也就这样,卸载了)<br>开机管理: BootManager<br><del>权限管理: XPrivacy 控制太烦,而且原生已有权限控制,弃用</del><br><del>广告过滤: MinMinGuard 怕过滤规则过严,弃用</del><br><del>Ist保存插件: Instagram Downloader 很早之前能用</del><br>禁止内置浏览器: ExLink(去你大爷的浏览器)<br>状态栏+底栏颜色优化,很棒: PerfectColorBar<br>来电显示: Phone Location<br>自定义手电筒快捷键: Xposed Torch<br>防撤回: QQUnrecalled/WechatUnrecalled(别干坏事..)</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.inexus.co/article-3823-1.html" target="_blank" rel="external">Inexus-Xposed安装</a><br><a href="http://forum.xda-developers.com/showpost.php?p=58828974" target="_blank" rel="external">XDA</a><br>插件推荐: <a href="https://www.zhihu.com/question/22063862" target="_blank" rel="external">==知乎链接==</a><br>刚找到的一个新地址: <a href="http://xposed.appkg.com/1051.html" target="_blank" rel="external">Xposed</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Nexus原生OTA升级(ROOT+XP),无需PC]]></title>
       <url>http://csser.work/03/30/2016/device-nexus-ota-update/</url>
       <content type="html"><![CDATA[<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Nexus5x Rooted Xposed</p>
@@ -1440,6 +1434,22 @@ linux:    192.168.55.128
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ED6N4DJTaU4" frameborder="0" allowfullscreen></iframe>
 
 <h2 id="结合PC的ota"><a href="#结合PC的ota" class="headerlink" title="结合PC的ota"></a>结合PC的ota</h2><p>这个自己没用过.需要的自己看一下,<code>不需要清数据</code><br><a href="https://m.reddit.com/r/nexus5x/comments/44duji/rooted_it_how_to_apply_the_ota_update/" target="_blank" rel="external">reddit</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android6.0.1 Xposed安装以及插件推荐]]></title>
+      <url>http://csser.work/03/30/2016/device-nexus-xposed/</url>
+      <content type="html"><![CDATA[<p>xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能</p>
+<h2 id="环境-amp-要求"><a href="#环境-amp-要求" class="headerlink" title="环境&amp;要求"></a>环境&amp;要求</h2><p>已Root的手机一台(Nexus5x)并且安装完第三方Recovery,安装包<br>安装程序: XposedInstaller_v3.0-alpha4_Modified.Kane.Multi.apk<br>框架模块: xposed-v80-sdk23-arm64.zip<br>下载地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">XDA_Xposed for Lollipop and Marshmallow</a></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
+<li>手机关机后(防止意外关机导致应用优化)长按<code>电源键+音量下</code><br>或者直接连上电脑adb reboot-bootloader进入recovery mode</li>
+<li>进入Recovery Mode,选择Install,将放在Downloads中的框架模块选中安装即可</li>
+<li>重启后安装xposed安装程序,提示xposed actived</li>
+<li>下载安装插件,启用之后进行软重启(比较快)</li>
+</ol>
+<h2 id="推荐几个插件"><a href="#推荐几个插件" class="headerlink" title="推荐几个插件"></a>推荐几个插件</h2><p>ActivityForceNewTask 强制开新任务<br>不装LBE就用<code>greenify</code>,root的休眠功能+xposed扩展非常棒<br>阻止运行: Prevent Running<br>禁止唤醒: No WakeLock 作者Blog:<a href="https://www.linangran.com/?p=611" target="_blank" rel="external">Angran Lin’s Blog</a> (试用了发现也就这样,卸载了)<br>开机管理: BootManager<br><del>权限管理: XPrivacy 控制太烦,而且原生已有权限控制,弃用</del><br><del>广告过滤: MinMinGuard 怕过滤规则过严,弃用</del><br><del>Ist保存插件: Instagram Downloader 很早之前能用</del><br>禁止内置浏览器: ExLink(去你大爷的浏览器)<br>状态栏+底栏颜色优化,很棒: PerfectColorBar<br>来电显示: Phone Location<br>自定义手电筒快捷键: Xposed Torch<br>防撤回: QQUnrecalled/WechatUnrecalled(别干坏事..)</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.inexus.co/article-3823-1.html" target="_blank" rel="external">Inexus-Xposed安装</a><br><a href="http://forum.xda-developers.com/showpost.php?p=58828974" target="_blank" rel="external">XDA</a><br>插件推荐: <a href="https://www.zhihu.com/question/22063862" target="_blank" rel="external">==知乎链接==</a><br>刚找到的一个新地址: <a href="http://xposed.appkg.com/1051.html" target="_blank" rel="external">Xposed</a></p>
 ]]></content>
     </entry>
     
@@ -2105,19 +2115,6 @@ linux:    192.168.55.128
     </entry>
     
     <entry>
-      <title><![CDATA[手表指南方法]]></title>
-      <url>http://csser.work/01/31/2016/life-%E6%8C%87%E5%8D%97/</url>
-      <content type="html"><![CDATA[<p>看小学生杀手的时候发现几个指南方法，记一下</p>
-<h2 id="借助太阳指向"><a href="#借助太阳指向" class="headerlink" title="借助太阳指向"></a>借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
-<p>###原理<br>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
-<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
-<h2 id="立杆测影-指东针"><a href="#立杆测影-指东针" class="headerlink" title="立杆测影-指东针"></a>立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
-<h3 id="日晷原理"><a href="#日晷原理" class="headerlink" title="日晷原理"></a>日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[linux日常更新-01]]></title>
       <url>http://csser.work/01/31/2016/daily-linux-1/</url>
       <content type="html"><![CDATA[<p>#环境:debian8<br>最后更新日期:2016-01-31</p>
@@ -2232,6 +2229,19 @@ tar -czvf -g zeng aa.tar.gz.1 /var
 </ol>
 <p>好像有点小BUG:<br>如果开机过程没有插网线,会一直搜索大概1分钟<br>Reference:<br><a href="http://tieba.baidu.com/p/3247330238" target="_blank" rel="external">贴吧</a></p>
 <h3 id="gnome"><a href="#gnome" class="headerlink" title="gnome"></a>gnome</h3><p>打开了一张奇怪的图片,然后就崩了,直接被注销<br>搞了半天也看了gnome的错误日志,然后找到论坛<a href="http://forum.ubuntu.org.cn/viewtopic.php?f=94&amp;t=378902" target="_blank" rel="external">ubuntu12.04安装gnome shell主题，给新手们</a><br>最后发现这个网站<a href="https://extensions.gnome.org/" target="_blank" rel="external">extensions.gnome</a><br><code>firefox</code>打开     然后选择一下插件,不用管warning…<br>备用:<br><a href="http://itsfoss.com/install-switch-themes-gnome-shell/" target="_blank" rel="external">How To Install And Switch Themes In GNOME Shell In Ubuntu</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[手表指南方法]]></title>
+      <url>http://csser.work/01/31/2016/life-%E6%8C%87%E5%8D%97/</url>
+      <content type="html"><![CDATA[<p>看小学生杀手的时候发现几个指南方法，记一下</p>
+<h2 id="借助太阳指向"><a href="#借助太阳指向" class="headerlink" title="借助太阳指向"></a>借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
+<p>###原理<br>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
+<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
+<h2 id="立杆测影-指东针"><a href="#立杆测影-指东针" class="headerlink" title="立杆测影-指东针"></a>立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
+<h3 id="日晷原理"><a href="#日晷原理" class="headerlink" title="日晷原理"></a>日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
 ]]></content>
     </entry>
     
@@ -2616,17 +2626,6 @@ apt-cache search linux-header
     </entry>
     
     <entry>
-      <title><![CDATA[Js学习笔记(4)]]></title>
-      <url>http://csser.work/10/03/2015/js-client-4/</url>
-      <content type="html"><![CDATA[<h3 id="jQuery的-查询"><a href="#jQuery的-查询" class="headerlink" title="jQuery的$查询"></a>jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
-<h3 id="窗体"><a href="#窗体" class="headerlink" title="窗体"></a>窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
-<h3 id="窗体-口之间的交互"><a href="#窗体-口之间的交互" class="headerlink" title="窗体/口之间的交互"></a>窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'A'</span> <span class="attr">src</span>=<span class="string">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'B'</span> <span class="attr">src</span>=<span class="string">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Js学习笔记(3)]]></title>
       <url>http://csser.work/10/03/2015/js-client-3/</url>
       <content type="html"><![CDATA[<h2 id="Window对象"><a href="#Window对象" class="headerlink" title="Window对象"></a>Window对象</h2><h3 id="计时器"><a href="#计时器" class="headerlink" title="计时器"></a>计时器</h3><hr>
@@ -2643,6 +2642,17 @@ stringObject.substring(start,stop)    取一段字符
 stringObject.split(separator,howmany) 字符串分割
 stringObject.indexOf(searchvalue,fromindex)   字符检索
 </code></pre><h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">urlAges</span>(<span class="params"></span>)</span>&#123;     <span class="comment">//URL参数解析函数</span></span><br><span class="line">    <span class="keyword">var</span> args = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> query = location.search.substring(<span class="number">1</span>);   <span class="comment">//获取url查询字符串</span></span><br><span class="line">    <span class="keyword">var</span> pairs = query.split(<span class="string">"&amp;"</span>);   <span class="comment">//此时的pairs为字符串数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;pairs.length ; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> pos = pairs[i].indexOf(<span class="string">'='</span>);    <span class="comment">//检测第一个'='</span></span><br><span class="line">        <span class="keyword">if</span>(pos == <span class="number">-1</span>)   <span class="comment">//indexOf()由-1开始进行(第一个检测的是0)</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">var</span> name = pairs[i].substring(<span class="number">0</span>,pos);</span><br><span class="line">        <span class="keyword">var</span> value = pairs[i].substring(pos+<span class="number">1</span>);</span><br><span class="line">        value = <span class="built_in">decodeURIComponent</span>(value);  <span class="comment">//value解码</span></span><br><span class="line">        args[name] = value; <span class="comment">//将value存储为args对象的name属性值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Js学习笔记(4)]]></title>
+      <url>http://csser.work/10/03/2015/js-client-4/</url>
+      <content type="html"><![CDATA[<h3 id="jQuery的-查询"><a href="#jQuery的-查询" class="headerlink" title="jQuery的$查询"></a>jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
+<h3 id="窗体"><a href="#窗体" class="headerlink" title="窗体"></a>窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
+<h3 id="窗体-口之间的交互"><a href="#窗体-口之间的交互" class="headerlink" title="窗体/口之间的交互"></a>窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'A'</span> <span class="attr">src</span>=<span class="string">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'B'</span> <span class="attr">src</span>=<span class="string">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
+]]></content>
     </entry>
     
     <entry>
@@ -2813,15 +2823,6 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
     </entry>
     
     <entry>
-      <title><![CDATA[Bootstrap Navbar Hack]]></title>
-      <url>http://csser.work/06/30/2015/bootstrap-navbar-resposive/</url>
-      <content type="html"><![CDATA[<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>以前用bootstrap的时候也遇到过这么个问题, navbar一写, 然后宽度布局就出现问题了, <code>页面宽度总是大于浏览器宽度</code>.</p>
-<h2 id="css-codes"><a href="#css-codes" class="headerlink" title="css-codes"></a>css-codes</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* -- NavBar-Responsive Start  -- */</span></span><br><span class="line"><span class="selector-class">.navbar</span> <span class="selector-class">.container-fluid</span> &#123;</span><br><span class="line">	<span class="attribute">padding-left</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">	<span class="attribute">padding-right</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar-collapse</span>, <span class="selector-class">.navbar-header</span> &#123;</span><br><span class="line">	<span class="attribute">margin-left</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">	<span class="attribute">margin-right</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>测试样例的话就是官方例子就行了.</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Git Daily]]></title>
       <url>http://csser.work/06/30/2015/daily-git/</url>
       <content type="html"><![CDATA[<h2 id="记录遇到的Git"><a href="#记录遇到的Git" class="headerlink" title="记录遇到的Git : )"></a>记录遇到的Git : )</h2><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://rogerdudler.github.io/git-guide/index.zh.html" target="_blank" rel="external">git-the simple guide</a></p>
@@ -2860,6 +2861,15 @@ X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
 </li>
 </ul>
 <p>错误原因:远程仓库的分支比本地的代码要新所以有冲突<br>解决:开新分支提交或者直接git push –force<strong>慎用!</strong></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Bootstrap Navbar Hack]]></title>
+      <url>http://csser.work/06/30/2015/bootstrap-navbar-resposive/</url>
+      <content type="html"><![CDATA[<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>以前用bootstrap的时候也遇到过这么个问题, navbar一写, 然后宽度布局就出现问题了, <code>页面宽度总是大于浏览器宽度</code>.</p>
+<h2 id="css-codes"><a href="#css-codes" class="headerlink" title="css-codes"></a>css-codes</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* -- NavBar-Responsive Start  -- */</span></span><br><span class="line"><span class="selector-class">.navbar</span> <span class="selector-class">.container-fluid</span> &#123;</span><br><span class="line">	<span class="attribute">padding-left</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">	<span class="attribute">padding-right</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar-collapse</span>, <span class="selector-class">.navbar-header</span> &#123;</span><br><span class="line">	<span class="attribute">margin-left</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">	<span class="attribute">margin-right</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试样例的话就是官方例子就行了.</p>
 ]]></content>
     </entry>
     

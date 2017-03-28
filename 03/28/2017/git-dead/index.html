@@ -4,50 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Nexus原生OTA升级(ROOT+XP),无需PC | A1exlism</title>
+    <title>git reset 要命 | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="a1exlism">
     
 
     
-    <meta name="description" content="环境Nexus5x Rooted Xposed
-过程优点
-不需要PC 2. 不需要清数据 3. 可以顺便安装Xposed
-
-自己是先卸载了Xposed之后再升级的,没卸载的升级没有尝试过
-正这个我就不多讲了,需要的软件Flashfire更新软件包: Nexus_Factory_imagesXposed框架地址: Xposed
-直接上地址(墙):
-
-
-结合PC的ota这个自己没用过.需要的自己看一下">
+    <meta name="description" content="因为快没电了就直接add -A, 第二天发现push有很多大文件, 打算直接重来, 然后一重来就出了问题…
+恢复: &amp;gt;Git恢复reset –hard丢失的文件1.先用reflog看看记录的所有HEAD的历史: git reflog
+2.然后找到那个SHA，进行恢复: git reset --hard xxxxxx
+教训: Do every thing after git commit">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nexus原生OTA升级(ROOT+XP),无需PC">
-<meta property="og:url" content="http://csser.work/03/30/2016/device-nexus-ota-update/index.html">
+<meta property="og:title" content="git reset 要命">
+<meta property="og:url" content="http://csser.work/03/28/2017/git-dead/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="环境Nexus5x Rooted Xposed
-过程优点
-不需要PC 2. 不需要清数据 3. 可以顺便安装Xposed
-
-自己是先卸载了Xposed之后再升级的,没卸载的升级没有尝试过
-正这个我就不多讲了,需要的软件Flashfire更新软件包: Nexus_Factory_imagesXposed框架地址: Xposed
-直接上地址(墙):
-
-
-结合PC的ota这个自己没用过.需要的自己看一下">
-<meta property="og:updated_time" content="2016-05-17T16:03:00.155Z">
+<meta property="og:description" content="因为快没电了就直接add -A, 第二天发现push有很多大文件, 打算直接重来, 然后一重来就出了问题…
+恢复: &amp;gt;Git恢复reset –hard丢失的文件1.先用reflog看看记录的所有HEAD的历史: git reflog
+2.然后找到那个SHA，进行恢复: git reset --hard xxxxxx
+教训: Do every thing after git commit">
+<meta property="og:updated_time" content="2017-03-28T05:22:04.879Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nexus原生OTA升级(ROOT+XP),无需PC">
-<meta name="twitter:description" content="环境Nexus5x Rooted Xposed
-过程优点
-不需要PC 2. 不需要清数据 3. 可以顺便安装Xposed
-
-自己是先卸载了Xposed之后再升级的,没卸载的升级没有尝试过
-正这个我就不多讲了,需要的软件Flashfire更新软件包: Nexus_Factory_imagesXposed框架地址: Xposed
-直接上地址(墙):
-
-
-结合PC的ota这个自己没用过.需要的自己看一下">
+<meta name="twitter:title" content="git reset 要命">
+<meta name="twitter:description" content="因为快没电了就直接add -A, 第二天发现push有很多大文件, 打算直接重来, 然后一重来就出了问题…
+恢复: &amp;gt;Git恢复reset –hard丢失的文件1.先用reflog看看记录的所有HEAD的历史: git reflog
+2.然后找到那个SHA，进行恢复: git reset --hard xxxxxx
+教训: Do every thing after git commit">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -108,14 +90,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/30/2016/device-nexus-ota-update/" title="Nexus原生OTA升级(ROOT+XP),无需PC" itemprop="url">Nexus原生OTA升级(ROOT+XP),无需PC</a>
+      <a href="/03/28/2017/git-dead/" title="git reset 要命" itemprop="url">git reset 要命</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-29T16:00:00.000Z" itemprop="datePublished"> 发表于 03-30-2016</time>
+    <time datetime="2017-03-27T16:00:00.000Z" itemprop="datePublished"> 发表于 03-28-2017</time>
     
   </p>
 </header>
@@ -124,27 +106,21 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过程"><span class="toc-number">2.</span> <span class="toc-text">过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正"><span class="toc-number">2.2.</span> <span class="toc-text">正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结合PC的ota"><span class="toc-number">3.</span> <span class="toc-text">结合PC的ota</span></a></li></ol>
+			
 		
 		</div>
 		
-		<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Nexus5x Rooted Xposed</p>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
-<li>不需要PC 2. 不需要清数据 3. 可以顺便安装Xposed</li>
-</ol>
-<p><code>自己是先卸载了Xposed之后再升级的,没卸载的升级没有尝试过</code></p>
-<h3 id="正"><a href="#正" class="headerlink" title="正"></a>正</h3><p>这个我就不多讲了,需要的软件<code>Flashfire</code><br>更新软件包: <a href="https://developers.google.com/android/nexus/images" target="_blank" rel="external">Nexus_Factory_images</a><br>Xposed框架地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">Xposed</a></p>
-<p>直接上地址(墙):</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ED6N4DJTaU4" frameborder="0" allowfullscreen></iframe>
-
-<h2 id="结合PC的ota"><a href="#结合PC的ota" class="headerlink" title="结合PC的ota"></a>结合PC的ota</h2><p>这个自己没用过.需要的自己看一下,<code>不需要清数据</code><br><a href="https://m.reddit.com/r/nexus5x/comments/44duji/rooted_it_how_to_apply_the_ota_update/" target="_blank" rel="external">reddit</a></p>
+		<p>因为快没电了就直接add -A, 第二天发现push有很多大文件, 打算直接重来, 然后一重来就出了问题…</p>
+<p>恢复: &gt;<a href="http://www.cnblogs.com/jasondan/p/3502894.htmlhttp://www.cnblogs.com/jasondan/p/3502894.html" target="_blank" rel="external">Git恢复reset –hard丢失的文件</a><br>1.先用reflog看看记录的所有HEAD的历史: <code>git reflog</code></p>
+<p>2.然后找到那个SHA，进行恢复: <code>git reset --hard xxxxxx</code></p>
+<p>教训: Do every thing after <code>git commit</code></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/03/30/2016/device-nexus-ota-update/" data-title="Nexus原生OTA升级(ROOT+XP),无需PC | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/03/28/2017/git-dead/" data-title="git reset 要命 | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -157,19 +133,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/04/01/2016/daily-collection/" title="Daily Collection">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Daily Collection</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/03/30/2016/device-nexus-xposed/"  title="Android6.0.1 Xposed安装以及插件推荐">
+<a href="/03/27/2017/react-native-probs/"  title="React Native踩坑调试的日常">
  <strong>下一篇：</strong><br/> 
- <span>Android6.0.1 Xposed安装以及插件推荐
+ <span>React Native踩坑调试的日常
 </span>
 </a>
 </div>
@@ -178,7 +146,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="03/30/2016/device-nexus-ota-update/" data-title="Nexus原生OTA升级(ROOT+XP),无需PC" data-url="http://csser.work/03/30/2016/device-nexus-ota-update/"></div>
+	<div class="ds-thread" data-thread-key="03/28/2017/git-dead/" data-title="git reset 要命" data-url="http://csser.work/03/28/2017/git-dead/"></div>
 </section>
 
 
@@ -188,7 +156,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过程"><span class="toc-number">2.</span> <span class="toc-text">过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正"><span class="toc-number">2.2.</span> <span class="toc-text">正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结合PC的ota"><span class="toc-number">3.</span> <span class="toc-text">结合PC的ota</span></a></li></ol>
+ 
  
   </div>
 

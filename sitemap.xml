@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://csser.work/03/28/2017/git-dead/</loc>
+    
+    <lastmod>2017-03-28T05:22:04.879Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/12/21/2016/webpack-react/</loc>
+    
+    <lastmod>2017-03-27T13:23:03.410Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://csser.work/03/27/2017/react-quick-start-component/</loc>
     
     <lastmod>2017-03-27T11:34:43.025Z</lastmod>
@@ -40,13 +54,6 @@
     <loc>http://csser.work/03/26/2017/react-quick-learn/</loc>
     
     <lastmod>2017-03-27T10:21:46.764Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/12/21/2016/webpack-react/</loc>
-    
-    <lastmod>2017-03-26T14:47:38.578Z</lastmod>
     
   </url>
   
