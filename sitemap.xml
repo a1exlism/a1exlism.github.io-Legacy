@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://csser.work/04/21/2017/say-3/</loc>
+    
+    <lastmod>2017-04-21T14:02:51.806Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/03/27/2017/js-es6-class-and-this/</loc>
+    
+    <lastmod>2017-04-06T12:23:52.149Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://csser.work/09/23/2016/php-ci-entrance/</loc>
     
     <lastmod>2017-04-06T12:21:52.513Z</lastmod>
@@ -47,13 +61,6 @@
     <loc>http://csser.work/12/21/2016/webpack-react/</loc>
     
     <lastmod>2017-03-27T13:23:03.410Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/03/27/2017/js-es6-class-and-this/</loc>
-    
-    <lastmod>2017-03-27T11:04:04.921Z</lastmod>
     
   </url>
   
