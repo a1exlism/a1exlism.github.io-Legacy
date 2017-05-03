@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://csser.work/05/04/2017/css-position/</loc>
+    
+    <lastmod>2017-05-03T17:16:50.891Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/03/24/2017/js-this/</loc>
+    
+    <lastmod>2017-04-25T03:34:59.181Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://csser.work/04/21/2017/say-3/</loc>
     
     <lastmod>2017-04-21T14:02:51.806Z</lastmod>
@@ -68,13 +82,6 @@
     <loc>http://csser.work/10/08/2015/say-1/</loc>
     
     <lastmod>2017-03-27T10:57:44.274Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/03/24/2017/js-this/</loc>
-    
-    <lastmod>2017-03-27T10:53:01.888Z</lastmod>
     
   </url>
   
