@@ -82,36 +82,43 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/08/05/2016/js-template-strings/" title="ES6 模板字符串 &amp; Xss利用" itemprop="url">ES6 模板字符串 &amp; Xss利用</a>
+      <a href="/08/07/2016/js-json-parse/" title="JSON使用注意" itemprop="url">JSON使用注意</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
-    <time datetime="2016-08-04T16:00:00.000Z" itemprop="datePublished"> 发表于 08-05-2016</time>
+    <time datetime="2016-08-06T16:00:00.000Z" itemprop="datePublished"> 发表于 08-07-2016</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
-<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
-<pre><code>console.log(` test1        // there is no comments can stand!
-     test2`);
-</code></pre></blockquote>
-<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
-<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
-<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
-<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
-<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
-<p>Update:<br><code>${CMD}</code>可以直接的命令执行~</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">  <span class="string">`<span class="subst">$&#123;alert(1)&#125;</span>`</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
+        <h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
+<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
+<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
+<p>Update in 08/11/2016</p>
+<blockquote>
+<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
+<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
+</blockquote>
+<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
+<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
+<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
+</blockquote>
+<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
+<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
 
         
         
@@ -125,7 +132,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/08/05/2016/js-template-strings/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/js-template-strings/" data-count-type="comments">&nbsp;</a>
+		<a href="/08/07/2016/js-json-parse/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/07/2016/js-json-parse/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -262,6 +269,69 @@
 	
 	  	<span></span>
 		<a href="/08/05/2016/xss-3/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/xss-3/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/08/05/2016/js-template-strings/" title="ES6 模板字符串 &amp; Xss利用" itemprop="url">ES6 模板字符串 &amp; Xss利用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-04T16:00:00.000Z" itemprop="datePublished"> 发表于 08-05-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
+<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
+<pre><code>console.log(` test1        // there is no comments can stand!
+     test2`);
+</code></pre></blockquote>
+<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
+<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
+<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
+<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
+<p>Update:<br><code>${CMD}</code>可以直接的命令执行~</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">  <span class="string">`<span class="subst">$&#123;alert(1)&#125;</span>`</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/08/05/2016/js-template-strings/#comments" class="ds-thread-count comments-count-link" data-thread-key="08/05/2016/js-template-strings/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -764,65 +834,6 @@ linux:    192.168.55.128
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/05/16/2016/js-methods/" title="JS_方法的理解和使用" itemprop="url">JS_方法的理解和使用</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
-		
-  <p class="article-time">
-    <time datetime="2016-05-15T16:00:00.000Z" itemprop="datePublished"> 发表于 05-16-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="0x1-前言"><a href="#0x1-前言" class="headerlink" title="0x1.前言"></a>0x1.前言</h2><p>发现以前自己还写过一篇原型问题,看到一篇讲protoype的博客发现自己还不清不楚,顺便还介绍了各种方法,记录一下.</p>
-<h2 id="0x2-介绍方法"><a href="#0x2-介绍方法" class="headerlink" title="0x2.介绍方法"></a>0x2.介绍方法</h2><p>1.对象方法:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">product</span>(<span class="params">name,price</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.price = price;</span><br><span class="line">  <span class="keyword">this</span>.introduce = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'This product\'s name is: '</span> + <span class="keyword">this</span>.name);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>对象方法如名字所说,本质还是一个对象(Object).<br>不过可以用作一个类(class),可以通过new来实例化一个对象<code>var car = new product(&#39;car&#39;,500000)</code>,其中product方法中的this因此将指针指向了car</p>
-<p>2.类方法(本质是<code>静态方法</code>)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">product.price = fucntion()&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'The price is :'</span> + <span class="keyword">this</span>.price);<span class="comment">// this -&gt; product</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>可以看作这个函数本身添加了一个名为price属性函数(方法),但是在实例化过程中他<code>不会被携带</code>给实例,因为他没有办法传递(前面的传递是通过this指针来操作的)</p>
-<p>3.原型方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">product.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'The product named '</span> + <span class="keyword">this</span>.name + <span class="string">'values $'</span> + <span class="keyword">this</span>.price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>总结</code>: 对象方法含有this, 类方法根据对象名添加, 原型方法 class.prototype.func 看一下就行啦</p>
-<h2 id="0x3-具体的代码示例-对象VS类方法"><a href="#0x3-具体的代码示例-对象VS类方法" class="headerlink" title="0x3.具体的代码示例(对象VS类方法)"></a>0x3.具体的代码示例(对象VS类方法)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> BaseClass = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="comment">//对象方法</span></span><br><span class="line">  <span class="keyword">this</span>.f1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">' This is a object function.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">BaseClass.f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//静态方法(类方法) </span></span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">' This is a static method '</span>); </span><br><span class="line">&#125; </span><br><span class="line">BaseClass.f2();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> BaseClass();<span class="comment">//实例化</span></span><br><span class="line"></span><br><span class="line">instance1.f1();</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">  instance1.f2();<span class="comment">//instance1.f2 is not a function </span></span><br><span class="line">&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'---Error:---\n'</span> + err + <span class="string">'\n----'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(instance1)); <span class="comment">//[ 'f1' ]</span></span><br></pre></td></tr></table></figure>
-<h2 id="0x5-同名情况"><a href="#0x5-同名情况" class="headerlink" title="0x5. 同名情况"></a>0x5. 同名情况</h2><p>只考虑对象方法和原型方法同名,类方法上面已经讨论,不纠结=. =<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> product = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> car = <span class="keyword">new</span> product();</span><br><span class="line">product.prototype.func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line">car.func(); <span class="comment">//  1</span></span><br><span class="line"><span class="keyword">delete</span> car.func;</span><br><span class="line">car.func(); <span class="comment">//  2</span></span><br></pre></td></tr></table></figure></p>
-<p>只有在内置的对象方法被删除之后,语法才会去沿着原型链向上寻找同名函数</p>
-<h2 id="0x4-实例调用类方法"><a href="#0x4-实例调用类方法" class="headerlink" title="0x4. 实例调用类方法"></a>0x4. 实例调用类方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object.price.call(object);</span><br></pre></td></tr></table></figure>
-<p>利用<code>all</code>或者<code>apply</code>调用过来(个人理解这是将词法作用域/上下文环境复制过来的意思)</p>
-<h2 id="0x5-Reference"><a href="#0x5-Reference" class="headerlink" title="0x5. Reference"></a>0x5. Reference</h2><p><a href="http://linder0209.iteye.com/blog/1076172" target="_blank" rel="external">javascript中静态方法、实例方法、内部方法和原型的一点见解_linder0209</a><br><a href="http://www.hi-docs.com/article/detail-MTE=.html" target="_blank" rel="external">JavaScript类方法，对象方法(this)，原型方法(prototype)_hi-docs</a><br><a href="http://www.cnblogs.com/yjf512/archive/2011/06/03/2071914.html#!comments" target="_blank" rel="external">JS中的prototype_轩脉刃</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/05/16/2016/js-methods/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/16/2016/js-methods/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/">Next<span></span></a>
@@ -839,7 +850,7 @@ linux:    192.168.55.128
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CS-GO/" style="font-size: 10px;">CS:GO</a> <a href="/tags/CSS/" style="font-size: 11.25px;">CSS</a> <a href="/tags/CodeIgniter/" style="font-size: 12.5px;">CodeIgniter</a> <a href="/tags/Device/" style="font-size: 15px;">Device</a> <a href="/tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/Experience/" style="font-size: 10px;">Experience</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 11.25px;">React</a> <a href="/tags/ReactNative/" style="font-size: 11.25px;">ReactNative</a> <a href="/tags/SQLInjection/" style="font-size: 11.25px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 13.75px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.5px;">XSS</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/conference/" style="font-size: 11.25px;">conference</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 15px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 11.25px;">git</a> <a href="/tags/hard/" style="font-size: 12.5px;">hard</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/intranet/" style="font-size: 10px;">intranet</a> <a href="/tags/nexus5x/" style="font-size: 13.75px;">nexus5x</a> <a href="/tags/port/" style="font-size: 10px;">port</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/soft/" style="font-size: 12.5px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/webdriver/" style="font-size: 10px;">webdriver</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.25px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 13.75px;">闲谈</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CS-GO/" style="font-size: 10px;">CS:GO</a> <a href="/tags/CSS/" style="font-size: 11.25px;">CSS</a> <a href="/tags/CodeIgniter/" style="font-size: 12.5px;">CodeIgniter</a> <a href="/tags/Device/" style="font-size: 15px;">Device</a> <a href="/tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/Experience/" style="font-size: 10px;">Experience</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 11.25px;">React</a> <a href="/tags/ReactNative/" style="font-size: 11.25px;">ReactNative</a> <a href="/tags/SQLInjection/" style="font-size: 11.25px;">SQLInjection</a> <a href="/tags/Shell/" style="font-size: 13.75px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.5px;">XSS</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/conference/" style="font-size: 11.25px;">conference</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 15px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 11.25px;">git</a> <a href="/tags/hard/" style="font-size: 12.5px;">hard</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/intranet/" style="font-size: 10px;">intranet</a> <a href="/tags/nexus5x/" style="font-size: 13.75px;">nexus5x</a> <a href="/tags/port/" style="font-size: 10px;">port</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/soft/" style="font-size: 12.5px;">soft</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/webdriver/" style="font-size: 10px;">webdriver</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/书记/" style="font-size: 16.25px;">书记</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/闲谈/" style="font-size: 13.75px;">闲谈</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试笔记/" style="font-size: 10px;">面试笔记</a>
     </div>
   </div>
 
@@ -847,7 +858,7 @@ linux:    192.168.55.128
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 

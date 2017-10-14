@@ -4,6 +4,72 @@
   
     
     <entry>
+      <title><![CDATA[人家的面试 - tencent]]></title>
+      <url>http://csser.work/10/11/2017/interview-oth-tencent/</url>
+      <content type="html"><![CDATA[<h2 id="Post-amp-Get"><a href="#Post-amp-Get" class="headerlink" title="Post &amp; Get"></a>Post &amp; Get</h2><blockquote>
+<p>The GET method is a <code>safe</code> method (or <a href="https://en.wiktionary.org/wiki/nullipotent" target="_blank" rel="external">nullipotent</a>), meaning that calling it produces no side-effects: retrieving or accessing a record does not change it. The PUT and DELETE methods are idempotent, meaning that the state of the system exposed by the API is <code>unchanged</code> no matter how many times more than once the same request is repeated.</p>
+</blockquote>
+<p>Get 可以多次重复请求而不存在副作用, 但是Post没法做到..然后大众化的讲, 就是get用来<code>View</code>, post用来<code>change</code>.</p>
+<p><a href="https://stackoverflow.com/questions/504947/when-should-i-use-get-or-post-method-whats-the-difference-between-them" target="_blank" rel="external">Refer</a></p>
+<p>觉得还是要提一下这个=, =<a href="https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming" target="_blank" rel="external">RESTful</a> URL based</p>
+<h2 id="Http缓存机制"><a href="#Http缓存机制" class="headerlink" title="Http缓存机制"></a>Http缓存机制</h2><p>看到这个问题想到了加载问题, 差不多就是用户体验/后台性能方面.<br>cache 分两种 Public/Shared 和 Private/Local<br>Public减缓服务器压力, private则是对本地  </p>
+<h3 id="缓存控制"><a href="#缓存控制" class="headerlink" title="缓存控制"></a>缓存控制</h3><p>通过Http的<code>Cache-Control</code>的Header字段来控制, 值得注意的是下面这两个value:<br><code>no-store</code>VS<code>no-cache</code>, 前一个表示禁用cache, 后面一个则是在每次缓存copy的之前需要向服务端进行认证而不是禁用cache.</p>
+<h3 id="缓存生命和认证"><a href="#缓存生命和认证" class="headerlink" title="缓存生命和认证"></a>缓存生命和认证</h3><p>字段和前面的一样, value换了: <code>max-age=3600</code>. 表示重新缓存之前最长能保存3600秒.<br><code>Cache-Control: must-revalidate</code>这个字段和前面的no-cache有点不一样, 只要这个字段一接收到, 必须要对缓存内容认证, 如果认证失败则丢弃缓存重新获取.</p>
+<h3 id="缓存更新机制"><a href="#缓存更新机制" class="headerlink" title="缓存更新机制"></a>缓存更新机制</h3><p>图基本能解释了, 存在一个生命周期,每次交互都会增加年龄,当达到生命上限时进行cache比对,仍然不变则返回http/1.1 304 Not Modified;否则重新获取进行cache<br><img src="https://mdn.mozillademos.org/files/13771/HTTPStaleness.png" alt="cache-freshness"></p>
+<h3 id="ETag-response-header"><a href="#ETag-response-header" class="headerlink" title="ETag response header"></a>ETag response header</h3><p><code>ETag</code>响应头是一个可以被用来做<code>强验证</code>的非透明用户代理值(opaque-to-the-useragent).作用是user-agent用户端(浏览器)通过发送<code>If-None-Match</code>头给下一次的请求来要求验证缓存的文档是否修改,因为对于用户端来说他无法知道发送过来的数据是否正确, 也无法预测.</p>
+<p><code>Last-Modified</code>这个响应头用来作为一个<code>弱验证</code>头, 原因是他只拥有1秒的周期(1-second-resolution不清楚是否是这样翻译).如果该字段被响应头表示出来的话, 客户端可以发送一个<code>If-Modified-Since</code>的请求头来验证缓存的文档数据.</p>
+<p>对于服务器(server)来讲: 他可以通过发送<code>200 OK</code>来无视认证, 也可以发送<code>304 Not Modified</code>来指定浏览器(client)使用缓存数据, 304这个方案还可以更新缓存过期时间.</p>
+<h3 id="缓存认证机制"><a href="#缓存认证机制" class="headerlink" title="缓存认证机制"></a>缓存认证机制</h3><p>按图来看还是很简单的流程, cache需要满足所有client所请求的内容.<br><img src="https://mdn.mozillademos.org/files/13769/HTTPVary.png" alt="cache-varifing"></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching" target="_blank" rel="external">Refer-MDN</a></p>
+<h2 id="DNS解析方法"><a href="#DNS解析方法" class="headerlink" title="DNS解析方法"></a>DNS解析方法</h2><p>看到这个问题想到以前碰到过dns查询递归的问题, 不过查了一下= =好特么简单, 其实就是拥有域名之后就能懂得的一些内容..<br>这里随便提一下:</p>
+<ol>
+<li>DNS记录指向 相当于说你要哪家DNS服务商解析你的域名</li>
+<li>A记录 高级域名 -&gt; IP</li>
+<li>CName 高级域名 -&gt; 其他域名</li>
+<li>以前申请过企业域名, 就会用到MX记录.这个需要两条记录, 一条是MX记录 mail.xxx的高级域名 -&gt; mail.服务商域名<br>另一条就是 CName/A记录, 通过唯一识别码来识别企业域名的邮箱位置.</li>
+</ol>
+<p>关于DNS解析过程<a href="https://www.zhihu.com/question/23042131" target="_blank" rel="external">@Marlous</a>借用的这个流程很详细了</p>
+<h2 id="跨域-同源策略"><a href="#跨域-同源策略" class="headerlink" title="跨域/同源策略"></a>跨域/同源策略</h2><p>具体参考这篇<a href="https://zhuanlan.zhihu.com/p/26585158" target="_blank" rel="external">知乎@NoSec</a> 2017-04写的<br>还要了解一下<a href="https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.1.0/com.ibm.cics.ts.internet.doc/topics/dfhtl_uricomp.html" target="_blank" rel="external">URL结构</a></p>
+<p>关于方式: AJAX只能使用同域资源<br>跨域:</p>
+<ol>
+<li><p>JSONP 这里需要注意一个问题: <a href="https://segmentfault.com/q/1010000009268393" target="_blank" rel="external">POST和JSONP</a><br><a href="http://api.jquery.com/jQuery.ajax/" target="_blank" rel="external">jQuery - ajaxAPI</a>这个也需要熟悉, 而且自定义的jsonp函数会覆盖success调用<br>做了个<a href="https://gist.github.com/a1exlism/b9a1a0b1495c03af34e0f02e2d1f5b3e" target="_blank" rel="external">demo</a>, 基本涵盖到了.<br>实质上就是数据在server端, 但是通过callback参数可以使用client端的函数并返回结果.</p>
+</li>
+<li><p>WebSocket 搜到这篇文章<a href="http://caibaojian.com/http-connection-and-websocket.html" target="_blank" rel="external">长连接/短连接/长轮询/websocket</a>解释很棒.<br>http/1.1默认长连接: HTTP协议:Connection: keep-alive 这个有点像是多人在线状态显示的那种技术=, =<br>轮询: client通过setInterval这种方式像server不断发送请求来保持连接<br>WebSocket: H5技术 scheme ws/wss(TSL加密)</p>
+</li>
+<li><p>CORS</p>
+</li>
+</ol>
+<h2 id="XSS-CSRF"><a href="#XSS-CSRF" class="headerlink" title="XSS/CSRF"></a>XSS/CSRF</h2><p><a href="https://www.quora.com/What-is-the-difference-between-XSS-and-CSRF-from-their-execution-perspective" target="_blank" rel="external">difference between XSS&amp;CSRF</a><br>CSRF需要建立在可信session.<br>有两个关于CSRF的视频感觉挺好的 <a href="https://www.youtube.com/watch?v=hW2ONyxAySY" target="_blank" rel="external">understanding CSRF</a>&amp;<br><a href="https://www.youtube.com/watch?v=vRBihr41JTo" target="_blank" rel="external">Cross Site Request Forgery</a><br>讲一下原理: Tabs共用同一个session, 所以没有anti-forgery的token的话就会被授权进行越权操作.<br>anti-forgery的方式就是创建一个对应的token组, tokenA放入后端, tokenB存入cookie, cookie对于认证用户是唯一的.<br>还有一个HTTP-only, 保证cookie无法被script所读取</p>
+<p>—-  好麻烦  先写其他页面了=, =</p>
+<h2 id="JS严格模式"><a href="#JS严格模式" class="headerlink" title="JS严格模式"></a>JS严格模式</h2><h2 id="JS设计模式"><a href="#JS设计模式" class="headerlink" title="JS设计模式"></a>JS设计模式</h2><p>我记得掘金有篇文章挺详细的</p>
+<h2 id="排序方法-涉及算法"><a href="#排序方法-涉及算法" class="headerlink" title="排序方法(涉及算法)"></a>排序方法(涉及算法)</h2><p>这个是关于数据结构问题/我记得有本书叫做js数据结构.</p>
+<h2 id="已补流程控制"><a href="#已补流程控制" class="headerlink" title="已补流程控制"></a>已补流程控制</h2><h2 id="数据库查询优化"><a href="#数据库查询优化" class="headerlink" title="数据库查询优化"></a>数据库查询优化</h2><h2 id="平常用的开源库-0-0"><a href="#平常用的开源库-0-0" class="headerlink" title="平常用的开源库??0. 0"></a>平常用的开源库??0. 0</h2>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[React Native踩坑调试的日常-2]]></title>
+      <url>http://csser.work/09/26/2017/react-native-probs-2/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>接上一篇的日常</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><ol>
+<li><p><a href="https://segmentfault.com/q/1010000008677863" target="_blank" rel="external">图片的本地引用|网络引用</a><br>本地图片引用<code>require不能拼接</code>, 所以需要图下这种形式, 没有更简单的办法.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> img_arr = [<span class="built_in">require</span>(<span class="string">'./my-img-1.png'</span>),<span class="built_in">require</span>(<span class="string">'./my-img-2.png'</span>),<span class="built_in">require</span>(<span class="string">'./my-img-3.png'</span>)];</span><br></pre></td></tr></table></figure>
+</li>
+<li><blockquote>
+<p><a href="http://stackoverflow.com/questions/33297367/100-width-in-react-native-flexbox" target="_blank" rel="external">100%width-with-flexbox</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">line1: &#123;</span><br><span class="line">    backgroundColor: <span class="string">'#FDD7E4'</span>,</span><br><span class="line">    alignSelf: <span class="string">'stretch'</span>,</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p><a href="http://stackoverflow.com/questions/35309385/how-do-you-hide-the-warnings-in-react-native-ios-simulator" target="_blank" rel="external">debug过程关闭warning-黄框框</a></p>
+<p>在<code>index.xx.js</code>中添加<code>console.disableYellowBox = true;</code>即可.</p>
+</li>
+<li><p>自定义组建创建循环(with array.map)<br><a href="https://www.kancloud.cn/kancloud/react-native-lession/86414" target="_blank" rel="external">动手写组件-vczero</a></p>
+</li>
+<li></li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[CSS box-sizing]]></title>
       <url>http://csser.work/05/07/2017/css-box-sizing/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>最近在研究布局过程中一个很有用的属性<code>box-sizing</code>~</p>
@@ -51,29 +117,6 @@
 <li>怎么说呢, 以后还是想做个设计师(平面的), 喜欢配色和搭配</li>
 <li>主要需要克服的困难: 拖延症 - GTD is on the way, but not so efficient.<br>代码恐惧症 - 读就是了, 主要还是不耐心<br>非自我中心问题 - 常看 GTD, 走路不迷茫</li>
 <li>5月正式开始考研复习</li>
-</ol>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[React Native踩坑调试的日常-2]]></title>
-      <url>http://csser.work/04/01/2017/react-native-probs-2/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>接上一篇的日常</p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><ol>
-<li><p><a href="https://segmentfault.com/q/1010000008677863" target="_blank" rel="external">图片的本地引用|网络引用</a><br>本地图片引用<code>require不能拼接</code>, 所以需要图下这种形式, 没有更简单的办法.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> img_arr = [<span class="built_in">require</span>(<span class="string">'./my-img-1.png'</span>),<span class="built_in">require</span>(<span class="string">'./my-img-2.png'</span>),<span class="built_in">require</span>(<span class="string">'./my-img-3.png'</span>)];</span><br></pre></td></tr></table></figure>
-</li>
-<li><blockquote>
-<p><a href="http://stackoverflow.com/questions/33297367/100-width-in-react-native-flexbox" target="_blank" rel="external">100%width-with-flexbox</a></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">line1: &#123;</span><br><span class="line">    backgroundColor: <span class="string">'#FDD7E4'</span>,</span><br><span class="line">    alignSelf: <span class="string">'stretch'</span>,</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p><a href="http://stackoverflow.com/questions/35309385/how-do-you-hide-the-warnings-in-react-native-ios-simulator" target="_blank" rel="external">debug过程关闭warning-黄框框</a></p>
-<p>在<code>index.xx.js</code>中添加<code>console.disableYellowBox = true;</code>即可.</p>
-</li>
-<li><p>自定义组建创建循环(with array.map)<br><a href="https://www.kancloud.cn/kancloud/react-native-lession/86414" target="_blank" rel="external">动手写组件-vczero</a></p>
-</li>
-<li></li>
 </ol>
 ]]></content>
     </entry>
@@ -761,36 +804,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[JSON使用注意]]></title>
-      <url>http://csser.work/08/07/2016/js-json-parse/</url>
-      <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
-<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
-<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
-<p>Update in 08/11/2016</p>
-<blockquote>
-<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
-</blockquote>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
-<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
-</blockquote>
-<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
-<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
-<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
-</blockquote>
-<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
-<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
-</blockquote>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[xss习题集_2.2]]></title>
       <url>http://csser.work/08/07/2016/xss-4/</url>
       <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>还是这个站<a href="http://prompt.ml/0" target="_blank" rel="external">Prompt(1) to win</a>, 不过是下集, 没想到自己不会这么多, 才会出的下集2333</p>
@@ -858,25 +871,32 @@
     </entry>
     
     <entry>
-      <title><![CDATA[ES6 模板字符串 & Xss利用]]></title>
-      <url>http://csser.work/08/05/2016/js-template-strings/</url>
-      <content type="html"><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
-<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
-<pre><code>console.log(` test1        // there is no comments can stand!
-     test2`);
-</code></pre></blockquote>
-<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
-<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
-<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
-<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
-<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
-<p>Update:<br><code>${CMD}</code>可以直接的命令执行~</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">  <span class="string">`<span class="subst">$&#123;alert(1)&#125;</span>`</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
+      <title><![CDATA[JSON使用注意]]></title>
+      <url>http://csser.work/08/07/2016/js-json-parse/</url>
+      <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
+<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
+<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
+<p>Update in 08/11/2016</p>
+<blockquote>
+<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
+<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
+</blockquote>
+<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
+<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
+<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
+</blockquote>
+<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
+<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
 ]]></content>
     </entry>
     
@@ -973,6 +993,29 @@
 <p>用法写在下面了, 运行就懂了, 不过<code>&lt;!--</code> 还是和 <code>--&gt;</code>有点区别的(看1, 4)</p>
 <h4 id="example-1"><a href="#example-1" class="headerlink" title="example"></a>example</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"></span><br><span class="line">//	console.log("</span><br><span class="line">	alert(1)<span class="comment">&lt;!--");</span><br><span class="line">	alert(2)--&gt;</span>alert(3)</span><br><span class="line"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">	//	console.log("</span><br><span class="line">		alert(4)--&gt;")</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 注意两个script标签别放一起 --&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ES6 模板字符串 & Xss利用]]></title>
+      <url>http://csser.work/08/05/2016/js-template-strings/</url>
+      <content type="html"><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
+<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
+<pre><code>console.log(` test1        // there is no comments can stand!
+     test2`);
+</code></pre></blockquote>
+<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
+<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
+<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
+<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
+<p>Update:<br><code>${CMD}</code>可以直接的命令执行~</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">  <span class="string">`<span class="subst">$&#123;alert(1)&#125;</span>`</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
 ]]></content>
     </entry>
     
@@ -1224,18 +1267,6 @@ linux:    192.168.55.128
     </entry>
     
     <entry>
-      <title><![CDATA[JS_引用类型和基本类型区别]]></title>
-      <url>http://csser.work/05/09/2016/js-stack-heap/</url>
-      <content type="html"><![CDATA[<h2 id="实例-听说这是一道简化的JS面试题"><a href="#实例-听说这是一道简化的JS面试题" class="headerlink" title="实例(听说这是一道简化的JS面试题?)"></a>实例(听说这是一道简化的JS面试题?)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFtn</span>(<span class="params">sNm,pObj</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：new obj</span></span><br><span class="line"></span><br><span class="line">    sNm = <span class="string">"change name"</span>;</span><br><span class="line"></span><br><span class="line">    pObj.oName = <span class="string">"change obj"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sNm = <span class="string">"new Name"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pObj = &#123;oName:<span class="string">"new obj"</span>&#125;;</span><br><span class="line"></span><br><span class="line">testFtn(sNm,pObj);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：change obj</span></span><br></pre></td></tr></table></figure>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>看着看着,再结合js的堆栈引用图,然后恍然大悟:这特么不就是<code>C中的传值和传址调用</code>嘛!</p>
-<p>函数内基本类型传入的是值,引用类型传入的是地址,所以函数内改变基本类型的形参并没有什么卵用(因为这个形参的作用域只在函数里面,而且用完销毁).引用类型的话传入了地址,所以很正常的可以改变自己的内容</p>
-<h3 id="引用图"><a href="#引用图" class="headerlink" title="引用图"></a>引用图</h3><p><img src="/imgs/js_stack_heap/1.png" alt="1"></p>
-<h2 id="还有个现成的问题推荐看看"><a href="#还有个现成的问题推荐看看" class="headerlink" title="还有个现成的问题推荐看看"></a>还有个现成的问题推荐看看</h2><p><a href="https://segmentfault.com/q/1010000002417402" target="_blank" rel="external">关于javascript的引用类型</a></p>
-<h2 id="Refernce"><a href="#Refernce" class="headerlink" title="Refernce"></a>Refernce</h2><p><a href="https://segmentfault.com" target="_blank" rel="external">SegmentFault</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[JavaScript语言精粹]]></title>
       <url>http://csser.work/05/09/2016/js-invocation-patten/</url>
       <content type="html"><![CDATA[<p>这边讲的是JavaScript的函数调用和this</p>
@@ -1258,24 +1289,14 @@ linux:    192.168.55.128
     </entry>
     
     <entry>
-      <title><![CDATA[Shell 2>&1 Meaning]]></title>
-      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
-      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
-<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
-<blockquote>
-<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
-</blockquote>
-<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
-<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
-<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
-<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
-</blockquote>
-<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
-<blockquote>
-<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
-</blockquote>
-<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
+      <title><![CDATA[JS_引用类型和基本类型区别]]></title>
+      <url>http://csser.work/05/09/2016/js-stack-heap/</url>
+      <content type="html"><![CDATA[<h2 id="实例-听说这是一道简化的JS面试题"><a href="#实例-听说这是一道简化的JS面试题" class="headerlink" title="实例(听说这是一道简化的JS面试题?)"></a>实例(听说这是一道简化的JS面试题?)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFtn</span>(<span class="params">sNm,pObj</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：new obj</span></span><br><span class="line"></span><br><span class="line">    sNm = <span class="string">"change name"</span>;</span><br><span class="line"></span><br><span class="line">    pObj.oName = <span class="string">"change obj"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sNm = <span class="string">"new Name"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pObj = &#123;oName:<span class="string">"new obj"</span>&#125;;</span><br><span class="line"></span><br><span class="line">testFtn(sNm,pObj);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：change obj</span></span><br></pre></td></tr></table></figure>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>看着看着,再结合js的堆栈引用图,然后恍然大悟:这特么不就是<code>C中的传值和传址调用</code>嘛!</p>
+<p>函数内基本类型传入的是值,引用类型传入的是地址,所以函数内改变基本类型的形参并没有什么卵用(因为这个形参的作用域只在函数里面,而且用完销毁).引用类型的话传入了地址,所以很正常的可以改变自己的内容</p>
+<h3 id="引用图"><a href="#引用图" class="headerlink" title="引用图"></a>引用图</h3><p><img src="/imgs/js_stack_heap/1.png" alt="1"></p>
+<h2 id="还有个现成的问题推荐看看"><a href="#还有个现成的问题推荐看看" class="headerlink" title="还有个现成的问题推荐看看"></a>还有个现成的问题推荐看看</h2><p><a href="https://segmentfault.com/q/1010000002417402" target="_blank" rel="external">关于javascript的引用类型</a></p>
+<h2 id="Refernce"><a href="#Refernce" class="headerlink" title="Refernce"></a>Refernce</h2><p><a href="https://segmentfault.com" target="_blank" rel="external">SegmentFault</a></p>
 ]]></content>
     </entry>
     
@@ -1299,6 +1320,28 @@ linux:    192.168.55.128
 <blockquote>
 <p>cheat -e -xyz</p>
 </blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Shell 2>&1 Meaning]]></title>
+      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
+      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
+<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
+<blockquote>
+<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
+</blockquote>
+<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
+<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
+<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
+<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
+</blockquote>
+<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
+<blockquote>
+<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
+</blockquote>
+<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
 ]]></content>
     </entry>
     
@@ -1510,22 +1553,6 @@ linux:    192.168.55.128
     </entry>
     
     <entry>
-      <title><![CDATA[Nexus原生OTA升级(ROOT+XP),无需PC]]></title>
-      <url>http://csser.work/03/30/2016/device-nexus-ota-update/</url>
-      <content type="html"><![CDATA[<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Nexus5x Rooted Xposed</p>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
-<li>不需要PC 2. 不需要清数据 3. 可以顺便安装Xposed</li>
-</ol>
-<p><code>自己是先卸载了Xposed之后再升级的,没卸载的升级没有尝试过</code></p>
-<h3 id="正"><a href="#正" class="headerlink" title="正"></a>正</h3><p>这个我就不多讲了,需要的软件<code>Flashfire</code><br>更新软件包: <a href="https://developers.google.com/android/nexus/images" target="_blank" rel="external">Nexus_Factory_images</a><br>Xposed框架地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">Xposed</a></p>
-<p>直接上地址(墙):</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ED6N4DJTaU4" frameborder="0" allowfullscreen></iframe>
-
-<h2 id="结合PC的ota"><a href="#结合PC的ota" class="headerlink" title="结合PC的ota"></a>结合PC的ota</h2><p>这个自己没用过.需要的自己看一下,<code>不需要清数据</code><br><a href="https://m.reddit.com/r/nexus5x/comments/44duji/rooted_it_how_to_apply_the_ota_update/" target="_blank" rel="external">reddit</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Android6.0.1 Xposed安装以及插件推荐]]></title>
       <url>http://csser.work/03/30/2016/device-nexus-xposed/</url>
       <content type="html"><![CDATA[<p>xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能</p>
@@ -1538,6 +1565,22 @@ linux:    192.168.55.128
 </ol>
 <h2 id="推荐几个插件"><a href="#推荐几个插件" class="headerlink" title="推荐几个插件"></a>推荐几个插件</h2><p>ActivityForceNewTask 强制开新任务<br>不装LBE就用<code>greenify</code>,root的休眠功能+xposed扩展非常棒<br>阻止运行: Prevent Running<br>禁止唤醒: No WakeLock 作者Blog:<a href="https://www.linangran.com/?p=611" target="_blank" rel="external">Angran Lin’s Blog</a> (试用了发现也就这样,卸载了)<br>开机管理: BootManager<br><del>权限管理: XPrivacy 控制太烦,而且原生已有权限控制,弃用</del><br><del>广告过滤: MinMinGuard 怕过滤规则过严,弃用</del><br><del>Ist保存插件: Instagram Downloader 很早之前能用</del><br>禁止内置浏览器: ExLink(去你大爷的浏览器)<br>状态栏+底栏颜色优化,很棒: PerfectColorBar<br>来电显示: Phone Location<br>自定义手电筒快捷键: Xposed Torch<br>防撤回: QQUnrecalled/WechatUnrecalled(别干坏事..)</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.inexus.co/article-3823-1.html" target="_blank" rel="external">Inexus-Xposed安装</a><br><a href="http://forum.xda-developers.com/showpost.php?p=58828974" target="_blank" rel="external">XDA</a><br>插件推荐: <a href="https://www.zhihu.com/question/22063862" target="_blank" rel="external">==知乎链接==</a><br>刚找到的一个新地址: <a href="http://xposed.appkg.com/1051.html" target="_blank" rel="external">Xposed</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Nexus原生OTA升级(ROOT+XP),无需PC]]></title>
+      <url>http://csser.work/03/30/2016/device-nexus-ota-update/</url>
+      <content type="html"><![CDATA[<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Nexus5x Rooted Xposed</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>不需要PC 2. 不需要清数据 3. 可以顺便安装Xposed</li>
+</ol>
+<p><code>自己是先卸载了Xposed之后再升级的,没卸载的升级没有尝试过</code></p>
+<h3 id="正"><a href="#正" class="headerlink" title="正"></a>正</h3><p>这个我就不多讲了,需要的软件<code>Flashfire</code><br>更新软件包: <a href="https://developers.google.com/android/nexus/images" target="_blank" rel="external">Nexus_Factory_images</a><br>Xposed框架地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">Xposed</a></p>
+<p>直接上地址(墙):</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ED6N4DJTaU4" frameborder="0" allowfullscreen></iframe>
+
+<h2 id="结合PC的ota"><a href="#结合PC的ota" class="headerlink" title="结合PC的ota"></a>结合PC的ota</h2><p>这个自己没用过.需要的自己看一下,<code>不需要清数据</code><br><a href="https://m.reddit.com/r/nexus5x/comments/44duji/rooted_it_how_to_apply_the_ota_update/" target="_blank" rel="external">reddit</a></p>
 ]]></content>
     </entry>
     
@@ -2587,7 +2630,7 @@ Like&quot;M[^c]%&quot; 返回以&quot;M&quot;开始且第二个字符不是&quot
 <li>-t<br> vfstype类型选择 —-<code>可以不指定,系统自动选择</code><br>  iso9660            光盘/光盘映像<br>  vfat               fat32文件系统<br>  ntfs               ntfs文件系统</li>
 <li>-o<br> option 挂载设置<br>  ro:                read only(只读)<br>  rw:                read write(读写)<br>  loop:              把文件作为硬盘分区进行挂载<br>  iocharset:         指定该文件系统所用的字符集</li>
 <li>devie<br> 所要挂载的设备,可以通过<code>sudo fdisk -l</code>进行查询</li>
-<li>dir<br> 所需要挂载的目录,e.g: /media/data #data为目标挂载目录 </li>
+<li>dir<br> 所需要挂载的目录,e.g: /media/data #data为目标挂载目录</li>
 </ol>
 <h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>在一般的user用户之下mount可能会出现权限问题,<code>chmod 777 挂载目录</code>可以使一般user也可以正常使用</p>
 <h3 id="开机自动挂载"><a href="#开机自动挂载" class="headerlink" title="开机自动挂载"></a>开机自动挂载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/fstab</span><br></pre></td></tr></table></figure>
@@ -2602,8 +2645,9 @@ noauto          开机不自动挂载
 请注意`光驱和软驱只有在装有介质时才可以进行挂载,因此它是noauto`
 </code></pre><h4 id="dump"><a href="#dump" class="headerlink" title="dump"></a>dump</h4><p>当其值设置为1时,将允许dump备份程序备份；设置为0时,忽略备份操作；</p>
 <h4 id="fsck磁盘检查设置"><a href="#fsck磁盘检查设置" class="headerlink" title="fsck磁盘检查设置"></a>fsck磁盘检查设置</h4><p>其值是一个顺序.当其值为0时,永远不检查；而 / 根目录分区永远都为1.其它分区从2开始,数字越小越先检查,如果两个分区的数字相同,则同时检查</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>分区自动挂载—<a href="http://www.bootf.com/582.html" target="_blank" rel="external">VPS管理百科</a><br>分区挂载—<a href="http://qspy.is-programmer.com/posts/40900.html" target="_blank" rel="external">Qspy随手记</a></p>
-<h3 id="自己是这么挂载的"><a href="#自己是这么挂载的" class="headerlink" title="自己是这么挂载的"></a>自己是这么挂载的</h3><p>mount -t ntfs -o rw /dev/sdb5 /media/gust       #挂载<br>/dev/sdb5 /media/gust ntfs-3g rw,user,auto 0 0  #自动挂载</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>分区自动挂载—<a href="http://www.bootf.com/582.html" target="_blank" rel="external">VPS管理百科</a><br>分区挂载—<a href="http://qspy.is-programmer.com/posts/40900.html" target="_blank" rel="external">Qspy随手记</a><br>分区权限分配 – <a href="http://blog.5ibc.net/p/68778.html" target="_blank" rel="external">Ubuntu16.04 ext4格式硬盘挂载普通用户权限控制</a></p>
+<h3 id="自己是这么挂载的"><a href="#自己是这么挂载的" class="headerlink" title="自己是这么挂载的"></a>自己是这么挂载的</h3><p>mount -t ntfs -o rw /dev/sdb5 /media/gust       #挂载<br>/dev/sdb5 /home/a1exlism/dev ntfs-3g defaults 0 0  #自动挂载</p>
+<p>权限控制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R a1exlism:a1exlism /home/a1exlism/dev</span><br><span class="line">sudo umount /home/a1exlism/dev</span><br></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
@@ -2714,6 +2758,17 @@ apt-cache search linux-header
     </entry>
     
     <entry>
+      <title><![CDATA[Js学习笔记(4)]]></title>
+      <url>http://csser.work/10/03/2015/js-client-4/</url>
+      <content type="html"><![CDATA[<h3 id="jQuery的-查询"><a href="#jQuery的-查询" class="headerlink" title="jQuery的$查询"></a>jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
+<h3 id="窗体"><a href="#窗体" class="headerlink" title="窗体"></a>窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
+<h3 id="窗体-口之间的交互"><a href="#窗体-口之间的交互" class="headerlink" title="窗体/口之间的交互"></a>窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'A'</span> <span class="attr">src</span>=<span class="string">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'B'</span> <span class="attr">src</span>=<span class="string">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Js学习笔记(3)]]></title>
       <url>http://csser.work/10/03/2015/js-client-3/</url>
       <content type="html"><![CDATA[<h2 id="Window对象"><a href="#Window对象" class="headerlink" title="Window对象"></a>Window对象</h2><h3 id="计时器"><a href="#计时器" class="headerlink" title="计时器"></a>计时器</h3><hr>
@@ -2730,17 +2785,6 @@ stringObject.substring(start,stop)    取一段字符
 stringObject.split(separator,howmany) 字符串分割
 stringObject.indexOf(searchvalue,fromindex)   字符检索
 </code></pre><h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">urlAges</span>(<span class="params"></span>)</span>&#123;     <span class="comment">//URL参数解析函数</span></span><br><span class="line">    <span class="keyword">var</span> args = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> query = location.search.substring(<span class="number">1</span>);   <span class="comment">//获取url查询字符串</span></span><br><span class="line">    <span class="keyword">var</span> pairs = query.split(<span class="string">"&amp;"</span>);   <span class="comment">//此时的pairs为字符串数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;pairs.length ; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> pos = pairs[i].indexOf(<span class="string">'='</span>);    <span class="comment">//检测第一个'='</span></span><br><span class="line">        <span class="keyword">if</span>(pos == <span class="number">-1</span>)   <span class="comment">//indexOf()由-1开始进行(第一个检测的是0)</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">var</span> name = pairs[i].substring(<span class="number">0</span>,pos);</span><br><span class="line">        <span class="keyword">var</span> value = pairs[i].substring(pos+<span class="number">1</span>);</span><br><span class="line">        value = <span class="built_in">decodeURIComponent</span>(value);  <span class="comment">//value解码</span></span><br><span class="line">        args[name] = value; <span class="comment">//将value存储为args对象的name属性值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Js学习笔记(4)]]></title>
-      <url>http://csser.work/10/03/2015/js-client-4/</url>
-      <content type="html"><![CDATA[<h3 id="jQuery的-查询"><a href="#jQuery的-查询" class="headerlink" title="jQuery的$查询"></a>jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
-<h3 id="窗体"><a href="#窗体" class="headerlink" title="窗体"></a>窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
-<h3 id="窗体-口之间的交互"><a href="#窗体-口之间的交互" class="headerlink" title="窗体/口之间的交互"></a>窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'A'</span> <span class="attr">src</span>=<span class="string">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'B'</span> <span class="attr">src</span>=<span class="string">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
-]]></content>
     </entry>
     
     <entry>
