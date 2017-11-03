@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://csser.work/11/03/2017/http-protocol/</loc>
+    
+    <lastmod>2017-11-03T02:03:37.602Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/11/02/2016/difference-href-src/</loc>
+    
+    <lastmod>2017-11-02T02:19:24.520Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/10/07/2016/php-ci-verification/</loc>
+    
+    <lastmod>2017-10-22T04:07:27.701Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/12/04/2016/browser-render/</loc>
+    
+    <lastmod>2017-10-21T02:18:43.210Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://csser.work/10/17/2017/written-examination-youzan2017/</loc>
     
     <lastmod>2017-10-17T15:43:30.432Z</lastmod>
@@ -33,13 +61,6 @@
     <loc>http://csser.work/05/07/2017/css-box-sizing/</loc>
     
     <lastmod>2017-05-06T16:39:01.718Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/12/04/2016/browser-render/</loc>
-    
-    <lastmod>2017-05-03T17:38:53.065Z</lastmod>
     
   </url>
   
@@ -257,13 +278,6 @@
     <loc>http://csser.work/10/16/2016/arch-efi-udisk-install/</loc>
     
     <lastmod>2016-10-16T17:17:41.319Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/10/07/2016/php-ci-verification/</loc>
-    
-    <lastmod>2016-10-07T17:51:46.369Z</lastmod>
     
   </url>
   
