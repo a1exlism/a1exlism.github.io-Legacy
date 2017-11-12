@@ -4,26 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Bootstrap Navbar Hack | A1exlism</title>
+    <title>ES6-class语法糖与this | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="a1exlism">
     
 
     
-    <meta name="description" content="defined以前用bootstrap的时候也遇到过这么个问题, navbar一写, 然后宽度布局就出现问题了, 页面宽度总是大于浏览器宽度.
-css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid &amp;#123;	padding-left: 0 !important;	padding-righ">
+    <meta name="description" content="Defined最常见的问题是关于onClick内为什么普通的调用this会出现undefined.复现:123456789class Test extend Component &amp;#123;  clickMe() &amp;#123;    console.log(this);  &amp;#125;  render(    &amp;lt;button type=&quot;button&quot; onclick=&amp;#123;this.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bootstrap Navbar Hack">
-<meta property="og:url" content="http://csser.work/06/30/2015/bootstrap-navbar-resposive/index.html">
+<meta property="og:title" content="ES6-class语法糖与this">
+<meta property="og:url" content="http://csser.work/11/12/2017/ES6-class-this/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="defined以前用bootstrap的时候也遇到过这么个问题, navbar一写, 然后宽度布局就出现问题了, 页面宽度总是大于浏览器宽度.
-css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid &amp;#123;	padding-left: 0 !important;	padding-righ">
-<meta property="og:updated_time" content="2016-10-23T08:46:27.752Z">
+<meta property="og:description" content="Defined最常见的问题是关于onClick内为什么普通的调用this会出现undefined.复现:123456789class Test extend Component &amp;#123;  clickMe() &amp;#123;    console.log(this);  &amp;#125;  render(    &amp;lt;button type=&quot;button&quot; onclick=&amp;#123;this.">
+<meta property="og:updated_time" content="2017-11-12T03:13:13.765Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bootstrap Navbar Hack">
-<meta name="twitter:description" content="defined以前用bootstrap的时候也遇到过这么个问题, navbar一写, 然后宽度布局就出现问题了, 页面宽度总是大于浏览器宽度.
-css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid &amp;#123;	padding-left: 0 !important;	padding-righ">
+<meta name="twitter:title" content="ES6-class语法糖与this">
+<meta name="twitter:description" content="Defined最常见的问题是关于onClick内为什么普通的调用this会出现undefined.复现:123456789class Test extend Component &amp;#123;  clickMe() &amp;#123;    console.log(this);  &amp;#125;  render(    &amp;lt;button type=&quot;button&quot; onclick=&amp;#123;this.">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -84,14 +81,14 @@ css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/06/30/2015/bootstrap-navbar-resposive/" title="Bootstrap Navbar Hack" itemprop="url">Bootstrap Navbar Hack</a>
+      <a href="/11/12/2017/ES6-class-this/" title="ES6-class语法糖与this" itemprop="url">ES6-class语法糖与this</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-29T16:00:00.000Z" itemprop="datePublished"> 发表于 06-30-2015</time>
+    <time datetime="2017-11-11T16:00:00.000Z" itemprop="datePublished"> 发表于 11-12-2017</time>
     
   </p>
 </header>
@@ -100,20 +97,32 @@ css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css-codes"><span class="toc-number">2.</span> <span class="toc-text">css-codes</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#class原型"><span class="toc-number">2.1.</span> <span class="toc-text">class原型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决办法"><span class="toc-number">2.2.</span> <span class="toc-text">解决办法</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>以前用bootstrap的时候也遇到过这么个问题, navbar一写, 然后宽度布局就出现问题了, <code>页面宽度总是大于浏览器宽度</code>.</p>
-<h2 id="css-codes"><a href="#css-codes" class="headerlink" title="css-codes"></a>css-codes</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* -- NavBar-Responsive Start  -- */</span></span><br><span class="line"><span class="selector-class">.navbar</span> <span class="selector-class">.container-fluid</span> &#123;</span><br><span class="line">	<span class="attribute">padding-left</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">	<span class="attribute">padding-right</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar-collapse</span>, <span class="selector-class">.navbar-header</span> &#123;</span><br><span class="line">	<span class="attribute">margin-left</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">	<span class="attribute">margin-right</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>测试样例的话就是官方例子就行了.</p>
+		<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>最常见的问题是关于onClick内为什么普通的调用this会出现<code>undefined</code>.<br>复现:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="title">extend</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  clickMe() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render(</span><br><span class="line">    &lt;button type="button" onclick=&#123;this.clickMe&#125;&gt;Click Me&lt;/button&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="class原型"><a href="#class原型" class="headerlink" title="class原型"></a>class原型</h3><p>从原因说起, ES6的class原型是以<code>function</code>和原型链的设计模式制作的.<br>以下为例子:</p>
+<blockquote>
+<p><a href="https://segmentfault.com/a/1190000003798438" target="_blank" rel="external">segmentfault@darkbaby123</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  ES6</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(firstName, lastName) &#123;</span><br><span class="line">    <span class="keyword">this</span>.firstName = firstName</span><br><span class="line">    <span class="keyword">this</span>.lastName = lastName</span><br><span class="line">  &#125;</span><br><span class="line">  fullName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;this.firstName&#125;</span> <span class="subst">$&#123;this.lastName&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> user = <span class="keyword">new</span> User(<span class="string">'David'</span>, <span class="string">'Chen'</span>)</span><br><span class="line">user.fullName()  <span class="comment">// David Chen</span></span><br><span class="line"><span class="comment">//  以上的类定义语法非常直观，它跟以下的 ES5 语法是一个意思：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">firstName, lastName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.firstName = firstName</span><br><span class="line">  <span class="keyword">this</span>.lastName = lastName</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">User.prototype.fullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">''</span> + <span class="keyword">this</span>.firstName + <span class="keyword">this</span>.lastName</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>所以既然是function, 他就必须遵守<code>this</code>作用域的限定, function内部会产生一个context, 指向直接调用的目标.具体请看这: <a href="http://csser.work/03/24/2017/js-this/">about-this</a></p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><ol>
+<li>用arrow function的this继承包含该function<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">render(</span><br><span class="line">  &lt;button type="button" onclick=&#123;()=&gt;&#123;this.clickMe()&#125;&#125;&gt;Click Me&lt;/button&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>解释: <code>()=&gt;{}</code>他的context就是调用它的function Test(也就是class Test), 那么this也就能解释调用到了clickMe函数.<br>  再说clickMe函数, 由于是function, 他的context继承了直接调用函数也就是arrow function, 由于arrow function的context就是该class,<br>  所以clickMe也就调用了class.</p>
+<ol>
+<li>使用bind()直接绑定this<br>简单解释一下, 相当于提前对this的判定做出了结算.</li>
+</ol>
+<p>PS. 还有由于语法问题, 所以无法出现<code>that=this</code>这种做法.</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/06/30/2015/bootstrap-navbar-resposive/" data-title="Bootstrap Navbar Hack | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/11/12/2017/ES6-class-this/" data-title="ES6-class语法糖与this | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -126,19 +135,11 @@ css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/07/08/2015/device-360router/" title="360弃子C301刷机">
-  <strong>上一篇：</strong><br/>
-  <span>
-  360弃子C301刷机</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/06/30/2015/daily-git/"  title="Git Daily">
+<a href="/11/03/2017/http-protocol/"  title="HTTP协议笔记">
  <strong>下一篇：</strong><br/> 
- <span>Git Daily
+ <span>HTTP协议笔记
 </span>
 </a>
 </div>
@@ -147,7 +148,7 @@ css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="06/30/2015/bootstrap-navbar-resposive/" data-title="Bootstrap Navbar Hack" data-url="http://csser.work/06/30/2015/bootstrap-navbar-resposive/"></div>
+	<div class="ds-thread" data-thread-key="11/12/2017/ES6-class-this/" data-title="ES6-class语法糖与this" data-url="http://csser.work/11/12/2017/ES6-class-this/"></div>
 </section>
 
 
@@ -157,7 +158,7 @@ css-codes12345678910/* -- NavBar-Responsive Start  -- */.navbar .container-fluid
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css-codes"><span class="toc-number">2.</span> <span class="toc-text">css-codes</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#class原型"><span class="toc-number">2.1.</span> <span class="toc-text">class原型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决办法"><span class="toc-number">2.2.</span> <span class="toc-text">解决办法</span></a></li></ol></li></ol>
  
   </div>
 
