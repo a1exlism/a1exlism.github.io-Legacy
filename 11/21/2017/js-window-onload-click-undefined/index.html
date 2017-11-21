@@ -4,38 +4,38 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Shell 2&gt;&amp;1 Meaning | A1exlism</title>
+    <title>window.onload onclick undefined | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="a1exlism">
     
 
     
-    <meta name="description" content="在Segmentfault中看到一个同样的问题,作为笔记记录下来
-0x1 &amp;amp;含义重定向&amp;gt; filename 2&amp;amp;&amp;gt;1表示将前面的正确/错误输入都传给后面的filename, 但是&amp;amp;这个概念就不是很清楚
+    <meta name="description" content="Question开发过程中会出现一个比较奇怪的问题, 明明写了相关函数xxx却提示不存在该函数.
 
-xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文件(即/dev/stdout)
+ReferenceError: xxx is not defined at HTMLButtonElement.onclick
 
-所以&amp;amp;就是为了标志1不是一个文件名而是一个">
+示例代码:1&amp;lt;button type=&quot;button&quot; onclick=&quot;clickMe&quot;&amp;gt;ClickMe&amp;lt;/button&amp;gt;
+12345windo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Shell 2>&1 Meaning">
-<meta property="og:url" content="http://csser.work/05/08/2016/linux-cmd-redirect/index.html">
+<meta property="og:title" content="window.onload onclick undefined">
+<meta property="og:url" content="http://csser.work/11/21/2017/js-window-onload-click-undefined/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="在Segmentfault中看到一个同样的问题,作为笔记记录下来
-0x1 &amp;amp;含义重定向&amp;gt; filename 2&amp;amp;&amp;gt;1表示将前面的正确/错误输入都传给后面的filename, 但是&amp;amp;这个概念就不是很清楚
+<meta property="og:description" content="Question开发过程中会出现一个比较奇怪的问题, 明明写了相关函数xxx却提示不存在该函数.
 
-xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文件(即/dev/stdout)
+ReferenceError: xxx is not defined at HTMLButtonElement.onclick
 
-所以&amp;amp;就是为了标志1不是一个文件名而是一个">
-<meta property="og:updated_time" content="2016-12-09T13:19:31.411Z">
+示例代码:1&amp;lt;button type=&quot;button&quot; onclick=&quot;clickMe&quot;&amp;gt;ClickMe&amp;lt;/button&amp;gt;
+12345windo">
+<meta property="og:updated_time" content="2017-11-21T08:15:09.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shell 2>&1 Meaning">
-<meta name="twitter:description" content="在Segmentfault中看到一个同样的问题,作为笔记记录下来
-0x1 &amp;amp;含义重定向&amp;gt; filename 2&amp;amp;&amp;gt;1表示将前面的正确/错误输入都传给后面的filename, 但是&amp;amp;这个概念就不是很清楚
+<meta name="twitter:title" content="window.onload onclick undefined">
+<meta name="twitter:description" content="Question开发过程中会出现一个比较奇怪的问题, 明明写了相关函数xxx却提示不存在该函数.
 
-xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文件(即/dev/stdout)
+ReferenceError: xxx is not defined at HTMLButtonElement.onclick
 
-所以&amp;amp;就是为了标志1不是一个文件名而是一个">
+示例代码:1&amp;lt;button type=&quot;button&quot; onclick=&quot;clickMe&quot;&amp;gt;ClickMe&amp;lt;/button&amp;gt;
+12345windo">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -96,14 +96,14 @@ xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文�
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/05/08/2016/linux-cmd-redirect/" title="Shell 2&gt;&amp;1 Meaning" itemprop="url">Shell 2&gt;&amp;1 Meaning</a>
+      <a href="/11/21/2017/js-window-onload-click-undefined/" title="window.onload onclick undefined" itemprop="url">window.onload onclick undefined</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
-    <time datetime="2016-05-07T16:00:00.000Z" itemprop="datePublished"> 发表于 05-08-2016</time>
+    <time datetime="2017-11-20T16:00:00.000Z" itemprop="datePublished"> 发表于 11-21-2017</time>
     
   </p>
 </header>
@@ -112,33 +112,29 @@ xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文�
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x1-amp-含义"><span class="toc-number">1.</span> <span class="toc-text">0x1 &含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x2-特殊用法-amp-gt-filename"><span class="toc-number">2.</span> <span class="toc-text">0x2 特殊用法: &> filename</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x3-调用顺序"><span class="toc-number">3.</span> <span class="toc-text">0x3 调用顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference:</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Question"><span class="toc-number">1.</span> <span class="toc-text">Question</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解释"><span class="toc-number">2.1.</span> <span class="toc-text">解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方式"><span class="toc-number">2.2.</span> <span class="toc-text">解决方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Refer"><span class="toc-number">3.</span> <span class="toc-text">Refer</span></a></li></ol>
 		
 		</div>
 		
-		<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
-<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
+		<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>开发过程中会出现一个比较奇怪的问题, 明明写了相关函数xxx却提示不存在该函数.</p>
 <blockquote>
-<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
+<p>ReferenceError: xxx is not defined at HTMLButtonElement.onclick</p>
 </blockquote>
-<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
-<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
-<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
-<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
-</blockquote>
-<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
-<blockquote>
-<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
-</blockquote>
-<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
+<p>示例代码:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"clickMe"</span>&gt;</span>ClickMe<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">clickMe</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="regexp">/clicked/</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>仔细考虑了一下, 这个还要涉及到我以前文章里面的图例: <a href="https://csser.work/12/04/2016/browser-render/">浏览器性能优化</a><br>window.onload的真正执行是在HTML所有资源执行完之后执行(如果你的script标签在body底部的话);像前面提到的, html代码解析完成之后script标签才生效.所以clickMe函数并没有被button所绑定.</p>
+<h3 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h3><ol>
+<li>window.onload外部编写函数, 这样就能在dom生成的时候进行绑定.</li>
+<li>在window.onload内手动绑定事件, 缺点是需要定位button(id/class)</li>
+</ol>
+<h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p>[stackoverflow - Uncaught TypeError: Cannot set property ‘onclick’ of null (<a href="https://stackoverflow.com/questions/17080502/uncaught-typeerror-cannot-set-property-onclick-of-null" target="_blank" rel="external">https://stackoverflow.com/questions/17080502/uncaught-typeerror-cannot-set-property-onclick-of-null</a>)</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/05/08/2016/linux-cmd-redirect/" data-title="Shell 2&gt;&amp;1 Meaning | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/11/21/2017/js-window-onload-click-undefined/" data-title="window.onload onclick undefined | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -151,19 +147,11 @@ xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文�
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/05/08/2016/linux-soft-cheat/" title="Linux佳软推荐_Cheat">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Linux佳软推荐_Cheat</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/05/05/2016/js-hanoi/"  title="汉诺塔_递归">
+<a href="/11/12/2017/ES6-class-this/"  title="ES6-class语法糖与this">
  <strong>下一篇：</strong><br/> 
- <span>汉诺塔_递归
+ <span>ES6-class语法糖与this
 </span>
 </a>
 </div>
@@ -172,7 +160,7 @@ xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文�
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="05/08/2016/linux-cmd-redirect/" data-title="Shell 2>&1 Meaning" data-url="http://csser.work/05/08/2016/linux-cmd-redirect/"></div>
+	<div class="ds-thread" data-thread-key="11/21/2017/js-window-onload-click-undefined/" data-title="window.onload onclick undefined" data-url="http://csser.work/11/21/2017/js-window-onload-click-undefined/"></div>
 </section>
 
 
@@ -182,7 +170,7 @@ xelz而2&amp;gt;&amp;amp;1代表将stderr重定向到文件描述符为1的文�
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x1-amp-含义"><span class="toc-number">1.</span> <span class="toc-text">0x1 &含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x2-特殊用法-amp-gt-filename"><span class="toc-number">2.</span> <span class="toc-text">0x2 特殊用法: &> filename</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x3-调用顺序"><span class="toc-number">3.</span> <span class="toc-text">0x3 调用顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference:</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Question"><span class="toc-number">1.</span> <span class="toc-text">Question</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解释"><span class="toc-number">2.1.</span> <span class="toc-text">解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方式"><span class="toc-number">2.2.</span> <span class="toc-text">解决方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Refer"><span class="toc-number">3.</span> <span class="toc-text">Refer</span></a></li></ol>
  
   </div>
 
