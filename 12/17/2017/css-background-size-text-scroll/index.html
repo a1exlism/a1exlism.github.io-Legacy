@@ -4,26 +4,38 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>js-Call/Apply | A1exlism</title>
+    <title>CSS background-size &amp;&amp; text scroll | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="a1exlism">
     
 
     
-    <meta name="description" content="说明Call() 和 Apply() 都能使目标对象指定一个所需要的this对象
-语法123456//---------call()---------object.call(thisArg[, arg1[, arg2[, ...]]])            //thisArg : 指定的this对象                    //arg1,arg2...为obejcet方法中所传入的">
+    <meta name="description" content="DefinedMake picture full hover the background without repeat or crop!
+SCSS below, not css.
+
+Core CSS:background-size: [cover, contain, (width, height)]
+
+HTMLStructure()12345&amp;lt;div class=&quot;wrapper&quot;&amp;gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js-Call/Apply">
-<meta property="og:url" content="http://csser.work/10/25/2015/js-Inherit/index.html">
+<meta property="og:title" content="CSS background-size && text scroll">
+<meta property="og:url" content="http://csser.work/12/17/2017/css-background-size-text-scroll/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="说明Call() 和 Apply() 都能使目标对象指定一个所需要的this对象
-语法123456//---------call()---------object.call(thisArg[, arg1[, arg2[, ...]]])            //thisArg : 指定的this对象                    //arg1,arg2...为obejcet方法中所传入的">
-<meta property="og:updated_time" content="2016-10-04T07:31:56.277Z">
+<meta property="og:description" content="DefinedMake picture full hover the background without repeat or crop!
+SCSS below, not css.
+
+Core CSS:background-size: [cover, contain, (width, height)]
+
+HTMLStructure()12345&amp;lt;div class=&quot;wrapper&quot;&amp;gt;">
+<meta property="og:updated_time" content="2017-12-17T16:05:22.597Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js-Call/Apply">
-<meta name="twitter:description" content="说明Call() 和 Apply() 都能使目标对象指定一个所需要的this对象
-语法123456//---------call()---------object.call(thisArg[, arg1[, arg2[, ...]]])            //thisArg : 指定的this对象                    //arg1,arg2...为obejcet方法中所传入的">
+<meta name="twitter:title" content="CSS background-size && text scroll">
+<meta name="twitter:description" content="DefinedMake picture full hover the background without repeat or crop!
+SCSS below, not css.
+
+Core CSS:background-size: [cover, contain, (width, height)]
+
+HTMLStructure()12345&amp;lt;div class=&quot;wrapper&quot;&amp;gt;">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -84,14 +96,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/25/2015/js-Inherit/" title="js-Call/Apply" itemprop="url">js-Call/Apply</a>
+      <a href="/12/17/2017/css-background-size-text-scroll/" title="CSS background-size &amp;&amp; text scroll" itemprop="url">CSS background-size &amp;&amp; text scroll</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-24T16:00:00.000Z" itemprop="datePublished"> 发表于 10-25-2015</time>
+    <time datetime="2017-12-16T16:00:00.000Z" itemprop="datePublished"> 发表于 12-17-2017</time>
     
   </p>
 </header>
@@ -100,25 +112,38 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">1.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例-call为主"><span class="toc-number">1.2.</span> <span class="toc-text">实例(call为主)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Note1-js"><span class="toc-number">1.2.1.</span> <span class="toc-text">Note1.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Note2-js"><span class="toc-number">1.2.2.</span> <span class="toc-text">Note2.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#call-VS-apply"><span class="toc-number">1.2.3.</span> <span class="toc-text">call VS apply</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTMLStructure"><span class="toc-number">2.</span> <span class="toc-text">HTMLStructure()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CssShows"><span class="toc-number">3.</span> <span class="toc-text">CssShows()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#size-image-gt-div-wrapper"><span class="toc-number">3.1.</span> <span class="toc-text">size image > div.wrapper</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Plan-A"><span class="toc-number">3.1.1.</span> <span class="toc-text">Plan A</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Plan-B"><span class="toc-number">3.1.2.</span> <span class="toc-text">Plan B</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#size-image-lt-div-wrapper"><span class="toc-number">3.2.</span> <span class="toc-text">size image < div.wrapper</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#text-scroll"><span class="toc-number">4.</span> <span class="toc-text">text-scroll()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Referer"><span class="toc-number">5.</span> <span class="toc-text">Referer</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>Call() 和 Apply() 都能使目标对象指定一个所需要的this对象</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//---------call()---------</span></span><br><span class="line">object.call(thisArg[, arg1[, arg2[, ...]]])</span><br><span class="line">            <span class="comment">//thisArg : 指定的this对象</span></span><br><span class="line">                    <span class="comment">//arg1,arg2...为obejcet方法中所传入的参数值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//---------apply()--------</span></span><br></pre></td></tr></table></figure>
-<h3 id="实例-call为主"><a href="#实例-call为主" class="headerlink" title="实例(call为主)"></a>实例(call为主)</h3><h4 id="Note1-js"><a href="#Note1-js" class="headerlink" title="Note1.js"></a>Note1.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Product</span>(<span class="params">name, price</span>)</span>&#123;      <span class="comment">//Product方法</span></span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.price = price;</span><br><span class="line">  <span class="keyword">if</span>(price &lt; <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">RangeError</span>(<span class="string">'Cannot create product "'</span> + name +<span class="string">'"'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Food</span>(<span class="params">name, price</span>)</span>&#123;         <span class="comment">//Food类</span></span><br><span class="line">  Product.call(<span class="keyword">this</span>, name, price);  <span class="comment">//看12th行</span></span><br><span class="line">  <span class="keyword">this</span>.category = <span class="string">'food'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Food.prototype = <span class="keyword">new</span> Product();     <span class="comment">//Food现在拥有了Product()的方法了</span></span><br><span class="line"><span class="keyword">var</span> cheese = <span class="keyword">new</span> Food(<span class="string">'feta'</span>, <span class="number">5</span>);   <span class="comment">//cheese现在是Food()的一个实例对象,在Food()函数中所指向的this就是cheese,而里面的call()函数中的name和price就被指定为'fete'和5了</span></span><br><span class="line"><span class="built_in">console</span>.log(cheese.category);<span class="comment">//food</span></span><br><span class="line"><span class="built_in">console</span>.log(cheese.name + <span class="string">' 价值: $'</span> + cheese.price);<span class="comment">//feta价值5</span></span><br></pre></td></tr></table></figure>
-<p>继承图:<br>  Product   -&gt;  Food          -&gt;  ‘cheese’(实例)<br>  name          name               feta<br>  price         price              5<br>                category(new)      food</p>
-<h4 id="Note2-js"><a href="#Note2-js" class="headerlink" title="Note2.js"></a>Note2.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> father = &#123;</span><br><span class="line">  age : <span class="number">50</span>,</span><br><span class="line">  birthday : <span class="function"><span class="keyword">function</span>(<span class="params">fPrefix, fPostfix</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fPrefix + <span class="keyword">this</span>.age++ +fPostfix;  <span class="comment">//this-&gt;father对象</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> son =&#123;</span><br><span class="line">  age : <span class="number">22</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(father.birthday(<span class="string">'Dad is '</span>,<span class="string">' now.'</span>));</span><br><span class="line"><span class="built_in">console</span>.log(father.birthday.call(son, <span class="string">'Son is '</span>,<span class="string">' now'</span>)); <span class="comment">//this-&gt;son对象</span></span><br><span class="line"><span class="built_in">console</span>.log(father.birthday.apply(son,[<span class="string">'Son is '</span>,<span class="string">' now.'</span>]));</span><br></pre></td></tr></table></figure>
-<h4 id="call-VS-apply"><a href="#call-VS-apply" class="headerlink" title="call VS apply"></a>call VS apply</h4><p>call接受args  apply接受arg+args<a href="`数组`"></a></p>
-<p>apply 如果没有用数组, 会出现<code>Uncaught TypeError: CreateListFromArrayLike called on non-object</code>类似的问题</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="external">MDN-call()</a><br><a href="http://rusticode.com/2012/08/15/javascript-call-and-apply/" target="_blank" rel="external">rusticode.com</a><br><a href="https://msdn.microsoft.com/en-us/library/h2ak8h2y\(v=vs.94\" target="_blank" rel="external">MSDN</a>.aspx)<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="external">MDN-apply()</a></p>
+		<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>Make picture full hover the background <code>without</code> repeat or crop!</p>
+<p>SCSS below, not css.</p>
+<blockquote>
+<p>Core CSS:<br>background-size: [cover, contain, (width, height)]</p>
+</blockquote>
+<h2 id="HTMLStructure"><a href="#HTMLStructure" class="headerlink" title="HTMLStructure()"></a>HTMLStructure()</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line">    Long Text big as 4096bits</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="CssShows"><a href="#CssShows" class="headerlink" title="CssShows()"></a>CssShows()</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wrapper</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">80vw</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">80vh</span>;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(xxx.png);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>with size condition, list two types below:</p>
+<h3 id="size-image-gt-div-wrapper"><a href="#size-image-gt-div-wrapper" class="headerlink" title="size image &gt; div.wrapper"></a>size image &gt; div.wrapper</h3><h4 id="Plan-A"><a href="#Plan-A" class="headerlink" title="Plan A"></a>Plan A</h4><blockquote>
+<p>.wrapper css<br>background-size: cover;</p>
+</blockquote>
+<p><strong>But</strong><br>this way may cause the crop of the picture, so the div size should be the<br><code>same</code> proportion with the background image.</p>
+<p>Drop this.</p>
+<h4 id="Plan-B"><a href="#Plan-B" class="headerlink" title="Plan B"></a>Plan B</h4><p>Just with size <code>same as</code> the div.wrapper.<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$wrapperWidth = 80vw;</span><br><span class="line">$wrapperHeight = 80vh;</span><br><span class="line"></span><br><span class="line">.wrapper &#123;</span><br><span class="line">  width: $wrapperWidth;</span><br><span class="line">  height: $wrapperHeight;</span><br><span class="line">  background-image: url(xxx.png);</span><br><span class="line">  background-size: $wrapperWidth $wrapperHeight;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Seems good, <strong>But</strong> if adding the <code>padding</code>, not good enough: the image became smaller!</p>
+<p>So, we need add this css: <code>IE11+ only</code><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wapper</span>&#123;</span><br><span class="line">  <span class="comment">/* codes */</span></span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Or, we must caculating the width and height by self.</p>
+<h3 id="size-image-lt-div-wrapper"><a href="#size-image-lt-div-wrapper" class="headerlink" title="size image &lt; div.wrapper"></a>size image &lt; div.wrapper</h3><p>CSS provide a nice attribute for us: <code>contain</code>;<br>Picture will scaling to the original size if the div big enough.<br><strong>But</strong><br>If div’s size is much bigger that picture, the picture will <code>repeat</code> for several times.</p>
+<p>Resolution here. PS: The premise is we need know the <code>size</code> of picture before.<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$picWidth = 250;</span><br><span class="line">$picHeight = 250;</span><br><span class="line">.wrapper &#123;</span><br><span class="line">  background-size: contain;</span><br><span class="line">  width: ($picWidth*3)px;</span><br><span class="line">  height: ($picHeight*3)px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="text-scroll"><a href="#text-scroll" class="headerlink" title="text-scroll()"></a>text-scroll()</h2><p>condition:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$sizeMustBeDecalred = 100px;</span><br><span class="line">.text &#123;</span><br><span class="line">  width: $sizeMustBeDecalred;</span><br><span class="line">  height: $sizeMustBeDecalred;</span><br><span class="line">  scroll: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Referer"><a href="#Referer" class="headerlink" title="Referer"></a>Referer</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Scaling_background_images" target="_blank" rel="external">scaling_background_images | MDN</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/10/25/2015/js-Inherit/" data-title="js-Call/Apply | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/12/17/2017/css-background-size-text-scroll/" data-title="CSS background-size &amp;&amp; text scroll | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -131,19 +156,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/10/27/2015/js-window-document/" title="Js--window VS Document">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Js--window VS Document</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/10/21/2015/linux-cmd-mount/"  title="分区挂载/自动加载">
+<a href="/12/01/2017/php-ci-aliyun-sms/"  title="CodeIgniter - 适配阿里云短信API">
  <strong>下一篇：</strong><br/> 
- <span>分区挂载/自动加载
+ <span>CodeIgniter - 适配阿里云短信API
 </span>
 </a>
 </div>
@@ -152,7 +169,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="10/25/2015/js-Inherit/" data-title="js-Call/Apply" data-url="http://csser.work/10/25/2015/js-Inherit/"></div>
+	<div class="ds-thread" data-thread-key="12/17/2017/css-background-size-text-scroll/" data-title="CSS background-size && text scroll" data-url="http://csser.work/12/17/2017/css-background-size-text-scroll/"></div>
 </section>
 
 
@@ -162,7 +179,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">1.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例-call为主"><span class="toc-number">1.2.</span> <span class="toc-text">实例(call为主)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Note1-js"><span class="toc-number">1.2.1.</span> <span class="toc-text">Note1.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Note2-js"><span class="toc-number">1.2.2.</span> <span class="toc-text">Note2.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#call-VS-apply"><span class="toc-number">1.2.3.</span> <span class="toc-text">call VS apply</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTMLStructure"><span class="toc-number">2.</span> <span class="toc-text">HTMLStructure()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CssShows"><span class="toc-number">3.</span> <span class="toc-text">CssShows()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#size-image-gt-div-wrapper"><span class="toc-number">3.1.</span> <span class="toc-text">size image > div.wrapper</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Plan-A"><span class="toc-number">3.1.1.</span> <span class="toc-text">Plan A</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Plan-B"><span class="toc-number">3.1.2.</span> <span class="toc-text">Plan B</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#size-image-lt-div-wrapper"><span class="toc-number">3.2.</span> <span class="toc-text">size image < div.wrapper</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#text-scroll"><span class="toc-number">4.</span> <span class="toc-text">text-scroll()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Referer"><span class="toc-number">5.</span> <span class="toc-text">Referer</span></a></li></ol>
  
   </div>
 

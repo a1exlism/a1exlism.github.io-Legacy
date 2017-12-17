@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title><![CDATA[CSS background-size && text scroll]]></title>
+      <url>http://csser.work/12/17/2017/css-background-size-text-scroll/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>Make picture full hover the background <code>without</code> repeat or crop!</p>
+<p>SCSS below, not css.</p>
+<blockquote>
+<p>Core CSS:<br>background-size: [cover, contain, (width, height)]</p>
+</blockquote>
+<h2 id="HTMLStructure"><a href="#HTMLStructure" class="headerlink" title="HTMLStructure()"></a>HTMLStructure()</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line">    Long Text big as 4096bits</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="CssShows"><a href="#CssShows" class="headerlink" title="CssShows()"></a>CssShows()</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wrapper</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">80vw</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">80vh</span>;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(xxx.png);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>with size condition, list two types below:</p>
+<h3 id="size-image-gt-div-wrapper"><a href="#size-image-gt-div-wrapper" class="headerlink" title="size image &gt; div.wrapper"></a>size image &gt; div.wrapper</h3><h4 id="Plan-A"><a href="#Plan-A" class="headerlink" title="Plan A"></a>Plan A</h4><blockquote>
+<p>.wrapper css<br>background-size: cover;</p>
+</blockquote>
+<p><strong>But</strong><br>this way may cause the crop of the picture, so the div size should be the<br><code>same</code> proportion with the background image.</p>
+<p>Drop this.</p>
+<h4 id="Plan-B"><a href="#Plan-B" class="headerlink" title="Plan B"></a>Plan B</h4><p>Just with size <code>same as</code> the div.wrapper.<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$wrapperWidth = 80vw;</span><br><span class="line">$wrapperHeight = 80vh;</span><br><span class="line"></span><br><span class="line">.wrapper &#123;</span><br><span class="line">  width: $wrapperWidth;</span><br><span class="line">  height: $wrapperHeight;</span><br><span class="line">  background-image: url(xxx.png);</span><br><span class="line">  background-size: $wrapperWidth $wrapperHeight;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Seems good, <strong>But</strong> if adding the <code>padding</code>, not good enough: the image became smaller!</p>
+<p>So, we need add this css: <code>IE11+ only</code><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wapper</span>&#123;</span><br><span class="line">  <span class="comment">/* codes */</span></span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Or, we must caculating the width and height by self.</p>
+<h3 id="size-image-lt-div-wrapper"><a href="#size-image-lt-div-wrapper" class="headerlink" title="size image &lt; div.wrapper"></a>size image &lt; div.wrapper</h3><p>CSS provide a nice attribute for us: <code>contain</code>;<br>Picture will scaling to the original size if the div big enough.<br><strong>But</strong><br>If div’s size is much bigger that picture, the picture will <code>repeat</code> for several times.</p>
+<p>Resolution here. PS: The premise is we need know the <code>size</code> of picture before.<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$picWidth = 250;</span><br><span class="line">$picHeight = 250;</span><br><span class="line">.wrapper &#123;</span><br><span class="line">  background-size: contain;</span><br><span class="line">  width: ($picWidth*3)px;</span><br><span class="line">  height: ($picHeight*3)px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="text-scroll"><a href="#text-scroll" class="headerlink" title="text-scroll()"></a>text-scroll()</h2><p>condition:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$sizeMustBeDecalred = 100px;</span><br><span class="line">.text &#123;</span><br><span class="line">  width: $sizeMustBeDecalred;</span><br><span class="line">  height: $sizeMustBeDecalred;</span><br><span class="line">  scroll: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Referer"><a href="#Referer" class="headerlink" title="Referer"></a>Referer</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Scaling_background_images" target="_blank" rel="external">scaling_background_images | MDN</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[CodeIgniter - 适配阿里云短信API]]></title>
       <url>http://csser.work/12/01/2017/php-ci-aliyun-sms/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2>]]></content>
@@ -38,14 +65,14 @@
     <entry>
       <title><![CDATA[ES6-class语法糖与this]]></title>
       <url>http://csser.work/11/12/2017/ES6-class-this/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>最常见的问题是关于onClick内为什么普通的调用this会出现<code>undefined</code>.<br>复现:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="title">extend</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  clickMe() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render(</span><br><span class="line">    &lt;button type="button" onclick=&#123;this.clickMe&#125;&gt;Click Me&lt;/button&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>最常见的问题是关于onClick内为什么普通的调用this会出现<code>undefined</code>.<br>复现:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="title">extend</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  clickMe() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render(</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">&#123;this.clickMe&#125;</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="class原型"><a href="#class原型" class="headerlink" title="class原型"></a>class原型</h3><p>从原因说起, ES6的class原型是以<code>function</code>和原型链的设计模式制作的.<br>以下为例子:</p>
 <blockquote>
 <p><a href="https://segmentfault.com/a/1190000003798438" target="_blank" rel="external">segmentfault@darkbaby123</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  ES6</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(firstName, lastName) &#123;</span><br><span class="line">    <span class="keyword">this</span>.firstName = firstName</span><br><span class="line">    <span class="keyword">this</span>.lastName = lastName</span><br><span class="line">  &#125;</span><br><span class="line">  fullName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;this.firstName&#125;</span> <span class="subst">$&#123;this.lastName&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> user = <span class="keyword">new</span> User(<span class="string">'David'</span>, <span class="string">'Chen'</span>)</span><br><span class="line">user.fullName()  <span class="comment">// David Chen</span></span><br><span class="line"><span class="comment">//  以上的类定义语法非常直观，它跟以下的 ES5 语法是一个意思：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">firstName, lastName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.firstName = firstName</span><br><span class="line">  <span class="keyword">this</span>.lastName = lastName</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">User.prototype.fullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">''</span> + <span class="keyword">this</span>.firstName + <span class="keyword">this</span>.lastName</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>所以既然是function, 他就必须遵守<code>this</code>作用域的限定, function内部会产生一个context, 指向直接调用的目标.具体请看这: <a href="http://csser.work/03/24/2017/js-this/">about-this</a></p>
 <h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><ol>
-<li>用arrow function的this继承包含该function<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">render(</span><br><span class="line">  &lt;button type="button" onclick=&#123;()=&gt;&#123;this.clickMe()&#125;&#125;&gt;Click Me&lt;/button&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<li>用arrow function的this继承包含该function<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">&#123;()</span>=&gt;</span>&#123;this.clickMe()&#125;&#125;&gt;Click Me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>解释: <code>()=&gt;{}</code>他的context就是调用它的function Test(也就是class Test), 那么this也就能解释调用到了clickMe函数.<br>  再说clickMe函数, 由于是function, 他的context继承了直接调用函数也就是arrow function, 由于arrow function的context就是该class,<br>  所以clickMe也就调用了class.</p>
@@ -602,6 +629,21 @@
     </entry>
     
     <entry>
+      <title><![CDATA[JS闭包]]></title>
+      <url>http://csser.work/12/02/2016/js-closure/</url>
+      <content type="html"><![CDATA[<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>看问题的时候顺便看到了, <a href="http://www.cnblogs.com/xxcanghai/p/4991870.html" target="_blank" rel="external">闭包面试题</a><br>面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>个人理解:<br><br>看了<a href="https://developer.mozilla.org/cn/docs/Web/JavaScript/Closures" target="_blank" rel="external">MDN</a>, 总结了一些结论<br>闭包就是一个 函数加上该函数的上下文环境 的集合.</p>
+<p>一个比较常见的例子:<br>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Javascript:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++)&#123;</span><br><span class="line">		divs[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>无论点哪个都只会输出3, 原因讲的已经很明确了, 在这个函数内部的上下文环境中, i会共用.<br>可能会问, 如果共用, 那么绑定的也只有第三个=&gt; 在绑定的时候i还是从0-&gt;2的, 但是事件触发一定是i在等于3之后的事情了.</p>
+<p>解决办法: 闭包传参, ES6新特性:let<br>这边给个闭包传参的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++) &#123;</span><br><span class="line">		divs[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;)(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>这样每一个onclick都被赋予了一个独立的闭包,可以独立输出0-2.</p>
+<p>另一个模拟类的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shoppingCart</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> goods = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        goodsAdd: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            ++goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsRemove: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            --goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> goods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cartA = <span class="keyword">new</span> shoppingCart();</span><br><span class="line"><span class="keyword">var</span> cartB = <span class="keyword">new</span> shoppingCart();</span><br><span class="line">cartA.goodsAdd();</span><br><span class="line">cartA.goodsShow();</span><br><span class="line"></span><br><span class="line">cartB.goodsAdd();</span><br><span class="line">cartB.goodsRemove();</span><br><span class="line">cartB.goodsShow();</span><br></pre></td></tr></table></figure></p>
+<p>shoppingCart函数有个函数内变量goods, 外部无法访问, 但是它可以通过内部的函数访问到, 即整个shoppingCart函数<code>构成了一个闭包环境</code>.<br>问了一下同学, <code>这个很像面向对象的一个类</code>, goods就是所谓的private变量了.<br>而new出来的对象都是一个独立的闭包, 拥有独立的上下文环境和内容</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JS面试题1-分析]]></title>
       <url>http://csser.work/12/02/2016/js-interview-1/</url>
       <content type="html"><![CDATA[<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p><a href="gold.xitu.io/">@掘金</a>上看到的, 做了发现以前看得都还给书本了.<br>题目博客地址: <a href="http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments" target="_blank" rel="external">http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments</a></p>
@@ -624,21 +666,6 @@
 <p>如果把上面那句改成<code>new Date();</code>是不是一下看懂了呢.构造函数的new操作~</p>
 <h3 id="0x06-new-Foo-getName"><a href="#0x06-new-Foo-getName" class="headerlink" title="0x06 new Foo().getName();"></a>0x06 new Foo().getName();</h3><p>理解为: (new Foo().getName)();<br>差点忘记, 这边返回了this, 然后对象找不到直接的getName函数, 于是跟着原型链把line-3的函数继承上去.</p>
 <h3 id="0x07-new-new-Foo-getName"><a href="#0x07-new-new-Foo-getName" class="headerlink" title="0x07 new new Foo().getName();"></a>0x07 new new Foo().getName();</h3><p>理解为: (new (new Foo().getName))();<br>(new Foo().getName) 表示的是构造函数, 然后就和0x05一样的理解即可.</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[JS闭包]]></title>
-      <url>http://csser.work/12/02/2016/js-closure/</url>
-      <content type="html"><![CDATA[<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>看问题的时候顺便看到了, <a href="http://www.cnblogs.com/xxcanghai/p/4991870.html" target="_blank" rel="external">闭包面试题</a><br>面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>个人理解:<br><br>看了<a href="https://developer.mozilla.org/cn/docs/Web/JavaScript/Closures" target="_blank" rel="external">MDN</a>, 总结了一些结论<br>闭包就是一个 函数加上该函数的上下文环境 的集合.</p>
-<p>一个比较常见的例子:<br>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>Javascript:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++)&#123;</span><br><span class="line">		divs[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
-<p>无论点哪个都只会输出3, 原因讲的已经很明确了, 在这个函数内部的上下文环境中, i会共用.<br>可能会问, 如果共用, 那么绑定的也只有第三个=&gt; 在绑定的时候i还是从0-&gt;2的, 但是事件触发一定是i在等于3之后的事情了.</p>
-<p>解决办法: 闭包传参, ES6新特性:let<br>这边给个闭包传参的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++) &#123;</span><br><span class="line">		divs[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;)(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
-<p>这样每一个onclick都被赋予了一个独立的闭包,可以独立输出0-2.</p>
-<p>另一个模拟类的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shoppingCart</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> goods = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        goodsAdd: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            ++goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsRemove: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            --goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> goods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cartA = <span class="keyword">new</span> shoppingCart();</span><br><span class="line"><span class="keyword">var</span> cartB = <span class="keyword">new</span> shoppingCart();</span><br><span class="line">cartA.goodsAdd();</span><br><span class="line">cartA.goodsShow();</span><br><span class="line"></span><br><span class="line">cartB.goodsAdd();</span><br><span class="line">cartB.goodsRemove();</span><br><span class="line">cartB.goodsShow();</span><br></pre></td></tr></table></figure></p>
-<p>shoppingCart函数有个函数内变量goods, 外部无法访问, 但是它可以通过内部的函数访问到, 即整个shoppingCart函数<code>构成了一个闭包环境</code>.<br>问了一下同学, <code>这个很像面向对象的一个类</code>, goods就是所谓的private变量了.<br>而new出来的对象都是一个独立的闭包, 拥有独立的上下文环境和内容</p>
 ]]></content>
     </entry>
     
@@ -921,43 +948,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[无题]]></title>
-      <url>http://csser.work/08/07/2016/say-2/</url>
-      <content type="html"><![CDATA[<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
-<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[JSON使用注意]]></title>
-      <url>http://csser.work/08/07/2016/js-json-parse/</url>
-      <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
-<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
-<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
-<p>Update in 08/11/2016</p>
-<blockquote>
-<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
-</blockquote>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
-<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
-</blockquote>
-<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
-<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
-<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
-</blockquote>
-<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
-<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
-</blockquote>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[xss习题集_2.2]]></title>
       <url>http://csser.work/08/07/2016/xss-4/</url>
       <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>还是这个站<a href="http://prompt.ml/0" target="_blank" rel="external">Prompt(1) to win</a>, 不过是下集, 没想到自己不会这么多, 才会出的下集2333</p>
@@ -1025,26 +1015,40 @@
     </entry>
     
     <entry>
-      <title><![CDATA[ES6 模板字符串 & Xss利用]]></title>
-      <url>http://csser.work/08/05/2016/js-template-strings/</url>
-      <content type="html"><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
-<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
-<pre><code>console.log(` test1        // there is no comments can stand!
-     test2`);
-</code></pre></blockquote>
-<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
-<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
-<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
-<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
-<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
-<p>Update:<br><code>${CMD}</code>可以直接的命令执行~</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">  <span class="string">`<span class="subst">$&#123;alert(1)&#125;</span>`</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
+      <title><![CDATA[JSON使用注意]]></title>
+      <url>http://csser.work/08/07/2016/js-json-parse/</url>
+      <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
+<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
+<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
+<p>Update in 08/11/2016</p>
+<blockquote>
+<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
+<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
+</blockquote>
+<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
+<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
+<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
+</blockquote>
+<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
+<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[无题]]></title>
+      <url>http://csser.work/08/07/2016/say-2/</url>
+      <content type="html"><![CDATA[<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
+<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>]]></content>
     </entry>
     
     <entry>
@@ -1140,6 +1144,29 @@
 <p>用法写在下面了, 运行就懂了, 不过<code>&lt;!--</code> 还是和 <code>--&gt;</code>有点区别的(看1, 4)</p>
 <h4 id="example-1"><a href="#example-1" class="headerlink" title="example"></a>example</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"></span><br><span class="line">//	console.log("</span><br><span class="line">	alert(1)<span class="comment">&lt;!--");</span><br><span class="line">	alert(2)--&gt;</span>alert(3)</span><br><span class="line"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">	//	console.log("</span><br><span class="line">		alert(4)--&gt;")</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 注意两个script标签别放一起 --&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ES6 模板字符串 & Xss利用]]></title>
+      <url>http://csser.work/08/05/2016/js-template-strings/</url>
+      <content type="html"><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
+<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
+<pre><code>console.log(` test1        // there is no comments can stand!
+     test2`);
+</code></pre></blockquote>
+<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
+<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
+<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
+<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
+<p>Update:<br><code>${CMD}</code>可以直接的命令执行~</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">  <span class="string">`<span class="subst">$&#123;alert(1)&#125;</span>`</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
 ]]></content>
     </entry>
     
@@ -1390,28 +1417,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Shell 2>&1 Meaning]]></title>
-      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
-      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
-<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
-<blockquote>
-<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
-</blockquote>
-<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
-<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
-<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
-<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
-</blockquote>
-<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
-<blockquote>
-<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
-</blockquote>
-<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Linux佳软推荐_Cheat]]></title>
       <url>http://csser.work/05/08/2016/linux-soft-cheat/</url>
       <content type="html"><![CDATA[<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://linux.cn/article-3760-1.html" target="_blank" rel="external">Cheat—— 给Linux初学者和管理员一个终极命令行”备忘单”</a></p>
@@ -1431,6 +1436,28 @@
 <blockquote>
 <p>cheat -e -xyz</p>
 </blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Shell 2>&1 Meaning]]></title>
+      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
+      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
+<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
+<blockquote>
+<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
+</blockquote>
+<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
+<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
+<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
+<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
+</blockquote>
+<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
+<blockquote>
+<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
+</blockquote>
+<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
 ]]></content>
     </entry>
     
@@ -2799,6 +2826,15 @@ noauto          开机不自动挂载
     </entry>
     
     <entry>
+      <title><![CDATA[又是一年]]></title>
+      <url>http://csser.work/10/08/2015/say-1/</url>
+      <content type="html"><![CDATA[<h3 id="小感慨"><a href="#小感慨" class="headerlink" title="小感慨"></a>小感慨</h3><h4 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
+<h4 id="决心"><a href="#决心" class="headerlink" title="决心"></a>决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
+<h3 id="小目标"><a href="#小目标" class="headerlink" title="小目标"></a>小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Js学习笔记(5)]]></title>
       <url>http://csser.work/10/08/2015/js-client-5/</url>
       <content type="html"><![CDATA[<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><h3 id="Js的css选择器"><a href="#Js的css选择器" class="headerlink" title="Js的css选择器"></a>Js的css选择器</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> document.querySelector(selectors);  //和css选择完全一样</span><br><span class="line"> document.querySelectorAll();   //返回Nodelist</span><br><span class="line"> console.log(document.querySelector('[</span><br><span class="line"> "]'));//栗子</span><br><span class="line">&lt;!-- 要加东西!!!! --&gt;</span><br></pre></td></tr></table></figure>
@@ -2812,15 +2848,6 @@ noauto          开机不自动挂载
 <h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> insertAt = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">parent, child, n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span> || n &gt;parent.childNodes.length)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Invalid index!"</span>);  <span class="comment">//对n的位置进行报错处理</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == parent.childNodes.length)</span><br><span class="line">        parent.appendChild(child);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        parent.insertBefore(child, parent.childNodes[n]);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="删除和替换"><a href="#删除和替换" class="headerlink" title="删除和替换"></a>删除和替换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除</span></span><br><span class="line">n.parentNode.removeChild( n );  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//替换n节点</span></span><br><span class="line">n.parentNode.replaceChild( <span class="built_in">document</span>.creatTextNode(<span class="string">"[ Redacted ]"</span>),n);  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[又是一年]]></title>
-      <url>http://csser.work/10/08/2015/say-1/</url>
-      <content type="html"><![CDATA[<h3 id="小感慨"><a href="#小感慨" class="headerlink" title="小感慨"></a>小感慨</h3><h4 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
-<h4 id="决心"><a href="#决心" class="headerlink" title="决心"></a>决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
-<h3 id="小目标"><a href="#小目标" class="headerlink" title="小目标"></a>小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
 ]]></content>
     </entry>
     
