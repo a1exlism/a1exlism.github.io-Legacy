@@ -82,6 +82,68 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/10/06/2015/kali-virtual/" title="Kali2.0安装虚拟机" itemprop="url">Kali2.0安装虚拟机</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-05T16:00:00.000Z" itemprop="datePublished"> 发表于 10-06-2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="以VirtualBox为例"><a href="#以VirtualBox为例" class="headerlink" title="以VirtualBox为例"></a>以VirtualBox为例</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>根据官方文档<a href="https://www.virtualbox.org/wiki/Linux_Downloads" target="_blank" rel="external">Oracle Linux</a></p>
+<ol>
+<li>添加源 <code>deb http://download.virtualbox.org/virtualbox/debian jessie contrib</code><br> gedit /etc/apt/sources.list</li>
+<li>下载<a href="https://www.virtualbox.org/download/oracle_vbox.asc" target="_blank" rel="external">Oracle公钥</a><br><code>apt-key add oracle_vbox.asc</code>进行导入</li>
+<li>安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install virtualbox-5.0</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Kali-Linux-virtualbox-rc-1908"><a href="#Kali-Linux-virtualbox-rc-1908" class="headerlink" title="Kali Linux virtualbox (rc=-1908)"></a>Kali Linux virtualbox (rc=-1908)</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>deb的源问题,导致原本的linux-header依赖没法安装</p>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><h5 id="添加源并更新"><a href="#添加源并更新" class="headerlink" title="添加源并更新"></a>添加源并更新</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#New</span></span><br><span class="line">deb http://http.kali.org/kali sana main non-free contrib</span><br><span class="line">deb http://security.kali.org/kali-security sana/updates main contrib non-free</span><br><span class="line"><span class="comment">#Origin</span></span><br><span class="line">deb-src http://http.kali.org/kali sana main non-free contrib</span><br><span class="line">deb-src http://security.kali.org/kali-security sana/updates main contrib non-free</span><br><span class="line"><span class="comment">#gedit /etc/apt/source.list</span></span><br><span class="line"></span><br><span class="line">apt-get update &amp;&amp; upgrade</span><br></pre></td></tr></table></figure>
+<h5 id="获取内核和相应版本的linux-header"><a href="#获取内核和相应版本的linux-header" class="headerlink" title="获取内核和相应版本的linux-header"></a>获取内核和相应版本的linux-header</h5><pre><code>uname -r
+apt-cache search linux-header
+</code></pre><p><img src="/imgs/kali2Virtual/1.png" alt="1"></p>
+<h5 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h5><pre><code>apt-get install xxx
+</code></pre><p><img src="/imgs/kali2Virtual/2.png" alt="2"></p>
+<h5 id="完成图"><a href="#完成图" class="headerlink" title="完成图"></a>完成图</h5><p><img src="/imgs/kali2Virtual/3.png" alt="3"></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://zhidao.baidu.com/link?url=wXtAPXdRSeneWV3jLAfBbPQp9knA8tVNQD-kGkOVBXOAZ8ivPMTDhq9rk508-ebXA24ItJzQgua2bBGnmEvPRa" target="_blank" rel="external">Baidu</a><br><a href="https://www.felixrr.pro/archives/399/kali-2-0-virtualbox-guest-additions-and-linux-headers" target="_blank" rel="external">felixrr.pro</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/06/2015/kali-virtual/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/06/2015/kali-virtual/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/10/03/2015/js-client-4/" title="Js学习笔记(4)" itemprop="url">Js学习笔记(4)</a>
   </h1>
   <p class="article-author">By
@@ -599,83 +661,6 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/06/30/2015/daily-git/" title="Git Daily" itemprop="url">Git Daily</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-29T16:00:00.000Z" itemprop="datePublished"> 发表于 06-30-2015</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="记录遇到的Git"><a href="#记录遇到的Git" class="headerlink" title="记录遇到的Git : )"></a>记录遇到的Git : )</h2><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://rogerdudler.github.io/git-guide/index.zh.html" target="_blank" rel="external">git-the simple guide</a></p>
-<h3 id="常见标记"><a href="#常见标记" class="headerlink" title="常见标记"></a>常见标记</h3><pre><code>A: 增加的文件.
-C: 文件的一个新拷贝.
-D: 删除的一个文件.
-M:文件的内容或者mode被修改了.
-R: 文件名被修改了.
-T: 文件的类型被修改了.
-U: 文件没有被合并(你需要完成合并才能进行提交)
-X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
-</code></pre><p>在git diff-files的手册man git diff-files中可以查到这些标志的说明</p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>添加远程主机:<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> remote add [shortname] [url]</span><br></pre></td></tr></table></figure></p>
-<p>创建分支<br>            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> branch experiment</span><br></pre></td></tr></table></figure></p>
-<p>切换分支    <strong>这条命令会重写工作区</strong><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> checkout -b gitcafe-pages</span><br></pre></td></tr></table></figure></p>
-<h3 id="陆续增加"><a href="#陆续增加" class="headerlink" title="陆续增加"></a>陆续增加</h3><p>checkout step    //重置工作目录,step为步骤<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="_">-f</span> step-3</span><br></pre></td></tr></table></figure></p>
-<p>———–16年2月————<br>git config –list</p>
-<p>for help`<br>    $ git help <v><br>    $ git <v> –help<br>    $ man git-<v></v></v></v></p>
-<p>git config user.name/更改特定设置</p>
-<p>git status    check the files</p>
-<p>git remote add [shortname] [url]    //添加远程仓库</p>
-<p>example:<br>    git remote add origin git@github.com:a1exlism/a1exlism<br>    github.io</p>
-<p>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</p>
-<p>git-bash-&gt;touch .gitignore    生成该文件</p>
-<p>.gitignore文件过滤模式</p>
-<blockquote>
-<p>from: <a href="https://ruby-china.org/topics/23561" target="_blank" rel="external">https://ruby-china.org/topics/23561</a><br>忽略一个特定的文件：/filename.extension<br>忽略所有同名的文件：filename.extension<br>忽略一个特定的目录：folder/ （这会连同其下所有子目录及文件都被忽略）<br>但是排除一个特定的模式：（在 3 的基础上）!folder/some/important/filename.extension<br>忽略指定目录下所有子目录下的特定文件：folder/**/filename.extension<br>同上，但是只匹配文件扩展名：folder/**/*.extension<br>同上，但是只匹配特定的目录：folder/**/tmp/</p>
-</blockquote>
-<p>注意: 所有xxx/都只在<code>当前目录下有效</code>, 所以如果需要任意目录匹配, 需要添加<code>**/</code>保证匹配成功</p>
-<p>git depth命令:深度<br>    git clone git@github.com:xxx/xxx –depth=2 最近三个版本</p>
-<h3 id="遇见的问题"><a href="#遇见的问题" class="headerlink" title="遇见的问题"></a>遇见的问题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> push origin gitcafe-pages error: src refspec gitcafe-pages does not match an</span><br></pre></td></tr></table></figure>
-<p>错误原因:本地没有gitcafe-pages分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Updates were rejected because the tip of your current branch is behind</span><br></pre></td></tr></table></figure></p>
-<p>错误原因:远程仓库的分支比本地的代码要新所以有冲突<br>解决:开新分支提交或者直接git push –force<strong>慎用!</strong></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/06/30/2015/daily-git/#comments" class="ds-thread-count comments-count-link" data-thread-key="06/30/2015/daily-git/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/06/30/2015/bootstrap-navbar-resposive/" title="Bootstrap Navbar Hack" itemprop="url">Bootstrap Navbar Hack</a>
   </h1>
   <p class="article-author">By
@@ -743,7 +728,7 @@ X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -857,7 +842,7 @@ X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
     <p class="copyright">
         Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a
                 href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a>
-        © 2017
+        © 2018
         
         <a href="/about" target="_blank" title="a1exlism">a1exlism</a>
         
