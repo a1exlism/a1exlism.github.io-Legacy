@@ -4,10 +4,26 @@
   
     
     <entry>
-      <title></title>
+      <title><![CDATA[前端雅黑字体坑]]></title>
+      <url>http://csser.work/01/15/2018/web-font-yahei/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>原来蛮好的布局, 设置了font-family为雅黑之后就直接变形了.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>查了些资料, 确定问题: 行高字体偏高.<br>于是全局设置: <code>line-height: 1em;</code><br>问题勉强解决, 等update, 没有就算解决了</p>
+<h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p><a href="https://zhuanlan.zhihu.com/p/22458207" target="_blank" rel="external">【反馈】把你对微软雅黑的不满统统告诉我<br>-ZhiHu</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JS event listener]]></title>
+      <url>http://csser.work/01/11/2018/js-event-listener/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>最近遇到个bug, 事件多次触发相关.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>代码在这.想表达的意思就是在设定触发器之后创建的元素, js没法像css一样取到相关元素.</p>
+<script async src="//jsfiddle.net/a1exlism/m9w5eg2x/2/embed/js,html,css,result/dark/"></script>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[无题]]></title>
       <url>http://csser.work/01/03/2018/say-4/</url>
-      <content type="html"><![CDATA[<p>title: 无题<br>date: 01-03-2018</p>
-<h2 id="tags-闲谈"><a href="#tags-闲谈" class="headerlink" title="tags: [闲谈]"></a>tags: [闲谈]</h2><p>也不知道说什么好, 过五七的时候居然老是想着妈妈如果不在了怎么办.这么久了,<br>他们都变老了… 妈妈真的时时刻刻想着我, 我却因为在家闲没有<br>效率不想回家. 也不知道自己在讲什么, 最近真的很难受, 通过跑步来缓解自己的压力,<br>.一想到家里, 也不在意什么了, 总会过去的.</p>
+      <content type="html"><![CDATA[<p>也不知道说什么好, 过五七的时候居然老是想着妈妈如果不在了怎么办.这么久了,<br>他们都变老了… 妈妈真的时时刻刻想着我, 我却因为在家闲没有<br>效率不想回家. 也不知道自己在讲什么, 最近真的很难受, 通过跑步来缓解自己的压力,<br>.一想到家里, 也不在意什么了, 总会过去的.</p>
 <p>2018了, 自己要更负责啊!</p>
 ]]></content>
     </entry>
@@ -93,14 +109,14 @@
     <entry>
       <title><![CDATA[ES6-class语法糖与this]]></title>
       <url>http://csser.work/11/12/2017/ES6-class-this/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>最常见的问题是关于onClick内为什么普通的调用this会出现<code>undefined</code>.<br>复现:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="title">extend</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  clickMe() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render(</span><br><span class="line">    &lt;button type="button" onclick=&#123;this.clickMe&#125;&gt;Click Me&lt;/button&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>最常见的问题是关于onClick内为什么普通的调用this会出现<code>undefined</code>.<br>复现:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="title">extend</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  clickMe() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render(</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">&#123;this.clickMe&#125;</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="class原型"><a href="#class原型" class="headerlink" title="class原型"></a>class原型</h3><p>从原因说起, ES6的class原型是以<code>function</code>和原型链的设计模式制作的.<br>以下为例子:</p>
 <blockquote>
 <p><a href="https://segmentfault.com/a/1190000003798438" target="_blank" rel="external">segmentfault@darkbaby123</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  ES6</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(firstName, lastName) &#123;</span><br><span class="line">    <span class="keyword">this</span>.firstName = firstName</span><br><span class="line">    <span class="keyword">this</span>.lastName = lastName</span><br><span class="line">  &#125;</span><br><span class="line">  fullName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;this.firstName&#125;</span> <span class="subst">$&#123;this.lastName&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> user = <span class="keyword">new</span> User(<span class="string">'David'</span>, <span class="string">'Chen'</span>)</span><br><span class="line">user.fullName()  <span class="comment">// David Chen</span></span><br><span class="line"><span class="comment">//  以上的类定义语法非常直观，它跟以下的 ES5 语法是一个意思：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">firstName, lastName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.firstName = firstName</span><br><span class="line">  <span class="keyword">this</span>.lastName = lastName</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">User.prototype.fullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">''</span> + <span class="keyword">this</span>.firstName + <span class="keyword">this</span>.lastName</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>所以既然是function, 他就必须遵守<code>this</code>作用域的限定, function内部会产生一个context, 指向直接调用的目标.具体请看这: <a href="http://csser.work/03/24/2017/js-this/">about-this</a></p>
 <h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><ol>
-<li>用arrow function的this继承包含该function<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">render(</span><br><span class="line">  &lt;button type="button" onclick=&#123;()=&gt;&#123;this.clickMe()&#125;&#125;&gt;Click Me&lt;/button&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<li>用arrow function的this继承包含该function<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">&#123;()</span>=&gt;</span>&#123;this.clickMe()&#125;&#125;&gt;Click Me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>解释: <code>()=&gt;{}</code>他的context就是调用它的function Test(也就是class Test), 那么this也就能解释调用到了clickMe函数.<br>  再说clickMe函数, 由于是function, 他的context继承了直接调用函数也就是arrow function, 由于arrow function的context就是该class,<br>  所以clickMe也就调用了class.</p>
@@ -1445,28 +1461,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Shell 2>&1 Meaning]]></title>
-      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
-      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
-<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
-<blockquote>
-<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
-</blockquote>
-<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
-<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
-<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
-<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
-</blockquote>
-<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
-<blockquote>
-<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
-</blockquote>
-<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Linux佳软推荐_Cheat]]></title>
       <url>http://csser.work/05/08/2016/linux-soft-cheat/</url>
       <content type="html"><![CDATA[<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://linux.cn/article-3760-1.html" target="_blank" rel="external">Cheat—— 给Linux初学者和管理员一个终极命令行”备忘单”</a></p>
@@ -1486,6 +1480,28 @@
 <blockquote>
 <p>cheat -e -xyz</p>
 </blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Shell 2>&1 Meaning]]></title>
+      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
+      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
+<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
+<blockquote>
+<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
+</blockquote>
+<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
+<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
+<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
+<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
+</blockquote>
+<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
+<blockquote>
+<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
+</blockquote>
+<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
 ]]></content>
     </entry>
     
@@ -1598,22 +1614,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[js_arrow function]]></title>
-      <url>http://csser.work/04/12/2016/js-arrow-func/</url>
-      <content type="html"><![CDATA[<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>
-<p>在学习nodejs中看到这么一段代码,想了一下<code>=&gt;</code>就代表了一个<code>匿名函数</code>啊,多简洁!<br>代码示例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http.get(<span class="string">'http://www.google.com/index.html'</span>, (res) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got response: <span class="subst">$&#123;res.statusCode&#125;</span>`</span>);</span><br><span class="line">  <span class="comment">// consume response body</span></span><br><span class="line">  res.resume();</span><br><span class="line">&#125;).on(<span class="string">'error'</span>, (e) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got error: <span class="subst">$&#123;e.message&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h3 id="05-18-2016更新"><a href="#05-18-2016更新" class="headerlink" title="05/18/2016更新"></a>05/18/2016更新</h3><p>There are some different in <code>this</code> key word.</p>
-<ol>
-<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints:</span></span><br><span class="line">    <span class="comment">//   a b MyEmitter &#123;</span></span><br><span class="line">    <span class="comment">//     domain: null,</span></span><br><span class="line">    <span class="comment">//     _events: &#123; event: [Function] &#125;,</span></span><br><span class="line">    <span class="comment">//     _eventsCount: 1,</span></span><br><span class="line">    <span class="comment">//     _maxListeners: undefined &#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, (a, b) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints: a b &#123;&#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
-<p>in Instance2 this-&gt;<code>{}</code></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[ES6-JS的块级作用域]]></title>
       <url>http://csser.work/04/12/2016/js-let/</url>
       <content type="html"><![CDATA[<h3 id="ES6-js也能和其他语言一样使用块级作用域了"><a href="#ES6-js也能和其他语言一样使用块级作用域了" class="headerlink" title="ES6_js也能和其他语言一样使用块级作用域了~"></a>ES6_js也能和其他语言一样使用块级作用域了~</h3><p>块级作用域: 一对花括号<code>{}</code>括起来的代码域<br>一下子感觉js高级好多,块级作用域和执行域都在了~</p>
@@ -1630,6 +1630,22 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; num; i++)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">//0 1 2 3 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//  Error: i is not defined</span></span><br></pre></td></tr></table></figure>
 <p>应该很清楚了</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js_arrow function]]></title>
+      <url>http://csser.work/04/12/2016/js-arrow-func/</url>
+      <content type="html"><![CDATA[<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>
+<p>在学习nodejs中看到这么一段代码,想了一下<code>=&gt;</code>就代表了一个<code>匿名函数</code>啊,多简洁!<br>代码示例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http.get(<span class="string">'http://www.google.com/index.html'</span>, (res) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got response: <span class="subst">$&#123;res.statusCode&#125;</span>`</span>);</span><br><span class="line">  <span class="comment">// consume response body</span></span><br><span class="line">  res.resume();</span><br><span class="line">&#125;).on(<span class="string">'error'</span>, (e) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got error: <span class="subst">$&#123;e.message&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="05-18-2016更新"><a href="#05-18-2016更新" class="headerlink" title="05/18/2016更新"></a>05/18/2016更新</h3><p>There are some different in <code>this</code> key word.</p>
+<ol>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints:</span></span><br><span class="line">    <span class="comment">//   a b MyEmitter &#123;</span></span><br><span class="line">    <span class="comment">//     domain: null,</span></span><br><span class="line">    <span class="comment">//     _events: &#123; event: [Function] &#125;,</span></span><br><span class="line">    <span class="comment">//     _eventsCount: 1,</span></span><br><span class="line">    <span class="comment">//     _maxListeners: undefined &#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, (a, b) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints: a b &#123;&#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
+<p>in Instance2 this-&gt;<code>{}</code></p>
 ]]></content>
     </entry>
     
@@ -2390,6 +2406,19 @@
     </entry>
     
     <entry>
+      <title><![CDATA[手表指南方法]]></title>
+      <url>http://csser.work/01/31/2016/life-%E6%8C%87%E5%8D%97/</url>
+      <content type="html"><![CDATA[<p>看小学生杀手的时候发现几个指南方法，记一下</p>
+<h2 id="借助太阳指向"><a href="#借助太阳指向" class="headerlink" title="借助太阳指向"></a>借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
+<p>###原理<br>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
+<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
+<h2 id="立杆测影-指东针"><a href="#立杆测影-指东针" class="headerlink" title="立杆测影-指东针"></a>立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
+<h3 id="日晷原理"><a href="#日晷原理" class="headerlink" title="日晷原理"></a>日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[linux日常更新-01]]></title>
       <url>http://csser.work/01/31/2016/daily-linux-1/</url>
       <content type="html"><![CDATA[<p>#环境:debian8<br>最后更新日期:2016-01-31</p>
@@ -2504,19 +2533,6 @@ tar -czvf -g zeng aa.tar.gz.1 /var
 </ol>
 <p>好像有点小BUG:<br>如果开机过程没有插网线,会一直搜索大概1分钟<br>Reference:<br><a href="http://tieba.baidu.com/p/3247330238" target="_blank" rel="external">贴吧</a></p>
 <h3 id="gnome"><a href="#gnome" class="headerlink" title="gnome"></a>gnome</h3><p>打开了一张奇怪的图片,然后就崩了,直接被注销<br>搞了半天也看了gnome的错误日志,然后找到论坛<a href="http://forum.ubuntu.org.cn/viewtopic.php?f=94&amp;t=378902" target="_blank" rel="external">ubuntu12.04安装gnome shell主题，给新手们</a><br>最后发现这个网站<a href="https://extensions.gnome.org/" target="_blank" rel="external">extensions.gnome</a><br><code>firefox</code>打开     然后选择一下插件,不用管warning…<br>备用:<br><a href="http://itsfoss.com/install-switch-themes-gnome-shell/" target="_blank" rel="external">How To Install And Switch Themes In GNOME Shell In Ubuntu</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[手表指南方法]]></title>
-      <url>http://csser.work/01/31/2016/life-%E6%8C%87%E5%8D%97/</url>
-      <content type="html"><![CDATA[<p>看小学生杀手的时候发现几个指南方法，记一下</p>
-<h2 id="借助太阳指向"><a href="#借助太阳指向" class="headerlink" title="借助太阳指向"></a>借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
-<p>###原理<br>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
-<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
-<h2 id="立杆测影-指东针"><a href="#立杆测影-指东针" class="headerlink" title="立杆测影-指东针"></a>立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
-<h3 id="日晷原理"><a href="#日晷原理" class="headerlink" title="日晷原理"></a>日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
 ]]></content>
     </entry>
     
