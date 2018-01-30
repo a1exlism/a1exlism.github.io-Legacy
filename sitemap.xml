@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://csser.work/01/26/2018/CSS-float/</loc>
+    
+    <lastmod>2018-01-30T14:50:03.473Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/05/04/2017/css-position/</loc>
+    
+    <lastmod>2018-01-30T12:41:47.841Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/01/25/2018/front-note-html/</loc>
+    
+    <lastmod>2018-01-26T14:36:30.224Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/01/25/2018/front-note-semantic-html/</loc>
+    
+    <lastmod>2018-01-26T13:46:37.745Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://csser.work/01/18/2018/CSS-blur-in-Scroll-and-Transform-in-Mobi-viewpoint/</loc>
     
     <lastmod>2018-01-18T10:20:02.988Z</lastmod>
@@ -159,13 +187,6 @@
     <loc>http://csser.work/05/07/2017/css-box-sizing/</loc>
     
     <lastmod>2017-05-06T16:39:01.718Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/05/04/2017/css-position/</loc>
-    
-    <lastmod>2017-05-03T17:38:01.587Z</lastmod>
     
   </url>
   
