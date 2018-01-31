@@ -4,6 +4,34 @@
   
     
     <entry>
+      <title><![CDATA[CSS Center]]></title>
+      <url>http://csser.work/01/31/2018/CSS-center/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>写了比较久的居中样式, 做个总结看看以后可以用什么. 目的上来说不关注IE兼容性!</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="相关分类"><a href="#相关分类" class="headerlink" title="相关分类"></a>相关分类</h3><ul>
+<li>container: inline/block;</li>
+<li>container-size: known/unknown;</li>
+<li>child: inline/block;</li>
+<li>xORy: horizon/vertical/all</li>
+</ul>
+<h3 id="Absolute-Center"><a href="#Absolute-Center" class="headerlink" title="Absolute-Center"></a>Absolute-Center</h3><p>利用 position:absolute; 的绝对居中.  </p>
+<p><strong>Constraint</strong>: 父级对象relative; 高度必须声明 | 被内容撑起高度;<br><strong>Code</strong>:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.absolute-center</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">margin</span>: auto;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Attention</strong>: 一旦position设置为absolute之后, 该tag会变成<code>block element</code>.<br>Advantages: IE8+; 自适应<br>Caveats: 防止内容过多导致的溢出需要设置overflow</p>
+<p><strong>How it works</strong>:<br>利用的是margin:auto;在标准中的相关制定概念的使用.以下是原文,horizonal-center同理</p>
+<blockquote>
+<p><a href="https://www.w3.org/TR/CSS2/visudet.html#abs-non-replaced-height" target="_blank" rel="external">w3.org</a><br>If none of the three [top, bottom, height] are ‘auto’: If both ‘margin-top’ and ‘margin-bottom’ are ‘auto’, solve the equation under the extra constraint that the two margins get <code>equal values</code>. AKA: center the block vertically</p>
+</blockquote>
+<p>一旦满足上面条件, margin:auto;中的top和bottom会变成同一个值而不是0, 所以能做到vertical-center.</p>
+<h3 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h3><p><strong>Constraint</strong>: 这个方法我用的比较多, 不过transform本身仅支持<code>IE9+</code> PS: 突然发现我原来从caniuse那边查的都是完全适配状态, IE9需要添加<code>-ms-</code>头<br><strong>Code</strong>:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.transform-center</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="comment">/* OR position: relative; */</span></span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">margin</span>: auto;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">-webkit-transform</span>: <span class="built_in">translate</span>(-50%,-50%);</span><br><span class="line">      <span class="attribute">-ms-transform</span>: <span class="built_in">translate</span>(-50%,-50%);</span><br><span class="line">          <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%,-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个原理可以看一下box-model和下面的negtive margin概念一样</p>
+<h3 id="Negative-Margin-deprecated"><a href="#Negative-Margin-deprecated" class="headerlink" title="Negative Margin(deprecated)"></a>Negative Margin(deprecated)</h3><p><strong>Constraint</strong>:  固定size; 即无法响应式<br><strong>Advantages</strong>: 唯一优点差不多就是兼容IE6+了吧<br><strong>Code</strong>:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.negative-margin-container</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">margin-top</span>: -<span class="number">170px</span>; <span class="comment">/*150 + 20*/</span></span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">170px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Table-Cell"><a href="#Table-Cell" class="headerlink" title="Table Cell"></a>Table Cell</h3><p><strong>Constraint</strong>: vertical-align: middle; 仅用于<code>inline</code>和<code>table-cell box</code>样式<br><strong>Advantages</strong>: 兼容性<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.table-container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: table;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.table-container</span> <span class="selector-class">.table-cell</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: table-cell;</span><br><span class="line">  <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.table-container</span> <span class="selector-class">.table-cell</span> <span class="selector-class">.inner-content</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Inline-Block-vertical-align"><a href="#Inline-Block-vertical-align" class="headerlink" title="Inline-Block vertical-align"></a>Inline-Block vertical-align</h3><p>原理和table cell一样, 不过利用伪元素<code>::after</code>创建了一个ghost element保证高度可以参考.<br>因为hack程度比较高而且好像也没有其他的优点??</p>
+<h3 id="flex-box"><a href="#flex-box" class="headerlink" title="flex box"></a>flex box</h3><p>这个就不讲了, 过几天开始写项目一起放进来写.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://codepen.io/shshaw/full/gEiDt" target="_blank" rel="external">absolute centering - shshaw</a><br><a href="http://howtocenterincss.com/" target="_blank" rel="external">manual - center code</a><br><a href="https://css-tricks.com/centering-in-the-unknown/" target="_blank" rel="external">center-in-the-unknown - csstricks</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[CSS float]]></title>
       <url>http://csser.work/01/26/2018/CSS-float/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>本篇写一下前人总结便于自己今后翻阅. clear 称之为<code>闭合</code>浮动</p>
@@ -29,6 +57,28 @@
 <p><script async src="//jsfiddle.net/a1exlism/9t56fsur/embed/js,html,css,result/dark/"></script><br><a href="http://www.iyunlu.com/demo/block-formatting-contexts/" target="_blank" rel="external">Example2</a></p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>顺便提一下兼容性:<br>inline-block: IE11+; flex: IE11+<br>所以很多布局对于float需求还算有点大.</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.iyunlu.com/view/css-xhtml/55.html" target="_blank" rel="external">优先看 | Clear &amp;&amp; BFC - 一丝冰凉</a><br><a href="http://www.cnblogs.com/iyangyuan/archive/2013/03/27/2983813.html" target="_blank" rel="external">Clear</a><br><a href="http://www.cnblogs.com/coffeedeveloper/p/3145790.html#html" target="_blank" rel="external">Position - display - float</a><br><a href="http://www.positioniseverything.net/easyclearing.html" target="_blank" rel="external">easyclearing</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[前端基础补充 - HTML]]></title>
+      <url>http://csser.work/01/25/2018/front-note-html/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>由HTMLDog总结得来.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><ol>
+<li><code>&lt;!DOCTYPE html&gt;</code> document type declaration</li>
+<li><code>&lt;Meta&gt;</code> Meta tags <code>don’t do anything</code> to the content that is presented in the browser window, but they are used by the likes of <code>search engines</code> to catalogue information about the web page.<br><code>Names</code>: The most commonly used names are author, description, and keywords. <code>Description</code> is often used by search engines (such as Google) to display a description of a web page in its search results. <code>Keywords</code> <code>used</code> be important for SEO.<br><code>HTTP Equivalents</code>:</li>
+<li>Conditional Comments:<code>&lt;!--[if IE]&gt;</code>and<code>&lt;![endif]--&gt;</code>more in <a href="https://msdn.microsoft.com/en-gb/library/ms537512%28v=vs.85%29.aspx" target="_blank" rel="external">MS</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/tabindex" target="_blank" rel="external">tabindex</a> for navigation with <code>input</code> and others<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/accessKey" target="_blank" rel="external"><a accesskey="s">Page</a></a> used focus with certain keys</li>
+<li><p>Labels have the added bonus of visual browsers rendering the labels themselves <code>clickable</code>, putting the focus on the associated form field. Both name and id attributs are typically <code>required</code>; the name for the form to handle that field and the <code>id for the label</code> to associate it to. 这也解释了自定义一些自定义CSS的标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"yourName"</span>&gt;</span>Your Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"yourName"</span> <span class="attr">id</span>=<span class="string">"yourName"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fieldset and legend: 这个都没见过, 挺好看的 <a href="http://htmlreference.io/element/fieldset/" target="_blank" rel="external">Link</a></p>
+</li>
+<li>select&gt;optgroup&gt;option 用的不多, optgroup用于分组</li>
+<li><code>input[type=&quot;range&quot;]</code>经常见到过相关变形, 现在算是明白了.拖动栏</li>
+<li><strong>H5 特性标签 <a href="http://htmlreference.io/element/datalist/" target="_blank" rel="external">datalist</a> 看了一下可以做索引, 这个可以用用看!</strong></li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leohxj.gitbooks.io/front-end-database/html-and-css-basic/common-tag.html" target="_blank" rel="external">前端工程师手册-gitbooks</a><br><a href="www.htmldog.com">HTMLdog</a><br><a href="http://justineo.github.io/slideshows/semantic-html" target="_blank" rel="external">Sementic-html-顾轶灵</a><br><a href="http://htmlreference.io/element/datalist/" target="_blank" rel="external">HTMLRefence</a></p>
 ]]></content>
     </entry>
     
@@ -85,28 +135,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[前端基础补充 - HTML]]></title>
-      <url>http://csser.work/01/25/2018/front-note-html/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>由HTMLDog总结得来.</p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><ol>
-<li><code>&lt;!DOCTYPE html&gt;</code> document type declaration</li>
-<li><code>&lt;Meta&gt;</code> Meta tags <code>don’t do anything</code> to the content that is presented in the browser window, but they are used by the likes of <code>search engines</code> to catalogue information about the web page.<br><code>Names</code>: The most commonly used names are author, description, and keywords. <code>Description</code> is often used by search engines (such as Google) to display a description of a web page in its search results. <code>Keywords</code> <code>used</code> be important for SEO.<br><code>HTTP Equivalents</code>:</li>
-<li>Conditional Comments:<code>&lt;!--[if IE]&gt;</code>and<code>&lt;![endif]--&gt;</code>more in <a href="https://msdn.microsoft.com/en-gb/library/ms537512%28v=vs.85%29.aspx" target="_blank" rel="external">MS</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/tabindex" target="_blank" rel="external">tabindex</a> for navigation with <code>input</code> and others<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/accessKey" target="_blank" rel="external"><a accesskey="s">Page</a></a> used focus with certain keys</li>
-<li><p>Labels have the added bonus of visual browsers rendering the labels themselves <code>clickable</code>, putting the focus on the associated form field. Both name and id attributs are typically <code>required</code>; the name for the form to handle that field and the <code>id for the label</code> to associate it to. 这也解释了自定义一些自定义CSS的标签</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"yourName"</span>&gt;</span>Your Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"yourName"</span> <span class="attr">id</span>=<span class="string">"yourName"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>fieldset and legend: 这个都没见过, 挺好看的 <a href="http://htmlreference.io/element/fieldset/" target="_blank" rel="external">Link</a></p>
-</li>
-<li>select&gt;optgroup&gt;option 用的不多, optgroup用于分组</li>
-<li><code>input[type=&quot;range&quot;]</code>经常见到过相关变形, 现在算是明白了.拖动栏</li>
-<li><strong>H5 特性标签 <a href="http://htmlreference.io/element/datalist/" target="_blank" rel="external">datalist</a> 看了一下可以做索引, 这个可以用用看!</strong></li>
-</ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leohxj.gitbooks.io/front-end-database/html-and-css-basic/common-tag.html" target="_blank" rel="external">前端工程师手册-gitbooks</a><br><a href="www.htmldog.com">HTMLdog</a><br><a href="http://justineo.github.io/slideshows/semantic-html" target="_blank" rel="external">Sementic-html-顾轶灵</a><br><a href="http://htmlreference.io/element/datalist/" target="_blank" rel="external">HTMLRefence</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Blurry Font in Scroll and Transform in Mobi Viewpoint]]></title>
       <url>http://csser.work/01/18/2018/CSS-blur-in-Scroll-and-Transform-in-Mobi-viewpoint/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>问题描述: 作为<code>移动端页面</code>, 一个<code>宽度高度确定</code>的ul块级元素下包含多个li块级元素(宽度高度<code>确定</code>),<br>li为了水平居中使用了(transform:translateX), ul中设置了overview:scroll.</p>
@@ -133,20 +161,20 @@
     </entry>
     
     <entry>
-      <title><![CDATA[前端雅黑字体坑]]></title>
-      <url>http://csser.work/01/15/2018/web-font-yahei/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>原来蛮好的布局, 设置了font-family为雅黑之后就直接变形了.</p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>查了些资料, 确定问题: 行高字体偏高.<br>于是全局设置: <code>line-height: 1em;</code><br>问题勉强解决, 等update, 没有就算解决了</p>
-<h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p><a href="https://zhuanlan.zhihu.com/p/22458207" target="_blank" rel="external">【反馈】把你对微软雅黑的不满统统告诉我<br>-ZhiHu</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[fileupload with ajax]]></title>
       <url>http://csser.work/01/15/2018/ajax-file-upload/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>需要写个图片上传的功能, ajax实现</p>
 <h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>代码如下: 存于gist<br>      <script src="https://embed.cacher.io/81563a860d67ad14aefe1497022e18f6235dac14.js?a=a358f67d63a372df3d3d0ab2229fe7cc&t=atom_one_dark"></script></p>
 <h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p><a href="stackoverflow.com/questions/2320069/jquery-ajax-file-upload">jquery-file-upload | stackoverflow</a><br><a href="developer.mozilla.org/en-US/docs/Web/API/FormData/append">FormData-append | MDN</a><br><a href="developer.mozilla.org/en-US/docs/Web/API/File">File | MDN</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[前端雅黑字体坑]]></title>
+      <url>http://csser.work/01/15/2018/web-font-yahei/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>原来蛮好的布局, 设置了font-family为雅黑之后就直接变形了.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>查了些资料, 确定问题: 行高字体偏高.<br>于是全局设置: <code>line-height: 1em;</code><br>问题勉强解决, 等update, 没有就算解决了</p>
+<h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p><a href="https://zhuanlan.zhihu.com/p/22458207" target="_blank" rel="external">【反馈】把你对微软雅黑的不满统统告诉我<br>-ZhiHu</a></p>
 ]]></content>
     </entry>
     
@@ -394,7 +422,7 @@
 <h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="脑图"><a href="#脑图" class="headerlink" title="脑图:"></a>脑图:</h3><p><img src="/imgs/css_position/1.svg" alt="css-position"></p>
 <h3 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a>Notice</h3><ol>
 <li>只有static(default), 即未被定位的element不能用<code>top,left...</code>和<code>z-index</code>, 这也是和relative的唯一区别</li>
-<li>abosulte<code>不遵循</code>自然流(或者说文档流), 自然流的元素会像水流一样自动朝上填充.</li>
+<li>abosulte<code>不遵循</code>自然流, 而且<a href="http://blog.jobbole.com/46574/" target="_blank" rel="external">元素变成块级<code>block</code></a>, 自然流的元素会像水流一样自动朝上填充.</li>
 <li>关于z-index, 一旦element被定位, 该z-index会自动变成更高的layer, 像搭积木一样.</li>
 <li>自然流中块级元素若无宽度, 则会<code>填满整行</code>.</li>
 <li>position:fixed 参考的是viewpoint</li>
@@ -1202,6 +1230,13 @@
     </entry>
     
     <entry>
+      <title><![CDATA[无题]]></title>
+      <url>http://csser.work/08/07/2016/say-2/</url>
+      <content type="html"><![CDATA[<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
+<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JSON使用注意]]></title>
       <url>http://csser.work/08/07/2016/js-json-parse/</url>
       <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
@@ -1232,10 +1267,26 @@
     </entry>
     
     <entry>
-      <title><![CDATA[无题]]></title>
-      <url>http://csser.work/08/07/2016/say-2/</url>
-      <content type="html"><![CDATA[<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
-<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>]]></content>
+      <title><![CDATA[ES6 模板字符串 & Xss利用]]></title>
+      <url>http://csser.work/08/05/2016/js-template-strings/</url>
+      <content type="html"><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
+<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
+<pre><code>console.log(` test1        // there is no comments can stand!
+     test2`);
+</code></pre></blockquote>
+<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
+<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
+<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
+<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
+<p>Update:<br><code>${CMD}</code>可以直接的命令执行~</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">  <span class="string">`<span class="subst">$&#123;alert(1)&#125;</span>`</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
+]]></content>
     </entry>
     
     <entry>
@@ -1331,29 +1382,6 @@
 <p>用法写在下面了, 运行就懂了, 不过<code>&lt;!--</code> 还是和 <code>--&gt;</code>有点区别的(看1, 4)</p>
 <h4 id="example-1"><a href="#example-1" class="headerlink" title="example"></a>example</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"></span><br><span class="line">//	console.log("</span><br><span class="line">	alert(1)<span class="comment">&lt;!--");</span><br><span class="line">	alert(2)--&gt;</span>alert(3)</span><br><span class="line"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">	//	console.log("</span><br><span class="line">		alert(4)--&gt;")</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 注意两个script标签别放一起 --&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[ES6 模板字符串 & Xss利用]]></title>
-      <url>http://csser.work/08/05/2016/js-template-strings/</url>
-      <content type="html"><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>没事看了个xss, 借此学习一下这个template_strings</p>
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`strings`</span> <span class="comment">//  单行 和' " 用法一样</span></span><br><span class="line"><span class="string">`string1</span><br><span class="line"> string2`</span> <span class="comment">//  多行</span></span><br><span class="line"><span class="string">`string <span class="subst">$&#123;expression&#125;</span> string`</span> <span class="comment">// 可以直接引用变量, 像angualr一样</span></span><br></pre></td></tr></table></figure>
-<h3 id="注意注释"><a href="#注意注释" class="headerlink" title="注意注释"></a>注意注释</h3><blockquote>
-<pre><code>console.log(` test1        // there is no comments can stand!
-     test2`);
-</code></pre></blockquote>
-<p>这句话看似有个单行注释, 实际上`会忽略注释的存在, 所以<code>注释无效</code></p>
-<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  输出1</span></span><br></pre></td></tr></table></figure>
-<h3 id="特殊的-num"><a href="#特殊的-num" class="headerlink" title="特殊的//num"></a>特殊的//num</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;1234&#125;</span>`</span>);</span><br><span class="line"><span class="comment">//  可以直接输出1234</span></span><br></pre></td></tr></table></figure>
-<p>这个原因应该是 <code>数字开头</code>的不能作为js变量</p>
-<h2 id="xssVector"><a href="#xssVector" class="headerlink" title="xssVector"></a>xssVector</h2><h3 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h3><p>最简单的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert<span class="string">`1`</span></span><br><span class="line"><span class="comment">//  直接绕过() "" ''</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h3><p>第二个…<del>感觉是失败了</del><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert.call(<span class="keyword">this</span>, <span class="string">`<span class="subst">$&#123;1&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></p>
-<p>Update:<br><code>${CMD}</code>可以直接的命令执行~</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">  <span class="string">`<span class="subst">$&#123;alert(1)&#125;</span>`</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a><strong>3rd</strong></h3><p>这个很棒, 绕过了() “” ‘’, 能使eval拥有<code>()</code>可以执行并且支持多种编码, 吊吊吊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>.call<span class="string">`<span class="subst">$&#123;`alert\x281)`&#125;</span>`</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="最后一个"><a href="#最后一个" class="headerlink" title="最后一个"></a>最后一个</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;`alert(1)`&#125;</span>`</span> === <span class="string">'alert(1)'</span> ? alert(<span class="literal">true</span>) : alert(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="external">MDN</a></p>
 ]]></content>
     </entry>
     
@@ -3013,6 +3041,15 @@ noauto          开机不自动挂载
     </entry>
     
     <entry>
+      <title><![CDATA[又是一年]]></title>
+      <url>http://csser.work/10/08/2015/say-1/</url>
+      <content type="html"><![CDATA[<h3 id="小感慨"><a href="#小感慨" class="headerlink" title="小感慨"></a>小感慨</h3><h4 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
+<h4 id="决心"><a href="#决心" class="headerlink" title="决心"></a>决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
+<h3 id="小目标"><a href="#小目标" class="headerlink" title="小目标"></a>小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Js学习笔记(5)]]></title>
       <url>http://csser.work/10/08/2015/js-client-5/</url>
       <content type="html"><![CDATA[<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><h3 id="Js的css选择器"><a href="#Js的css选择器" class="headerlink" title="Js的css选择器"></a>Js的css选择器</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> document.querySelector(selectors);  //和css选择完全一样</span><br><span class="line"> document.querySelectorAll();   //返回Nodelist</span><br><span class="line"> console.log(document.querySelector('[</span><br><span class="line"> "]'));//栗子</span><br><span class="line">&lt;!-- 要加东西!!!! --&gt;</span><br></pre></td></tr></table></figure>
@@ -3026,15 +3063,6 @@ noauto          开机不自动挂载
 <h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> insertAt = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">parent, child, n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span> || n &gt;parent.childNodes.length)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Invalid index!"</span>);  <span class="comment">//对n的位置进行报错处理</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == parent.childNodes.length)</span><br><span class="line">        parent.appendChild(child);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        parent.insertBefore(child, parent.childNodes[n]);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="删除和替换"><a href="#删除和替换" class="headerlink" title="删除和替换"></a>删除和替换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除</span></span><br><span class="line">n.parentNode.removeChild( n );  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//替换n节点</span></span><br><span class="line">n.parentNode.replaceChild( <span class="built_in">document</span>.creatTextNode(<span class="string">"[ Redacted ]"</span>),n);  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[又是一年]]></title>
-      <url>http://csser.work/10/08/2015/say-1/</url>
-      <content type="html"><![CDATA[<h3 id="小感慨"><a href="#小感慨" class="headerlink" title="小感慨"></a>小感慨</h3><h4 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
-<h4 id="决心"><a href="#决心" class="headerlink" title="决心"></a>决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
-<h3 id="小目标"><a href="#小目标" class="headerlink" title="小目标"></a>小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
 ]]></content>
     </entry>
     

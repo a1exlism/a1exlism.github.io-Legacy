@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://csser.work/01/26/2018/CSS-float/</loc>
+    <loc>http://csser.work/01/31/2018/CSS-center/</loc>
     
-    <lastmod>2018-01-30T14:50:03.473Z</lastmod>
+    <lastmod>2018-01-31T13:44:01.596Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://csser.work/05/04/2017/css-position/</loc>
     
-    <lastmod>2018-01-30T12:41:47.841Z</lastmod>
+    <lastmod>2018-01-30T15:32:10.983Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/01/26/2018/CSS-float/</loc>
+    
+    <lastmod>2018-01-30T14:50:03.473Z</lastmod>
     
   </url>
   
