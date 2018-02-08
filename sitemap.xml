@@ -2,23 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://csser.work/01/31/2018/CSS-center/</loc>
+    <loc>http://csser.work/02/08/2018/quick-add-tracks-to-spotify-from-netease-music-with-IFTTT-and-workflow/</loc>
     
-    <lastmod>2018-01-31T13:44:01.596Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/05/04/2017/css-position/</loc>
-    
-    <lastmod>2018-01-30T15:32:10.983Z</lastmod>
+    <lastmod>2018-02-08T15:30:12.310Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://csser.work/01/26/2018/CSS-float/</loc>
     
-    <lastmod>2018-01-30T14:50:03.473Z</lastmod>
+    <lastmod>2018-02-05T15:19:20.640Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/05/04/2017/css-position/</loc>
+    
+    <lastmod>2018-02-05T15:18:51.624Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/02/01/2018/JS-design-pattern/</loc>
+    
+    <lastmod>2018-02-04T07:19:54.125Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/02/01/2018/JS-class-realization/</loc>
+    
+    <lastmod>2018-02-04T06:20:48.796Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/01/25/2018/front-note-semantic-html/</loc>
+    
+    <lastmod>2018-02-02T14:02:14.119Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/01/31/2018/CSS-center/</loc>
+    
+    <lastmod>2018-02-02T11:34:06.390Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/05/09/2016/js-stack-heap/</loc>
+    
+    <lastmod>2018-02-01T07:12:10.729Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/08/13/2016/xss-proto/</loc>
+    
+    <lastmod>2018-02-01T07:09:08.480Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/12/18/2017/scss-files-rule/</loc>
+    
+    <lastmod>2018-01-31T14:16:24.540Z</lastmod>
     
   </url>
   
@@ -26,13 +75,6 @@
     <loc>http://csser.work/01/25/2018/front-note-html/</loc>
     
     <lastmod>2018-01-26T14:36:30.224Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/01/25/2018/front-note-semantic-html/</loc>
-    
-    <lastmod>2018-01-26T13:46:37.745Z</lastmod>
     
   </url>
   
@@ -82,13 +124,6 @@
     <loc>http://csser.work/01/11/2018/js-event-listener/</loc>
     
     <lastmod>2018-01-11T06:35:49.600Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/12/18/2017/scss-files-rule/</loc>
-    
-    <lastmod>2017-12-18T08:03:48.401Z</lastmod>
     
   </url>
   
@@ -292,13 +327,6 @@
     <loc>http://csser.work/12/21/2016/exp-codetime-AlbertYu/</loc>
     
     <lastmod>2016-12-22T16:13:18.935Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/08/13/2016/js-proto/</loc>
-    
-    <lastmod>2016-12-22T15:36:02.572Z</lastmod>
     
   </url>
   
@@ -656,13 +684,6 @@
     <loc>http://csser.work/05/10/2016/js-variable-lift/</loc>
     
     <lastmod>2016-05-17T15:21:46.027Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/05/09/2016/js-stack-heap/</loc>
-    
-    <lastmod>2016-05-17T15:21:41.276Z</lastmod>
     
   </url>
   
