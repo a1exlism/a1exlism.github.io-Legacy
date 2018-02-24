@@ -4,29 +4,143 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>JS面试题1-分析 | A1exlism</title>
+    <title>base DOM Dictionary | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="a1exlism">
     
 
     
-    <meta name="description" content="defined@掘金上看到的, 做了发现以前看得都还给书本了.题目博客地址: http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments
-相关知识点变量提升, 变量声明优先级, 函数表达式VS变量声明, js对象继承, 构造函数, this指向, 运算符优先级
-题目123456789101112131415161718192021222324">
+    <meta name="description" content="Nodesnode: DOM &amp;gt; HTML
+Normal internal API/property
+
+
+Property
+
+
+
+
+firstChild
+
+
+lastChild
+
+
+childNodes
+
+
+previousSibling
+
+
+nextSibling
+
+
+nodeType
+
+
+attribute
+
+
+
+Node Type
+
+
+Property
+value
+
+
+
+
+Node.E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS面试题1-分析">
-<meta property="og:url" content="http://csser.work/12/02/2016/js-interview-1/index.html">
+<meta property="og:title" content="base DOM Dictionary">
+<meta property="og:url" content="http://csser.work/02/24/2018/js-dom-base/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="defined@掘金上看到的, 做了发现以前看得都还给书本了.题目博客地址: http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments
-相关知识点变量提升, 变量声明优先级, 函数表达式VS变量声明, js对象继承, 构造函数, this指向, 运算符优先级
-题目123456789101112131415161718192021222324">
-<meta property="og:updated_time" content="2017-10-17T14:43:25.903Z">
+<meta property="og:description" content="Nodesnode: DOM &amp;gt; HTML
+Normal internal API/property
+
+
+Property
+
+
+
+
+firstChild
+
+
+lastChild
+
+
+childNodes
+
+
+previousSibling
+
+
+nextSibling
+
+
+nodeType
+
+
+attribute
+
+
+
+Node Type
+
+
+Property
+value
+
+
+
+
+Node.E">
+<meta property="og:updated_time" content="2018-02-24T17:12:45.421Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS面试题1-分析">
-<meta name="twitter:description" content="defined@掘金上看到的, 做了发现以前看得都还给书本了.题目博客地址: http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments
-相关知识点变量提升, 变量声明优先级, 函数表达式VS变量声明, js对象继承, 构造函数, this指向, 运算符优先级
-题目123456789101112131415161718192021222324">
+<meta name="twitter:title" content="base DOM Dictionary">
+<meta name="twitter:description" content="Nodesnode: DOM &amp;gt; HTML
+Normal internal API/property
+
+
+Property
+
+
+
+
+firstChild
+
+
+lastChild
+
+
+childNodes
+
+
+previousSibling
+
+
+nextSibling
+
+
+nodeType
+
+
+attribute
+
+
+
+Node Type
+
+
+Property
+value
+
+
+
+
+Node.E">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -87,14 +201,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/12/02/2016/js-interview-1/" title="JS面试题1-分析" itemprop="url">JS面试题1-分析</a>
+      <a href="/02/24/2018/js-dom-base/" title="base DOM Dictionary" itemprop="url">base DOM Dictionary</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
-    <time datetime="2016-12-01T16:00:00.000Z" itemprop="datePublished"> 发表于 12-02-2016</time>
+    <time datetime="2018-02-23T16:00:00.000Z" itemprop="datePublished"> 发表于 02-24-2018</time>
     
   </p>
 </header>
@@ -103,37 +217,145 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关知识点"><span class="toc-number">2.</span> <span class="toc-text">相关知识点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">3.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解析"><span class="toc-number">4.</span> <span class="toc-text">解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-通读"><span class="toc-number">4.1.</span> <span class="toc-text">0x00 通读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-Foo-getName"><span class="toc-number">4.2.</span> <span class="toc-text">0x01 Foo.getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-getName"><span class="toc-number">4.3.</span> <span class="toc-text">0x02 getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-Foo-getName"><span class="toc-number">4.4.</span> <span class="toc-text">0x03 Foo().getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x04-getName"><span class="toc-number">4.5.</span> <span class="toc-text">0x04 getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下面三题和运算符优先级相关"><span class="toc-number">4.6.</span> <span class="toc-text">下面三题和运算符优先级相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x05-new-Foo-getName"><span class="toc-number">4.7.</span> <span class="toc-text">0x05 new Foo.getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x06-new-Foo-getName"><span class="toc-number">4.8.</span> <span class="toc-text">0x06 new Foo().getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x07-new-new-Foo-getName"><span class="toc-number">4.9.</span> <span class="toc-text">0x07 new new Foo().getName();</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nodes"><span class="toc-number">1.</span> <span class="toc-text">Nodes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Normal-internal-API-property"><span class="toc-number">2.</span> <span class="toc-text">Normal internal API/property</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-Type"><span class="toc-number">3.</span> <span class="toc-text">Node Type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Normal-operation-code"><span class="toc-number">4.</span> <span class="toc-text">Normal operation code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#firstChild-VS-firstElementChild"><span class="toc-number">5.</span> <span class="toc-text">firstChild VS firstElementChild</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Attr"><span class="toc-number">6.</span> <span class="toc-text">Attr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-效率-资源相关"><span class="toc-number">7.</span> <span class="toc-text">Node 效率/资源相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#About-classList"><span class="toc-number">8.</span> <span class="toc-text">About classList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#About-Style"><span class="toc-number">9.</span> <span class="toc-text">About Style</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-code-with-select"><span class="toc-number">10.</span> <span class="toc-text">Less code with select</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">11.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p><a href="gold.xitu.io/">@掘金</a>上看到的, 做了发现以前看得都还给书本了.<br>题目博客地址: <a href="http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments" target="_blank" rel="external">http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments</a></p>
-<h2 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h2><p>变量提升, 变量声明优先级, 函数表达式VS变量声明, js对象继承, 构造函数, this指向, 运算符优先级</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//	line-1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="number">1</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// console.log(this);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//	line-2</span></span><br><span class="line">Foo.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="number">2</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//	line-3</span></span><br><span class="line">Foo.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	alert(<span class="number">3</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//	line-4</span></span><br><span class="line"><span class="keyword">var</span> getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="number">4</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//	line-5</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//请写出以下输出结果：</span></span><br><span class="line">Foo.getName();</span><br><span class="line">getName();</span><br><span class="line">Foo().getName();</span><br><span class="line">getName();</span><br><span class="line"><span class="keyword">new</span> Foo.getName();</span><br><span class="line"><span class="keyword">new</span> Foo().getName();</span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> Foo().getName();</span><br></pre></td></tr></table></figure>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><h3 id="0x00-通读"><a href="#0x00-通读" class="headerlink" title="0x00 通读"></a>0x00 通读</h3><ol>
-<li>line-1中的getName是一个全局函数变量</li>
-<li>line-4是一个变量声明和赋值两个过程</li>
-<li>line-5是一个函数声明</li>
-</ol>
-<h3 id="0x01-Foo-getName"><a href="#0x01-Foo-getName" class="headerlink" title="0x01 Foo.getName();"></a>0x01 Foo.getName();</h3><p>按照前面讲的, 根据原型链查找, 直接找到了line-2函数, 输出: 2</p>
-<h3 id="0x02-getName"><a href="#0x02-getName" class="headerlink" title="0x02 getName();"></a>0x02 getName();</h3><blockquote>
-<p>小笔记<br>函数变量声明优先级比变量声明高, 变量提升仅仅提升了<code>变量声明</code>.<a href="https://gist.github.com/a1exlism/de8e79a5607c05677c2bdc89ce982714" target="_blank" rel="external">demo演示</a></p>
+		<h2 id="Nodes"><a href="#Nodes" class="headerlink" title="Nodes"></a>Nodes</h2><p>node: DOM &gt; HTML</p>
+<h2 id="Normal-internal-API-property"><a href="#Normal-internal-API-property" class="headerlink" title="Normal internal API/property"></a>Normal internal API/property</h2><table>
+<thead>
+<tr>
+<th>Property</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>firstChild</td>
+</tr>
+<tr>
+<td>lastChild</td>
+</tr>
+<tr>
+<td>childNodes</td>
+</tr>
+<tr>
+<td>previousSibling</td>
+</tr>
+<tr>
+<td>nextSibling</td>
+</tr>
+<tr>
+<td>nodeType</td>
+</tr>
+<tr>
+<td>attribute</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Node-Type"><a href="#Node-Type" class="headerlink" title="Node Type"></a>Node Type</h2><table>
+<thead>
+<tr>
+<th>Property</th>
+<th style="text-align:center">value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node.ELEMENT_NODE</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>Node.TEXT_NODE</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td>Node.COMMENT_NODE</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td>Node.DOCUMENT_FRAGMENT_NODE</td>
+<td style="text-align:center">11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Normal-operation-code"><a href="#Normal-operation-code" class="headerlink" title="Normal operation code"></a>Normal operation code</h2><blockquote>
+<p>Node大部分操作都是通过<code>对子节点</code>的操作API,也就是说必须获得<code>parentNode</code></p>
 </blockquote>
-<p>执行顺序依次: line-5函数声明, line-4变量声明, line-4变量赋值, getName()</p>
-<h3 id="0x03-Foo-getName"><a href="#0x03-Foo-getName" class="headerlink" title="0x03 Foo().getName();"></a>0x03 Foo().getName();</h3><p>这题仔细看, 然后看一下0x00.<br>在line-1中返回了this, 这个this向上查找对象, 最后找到了<code>window</code>对象(浏览器), 所以真正执行的函数应该是<code>window.getName()</code>, 而line-1将这个全局变量进行了赋值, so…</p>
-<h3 id="0x04-getName"><a href="#0x04-getName" class="headerlink" title="0x04 getName();"></a>0x04 getName();</h3><p>由于Foo()被执行, 全局变量被污染, 所以和上题答案一样</p>
-<h3 id="下面三题和运算符优先级相关"><a href="#下面三题和运算符优先级相关" class="headerlink" title="下面三题和运算符优先级相关"></a>下面三题和运算符优先级相关</h3><p>Reference:<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank" rel="external">运算符优先级-MDN</a><br>园括号 &gt; 成员访问 &gt; 计算型成员访问 &gt; new([x]) &gt; 函数调用 &gt; new<br><code>() &gt; ... . ... &gt; ...[...] &gt; new ...(...) &gt; ...(...) &gt; new ...</code><br>new操作顺序<code>从右到左</code>, 注意: new func <code>也算带参数</code></p>
-<h3 id="0x05-new-Foo-getName"><a href="#0x05-new-Foo-getName" class="headerlink" title="0x05 new Foo.getName();"></a>0x05 new Foo.getName();</h3><p>即new (Foo.getName)()</p>
-<p>如果把上面那句改成<code>new Date();</code>是不是一下看懂了呢.构造函数的new操作~</p>
-<h3 id="0x06-new-Foo-getName"><a href="#0x06-new-Foo-getName" class="headerlink" title="0x06 new Foo().getName();"></a>0x06 new Foo().getName();</h3><p>理解为: (new Foo().getName)();<br>差点忘记, 这边返回了this, 然后对象找不到直接的getName函数, 于是跟着原型链把line-3的函数继承上去.</p>
-<h3 id="0x07-new-new-Foo-getName"><a href="#0x07-new-new-Foo-getName" class="headerlink" title="0x07 new new Foo().getName();"></a>0x07 new new Foo().getName();</h3><p>理解为: (new (new Foo().getName))();<br>(new Foo().getName) 表示的是构造函数, 然后就和0x05一样的理解即可.</p>
+<ul>
+<li><p>select:</p>
+<blockquote>
+<p>document.querySelector();<br>Ele.querySelectorAll();</p>
+</blockquote>
+</li>
+<li><p>append:</p>
+<blockquote>
+<p>parentEle.appendChild(childEle);<br>parentEle.insertBefore(newEle, referenceEle);</p>
+</blockquote>
+</li>
+<li><p>prepend:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">prependChild</span>(<span class="params">newNode, parentNode</span>) </span>&#123;</span><br><span class="line">  parentNode.insertBefore(newNode, parentNode.firstChild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>replace:</p>
+<blockquote>
+<p>parentNode.replaceChild(newChild, oldChild);</p>
+</blockquote>
+</li>
+<li><p>clone:</p>
+<blockquote>
+<p>Ele.cloneNode(true);                 // 带上子节点<br>Ele.cloneNode(flase[default value]);  // 仅复制自身节点</p>
+</blockquote>
+</li>
+<li><p>create:</p>
+<blockquote>
+<p>document.createElement(‘div’);<br>document.createTextNode(‘text’);</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="firstChild-VS-firstElementChild"><a href="#firstChild-VS-firstElementChild" class="headerlink" title="firstChild VS firstElementChild"></a>firstChild VS firstElementChild</h2><p>firstChild <code>include</code> other nodes like textNode. Refer <code>#Node Type</code>.</p>
+<script async src="//jsfiddle.net/a1exlism/eg2yb3kk/12/embed/js,html,css,result/dark/"></script>
+
+<h2 id="Attr"><a href="#Attr" class="headerlink" title="Attr"></a>Attr</h2><p>hasAttribute(attrName);<br>getAttribute(attrName);<br>setAttribute(attrName, value);<br>removeAttribute(attrName);</p>
+<h2 id="Node-效率-资源相关"><a href="#Node-效率-资源相关" class="headerlink" title="Node 效率/资源相关"></a>Node 效率/资源相关</h2><ul>
+<li>查询<br>每个节点都有<code>childNodes</code>属性，，它保存了这个节点所有 <strong>直接</strong> 子元素</li>
+</ul>
+<p>调用childNodes返回的是一个NodeList对象，它极其像数组，但是有一个最关键的地方，它是<code>动态查询</code>的，也就是说每次调用它都会对DOM结构查询，所以对它的使用需要慎重，注意<code>性能</code>。</p>
+<p>可利用 Ele.<strong>hasChildNodes()</strong> Ele.<strong>contains()</strong> 进行子节点查询</p>
+<ul>
+<li>批量创建node – with <code>document.createDocumentFragment</code><br>这个速度差别很大, 性能方面<code>优先考虑</code><br>在 <strong>#nodeType</strong> 中, 可以看到fragment node<code>依然存在</code>, 需要注意这个点<script async src="//jsfiddle.net/a1exlism/8prfx69t/embed/js,html,css,result/dark/"></script>
+
+
+</li>
+</ul>
+<p>PS: the difference between <a href="https://stackoverflow.com/questions/35213147/difference-between-text-content-vs-inner-text" target="_blank" rel="external">innerText and textContent</a><br>the main diff performance: <script async src="//jsfiddle.net/a1exlism/Lhv96jev/4/embed/js,html,css,result/dark/"></script></p>
+<h2 id="About-classList"><a href="#About-classList" class="headerlink" title="About classList"></a>About classList</h2><p>Ele.classList.[]</p>
+<ul>
+<li>add()</li>
+<li>remove()</li>
+<li>toggle(String[, condition])   condition: Boolean true/false</li>
+<li>contains()  return: Boolean true/false</li>
+</ul>
+<h2 id="About-Style"><a href="#About-Style" class="headerlink" title="About Style"></a>About Style</h2><ul>
+<li><p>get</p>
+<blockquote>
+<p>window.getComputedStyle(Ele[, pseudoEle]);</p>
+</blockquote>
+</li>
+<li><p>set</p>
+<blockquote>
+<p>Ele.style.xxx = ‘xxx’; //  attention: camel style<br>Ele.setAttr(‘style’, …);</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Less-code-with-select"><a href="#Less-code-with-select" class="headerlink" title="Less code with select"></a>Less code with select</h2><script async src="//jsfiddle.net/a1exlism/n6hogxfc/embed/js,html,css,result/dark/"></script>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.cnblogs.com/season-huang/p/4322451.html" target="_blank" rel="external">通俗易懂的来讲讲DOM</a><br><a href="http://mp.weixin.qq.com/s?__biz=MzU3MDA0NTMzMA==&amp;mid=2247485609&amp;idx=1&amp;sn=06a2daabc491291de0e9067fb131c44b&amp;source=41#wechat_redirect" target="_blank" rel="external">JavaScript操作DOM的那些坑</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/12/02/2016/js-interview-1/" data-title="JS面试题1-分析 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/02/24/2018/js-dom-base/" data-title="base DOM Dictionary | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -146,19 +368,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/12/02/2016/js-closure/" title="JS闭包">
-  <strong>上一篇：</strong><br/>
-  <span>
-  JS闭包</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/11/29/2016/py-webdriver/"  title="webdriver with python">
+<a href="/02/17/2018/prototye-and-proto/"  title="prototype and __proto__">
  <strong>下一篇：</strong><br/> 
- <span>webdriver with python
+ <span>prototype and __proto__
 </span>
 </a>
 </div>
@@ -167,7 +381,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="12/02/2016/js-interview-1/" data-title="JS面试题1-分析" data-url="http://csser.work/12/02/2016/js-interview-1/"></div>
+	<div class="ds-thread" data-thread-key="02/24/2018/js-dom-base/" data-title="base DOM Dictionary" data-url="http://csser.work/02/24/2018/js-dom-base/"></div>
 </section>
 
 
@@ -177,7 +391,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#defined"><span class="toc-number">1.</span> <span class="toc-text">defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关知识点"><span class="toc-number">2.</span> <span class="toc-text">相关知识点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">3.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解析"><span class="toc-number">4.</span> <span class="toc-text">解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-通读"><span class="toc-number">4.1.</span> <span class="toc-text">0x00 通读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-Foo-getName"><span class="toc-number">4.2.</span> <span class="toc-text">0x01 Foo.getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-getName"><span class="toc-number">4.3.</span> <span class="toc-text">0x02 getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-Foo-getName"><span class="toc-number">4.4.</span> <span class="toc-text">0x03 Foo().getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x04-getName"><span class="toc-number">4.5.</span> <span class="toc-text">0x04 getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下面三题和运算符优先级相关"><span class="toc-number">4.6.</span> <span class="toc-text">下面三题和运算符优先级相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x05-new-Foo-getName"><span class="toc-number">4.7.</span> <span class="toc-text">0x05 new Foo.getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x06-new-Foo-getName"><span class="toc-number">4.8.</span> <span class="toc-text">0x06 new Foo().getName();</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x07-new-new-Foo-getName"><span class="toc-number">4.9.</span> <span class="toc-text">0x07 new new Foo().getName();</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nodes"><span class="toc-number">1.</span> <span class="toc-text">Nodes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Normal-internal-API-property"><span class="toc-number">2.</span> <span class="toc-text">Normal internal API/property</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-Type"><span class="toc-number">3.</span> <span class="toc-text">Node Type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Normal-operation-code"><span class="toc-number">4.</span> <span class="toc-text">Normal operation code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#firstChild-VS-firstElementChild"><span class="toc-number">5.</span> <span class="toc-text">firstChild VS firstElementChild</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Attr"><span class="toc-number">6.</span> <span class="toc-text">Attr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-效率-资源相关"><span class="toc-number">7.</span> <span class="toc-text">Node 效率/资源相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#About-classList"><span class="toc-number">8.</span> <span class="toc-text">About classList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#About-Style"><span class="toc-number">9.</span> <span class="toc-text">About Style</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-code-with-select"><span class="toc-number">10.</span> <span class="toc-text">Less code with select</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">11.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 

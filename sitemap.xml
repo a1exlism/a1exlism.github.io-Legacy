@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://csser.work/02/24/2018/js-dom-base/</loc>
+    
+    <lastmod>2018-02-24T17:12:45.421Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://csser.work/02/01/2018/JS-design-pattern/</loc>
     
-    <lastmod>2018-02-22T12:09:01.717Z</lastmod>
+    <lastmod>2018-02-22T15:53:19.028Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/02/01/2018/JS-class-realization/</loc>
+    
+    <lastmod>2018-02-22T12:19:50.516Z</lastmod>
     
   </url>
   
@@ -33,13 +47,6 @@
     <loc>http://csser.work/05/04/2017/css-position/</loc>
     
     <lastmod>2018-02-05T15:18:51.624Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/02/01/2018/JS-class-realization/</loc>
-    
-    <lastmod>2018-02-04T06:20:48.796Z</lastmod>
     
   </url>
   
