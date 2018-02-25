@@ -82,6 +82,59 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/05/05/2016/js-hanoi/" title="汉诺塔_递归" itemprop="url">汉诺塔_递归</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-04T16:00:00.000Z" itemprop="datePublished"> 发表于 05-05-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这个问题在大一学C的时候就一直纠结,再次看书遇到,就把他写下来作为笔记了!</p>
+<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>整体的概念 数学归纳法</p>
+<h3 id="正"><a href="#正" class="headerlink" title="正"></a>正</h3><p>做了张图, 目标: 将塔SRC移到DST,利用AUX作为中转<br><img src="/imgs/hanoi/1.svg" alt="1"></p>
+<p>抽象化:<br> 一个汉诺塔只需要分为底层B和上层A<br>步骤:<br>  A(SRC) =&gt; AUX;<br>  B(SRC) =&gt; DST;<br>  A(AUX) =&gt; DST; </p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>一旦最大一个放在底下之后就可以忽略掉了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hanoi = <span class="function"><span class="keyword">function</span>(<span class="params"> disc, src, aux, dst</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( disc &gt; <span class="number">0</span> )&#123;</span><br><span class="line">    hanoi( disc<span class="number">-1</span>, src, dst, aux);  <span class="comment">//上层A(含多个)</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Move disc'</span> + disc + <span class="string">' from '</span> + src + <span class="string">' to '</span> + dst ); <span class="comment">//下层B</span></span><br><span class="line">    hanoi( disc<span class="number">-1</span>, aux, src, dst);  <span class="comment">//上层A(含多个)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>只要能抽象出来, 递归还是有点像一种声明式函数的</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.zhihu.com/question/24385418/answer/46241635" target="_blank" rel="external">知乎</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/05/05/2016/js-hanoi/#comments" class="ds-thread-count comments-count-link" data-thread-key="05/05/2016/js-hanoi/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/05/04/2016/linux-soft-install-fonts/" title="ubuntu16.04安装字体" itemprop="url">ubuntu16.04安装字体</a>
   </h1>
   <p class="article-author">By
@@ -297,6 +350,62 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/04/12/2016/js-arrow-func/" title="js_arrow function" itemprop="url">js_arrow function</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>
+<p>在学习nodejs中看到这么一段代码,想了一下<code>=&gt;</code>就代表了一个<code>匿名函数</code>啊,多简洁!<br>代码示例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http.get(<span class="string">'http://www.google.com/index.html'</span>, (res) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got response: <span class="subst">$&#123;res.statusCode&#125;</span>`</span>);</span><br><span class="line">  <span class="comment">// consume response body</span></span><br><span class="line">  res.resume();</span><br><span class="line">&#125;).on(<span class="string">'error'</span>, (e) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got error: <span class="subst">$&#123;e.message&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="05-18-2016更新"><a href="#05-18-2016更新" class="headerlink" title="05/18/2016更新"></a>05/18/2016更新</h3><p>There are some different in <code>this</code> key word.</p>
+<ol>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints:</span></span><br><span class="line">    <span class="comment">//   a b MyEmitter &#123;</span></span><br><span class="line">    <span class="comment">//     domain: null,</span></span><br><span class="line">    <span class="comment">//     _events: &#123; event: [Function] &#125;,</span></span><br><span class="line">    <span class="comment">//     _eventsCount: 1,</span></span><br><span class="line">    <span class="comment">//     _maxListeners: undefined &#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, (a, b) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints: a b &#123;&#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
+<p>in Instance2 this-&gt;<code>{}</code></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/04/12/2016/js-arrow-func/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-arrow-func/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/04/12/2016/js-let/" title="ES6-JS的块级作用域" itemprop="url">ES6-JS的块级作用域</a>
   </h1>
   <p class="article-author">By
@@ -338,62 +447,6 @@
 	
 	  	<span></span>
 		<a href="/04/12/2016/js-let/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-let/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/04/12/2016/js-arrow-func/" title="js_arrow function" itemprop="url">js_arrow function</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 04-12-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>
-<p>在学习nodejs中看到这么一段代码,想了一下<code>=&gt;</code>就代表了一个<code>匿名函数</code>啊,多简洁!<br>代码示例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http.get(<span class="string">'http://www.google.com/index.html'</span>, (res) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got response: <span class="subst">$&#123;res.statusCode&#125;</span>`</span>);</span><br><span class="line">  <span class="comment">// consume response body</span></span><br><span class="line">  res.resume();</span><br><span class="line">&#125;).on(<span class="string">'error'</span>, (e) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got error: <span class="subst">$&#123;e.message&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h3 id="05-18-2016更新"><a href="#05-18-2016更新" class="headerlink" title="05/18/2016更新"></a>05/18/2016更新</h3><p>There are some different in <code>this</code> key word.</p>
-<ol>
-<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints:</span></span><br><span class="line">    <span class="comment">//   a b MyEmitter &#123;</span></span><br><span class="line">    <span class="comment">//     domain: null,</span></span><br><span class="line">    <span class="comment">//     _events: &#123; event: [Function] &#125;,</span></span><br><span class="line">    <span class="comment">//     _eventsCount: 1,</span></span><br><span class="line">    <span class="comment">//     _maxListeners: undefined &#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, (a, b) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints: a b &#123;&#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
-<p>in Instance2 this-&gt;<code>{}</code></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/04/12/2016/js-arrow-func/#comments" class="ds-thread-count comments-count-link" data-thread-key="04/12/2016/js-arrow-func/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -556,62 +609,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/30/2016/device-nexus-ota-update/" title="Nexus原生OTA升级(ROOT+XP),无需PC" itemprop="url">Nexus原生OTA升级(ROOT+XP),无需PC</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-29T16:00:00.000Z" itemprop="datePublished"> 发表于 03-30-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Nexus5x Rooted Xposed</p>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
-<li>不需要PC 2. 不需要清数据 3. 可以顺便安装Xposed</li>
-</ol>
-<p><code>自己是先卸载了Xposed之后再升级的,没卸载的升级没有尝试过</code></p>
-<h3 id="正"><a href="#正" class="headerlink" title="正"></a>正</h3><p>这个我就不多讲了,需要的软件<code>Flashfire</code><br>更新软件包: <a href="https://developers.google.com/android/nexus/images" target="_blank" rel="external">Nexus_Factory_images</a><br>Xposed框架地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">Xposed</a></p>
-<p>直接上地址(墙):</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ED6N4DJTaU4" frameborder="0" allowfullscreen></iframe>
-
-<h2 id="结合PC的ota"><a href="#结合PC的ota" class="headerlink" title="结合PC的ota"></a>结合PC的ota</h2><p>这个自己没用过.需要的自己看一下,<code>不需要清数据</code><br><a href="https://m.reddit.com/r/nexus5x/comments/44duji/rooted_it_how_to_apply_the_ota_update/" target="_blank" rel="external">reddit</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/03/30/2016/device-nexus-ota-update/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/30/2016/device-nexus-ota-update/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/03/30/2016/device-nexus-xposed/" title="Android6.0.1 Xposed安装以及插件推荐" itemprop="url">Android6.0.1 Xposed安装以及插件推荐</a>
   </h1>
   <p class="article-author">By
@@ -668,65 +665,29 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/03/28/2016/net-wireshark-test/" title="wireshark小记" itemprop="url">wireshark小记</a>
+      <a href="/03/30/2016/device-nexus-ota-update/" title="Nexus原生OTA升级(ROOT+XP),无需PC" itemprop="url">Nexus原生OTA升级(ROOT+XP),无需PC</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-27T16:00:00.000Z" itemprop="datePublished"> 发表于 03-28-2016</time>
+    <time datetime="2016-03-29T16:00:00.000Z" itemprop="datePublished"> 发表于 03-30-2016</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><a href="http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html" target="_blank" rel="external">TCP握手状态</a><br><a href="https://community.emc.com/message/818739#818739" target="_blank" rel="external">EMC_wireshark</a><br><a href="https://en.wikipedia.org/wiki/OSI_model" target="_blank" rel="external">OSI模型</a>应用层-&gt;SSL-&gt;TCP-&gt;IP</p>
-<h2 id="杭电"><a href="#杭电" class="headerlink" title="杭电"></a>杭电</h2><p>直接用这个过滤</p>
-<blockquote>
-<p>http &amp;&amp; http.request.method==”POST”</p>
-</blockquote>
-<p><img src="/imgs/wireshark/hdu_1.png" alt="1"><br>直接得出表段:学号,密码(经验证为MD5)<br>echo -n password | openssl md5</p>
-<h2 id="163邮箱"><a href="#163邮箱" class="headerlink" title="163邮箱"></a>163邮箱</h2><p>测试帐号名: ji2hanpgf </p>
-<blockquote>
-<p>老方法过滤出IP<br>http &amp;&amp; http.request.method==”POST”</p>
-</blockquote>
-<p>0x00. ip筛选,打算看一下过程,linux下默认启用ssl登陆..</p>
-<blockquote>
-<p><a href="https://ask.wireshark.org/questions/22230/filter-for-partial-ip-address" target="_blank" rel="external">ask.wireshark</a><br>ip.dst_host matches “^123.58.”</p>
-</blockquote>
-<p>0x01. 查找第一个握手包,加上指定地址,ip.addr不会用通配符</p>
-<blockquote>
-<p>(ip.src_host matches “^123.58.” || ip.dst_host matches “^123.58.”) &amp;&amp; tcp.flags.syn == 1</p>
-</blockquote>
-<p>0x02. TCP Stream<br><img src="/imgs/wireshark/maill_163_1.png" alt="2">看到<code>GeoTrust SSL</code>字样,查了一下163采用了这个ssl服务<br>在这里也看到了tcp的完整握手流程,cli-&gt;serv-&gt;cli  </p>
-<p>0x03. 1226th TLSv1.2<br>在最上层中secure sockets layer中看到Pubkey(length:65),这个和搜到的也是一致(server将公钥发给client,之后client进行加密传输)<br><img src="/imgs/wireshark/mail_163_2.png" alt="3"></p>
-<p>0x04. 继续ip过滤,之后看到一条重要的消息1268th,1233rd. length都上千 Application Data,打开后在最后看到encrypt Data字样, </p>
-<p>0x05.<br><img src="/imgs/wireshark/mail_163_3.png" alt="3"><br>中找到cipher suite字样,看到加密类型是<code>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA(0xc013)</code>,查了一下,</p>
-<blockquote>
-<p>正向保密 <a href="http://www.infoq.com/cn/articles/keeping-your-secrets" target="_blank" rel="external">infoQ</a><br>那个密码套件的名称看起来相当神秘，但如果你把它拆开来看就很好懂了。 “TLS” 自然是指TLS协议。 “ECDHE” 是说使用带有短暂性密钥的椭圆曲线Diffie-Hellman密钥交换（也就是说要为每个会话创建新密钥并且事后也不会记下来）。“RSA”表明用RSA 非对称加密保护TLS握手的安全。 “AES_128_CBC” 是说在密码块链接模式中用带有128位密钥的AES 非对称加密保护真正的数据交换。最后的 “SHA” 表明用 SHA 安全哈希算法。<br>这可能是在Oracle的Java 7上用TLS 1.1所能用到的最好密码套件。如果用TLS 1.2 ，你可以升级成TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256，使用更强(也更安全)的 SHA2 摘要算法。理想情况下，用GCM（伽罗瓦​​/计数器模式）之类的模式代替CBC更好，但Oracle的 Java 7 JSSE (Java 安全套接字扩展)实现还不支持。<br>你可能还要考虑从 “ECDHE” 去掉“EC”。密码学大师布鲁斯·施奈尔现在推荐优先选用离散对数而不是椭圆曲线加密 (在这篇文章中还有很多非常棒的建议，教你如何保证自己以及你的数据交换的安全)。椭圆曲线技术更快，但可能会有政府组织故意引入的弱点。但大多数商业安全网站目前似乎只支持Diffie-Hellman的椭圆曲线版本，所以这个例子里就用它了。</p>
-</blockquote>
-<p>看了介绍,已经知道无解了..结束</p>
-<h2 id="qq-Client"><a href="#qq-Client" class="headerlink" title="qq Client"></a>qq Client</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>QQLite win10(虚拟机) mac地址: 00-0C-29-A7-AA-00 包采用的是UDP定向包(高级设置)</p>
-<blockquote>
-<p><a href="https://www.zhihu.com/question/20292749/answer/18294472" target="_blank" rel="external">知乎-向小刚</a><br>登陆采用TCP协议和HTTP协议，你和好友之间发送消息，主要采用UDP协议，内网传文件采用了P2P技术。总来的说：<br>1.登陆过程，客户端client 采用TCP协议向服务器server发送信息，HTTP协议下载信息。登陆之后，会有一个TCP连接来保持在线状态。<br>2.和好友发消息，客户端client采用UDP协议，但是需要通过服务器转发。腾讯为了确保传输消息的可靠，采用上层协议来保证可靠传输。如果消息发送失败，客户端会提示消息发送失败，并可重新发送。<br>3.如果是在内网里面的两个客户端传文件，QQ采用的是P2P技术，不需要服务器中转。</p>
-</blockquote>
-<p>0x00. oicq过滤,找到最早一条,之后用<code>ip.addr==183.232.127.253</code>直接过滤出两者交互状态</p>
-<p>0x01.<br><img src="/imgs/wireshark/qq_udp_1.png" alt="3"> QQ号 版本号 etc</p>
-<p>0x02.<br><img src="/imgs/wireshark/qq_udp_2.png" alt="4"> 防止帐号在同一台设备登陆?<br><img src="/imgs/wireshark/qq_udp_3.png" alt="5"> 这个前缀很多,而且cli和server端都有,算是保证无连接状态的稳定性?<br>上面的reference中提到是tcp传输数据,不过感觉好奇怪…前面有4个UDP协议的端口交换过程,从该图看到应该是搜集client设备信息,Data是一串数字+字母,看起来只是校验而已<br>,之后才是OICQ的传输</p>
-<p>0x03. OICQ分析<br><del>从图中看的话,有Data,len为38,</del>  <a href="#Reference">Reference</a>了解到Seq和Ack Number的关系,client发送了两个数据,并且有相同的头,返回也有固定格式,基于UDP这种无连接方式,参考知乎牛说的,直接可以无视UDP了,直接看TCP</p>
-<p>0x04. TCP分析-1<br><img src="/imgs/wireshark/qq_udp_4.png" alt="6"><br><del>图中的三次握手和四次挥手还是非常明显<code>http://dldir1.qq.com/qqfile/status/qqcam-logo.png</code>,看了半天发现登陆到退出,全过程只是接受了一张小图片,上客户端找半天也没找到..</del> 没用,扔了</p>
-<p>0x05. TCP分析-2<br><img src="/imgs/wireshark/qq_udp_5.png" alt="7"><br>抓到一个地址<code>183.232.127.254/cgi-bin.httpconn</code>,搜了一下是tx的后台(c++)<br>用POSTMan传了一个数据,返回200,len不对,和抓的包一致,网上查这个路径也说不上来,感觉就这个路径啦,完结= =</p>
-<h2 id="JD客户端抓包"><a href="#JD客户端抓包" class="headerlink" title="JD客户端抓包"></a>JD客户端抓包</h2><h3 id="环境-1"><a href="#环境-1" class="headerlink" title="环境"></a>环境</h3><p>Android6.0.1(ROOTed) tcpdump抓取 5.x及以上需要下载具有PIE的tcpdump</p>
-<h3 id="dcpdump安装"><a href="#dcpdump安装" class="headerlink" title="dcpdump安装"></a>dcpdump安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">adb push ./Downloads/tcpdump /sdcard</span><br><span class="line">adb shell</span><br><span class="line">su</span><br><span class="line">mv /sdcard/tcpdump /data/local/tcpdump &amp;&amp; cd /data/local</span><br><span class="line">chmod 6775 ./tcpdump</span><br><span class="line">./tcpdump -i any -p -s 0 -w /sdcard/phoneCapture.pcap</span><br><span class="line"># Ctrl+C 停止拦截</span><br><span class="line">adb pull /sdcard/phoneCapture.pcap</span><br></pre></td></tr></table></figure>
-<h3 id="登陆过程"><a href="#登陆过程" class="headerlink" title="登陆过程"></a>登陆过程</h3><p>由于保存过密码自动登陆,查看过个人页面,之后退出登陆,后重新输入密码进行登陆</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>0x00. 直接http进行过滤</p>
-<p>0x01.<br><img src="/imgs/wireshark/jd_1.png" alt="8"> 进入客户端的状态,评价,收获等界面</p>
-<p>0x02. <img src="/imgs/wireshark/jd_2_info.png" alt="9"> 进入客户端之后后端传过来的数据</p>
-<p>0x03.<br><img src="/imgs/wireshark/jd_login_3.png" alt="10"><br><img src="/imgs/wireshark/jd_login_4.png" alt="11">这些包中分析出来在<code>/stat/access</code>中将一段<code>Key[truncated]</code><br>传给服务器,尝试base64,然并卵= =,上图 <img src="/imgs/wireshark/jd_key_.png" alt="12"></p>
-<p>还有个<code>/login_report/</code>base64解出来是这么个东西<img src="/imgs/wireshark/jd-login_report.png" alt="13">,后面正常,前面这个感觉像个校验码.</p>
-<p>基本也能确定了,密码差不多就是那个form表单的key了,不过加密不知道的话也没什么卵用</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>资料:SSL<br>参考至<a href="">SSL与TLS</a>,Eric Rescorla著:<br>ssl流程(一般用于HTTPS):HTTP建立TCP连接之后,并在其中建立一条SSL隧道,之后在SSL隧道中发送同样的请求,服务器则以相同的方式用SSL进行相应<br>SSL握手流程:<a href="http://www.cnblogs.com/happyhippy/archive/2007/05/14/746476.html" target="_blank" rel="external">CSDN</a><br><a href="http://blog.chinaunix.net/uid-26833883-id-3627644.html" target="_blank" rel="external">TCP/UDP/IP协议分析_程姚根</a><br><a href="http://blog.csdn.net/hldjf/article/details/7450565" target="_blank" rel="external">TCP-PDU</a><br><a href="http://blog.csdn.net/chenglian_999/article/details/4672177" target="_blank" rel="external">Vim-16进制</a><br><a href="http://man.chinaunix.net/newsoft/ApacheManual/howto/cgi.html" target="_blank" rel="external">Apache2-CGI</a><br><a href="https://www.zhihu.com/question/21432096" target="_blank" rel="external">CGI-知乎</a><br><a href="http://www.trinea.cn/android/tcpdump_wireshark/" target="_blank" rel="external">Android抓包_Trinea</a><br><a href="http://blog.sina.com.cn/s/blog_89fa41ef0102w18c.html" target="_blank" rel="external">linux cooked capture</a><br><a href="http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html" target="_blank" rel="external">TCP状态</a><br><a href="https://jimshaver.net/2015/02/11/decrypting-tls-browser-traffic-with-wireshark-the-easy-way/" target="_blank" rel="external">听说能拆SSL?</a><br><a href="http://www.cnblogs.com/happyhippy/archive/2007/05/14/746476.html" target="_blank" rel="external">SSL握手</a><br><a href="http://blog.csdn.net/hursing/article/details/20543837" target="_blank" rel="external">wireshark-SSLv3</a><br><a href="http://bbs.51cto.com/thread-886816-1.html" target="_blank" rel="external">51CTO- 有关QQ登录服务器（UDP与TCP）</a><br><a href="http://www.cnblogs.com/Heart-J/p/4580849.html" target="_blank" rel="external">山鹰-qq</a></p>
+        <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Nexus5x Rooted Xposed</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>不需要PC 2. 不需要清数据 3. 可以顺便安装Xposed</li>
+</ol>
+<p><code>自己是先卸载了Xposed之后再升级的,没卸载的升级没有尝试过</code></p>
+<h3 id="正"><a href="#正" class="headerlink" title="正"></a>正</h3><p>这个我就不多讲了,需要的软件<code>Flashfire</code><br>更新软件包: <a href="https://developers.google.com/android/nexus/images" target="_blank" rel="external">Nexus_Factory_images</a><br>Xposed框架地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">Xposed</a></p>
+<p>直接上地址(墙):</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ED6N4DJTaU4" frameborder="0" allowfullscreen></iframe>
+
+<h2 id="结合PC的ota"><a href="#结合PC的ota" class="headerlink" title="结合PC的ota"></a>结合PC的ota</h2><p>这个自己没用过.需要的自己看一下,<code>不需要清数据</code><br><a href="https://m.reddit.com/r/nexus5x/comments/44duji/rooted_it_how_to_apply_the_ota_update/" target="_blank" rel="external">reddit</a></p>
 
         
         
@@ -740,7 +701,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/03/28/2016/net-wireshark-test/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/28/2016/net-wireshark-test/" data-count-type="comments">&nbsp;</a>
+		<a href="/03/30/2016/device-nexus-ota-update/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/30/2016/device-nexus-ota-update/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -770,7 +731,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CS-GO/" style="font-size: 10px;">CS:GO</a> <a href="/tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="/tags/CodeIgniter/" style="font-size: 13.33px;">CodeIgniter</a> <a href="/tags/Design-Pattern/" style="font-size: 11.11px;">Design Pattern</a> <a href="/tags/Device/" style="font-size: 14.44px;">Device</a> <a href="/tags/ES6/" style="font-size: 11.11px;">ES6</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/Experience/" style="font-size: 10px;">Experience</a> <a href="/tags/Front-End/" style="font-size: 13.33px;">Front-End</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/HTML/" style="font-size: 11.11px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IFTTT/" style="font-size: 10px;">IFTTT</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.22px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.89px;">Linux</a> <a href="/tags/Manual/" style="font-size: 15.56px;">Manual</a> <a href="/tags/Mobile/" style="font-size: 10px;">Mobile</a> <a href="/tags/MySQL/" style="font-size: 14.44px;">MySQL</a> <a href="/tags/NeedUpdate/" style="font-size: 11.11px;">NeedUpdate</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Prototype/" style="font-size: 11.11px;">Prototype</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 12.22px;">React</a> <a href="/tags/ReactNative/" style="font-size: 11.11px;">ReactNative</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQLInjection/" style="font-size: 11.11px;">SQLInjection</a> <a href="/tags/Semantic/" style="font-size: 10px;">Semantic</a> <a href="/tags/Shell/" style="font-size: 13.33px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.78px;">XSS</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/conference/" style="font-size: 11.11px;">conference</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 14.44px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 11.11px;">git</a> <a href="/tags/hard/" style="font-size: 12.22px;">hard</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/nexus5x/" style="font-size: 13.33px;">nexus5x</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/soft/" style="font-size: 12.22px;">soft</a> <a href="/tags/web/" style="font-size: 12.22px;">web</a> <a href="/tags/webdriver/" style="font-size: 10px;">webdriver</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/workflow/" style="font-size: 10px;">workflow</a> <a href="/tags/书记/" style="font-size: 15.56px;">书记</a> <a href="/tags/应试/" style="font-size: 13.33px;">应试</a> <a href="/tags/生活/" style="font-size: 11.11px;">生活</a> <a href="/tags/闲谈/" style="font-size: 14.44px;">闲谈</a>
+       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CS-GO/" style="font-size: 10px;">CS:GO</a> <a href="/tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="/tags/CodeIgniter/" style="font-size: 13.33px;">CodeIgniter</a> <a href="/tags/Design-Pattern/" style="font-size: 11.11px;">Design Pattern</a> <a href="/tags/Device/" style="font-size: 14.44px;">Device</a> <a href="/tags/ES6/" style="font-size: 12.22px;">ES6</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/Experience/" style="font-size: 10px;">Experience</a> <a href="/tags/Front-End/" style="font-size: 13.33px;">Front-End</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/HTML/" style="font-size: 11.11px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IFTTT/" style="font-size: 10px;">IFTTT</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12.22px;">Kali</a> <a href="/tags/Linux/" style="font-size: 18.89px;">Linux</a> <a href="/tags/Manual/" style="font-size: 15.56px;">Manual</a> <a href="/tags/Mobile/" style="font-size: 10px;">Mobile</a> <a href="/tags/MySQL/" style="font-size: 14.44px;">MySQL</a> <a href="/tags/NeedUpdate/" style="font-size: 11.11px;">NeedUpdate</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Prototype/" style="font-size: 11.11px;">Prototype</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 12.22px;">React</a> <a href="/tags/ReactNative/" style="font-size: 11.11px;">ReactNative</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQLInjection/" style="font-size: 11.11px;">SQLInjection</a> <a href="/tags/Semantic/" style="font-size: 10px;">Semantic</a> <a href="/tags/Shell/" style="font-size: 13.33px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.78px;">XSS</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/conference/" style="font-size: 11.11px;">conference</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 14.44px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 11.11px;">git</a> <a href="/tags/hard/" style="font-size: 12.22px;">hard</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/nexus5x/" style="font-size: 13.33px;">nexus5x</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/soft/" style="font-size: 12.22px;">soft</a> <a href="/tags/web/" style="font-size: 12.22px;">web</a> <a href="/tags/webdriver/" style="font-size: 10px;">webdriver</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/workflow/" style="font-size: 10px;">workflow</a> <a href="/tags/书记/" style="font-size: 15.56px;">书记</a> <a href="/tags/应试/" style="font-size: 13.33px;">应试</a> <a href="/tags/生活/" style="font-size: 11.11px;">生活</a> <a href="/tags/闲谈/" style="font-size: 14.44px;">闲谈</a>
     </div>
   </div>
 
@@ -778,7 +739,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 

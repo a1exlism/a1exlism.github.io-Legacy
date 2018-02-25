@@ -4,26 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>无题 | A1exlism</title>
+    <title>try ES6 Promise | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="a1exlism">
     
 
     
-    <meta name="description" content="也不知道说什么好, 过五七的时候居然老是想着妈妈如果不在了怎么办.这么久了,他们都变老了… 妈妈真的时时刻刻想着我, 我却因为在家闲没有效率不想回家. 也不知道自己在讲什么, 最近真的很难受, 通过跑步来缓解自己的压力,.一想到家里, 也不在意什么了, 总会过去的.
-2018了, 自己要更负责啊!">
+    <meta name="description" content="DefinedES6补充内容. 技术对接/转型ING. not support IE, 生产环境需要转换一下.
+Main()根据Refer, 以例子为主作为平时参考.
+Why Promise关于回调地狱(Callback Hell)直到前段时间写的一个项目我才有点意识到是怎么回事情: 一个稍微复杂的前端逻辑, 需要对一件事情在不同阶段/不同状态进行相关处理, 和画逻辑图一个概念, 传统的callb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无题">
-<meta property="og:url" content="http://csser.work/01/03/2018/say-4/index.html">
+<meta property="og:title" content="try ES6 Promise">
+<meta property="og:url" content="http://csser.work/02/25/2018/js-promise-baby/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="也不知道说什么好, 过五七的时候居然老是想着妈妈如果不在了怎么办.这么久了,他们都变老了… 妈妈真的时时刻刻想着我, 我却因为在家闲没有效率不想回家. 也不知道自己在讲什么, 最近真的很难受, 通过跑步来缓解自己的压力,.一想到家里, 也不在意什么了, 总会过去的.
-2018了, 自己要更负责啊!">
-<meta property="og:updated_time" content="2018-01-15T01:27:46.657Z">
+<meta property="og:description" content="DefinedES6补充内容. 技术对接/转型ING. not support IE, 生产环境需要转换一下.
+Main()根据Refer, 以例子为主作为平时参考.
+Why Promise关于回调地狱(Callback Hell)直到前段时间写的一个项目我才有点意识到是怎么回事情: 一个稍微复杂的前端逻辑, 需要对一件事情在不同阶段/不同状态进行相关处理, 和画逻辑图一个概念, 传统的callb">
+<meta property="og:updated_time" content="2018-02-25T11:01:12.158Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="无题">
-<meta name="twitter:description" content="也不知道说什么好, 过五七的时候居然老是想着妈妈如果不在了怎么办.这么久了,他们都变老了… 妈妈真的时时刻刻想着我, 我却因为在家闲没有效率不想回家. 也不知道自己在讲什么, 最近真的很难受, 通过跑步来缓解自己的压力,.一想到家里, 也不在意什么了, 总会过去的.
-2018了, 自己要更负责啊!">
+<meta name="twitter:title" content="try ES6 Promise">
+<meta name="twitter:description" content="DefinedES6补充内容. 技术对接/转型ING. not support IE, 生产环境需要转换一下.
+Main()根据Refer, 以例子为主作为平时参考.
+Why Promise关于回调地狱(Callback Hell)直到前段时间写的一个项目我才有点意识到是怎么回事情: 一个稍微复杂的前端逻辑, 需要对一件事情在不同阶段/不同状态进行相关处理, 和画逻辑图一个概念, 传统的callb">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -84,14 +87,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/01/03/2018/say-4/" title="无题" itemprop="url">无题</a>
+      <a href="/02/25/2018/js-promise-baby/" title="try ES6 Promise" itemprop="url">try ES6 Promise</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
-    <time datetime="2018-01-02T16:00:00.000Z" itemprop="datePublished"> 发表于 01-03-2018</time>
+    <time datetime="2018-02-24T16:00:00.000Z" itemprop="datePublished"> 发表于 02-25-2018</time>
     
   </p>
 </header>
@@ -100,19 +103,37 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Promise"><span class="toc-number">2.1.</span> <span class="toc-text">Why Promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Base"><span class="toc-number">2.2.</span> <span class="toc-text">Base</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XHR-mode"><span class="toc-number">2.3.</span> <span class="toc-text">XHR mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#then-链式传值"><span class="toc-number">2.4.</span> <span class="toc-text">then 链式传值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误样例"><span class="toc-number">2.5.</span> <span class="toc-text">错误样例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PS-Releasing-Zalgo"><span class="toc-number">2.6.</span> <span class="toc-text">PS: Releasing Zalgo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<p>也不知道说什么好, 过五七的时候居然老是想着妈妈如果不在了怎么办.这么久了,<br>他们都变老了… 妈妈真的时时刻刻想着我, 我却因为在家闲没有<br>效率不想回家. 也不知道自己在讲什么, 最近真的很难受, 通过跑步来缓解自己的压力,<br>.一想到家里, 也不在意什么了, 总会过去的.</p>
-<p>2018了, 自己要更负责啊!</p>
+		<h1 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h1><p>ES6补充内容. 技术对接/转型ING. not support IE, 生产环境需要转换一下.</p>
+<h1 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h1><p>根据Refer, 以例子为主作为平时参考.</p>
+<h2 id="Why-Promise"><a href="#Why-Promise" class="headerlink" title="Why Promise"></a>Why Promise</h2><p>关于回调地狱(Callback Hell)直到前段时间写的一个项目我才有点意识到是怎么回事情: 一个稍微复杂的前端逻辑, 需要对一件事情在不同阶段/不同状态进行相关处理, 和画逻辑图一个概念, 传统的callback会导致函数一直层级向下直到逻辑处理完毕(minimap显示起来像个<code>&gt;</code>). 而且Promise在开发的时候就更加<code>规范化</code>, 不像自定义的callback自由度很高(乱);每个promise拥有一个状态逻辑处理, 也就是更加<code>模块化</code>.</p>
+<h2 id="Base"><a href="#Base" class="headerlink" title="Base"></a>Base</h2><p>从传统的callback过度</p>
+<script src="https://embed.cacher.io/83526c815960fc14fca913c6597e4ba52d02ab43.js?a=01af118e3b89e0a1eb68d77539b06cc6&t=atom_one_dark"></script>
+
+<p>以onload事件为主的基础promise使用</p>
+<script src="https://embed.cacher.io/83556a800d61a813fbae13920f7c18f3285da110.js?a=76ebcf351874d1de7d88262e577abae5&t=atom_one_dark"></script>
+
+<h2 id="XHR-mode"><a href="#XHR-mode" class="headerlink" title="XHR mode"></a>XHR mode</h2><p>XHR + 链式调用(调用完返回新的promise对象)</p>
+<script src="https://embed.cacher.io/d05039875861af15fdad13c758291ba3230da815.js?a=64c1020be2eccd6a471216f8bd8e227d&t=atom_one_dark"></script>
+
+<h2 id="then-链式传值"><a href="#then-链式传值" class="headerlink" title="then 链式传值"></a>then 链式传值</h2><p>simple calculation with promise-chain<br>then 会<code>new</code>一个Promise对象, 并把return作为参数引入</p>
+<script src="https://embed.cacher.io/860338895967f845afa915c0097f19af2c02a915.js?a=dee50a1f542375096e5f0d05f715db14&t=atom_one_dark"></script>
+
+<h2 id="错误样例"><a href="#错误样例" class="headerlink" title="错误样例"></a>错误样例</h2><p>针对前面做的补充: 错误样例. 需要注意规范, 利用链式保证对象的准确性.</p>
+<script src="https://embed.cacher.io/d5543b840934ab43ffac1092027e4fa32a5daa43.js?a=64a8d1575a6a415d709b8d44e83a8109&t=atom_one_dark"></script>
+
+<h2 id="PS-Releasing-Zalgo"><a href="#PS-Releasing-Zalgo" class="headerlink" title="PS: Releasing Zalgo"></a>PS: Releasing Zalgo</h2><p>这个问题是关于传统callback的async和sync混用问题. 现在看到的大部分方式是以<code>异步方法</code>将同步代码转换为异步代码.<br>Example: 浏览器<code>setTimeout(callback, 0)</code> node<code>process.nextTick(callback)</code><br>而Promise的规范限制他只能使用<code>异步</code>调用, 所以相关混用问题就不容易出现了.</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="http://liubin.org/promises-book/#what-is-promise" target="_blank" rel="external">promise-mini | gitbook</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/01/03/2018/say-4/" data-title="无题 | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/02/25/2018/js-promise-baby/" data-title="try ES6 Promise | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -125,19 +146,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/01/11/2018/js-event-listener/" title="JS event listener">
-  <strong>上一篇：</strong><br/>
-  <span>
-  JS event listener</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/12/18/2017/scss-files-rule/"  title="SCSS files rules for me">
+<a href="/02/24/2018/js-dom-base/"  title="base DOM Dictionary">
  <strong>下一篇：</strong><br/> 
- <span>SCSS files rules for me
+ <span>base DOM Dictionary
 </span>
 </a>
 </div>
@@ -146,7 +159,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="01/03/2018/say-4/" data-title="无题" data-url="http://csser.work/01/03/2018/say-4/"></div>
+	<div class="ds-thread" data-thread-key="02/25/2018/js-promise-baby/" data-title="try ES6 Promise" data-url="http://csser.work/02/25/2018/js-promise-baby/"></div>
 </section>
 
 
@@ -156,7 +169,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Promise"><span class="toc-number">2.1.</span> <span class="toc-text">Why Promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Base"><span class="toc-number">2.2.</span> <span class="toc-text">Base</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XHR-mode"><span class="toc-number">2.3.</span> <span class="toc-text">XHR mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#then-链式传值"><span class="toc-number">2.4.</span> <span class="toc-text">then 链式传值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误样例"><span class="toc-number">2.5.</span> <span class="toc-text">错误样例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PS-Releasing-Zalgo"><span class="toc-number">2.6.</span> <span class="toc-text">PS: Releasing Zalgo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
