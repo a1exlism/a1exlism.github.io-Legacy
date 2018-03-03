@@ -4,6 +4,171 @@
   
     
     <entry>
+      <title><![CDATA[new front - webpack]]></title>
+      <url>http://csser.work/02/28/2018/new-front-webpack/</url>
+      <content type="html"><![CDATA[<h1 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h1><p>new front 自动工程化 step 2: webpack.<br>Env: Windows10 + webpack<code>4.x</code></p>
+<h1 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h1><h2 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h2><p>Quick build shortcuts:</p>
+<blockquote>
+<p>{ “build”: “webpack -p” }</p>
+</blockquote>
+<p>不过现在需要独立安装<code>webpack-cli</code>才能执行上述操作.<br>而且bundle文件会默认创建在<code>/dist</code>目录下</p>
+<h2 id="Base-Commands"><a href="#Base-Commands" class="headerlink" title="Base Commands"></a>Base Commands</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">option</th>
+<th style="text-align:left">decription</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">webpack -p</td>
+<td style="text-align:left">building for production (min file) - Production Mode</td>
+</tr>
+<tr>
+<td style="text-align:left">webpack -d</td>
+<td style="text-align:left">including source maps              - Debug Mode</td>
+</tr>
+<tr>
+<td style="text-align:left">webpack –watch</td>
+<td style="text-align:left">for continuous incremental building</td>
+</tr>
+<tr>
+<td style="text-align:left">webpack –colors</td>
+<td style="text-align:left">making building output pretty</td>
+</tr>
+</tbody>
+</table>
+<h2 id="with-multi-entries"><a href="#with-multi-entries" class="headerlink" title="with multi-entries"></a>with multi-entries</h2><script src="https://embed.cacher.io/d9076d865e60ae45fbf913920e7c49a02c0aa814.js?a=e9f91de64f69dbf3e0a94aa67bd5912c&t=atom_one_dark"></script>
+
+<h2 id="custom-distribute-folder-Advanced"><a href="#custom-distribute-folder-Advanced" class="headerlink" title="custom distribute folder | Advanced"></a>custom distribute folder | Advanced</h2><p>Realize with plugins;</p>
+<script src="https://embed.cacher.io/82563f890d30ac14fcf915925c7c4ea32e0caa41.js?a=2f2488ea09b999f5e1272bc2a0ba4cec&t=atom_one_dark"></script>
+
+<p>in this case, more info with <a href="https://github.com/imsobear/blog/issues/48" target="_blank" rel="external">path in NodeJS</a>;<br>and the path.resolve is just like <code>arr1.concat(arr2, arr3)</code></p>
+<h2 id="with-Bable-loader-Backward-Compatibility"><a href="#with-Bable-loader-Backward-Compatibility" class="headerlink" title="with Bable-loader | Backward Compatibility"></a>with Bable-loader | Backward Compatibility</h2><p>Module.use and <code>Bable-loader</code></p>
+<script src="https://embed.cacher.io/d6546d890e31fb46aeff1dc00f2a4ef5280caf49.js?a=771d613c7fff3edee02a10b1b3f0a35f&t=atom_one_dark"></script>
+
+<h2 id="CSS-integration-Normal"><a href="#CSS-integration-Normal" class="headerlink" title="CSS integration | Normal"></a>CSS integration | Normal</h2><p>CSS file compile into bundle.js, which means style act as like a js <code>Object</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">/* codes ... */</span></span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules:[</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [ <span class="string">'style-loader'</span>, <span class="string">'css-loader'</span> ]</span><br><span class="line">      &#125;,</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/34039826/webpack-style-loader-vs-css-loader" target="_blank" rel="external">Webpack style-loader vs css-loader </a><br>css-loader: do as url-loader like, just <code>load the css</code><br>style-loader: adds CSS to the DOM by injecting a <code>&lt;style&gt;</code> tag</p>
+</blockquote>
+<h2 id="CSS-integration-Advanced"><a href="#CSS-integration-Advanced" class="headerlink" title="CSS integration | Advanced"></a>CSS integration | Advanced</h2><p>React - css module - SASS<br>实际运用参考: <a href="https://github.com/zhengweikeng/blog/issues/9" target="_blank" rel="external">Github-CN</a><br>以前看到的BEM style真的被用了上去… 有点痛<a href="https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/" target="_blank" rel="external">MindBEMding</a>, 不过这也有一个非常大的优点: performance, 相当于每个style都是唯一, 所以不需要2+级的selector<br>利用js控制CSS, 也就是所谓的<code>css in js</code> <a href="https://x-team.com/blog/css-modules-a-new-way-to-css/" target="_blank" rel="external">基础应用 | withou twebapck</a><br>CSS Module; 通过名字就能知道核心: module, <a href="https://github.com/camsong/blog/issues/5" target="_blank" rel="external">CSS Module详解 - CN</a><br>淘的一个demo 实战参考: <a href="https://github.com/css-modules/webpack-demo" target="_blank" rel="external">webpack-demo</a></p>
+<p>PS: 这一节内容很多, 有点消化不良.</p>
+<h2 id="Image-Loader-Normal"><a href="#Image-Loader-Normal" class="headerlink" title="Image Loader | Normal"></a>Image Loader | Normal</h2><p>Base64 limit: only for small/tiny image<br>just like <code>bable-loader</code>, API page: <a href="https://www.npmjs.com/package/url-loader" target="_blank" rel="external">url-loader | npm</a></p>
+<p>Main.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> img = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);</span><br><span class="line">img.src = <span class="built_in">require</span>(<span class="string">'./img.png'</span>);</span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'.container'</span>).appendChild(img);</span><br></pre></td></tr></table></figure></p>
+<p>The webpack.config.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">/* codes... */</span></span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: &#123;</span><br><span class="line">      test: <span class="regexp">/\.(gif|png|jpg)$/</span>,</span><br><span class="line">      use: &#123;</span><br><span class="line">        loader: <span class="string">'url-loader'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          limit: <span class="number">8192</span>,        <span class="comment">//  8Mb</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>SVG support: <a href="https://www.npmjs.com/package/raw-loader" target="_blank" rel="external">raw-loader</a></li>
+</ul>
+<h2 id="Plugin-Mode"><a href="#Plugin-Mode" class="headerlink" title="Plugin Mode"></a>Plugin Mode</h2><p>take <code>UglifyJs</code> as an example.</p>
+<script src="https://embed.cacher.io/84043dd20563fe12ffa3169b5c2b1ea07803f849.js?a=bb694f548b82b88baeb1476a4c418829&t=atom_one_dark"></script>
+
+<h3 id="Normal-plugin-list"><a href="#Normal-plugin-list" class="headerlink" title="Normal plugin list"></a>Normal plugin list</h3><ul>
+<li>UglifyJs    convert x.js into x<code>.min</code>.js</li>
+<li><code>html-webpack-plugin</code> create <code>index.html</code>; <code>open-browser-webpack-plugin</code> open default browser tab when webpack loads.</li>
+<li>user-defined plugin like env</li>
+</ul>
+<h3 id="Enviornment-flags"><a href="#Enviornment-flags" class="headerlink" title="Enviornment flags"></a>Enviornment flags</h3><p>with user-defined object as plugin</p>
+<p><script src="https://embed.cacher.io/d35369865d34fb43aefc14920e7848a52c08ac45.js?a=6fcfe7624159c556eb51f154b2ce712a&t=atom_one_dark"></script></p>
+<blockquote>
+<p>webpack4.0 new option<br>The ‘mode’ option has not been set. Set ‘mode’ option to ‘development’ or ‘production’ to enable defaults for this<br> environment.</p>
+</blockquote>
+<p>flag: <code>--mode development / production</code> in scripts</p>
+<h2 id="code-split"><a href="#code-split" class="headerlink" title="code split"></a>code split</h2><p><a href="https://webpack.js.org/guides/code-splitting/#src/components/Sidebar/Sidebar.jsx" target="_blank" rel="external">doc</a></p>
+<h2 id="Chunks"><a href="#Chunks" class="headerlink" title="Chunks"></a>Chunks</h2><ul>
+<li>Common Chunk</li>
+<li>Vendor Chunk</li>
+</ul>
+<h2 id="Exclude-js-file"><a href="#Exclude-js-file" class="headerlink" title="Exclude js file"></a>Exclude js file</h2><p>Not being converted into bundle.js<br><em>webpack.config.js</em><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">  <span class="comment">//  require('data') is external and available</span></span><br><span class="line">  <span class="comment">//  on the global var data</span></span><br><span class="line">  <span class="string">'data'</span>: <span class="string">'data'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>finished by 03-03.</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://github.com/ruanyf/webpack-demos" target="_blank" rel="external">webpack-demos V3.1 | ruanyifeng</a><br><a href="https://webpack.js.org/guides/" target="_blank" rel="external">webpack | official web site</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[new front - NPM]]></title>
+      <url>http://csser.work/02/27/2018/new-front-npm/</url>
+      <content type="html"><![CDATA[<h1 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h1><p>为转型成现代化前端开始的一条路. 以Manual形式为以后自己作参考</p>
+<h1 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h1><h2 id="config"><a href="#config" class="headerlink" title="config"></a>config</h2><p>展示所有配置 list可缩写为ls</p>
+<blockquote>
+<p>npm config list -l</p>
+</blockquote>
+<p>获取具体配置 类似于js取属性</p>
+<blockquote>
+<p>npm config <code>get</code> prefix</p>
+</blockquote>
+<p>列出所有module local/global 目录深度 <code>--depth</code>=x</p>
+<blockquote>
+<p>npm list –global –depth=1</p>
+</blockquote>
+<h2 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h2><p>未注明这个tag写的都是json一级对象的内容.</p>
+<p>本地建立 <code>--y</code>为一律yes</p>
+<blockquote>
+<p>npm init</p>
+</blockquote>
+<p>这里涉及到相关license,简图 <a href="http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html" target="_blank" rel="external">link</a></p>
+<h2 id="modules"><a href="#modules" class="headerlink" title="modules"></a>modules</h2><p>json path:</p>
+<blockquote>
+<p>{ dependencies: &amp;&amp; { devDependencies:</p>
+</blockquote>
+<p>在work folder下安装各种pack时会自动创建<code>dependencies</code>或者<code>devDependencies</code>对象用于各种平台适配, 保留了各种version.<br>dev类似于debug模式, 生产模式禁用.</p>
+<p>安装</p>
+<blockquote>
+<p>npm install –save[-dev] xxx</p>
+</blockquote>
+<p>卸载</p>
+<blockquote>
+<p>npm uninstall xxx</p>
+</blockquote>
+<p>检查更新 - wanted表示compatible版本(不需要改动原有代码保证兼容性)</p>
+<blockquote>
+<p>npm outdated</p>
+</blockquote>
+<p><a href="https://docs.npmjs.com/cli/update" target="_blank" rel="external">更新</a> <a href="https://stackoverflow.com/questions/22343224/whats-the-difference-between-tilde-and-caret-in-package-json" target="_blank" rel="external">link2</a></p>
+<blockquote>
+<p>npm update [<code>--save/-S</code>]</p>
+</blockquote>
+<p>关于更新有必要提到更多: 涉及到兼容性问题: 即如果不确定pack的稳定性优先使用<code>~</code></p>
+<ul>
+<li>~1.1.1  Tilde Dependence  Range:  1.1.<code>1</code> &lt;= Version &lt; 1.<code>2</code>.0</li>
+<li>^1.1.1  Caret Dependence  Range:  1.1.1   &lt;= Version &lt; <code>2</code>.0.0  </li>
+<li>–save  和<code>~</code>可以一起理解为, 如果minor(1.2.x) 版本测试通过, 可以通过该符号表示最低兼容版本升级.</li>
+</ul>
+<p>搜索</p>
+<blockquote>
+<p>npm search xxx</p>
+</blockquote>
+<h2 id="scripts"><a href="#scripts" class="headerlink" title="{ scripts:"></a>{ scripts:</h2><p>优点: 定制化 有点像linux里面的<code>alias</code><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scripts: &#123;</span><br><span class="line">  "start": "http-server",</span><br><span class="line">  "test": "node test.js"</span><br><span class="line">  "dev": "node dev.js"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<p>执行script (start可以省略run)</p>
+<blockquote>
+<p>npm run dev</p>
+</blockquote>
+<h2 id="version"><a href="#version" class="headerlink" title="{ version:"></a>{ version:</h2><p><a href="https://www.sitepoint.com/semantic-versioning-why-you-should-using/" target="_blank" rel="external">Semantic Versioning</a> 个人项目精简一下:<br>version <code>x.y.z</code><br>初始版本应该是<code>0.1.0</code> 因为刚开发出来都是没有bug(暂时没发现)的版本. pre-release就不写了</p>
+<ul>
+<li>z 基本bug修复</li>
+<li>y <code>向下兼容</code>的新功能添加</li>
+<li>x 大版本更新, 例如大规模API更新/替换等会破坏原有代码结构.</li>
+</ul>
+<h2 id="package-lock-json"><a href="#package-lock-json" class="headerlink" title="package-lock.json"></a>package-lock.json</h2><p>npm5.x.x版本的产物, 搜索的时候看来是模仿的yarn lock file.作用如下</p>
+<blockquote>
+<p><a href="https://medium.com/@Quigley_Ja/everything-you-wanted-to-know-about-package-lock-json-b81911aa8ab8" target="_blank" rel="external">Everything You Wanted To Know About package-lock.json But Were Too Afraid To Ask</a><br><strong>The Goal</strong><br>The purpose of the package-lock is to avoid the situation described above, where installing modules from the same package.json results in two different installs. Package-lock.json was added in npm version 5.x.x, so if you are using major version 5 or higher, you will see it generated unless you disabled it.</p>
+</blockquote>
+<p>这个json的出现是为了保证在任何开发环境下<code>node_modules永远一致</code>, 不会因为像package.json一样每次安装会出现不同的包而开发出来的文件.</p>
+<p>如下文所说:</p>
+<blockquote>
+<p>Because the package-lock specifies a version, location and integrity hash for every module and each of its dependencies, the install it creates will be the same, every single time. It won’t matter what device you are on, or when in the future you install, it should give you the same result every time, which is very useful.</p>
+</blockquote>
+<p>还有一个比较重要的点, 平滑过渡所需要做的:</p>
+<blockquote>
+<p>No more deleting that package-lock just to run <code>npm install</code> and regenerate it</p>
+</blockquote>
+<ul>
+<li>以上也不算特别完整, 具体可挪步<a href="https://www.zhihu.com/question/62331583/answers/created" target="_blank" rel="external">npm install 生成的package-lock.json是什么文件？有什么用？ | zhihu</a></li>
+</ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="http://www.zcfy.cc/article/a-beginner-039-s-guide-to-npm-the-node-package-manager-mdash-sitepoint-3244.html" target="_blank" rel="external">npm 入门教程 | 众成翻译</a><br><a href="https://medium.com/@Quigley_Ja/everything-you-wanted-to-know-about-package-lock-json-b81911aa8ab8" target="_blank" rel="external">Everything You Wanted To Know About package-lock.json But Were Too Afraid To Ask || Medium</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[try ES6 Promise]]></title>
       <url>http://csser.work/02/25/2018/js-promise-baby/</url>
       <content type="html"><![CDATA[<h1 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h1><p>ES6补充内容. 技术对接/转型ING. not support IE, 生产环境需要转换一下.</p>
@@ -336,28 +501,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[前端基础补充 - HTML]]></title>
-      <url>http://csser.work/01/25/2018/front-note-html/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>由HTMLDog总结得来.</p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><ol>
-<li><code>&lt;!DOCTYPE html&gt;</code> document type declaration</li>
-<li><code>&lt;Meta&gt;</code> Meta tags <code>don’t do anything</code> to the content that is presented in the browser window, but they are used by the likes of <code>search engines</code> to catalogue information about the web page.<br><code>Names</code>: The most commonly used names are author, description, and keywords. <code>Description</code> is often used by search engines (such as Google) to display a description of a web page in its search results. <code>Keywords</code> <code>used</code> be important for SEO.<br><code>HTTP Equivalents</code>:</li>
-<li>Conditional Comments:<code>&lt;!--[if IE]&gt;</code>and<code>&lt;![endif]--&gt;</code>more in <a href="https://msdn.microsoft.com/en-gb/library/ms537512%28v=vs.85%29.aspx" target="_blank" rel="external">MS</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/tabindex" target="_blank" rel="external">tabindex</a> for navigation with <code>input</code> and others<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/accessKey" target="_blank" rel="external"><a accesskey="s">Page</a></a> used focus with certain keys</li>
-<li><p>Labels have the added bonus of visual browsers rendering the labels themselves <code>clickable</code>, putting the focus on the associated form field. Both name and id attributs are typically <code>required</code>; the name for the form to handle that field and the <code>id for the label</code> to associate it to. 这也解释了自定义一些自定义CSS的标签</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"yourName"</span>&gt;</span>Your Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"yourName"</span> <span class="attr">id</span>=<span class="string">"yourName"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>fieldset and legend: 这个都没见过, 挺好看的 <a href="http://htmlreference.io/element/fieldset/" target="_blank" rel="external">Link</a></p>
-</li>
-<li>select&gt;optgroup&gt;option 用的不多, optgroup用于分组</li>
-<li><code>input[type=&quot;range&quot;]</code>经常见到过相关变形, 现在算是明白了.拖动栏</li>
-<li><strong>H5 特性标签 <a href="http://htmlreference.io/element/datalist/" target="_blank" rel="external">datalist</a> 看了一下可以做索引, 这个可以用用看!</strong></li>
-</ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leohxj.gitbooks.io/front-end-database/html-and-css-basic/common-tag.html" target="_blank" rel="external">前端工程师手册-gitbooks</a><br><a href="www.htmldog.com">HTMLdog</a><br><a href="http://justineo.github.io/slideshows/semantic-html" target="_blank" rel="external">Sementic-html-顾轶灵</a><br><a href="http://htmlreference.io/element/datalist/" target="_blank" rel="external">HTMLRefence</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[HTML语义化标签设计参考]]></title>
       <url>http://csser.work/01/25/2018/front-note-semantic-html/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>为了让html更好的被解释.</p>
@@ -411,6 +554,28 @@
     </entry>
     
     <entry>
+      <title><![CDATA[前端基础补充 - HTML]]></title>
+      <url>http://csser.work/01/25/2018/front-note-html/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>由HTMLDog总结得来.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><ol>
+<li><code>&lt;!DOCTYPE html&gt;</code> document type declaration</li>
+<li><code>&lt;Meta&gt;</code> Meta tags <code>don’t do anything</code> to the content that is presented in the browser window, but they are used by the likes of <code>search engines</code> to catalogue information about the web page.<br><code>Names</code>: The most commonly used names are author, description, and keywords. <code>Description</code> is often used by search engines (such as Google) to display a description of a web page in its search results. <code>Keywords</code> <code>used</code> be important for SEO.<br><code>HTTP Equivalents</code>:</li>
+<li>Conditional Comments:<code>&lt;!--[if IE]&gt;</code>and<code>&lt;![endif]--&gt;</code>more in <a href="https://msdn.microsoft.com/en-gb/library/ms537512%28v=vs.85%29.aspx" target="_blank" rel="external">MS</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/tabindex" target="_blank" rel="external">tabindex</a> for navigation with <code>input</code> and others<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/accessKey" target="_blank" rel="external"><a accesskey="s">Page</a></a> used focus with certain keys</li>
+<li><p>Labels have the added bonus of visual browsers rendering the labels themselves <code>clickable</code>, putting the focus on the associated form field. Both name and id attributs are typically <code>required</code>; the name for the form to handle that field and the <code>id for the label</code> to associate it to. 这也解释了自定义一些自定义CSS的标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"yourName"</span>&gt;</span>Your Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"yourName"</span> <span class="attr">id</span>=<span class="string">"yourName"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fieldset and legend: 这个都没见过, 挺好看的 <a href="http://htmlreference.io/element/fieldset/" target="_blank" rel="external">Link</a></p>
+</li>
+<li>select&gt;optgroup&gt;option 用的不多, optgroup用于分组</li>
+<li><code>input[type=&quot;range&quot;]</code>经常见到过相关变形, 现在算是明白了.拖动栏</li>
+<li><strong>H5 特性标签 <a href="http://htmlreference.io/element/datalist/" target="_blank" rel="external">datalist</a> 看了一下可以做索引, 这个可以用用看!</strong></li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leohxj.gitbooks.io/front-end-database/html-and-css-basic/common-tag.html" target="_blank" rel="external">前端工程师手册-gitbooks</a><br><a href="www.htmldog.com">HTMLdog</a><br><a href="http://justineo.github.io/slideshows/semantic-html" target="_blank" rel="external">Sementic-html-顾轶灵</a><br><a href="http://htmlreference.io/element/datalist/" target="_blank" rel="external">HTMLRefence</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Blurry Font in Scroll and Transform in Mobi Viewpoint]]></title>
       <url>http://csser.work/01/18/2018/CSS-blur-in-Scroll-and-Transform-in-Mobi-viewpoint/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>问题描述: 作为<code>移动端页面</code>, 一个<code>宽度高度确定</code>的ul块级元素下包含多个li块级元素(宽度高度<code>确定</code>),<br>li为了水平居中使用了(transform:translateX), ul中设置了overview:scroll.</p>
@@ -437,20 +602,20 @@
     </entry>
     
     <entry>
-      <title><![CDATA[fileupload with ajax]]></title>
-      <url>http://csser.work/01/15/2018/ajax-file-upload/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>需要写个图片上传的功能, ajax实现</p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>代码如下: 存于gist<br>      <script src="https://embed.cacher.io/81563a860d67ad14aefe1497022e18f6235dac14.js?a=a358f67d63a372df3d3d0ab2229fe7cc&t=atom_one_dark"></script></p>
-<h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p><a href="stackoverflow.com/questions/2320069/jquery-ajax-file-upload">jquery-file-upload | stackoverflow</a><br><a href="developer.mozilla.org/en-US/docs/Web/API/FormData/append">FormData-append | MDN</a><br><a href="developer.mozilla.org/en-US/docs/Web/API/File">File | MDN</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[前端雅黑字体坑]]></title>
       <url>http://csser.work/01/15/2018/web-font-yahei/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>原来蛮好的布局, 设置了font-family为雅黑之后就直接变形了.</p>
 <h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>查了些资料, 确定问题: 行高字体偏高.<br>于是全局设置: <code>line-height: 1em;</code><br>问题勉强解决, 等update, 没有就算解决了</p>
 <h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p><a href="https://zhuanlan.zhihu.com/p/22458207" target="_blank" rel="external">【反馈】把你对微软雅黑的不满统统告诉我<br>-ZhiHu</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[fileupload with ajax]]></title>
+      <url>http://csser.work/01/15/2018/ajax-file-upload/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>需要写个图片上传的功能, ajax实现</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>代码如下: 存于gist<br>      <script src="https://embed.cacher.io/81563a860d67ad14aefe1497022e18f6235dac14.js?a=a358f67d63a372df3d3d0ab2229fe7cc&t=atom_one_dark"></script></p>
+<h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p><a href="stackoverflow.com/questions/2320069/jquery-ajax-file-upload">jquery-file-upload | stackoverflow</a><br><a href="developer.mozilla.org/en-US/docs/Web/API/FormData/append">FormData-append | MDN</a><br><a href="developer.mozilla.org/en-US/docs/Web/API/File">File | MDN</a></p>
 ]]></content>
     </entry>
     
@@ -1445,33 +1610,10 @@
     </entry>
     
     <entry>
-      <title><![CDATA[JSON使用注意]]></title>
-      <url>http://csser.work/08/07/2016/js-json-parse/</url>
-      <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
-<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
-<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
-<p>Update in 08/11/2016</p>
-<blockquote>
-<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
-</blockquote>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
-<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
-</blockquote>
-<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
-<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
-<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
-</blockquote>
-<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
-<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
-</blockquote>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
-]]></content>
+      <title><![CDATA[无题]]></title>
+      <url>http://csser.work/08/07/2016/say-2/</url>
+      <content type="html"><![CDATA[<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
+<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>]]></content>
     </entry>
     
     <entry>
@@ -1542,10 +1684,33 @@
     </entry>
     
     <entry>
-      <title><![CDATA[无题]]></title>
-      <url>http://csser.work/08/07/2016/say-2/</url>
-      <content type="html"><![CDATA[<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
-<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>]]></content>
+      <title><![CDATA[JSON使用注意]]></title>
+      <url>http://csser.work/08/07/2016/js-json-parse/</url>
+      <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
+<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
+<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
+<p>Update in 08/11/2016</p>
+<blockquote>
+<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
+<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
+</blockquote>
+<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
+<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
+<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
+</blockquote>
+<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
+<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
+]]></content>
     </entry>
     
     <entry>
@@ -1914,6 +2079,28 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Shell 2>&1 Meaning]]></title>
+      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
+      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
+<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
+<blockquote>
+<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
+</blockquote>
+<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
+<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
+<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
+<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
+</blockquote>
+<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
+<blockquote>
+<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
+</blockquote>
+<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux佳软推荐_Cheat]]></title>
       <url>http://csser.work/05/08/2016/linux-soft-cheat/</url>
       <content type="html"><![CDATA[<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://linux.cn/article-3760-1.html" target="_blank" rel="external">Cheat—— 给Linux初学者和管理员一个终极命令行”备忘单”</a></p>
@@ -1933,28 +2120,6 @@
 <blockquote>
 <p>cheat -e -xyz</p>
 </blockquote>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Shell 2>&1 Meaning]]></title>
-      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
-      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
-<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
-<blockquote>
-<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
-</blockquote>
-<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
-<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
-<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
-<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
-</blockquote>
-<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
-<blockquote>
-<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
-</blockquote>
-<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
 ]]></content>
     </entry>
     
@@ -2067,22 +2232,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[js_arrow function]]></title>
-      <url>http://csser.work/04/12/2016/js-arrow-func/</url>
-      <content type="html"><![CDATA[<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>
-<p>在学习nodejs中看到这么一段代码,想了一下<code>=&gt;</code>就代表了一个<code>匿名函数</code>啊,多简洁!<br>代码示例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http.get(<span class="string">'http://www.google.com/index.html'</span>, (res) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got response: <span class="subst">$&#123;res.statusCode&#125;</span>`</span>);</span><br><span class="line">  <span class="comment">// consume response body</span></span><br><span class="line">  res.resume();</span><br><span class="line">&#125;).on(<span class="string">'error'</span>, (e) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got error: <span class="subst">$&#123;e.message&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h3 id="05-18-2016更新"><a href="#05-18-2016更新" class="headerlink" title="05/18/2016更新"></a>05/18/2016更新</h3><p>There are some different in <code>this</code> key word.</p>
-<ol>
-<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints:</span></span><br><span class="line">    <span class="comment">//   a b MyEmitter &#123;</span></span><br><span class="line">    <span class="comment">//     domain: null,</span></span><br><span class="line">    <span class="comment">//     _events: &#123; event: [Function] &#125;,</span></span><br><span class="line">    <span class="comment">//     _eventsCount: 1,</span></span><br><span class="line">    <span class="comment">//     _maxListeners: undefined &#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, (a, b) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints: a b &#123;&#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
-<p>in Instance2 this-&gt;<code>{}</code></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[ES6-JS的块级作用域]]></title>
       <url>http://csser.work/04/12/2016/js-let/</url>
       <content type="html"><![CDATA[<h3 id="ES6-js也能和其他语言一样使用块级作用域了"><a href="#ES6-js也能和其他语言一样使用块级作用域了" class="headerlink" title="ES6_js也能和其他语言一样使用块级作用域了~"></a>ES6_js也能和其他语言一样使用块级作用域了~</h3><p>块级作用域: 一对花括号<code>{}</code>括起来的代码域<br>一下子感觉js高级好多,块级作用域和执行域都在了~</p>
@@ -2099,6 +2248,22 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; num; i++)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">//0 1 2 3 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//  Error: i is not defined</span></span><br></pre></td></tr></table></figure>
 <p>应该很清楚了</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js_arrow function]]></title>
+      <url>http://csser.work/04/12/2016/js-arrow-func/</url>
+      <content type="html"><![CDATA[<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>函数式编程~<br>简写的函数表达式</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [</span><br><span class="line">  <span class="string">'ab'</span>,</span><br><span class="line">  <span class="string">'cde'</span>,</span><br><span class="line">  <span class="string">'fghi'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a1.map(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.length;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a1.map( arr =&gt; arr.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2+<span class="string">'\n'</span>+a3);</span><br><span class="line"><span class="comment">//  2,3,4 \n 2,3,4</span></span><br></pre></td></tr></table></figure>
+<p>在学习nodejs中看到这么一段代码,想了一下<code>=&gt;</code>就代表了一个<code>匿名函数</code>啊,多简洁!<br>代码示例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http.get(<span class="string">'http://www.google.com/index.html'</span>, (res) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got response: <span class="subst">$&#123;res.statusCode&#125;</span>`</span>);</span><br><span class="line">  <span class="comment">// consume response body</span></span><br><span class="line">  res.resume();</span><br><span class="line">&#125;).on(<span class="string">'error'</span>, (e) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Got error: <span class="subst">$&#123;e.message&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="05-18-2016更新"><a href="#05-18-2016更新" class="headerlink" title="05/18/2016更新"></a>05/18/2016更新</h3><p>There are some different in <code>this</code> key word.</p>
+<ol>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints:</span></span><br><span class="line">    <span class="comment">//   a b MyEmitter &#123;</span></span><br><span class="line">    <span class="comment">//     domain: null,</span></span><br><span class="line">    <span class="comment">//     _events: &#123; event: [Function] &#125;,</span></span><br><span class="line">    <span class="comment">//     _eventsCount: 1,</span></span><br><span class="line">    <span class="comment">//     _maxListeners: undefined &#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'event'</span>, (a, b) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// Prints: a b &#123;&#125;</span></span><br><span class="line">&#125;);</span><br><span class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
+<p>in Instance2 this-&gt;<code>{}</code></p>
 ]]></content>
     </entry>
     
@@ -2859,6 +3024,19 @@
     </entry>
     
     <entry>
+      <title><![CDATA[手表指南方法]]></title>
+      <url>http://csser.work/01/31/2016/life-%E6%8C%87%E5%8D%97/</url>
+      <content type="html"><![CDATA[<p>看小学生杀手的时候发现几个指南方法，记一下</p>
+<h2 id="借助太阳指向"><a href="#借助太阳指向" class="headerlink" title="借助太阳指向"></a>借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
+<p>###原理<br>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
+<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
+<h2 id="立杆测影-指东针"><a href="#立杆测影-指东针" class="headerlink" title="立杆测影-指东针"></a>立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
+<h3 id="日晷原理"><a href="#日晷原理" class="headerlink" title="日晷原理"></a>日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[linux日常更新-01]]></title>
       <url>http://csser.work/01/31/2016/daily-linux-1/</url>
       <content type="html"><![CDATA[<p>#环境:debian8<br>最后更新日期:2016-01-31</p>
@@ -2973,19 +3151,6 @@ tar -czvf -g zeng aa.tar.gz.1 /var
 </ol>
 <p>好像有点小BUG:<br>如果开机过程没有插网线,会一直搜索大概1分钟<br>Reference:<br><a href="http://tieba.baidu.com/p/3247330238" target="_blank" rel="external">贴吧</a></p>
 <h3 id="gnome"><a href="#gnome" class="headerlink" title="gnome"></a>gnome</h3><p>打开了一张奇怪的图片,然后就崩了,直接被注销<br>搞了半天也看了gnome的错误日志,然后找到论坛<a href="http://forum.ubuntu.org.cn/viewtopic.php?f=94&amp;t=378902" target="_blank" rel="external">ubuntu12.04安装gnome shell主题，给新手们</a><br>最后发现这个网站<a href="https://extensions.gnome.org/" target="_blank" rel="external">extensions.gnome</a><br><code>firefox</code>打开     然后选择一下插件,不用管warning…<br>备用:<br><a href="http://itsfoss.com/install-switch-themes-gnome-shell/" target="_blank" rel="external">How To Install And Switch Themes In GNOME Shell In Ubuntu</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[手表指南方法]]></title>
-      <url>http://csser.work/01/31/2016/life-%E6%8C%87%E5%8D%97/</url>
-      <content type="html"><![CDATA[<p>看小学生杀手的时候发现几个指南方法，记一下</p>
-<h2 id="借助太阳指向"><a href="#借助太阳指向" class="headerlink" title="借助太阳指向"></a>借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
-<p>###原理<br>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
-<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
-<h2 id="立杆测影-指东针"><a href="#立杆测影-指东针" class="headerlink" title="立杆测影-指东针"></a>立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
-<h3 id="日晷原理"><a href="#日晷原理" class="headerlink" title="日晷原理"></a>日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
 ]]></content>
     </entry>
     
@@ -3323,6 +3488,15 @@ noauto          开机不自动挂载
     </entry>
     
     <entry>
+      <title><![CDATA[又是一年]]></title>
+      <url>http://csser.work/10/08/2015/say-1/</url>
+      <content type="html"><![CDATA[<h3 id="小感慨"><a href="#小感慨" class="headerlink" title="小感慨"></a>小感慨</h3><h4 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
+<h4 id="决心"><a href="#决心" class="headerlink" title="决心"></a>决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
+<h3 id="小目标"><a href="#小目标" class="headerlink" title="小目标"></a>小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Js学习笔记(5)]]></title>
       <url>http://csser.work/10/08/2015/js-client-5/</url>
       <content type="html"><![CDATA[<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><h3 id="Js的css选择器"><a href="#Js的css选择器" class="headerlink" title="Js的css选择器"></a>Js的css选择器</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> document.querySelector(selectors);  //和css选择完全一样</span><br><span class="line"> document.querySelectorAll();   //返回Nodelist</span><br><span class="line"> console.log(document.querySelector('[</span><br><span class="line"> "]'));//栗子</span><br><span class="line">&lt;!-- 要加东西!!!! --&gt;</span><br></pre></td></tr></table></figure>
@@ -3336,15 +3510,6 @@ noauto          开机不自动挂载
 <h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> insertAt = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">parent, child, n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span> || n &gt;parent.childNodes.length)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Invalid index!"</span>);  <span class="comment">//对n的位置进行报错处理</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == parent.childNodes.length)</span><br><span class="line">        parent.appendChild(child);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        parent.insertBefore(child, parent.childNodes[n]);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="删除和替换"><a href="#删除和替换" class="headerlink" title="删除和替换"></a>删除和替换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除</span></span><br><span class="line">n.parentNode.removeChild( n );  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//替换n节点</span></span><br><span class="line">n.parentNode.replaceChild( <span class="built_in">document</span>.creatTextNode(<span class="string">"[ Redacted ]"</span>),n);  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[又是一年]]></title>
-      <url>http://csser.work/10/08/2015/say-1/</url>
-      <content type="html"><![CDATA[<h3 id="小感慨"><a href="#小感慨" class="headerlink" title="小感慨"></a>小感慨</h3><h4 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
-<h4 id="决心"><a href="#决心" class="headerlink" title="决心"></a>决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
-<h3 id="小目标"><a href="#小目标" class="headerlink" title="小目标"></a>小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
 ]]></content>
     </entry>
     
@@ -3371,6 +3536,17 @@ apt-cache search linux-header
     </entry>
     
     <entry>
+      <title><![CDATA[Js学习笔记(4)]]></title>
+      <url>http://csser.work/10/03/2015/js-client-4/</url>
+      <content type="html"><![CDATA[<h3 id="jQuery的-查询"><a href="#jQuery的-查询" class="headerlink" title="jQuery的$查询"></a>jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
+<h3 id="窗体"><a href="#窗体" class="headerlink" title="窗体"></a>窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
+<h3 id="窗体-口之间的交互"><a href="#窗体-口之间的交互" class="headerlink" title="窗体/口之间的交互"></a>窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'A'</span> <span class="attr">src</span>=<span class="string">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'B'</span> <span class="attr">src</span>=<span class="string">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Js学习笔记(3)]]></title>
       <url>http://csser.work/10/03/2015/js-client-3/</url>
       <content type="html"><![CDATA[<h2 id="Window对象"><a href="#Window对象" class="headerlink" title="Window对象"></a>Window对象</h2><h3 id="计时器"><a href="#计时器" class="headerlink" title="计时器"></a>计时器</h3><hr>
@@ -3387,17 +3563,6 @@ stringObject.substring(start,stop)    取一段字符
 stringObject.split(separator,howmany) 字符串分割
 stringObject.indexOf(searchvalue,fromindex)   字符检索
 </code></pre><h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">urlAges</span>(<span class="params"></span>)</span>&#123;     <span class="comment">//URL参数解析函数</span></span><br><span class="line">    <span class="keyword">var</span> args = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> query = location.search.substring(<span class="number">1</span>);   <span class="comment">//获取url查询字符串</span></span><br><span class="line">    <span class="keyword">var</span> pairs = query.split(<span class="string">"&amp;"</span>);   <span class="comment">//此时的pairs为字符串数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;pairs.length ; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> pos = pairs[i].indexOf(<span class="string">'='</span>);    <span class="comment">//检测第一个'='</span></span><br><span class="line">        <span class="keyword">if</span>(pos == <span class="number">-1</span>)   <span class="comment">//indexOf()由-1开始进行(第一个检测的是0)</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">var</span> name = pairs[i].substring(<span class="number">0</span>,pos);</span><br><span class="line">        <span class="keyword">var</span> value = pairs[i].substring(pos+<span class="number">1</span>);</span><br><span class="line">        value = <span class="built_in">decodeURIComponent</span>(value);  <span class="comment">//value解码</span></span><br><span class="line">        args[name] = value; <span class="comment">//将value存储为args对象的name属性值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Js学习笔记(4)]]></title>
-      <url>http://csser.work/10/03/2015/js-client-4/</url>
-      <content type="html"><![CDATA[<h3 id="jQuery的-查询"><a href="#jQuery的-查询" class="headerlink" title="jQuery的$查询"></a>jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
-<h3 id="窗体"><a href="#窗体" class="headerlink" title="窗体"></a>窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
-<h3 id="窗体-口之间的交互"><a href="#窗体-口之间的交互" class="headerlink" title="窗体/口之间的交互"></a>窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'A'</span> <span class="attr">src</span>=<span class="string">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'B'</span> <span class="attr">src</span>=<span class="string">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
-]]></content>
     </entry>
     
     <entry>
@@ -3568,15 +3733,6 @@ stringObject.indexOf(searchvalue,fromindex)   字符检索
     </entry>
     
     <entry>
-      <title><![CDATA[Bootstrap Navbar Hack]]></title>
-      <url>http://csser.work/06/30/2015/bootstrap-navbar-resposive/</url>
-      <content type="html"><![CDATA[<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>以前用bootstrap的时候也遇到过这么个问题, navbar一写, 然后宽度布局就出现问题了, <code>页面宽度总是大于浏览器宽度</code>.</p>
-<h2 id="css-codes"><a href="#css-codes" class="headerlink" title="css-codes"></a>css-codes</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* -- NavBar-Responsive Start  -- */</span></span><br><span class="line"><span class="selector-class">.navbar</span> <span class="selector-class">.container-fluid</span> &#123;</span><br><span class="line">	<span class="attribute">padding-left</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">	<span class="attribute">padding-right</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar-collapse</span>, <span class="selector-class">.navbar-header</span> &#123;</span><br><span class="line">	<span class="attribute">margin-left</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">	<span class="attribute">margin-right</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>测试样例的话就是官方例子就行了.</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Git Daily]]></title>
       <url>http://csser.work/06/30/2015/daily-git/</url>
       <content type="html"><![CDATA[<h2 id="记录遇到的Git"><a href="#记录遇到的Git" class="headerlink" title="记录遇到的Git : )"></a>记录遇到的Git : )</h2><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://rogerdudler.github.io/git-guide/index.zh.html" target="_blank" rel="external">git-the simple guide</a></p>
@@ -3610,6 +3766,15 @@ X: 未知状态.(很可能是遇到git的bug了,可以向git进行bug report)
 <h3 id="遇见的问题"><a href="#遇见的问题" class="headerlink" title="遇见的问题"></a>遇见的问题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> push origin gitcafe-pages error: src refspec gitcafe-pages does not match an</span><br></pre></td></tr></table></figure>
 <p>错误原因:本地没有gitcafe-pages分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Updates were rejected because the tip of your current branch is behind</span><br></pre></td></tr></table></figure></p>
 <p>错误原因:远程仓库的分支比本地的代码要新所以有冲突<br>解决:开新分支提交或者直接git push –force<strong>慎用!</strong></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Bootstrap Navbar Hack]]></title>
+      <url>http://csser.work/06/30/2015/bootstrap-navbar-resposive/</url>
+      <content type="html"><![CDATA[<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>以前用bootstrap的时候也遇到过这么个问题, navbar一写, 然后宽度布局就出现问题了, <code>页面宽度总是大于浏览器宽度</code>.</p>
+<h2 id="css-codes"><a href="#css-codes" class="headerlink" title="css-codes"></a>css-codes</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* -- NavBar-Responsive Start  -- */</span></span><br><span class="line"><span class="selector-class">.navbar</span> <span class="selector-class">.container-fluid</span> &#123;</span><br><span class="line">	<span class="attribute">padding-left</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">	<span class="attribute">padding-right</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar-collapse</span>, <span class="selector-class">.navbar-header</span> &#123;</span><br><span class="line">	<span class="attribute">margin-left</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">	<span class="attribute">margin-right</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试样例的话就是官方例子就行了.</p>
 ]]></content>
     </entry>
     

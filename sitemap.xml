@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://csser.work/02/28/2018/new-front-webpack/</loc>
+    
+    <lastmod>2018-03-03T08:08:02.870Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/02/27/2018/new-front-npm/</loc>
+    
+    <lastmod>2018-02-28T09:38:17.522Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://csser.work/02/25/2018/js-promise-baby/</loc>
     
     <lastmod>2018-02-25T11:01:12.158Z</lastmod>
