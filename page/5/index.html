@@ -82,6 +82,76 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/12/21/2016/webpack-react/" title="webpack react jsx babel" itemprop="url">webpack react jsx babel</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
+		
+  <p class="article-time">
+    <time datetime="2016-12-20T16:00:00.000Z" itemprop="datePublished"> 发表于 12-21-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>Learn from: <a href="https://www.codementor.io/tamizhvendan/tutorials/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr" target="_blank" rel="external">https://www.codementor.io/tamizhvendan/tutorials/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr</a><br>and <a href="http://www.infoq.com/cn/articles/react-and-webpack" target="_blank" rel="external">http://www.infoq.com/cn/articles/react-and-webpack</a></p>
+<p>This is a note for learning webpack + react + jsx + babel loader</p>
+<h2 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h2><p>The <code>APP_DIR</code> holds the directory path of the React application’s codebase. The <code>BUILD_DIR</code> represents the directory path of the bundle file output.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> BUILD_DIR = path.resolve(__dirname, <span class="string">'public/'</span>); <span class="comment">//  the directory shown to others</span></span><br><span class="line"><span class="keyword">const</span> APP_DIR = path.resolve(__dirname, <span class="string">'app/'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  entry: APP_DIR + <span class="string">'/index.jsx'</span>, <span class="comment">// entrance file</span></span><br><span class="line">  output: &#123;</span><br><span class="line">    path: BUILD_DIR,</span><br><span class="line">    filename: <span class="string">'bundle.js'</span> <span class="comment">//  filename after packaged</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = config;</span><br></pre></td></tr></table></figure>
+<h2 id="generate-a-bundle-js"><a href="#generate-a-bundle-js" class="headerlink" title="generate a bundle.js"></a>generate a bundle.js</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ webpack <span class="_">-d</span></span><br></pre></td></tr></table></figure>
+<h2 id="With-Bable"><a href="#With-Bable" class="headerlink" title="With Bable"></a>With Bable</h2><p>install</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i babel-core babel-loader babel-preset-es2015 babel-preset-react -S</span><br></pre></td></tr></table></figure>
+<p>settings <code>.babelrc</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"presets"</span> : [</span><br><span class="line">        <span class="string">"es2015"</span>,</span><br><span class="line">        <span class="string">"react"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>webpack.config.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Existing Code ....</span></span><br><span class="line"><span class="keyword">var</span> config = &#123;</span><br><span class="line">  <span class="comment">// Existing Code ....</span></span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    loaders: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.jsx?$/</span>,</span><br><span class="line">        include: APP_DIR,</span><br><span class="line">        exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        loader: <span class="string">'babel-loader'</span>,</span><br><span class="line">        query:</span><br><span class="line">        &#123;</span><br><span class="line">          presets: [<span class="string">'react'</span>, <span class="string">'es2015'</span>]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="With-React"><a href="#With-React" class="headerlink" title="With React"></a>With React</h2><p>npm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i react react-dom -S</span><br></pre></td></tr></table></figure>
+<p>index.jsx(<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/import" target="_blank" rel="external">import module</a>)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;render&#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Watchman-for-jsx-amp-amp-React-Hot-Loader"><a href="#Watchman-for-jsx-amp-amp-React-Hot-Loader" class="headerlink" title="Watchman for jsx &amp;&amp; React Hot Loader"></a>Watchman for jsx &amp;&amp; <a href="http://gaearon.github.io/react-hot-loader/getstarted/" target="_blank" rel="external">React Hot Loader</a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ webpack <span class="_">-d</span> --watch</span><br></pre></td></tr></table></figure>
+<p>react-hot-loader</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install react-hot-loader --save-dev</span><br></pre></td></tr></table></figure>
+<p>config: should click the click to learn more!</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  loaders: [</span><br><span class="line">    &#123; test: <span class="regexp">/\.jsx?$/</span>, loaders: [<span class="string">'react-hot'</span>, <span class="string">'jsx?harmony'</span>], include: path.join(__dirname, <span class="string">'src'</span>) &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="npm-package-verb"><a href="#npm-package-verb" class="headerlink" title="npm package(verb.)"></a>npm package(verb.)</h2><p>package.json<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"dev"</span>: <span class="string">"webpack -d --watch"</span>,</span><br><span class="line">    <span class="attr">"build"</span>: <span class="string">"webpack -p"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>usage:<br><code>npm run dev</code>, <code>npm run build</code></p>
+<h2 id="Simple-demo-in-github"><a href="#Simple-demo-in-github" class="headerlink" title="Simple demo in github"></a>Simple demo in github</h2><p><a href="https://github.com/a1exlism/codeLab/tree/master/learn/react/React-with-webpack" target="_blank" rel="external">Github-React-with-webpack</a></p>
+<h2 id="EOF"><a href="#EOF" class="headerlink" title="EOF"></a>EOF</h2><p>Webapack is a wonderful tool!</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/12/21/2016/webpack-react/#comments" class="ds-thread-count comments-count-link" data-thread-key="12/21/2016/webpack-react/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/12/12/2016/sfdc2016/" title="SFDC2016_小记" itemprop="url">SFDC2016_小记</a>
   </h1>
   <p class="article-author">By
@@ -270,6 +340,61 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/12/02/2016/js-closure/" title="JS闭包" itemprop="url">JS闭包</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
+		
+  <p class="article-time">
+    <time datetime="2016-12-01T16:00:00.000Z" itemprop="datePublished"> 发表于 12-02-2016</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>看问题的时候顺便看到了, <a href="http://www.cnblogs.com/xxcanghai/p/4991870.html" target="_blank" rel="external">闭包面试题</a><br>面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>个人理解:<br><br>看了<a href="https://developer.mozilla.org/cn/docs/Web/JavaScript/Closures" target="_blank" rel="external">MDN</a>, 总结了一些结论<br>闭包就是一个 函数加上该函数的上下文环境 的集合.</p>
+<p>一个比较常见的例子:<br>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Javascript:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++)&#123;</span><br><span class="line">		divs[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>无论点哪个都只会输出3, 原因讲的已经很明确了, 在这个函数内部的上下文环境中, i会共用.<br>可能会问, 如果共用, 那么绑定的也只有第三个=&gt; 在绑定的时候i还是从0-&gt;2的, 但是事件触发一定是i在等于3之后的事情了.</p>
+<p>解决办法: 闭包传参, ES6新特性:let<br>这边给个闭包传参的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++) &#123;</span><br><span class="line">		divs[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;)(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>这样每一个onclick都被赋予了一个独立的闭包,可以独立输出0-2.</p>
+<p>另一个模拟类的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shoppingCart</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> goods = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        goodsAdd: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            ++goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsRemove: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            --goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> goods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cartA = <span class="keyword">new</span> shoppingCart();</span><br><span class="line"><span class="keyword">var</span> cartB = <span class="keyword">new</span> shoppingCart();</span><br><span class="line">cartA.goodsAdd();</span><br><span class="line">cartA.goodsShow();</span><br><span class="line"></span><br><span class="line">cartB.goodsAdd();</span><br><span class="line">cartB.goodsRemove();</span><br><span class="line">cartB.goodsShow();</span><br></pre></td></tr></table></figure></p>
+<p>shoppingCart函数有个函数内变量goods, 外部无法访问, 但是它可以通过内部的函数访问到, 即整个shoppingCart函数<code>构成了一个闭包环境</code>.<br>问了一下同学, <code>这个很像面向对象的一个类</code>, goods就是所谓的private变量了.<br>而new出来的对象都是一个独立的闭包, 拥有独立的上下文环境和内容</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/12/02/2016/js-closure/#comments" class="ds-thread-count comments-count-link" data-thread-key="12/02/2016/js-closure/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/12/02/2016/js-interview-1/" title="JS面试题1-分析" itemprop="url">JS面试题1-分析</a>
   </h1>
   <p class="article-author">By
@@ -317,61 +442,6 @@
 	
 	  	<span></span>
 		<a href="/12/02/2016/js-interview-1/#comments" class="ds-thread-count comments-count-link" data-thread-key="12/02/2016/js-interview-1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/12/02/2016/js-closure/" title="JS闭包" itemprop="url">JS闭包</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
-		
-  <p class="article-time">
-    <time datetime="2016-12-01T16:00:00.000Z" itemprop="datePublished"> 发表于 12-02-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>看问题的时候顺便看到了, <a href="http://www.cnblogs.com/xxcanghai/p/4991870.html" target="_blank" rel="external">闭包面试题</a><br>面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>个人理解:<br><br>看了<a href="https://developer.mozilla.org/cn/docs/Web/JavaScript/Closures" target="_blank" rel="external">MDN</a>, 总结了一些结论<br>闭包就是一个 函数加上该函数的上下文环境 的集合.</p>
-<p>一个比较常见的例子:<br>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>Javascript:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++)&#123;</span><br><span class="line">		divs[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
-<p>无论点哪个都只会输出3, 原因讲的已经很明确了, 在这个函数内部的上下文环境中, i会共用.<br>可能会问, 如果共用, 那么绑定的也只有第三个=&gt; 在绑定的时候i还是从0-&gt;2的, 但是事件触发一定是i在等于3之后的事情了.</p>
-<p>解决办法: 闭包传参, ES6新特性:let<br>这边给个闭包传参的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++) &#123;</span><br><span class="line">		divs[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;)(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
-<p>这样每一个onclick都被赋予了一个独立的闭包,可以独立输出0-2.</p>
-<p>另一个模拟类的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shoppingCart</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> goods = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        goodsAdd: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            ++goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsRemove: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            --goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> goods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cartA = <span class="keyword">new</span> shoppingCart();</span><br><span class="line"><span class="keyword">var</span> cartB = <span class="keyword">new</span> shoppingCart();</span><br><span class="line">cartA.goodsAdd();</span><br><span class="line">cartA.goodsShow();</span><br><span class="line"></span><br><span class="line">cartB.goodsAdd();</span><br><span class="line">cartB.goodsRemove();</span><br><span class="line">cartB.goodsShow();</span><br></pre></td></tr></table></figure></p>
-<p>shoppingCart函数有个函数内变量goods, 外部无法访问, 但是它可以通过内部的函数访问到, 即整个shoppingCart函数<code>构成了一个闭包环境</code>.<br>问了一下同学, <code>这个很像面向对象的一个类</code>, goods就是所谓的private变量了.<br>而new出来的对象都是一个独立的闭包, 拥有独立的上下文环境和内容</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/12/02/2016/js-closure/#comments" class="ds-thread-count comments-count-link" data-thread-key="12/02/2016/js-closure/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -718,72 +788,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/10/22/2016/node-party/" title="Node Party[3nd]小记" itemprop="url">Node Party[3nd]小记</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
-		
-  <p class="article-time">
-    <time datetime="2016-10-21T16:00:00.000Z" itemprop="datePublished"> 发表于 10-22-2016</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>挺喜欢js的, 看到这个就报名了, 报名费居然也在红包中返回了手上(233).</p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="0x01-the-missing-part-of-TDD-shupengfei"><a href="#0x01-the-missing-part-of-TDD-shupengfei" class="headerlink" title="0x01. the missing part of TDD @shupengfei"></a>0x01. the missing part of TDD <code>@shupengfei</code></h3><p>Test-Driven Development 驱动测试开发, 差不多像单元测试<br>说实话, tdd这个经常在node的文档中看到, 但是自己也没有写过, 仅限于能看懂.<br>dalao的演讲受益匪浅, 做了笔记, 写在这里</p>
-<blockquote>
-<p>“所有代码都会腐烂”<br>“这个代码应该有人来重构一下, 但不是我” 都表明了在长时间之后的代码变得难以读懂, 难以维护.<br>所以tdd就上线来解决这个问题了~</p>
-</blockquote>
-<p>我听完演讲之后对tdd操作的理解: 由简到繁, function(x)给个要求之后用最少代码实现.<br>if是while的unit, 这个也挺有意思的~<br>还有演讲示例用到了<code>递归</code>, 递归其实挺好用的, 如果不溢出, 按照摩尔定律, 这个性能问题会逐渐消失(除非你代码有fatal error).</p>
-<p>演讲用到了两个例子:</p>
-<ol>
-<li><p>factorization<br>要求只能按照记忆来了:[] -&gt; [1] -&gt; [2] -&gt; [n](出现问题,分类讨论) -&gt; [2,2] -&gt; [2, 4] -&gt; [3, 3]…</p>
-</li>
-<li><p>Sort Alogrithm<br>[] -&gt; [1] -&gt; [1,2] -&gt; [1,3,2](出现问题, 进一步讨论) -&gt; [3,2,1] -&gt; [x, y, z]</p>
-</li>
-</ol>
-<h3 id="0x02-Atom背后的故事-jysperm"><a href="#0x02-Atom背后的故事-jysperm" class="headerlink" title="0x02. Atom背后的故事@jysperm"></a>0x02. Atom背后的故事<code>@jysperm</code></h3><p>以前用atom的时候很多sublime的操作虽然有兼容, 但是atom始终没办法和sublime比运行速度, 总是用着用着就用回sublime了…遇到问题很多时候都会跳转到精子哥的中文社区<a href="https://atom-china.org/" target="_blank" rel="external">atom中文社区</a>, 今天见到还是挺开心的.</p>
-<p>atom和vscode的模型我还真没去自己研究过, 发现就是<code>electron APP</code>, 下图是electron组件图:<img src="/imgs/conferences/node_party/3_1.png" alt="1"><br>优点很明显</p>
-<blockquote>
-<p>内置chromium内核, 不需要用户支持更新;Node版本自己控制, 随时可以使用最新的语法;Native APIs的原生支持, 保证了跨平台的支持.</p>
-</blockquote>
-<p>后面的话就是一些关于atom的一些hack定制, 和内置的API调用模式等等, 然后也提到了atom的性能问题,比如:<br>1.内置的node_modules整合为单文件模式app.asar, 解决大量小文件读写速度慢的问题;<br>2.利用<code>virtual dom</code>来解决<code>reflow &amp; repaint</code>的多次渲染问题;<br>3.针对于大文件加载, 使用了<code>transform3d</code>来进行块加载, 每次只加载需要显示的部分.</p>
-<h3 id="0x03-Prototype-of-“JS-Native”"><a href="#0x03-Prototype-of-“JS-Native”" class="headerlink" title="0x03. Prototype of “JS-Native”"></a>0x03. Prototype of “JS-Native”</h3><p>这个看完ppt然后也没得出什么结论, 就不写了.</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/10/22/2016/node-party/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/22/2016/node-party/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/4/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/6/">Next<span></span></a>
@@ -800,7 +804,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CS-GO/" style="font-size: 10px;">CS:GO</a> <a href="/tags/CSS/" style="font-size: 16px;">CSS</a> <a href="/tags/CodeIgniter/" style="font-size: 13px;">CodeIgniter</a> <a href="/tags/Design-Pattern/" style="font-size: 11px;">Design Pattern</a> <a href="/tags/Device/" style="font-size: 14px;">Device</a> <a href="/tags/ES6/" style="font-size: 12px;">ES6</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/Experience/" style="font-size: 10px;">Experience</a> <a href="/tags/Front-End/" style="font-size: 15px;">Front-End</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/HTML/" style="font-size: 11px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IFTTT/" style="font-size: 10px;">IFTTT</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12px;">Kali</a> <a href="/tags/Linux/" style="font-size: 19px;">Linux</a> <a href="/tags/Manual/" style="font-size: 17px;">Manual</a> <a href="/tags/Mobile/" style="font-size: 10px;">Mobile</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/NPM/" style="font-size: 10px;">NPM</a> <a href="/tags/NeedUpdate/" style="font-size: 11px;">NeedUpdate</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Prototype/" style="font-size: 11px;">Prototype</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 12px;">React</a> <a href="/tags/ReactNative/" style="font-size: 11px;">ReactNative</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQLInjection/" style="font-size: 11px;">SQLInjection</a> <a href="/tags/Semantic/" style="font-size: 10px;">Semantic</a> <a href="/tags/Shell/" style="font-size: 13px;">Shell</a> <a href="/tags/XSS/" style="font-size: 18px;">XSS</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/conference/" style="font-size: 11px;">conference</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 14px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 11px;">git</a> <a href="/tags/hard/" style="font-size: 12px;">hard</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/nexus5x/" style="font-size: 13px;">nexus5x</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/soft/" style="font-size: 12px;">soft</a> <a href="/tags/web/" style="font-size: 12px;">web</a> <a href="/tags/webdriver/" style="font-size: 10px;">webdriver</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/workflow/" style="font-size: 10px;">workflow</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/应试/" style="font-size: 13px;">应试</a> <a href="/tags/生活/" style="font-size: 11px;">生活</a> <a href="/tags/闲谈/" style="font-size: 14px;">闲谈</a>
+       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CS-GO/" style="font-size: 10px;">CS:GO</a> <a href="/tags/CSS/" style="font-size: 16px;">CSS</a> <a href="/tags/CodeIgniter/" style="font-size: 13px;">CodeIgniter</a> <a href="/tags/Design-Pattern/" style="font-size: 11px;">Design Pattern</a> <a href="/tags/Device/" style="font-size: 14px;">Device</a> <a href="/tags/ES6/" style="font-size: 12px;">ES6</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/Experience/" style="font-size: 10px;">Experience</a> <a href="/tags/Front-End/" style="font-size: 15px;">Front-End</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/HTML/" style="font-size: 11px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IFTTT/" style="font-size: 10px;">IFTTT</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12px;">Kali</a> <a href="/tags/Linux/" style="font-size: 19px;">Linux</a> <a href="/tags/Manual/" style="font-size: 17px;">Manual</a> <a href="/tags/Mobile/" style="font-size: 10px;">Mobile</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/NPM/" style="font-size: 10px;">NPM</a> <a href="/tags/NeedUpdate/" style="font-size: 11px;">NeedUpdate</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Prototype/" style="font-size: 11px;">Prototype</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 12px;">React</a> <a href="/tags/ReactNative/" style="font-size: 11px;">ReactNative</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQLInjection/" style="font-size: 11px;">SQLInjection</a> <a href="/tags/Semantic/" style="font-size: 10px;">Semantic</a> <a href="/tags/Shell/" style="font-size: 13px;">Shell</a> <a href="/tags/XSS/" style="font-size: 18px;">XSS</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/conference/" style="font-size: 11px;">conference</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 14px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 11px;">git</a> <a href="/tags/hard/" style="font-size: 12px;">hard</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/tags/nexus5x/" style="font-size: 13px;">nexus5x</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/soft/" style="font-size: 12px;">soft</a> <a href="/tags/web/" style="font-size: 12px;">web</a> <a href="/tags/webdriver/" style="font-size: 10px;">webdriver</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/workflow/" style="font-size: 10px;">workflow</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/应试/" style="font-size: 13px;">应试</a> <a href="/tags/生活/" style="font-size: 11px;">生活</a> <a href="/tags/闲谈/" style="font-size: 14px;">闲谈</a>
     </div>
   </div>
 
@@ -808,7 +812,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
