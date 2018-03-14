@@ -82,6 +82,118 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/03/14/2018/js-regexp-object-attention/" title="RegExp Object Attention" itemprop="url">RegExp Object Attention</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
+		
+  <p class="article-time">
+    <time datetime="2018-03-13T16:00:00.000Z" itemprop="datePublished"> 发表于 03-14-2018</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h1><p>Came across RegExp Object prob when tring to learning template engine writing.</p>
+<h1 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h1><blockquote>
+<p>From the refer link<br>I recommend that you do not use the RegExp constructor with a literal string, because in literal strings, backslashes must be escaped. The regular expression <code>\w+</code> can be created as <code>re = /\w+/ or as re = new RegExp(&quot;\\w+&quot;)</code>. The latter is definitely harder to read. The regular expression <code>\\</code> matches a single backslash. In JavaScript, this becomes <code>re = /\\/</code>or <code>re = new RegExp(&quot;\\\\&quot;)</code>.</p>
+</blockquote>
+<p>and the demo code is:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> template = <span class="string">'My age is &lt;span&gt;$&#123;age&#125;&lt;/span&gt;&lt;/p&gt;'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(template.replace(<span class="regexp">/\$&#123;age&#125;/</span>, <span class="number">22</span>)); <span class="comment">//  It works</span></span><br><span class="line"><span class="built_in">console</span>.log(template.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\$&#123;age&#125;'</span>, <span class="string">'g'</span>), <span class="number">22</span>)); <span class="comment">//  Not worked</span></span><br><span class="line"><span class="built_in">console</span>.log(template.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\$&#123;age&#125;'</span>, <span class="string">'g'</span>), <span class="number">22</span>)); <span class="comment">//  It works</span></span><br></pre></td></tr></table></figure></p>
+<p>PS: I just came across this prob a moment before, but I can remember it today, so Record it.</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="http://www.regular-expressions.info/javascript.html" target="_blank" rel="external">regular-expressions</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/03/14/2018/js-regexp-object-attention/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/14/2018/js-regexp-object-attention/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/03/14/2018/js-regexp-test-function-negative-lookahead/" title="RegExp test function and Negative lookahead" itemprop="url">RegExp test function and Negative lookahead</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
+		
+  <p class="article-time">
+    <time datetime="2018-03-13T16:00:00.000Z" itemprop="datePublished"> 发表于 03-14-2018</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>Get the question when looking up for templates engine realization.<br>And this article mainly focus <code>RegExp.test()</code> and <code>(?!)</code> Negative lookahead condition.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><script src="https://gist.github.com/a1exlism/a4b618456fe88c5b3977e13508a3adbb.js"></script>
+
+<ul>
+<li>And the explanation</li>
+</ul>
+<h3 id="Negative-lookahead"><a href="#Negative-lookahead" class="headerlink" title="Negative lookahead"></a>Negative lookahead</h3><p>Symbol: A<code>(?!</code>B<code>)</code><br>Function: Match A whose word behide it is <code>NOT</code> B.</p>
+<h3 id="RegExp-test"><a href="#RegExp-test" class="headerlink" title="RegExp.test()"></a>RegExp.test()</h3><p>Mainly talking about <code>g</code> flag.</p>
+<ol>
+<li><code>withoutG</code> VS <code>withG2</code><br>test function will save the pattern match <code>session</code>, so the 2nd withG search will return <code>false</code>;<br>and global will return back to index 0 to repeat check the str, 3rd is <code>true</code>, of course;</li>
+<li><code>withG</code>, <code>str</code>, <code>repeatStr</code><br>in 2nd loop, withG’s output is not like the withG2 though they are same RegExp, because of the tmpStr <code>reset</code> withG’s match string, so withG’s result always get <code>true</code> even it has global flag.</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test" target="_blank" rel="external">test | MDN</a><br><a href="regexr.com">regexr</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/03/14/2018/js-regexp-test-function-negative-lookahead/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/14/2018/js-regexp-test-function-negative-lookahead/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/03/10/2018/mac-user-preference/" title="MacOS usage preference" itemprop="url">MacOS usage preference</a>
   </h1>
   <p class="article-author">By
@@ -870,142 +982,9 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/02/01/2018/JS-class-realization/" title="Class realization in JavaScript | Design Pattern" itemprop="url">Class realization in JavaScript | Design Pattern</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
-		
-  <p class="article-time">
-    <time datetime="2018-01-31T16:00:00.000Z" itemprop="datePublished"> 发表于 02-01-2018</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>本文由来: 构造函数和原型继承的区别是什么?<br>顺便推荐2017截止最新的动物电子书 - <a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript" target="_blank" rel="external">Learning JavaScript Design Patterns</a> 作者<a href="http://twitter.com/addyosmani" target="_blank" rel="external">Addy Osmani</a></p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h3><ol>
-<li>Design Pattern: Constructor<br><code>this</code> in constructor ???</li>
-<li>Design Pattern: Prototype</li>
-<li><code>this</code> in prototype</li>
-<li>Constructor VS Prototype<br>5.<br>.. ES6 class realization with ES5</li>
-</ol>
-<h3 id="Design-Pattern-Constructor"><a href="#Design-Pattern-Constructor" class="headerlink" title="Design Pattern: Constructor"></a>Design Pattern: Constructor</h3><h3 id="Constructor-VS-Prototype"><a href="#Constructor-VS-Prototype" class="headerlink" title="Constructor VS Prototype"></a>Constructor VS Prototype</h3><p><a href="https://www.thecodeship.com/web-development/methods-within-constructor-vs-prototype-in-javascript/" target="_blank" rel="external">https://www.thecodeship.com/web-development/methods-within-constructor-vs-prototype-in-javascript/</a></p>
-<blockquote>
-<p><a href="http://aymanfarhat.com/" target="_blank" rel="external">@aymanfarhat</a><br>In fact no classes in JavaScript (Before ES6), and what you may refer to as a class is known as a constructor. That is because JavaScript is not your classic class-based language but rather a <code>prototype-based</code> language.</p>
-</blockquote>
-<h3 id="about-this"><a href="#about-this" class="headerlink" title="about this"></a>about this</h3><p><a href="https://stackoverflow.com/questions/310870/use-of-prototype-vs-this-in-javascript" target="_blank" rel="external">prototype - this | stackoverflow</a></p>
-<blockquote>
-<p><a href="https://disqus.com/by/disqus_Y9axcfWroJ/" target="_blank" rel="external">Andress</a><br>The “this” keyword works a little bit diffrent in javascript than it does in other languages. “this” holds a reference to the object from which the function was called. If the function is not invoked as method on an object, this will refer to the global object (the “window” object).</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf" target="_blank" rel="external">MDN</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Mammal</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.isMammal = <span class="string">'yes'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MammalSpecies</span>(<span class="params">speciesName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.species = speciesName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MammalSpecies.prototype = Mammal;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(MammalSpecies.prototype.constructor);</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.thecodeship.com/web-development/methods-within-constructor-vs-prototype-in-javascript/" target="_blank" rel="external">Methods Within Constructor vs Prototype in Javascript</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf" target="_blank" rel="external">setPrototypeOf - MDN</a><br><a href="http://harttle.land/2016/02/15/js-classical-inheritance.html" target="_blank" rel="external">JavaScript 实现类的继承</a><br><a href="https://stackoverflow.com/questions/4166616/understanding-the-difference-between-object-create-and-new-somefunction" target="_blank" rel="external">Understanding the difference between Object.create() and new SomeFunction() | stackoverflow</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/02/01/2018/JS-class-realization/#comments" class="ds-thread-count comments-count-link" data-thread-key="02/01/2018/JS-class-realization/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/01/31/2018/CSS-center/" title="CSS Center" itemprop="url">CSS Center</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
-		
-  <p class="article-time">
-    <time datetime="2018-01-30T16:00:00.000Z" itemprop="datePublished"> 发表于 01-31-2018</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>写了比较久的居中样式, 做个总结看看以后可以用什么. 目的上来说不关注IE兼容性!</p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="相关分类"><a href="#相关分类" class="headerlink" title="相关分类"></a>相关分类</h3><ul>
-<li>container: inline/block;</li>
-<li>container-size: known/unknown;</li>
-<li>child: inline/block;</li>
-<li>xORy: horizon/vertical/all</li>
-</ul>
-<h3 id="Absolute-Center"><a href="#Absolute-Center" class="headerlink" title="Absolute-Center"></a>Absolute-Center</h3><p>利用 position:absolute; 的绝对居中.  </p>
-<p><strong>Constraint</strong>: 父级对象relative; 高度必须声明 | 被内容撑起高度;<br><strong>Code</strong>:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.absolute-center</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">margin</span>: auto;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Attention</strong>: 一旦position设置为absolute之后, 该tag会变成<code>block element</code>.<br>Advantages: IE8+; 自适应<br>Caveats: 防止内容过多导致的溢出需要设置overflow</p>
-<p><strong>How it works</strong>:<br>利用的是margin:auto;在标准中的相关制定概念的使用.以下是原文,horizonal-center同理</p>
-<blockquote>
-<p><a href="https://www.w3.org/TR/CSS2/visudet.html#abs-non-replaced-height" target="_blank" rel="external">w3.org</a><br>If none of the three [top, bottom, height] are ‘auto’: If both ‘margin-top’ and ‘margin-bottom’ are ‘auto’, solve the equation under the extra constraint that the two margins get <code>equal values</code>. AKA: center the block vertically</p>
-</blockquote>
-<p>一旦满足上面条件, margin:auto;中的top和bottom会变成同一个值而不是0, 所以能做到vertical-center.</p>
-<p><strong>Transform</strong>:<br>如果需要一边靠齐例如<code>Right Align</code>, 相关代码则改为: <code>left: auto;</code>&amp;&amp;<code>right: 0;</code></p>
-<h3 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h3><p><strong>Constraint</strong>: 这个方法我用的比较多, 不过transform本身仅支持<code>IE9+</code> PS: 突然发现我原来从caniuse那边查的都是完全适配状态, IE9需要添加<code>-ms-</code>头<br><strong>Code</strong>:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.transform-center</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="comment">/* OR position: relative; */</span></span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">margin</span>: auto;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">-webkit-transform</span>: <span class="built_in">translate</span>(-50%,-50%);</span><br><span class="line">      <span class="attribute">-ms-transform</span>: <span class="built_in">translate</span>(-50%,-50%);</span><br><span class="line">          <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%,-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这个原理可以看一下box-model和下面的negtive margin概念一样</p>
-<h3 id="Negative-Margin-deprecated"><a href="#Negative-Margin-deprecated" class="headerlink" title="Negative Margin(deprecated)"></a>Negative Margin(deprecated)</h3><p><strong>Constraint</strong>:  固定size; 即无法响应式<br><strong>Advantages</strong>: 唯一优点差不多就是兼容IE6+了吧<br><strong>Code</strong>:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.negative-margin-container</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">margin-top</span>: -<span class="number">170px</span>; <span class="comment">/*150 + 20*/</span></span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">170px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="Table-Cell"><a href="#Table-Cell" class="headerlink" title="Table Cell"></a>Table Cell</h3><p><strong>Constraint</strong>: vertical-align: middle; 仅用于<code>inline</code>和<code>table-cell box</code>样式<br><strong>Advantages</strong>: 兼容性<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.table-container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: table;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.table-container</span> <span class="selector-class">.table-cell</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: table-cell;</span><br><span class="line">  <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.table-container</span> <span class="selector-class">.table-cell</span> <span class="selector-class">.inner-content</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="Inline-Block-vertical-align"><a href="#Inline-Block-vertical-align" class="headerlink" title="Inline-Block vertical-align"></a>Inline-Block vertical-align</h3><p>原理和table cell一样, 不过利用伪元素<code>::after</code>创建了一个ghost element保证高度可以参考.<br>因为hack程度比较高而且好像也没有其他的优点??</p>
-<h3 id="Flex-Box"><a href="#Flex-Box" class="headerlink" title="Flex Box"></a>Flex Box</h3><p>这个就不讲了, 过几天开始写项目一起放进来写.<br>贴一张<a href="https://segmentfault.com/a/1190000000707526" target="_blank" rel="external">segmentfault</a>上的一张图<br><img src="https://sfault-image.b0.upaiyun.com/248/396/2483967132-576cb7b133556_articlex" alt="flex-box"></p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>依据IE兼容性递增选择: Absolute Center(IE8-10) =&gt; transform(IE9+) =&gt; Flex(IE9+)<br>其他的算是lagacy了</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://codepen.io/shshaw/full/gEiDt" target="_blank" rel="external">absolute centering - shshaw</a><br><a href="http://howtocenterincss.com/" target="_blank" rel="external">manual - center code</a><br><a href="https://css-tricks.com/centering-in-the-unknown/" target="_blank" rel="external">center-in-the-unknown - csstricks</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/01/31/2018/CSS-center/#comments" class="ds-thread-count comments-count-link" data-thread-key="01/31/2018/CSS-center/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
   </nav>
 
 </div>
@@ -1019,7 +998,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CS-GO/" style="font-size: 10px;">CS:GO</a> <a href="/tags/CSS/" style="font-size: 16px;">CSS</a> <a href="/tags/CodeIgniter/" style="font-size: 13px;">CodeIgniter</a> <a href="/tags/Design-Pattern/" style="font-size: 11px;">Design Pattern</a> <a href="/tags/Device/" style="font-size: 14px;">Device</a> <a href="/tags/ES6/" style="font-size: 12px;">ES6</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/Experience/" style="font-size: 10px;">Experience</a> <a href="/tags/Front-End/" style="font-size: 15px;">Front-End</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/HTML/" style="font-size: 11px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IFTTT/" style="font-size: 10px;">IFTTT</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12px;">Kali</a> <a href="/tags/Linux/" style="font-size: 19px;">Linux</a> <a href="/tags/Manual/" style="font-size: 17px;">Manual</a> <a href="/tags/Mobile/" style="font-size: 10px;">Mobile</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/NPM/" style="font-size: 10px;">NPM</a> <a href="/tags/NeedUpdate/" style="font-size: 11px;">NeedUpdate</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Prototype/" style="font-size: 11px;">Prototype</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 12px;">React</a> <a href="/tags/ReactNative/" style="font-size: 11px;">ReactNative</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQLInjection/" style="font-size: 11px;">SQLInjection</a> <a href="/tags/Semantic/" style="font-size: 10px;">Semantic</a> <a href="/tags/Shell/" style="font-size: 13px;">Shell</a> <a href="/tags/XSS/" style="font-size: 18px;">XSS</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/conference/" style="font-size: 11px;">conference</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 14px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 11px;">git</a> <a href="/tags/hard/" style="font-size: 12px;">hard</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/tags/nexus5x/" style="font-size: 13px;">nexus5x</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/soft/" style="font-size: 12px;">soft</a> <a href="/tags/web/" style="font-size: 12px;">web</a> <a href="/tags/webdriver/" style="font-size: 10px;">webdriver</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/workflow/" style="font-size: 10px;">workflow</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/应试/" style="font-size: 13px;">应试</a> <a href="/tags/生活/" style="font-size: 11px;">生活</a> <a href="/tags/闲谈/" style="font-size: 14px;">闲谈</a>
+       <a href="/tags/Arch/" style="font-size: 10px;">Arch</a> <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CS-GO/" style="font-size: 10px;">CS:GO</a> <a href="/tags/CSS/" style="font-size: 16px;">CSS</a> <a href="/tags/CodeIgniter/" style="font-size: 13px;">CodeIgniter</a> <a href="/tags/Design-Pattern/" style="font-size: 11px;">Design Pattern</a> <a href="/tags/Device/" style="font-size: 14px;">Device</a> <a href="/tags/ES6/" style="font-size: 12px;">ES6</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/Experience/" style="font-size: 10px;">Experience</a> <a href="/tags/Front-End/" style="font-size: 15px;">Front-End</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/HTML/" style="font-size: 11px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IFTTT/" style="font-size: 10px;">IFTTT</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/JavaScripts/" style="font-size: 10px;">JavaScripts</a> <a href="/tags/Kali/" style="font-size: 12px;">Kali</a> <a href="/tags/Linux/" style="font-size: 19px;">Linux</a> <a href="/tags/Manual/" style="font-size: 17px;">Manual</a> <a href="/tags/Mobile/" style="font-size: 10px;">Mobile</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/NPM/" style="font-size: 10px;">NPM</a> <a href="/tags/NeedUpdate/" style="font-size: 11px;">NeedUpdate</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Prototype/" style="font-size: 11px;">Prototype</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 12px;">React</a> <a href="/tags/ReactNative/" style="font-size: 11px;">ReactNative</a> <a href="/tags/RegExp/" style="font-size: 11px;">RegExp</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQLInjection/" style="font-size: 11px;">SQLInjection</a> <a href="/tags/Semantic/" style="font-size: 10px;">Semantic</a> <a href="/tags/Shell/" style="font-size: 13px;">Shell</a> <a href="/tags/XSS/" style="font-size: 18px;">XSS</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/conference/" style="font-size: 11px;">conference</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 14px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 11px;">git</a> <a href="/tags/hard/" style="font-size: 12px;">hard</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/tags/nexus5x/" style="font-size: 13px;">nexus5x</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/soft/" style="font-size: 12px;">soft</a> <a href="/tags/web/" style="font-size: 12px;">web</a> <a href="/tags/webdriver/" style="font-size: 10px;">webdriver</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/workflow/" style="font-size: 10px;">workflow</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/应试/" style="font-size: 13px;">应试</a> <a href="/tags/生活/" style="font-size: 11px;">生活</a> <a href="/tags/闲谈/" style="font-size: 14px;">闲谈</a>
     </div>
   </div>
 
@@ -1027,7 +1006,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
