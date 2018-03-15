@@ -4,6 +4,26 @@
   
     
     <entry>
+      <title><![CDATA[RegExp global flag and Negative lookahead]]></title>
+      <url>http://csser.work/03/14/2018/js-regexp-global-flag-negative-lookahead/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>Get the question when looking up for templates engine realization.<br>And this article mainly focus <code>RegExp.test()</code> and <code>(?!)</code> Negative lookahead condition.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><script src="https://gist.github.com/a1exlism/a4b618456fe88c5b3977e13508a3adbb.js"></script>
+
+<ul>
+<li>And the explanation</li>
+</ul>
+<h3 id="Negative-lookahead"><a href="#Negative-lookahead" class="headerlink" title="Negative lookahead"></a>Negative lookahead</h3><p>Symbol: A<code>(?!</code>B<code>)</code><br>Function: Match A whose word behide it is <code>NOT</code> B.</p>
+<h3 id="Global-Flag"><a href="#Global-Flag" class="headerlink" title="Global Flag"></a>Global Flag</h3><p>Mainly talking about <code>g</code> flag.</p>
+<ol>
+<li><code>withoutG</code> VS <code>withG2</code><br>test function will save the pattern match <code>session</code>, so the 2nd withG search will return <code>false</code>;<br>and global will return back to index 0 to repeat check the str, 3rd is <code>true</code>, of course;</li>
+<li><code>withG</code>, <code>str</code>, <code>repeatStr</code><br>in 2nd loop, withG’s output is not like the withG2 though they are same RegExp, because of the tmpStr <code>reset</code> withG’s match string, so withG’s result always get <code>true</code> even it has global flag.</li>
+</ol>
+<p>PS: Same as RegExp.<code>exec()</code></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test" target="_blank" rel="external">test | MDN</a><br><a href="regexr.com">regexr</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[RegExp Object Attention]]></title>
       <url>http://csser.work/03/14/2018/js-regexp-object-attention/</url>
       <content type="html"><![CDATA[<h1 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h1><p>Came across RegExp Object prob when tring to learning template engine writing.</p>
@@ -13,25 +33,6 @@
 <p>and the demo code is:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> template = <span class="string">'My age is &lt;span&gt;$&#123;age&#125;&lt;/span&gt;&lt;/p&gt;'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(template.replace(<span class="regexp">/\$&#123;age&#125;/</span>, <span class="number">22</span>)); <span class="comment">//  It works</span></span><br><span class="line"><span class="built_in">console</span>.log(template.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\$&#123;age&#125;'</span>, <span class="string">'g'</span>), <span class="number">22</span>)); <span class="comment">//  Not worked</span></span><br><span class="line"><span class="built_in">console</span>.log(template.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\$&#123;age&#125;'</span>, <span class="string">'g'</span>), <span class="number">22</span>)); <span class="comment">//  It works</span></span><br></pre></td></tr></table></figure></p>
 <p>PS: I just came across this prob a moment before, but I can remember it today, so Record it.</p>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="http://www.regular-expressions.info/javascript.html" target="_blank" rel="external">regular-expressions</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[RegExp test function and Negative lookahead]]></title>
-      <url>http://csser.work/03/14/2018/js-regexp-test-function-negative-lookahead/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>Get the question when looking up for templates engine realization.<br>And this article mainly focus <code>RegExp.test()</code> and <code>(?!)</code> Negative lookahead condition.</p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><script src="https://gist.github.com/a1exlism/a4b618456fe88c5b3977e13508a3adbb.js"></script>
-
-<ul>
-<li>And the explanation</li>
-</ul>
-<h3 id="Negative-lookahead"><a href="#Negative-lookahead" class="headerlink" title="Negative lookahead"></a>Negative lookahead</h3><p>Symbol: A<code>(?!</code>B<code>)</code><br>Function: Match A whose word behide it is <code>NOT</code> B.</p>
-<h3 id="RegExp-test"><a href="#RegExp-test" class="headerlink" title="RegExp.test()"></a>RegExp.test()</h3><p>Mainly talking about <code>g</code> flag.</p>
-<ol>
-<li><code>withoutG</code> VS <code>withG2</code><br>test function will save the pattern match <code>session</code>, so the 2nd withG search will return <code>false</code>;<br>and global will return back to index 0 to repeat check the str, 3rd is <code>true</code>, of course;</li>
-<li><code>withG</code>, <code>str</code>, <code>repeatStr</code><br>in 2nd loop, withG’s output is not like the withG2 though they are same RegExp, because of the tmpStr <code>reset</code> withG’s match string, so withG’s result always get <code>true</code> even it has global flag.</li>
-</ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test" target="_blank" rel="external">test | MDN</a><br><a href="regexr.com">regexr</a></p>
 ]]></content>
     </entry>
     
@@ -422,7 +423,7 @@
     
     <entry>
       <title><![CDATA[prototype and __proto__]]></title>
-      <url>http://csser.work/02/17/2018/prototye-and-proto/</url>
+      <url>http://csser.work/02/17/2018/prototype-and-proto/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>To clear up the confusion of prototype in this which really confused me for months before. All stuff work around with this <a href="https://stackoverflow.com/questions/310870/use-of-prototype-vs-this-in-javascript" target="_blank" rel="external">article</a>. If you still don’t know the answer, check the link and find <code>@daremkd</code>‘s answer.</p>
 <h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>Keys: <code>__proto__</code>, <code>prototype</code>, <code>prototype chain</code>, <code>this in prototype</code> several examples</p>
 <h3 id="Mind-Map"><a href="#Mind-Map" class="headerlink" title="Mind Map"></a>Mind Map</h3><p>drew by the answer in refer link.<br><img src="/imgs/prototype_and___proto__/mind_map.png" alt="mind-map"></p>
@@ -448,6 +449,14 @@
 <p><strong>Attention</strong>: the problem of <code>this in prototype</code> seems to be solved in b1 and b2 results, this is <code>dynamic</code>.<br>and the mechanism is <code>a.__proto__ = A.prototype</code>.</p>
 <h3 id="more-about-this"><a href="#more-about-this" class="headerlink" title="more about this"></a>more about this</h3><p>check this <a href="https://stackoverflow.com/questions/80084/in-javascript-why-is-the-this-operator-inconsistent/80478#80478" target="_blank" rel="external">link</a> out!</p>
 <h3 id="new-mind-map"><a href="#new-mind-map" class="headerlink" title="new mind map"></a>new mind map</h3><p>This image explained the relationship among <code>function</code>, <code>Function</code> and <code>Object</code>. Apparently, Object is the highest <code>Constructor</code>.<br><img src="/imgs/prototype_and___proto__/mind_map2.jpg" alt="mind-map2"></p>
+<h3 id="Great-Links-with-Function-and-others"><a href="#Great-Links-with-Function-and-others" class="headerlink" title="Great Links with Function and others"></a>Great Links with Function and others</h3><p><a href="https://stackoverflow.com/questions/40096704/new-function-vs-new-function" target="_blank" rel="external">new function() and new Function()</a></p>
+<blockquote>
+<p><a href="http://2ality.com/2014/01/eval.html" target="_blank" rel="external">eval and Function</a><br>You should avoid <code>eval()</code> and <code>new Function()</code>.</p>
+</blockquote>
+<p>new Function() usage:<br>Inner variables scope is <code>Global</code></p>
+<blockquote>
+<p>new Function(param1, param2[, …], functionBody);</p>
+</blockquote>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://stackoverflow.com/questions/310870/use-of-prototype-vs-this-in-javascript" target="_blank" rel="external">Use of ‘prototype’ vs. ‘this’ in JavaScript? - stackoverflow</a><br><a href="https://coderwall.com/p/p5cf5w/different-ways-of-creating-an-object-in-javascript" target="_blank" rel="external">different way to create object</a></p>
 ]]></content>
     </entry>
@@ -694,20 +703,20 @@
     </entry>
     
     <entry>
-      <title><![CDATA[fileupload with ajax]]></title>
-      <url>http://csser.work/01/15/2018/ajax-file-upload/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>需要写个图片上传的功能, ajax实现</p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>代码如下: 存于gist<br>      <script src="https://embed.cacher.io/81563a860d67ad14aefe1497022e18f6235dac14.js?a=a358f67d63a372df3d3d0ab2229fe7cc&t=atom_one_dark"></script></p>
-<h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p><a href="stackoverflow.com/questions/2320069/jquery-ajax-file-upload">jquery-file-upload | stackoverflow</a><br><a href="developer.mozilla.org/en-US/docs/Web/API/FormData/append">FormData-append | MDN</a><br><a href="developer.mozilla.org/en-US/docs/Web/API/File">File | MDN</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[前端雅黑字体坑]]></title>
       <url>http://csser.work/01/15/2018/web-font-yahei/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>原来蛮好的布局, 设置了font-family为雅黑之后就直接变形了.</p>
 <h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>查了些资料, 确定问题: 行高字体偏高.<br>于是全局设置: <code>line-height: 1em;</code><br>问题勉强解决, 等update, 没有就算解决了</p>
 <h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p><a href="https://zhuanlan.zhihu.com/p/22458207" target="_blank" rel="external">【反馈】把你对微软雅黑的不满统统告诉我<br>-ZhiHu</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[fileupload with ajax]]></title>
+      <url>http://csser.work/01/15/2018/ajax-file-upload/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>需要写个图片上传的功能, ajax实现</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>代码如下: 存于gist<br>      <script src="https://embed.cacher.io/81563a860d67ad14aefe1497022e18f6235dac14.js?a=a358f67d63a372df3d3d0ab2229fe7cc&t=atom_one_dark"></script></p>
+<h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p><a href="stackoverflow.com/questions/2320069/jquery-ajax-file-upload">jquery-file-upload | stackoverflow</a><br><a href="developer.mozilla.org/en-US/docs/Web/API/FormData/append">FormData-append | MDN</a><br><a href="developer.mozilla.org/en-US/docs/Web/API/File">File | MDN</a></p>
 ]]></content>
     </entry>
     
@@ -1383,21 +1392,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[JS闭包]]></title>
-      <url>http://csser.work/12/02/2016/js-closure/</url>
-      <content type="html"><![CDATA[<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>看问题的时候顺便看到了, <a href="http://www.cnblogs.com/xxcanghai/p/4991870.html" target="_blank" rel="external">闭包面试题</a><br>面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>个人理解:<br><br>看了<a href="https://developer.mozilla.org/cn/docs/Web/JavaScript/Closures" target="_blank" rel="external">MDN</a>, 总结了一些结论<br>闭包就是一个 函数加上该函数的上下文环境 的集合.</p>
-<p>一个比较常见的例子:<br>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>Javascript:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++)&#123;</span><br><span class="line">		divs[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
-<p>无论点哪个都只会输出3, 原因讲的已经很明确了, 在这个函数内部的上下文环境中, i会共用.<br>可能会问, 如果共用, 那么绑定的也只有第三个=&gt; 在绑定的时候i还是从0-&gt;2的, 但是事件触发一定是i在等于3之后的事情了.</p>
-<p>解决办法: 闭包传参, ES6新特性:let<br>这边给个闭包传参的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++) &#123;</span><br><span class="line">		divs[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;)(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
-<p>这样每一个onclick都被赋予了一个独立的闭包,可以独立输出0-2.</p>
-<p>另一个模拟类的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shoppingCart</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> goods = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        goodsAdd: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            ++goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsRemove: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            --goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> goods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cartA = <span class="keyword">new</span> shoppingCart();</span><br><span class="line"><span class="keyword">var</span> cartB = <span class="keyword">new</span> shoppingCart();</span><br><span class="line">cartA.goodsAdd();</span><br><span class="line">cartA.goodsShow();</span><br><span class="line"></span><br><span class="line">cartB.goodsAdd();</span><br><span class="line">cartB.goodsRemove();</span><br><span class="line">cartB.goodsShow();</span><br></pre></td></tr></table></figure></p>
-<p>shoppingCart函数有个函数内变量goods, 外部无法访问, 但是它可以通过内部的函数访问到, 即整个shoppingCart函数<code>构成了一个闭包环境</code>.<br>问了一下同学, <code>这个很像面向对象的一个类</code>, goods就是所谓的private变量了.<br>而new出来的对象都是一个独立的闭包, 拥有独立的上下文环境和内容</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[JS面试题1-分析]]></title>
       <url>http://csser.work/12/02/2016/js-interview-1/</url>
       <content type="html"><![CDATA[<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p><a href="gold.xitu.io/">@掘金</a>上看到的, 做了发现以前看得都还给书本了.<br>题目博客地址: <a href="http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments" target="_blank" rel="external">http://www.cnblogs.com/xxcanghai/p/5189353.html#!comments</a></p>
@@ -1420,6 +1414,21 @@
 <p>如果把上面那句改成<code>new Date();</code>是不是一下看懂了呢.构造函数的new操作~</p>
 <h3 id="0x06-new-Foo-getName"><a href="#0x06-new-Foo-getName" class="headerlink" title="0x06 new Foo().getName();"></a>0x06 new Foo().getName();</h3><p>理解为: (new Foo().getName)();<br>差点忘记, 这边返回了this, 然后对象找不到直接的getName函数, 于是跟着原型链把line-3的函数继承上去.</p>
 <h3 id="0x07-new-new-Foo-getName"><a href="#0x07-new-new-Foo-getName" class="headerlink" title="0x07 new new Foo().getName();"></a>0x07 new new Foo().getName();</h3><p>理解为: (new (new Foo().getName))();<br>(new Foo().getName) 表示的是构造函数, 然后就和0x05一样的理解即可.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JS闭包]]></title>
+      <url>http://csser.work/12/02/2016/js-closure/</url>
+      <content type="html"><![CDATA[<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>看问题的时候顺便看到了, <a href="http://www.cnblogs.com/xxcanghai/p/4991870.html" target="_blank" rel="external">闭包面试题</a><br>面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>个人理解:<br><br>看了<a href="https://developer.mozilla.org/cn/docs/Web/JavaScript/Closures" target="_blank" rel="external">MDN</a>, 总结了一些结论<br>闭包就是一个 函数加上该函数的上下文环境 的集合.</p>
+<p>一个比较常见的例子:<br>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Javascript:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++)&#123;</span><br><span class="line">		divs[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>无论点哪个都只会输出3, 原因讲的已经很明确了, 在这个函数内部的上下文环境中, i会共用.<br>可能会问, 如果共用, 那么绑定的也只有第三个=&gt; 在绑定的时候i还是从0-&gt;2的, 但是事件触发一定是i在等于3之后的事情了.</p>
+<p>解决办法: 闭包传参, ES6新特性:let<br>这边给个闭包传参的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++) &#123;</span><br><span class="line">		divs[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;)(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>这样每一个onclick都被赋予了一个独立的闭包,可以独立输出0-2.</p>
+<p>另一个模拟类的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shoppingCart</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> goods = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        goodsAdd: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            ++goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsRemove: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            --goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> goods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cartA = <span class="keyword">new</span> shoppingCart();</span><br><span class="line"><span class="keyword">var</span> cartB = <span class="keyword">new</span> shoppingCart();</span><br><span class="line">cartA.goodsAdd();</span><br><span class="line">cartA.goodsShow();</span><br><span class="line"></span><br><span class="line">cartB.goodsAdd();</span><br><span class="line">cartB.goodsRemove();</span><br><span class="line">cartB.goodsShow();</span><br></pre></td></tr></table></figure></p>
+<p>shoppingCart函数有个函数内变量goods, 外部无法访问, 但是它可以通过内部的函数访问到, 即整个shoppingCart函数<code>构成了一个闭包环境</code>.<br>问了一下同学, <code>这个很像面向对象的一个类</code>, goods就是所谓的private变量了.<br>而new出来的对象都是一个独立的闭包, 拥有独立的上下文环境和内容</p>
 ]]></content>
     </entry>
     
@@ -1702,6 +1711,43 @@
     </entry>
     
     <entry>
+      <title><![CDATA[无题]]></title>
+      <url>http://csser.work/08/07/2016/say-2/</url>
+      <content type="html"><![CDATA[<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
+<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JSON使用注意]]></title>
+      <url>http://csser.work/08/07/2016/js-json-parse/</url>
+      <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
+<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
+<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
+<p>Update in 08/11/2016</p>
+<blockquote>
+<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
+</blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
+<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
+</blockquote>
+<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
+<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
+<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
+</blockquote>
+<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
+<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[xss习题集_2.2]]></title>
       <url>http://csser.work/08/07/2016/xss-4/</url>
       <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>还是这个站<a href="http://prompt.ml/0" target="_blank" rel="external">Prompt(1) to win</a>, 不过是下集, 没想到自己不会这么多, 才会出的下集2333</p>
@@ -1765,43 +1811,6 @@
 <p>第三个利用了ES6的模板解析<a href="/08/05/2016/js-template-strings/">这里</a><br>(也考虑到了`这个替代, 模板是没想到..)<br>vector3:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"&gt;<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="string">`#<span class="subst">$&#123;prompt(1)&#125;</span>#`</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>…hideen level没找到, 就不管了, 这些感觉够用了~</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>Challenge:<br>  <a href="http://prompt.ml/0" target="_blank" rel="external">prompt</a><br>Writeup:<br>  <a href="https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml" target="_blank" rel="external">github-cure53</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[无题]]></title>
-      <url>http://csser.work/08/07/2016/say-2/</url>
-      <content type="html"><![CDATA[<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
-<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[JSON使用注意]]></title>
-      <url>http://csser.work/08/07/2016/js-json-parse/</url>
-      <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>JSON.parse();</p>
-<h3 id="引号问题"><a href="#引号问题" class="headerlink" title="引号问题"></a>引号问题</h3><p>注意一下单引号</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> code = <span class="string">'"\u0070\u0072\u006f\u006d\u0070\u0074\u0028\u0031\u0029"'</span>;</span><br><span class="line"><span class="comment">//  code必须由单引号扩起来</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(code); <span class="comment">// "prompt(1)"</span></span><br><span class="line"><span class="built_in">eval</span>(code); <span class="comment">// prompt(1)</span></span><br></pre></td></tr></table></figure>
-<h3 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h3><p>由上面引出来一个新的问题就是如果传入一个json对象, 那么对象应该是这么写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>而不是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;</span><br><span class="line">  <span class="string">'neme'</span> : <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="json对象和对象字面量"><a href="#json对象和对象字面量" class="headerlink" title="json对象和对象字面量~"></a>json对象和对象字面量~</h2><blockquote>
-<p>Update in 08/11/2016</p>
-<blockquote>
-<p>汤姆大叔<br>JSON有非常严格的语法，在string上下文里<code>{ &quot;prop&quot;: &quot;val&quot; }</code>是个合法的JSON，但<code>{ prop: &quot;val&quot; }</code>和<code>{ &#39;prop&#39;: &#39;val&#39; }</code>确实不合法的</p>
-</blockquote>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  JS对象字面量</span></span><br><span class="line"><span class="keyword">var</span> jsObj = &#123;prop:<span class="string">"val"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  json对象</span></span><br><span class="line"><span class="keyword">var</span> jsonObj = &#123;<span class="string">"prop"</span>:<span class="string">"val"</span>&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><blockquote>
-<p>复杂的数据结构经常需要用到，并且通过各种各样的中括号{}，小括号()，叫括号&lt;&gt;和空格来组成，这个字符串仅仅是按照要求规范好的字符。</p>
-</blockquote>
-<p>由于在js中所以一般使用的是json, 替代者有<code>YAML</code>和<code>XML</code>（甚至<code>request params</code>）</p>
-<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><blockquote>
-<p>Mozilla Developer Center<br>1.他们是固定的值，不是变量，让你从“字面上”理解脚本。 (Literals)<br>2.字符串字面量是由双引号（”）或单引号（’）包围起来的零个或多个字符组成的。(Strings Literals)<br>3.对象字面量是由大括号（{}）括起来的零个或多个对象的属性名-值对。(Object Literals)</p>
-</blockquote>
-<h3 id="什么时候算是JSON"><a href="#什么时候算是JSON" class="headerlink" title="什么时候算是JSON?"></a>什么时候算是JSON?</h3><blockquote>
-<p>形如<code>{ &quot;prop&quot;: &quot;val&quot; }</code>. 可能是JavaScript对象字面量也有可能是JSON字符串;<br>取决于什么上下文使用它;<br>如果是用在string上下文（<code>用单引号或双引号引住，或者从text文件读取</code>）的话，那它就是JSON字符串;<br>如果是用在对象字面量上下文中，那它就是对象字面量;</p>
-</blockquote>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
 ]]></content>
     </entry>
     
@@ -2137,6 +2146,18 @@
     </entry>
     
     <entry>
+      <title><![CDATA[JS_引用类型和基本类型区别]]></title>
+      <url>http://csser.work/05/09/2016/js-stack-heap/</url>
+      <content type="html"><![CDATA[<h2 id="实例-听说这是一道简化的JS面试题"><a href="#实例-听说这是一道简化的JS面试题" class="headerlink" title="实例(听说这是一道简化的JS面试题?)"></a>实例(听说这是一道简化的JS面试题?)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFtn</span>(<span class="params">sNm,pObj</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：new obj</span></span><br><span class="line"></span><br><span class="line">    sNm = <span class="string">"change name"</span>;</span><br><span class="line"></span><br><span class="line">    pObj.oName = <span class="string">"change obj"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sNm = <span class="string">"new Name"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pObj = &#123;oName:<span class="string">"new obj"</span>&#125;;</span><br><span class="line"></span><br><span class="line">testFtn(sNm,pObj);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：change obj</span></span><br></pre></td></tr></table></figure>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>看着看着,再结合js的堆栈引用图,然后恍然大悟:这特么不就是<code>C中的传值和传址调用</code>嘛!</p>
+<p>函数内基本类型传入的是值,引用类型传入的是地址,所以函数内改变基本类型的形参并没有什么卵用(因为这个形参的作用域只在函数里面,而且用完销毁).引用类型的话传入了地址,所以很正常的可以改变自己的内容</p>
+<h3 id="引用图"><a href="#引用图" class="headerlink" title="引用图"></a>引用图</h3><p><img src="/imgs/js_stack_heap/1.png" alt="1"></p>
+<h2 id="还有个现成的问题推荐看看"><a href="#还有个现成的问题推荐看看" class="headerlink" title="还有个现成的问题推荐看看"></a>还有个现成的问题推荐看看</h2><p><a href="https://segmentfault.com/q/1010000002417402" target="_blank" rel="external">关于javascript的引用类型</a></p>
+<h2 id="Refernce"><a href="#Refernce" class="headerlink" title="Refernce"></a>Refernce</h2><p><a href="https://segmentfault.com" target="_blank" rel="external">SegmentFault</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript语言精粹]]></title>
       <url>http://csser.work/05/09/2016/js-invocation-patten/</url>
       <content type="html"><![CDATA[<p>这边讲的是JavaScript的函数调用和this</p>
@@ -2155,40 +2176,6 @@
 <p>运行之后可以很明显的看出来第二个alert居然指向了全局的变量window.value<br>原因已经在上文中谈到</p>
 <h3 id="代码改进"><a href="#代码改进" class="headerlink" title="代码改进"></a>代码改进</h3><p>利用js函数内声明的变量会存在<code>运行域</code>这个特性,来构造一个that(约定俗成的一个变量名了= =)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.value);	<span class="comment">//0</span></span><br><span class="line">		<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">		<span class="keyword">var</span> innerFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			alert( ++that.value );	<span class="comment">//1</span></span><br><span class="line">		&#125;</span><br><span class="line">		innerFunction();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://doctrina.org/Javascript-Function-Invocation-Patterns.html" target="_blank" rel="external">JavaScript: Function Invocation Patterns</a><br><a href="https://github.com/CoffeeXu/Front-end/blob/master/JavaScript%20Function%20Invocation%20Patterns.md" target="_blank" rel="external">CoffeeXu</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[JS_引用类型和基本类型区别]]></title>
-      <url>http://csser.work/05/09/2016/js-stack-heap/</url>
-      <content type="html"><![CDATA[<h2 id="实例-听说这是一道简化的JS面试题"><a href="#实例-听说这是一道简化的JS面试题" class="headerlink" title="实例(听说这是一道简化的JS面试题?)"></a>实例(听说这是一道简化的JS面试题?)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFtn</span>(<span class="params">sNm,pObj</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：new obj</span></span><br><span class="line"></span><br><span class="line">    sNm = <span class="string">"change name"</span>;</span><br><span class="line"></span><br><span class="line">    pObj.oName = <span class="string">"change obj"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sNm = <span class="string">"new Name"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pObj = &#123;oName:<span class="string">"new obj"</span>&#125;;</span><br><span class="line"></span><br><span class="line">testFtn(sNm,pObj);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：change obj</span></span><br></pre></td></tr></table></figure>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>看着看着,再结合js的堆栈引用图,然后恍然大悟:这特么不就是<code>C中的传值和传址调用</code>嘛!</p>
-<p>函数内基本类型传入的是值,引用类型传入的是地址,所以函数内改变基本类型的形参并没有什么卵用(因为这个形参的作用域只在函数里面,而且用完销毁).引用类型的话传入了地址,所以很正常的可以改变自己的内容</p>
-<h3 id="引用图"><a href="#引用图" class="headerlink" title="引用图"></a>引用图</h3><p><img src="/imgs/js_stack_heap/1.png" alt="1"></p>
-<h2 id="还有个现成的问题推荐看看"><a href="#还有个现成的问题推荐看看" class="headerlink" title="还有个现成的问题推荐看看"></a>还有个现成的问题推荐看看</h2><p><a href="https://segmentfault.com/q/1010000002417402" target="_blank" rel="external">关于javascript的引用类型</a></p>
-<h2 id="Refernce"><a href="#Refernce" class="headerlink" title="Refernce"></a>Refernce</h2><p><a href="https://segmentfault.com" target="_blank" rel="external">SegmentFault</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Shell 2>&1 Meaning]]></title>
-      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
-      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
-<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
-<blockquote>
-<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
-</blockquote>
-<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
-<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
-<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
-<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
-</blockquote>
-<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
-<blockquote>
-<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
-</blockquote>
-<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
 ]]></content>
     </entry>
     
@@ -2212,6 +2199,28 @@
 <blockquote>
 <p>cheat -e -xyz</p>
 </blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Shell 2>&1 Meaning]]></title>
+      <url>http://csser.work/05/08/2016/linux-cmd-redirect/</url>
+      <content type="html"><![CDATA[<p>在Segmentfault中看到一个同样的问题,作为笔记记录下来</p>
+<h3 id="0x1-amp-含义"><a href="#0x1-amp-含义" class="headerlink" title="0x1 &amp;含义"></a>0x1 &amp;含义</h3><p>重定向<code>&gt; filename 2&amp;&gt;1</code>表示将前面的正确/错误输入都传给后面的filename, 但是<code>&amp;</code>这个概念就不是很清楚</p>
+<blockquote>
+<p>xelz<br>而2&gt;&amp;1代表将stderr重定向到<code>文件描述符</code>为1的文件(即/dev/stdout)</p>
+</blockquote>
+<p>所以&amp;就是为了标志1不是一个文件名而是一个文件描述符</p>
+<h3 id="0x2-特殊用法-amp-gt-filename"><a href="#0x2-特殊用法-amp-gt-filename" class="headerlink" title="0x2 特殊用法: &amp;&gt; filename"></a>0x2 特殊用法: &amp;&gt; filename</h3><p>整体使用 &amp;&gt; === &gt;&amp;<br>等价于&gt; filename 2&amp;&gt;1</p>
+<h3 id="0x3-调用顺序"><a href="#0x3-调用顺序" class="headerlink" title="0x3 调用顺序"></a>0x3 调用顺序</h3><blockquote>
+<p>正<br>find / -name ‘desktop’ &gt; tmpfile 2&gt;&amp;1</p>
+</blockquote>
+<p>文件内容:stdout+stderr<br>先将stdout输出到file,此时的file就是该shell的stdout,之后再将stderr(2)重定向到stdout(1)</p>
+<blockquote>
+<p>误<br>find / -name ‘desktop’ 2&gt;&amp;1 &gt; tmpfile2</p>
+</blockquote>
+<p>文件内容:stdout<br>先将要输出到stderr的内容重定向到stdout，此时会<code>产生一个stdout的拷贝</code>，作为程序的stderr，而程序<code>原本要输出到stdout</code>的内容，依然是对接在stdout原身上的，因此<code>第二步重定向stdout</code>，对stdout的拷贝不产生任何影响</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://segmentfault.com/q/1010000002454596" target="_blank" rel="external">https://segmentfault.com/q/1010000002454596</a></p>
 ]]></content>
     </entry>
     
@@ -2423,22 +2432,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Nexus原生OTA升级(ROOT+XP),无需PC]]></title>
-      <url>http://csser.work/03/30/2016/device-nexus-ota-update/</url>
-      <content type="html"><![CDATA[<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Nexus5x Rooted Xposed</p>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
-<li>不需要PC 2. 不需要清数据 3. 可以顺便安装Xposed</li>
-</ol>
-<p><code>自己是先卸载了Xposed之后再升级的,没卸载的升级没有尝试过</code></p>
-<h3 id="正"><a href="#正" class="headerlink" title="正"></a>正</h3><p>这个我就不多讲了,需要的软件<code>Flashfire</code><br>更新软件包: <a href="https://developers.google.com/android/nexus/images" target="_blank" rel="external">Nexus_Factory_images</a><br>Xposed框架地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">Xposed</a></p>
-<p>直接上地址(墙):</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ED6N4DJTaU4" frameborder="0" allowfullscreen></iframe>
-
-<h2 id="结合PC的ota"><a href="#结合PC的ota" class="headerlink" title="结合PC的ota"></a>结合PC的ota</h2><p>这个自己没用过.需要的自己看一下,<code>不需要清数据</code><br><a href="https://m.reddit.com/r/nexus5x/comments/44duji/rooted_it_how_to_apply_the_ota_update/" target="_blank" rel="external">reddit</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Android6.0.1 Xposed安装以及插件推荐]]></title>
       <url>http://csser.work/03/30/2016/device-nexus-xposed/</url>
       <content type="html"><![CDATA[<p>xposed安装目的很明确:不想用庞大的LBE(耗电),需要启用greenify的Xposed扩展功能</p>
@@ -2451,6 +2444,22 @@
 </ol>
 <h2 id="推荐几个插件"><a href="#推荐几个插件" class="headerlink" title="推荐几个插件"></a>推荐几个插件</h2><p>ActivityForceNewTask 强制开新任务<br>不装LBE就用<code>greenify</code>,root的休眠功能+xposed扩展非常棒<br>阻止运行: Prevent Running<br>禁止唤醒: No WakeLock 作者Blog:<a href="https://www.linangran.com/?p=611" target="_blank" rel="external">Angran Lin’s Blog</a> (试用了发现也就这样,卸载了)<br>开机管理: BootManager<br><del>权限管理: XPrivacy 控制太烦,而且原生已有权限控制,弃用</del><br><del>广告过滤: MinMinGuard 怕过滤规则过严,弃用</del><br><del>Ist保存插件: Instagram Downloader 很早之前能用</del><br>禁止内置浏览器: ExLink(去你大爷的浏览器)<br>状态栏+底栏颜色优化,很棒: PerfectColorBar<br>来电显示: Phone Location<br>自定义手电筒快捷键: Xposed Torch<br>防撤回: QQUnrecalled/WechatUnrecalled(别干坏事..)</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.inexus.co/article-3823-1.html" target="_blank" rel="external">Inexus-Xposed安装</a><br><a href="http://forum.xda-developers.com/showpost.php?p=58828974" target="_blank" rel="external">XDA</a><br>插件推荐: <a href="https://www.zhihu.com/question/22063862" target="_blank" rel="external">==知乎链接==</a><br>刚找到的一个新地址: <a href="http://xposed.appkg.com/1051.html" target="_blank" rel="external">Xposed</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Nexus原生OTA升级(ROOT+XP),无需PC]]></title>
+      <url>http://csser.work/03/30/2016/device-nexus-ota-update/</url>
+      <content type="html"><![CDATA[<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Nexus5x Rooted Xposed</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>不需要PC 2. 不需要清数据 3. 可以顺便安装Xposed</li>
+</ol>
+<p><code>自己是先卸载了Xposed之后再升级的,没卸载的升级没有尝试过</code></p>
+<h3 id="正"><a href="#正" class="headerlink" title="正"></a>正</h3><p>这个我就不多讲了,需要的软件<code>Flashfire</code><br>更新软件包: <a href="https://developers.google.com/android/nexus/images" target="_blank" rel="external">Nexus_Factory_images</a><br>Xposed框架地址: <a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="external">Xposed</a></p>
+<p>直接上地址(墙):</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ED6N4DJTaU4" frameborder="0" allowfullscreen></iframe>
+
+<h2 id="结合PC的ota"><a href="#结合PC的ota" class="headerlink" title="结合PC的ota"></a>结合PC的ota</h2><p>这个自己没用过.需要的自己看一下,<code>不需要清数据</code><br><a href="https://m.reddit.com/r/nexus5x/comments/44duji/rooted_it_how_to_apply_the_ota_update/" target="_blank" rel="external">reddit</a></p>
 ]]></content>
     </entry>
     
@@ -3116,19 +3125,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[手表指南方法]]></title>
-      <url>http://csser.work/01/31/2016/life-%E6%8C%87%E5%8D%97/</url>
-      <content type="html"><![CDATA[<p>看小学生杀手的时候发现几个指南方法，记一下</p>
-<h2 id="借助太阳指向"><a href="#借助太阳指向" class="headerlink" title="借助太阳指向"></a>借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
-<p>###原理<br>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
-<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
-<h2 id="立杆测影-指东针"><a href="#立杆测影-指东针" class="headerlink" title="立杆测影-指东针"></a>立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
-<h3 id="日晷原理"><a href="#日晷原理" class="headerlink" title="日晷原理"></a>日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[linux日常更新-01]]></title>
       <url>http://csser.work/01/31/2016/daily-linux-1/</url>
       <content type="html"><![CDATA[<p>#环境:debian8<br>最后更新日期:2016-01-31</p>
@@ -3243,6 +3239,19 @@ tar -czvf -g zeng aa.tar.gz.1 /var
 </ol>
 <p>好像有点小BUG:<br>如果开机过程没有插网线,会一直搜索大概1分钟<br>Reference:<br><a href="http://tieba.baidu.com/p/3247330238" target="_blank" rel="external">贴吧</a></p>
 <h3 id="gnome"><a href="#gnome" class="headerlink" title="gnome"></a>gnome</h3><p>打开了一张奇怪的图片,然后就崩了,直接被注销<br>搞了半天也看了gnome的错误日志,然后找到论坛<a href="http://forum.ubuntu.org.cn/viewtopic.php?f=94&amp;t=378902" target="_blank" rel="external">ubuntu12.04安装gnome shell主题，给新手们</a><br>最后发现这个网站<a href="https://extensions.gnome.org/" target="_blank" rel="external">extensions.gnome</a><br><code>firefox</code>打开     然后选择一下插件,不用管warning…<br>备用:<br><a href="http://itsfoss.com/install-switch-themes-gnome-shell/" target="_blank" rel="external">How To Install And Switch Themes In GNOME Shell In Ubuntu</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[手表指南方法]]></title>
+      <url>http://csser.work/01/31/2016/life-%E6%8C%87%E5%8D%97/</url>
+      <content type="html"><![CDATA[<p>看小学生杀手的时候发现几个指南方法，记一下</p>
+<h2 id="借助太阳指向"><a href="#借助太阳指向" class="headerlink" title="借助太阳指向"></a>借助太阳指向</h2><p>当地时间<code>/2</code>，表盘中将得到的数字指向太阳，则<code>12点钟方向</code>就是北</p>
+<p>###原理<br>一天内地球自转一圈，12时制的手表重复两边，时间除二就是为了<code>同步自转和表盘指针</code></p>
+<p>不过太阳在头上和没太阳的情况这种方法就没什么卵用了。</p>
+<h2 id="立杆测影-指东针"><a href="#立杆测影-指东针" class="headerlink" title="立杆测影-指东针"></a>立杆测影-指东针</h2><p>直杆垂直插在地面上，在影子顶点作下<code>标记A</code>，15分钟之后，影子变化，将变化后的影子顶点记为<code>标记B</code>，ab即为<code>西-&gt;东</code>方向（北半球）。</p>
+<h3 id="日晷原理"><a href="#日晷原理" class="headerlink" title="日晷原理"></a>日晷原理</h3><p>因为我们身处北半球，北半球自西向东自转，以北半球上为参考点，太阳由东向西照射。<br>影子经过竿的遮挡，方向和太阳照射相反，所以北半球AB方向为 <code>西-&gt;东</code><br>南半球<code>东-&gt;西</code>    （反反之后和自转方向相同了=, =）</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://education.news.cn/2012-08/23/c_123618168.htm" target="_blank" rel="external">新华网</a><br><a href="http://www.dili360.com/nh/article/p5350c3d8d9f9e10.htm" target="_blank" rel="external">国家地理</a></p>
 ]]></content>
     </entry>
     
@@ -3580,15 +3589,6 @@ noauto          开机不自动挂载
     </entry>
     
     <entry>
-      <title><![CDATA[又是一年]]></title>
-      <url>http://csser.work/10/08/2015/say-1/</url>
-      <content type="html"><![CDATA[<h3 id="小感慨"><a href="#小感慨" class="headerlink" title="小感慨"></a>小感慨</h3><h4 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
-<h4 id="决心"><a href="#决心" class="headerlink" title="决心"></a>决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
-<h3 id="小目标"><a href="#小目标" class="headerlink" title="小目标"></a>小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Js学习笔记(5)]]></title>
       <url>http://csser.work/10/08/2015/js-client-5/</url>
       <content type="html"><![CDATA[<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><h3 id="Js的css选择器"><a href="#Js的css选择器" class="headerlink" title="Js的css选择器"></a>Js的css选择器</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> document.querySelector(selectors);  //和css选择完全一样</span><br><span class="line"> document.querySelectorAll();   //返回Nodelist</span><br><span class="line"> console.log(document.querySelector('[</span><br><span class="line"> "]'));//栗子</span><br><span class="line">&lt;!-- 要加东西!!!! --&gt;</span><br></pre></td></tr></table></figure>
@@ -3602,6 +3602,15 @@ noauto          开机不自动挂载
 <h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> insertAt = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params">parent, child, n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span> || n &gt;parent.childNodes.length)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Invalid index!"</span>);  <span class="comment">//对n的位置进行报错处理</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == parent.childNodes.length)</span><br><span class="line">        parent.appendChild(child);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        parent.insertBefore(child, parent.childNodes[n]);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="删除和替换"><a href="#删除和替换" class="headerlink" title="删除和替换"></a>删除和替换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除</span></span><br><span class="line">n.parentNode.removeChild( n );  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//替换n节点</span></span><br><span class="line">n.parentNode.replaceChild( <span class="built_in">document</span>.creatTextNode(<span class="string">"[ Redacted ]"</span>),n);  <span class="comment">//在父节点运行函数</span></span><br></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[又是一年]]></title>
+      <url>http://csser.work/10/08/2015/say-1/</url>
+      <content type="html"><![CDATA[<h3 id="小感慨"><a href="#小感慨" class="headerlink" title="小感慨"></a>小感慨</h3><h4 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h4><p>一年过去了,也渐渐适应了大学的节奏,但是看看自己走过的路,依然是一张白纸,多了几滴杂墨.<br>入了这个专业,进了这个协会,可能是自己资质太差,并没有受到认同.<br>生性孤僻,在大学也没有交到什么朋友,高中同学也不常聊了.<br>肯定是自己太懒,技术也没学到什么,绩点又渣渣,还妄想什么奖学金?(作业都懒得做的人!)</p>
+<h4 id="决心"><a href="#决心" class="headerlink" title="决心"></a>决心</h4><p><code>既来之,则安之</code>入了这个坑,就该把这个坑填满,别人看不起你,那是活该,不该抱怨.所以努力吧,在今后两年让自己活出名堂!</p>
+<h3 id="小目标"><a href="#小目标" class="headerlink" title="小目标"></a>小目标</h3><p>A. 继续Javascript,权威指南(虽然难看,但也得看啊,没人给你看)<br>B. 熟练使用C C++ (承认自己学的并不好!)<br>C. HetianLab .etc(Securtiy)<br>D. Feed订阅 知乎(Any)<br>E. Shanbay(Level 6)</p>
 ]]></content>
     </entry>
     
@@ -3628,17 +3637,6 @@ apt-cache search linux-header
     </entry>
     
     <entry>
-      <title><![CDATA[Js学习笔记(4)]]></title>
-      <url>http://csser.work/10/03/2015/js-client-4/</url>
-      <content type="html"><![CDATA[<h3 id="jQuery的-查询"><a href="#jQuery的-查询" class="headerlink" title="jQuery的$查询"></a>jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
-<h3 id="窗体"><a href="#窗体" class="headerlink" title="窗体"></a>窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
-<h3 id="窗体-口之间的交互"><a href="#窗体-口之间的交互" class="headerlink" title="窗体/口之间的交互"></a>窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'A'</span> <span class="attr">src</span>=<span class="string">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'B'</span> <span class="attr">src</span>=<span class="string">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Js学习笔记(3)]]></title>
       <url>http://csser.work/10/03/2015/js-client-3/</url>
       <content type="html"><![CDATA[<h2 id="Window对象"><a href="#Window对象" class="headerlink" title="Window对象"></a>Window对象</h2><h3 id="计时器"><a href="#计时器" class="headerlink" title="计时器"></a>计时器</h3><hr>
@@ -3655,6 +3653,17 @@ stringObject.substring(start,stop)    取一段字符
 stringObject.split(separator,howmany) 字符串分割
 stringObject.indexOf(searchvalue,fromindex)   字符检索
 </code></pre><h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">urlAges</span>(<span class="params"></span>)</span>&#123;     <span class="comment">//URL参数解析函数</span></span><br><span class="line">    <span class="keyword">var</span> args = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> query = location.search.substring(<span class="number">1</span>);   <span class="comment">//获取url查询字符串</span></span><br><span class="line">    <span class="keyword">var</span> pairs = query.split(<span class="string">"&amp;"</span>);   <span class="comment">//此时的pairs为字符串数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;pairs.length ; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> pos = pairs[i].indexOf(<span class="string">'='</span>);    <span class="comment">//检测第一个'='</span></span><br><span class="line">        <span class="keyword">if</span>(pos == <span class="number">-1</span>)   <span class="comment">//indexOf()由-1开始进行(第一个检测的是0)</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">var</span> name = pairs[i].substring(<span class="number">0</span>,pos);</span><br><span class="line">        <span class="keyword">var</span> value = pairs[i].substring(pos+<span class="number">1</span>);</span><br><span class="line">        value = <span class="built_in">decodeURIComponent</span>(value);  <span class="comment">//value解码</span></span><br><span class="line">        args[name] = value; <span class="comment">//将value存储为args对象的name属性值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Js学习笔记(4)]]></title>
+      <url>http://csser.work/10/03/2015/js-client-4/</url>
+      <content type="html"><![CDATA[<h3 id="jQuery的-查询"><a href="#jQuery的-查询" class="headerlink" title="jQuery的$查询"></a>jQuery的$查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id); &#125;;    <span class="comment">//定义$方法</span></span><br><span class="line">ui.prompt = $(<span class="string">"prompt"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w = <span class="built_in">window</span>.open();  <span class="comment">//定义一个窗口 新窗口由此产生一个window.opener属性</span></span><br><span class="line">w.alert(<span class="string">'xxx'</span>);</span><br><span class="line">w.location = <span class="string">'about:blank'</span>;</span><br><span class="line">w.close();    <span class="comment">//只能关闭通过window.open()方法打开的窗口</span></span><br></pre></td></tr></table></figure>
+<h3 id="窗体"><a href="#窗体" class="headerlink" title="窗体"></a>窗体</h3><p>窗体通过<code>&lt;iframe&gt;</code>创建,而且拥有<code>contentWindow</code>属性用来引用该窗体的window对象</p>
+<h3 id="窗体-口之间的交互"><a href="#窗体-口之间的交互" class="headerlink" title="窗体/口之间的交互"></a>窗体/口之间的交互</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'A'</span> <span class="attr">src</span>=<span class="string">"a.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">'B'</span> <span class="attr">src</span>=<span class="string">"b.foo.com"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>存在两个窗体AB,且不受同源策略影响.A中脚本定义了一个变量i<code>var i = 1;</code>,B可以通过简单的’parent.A.i = 4;’对A中的变量进行赋值,函数调用同理<br>如果iframe元素需要调用父级页面元素,则采用<code>parent.example();</code>语句</p>
+]]></content>
     </entry>
     
     <entry>

@@ -4,26 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>js-Call/Apply | A1exlism</title>
+    <title>prototype and __proto__ | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="a1exlism">
     
 
     
-    <meta name="description" content="说明Call() 和 Apply() 都能使目标对象指定一个所需要的this对象
-语法123456//---------call()---------object.call(thisArg[, arg1[, arg2[, ...]]])            //thisArg : 指定的this对象                    //arg1,arg2...为obejcet方法中所传入的">
+    <meta name="description" content="DefinedTo clear up the confusion of prototype in this which really confused me for months before. All stuff work around with this article. If you still don’t know the answer, check the link and find @">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js-Call/Apply">
-<meta property="og:url" content="http://csser.work/10/25/2015/js-Inherit/index.html">
+<meta property="og:title" content="prototype and __proto__">
+<meta property="og:url" content="http://csser.work/02/17/2018/prototype-and-proto/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="说明Call() 和 Apply() 都能使目标对象指定一个所需要的this对象
-语法123456//---------call()---------object.call(thisArg[, arg1[, arg2[, ...]]])            //thisArg : 指定的this对象                    //arg1,arg2...为obejcet方法中所传入的">
-<meta property="og:updated_time" content="2016-10-04T07:31:56.278Z">
+<meta property="og:description" content="DefinedTo clear up the confusion of prototype in this which really confused me for months before. All stuff work around with this article. If you still don’t know the answer, check the link and find @">
+<meta property="og:image" content="http://csser.work/imgs/prototype_and___proto__/mind_map.png">
+<meta property="og:image" content="http://csser.work/imgs/prototype_and___proto__/mind_map2.jpg">
+<meta property="og:updated_time" content="2018-03-14T12:32:47.061Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js-Call/Apply">
-<meta name="twitter:description" content="说明Call() 和 Apply() 都能使目标对象指定一个所需要的this对象
-语法123456//---------call()---------object.call(thisArg[, arg1[, arg2[, ...]]])            //thisArg : 指定的this对象                    //arg1,arg2...为obejcet方法中所传入的">
+<meta name="twitter:title" content="prototype and __proto__">
+<meta name="twitter:description" content="DefinedTo clear up the confusion of prototype in this which really confused me for months before. All stuff work around with this article. If you still don’t know the answer, check the link and find @">
+<meta name="twitter:image" content="http://csser.work/imgs/prototype_and___proto__/mind_map.png">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -84,14 +84,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/25/2015/js-Inherit/" title="js-Call/Apply" itemprop="url">js-Call/Apply</a>
+      <a href="/02/17/2018/prototype-and-proto/" title="prototype and __proto__" itemprop="url">prototype and __proto__</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-24T16:00:00.000Z" itemprop="datePublished"> 发表于 10-25-2015</time>
+    <time datetime="2018-02-16T16:00:00.000Z" itemprop="datePublished"> 发表于 02-17-2018</time>
     
   </p>
 </header>
@@ -100,25 +100,51 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">1.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例-call为主"><span class="toc-number">1.2.</span> <span class="toc-text">实例(call为主)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Note1-js"><span class="toc-number">1.2.1.</span> <span class="toc-text">Note1.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Note2-js"><span class="toc-number">1.2.2.</span> <span class="toc-text">Note2.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#call-VS-apply"><span class="toc-number">1.2.3.</span> <span class="toc-text">call VS apply</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mind-Map"><span class="toc-number">2.1.</span> <span class="toc-text">Mind Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#an-important-part"><span class="toc-number">2.2.</span> <span class="toc-text">an important part</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#where-to-find-proto-and-prototype"><span class="toc-number">2.3.</span> <span class="toc-text">where to find __proto__ and prototype?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-proto"><span class="toc-number">2.4.</span> <span class="toc-text">Why __proto__?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-prototype"><span class="toc-number">2.5.</span> <span class="toc-text">Why prototype?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#more-about-this"><span class="toc-number">2.6.</span> <span class="toc-text">more about this</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new-mind-map"><span class="toc-number">2.7.</span> <span class="toc-text">new mind map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Great-Links-with-Function-and-others"><span class="toc-number">2.8.</span> <span class="toc-text">Great Links with Function and others</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>Call() 和 Apply() 都能使目标对象指定一个所需要的this对象</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//---------call()---------</span></span><br><span class="line">object.call(thisArg[, arg1[, arg2[, ...]]])</span><br><span class="line">            <span class="comment">//thisArg : 指定的this对象</span></span><br><span class="line">                    <span class="comment">//arg1,arg2...为obejcet方法中所传入的参数值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//---------apply()--------</span></span><br></pre></td></tr></table></figure>
-<h3 id="实例-call为主"><a href="#实例-call为主" class="headerlink" title="实例(call为主)"></a>实例(call为主)</h3><h4 id="Note1-js"><a href="#Note1-js" class="headerlink" title="Note1.js"></a>Note1.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Product</span>(<span class="params">name, price</span>)</span>&#123;      <span class="comment">//Product方法</span></span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.price = price;</span><br><span class="line">  <span class="keyword">if</span>(price &lt; <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">RangeError</span>(<span class="string">'Cannot create product "'</span> + name +<span class="string">'"'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Food</span>(<span class="params">name, price</span>)</span>&#123;         <span class="comment">//Food类</span></span><br><span class="line">  Product.call(<span class="keyword">this</span>, name, price);  <span class="comment">//看12th行</span></span><br><span class="line">  <span class="keyword">this</span>.category = <span class="string">'food'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Food.prototype = <span class="keyword">new</span> Product();     <span class="comment">//Food现在拥有了Product()的方法了</span></span><br><span class="line"><span class="keyword">var</span> cheese = <span class="keyword">new</span> Food(<span class="string">'feta'</span>, <span class="number">5</span>);   <span class="comment">//cheese现在是Food()的一个实例对象,在Food()函数中所指向的this就是cheese,而里面的call()函数中的name和price就被指定为'fete'和5了</span></span><br><span class="line"><span class="built_in">console</span>.log(cheese.category);<span class="comment">//food</span></span><br><span class="line"><span class="built_in">console</span>.log(cheese.name + <span class="string">' 价值: $'</span> + cheese.price);<span class="comment">//feta价值5</span></span><br></pre></td></tr></table></figure>
-<p>继承图:<br>  Product   -&gt;  Food          -&gt;  ‘cheese’(实例)<br>  name          name               feta<br>  price         price              5<br>                category(new)      food</p>
-<h4 id="Note2-js"><a href="#Note2-js" class="headerlink" title="Note2.js"></a>Note2.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> father = &#123;</span><br><span class="line">  age : <span class="number">50</span>,</span><br><span class="line">  birthday : <span class="function"><span class="keyword">function</span>(<span class="params">fPrefix, fPostfix</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fPrefix + <span class="keyword">this</span>.age++ +fPostfix;  <span class="comment">//this-&gt;father对象</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> son =&#123;</span><br><span class="line">  age : <span class="number">22</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(father.birthday(<span class="string">'Dad is '</span>,<span class="string">' now.'</span>));</span><br><span class="line"><span class="built_in">console</span>.log(father.birthday.call(son, <span class="string">'Son is '</span>,<span class="string">' now'</span>)); <span class="comment">//this-&gt;son对象</span></span><br><span class="line"><span class="built_in">console</span>.log(father.birthday.apply(son,[<span class="string">'Son is '</span>,<span class="string">' now.'</span>]));</span><br></pre></td></tr></table></figure>
-<h4 id="call-VS-apply"><a href="#call-VS-apply" class="headerlink" title="call VS apply"></a>call VS apply</h4><p>call接受args  apply接受arg+args<a href="`数组`"></a></p>
-<p>apply 如果没有用数组, 会出现<code>Uncaught TypeError: CreateListFromArrayLike called on non-object</code>类似的问题</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="external">MDN-call()</a><br><a href="http://rusticode.com/2012/08/15/javascript-call-and-apply/" target="_blank" rel="external">rusticode.com</a><br><a href="https://msdn.microsoft.com/en-us/library/h2ak8h2y\(v=vs.94\" target="_blank" rel="external">MSDN</a>.aspx)<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="external">MDN-apply()</a></p>
+		<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>To clear up the confusion of prototype in this which really confused me for months before. All stuff work around with this <a href="https://stackoverflow.com/questions/310870/use-of-prototype-vs-this-in-javascript" target="_blank" rel="external">article</a>. If you still don’t know the answer, check the link and find <code>@daremkd</code>‘s answer.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>Keys: <code>__proto__</code>, <code>prototype</code>, <code>prototype chain</code>, <code>this in prototype</code> several examples</p>
+<h3 id="Mind-Map"><a href="#Mind-Map" class="headerlink" title="Mind Map"></a>Mind Map</h3><p>drew by the answer in refer link.<br><img src="/imgs/prototype_and___proto__/mind_map.png" alt="mind-map"></p>
+<h3 id="an-important-part"><a href="#an-important-part" class="headerlink" title="an important part"></a>an important part</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> A = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">this</span>.hey = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; alert(<span class="string">'from A'</span>) &#125; &#125;;</span><br><span class="line"><span class="keyword">var</span> a1 = <span class="keyword">new</span> A()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>a1.__proto__</code> property is assigned to point at the same thing as <code>A.prototype</code> points to (another empty object {} )</p>
+</blockquote>
+<h3 id="where-to-find-proto-and-prototype"><a href="#where-to-find-proto-and-prototype" class="headerlink" title="where to find __proto__ and prototype?"></a>where to find __proto__ and prototype?</h3><p>__proto__ in <code>every Object</code> included function.<br>prototype only create when function created.</p>
+<h3 id="Why-proto"><a href="#Why-proto" class="headerlink" title="Why __proto__?"></a>Why __proto__?</h3><p>-- Delegation | prototype chain (could refer <a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/#prototypepatternjavascript" target="_blank" rel="external">prototype design pattern</a>)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Orin = &#123;</span><br><span class="line">  result: <span class="string">'I\m proto value'</span>,</span><br><span class="line">  say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.result);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Orin.say()</span><br><span class="line"><span class="comment">//  Im proto value</span></span><br><span class="line"><span class="keyword">let</span> childA = <span class="built_in">Object</span>.create(Orin);</span><br><span class="line">childA.__proto__</span><br><span class="line"><span class="comment">//  &#123;result: "Im proto value", say: ƒ&#125;</span></span><br><span class="line">childA.say();</span><br><span class="line"><span class="comment">//  Im proto value</span></span><br><span class="line">childA.result = <span class="string">'I\'m new One'</span>;</span><br><span class="line">childA.say();</span><br><span class="line"><span class="comment">//  I'm new One</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Attention</strong>: checkout <code>this</code> in this example, it will follow the Objects’ <code>__proto__</code> and point it, which means it’s <code>dynamic</code>.</p>
+<h3 id="Why-prototype"><a href="#Why-prototype" class="headerlink" title="Why prototype?"></a>Why prototype?</h3><p>-- act like a member of class-based Languagers :)</p>
+<p>Bad way.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> A = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Someone like you'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a1 = <span class="keyword">new</span> A();</span><br><span class="line">a1.say();</span><br><span class="line"><span class="keyword">let</span> a2 = <span class="keyword">new</span> A();</span><br><span class="line">a2.say();</span><br><span class="line">a1.say == a2.say  <span class="comment">//  false</span></span><br></pre></td></tr></table></figure></p>
+<p>a1 and a2 both <code>act like</code> inherit the say function, BUT the result a1.say == a2.say is <code>false</code>.<br>The <code>truth</code> is every new instance created, say function will be create again and again, that will really drag system slow and fill up the stack / memory.</p>
+<p>Good practice:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> B = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">B.prototype.song = <span class="string">'One is glad to be of service'</span>;</span><br><span class="line">B.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.song);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> b1 = <span class="keyword">new</span> B();</span><br><span class="line">b1.say(); <span class="comment">//  One is glad to be of service</span></span><br><span class="line"><span class="keyword">let</span> b2 = <span class="keyword">new</span> B();</span><br><span class="line">b2.say(); <span class="comment">//  One is glad to be of service</span></span><br><span class="line">b1.say === b2.say <span class="comment">//  true</span></span><br><span class="line"></span><br><span class="line">b1.song = <span class="string">'Say something'</span>;</span><br><span class="line">b1.say(); <span class="comment">//  Say something</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>b1 stand for</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">B &#123;</span><br><span class="line">	  song: &quot;Say something&quot;</span><br><span class="line">	  __proto__: &#123;</span><br><span class="line">      say: ƒ()</span><br><span class="line">	    song: &quot;One is glad to be of service&quot;</span><br><span class="line">	    constructor: ƒ()</span><br><span class="line">	    __proto__: Object</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>and b2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">B &#123;</span><br><span class="line">	  __proto__: &#123;</span><br><span class="line">      say: ƒ()</span><br><span class="line">	    song: &quot;One is glad to be of service&quot;</span><br><span class="line">	    constructor: ƒ()</span><br><span class="line">	    __proto__: Object</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>Attention</strong>: the problem of <code>this in prototype</code> seems to be solved in b1 and b2 results, this is <code>dynamic</code>.<br>and the mechanism is <code>a.__proto__ = A.prototype</code>.</p>
+<h3 id="more-about-this"><a href="#more-about-this" class="headerlink" title="more about this"></a>more about this</h3><p>check this <a href="https://stackoverflow.com/questions/80084/in-javascript-why-is-the-this-operator-inconsistent/80478#80478" target="_blank" rel="external">link</a> out!</p>
+<h3 id="new-mind-map"><a href="#new-mind-map" class="headerlink" title="new mind map"></a>new mind map</h3><p>This image explained the relationship among <code>function</code>, <code>Function</code> and <code>Object</code>. Apparently, Object is the highest <code>Constructor</code>.<br><img src="/imgs/prototype_and___proto__/mind_map2.jpg" alt="mind-map2"></p>
+<h3 id="Great-Links-with-Function-and-others"><a href="#Great-Links-with-Function-and-others" class="headerlink" title="Great Links with Function and others"></a>Great Links with Function and others</h3><p><a href="https://stackoverflow.com/questions/40096704/new-function-vs-new-function" target="_blank" rel="external">new function() and new Function()</a></p>
+<blockquote>
+<p><a href="http://2ality.com/2014/01/eval.html" target="_blank" rel="external">eval and Function</a><br>You should avoid <code>eval()</code> and <code>new Function()</code>.</p>
+</blockquote>
+<p>new Function() usage:<br>Inner variables scope is <code>Global</code></p>
+<blockquote>
+<p>new Function(param1, param2[, …], functionBody);</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://stackoverflow.com/questions/310870/use-of-prototype-vs-this-in-javascript" target="_blank" rel="external">Use of ‘prototype’ vs. ‘this’ in JavaScript? - stackoverflow</a><br><a href="https://coderwall.com/p/p5cf5w/different-ways-of-creating-an-object-in-javascript" target="_blank" rel="external">different way to create object</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/10/25/2015/js-Inherit/" data-title="js-Call/Apply | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/02/17/2018/prototype-and-proto/" data-title="prototype and __proto__ | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -132,18 +158,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/10/27/2015/js-window-document/" title="window VS Document">
+ <a href="/02/24/2018/js-dom-base/" title="base DOM Dictionary">
   <strong>上一篇：</strong><br/>
   <span>
-  window VS Document</span>
+  base DOM Dictionary</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/10/21/2015/linux-cmd-mount/"  title="分区挂载/自动加载">
+<a href="/02/08/2018/quick-add-tracks-to-spotify-from-netease-music-with-IFTTT-and-workflow/"  title="quick add tracks to Spotify from Netease Music List with IFTTT &amp; workflow">
  <strong>下一篇：</strong><br/> 
- <span>分区挂载/自动加载
+ <span>quick add tracks to Spotify from Netease Music List with IFTTT &amp; workflow
 </span>
 </a>
 </div>
@@ -152,7 +178,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="10/25/2015/js-Inherit/" data-title="js-Call/Apply" data-url="http://csser.work/10/25/2015/js-Inherit/"></div>
+	<div class="ds-thread" data-thread-key="02/17/2018/prototype-and-proto/" data-title="prototype and __proto__" data-url="http://csser.work/02/17/2018/prototype-and-proto/"></div>
 </section>
 
 
@@ -162,7 +188,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">1.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例-call为主"><span class="toc-number">1.2.</span> <span class="toc-text">实例(call为主)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Note1-js"><span class="toc-number">1.2.1.</span> <span class="toc-text">Note1.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Note2-js"><span class="toc-number">1.2.2.</span> <span class="toc-text">Note2.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#call-VS-apply"><span class="toc-number">1.2.3.</span> <span class="toc-text">call VS apply</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mind-Map"><span class="toc-number">2.1.</span> <span class="toc-text">Mind Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#an-important-part"><span class="toc-number">2.2.</span> <span class="toc-text">an important part</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#where-to-find-proto-and-prototype"><span class="toc-number">2.3.</span> <span class="toc-text">where to find __proto__ and prototype?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-proto"><span class="toc-number">2.4.</span> <span class="toc-text">Why __proto__?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-prototype"><span class="toc-number">2.5.</span> <span class="toc-text">Why prototype?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#more-about-this"><span class="toc-number">2.6.</span> <span class="toc-text">more about this</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new-mind-map"><span class="toc-number">2.7.</span> <span class="toc-text">new mind map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Great-Links-with-Function-and-others"><span class="toc-number">2.8.</span> <span class="toc-text">Great Links with Function and others</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 

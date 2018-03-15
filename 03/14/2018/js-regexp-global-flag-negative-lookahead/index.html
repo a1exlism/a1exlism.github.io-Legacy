@@ -4,26 +4,41 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>js-Call/Apply | A1exlism</title>
+    <title>RegExp global flag and Negative lookahead | A1exlism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="a1exlism">
     
 
     
-    <meta name="description" content="说明Call() 和 Apply() 都能使目标对象指定一个所需要的this对象
-语法123456//---------call()---------object.call(thisArg[, arg1[, arg2[, ...]]])            //thisArg : 指定的this对象                    //arg1,arg2...为obejcet方法中所传入的">
+    <meta name="description" content="DefinedGet the question when looking up for templates engine realization.And this article mainly focus RegExp.test() and (?!) Negative lookahead condition.
+Main()Code
+
+
+And the explanation
+
+Negative l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js-Call/Apply">
-<meta property="og:url" content="http://csser.work/10/25/2015/js-Inherit/index.html">
+<meta property="og:title" content="RegExp global flag and Negative lookahead">
+<meta property="og:url" content="http://csser.work/03/14/2018/js-regexp-global-flag-negative-lookahead/index.html">
 <meta property="og:site_name" content="A1exlism">
-<meta property="og:description" content="说明Call() 和 Apply() 都能使目标对象指定一个所需要的this对象
-语法123456//---------call()---------object.call(thisArg[, arg1[, arg2[, ...]]])            //thisArg : 指定的this对象                    //arg1,arg2...为obejcet方法中所传入的">
-<meta property="og:updated_time" content="2016-10-04T07:31:56.278Z">
+<meta property="og:description" content="DefinedGet the question when looking up for templates engine realization.And this article mainly focus RegExp.test() and (?!) Negative lookahead condition.
+Main()Code
+
+
+And the explanation
+
+Negative l">
+<meta property="og:updated_time" content="2018-03-14T11:39:12.118Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js-Call/Apply">
-<meta name="twitter:description" content="说明Call() 和 Apply() 都能使目标对象指定一个所需要的this对象
-语法123456//---------call()---------object.call(thisArg[, arg1[, arg2[, ...]]])            //thisArg : 指定的this对象                    //arg1,arg2...为obejcet方法中所传入的">
+<meta name="twitter:title" content="RegExp global flag and Negative lookahead">
+<meta name="twitter:description" content="DefinedGet the question when looking up for templates engine realization.And this article mainly focus RegExp.test() and (?!) Negative lookahead condition.
+Main()Code
+
+
+And the explanation
+
+Negative l">
 <link rel="publisher" href="106896526077043222500">
 
     
@@ -84,14 +99,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/10/25/2015/js-Inherit/" title="js-Call/Apply" itemprop="url">js-Call/Apply</a>
+      <a href="/03/14/2018/js-regexp-global-flag-negative-lookahead/" title="RegExp global flag and Negative lookahead" itemprop="url">RegExp global flag and Negative lookahead</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-24T16:00:00.000Z" itemprop="datePublished"> 发表于 10-25-2015</time>
+    <time datetime="2018-03-13T16:00:00.000Z" itemprop="datePublished"> 发表于 03-14-2018</time>
     
   </p>
 </header>
@@ -100,25 +115,31 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">1.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例-call为主"><span class="toc-number">1.2.</span> <span class="toc-text">实例(call为主)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Note1-js"><span class="toc-number">1.2.1.</span> <span class="toc-text">Note1.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Note2-js"><span class="toc-number">1.2.2.</span> <span class="toc-text">Note2.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#call-VS-apply"><span class="toc-number">1.2.3.</span> <span class="toc-text">call VS apply</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Code"><span class="toc-number">2.1.</span> <span class="toc-text">Code</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Negative-lookahead"><span class="toc-number">2.2.</span> <span class="toc-text">Negative lookahead</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Global-Flag"><span class="toc-number">2.3.</span> <span class="toc-text">Global Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>Call() 和 Apply() 都能使目标对象指定一个所需要的this对象</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//---------call()---------</span></span><br><span class="line">object.call(thisArg[, arg1[, arg2[, ...]]])</span><br><span class="line">            <span class="comment">//thisArg : 指定的this对象</span></span><br><span class="line">                    <span class="comment">//arg1,arg2...为obejcet方法中所传入的参数值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//---------apply()--------</span></span><br></pre></td></tr></table></figure>
-<h3 id="实例-call为主"><a href="#实例-call为主" class="headerlink" title="实例(call为主)"></a>实例(call为主)</h3><h4 id="Note1-js"><a href="#Note1-js" class="headerlink" title="Note1.js"></a>Note1.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Product</span>(<span class="params">name, price</span>)</span>&#123;      <span class="comment">//Product方法</span></span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.price = price;</span><br><span class="line">  <span class="keyword">if</span>(price &lt; <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">RangeError</span>(<span class="string">'Cannot create product "'</span> + name +<span class="string">'"'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Food</span>(<span class="params">name, price</span>)</span>&#123;         <span class="comment">//Food类</span></span><br><span class="line">  Product.call(<span class="keyword">this</span>, name, price);  <span class="comment">//看12th行</span></span><br><span class="line">  <span class="keyword">this</span>.category = <span class="string">'food'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Food.prototype = <span class="keyword">new</span> Product();     <span class="comment">//Food现在拥有了Product()的方法了</span></span><br><span class="line"><span class="keyword">var</span> cheese = <span class="keyword">new</span> Food(<span class="string">'feta'</span>, <span class="number">5</span>);   <span class="comment">//cheese现在是Food()的一个实例对象,在Food()函数中所指向的this就是cheese,而里面的call()函数中的name和price就被指定为'fete'和5了</span></span><br><span class="line"><span class="built_in">console</span>.log(cheese.category);<span class="comment">//food</span></span><br><span class="line"><span class="built_in">console</span>.log(cheese.name + <span class="string">' 价值: $'</span> + cheese.price);<span class="comment">//feta价值5</span></span><br></pre></td></tr></table></figure>
-<p>继承图:<br>  Product   -&gt;  Food          -&gt;  ‘cheese’(实例)<br>  name          name               feta<br>  price         price              5<br>                category(new)      food</p>
-<h4 id="Note2-js"><a href="#Note2-js" class="headerlink" title="Note2.js"></a>Note2.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> father = &#123;</span><br><span class="line">  age : <span class="number">50</span>,</span><br><span class="line">  birthday : <span class="function"><span class="keyword">function</span>(<span class="params">fPrefix, fPostfix</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fPrefix + <span class="keyword">this</span>.age++ +fPostfix;  <span class="comment">//this-&gt;father对象</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> son =&#123;</span><br><span class="line">  age : <span class="number">22</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(father.birthday(<span class="string">'Dad is '</span>,<span class="string">' now.'</span>));</span><br><span class="line"><span class="built_in">console</span>.log(father.birthday.call(son, <span class="string">'Son is '</span>,<span class="string">' now'</span>)); <span class="comment">//this-&gt;son对象</span></span><br><span class="line"><span class="built_in">console</span>.log(father.birthday.apply(son,[<span class="string">'Son is '</span>,<span class="string">' now.'</span>]));</span><br></pre></td></tr></table></figure>
-<h4 id="call-VS-apply"><a href="#call-VS-apply" class="headerlink" title="call VS apply"></a>call VS apply</h4><p>call接受args  apply接受arg+args<a href="`数组`"></a></p>
-<p>apply 如果没有用数组, 会出现<code>Uncaught TypeError: CreateListFromArrayLike called on non-object</code>类似的问题</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="external">MDN-call()</a><br><a href="http://rusticode.com/2012/08/15/javascript-call-and-apply/" target="_blank" rel="external">rusticode.com</a><br><a href="https://msdn.microsoft.com/en-us/library/h2ak8h2y\(v=vs.94\" target="_blank" rel="external">MSDN</a>.aspx)<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="external">MDN-apply()</a></p>
+		<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>Get the question when looking up for templates engine realization.<br>And this article mainly focus <code>RegExp.test()</code> and <code>(?!)</code> Negative lookahead condition.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><script src="https://gist.github.com/a1exlism/a4b618456fe88c5b3977e13508a3adbb.js"></script>
+
+<ul>
+<li>And the explanation</li>
+</ul>
+<h3 id="Negative-lookahead"><a href="#Negative-lookahead" class="headerlink" title="Negative lookahead"></a>Negative lookahead</h3><p>Symbol: A<code>(?!</code>B<code>)</code><br>Function: Match A whose word behide it is <code>NOT</code> B.</p>
+<h3 id="Global-Flag"><a href="#Global-Flag" class="headerlink" title="Global Flag"></a>Global Flag</h3><p>Mainly talking about <code>g</code> flag.</p>
+<ol>
+<li><code>withoutG</code> VS <code>withG2</code><br>test function will save the pattern match <code>session</code>, so the 2nd withG search will return <code>false</code>;<br>and global will return back to index 0 to repeat check the str, 3rd is <code>true</code>, of course;</li>
+<li><code>withG</code>, <code>str</code>, <code>repeatStr</code><br>in 2nd loop, withG’s output is not like the withG2 though they are same RegExp, because of the tmpStr <code>reset</code> withG’s match string, so withG’s result always get <code>true</code> even it has global flag.</li>
+</ol>
+<p>PS: Same as RegExp.<code>exec()</code></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test" target="_blank" rel="external">test | MDN</a><br><a href="regexr.com">regexr</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://csser.work/10/25/2015/js-Inherit/" data-title="js-Call/Apply | A1exlism" data-tsina="null" class="share clearfix">
+	  <div data-url="http://csser.work/03/14/2018/js-regexp-global-flag-negative-lookahead/" data-title="RegExp global flag and Negative lookahead | A1exlism" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -131,19 +152,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/10/27/2015/js-window-document/" title="window VS Document">
-  <strong>上一篇：</strong><br/>
-  <span>
-  window VS Document</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/10/21/2015/linux-cmd-mount/"  title="分区挂载/自动加载">
+<a href="/03/14/2018/js-regexp-object-attention/"  title="RegExp Object Attention">
  <strong>下一篇：</strong><br/> 
- <span>分区挂载/自动加载
+ <span>RegExp Object Attention
 </span>
 </a>
 </div>
@@ -152,7 +165,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="10/25/2015/js-Inherit/" data-title="js-Call/Apply" data-url="http://csser.work/10/25/2015/js-Inherit/"></div>
+	<div class="ds-thread" data-thread-key="03/14/2018/js-regexp-global-flag-negative-lookahead/" data-title="RegExp global flag and Negative lookahead" data-url="http://csser.work/03/14/2018/js-regexp-global-flag-negative-lookahead/"></div>
 </section>
 
 
@@ -162,7 +175,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">1.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例-call为主"><span class="toc-number">1.2.</span> <span class="toc-text">实例(call为主)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Note1-js"><span class="toc-number">1.2.1.</span> <span class="toc-text">Note1.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Note2-js"><span class="toc-number">1.2.2.</span> <span class="toc-text">Note2.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#call-VS-apply"><span class="toc-number">1.2.3.</span> <span class="toc-text">call VS apply</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Defined"><span class="toc-number">1.</span> <span class="toc-text">Defined</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main"><span class="toc-number">2.</span> <span class="toc-text">Main()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Code"><span class="toc-number">2.1.</span> <span class="toc-text">Code</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Negative-lookahead"><span class="toc-number">2.2.</span> <span class="toc-text">Negative lookahead</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Global-Flag"><span class="toc-number">2.3.</span> <span class="toc-text">Global Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
  
   </div>
 
