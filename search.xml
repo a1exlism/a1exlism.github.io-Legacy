@@ -4,6 +4,133 @@
   
     
     <entry>
+      <title><![CDATA[how browser parse, 了解一下]]></title>
+      <url>http://csser.work/03/29/2018/how-browser-work/</url>
+      <content type="html"><![CDATA[<h1 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h1><ul>
+<li>Update - 03/29/2018<br>重新看该博文, 发现有些内容当时并没有完全理解, 于此修改, 删除无用原文.<br>Keyword: 本文探索浏览器如何渲染, script位置, href src与浏览器加载阻塞相关问题<br>相关测试环境: Chrome 65.x</li>
+</ul>
+<h1 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h1><p>这边记录一下浏览器的渲染机制/顺序</p>
+<h2 id="Base"><a href="#Base" class="headerlink" title="Base"></a>Base</h2><h3 id="什么是parse-解析"><a href="#什么是parse-解析" class="headerlink" title="什么是parse(解析)"></a>什么是parse(解析)</h3><blockquote>
+<p><a href="https://stackoverflow.com/questions/39242280/what-parsing-the-page-means" target="_blank" rel="external">What parsing the page means?@Quentin</a><br>In this context, is means converting the HTML source code into DOM nodes like elements and text.<br>Fetching of dependent resources will also continue, but that’s in addition to the parsing.</p>
+</blockquote>
+<h3 id="了解document-readyState"><a href="#了解document-readyState" class="headerlink" title="了解document.readyState"></a>了解document.readyState</h3><blockquote>
+<p><a href="http://www.findmeat.org/tutorials/javascript/x562392.htm" target="_blank" rel="external">JavaScript Programmer’s Reference</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">State</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">uninitialized</td>
+<td style="text-align:left">The object is first instantiated but has not begun loading.</td>
+</tr>
+<tr>
+<td style="text-align:left">loading</td>
+<td style="text-align:left">The object has commenced loading.</td>
+</tr>
+<tr>
+<td style="text-align:left">loaded</td>
+<td style="text-align:left">The object has completed loading.</td>
+</tr>
+<tr>
+<td style="text-align:left">interactive</td>
+<td style="text-align:left">The object is loaded but not yet closed but is ready to handle interaction.</td>
+</tr>
+<tr>
+<td style="text-align:left">complete</td>
+<td style="text-align:left">The object body has been closed and the loading is finished.</td>
+</tr>
+</tbody>
+</table>
+<p>这个是关于IE的</p>
+<blockquote>
+<p><a href="https://msdn.microsoft.com/en-us/library/ms534359(v=vs.85).aspx" target="_blank" rel="external">msdn</a><br>Note  For the script element, readyState is no longer supported. Starting with Internet Explorer 11, use onload.</p>
+</blockquote>
+<p>这段话也从github的注释上看到了.<br>类似的initLoader在<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState" target="_blank" rel="external">mdn</a>发现啦~</p>
+<p>简单的通过readyState进行事件加载:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">document</span>.readyState == <span class="string">"complete"</span>) &#123;</span><br><span class="line">		initApplications();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="About-Parse"><a href="#About-Parse" class="headerlink" title="About Parse"></a>About Parse</h2><h3 id="Parse-Graphic"><a href="#Parse-Graphic" class="headerlink" title="Parse Graphic"></a>Parse Graphic</h3><p><img src="/imgs/howBrowserWork/render-process.png" alt="browser-render"><br>注: gecko - reflow; webkit - layout<br>图中有几个问题: 图上底部CSS应该改为: <code>CSSOM</code>; script和css均有通过相关parser</p>
+<p><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/#The_rendering_engine" target="_blank" rel="external">原文图</a></p>
+<h3 id="Browser-Parse-render-简易流程"><a href="#Browser-Parse-render-简易流程" class="headerlink" title="Browser Parse render 简易流程"></a>Browser Parse render 简易流程</h3><p>照图颜色说话:</p>
+<ol>
+<li>先通过 HTML/SVG/XHTML 生成一个基本的DOM树, <code>并行</code>发起css, img, js请求, <code>和是否在HEAD标签无关</code></li>
+<li>CSS下载完成, 开始构建CSSOM(object model)树, 结构和dom相对应</li>
+<li>所有CSS均下载完毕, CSSOM构建完成后, 和DOM相互匹配进行渲染(render), 生成Rendering Tree<br>┏ ———————— ┓</li>
+<li>Layout: 将树的节点根据自己所拥有的CSS进行定位(计算所处位置)</li>
+<li>Painting: 知道了摆放位置和样式了, 之后就是内容填充了, 利用显卡把内容显示在浏览器中.<br>┗ —reflow/layout— ┛</li>
+</ol>
+<blockquote>
+<p>关于<a href="https://hacks.mozilla.org/2017/09/building-the-dom-faster-speculative-parsing-async-defer-and-preload/" target="_blank" rel="external">parse约束</a><br>When the parser gets to a script tag, DOM construction cannot proceed until the JavaScript finishes executing, and the JavaScript cannot be executed until the CSS is downloaded, parsed, and the CSSOM is available.</p>
+</blockquote>
+<p>DOM构建受限, 直到JS完全执行完毕;而JS执行需要依赖CSSOM的完整建立.</p>
+<h3 id="href-src-区别以及阻塞相关"><a href="#href-src-区别以及阻塞相关" class="headerlink" title="href src 区别以及阻塞相关"></a>href src 区别以及阻塞相关</h3><p>相应的链接以及知识点</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/3395359/difference-between-src-and-href" target="_blank" rel="external">Difference between SRC and HREF</a></li>
+<li><a href="https://segmentfault.com/q/1010000011456305" target="_blank" rel="external">图片资源到底会不会阻塞浏览器渲染呢</a></li>
+<li>浏览器渲染流程</li>
+</ol>
+<p>第一点的阻塞规则已经不适用现代浏览器, 所以只需要从语义上来理解这个问题:</p>
+<ul>
+<li>href: 与本身<code>Reference</code>一个意思, 仅仅表示内容与当前页面的关系</li>
+<li>src: <code>embed</code> the source, 通俗理解就是将内容放入页面中, 例如img, script</li>
+<li>link.src: 历史遗留, 不做解释</li>
+</ul>
+<h2 id="load-state-相关"><a href="#load-state-相关" class="headerlink" title="load state 相关"></a>load state 相关</h2><h3 id="window-onload-amp-amp-interactive"><a href="#window-onload-amp-amp-interactive" class="headerlink" title="window.onload &amp;&amp; interactive"></a>window.onload &amp;&amp; interactive</h3><blockquote>
+<p><a href="http://stackoverflow.com/questions/2457405/what-is-the-difference-between-window-load-and-document-readystate" target="_blank" rel="external">What is the difference between Window.load and document.readyState</a><br>window.load - This runs when <code>all content</code> is loaded, including images.<br>document.ready - This runs when the <code>DOM is ready</code>, all the elements are on the page and ready to do, but the images aren’t necessarily loaded.</p>
+</blockquote>
+<p>第二篇参考文: <a href="https://segmentfault.com/q/1010000000667904" target="_blank" rel="external">window.onload和jquery.ready有什么区别么？ - segmentfault</a><br>代码演示: // 必须放在头才能了解具体加载</p>
+<iframe height="300" scrolling="no" title="window.onload VS $(document).ready() .etc" src="//codepen.io/a1exlism/embed/LbBojb/?height=300&theme-id=26570&default-tab=html&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/a1exlism/pen/LbBojb/" target="_blank" rel="external">window.onload VS $(document).ready() .etc</a> by Quentin Smith (<a href="http://codepen.io/a1exlism" target="_blank" rel="external">@a1exlism</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
+<h3 id="interactive-VS-onDOMContentLoaded"><a href="#interactive-VS-onDOMContentLoaded" class="headerlink" title="interactive VS onDOMContentLoaded"></a>interactive VS onDOMContentLoaded</h3><p>规范在这: <a href="https://www.w3.org/TR/html5/syntax.html#the-end" target="_blank" rel="external">w3</a><br>有点懒得去翻译了… 如有疑问请直接翻阅w3文档.</p>
+<h3 id="state-等状态更替顺序"><a href="#state-等状态更替顺序" class="headerlink" title="state 等状态更替顺序"></a>state 等状态更替顺序</h3><p>readyState.x &gt; Scripts &gt; onDOMContentLoaded  or more</p>
+<h2 id="性能优化相关"><a href="#性能优化相关" class="headerlink" title="性能优化相关"></a>性能优化相关</h2><h3 id="使用performance-timeline-自己探究"><a href="#使用performance-timeline-自己探究" class="headerlink" title="使用performance(timeline) 自己探究"></a>使用performance(timeline) 自己探究</h3><p><a href="https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/reference" target="_blank" rel="external">official link</a> 时间顺序查看相关load内容/顺序</p>
+<p>在performance界面发现: 虽然css, image, fonts, image同时被请求, 但是这些资源被浏览器打上了<code>priority tag</code>.<br>加载顺序如下:</p>
+<blockquote>
+<p>fonts(Highest) &gt; CSS(Highest) &gt; JS(High) &gt; image(Low)</p>
+</blockquote>
+<h3 id="html5-Script-sync-defer"><a href="#html5-Script-sync-defer" class="headerlink" title="html5 Script sync defer"></a>html5 Script sync defer</h3><p>用图来解释:</p>
+<ul>
+<li><p>script defer<br><img src="https://hacks.mozilla.org/files/2017/09/defer-bold@2x.png" alt="script-defer"></p>
+</li>
+<li><p>script async<br><img src="https://hacks.mozilla.org/files/2017/09/async-bold@2x.png" alt="script-async"></p>
+</li>
+</ul>
+<p>async会使当前script的priority为<code>low</code>, 和img同一层次加载(表示不那么重要).</p>
+<blockquote>
+<p>Note: Attributes async and defer work only for external scripts. They are ignored if there’s no <code>src</code>.</p>
+</blockquote>
+<h3 id="new-feature-Preload"><a href="#new-feature-Preload" class="headerlink" title="new feature: Preload"></a>new feature: Preload</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"preload"</span> <span class="attr">href</span>=<span class="string">"very_important.js"</span> <span class="attr">as</span>=<span class="string">"script"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>针对于用户体验, 可以尝试用<code>link</code>特性来提高<code>parse priority</code></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://hacks.mozilla.org/2017/09/building-the-dom-faster-speculative-parsing-async-defer-and-preload/" target="_blank" rel="external">building the DOM faster speculative parsing async defer and preload | Mozilla</a> High Priority, modern browser. 需要反复研读.<br><a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank" rel="external">How browsers work - newly page</a><br><a href="http://coolshell.cn/articles/9666.html" target="_blank" rel="external">浏览器的渲染原理简介-陈皓</a><br><a href="http://www.html-js.com/article/3000" target="_blank" rel="external">CSS渲染优化</a><br><a href="https://segmentfault.com/a/1190000004292479#articleHeader3" target="_blank" rel="external">JS 一定要放在 Body 的最底部么？聊聊浏览器的渲染机制 - 德来</a> 反复研读才觉得有道理.<br>该链接关于reflow条件需要去google <a href="http://arvindr21.github.io/howBrowserWorks/#/39" target="_blank" rel="external">http://arvindr21.github.io/howBrowserWorks/#/39</a></p>
+<h1 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h1><p>本文涉及到满多原理的, 可能存在理解错误的情况, 有问题请email.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Script position and load in DOM]]></title>
+      <url>http://csser.work/03/29/2018/script-position-and-load-in-DOM/</url>
+      <content type="html"><![CDATA[<h1 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h1><p>整理gist的时候发现有这个问题, 发现内容还蛮丰富的, 顺便承接上文<a href="/12/04/2016/browser-render/">关于浏览器加载</a></p>
+<h1 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h1><h2 id="什么是parse-解析"><a href="#什么是parse-解析" class="headerlink" title="什么是parse(解析)"></a>什么是parse(解析)</h2><blockquote>
+<p><a href="https://stackoverflow.com/questions/39242280/what-parsing-the-page-means" target="_blank" rel="external">What parsing the page means?@Quentin</a><br>In this context, is means converting the HTML source code into DOM nodes like elements and text.<br>Fetching of dependent resources will also continue, but that’s in addition to the parsing.</p>
+</blockquote>
+<h2 id="href-VS-src"><a href="#href-VS-src" class="headerlink" title="href VS src"></a>href VS src</h2><p>该点用于解释script位置的问题.</p>
+<h2 id="interactive-VS-onDOMContentLoaded"><a href="#interactive-VS-onDOMContentLoaded" class="headerlink" title="interactive VS onDOMContentLoaded"></a>interactive VS onDOMContentLoaded</h2><p>规范在这: <a href="https://www.w3.org/TR/html5/syntax.html#the-end" target="_blank" rel="external">w3</a></p>
+<p>中文解释如下: 简要概括, <code>一些内容已经删减!</code></p>
+<ul>
+<li>一旦document停止解析(stop parsing), 则必须执行以下步骤:</li>
+</ul>
+<ol>
+<li>document.readyState 改成<code>interactive</code>;</li>
+<li>页面开始run script in <code>list of scripts</code>, 通俗的理解, script标签;<br>3.</li>
+</ol>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://stackoverflow.com/questions/3395359/difference-between-src-and-href" target="_blank" rel="external">Difference between SRC and HREF </a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[new front - ESLint and Prettier]]></title>
       <url>http://csser.work/03/19/2018/new-front-eslint/</url>
       <content type="html"><![CDATA[<h1 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h1><p>new front chains - 3 ESLint and Prettier</p>
@@ -46,19 +173,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[RegExp Object Attention]]></title>
-      <url>http://csser.work/03/14/2018/js-regexp-object-attention/</url>
-      <content type="html"><![CDATA[<h1 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h1><p>Came across RegExp Object prob when tring to learning template engine writing.</p>
-<h1 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h1><blockquote>
-<p>From the refer link<br>I recommend that you do not use the RegExp constructor with a literal string, because in literal strings, backslashes must be escaped. The regular expression <code>\w+</code> can be created as <code>re = /\w+/ or as re = new RegExp(&quot;\\w+&quot;)</code>. The latter is definitely harder to read. The regular expression <code>\\</code> matches a single backslash. In JavaScript, this becomes <code>re = /\\/</code>or <code>re = new RegExp(&quot;\\\\&quot;)</code>.</p>
-</blockquote>
-<p>and the demo code is:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> template = <span class="string">'My age is &lt;span&gt;$&#123;age&#125;&lt;/span&gt;&lt;/p&gt;'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(template.replace(<span class="regexp">/\$&#123;age&#125;/</span>, <span class="number">22</span>)); <span class="comment">//  It works</span></span><br><span class="line"><span class="built_in">console</span>.log(template.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\$&#123;age&#125;'</span>, <span class="string">'g'</span>), <span class="number">22</span>)); <span class="comment">//  Not worked</span></span><br><span class="line"><span class="built_in">console</span>.log(template.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\$&#123;age&#125;'</span>, <span class="string">'g'</span>), <span class="number">22</span>)); <span class="comment">//  It works</span></span><br></pre></td></tr></table></figure></p>
-<p>PS: I just came across this prob a moment before, but I can remember it today, so Record it.</p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="http://www.regular-expressions.info/javascript.html" target="_blank" rel="external">regular-expressions</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[RegExp global flag and Negative lookahead]]></title>
       <url>http://csser.work/03/14/2018/js-regexp-global-flag-negative-lookahead/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>Get the question when looking up for templates engine realization.<br>And this article mainly focus <code>RegExp.test()</code> and <code>(?!)</code> Negative lookahead condition.</p>
@@ -75,6 +189,19 @@
 </ol>
 <p>PS: Same as RegExp.<code>exec()</code></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test" target="_blank" rel="external">test | MDN</a><br><a href="regexr.com">regexr</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[RegExp Object Attention]]></title>
+      <url>http://csser.work/03/14/2018/js-regexp-object-attention/</url>
+      <content type="html"><![CDATA[<h1 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h1><p>Came across RegExp Object prob when tring to learning template engine writing.</p>
+<h1 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h1><blockquote>
+<p>From the refer link<br>I recommend that you do not use the RegExp constructor with a literal string, because in literal strings, backslashes must be escaped. The regular expression <code>\w+</code> can be created as <code>re = /\w+/ or as re = new RegExp(&quot;\\w+&quot;)</code>. The latter is definitely harder to read. The regular expression <code>\\</code> matches a single backslash. In JavaScript, this becomes <code>re = /\\/</code>or <code>re = new RegExp(&quot;\\\\&quot;)</code>.</p>
+</blockquote>
+<p>and the demo code is:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> template = <span class="string">'My age is &lt;span&gt;$&#123;age&#125;&lt;/span&gt;&lt;/p&gt;'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(template.replace(<span class="regexp">/\$&#123;age&#125;/</span>, <span class="number">22</span>)); <span class="comment">//  It works</span></span><br><span class="line"><span class="built_in">console</span>.log(template.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\$&#123;age&#125;'</span>, <span class="string">'g'</span>), <span class="number">22</span>)); <span class="comment">//  Not worked</span></span><br><span class="line"><span class="built_in">console</span>.log(template.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\$&#123;age&#125;'</span>, <span class="string">'g'</span>), <span class="number">22</span>)); <span class="comment">//  It works</span></span><br></pre></td></tr></table></figure></p>
+<p>PS: I just came across this prob a moment before, but I can remember it today, so Record it.</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="http://www.regular-expressions.info/javascript.html" target="_blank" rel="external">regular-expressions</a></p>
 ]]></content>
     </entry>
     
@@ -1296,6 +1423,21 @@
     </entry>
     
     <entry>
+      <title><![CDATA[代码时间-余凡演讲听记]]></title>
+      <url>http://csser.work/12/21/2016/exp-codetime-AlbertYu/</url>
+      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>从<a href="https://gold.xitu.io" target="_blank" rel="external">@掘金</a>上瞄到的, 发现路上可以听, 听完再搞个笔记.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p><br> <br> <br> <br></p>
+<blockquote>
+<p>Albert Yu<br>HTTP很重要<br>英语很重要 //    ps:和tinyfool一样~<br>正处于飞速发展的阶段的前端, 个人眼界比什么都重要  </p>
+</blockquote>
+<p>思考方向:<br>面对繁多的框架, 理解框架解决什么问题, 横向比较框架中对细节问题的实现方式更优雅<br>对底层技术的优劣进行比较</p>
+<p>然后推荐的两本书:<br><a href="http://download.csdn.net/download/narutolby/4494805" target="_blank" rel="external">HTTP Developer’s Handbook</a> 这本在google book能直接搜到<br><a href="https://www.gitbook.com/book/frontendmasters/front-end-handbook/details" target="_blank" rel="external">Front-end Handbook</a></p>
+<p>已加入读书队列并放在了队首= =</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>原文地址: <a href="https://codetimecn.com/episodes/how-to-learn" target="_blank" rel="external">如何学习前端 - 余凡</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[webpack react jsx babel]]></title>
       <url>http://csser.work/12/21/2016/webpack-react/</url>
       <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>Learn from: <a href="https://www.codementor.io/tamizhvendan/tutorials/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr" target="_blank" rel="external">https://www.codementor.io/tamizhvendan/tutorials/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr</a><br>and <a href="http://www.infoq.com/cn/articles/react-and-webpack" target="_blank" rel="external">http://www.infoq.com/cn/articles/react-and-webpack</a></p>
@@ -1322,21 +1464,6 @@
 <p>usage:<br><code>npm run dev</code>, <code>npm run build</code></p>
 <h2 id="Simple-demo-in-github"><a href="#Simple-demo-in-github" class="headerlink" title="Simple demo in github"></a>Simple demo in github</h2><p><a href="https://github.com/a1exlism/codeLab/tree/master/learn/react/React-with-webpack" target="_blank" rel="external">Github-React-with-webpack</a></p>
 <h2 id="EOF"><a href="#EOF" class="headerlink" title="EOF"></a>EOF</h2><p>Webapack is a wonderful tool!</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[代码时间-余凡演讲听记]]></title>
-      <url>http://csser.work/12/21/2016/exp-codetime-AlbertYu/</url>
-      <content type="html"><![CDATA[<h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>从<a href="https://gold.xitu.io" target="_blank" rel="external">@掘金</a>上瞄到的, 发现路上可以听, 听完再搞个笔记.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p><br> <br> <br> <br></p>
-<blockquote>
-<p>Albert Yu<br>HTTP很重要<br>英语很重要 //    ps:和tinyfool一样~<br>正处于飞速发展的阶段的前端, 个人眼界比什么都重要  </p>
-</blockquote>
-<p>思考方向:<br>面对繁多的框架, 理解框架解决什么问题, 横向比较框架中对细节问题的实现方式更优雅<br>对底层技术的优劣进行比较</p>
-<p>然后推荐的两本书:<br><a href="http://download.csdn.net/download/narutolby/4494805" target="_blank" rel="external">HTTP Developer’s Handbook</a> 这本在google book能直接搜到<br><a href="https://www.gitbook.com/book/frontendmasters/front-end-handbook/details" target="_blank" rel="external">Front-end Handbook</a></p>
-<p>已加入读书队列并放在了队首= =</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>原文地址: <a href="https://codetimecn.com/episodes/how-to-learn" target="_blank" rel="external">如何学习前端 - 余凡</a></p>
 ]]></content>
     </entry>
     
@@ -1368,83 +1495,17 @@
     </entry>
     
     <entry>
-      <title><![CDATA[浏览器渲染/性能优化]]></title>
-      <url>http://csser.work/12/04/2016/browser-render/</url>
-      <content type="html"><![CDATA[<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>前天看到的一篇文章<a href="https://segmentfault.com/a/1190000004292479" target="_blank" rel="external">JS 一定要放在 Body 的最底部么？聊聊浏览器的渲染机制 - 德来</a><br>讲的一个浏览器渲染的文章, 看完发现作者写了一个小项目=&gt;<a href="https://github.com/youzan/tiny-loader.js/blob/master/loader.js" target="_blank" rel="external">tiny-loader.js</a>, 然后发现前一个月自己也刚刚写了一个轮子(不是很好用= =), 本文由此而来.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p><br><br><br><br><br><br><br><br>这边记录一下浏览器的渲染机制/顺序</p>
-<h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><p>照着以前的图画的(直接下载看高清):<br><img src="/imgs/howBrowserWork/render-process.png" alt="browser-render"></p>
-<h3 id="渲染步骤-简"><a href="#渲染步骤-简" class="headerlink" title="渲染步骤(简)"></a>渲染步骤(简)</h3><p>照图颜色说话:</p>
-<ol>
-<li>先通过 HTML/SVG/XHTML 生成一个基本的DOM树, <code>并行</code>发起css, img, js请求, <code>和是否在HEAD标签无关</code></li>
-<li>CSS下载完成, 开始构建CSSOM(object model)树, 结构和dom相对应</li>
-<li>所有CSS均下载完毕, CSSOM构建完成后, 和DOM相互匹配进行渲染(render), 生成Rendering Tree<br>┏ —————— ┓</li>
-<li>Layout: 将树的节点根据自己所拥有的CSS进行定位(计算所处位置)</li>
-<li>Painting: 知道了摆放位置和样式了, 之后就是内容填充了, 利用显卡把内容显示在浏览器中.<br>┗ —循环操作— ┛</li>
-</ol>
-<p>reflow和repaint可以参考refer</p>
-<h3 id="document-readyState"><a href="#document-readyState" class="headerlink" title="document.readyState"></a>document.readyState</h3><p>从tiny-loader这边才知道每个dom节点都有readyState这个属性</p>
-<blockquote>
-<p><a href="http://www.findmeat.org/tutorials/javascript/x562392.htm" target="_blank" rel="external">JavaScript Programmer’s Reference</a></p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>State</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>uninitialized</td>
-<td>The object is first instantiated but has not begun loading.</td>
-</tr>
-<tr>
-<td>loading</td>
-<td>The object has commenced loading.</td>
-</tr>
-<tr>
-<td>loaded</td>
-<td>The object has completed loading.</td>
-</tr>
-<tr>
-<td>interactive</td>
-<td>The object is loaded but not yet closed but is ready to handle interaction.</td>
-</tr>
-<tr>
-<td>complete</td>
-<td>The object body has been closed and the loading is finished.</td>
-</tr>
-</tbody>
-</table>
-<p>这个是关于IE的</p>
-<blockquote>
-<p><a href="https://msdn.microsoft.com/en-us/library/ms534359(v=vs.85" target="_blank" rel="external">msdn</a>.aspx)<br>Note  For the script element, readyState is no longer supported. Starting with Internet Explorer 11, use onload.</p>
-</blockquote>
-<p>这段话也从github的注释上看到了.<br>类似的initLoader在<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState" target="_blank" rel="external">mdn</a>发现啦~</p>
-<p>简单的通过readyState进行事件加载:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">document</span>.readyState == <span class="string">"complete"</span>) &#123;</span><br><span class="line">		initApplications();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="那么关于window-onload-amp-amp-interactive"><a href="#那么关于window-onload-amp-amp-interactive" class="headerlink" title="那么关于window.onload &amp;&amp; interactive"></a>那么关于window.onload &amp;&amp; interactive</h3><p>写完想到了这个问题, 已经有人回答了</p>
-<blockquote>
-<p><a href="http://stackoverflow.com/questions/2457405/what-is-the-difference-between-window-load-and-document-readystate" target="_blank" rel="external">What is the difference between Window.load and document.readyState</a><br>window.load - This runs when <code>all content</code> is loaded, including images.<br>document.ready - This runs when the <code>DOM is ready</code>, all the elements are on the page and ready to do, but the images aren’t necessarily loaded.</p>
-</blockquote>
-<p>第二篇参考文: <a href="https://segmentfault.com/q/1010000000667904" target="_blank" rel="external">window.onload和jquery.ready有什么区别么？ - segmentfault</a><br><strong>代码演示</strong>: // 必须放在头才能了解具体加载</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://cdn.bootcss.com/jquery/3.1.1/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">		$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  <span class="comment">//  same as $(function()&#123;&#125;)</span></span><br><span class="line">			alert(<span class="built_in">document</span>.readyState);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="comment">// Interactive</span></span><br><span class="line"></span><br><span class="line">		$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			alert(<span class="built_in">document</span>.readyState);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="comment">// Interactive</span></span><br><span class="line"></span><br><span class="line">		<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">				alert(<span class="built_in">document</span>.readyState);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// Complete</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// HTML4</span></span><br><span class="line">		<span class="built_in">document</span>.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">document</span>.readyState == <span class="string">'interactive'</span>) &#123;</span><br><span class="line">				alert(<span class="built_in">document</span>.readyState);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">// Interactive</span></span><br><span class="line"></span><br><span class="line">		HTML5</span><br><span class="line">		<span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			alert(<span class="built_in">document</span>.readyState);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="comment">// Interactive</span></span><br><span class="line"></span><br><span class="line">		$(<span class="built_in">window</span>).on(<span class="string">'load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			alert(<span class="built_in">document</span>.readyState);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="comment">//	Complete</span></span><br><span class="line">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><del>Online Code: 打开<code>F12</code>看看?</del><br>Update: 改了代码, 直接看result即可</p>
-<iframe height="300" scrolling="no" title="window.onload VS $(document).ready() .etc" src="//codepen.io/a1exlism/embed/LbBojb/?height=300&theme-id=26570&default-tab=html&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/a1exlism/pen/LbBojb/" target="_blank" rel="external">window.onload VS $(document).ready() .etc</a> by Quentin Smith (<a href="http://codepen.io/a1exlism" target="_blank" rel="external">@a1exlism</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
-
-
-<p>看了表格又想了另一个问题</p>
-<blockquote>
-<p><a href="http://stackoverflow.com/questions/3665561/document-readystate-of-interactive-vs-ondomcontentloaded" target="_blank" rel="external">document.readystate of “interactive” vs. ondomcontentloaded?</a><br>To summaries what it means:</p>
-<ol>
-<li>JavaScripts that must <code>run right</code> after parsing are executed “list-of-scripts-that-will-execute-when-the-document-has-fin‌​ished-parsing” are executed</li>
-<li>DomContentLoaded event fires(发起domContentLoad事件)</li>
-<li>JavaScripts “list-of-scripts-that-will-execute-in-order-as-soon-as-possi‌​ble” are executed(尽快加载js)</li>
-<li>readyState changes to <code>&quot;complete&quot;</code> (instead of “interactive”) and <code>triggering the &quot;onload&quot; start event</code>.</li>
-</ol>
-</blockquote>
-<p>这样的话关于readyState的<code>interactive-&gt;compelete</code>的过程也能完美的解释清楚了, 所以一般js真正执行是在readyState === ‘complete’之后.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://taligarsiel.com/Projects/howbrowserswork1.htm" target="_blank" rel="external">How browsers work</a><br><strong><a href="http://coolshell.cn/articles/9666.html" target="_blank" rel="external">浏览器的渲染原理简介-陈皓</a></strong> &lt;= 优先看<br><a href="https://segmentfault.com/a/1190000004292479#articleHeader3" target="_blank" rel="external">JS 一定要放在 Body 的最底部么？聊聊浏览器的渲染机制 - 德来</a><br><a href="https://segmentfault.com/a/1190000005598925" target="_blank" rel="external">浏览器渲染的那些事</a><br><a href="http://www.html-js.com/article/3000" target="_blank" rel="external">网页渲染-前端乱炖</a></p>
-<h2 id="EOF"><a href="#EOF" class="headerlink" title="EOF"></a>EOF</h2><p>这次学到的东西真的不少, 以后自己应该回来多翻看的了~</p>
+      <title><![CDATA[JS闭包]]></title>
+      <url>http://csser.work/12/02/2016/js-closure/</url>
+      <content type="html"><![CDATA[<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>看问题的时候顺便看到了, <a href="http://www.cnblogs.com/xxcanghai/p/4991870.html" target="_blank" rel="external">闭包面试题</a><br>面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>个人理解:<br><br>看了<a href="https://developer.mozilla.org/cn/docs/Web/JavaScript/Closures" target="_blank" rel="external">MDN</a>, 总结了一些结论<br>闭包就是一个 函数加上该函数的上下文环境 的集合.</p>
+<p>一个比较常见的例子:<br>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Javascript:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++)&#123;</span><br><span class="line">		divs[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>无论点哪个都只会输出3, 原因讲的已经很明确了, 在这个函数内部的上下文环境中, i会共用.<br>可能会问, 如果共用, 那么绑定的也只有第三个=&gt; 在绑定的时候i还是从0-&gt;2的, 但是事件触发一定是i在等于3之后的事情了.</p>
+<p>解决办法: 闭包传参, ES6新特性:let<br>这边给个闭包传参的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++) &#123;</span><br><span class="line">		divs[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;)(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>这样每一个onclick都被赋予了一个独立的闭包,可以独立输出0-2.</p>
+<p>另一个模拟类的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shoppingCart</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> goods = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        goodsAdd: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            ++goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsRemove: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            --goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> goods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cartA = <span class="keyword">new</span> shoppingCart();</span><br><span class="line"><span class="keyword">var</span> cartB = <span class="keyword">new</span> shoppingCart();</span><br><span class="line">cartA.goodsAdd();</span><br><span class="line">cartA.goodsShow();</span><br><span class="line"></span><br><span class="line">cartB.goodsAdd();</span><br><span class="line">cartB.goodsRemove();</span><br><span class="line">cartB.goodsShow();</span><br></pre></td></tr></table></figure></p>
+<p>shoppingCart函数有个函数内变量goods, 外部无法访问, 但是它可以通过内部的函数访问到, 即整个shoppingCart函数<code>构成了一个闭包环境</code>.<br>问了一下同学, <code>这个很像面向对象的一个类</code>, goods就是所谓的private变量了.<br>而new出来的对象都是一个独立的闭包, 拥有独立的上下文环境和内容</p>
 ]]></content>
     </entry>
     
@@ -1471,21 +1532,6 @@
 <p>如果把上面那句改成<code>new Date();</code>是不是一下看懂了呢.构造函数的new操作~</p>
 <h3 id="0x06-new-Foo-getName"><a href="#0x06-new-Foo-getName" class="headerlink" title="0x06 new Foo().getName();"></a>0x06 new Foo().getName();</h3><p>理解为: (new Foo().getName)();<br>差点忘记, 这边返回了this, 然后对象找不到直接的getName函数, 于是跟着原型链把line-3的函数继承上去.</p>
 <h3 id="0x07-new-new-Foo-getName"><a href="#0x07-new-new-Foo-getName" class="headerlink" title="0x07 new new Foo().getName();"></a>0x07 new new Foo().getName();</h3><p>理解为: (new (new Foo().getName))();<br>(new Foo().getName) 表示的是构造函数, 然后就和0x05一样的理解即可.</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[JS闭包]]></title>
-      <url>http://csser.work/12/02/2016/js-closure/</url>
-      <content type="html"><![CDATA[<h2 id="defined"><a href="#defined" class="headerlink" title="defined"></a>defined</h2><p>看问题的时候顺便看到了, <a href="http://www.cnblogs.com/xxcanghai/p/4991870.html" target="_blank" rel="external">闭包面试题</a><br>面试题看到最后一行的时候有点不清楚, 干脆重新理解一遍.</p>
-<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p>个人理解:<br><br>看了<a href="https://developer.mozilla.org/cn/docs/Web/JavaScript/Closures" target="_blank" rel="external">MDN</a>, 总结了一些结论<br>闭包就是一个 函数加上该函数的上下文环境 的集合.</p>
-<p>一个比较常见的例子:<br>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divs"</span>&gt;</span> aaa <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>Javascript:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++)&#123;</span><br><span class="line">		divs[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
-<p>无论点哪个都只会输出3, 原因讲的已经很明确了, 在这个函数内部的上下文环境中, i会共用.<br>可能会问, 如果共用, 那么绑定的也只有第三个=&gt; 在绑定的时候i还是从0-&gt;2的, 但是事件触发一定是i在等于3之后的事情了.</p>
-<p>解决办法: 闭包传参, ES6新特性:let<br>这边给个闭包传参的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.divs'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; divs.length; i++) &#123;</span><br><span class="line">		divs[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(i);</span><br><span class="line">		&#125;)(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
-<p>这样每一个onclick都被赋予了一个独立的闭包,可以独立输出0-2.</p>
-<p>另一个模拟类的例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shoppingCart</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> goods = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        goodsAdd: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            ++goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsRemove: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            --goods;</span><br><span class="line">        &#125;,</span><br><span class="line">        goodsShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> goods;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cartA = <span class="keyword">new</span> shoppingCart();</span><br><span class="line"><span class="keyword">var</span> cartB = <span class="keyword">new</span> shoppingCart();</span><br><span class="line">cartA.goodsAdd();</span><br><span class="line">cartA.goodsShow();</span><br><span class="line"></span><br><span class="line">cartB.goodsAdd();</span><br><span class="line">cartB.goodsRemove();</span><br><span class="line">cartB.goodsShow();</span><br></pre></td></tr></table></figure></p>
-<p>shoppingCart函数有个函数内变量goods, 外部无法访问, 但是它可以通过内部的函数访问到, 即整个shoppingCart函数<code>构成了一个闭包环境</code>.<br>问了一下同学, <code>这个很像面向对象的一个类</code>, goods就是所谓的private变量了.<br>而new出来的对象都是一个独立的闭包, 拥有独立的上下文环境和内容</p>
 ]]></content>
     </entry>
     
@@ -1729,6 +1775,13 @@
     </entry>
     
     <entry>
+      <title><![CDATA[无题]]></title>
+      <url>http://csser.work/08/07/2016/say-2/</url>
+      <content type="html"><![CDATA[<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
+<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JSON使用注意]]></title>
       <url>http://csser.work/08/07/2016/js-json-parse/</url>
       <content type="html"><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近看xss看到关于json的代码, 就作一个json专项笔记吧.</p>
@@ -1756,13 +1809,6 @@
 </blockquote>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="external">MDN-json</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/11/2311956.html" target="_blank" rel="external">深入理解js-汤姆大叔</a></p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[无题]]></title>
-      <url>http://csser.work/08/07/2016/say-2/</url>
-      <content type="html"><![CDATA[<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p><br><br><br>感觉一年下来感觉又是没什么成就, 有点烦.<br><br>有点事去看了一下域名, 发现work后缀的都变贵了233.可能这个域名对我来说算是最值钱的了哈哈<br><br>还有百度似乎并不收录work域名, 这个反而让我感觉很开心, 毕竟买的时候就考虑了这个问题, 嗯, 很好.<br><br>一到家就感觉有点适应不了, 总是贪玩, 怎么可以管不住自己呢. 自己好弱啊. 还有好多书要学啊, 还有一门语言也没碰呢.<br><br>第二件事情就是和协会老司机有点交流了, 谁让我一般不会去看qq的呢(其实就是不想用wine).<br></p>
-<h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h3>]]></content>
     </entry>
     
     <entry>
@@ -2164,18 +2210,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[JS_引用类型和基本类型区别]]></title>
-      <url>http://csser.work/05/09/2016/js-stack-heap/</url>
-      <content type="html"><![CDATA[<h2 id="实例-听说这是一道简化的JS面试题"><a href="#实例-听说这是一道简化的JS面试题" class="headerlink" title="实例(听说这是一道简化的JS面试题?)"></a>实例(听说这是一道简化的JS面试题?)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFtn</span>(<span class="params">sNm,pObj</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：new obj</span></span><br><span class="line"></span><br><span class="line">    sNm = <span class="string">"change name"</span>;</span><br><span class="line"></span><br><span class="line">    pObj.oName = <span class="string">"change obj"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sNm = <span class="string">"new Name"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pObj = &#123;oName:<span class="string">"new obj"</span>&#125;;</span><br><span class="line"></span><br><span class="line">testFtn(sNm,pObj);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：change obj</span></span><br></pre></td></tr></table></figure>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>看着看着,再结合js的堆栈引用图,然后恍然大悟:这特么不就是<code>C中的传值和传址调用</code>嘛!</p>
-<p>函数内基本类型传入的是值,引用类型传入的是地址,所以函数内改变基本类型的形参并没有什么卵用(因为这个形参的作用域只在函数里面,而且用完销毁).引用类型的话传入了地址,所以很正常的可以改变自己的内容</p>
-<h3 id="引用图"><a href="#引用图" class="headerlink" title="引用图"></a>引用图</h3><p><img src="/imgs/js_stack_heap/1.png" alt="1"></p>
-<h2 id="还有个现成的问题推荐看看"><a href="#还有个现成的问题推荐看看" class="headerlink" title="还有个现成的问题推荐看看"></a>还有个现成的问题推荐看看</h2><p><a href="https://segmentfault.com/q/1010000002417402" target="_blank" rel="external">关于javascript的引用类型</a></p>
-<h2 id="Refernce"><a href="#Refernce" class="headerlink" title="Refernce"></a>Refernce</h2><p><a href="https://segmentfault.com" target="_blank" rel="external">SegmentFault</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[JavaScript语言精粹]]></title>
       <url>http://csser.work/05/09/2016/js-invocation-patten/</url>
       <content type="html"><![CDATA[<p>这边讲的是JavaScript的函数调用和this</p>
@@ -2194,6 +2228,18 @@
 <p>运行之后可以很明显的看出来第二个alert居然指向了全局的变量window.value<br>原因已经在上文中谈到</p>
 <h3 id="代码改进"><a href="#代码改进" class="headerlink" title="代码改进"></a>代码改进</h3><p>利用js函数内声明的变量会存在<code>运行域</code>这个特性,来构造一个that(约定俗成的一个变量名了= =)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	value: <span class="number">0</span>,</span><br><span class="line">	increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.value);	<span class="comment">//0</span></span><br><span class="line">		<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">		<span class="keyword">var</span> innerFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			alert( ++that.value );	<span class="comment">//1</span></span><br><span class="line">		&#125;</span><br><span class="line">		innerFunction();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.increment();</span><br></pre></td></tr></table></figure></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://doctrina.org/Javascript-Function-Invocation-Patterns.html" target="_blank" rel="external">JavaScript: Function Invocation Patterns</a><br><a href="https://github.com/CoffeeXu/Front-end/blob/master/JavaScript%20Function%20Invocation%20Patterns.md" target="_blank" rel="external">CoffeeXu</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JS_引用类型和基本类型区别]]></title>
+      <url>http://csser.work/05/09/2016/js-stack-heap/</url>
+      <content type="html"><![CDATA[<h2 id="实例-听说这是一道简化的JS面试题"><a href="#实例-听说这是一道简化的JS面试题" class="headerlink" title="实例(听说这是一道简化的JS面试题?)"></a>实例(听说这是一道简化的JS面试题?)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFtn</span>(<span class="params">sNm,pObj</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：new obj</span></span><br><span class="line"></span><br><span class="line">    sNm = <span class="string">"change name"</span>;</span><br><span class="line"></span><br><span class="line">    pObj.oName = <span class="string">"change obj"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sNm = <span class="string">"new Name"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pObj = &#123;oName:<span class="string">"new obj"</span>&#125;;</span><br><span class="line"></span><br><span class="line">testFtn(sNm,pObj);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sNm);<span class="comment">// 运行结果：new Name</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pObj.oName);<span class="comment">// 运行结果：change obj</span></span><br></pre></td></tr></table></figure>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>看着看着,再结合js的堆栈引用图,然后恍然大悟:这特么不就是<code>C中的传值和传址调用</code>嘛!</p>
+<p>函数内基本类型传入的是值,引用类型传入的是地址,所以函数内改变基本类型的形参并没有什么卵用(因为这个形参的作用域只在函数里面,而且用完销毁).引用类型的话传入了地址,所以很正常的可以改变自己的内容</p>
+<h3 id="引用图"><a href="#引用图" class="headerlink" title="引用图"></a>引用图</h3><p><img src="/imgs/js_stack_heap/1.png" alt="1"></p>
+<h2 id="还有个现成的问题推荐看看"><a href="#还有个现成的问题推荐看看" class="headerlink" title="还有个现成的问题推荐看看"></a>还有个现成的问题推荐看看</h2><p><a href="https://segmentfault.com/q/1010000002417402" target="_blank" rel="external">关于javascript的引用类型</a></p>
+<h2 id="Refernce"><a href="#Refernce" class="headerlink" title="Refernce"></a>Refernce</h2><p><a href="https://segmentfault.com" target="_blank" rel="external">SegmentFault</a></p>
 ]]></content>
     </entry>
     

@@ -82,6 +82,118 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/11/03/2017/http-protocol/" title="HTTP协议笔记" itemprop="url">HTTP协议笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-02T16:00:00.000Z" itemprop="datePublished"> 发表于 11-03-2017</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>从状态码那边了解过来, 然后看到的性质问题.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>HTTP协议有两个性质: 无状态;无连接</p>
+<h3 id="连接状态"><a href="#连接状态" class="headerlink" title="连接状态"></a>连接状态</h3><ol>
+<li>HTTP/1.0 之前都是<code>短连接</code>, 因为基本内容不相关,服务器响应完客户端就断开了和客户端的连接(关系);</li>
+<li>后来现代网页中存在较多静态资源之后,HTTP/1.0出现了<code>conncetion: Keep-Alive</code>来保证服务器一直响应客户端的连续请求, 比如图片,css,js等.keep-alive默认存在一个timeout=5(second),max=100(request)的参数来限制无限制连接的情况, 通过发送<code>Connection: Close</code>来对客户端表示连接中断;</li>
+<li>HTTP/1.1之后就默认是<code>长连接</code>了, 即只要表示http协议即可维持长连接状态.但是出现了<code>HOLB(Head of Line Blocking)</code>问题,即串行的请求模式会导致网络阻塞.然后1.1又提出了一个<code>pipelining</code>异步模式, 客户端不需要等待服务器响应就能对其他资源进行请求,不过为了保证响应和请求匹配最后依然还是串行输出,即该模式被淘汰.</li>
+<li>SPDY|HTTP/2.0出现了一个<code>multiplexing</code>多路复用模式,解决了串行接受问题(可以乱序发送/接受并完成请求)</li>
+</ol>
+<h2 id="无状态"><a href="#无状态" class="headerlink" title="无状态"></a>无状态</h2><p>可以这么理解: 无状态 == 无记忆<br>然后保证记忆存在的方式: 客户端的cookie/服务端的session;<br>遇到session就说一下这个问题吧, 一般的登陆(比如php)会在登陆之后的客户端(浏览器)存一个SESSION_ID,服务端会存一个SESSION, 在session有效期内重新进入页面,服务端会判断cookie中的session_id和自己存的session能否校验成功,如果成功就允许访问.</p>
+<h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p><a href="https://www.zhihu.com/question/51996213" target="_blank" rel="external">连接状态-知乎@二大王</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/11/03/2017/http-protocol/#comments" class="ds-thread-count comments-count-link" data-thread-key="11/03/2017/http-protocol/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/10/17/2017/written-examination-youzan2017/" title="有赞笔试-小结" itemprop="url">有赞笔试-小结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
+		
+  <p class="article-time">
+    <time datetime="2017-10-16T16:00:00.000Z" itemprop="datePublished"> 发表于 10-17-2017</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>可能对自己要求太低了吧, 考完就知道自己差不多跪了= =!#<br>趁现在稍微还有点印象写下来吧.</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>记录几个自己印象深刻的题目</p>
+<h3 id="Linux-进程fork"><a href="#Linux-进程fork" class="headerlink" title="Linux 进程fork"></a>Linux 进程fork</h3><p>函数大概是这样的, 问题是出现多少次print 2/4/8/16<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function output() &#123;</span><br><span class="line">  var a = &apos;1&apos;;</span><br><span class="line">  fork();</span><br><span class="line">  print(a);</span><br><span class="line">&#125;</span><br><span class="line">for(int i = 0;i &lt; 3; i++) &#123;</span><br><span class="line">  output();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>说来惭愧…用了一年多的Linux也只能算是个普通用户, 对进程fork不算特别了解, 不过做题的时候想法似乎偏差不大,认为的算是进程clone</p>
+<h2 id="关于操作系统-进程调度问题"><a href="#关于操作系统-进程调度问题" class="headerlink" title="关于操作系统:进程调度问题"></a>关于操作系统:进程调度问题</h2><p>具体问题似乎已经忘记了…</p>
+<h2 id="coding1-找出array中不存在的两个数值排序并排序输出"><a href="#coding1-找出array中不存在的两个数值排序并排序输出" class="headerlink" title="coding1: 找出array中不存在的两个数值排序并排序输出"></a>coding1: 找出array中不存在的两个数值排序并排序输出</h2><p>Details:<br>两个数m,n, 从而组成一个范围为[m, m+n+2)的数据段,<br>给出n个数据, 找出其中两个数据并有小到大输出(数组形式)<br>Input: m = 4 n = 5 random: 5 7 8 10 11 9(依次换行输入) Output: [4, 6]<br>顺便贴出我的辣鸡代码:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tmp = readline().split(<span class="string">''</span>);</span><br><span class="line"><span class="comment">// console.log(tmp);</span></span><br><span class="line"><span class="keyword">let</span> m = tmp[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> n = tmp[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">let</span> arr = []; <span class="comment">//output</span></span><br><span class="line"><span class="keyword">let</span> dic = []; <span class="comment">//dictionary</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n + <span class="number">2</span>; i++) &#123;</span><br><span class="line">	dic.push(readline());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// console.log(dic);</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = m, max = i + n + <span class="number">2</span>; i &lt; max; i++) &#123;</span><br><span class="line">	<span class="keyword">if</span>(dic.indexOf(i)) == <span class="number">-1</span>) &#123;</span><br><span class="line">		arr.push(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(arr[<span class="number">0</span>] &gt; arr[<span class="number">1</span>]) &#123;</span><br><span class="line">	arr = <span class="built_in">Array</span>.concat(arr[<span class="number">1</span>], arr[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line">print(arr);</span><br></pre></td></tr></table></figure></p>
+<h2 id="coding2-find-NGE"><a href="#coding2-find-NGE" class="headerlink" title="coding2: find NGE"></a>coding2: find NGE</h2><p>感觉用js写就是在搞一个数组数据优化问题…<br>Details: NGE定义, 数组中元素index之后比该元素大的第一个元素.<br>如果不存在NGE, 则返回-1, 最后一个值返回-1(因为无法比较).常见的递增序列都是后面一个是NGE,除了最后一个;常见的递减序列都是-1.<br>一样, 我的辣鸡代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// var arr = [];</span></span><br><span class="line"><span class="comment">// var len = parseInt(readline());</span></span><br><span class="line"><span class="comment">// for (let i = 0; i &lt; len; i++) &#123;</span></span><br><span class="line"><span class="comment">// 	arr.push(readline());</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// var arr = [3, 4, 1, 100];</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">4</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> len = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> result = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">	result.push(findNGE(i, arr));</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br><span class="line"><span class="comment">// print(result);</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findNGE</span>(<span class="params">index, arr</span>) </span>&#123;</span><br><span class="line">	<span class="comment">//  index 为当前的下标</span></span><br><span class="line">	<span class="keyword">var</span> num = arr[index];</span><br><span class="line">	<span class="keyword">var</span> l = arr.length;</span><br><span class="line">	<span class="keyword">while</span> (index++ <span class="xml"><span class="tag">&lt; <span class="attr">l</span>) &#123;</span><br><span class="line">		<span class="attr">if</span> (<span class="attr">num</span> &lt; <span class="attr">arr</span>[<span class="attr">index</span>]) &#123;</span><br><span class="line">			<span class="attr">return</span> <span class="attr">arr</span>[<span class="attr">index</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">  <span class="attr">return</span> <span class="attr">-1</span>;</span><br><span class="line">&#125;</span></span></span><br></pre></td></tr></table></figure></p>
+<h2 id="大题-长文本输入框自动换行parser-需要对其进行复杂度计算"><a href="#大题-长文本输入框自动换行parser-需要对其进行复杂度计算" class="headerlink" title="大题: 长文本输入框自动换行parser, 需要对其进行复杂度计算"></a>大题: 长文本输入框自动换行parser, 需要对其进行复杂度计算</h2><p>原本的想法是全部分片处理, 然后累加.</p>
+<h2 id="Ending"><a href="#Ending" class="headerlink" title="Ending"></a>Ending</h2><p>面试覆盖面很广, 有操作系统异步,资源分配问题;网络HTTP协议问题;编程效率问题/<code>复杂度</code>.etc 顿时觉得自己是条咸鱼, 辣鸡!</p>
+<p>PS: 明天更新</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/10/17/2017/written-examination-youzan2017/#comments" class="ds-thread-count comments-count-link" data-thread-key="10/17/2017/written-examination-youzan2017/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/10/11/2017/interview-oth-tencent/" title="人家的面试 - tencent" itemprop="url">人家的面试 - tencent</a>
   </h1>
   <p class="article-author">By
@@ -686,122 +798,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/03/27/2017/js-es6-class-and-this/" title="ES6-class与this" itemprop="url">ES6-class与this</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
-		
-  <p class="article-time">
-    <time datetime="2017-03-26T16:00:00.000Z" itemprop="datePublished"> 发表于 03-27-2017</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>本以为重新改了那篇this的文章已经可以正常使用了, 然而react中click绑定还是没搞懂.</p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><p>翻阅了一堆, 才发现是最基础的问题. 具体戳这: <a href="https://www.zhihu.com/question/25835666" target="_blank" rel="external">onclick事件绑定函数，为什么在文档里（body标签里）调用时就得加括号，在js代码里去不用？ - zhihu</a></p>
-<p><code>onclick=func &lt;==&gt; onclick=function() { func(); }</code><br>应该说看到这句话应该就能懂为什么了.如果还不清楚, 就看下面这个例子:<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  React 例子</span></span><br><span class="line">render() &#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		&lt;div&gt;</span><br><span class="line">			&lt;input type="text" ref="myTextInput"/&gt;</span><br><span class="line">			&lt;input type="button" value="Focus the text input" onClick=&#123;this.handleClick&#125;/&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br><span class="line">handleClick() &#123;</span><br><span class="line">	this.refs.myTextInput.focus();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>此时this之外其实就包裹了一个<code>function(){}</code>, 归类为函数调用(function invocation).<br>function(){}会内建一个上下文,但是<code>即使外部函数拥有该this的上下文环境，它也没有办法影响到内部的this</code>, 所以依然会返回undefined||window</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://reactkungfu.com/2015/07/why-and-how-to-bind-methods-in-your-react-component-classes/" target="_blank" rel="external">Why and how to bind methods in your React component classes?- ReactKungFu</a><br><a href="https://segmentfault.com/a/1190000003798438#articleHeader5" target="_blank" rel="external">JavaScript 原型系统的变迁，以及 ES6 class</a><br>这两篇是一开始看的, 可以当作延伸阅读了…</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/03/27/2017/js-es6-class-and-this/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/27/2017/js-es6-class-and-this/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/03/26/2017/react-quick-learn/" title="React-基础笔记" itemprop="url">React-基础笔记</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/106896526077043222500?rel=author" title="a1exlism" target="_blank" itemprop="author">a1exlism</a>
-		
-  <p class="article-time">
-    <time datetime="2017-03-25T16:00:00.000Z" itemprop="datePublished"> 发表于 03-26-2017</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Defined"><a href="#Defined" class="headerlink" title="Defined"></a>Defined</h2><p>先写的React Native, 发现了好多坑.找到了个比较好的资料库, 跟着学, 在此记录所学知识.<br>所有代码均会在<a href=""></a><br><!-- todo: add address --></p>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main()"></a>Main()</h2><h3 id="HTML-VS-ReactComponent"><a href="#HTML-VS-ReactComponent" class="headerlink" title="HTML VS ReactComponent"></a>HTML VS ReactComponent</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>I'm original html tag<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>,</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">MyConponent</span>/&gt;</span></span></span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
-<p>React组件首字母必须大写</p>
-<h3 id="Spread-Attributes"><a href="#Spread-Attributes" class="headerlink" title="Spread Attributes"></a>Spread Attributes</h3><p>在看其他代码的时候经常看到类似于<code>&lt;Button info&gt;</code>这种Component, 现在了解了: jsx的新特性-延展属性.<br>写了个小例子, 改得和ReactNative相似了许多~也添加了延展操作符(ES6特性也添加了延展操作符(ES6特性)也添加了延展操作符(ES6特性))</p>
-<p></p><p data-height="300" data-theme-id="26570" data-slug-hash="PpBEGM" data-default-tab="html,result" data-user="a1exlism" data-embed-version="2" data-pen-title="SimpleReactBtnComponent" class="codepen">See the Pen <a href="http://codepen.io/a1exlism/pen/PpBEGM/" target="_blank" rel="external">SimpleReactBtnComponent</a> by Quinn Sheng (<a href="http://codepen.io/a1exlism" target="_blank" rel="external">@a1exlism</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-
-<h3 id="节点遍历"><a href="#节点遍历" class="headerlink" title="节点遍历"></a>节点遍历</h3><p>this.props.children 会返回组件对象所有属性<br>React.Children.map / React.Children.forEach 可以遍历子节<br>应该对于代码复用效果挺好的.</p>
-<h3 id="PropTypes组件验证机制"><a href="#PropTypes组件验证机制" class="headerlink" title="PropTypes组件验证机制"></a>PropTypes组件验证机制</h3><p>用于检测props传入的数据是否符合规范.<br>类似错误如</p>
-<blockquote>
-<p>Invalid prop <code>title</code> of type <code>number</code> supplied to <code>MyTitle</code>, expected <code>string</code>. in MyTitle</p>
-</blockquote>
-<h3 id="ReactDOM-render-只能渲染一次"><a href="#ReactDOM-render-只能渲染一次" class="headerlink" title="ReactDOM.render()只能渲染一次"></a>ReactDOM.render()只能渲染一次</h3><p>原因: virtual-dom</p>
-<h3 id="ref-获取真实dom属性"><a href="#ref-获取真实dom属性" class="headerlink" title="ref 获取真实dom属性"></a>ref 获取真实dom属性</h3><p>例如: 获取点击事件(virtual dom做不了的)<br>这边有一个bind(this)的问题, 解释在这里:</p>
-<blockquote>
-<p><a href="http://blog.csdn.net/bingjay/article/details/53876773" target="_blank" rel="external">http://blog.csdn.net/bingjay/article/details/53876773</a><br>React.createClass 是es5的写法默认是绑定了bind方法，而es6中 新增加了class，绑定的方法需要绑定this，如果是箭头函数就不需要绑定</p>
-</blockquote>
-<h3 id="组件重复调用"><a href="#组件重复调用" class="headerlink" title="组件重复调用"></a>组件重复调用</h3><p><a href="https://beace.gitbooks.io/react-recording/content/reactzhong_duo_ge_component_de_wen_ti_ji_lu.html" target="_blank" rel="external">https://beace.gitbooks.io/react-recording/content/reactzhong_duo_ge_component_de_wen_ti_ji_lu.html</a><br>和react native基本一样, 需要在最外层套用一个<code>&lt;div&gt;</code>, 保证是一个组件</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://goo.gl/FZEwb0" target="_blank" rel="external">React Native之React速学教程</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/03/26/2017/react-quick-learn/#comments" class="ds-thread-count comments-count-link" data-thread-key="03/26/2017/react-quick-learn/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/">Next<span></span></a>
@@ -818,7 +814,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CS-GO/" style="font-size: 10px;">CS:GO</a> <a href="/tags/CSS/" style="font-size: 16px;">CSS</a> <a href="/tags/CodeIgniter/" style="font-size: 13px;">CodeIgniter</a> <a href="/tags/Design-Pattern/" style="font-size: 11px;">Design Pattern</a> <a href="/tags/Device/" style="font-size: 14px;">Device</a> <a href="/tags/ES6/" style="font-size: 12px;">ES6</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/Experience/" style="font-size: 10px;">Experience</a> <a href="/tags/Front-End/" style="font-size: 16px;">Front-End</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/HTML/" style="font-size: 11px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IFTTT/" style="font-size: 10px;">IFTTT</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 12px;">Kali</a> <a href="/tags/Linux/" style="font-size: 19px;">Linux</a> <a href="/tags/Manual/" style="font-size: 18px;">Manual</a> <a href="/tags/Mobile/" style="font-size: 10px;">Mobile</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/NPM/" style="font-size: 10px;">NPM</a> <a href="/tags/NeedUpdate/" style="font-size: 10px;">NeedUpdate</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Prototype/" style="font-size: 11px;">Prototype</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 12px;">React</a> <a href="/tags/ReactNative/" style="font-size: 11px;">ReactNative</a> <a href="/tags/RegExp/" style="font-size: 11px;">RegExp</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQLInjection/" style="font-size: 11px;">SQLInjection</a> <a href="/tags/Semantic/" style="font-size: 10px;">Semantic</a> <a href="/tags/Shell/" style="font-size: 13px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17px;">XSS</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/conference/" style="font-size: 11px;">conference</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 14px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 11px;">git</a> <a href="/tags/hard/" style="font-size: 12px;">hard</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/tags/nexus5x/" style="font-size: 13px;">nexus5x</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/soft/" style="font-size: 12px;">soft</a> <a href="/tags/web/" style="font-size: 12px;">web</a> <a href="/tags/webdriver/" style="font-size: 10px;">webdriver</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/workflow/" style="font-size: 10px;">workflow</a> <a href="/tags/书记/" style="font-size: 15px;">书记</a> <a href="/tags/应试/" style="font-size: 13px;">应试</a> <a href="/tags/生活/" style="font-size: 11px;">生活</a> <a href="/tags/闲谈/" style="font-size: 14px;">闲谈</a>
+       <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CS-GO/" style="font-size: 10px;">CS:GO</a> <a href="/tags/CSS/" style="font-size: 15.45px;">CSS</a> <a href="/tags/CodeIgniter/" style="font-size: 12.73px;">CodeIgniter</a> <a href="/tags/Design-Pattern/" style="font-size: 10.91px;">Design Pattern</a> <a href="/tags/Device/" style="font-size: 13.64px;">Device</a> <a href="/tags/ES6/" style="font-size: 11.82px;">ES6</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/Experience/" style="font-size: 10px;">Experience</a> <a href="/tags/Front-End/" style="font-size: 16.36px;">Front-End</a> <a href="/tags/G4W/" style="font-size: 10px;">G4W</a> <a href="/tags/HTML/" style="font-size: 10.91px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IFTTT/" style="font-size: 10px;">IFTTT</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Kali/" style="font-size: 11.82px;">Kali</a> <a href="/tags/Linux/" style="font-size: 19.09px;">Linux</a> <a href="/tags/Manual/" style="font-size: 18.18px;">Manual</a> <a href="/tags/Mobile/" style="font-size: 10px;">Mobile</a> <a href="/tags/MySQL/" style="font-size: 13.64px;">MySQL</a> <a href="/tags/NPM/" style="font-size: 10px;">NPM</a> <a href="/tags/NeedUpdate/" style="font-size: 10px;">NeedUpdate</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Prototype/" style="font-size: 10.91px;">Prototype</a> <a href="/tags/RWD/" style="font-size: 10px;">RWD</a> <a href="/tags/React/" style="font-size: 11.82px;">React</a> <a href="/tags/ReactNative/" style="font-size: 10.91px;">ReactNative</a> <a href="/tags/RegExp/" style="font-size: 10.91px;">RegExp</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQLInjection/" style="font-size: 10.91px;">SQLInjection</a> <a href="/tags/Semantic/" style="font-size: 10px;">Semantic</a> <a href="/tags/Shell/" style="font-size: 12.73px;">Shell</a> <a href="/tags/XSS/" style="font-size: 17.27px;">XSS</a> <a href="/tags/browser/" style="font-size: 10px;">browser</a> <a href="/tags/conference/" style="font-size: 10.91px;">conference</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/daily/" style="font-size: 13.64px;">daily</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/git/" style="font-size: 10.91px;">git</a> <a href="/tags/hard/" style="font-size: 11.82px;">hard</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/tags/nexus5x/" style="font-size: 12.73px;">nexus5x</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/soft/" style="font-size: 11.82px;">soft</a> <a href="/tags/web/" style="font-size: 11.82px;">web</a> <a href="/tags/webdriver/" style="font-size: 10px;">webdriver</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wireshark/" style="font-size: 10px;">wireshark</a> <a href="/tags/workflow/" style="font-size: 10px;">workflow</a> <a href="/tags/书记/" style="font-size: 14.55px;">书记</a> <a href="/tags/应试/" style="font-size: 12.73px;">应试</a> <a href="/tags/生活/" style="font-size: 10.91px;">生活</a> <a href="/tags/闲谈/" style="font-size: 13.64px;">闲谈</a>
     </div>
   </div>
 
@@ -826,7 +822,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 

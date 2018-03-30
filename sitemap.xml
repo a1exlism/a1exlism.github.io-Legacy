@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://csser.work/03/29/2018/how-browser-work/</loc>
+    
+    <lastmod>2018-03-30T12:43:10.167Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://csser.work/03/29/2018/script-position-and-load-in-DOM/</loc>
+    
+    <lastmod>2018-03-29T07:20:15.521Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://csser.work/03/10/2018/mac-user-preference/</loc>
     
     <lastmod>2018-03-28T08:08:51.789Z</lastmod>
@@ -250,13 +264,6 @@
     <loc>http://csser.work/10/07/2016/php-ci-verification/</loc>
     
     <lastmod>2017-10-22T04:07:27.701Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://csser.work/12/04/2016/browser-render/</loc>
-    
-    <lastmod>2017-10-21T02:18:43.210Z</lastmod>
     
   </url>
   
